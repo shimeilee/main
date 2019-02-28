@@ -12,31 +12,7 @@ ifndef::env-github[]
 image::images/UI-Homework.png[width="600"]
 endif::[]
 
-ifdef::env-github[]
-image::docs/images/UI-Timetable.png[width="600"]
-endif::[]
-
-ifndef::env-github[]
-image::images/UI-Timetable.png[width="600"]
-endif::[]
-
-ifdef::env-github[]
-image::docs/images/UI-Notes.png[width="600"]
-endif::[]
-
-ifndef::env-github[]
-image::images/UI-Notes.png[width="600"]
-endif::[]
-
-ifdef::env-github[]
-image::docs/images/UI-CAP.png[width="600"]
-endif::[]
-
-ifndef::env-github[]
-image::images/UI-CAP.png[width="600"]
-endif::[]
-
-* This is a desktop Homework Manager application. It has a GUI but all of the user interactions happen using a CLI (Command Line Interface).
+* This is a desktop Homework Manager application. It has a GUI but **all** of the user interactions happen using a CLI (Command Line Interface).
 * It is an application intended for students who prefer CLI over GUI to manage their school activities.
 * What students can achieve using this Homework Manager would be:
 ** Managing Homework
