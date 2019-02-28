@@ -21,7 +21,7 @@ image::images/UI-Timetable.png[width="600"]
 endif::[]
 
 ifdef::env-github[]
-image::docs/images/UI-Note.png[width="600"]
+image::docs/images/UI-Notes.png[width="600"]
 endif::[]
 
 ifndef::env-github[]
