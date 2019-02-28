@@ -15,11 +15,8 @@ import org.testfx.api.FxToolkit;
 import guitests.guihandles.HelpWindowHandle;
 import javafx.stage.Stage;
 
-public class
-
-HelpWindowTest extends GuiUnitTest {
-
-
+public class HelpWindowTest extends GuiUnitTest {
+    
     private HelpWindow helpWindow;
     private HelpWindowHandle helpWindowHandle;
 
