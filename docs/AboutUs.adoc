@@ -4,10 +4,12 @@
 :imagesDir: images
 :stylesDir: stylesheets
 
-AddressBook - Level 4 was developed by the https://se-edu.github.io/docs/Team.html[se-edu] team. +
+HomeworkManager - Level 1 was developed by the https://github.com/orgs/cs2103-ay1819s2-w09-1/teams[cs2103-ay1819s2-w09-1] team. +
 _{The dummy content given below serves as a placeholder to be used by future forks of the project.}_ +
 {empty} +
 We are a team based in the http://www.comp.nus.edu.sg[School of Computing, National University of Singapore].
+
+
 
 == Project Team
 
@@ -24,7 +26,7 @@ Role: Project Advisor
 image::LimZhengJieBenjamin.jpg[width="150", align="left"]
 {empty}[http://github.com/LimZhengJieBenjamin[github]] [<<Benjamin Lim#, portfolio>>]
 
-Role: Team Lead +
+Role: Team Lead
 Responsibilities: UI
 
 '''
@@ -33,7 +35,7 @@ Responsibilities: UI
 image::andrewscw.jpg[width="150", align="left"]
 {empty}[http://github.com/andrewscw[github]] [<<Andrew Sim#, portfolio>>]
 
-Role: Developer +
+Role: Developer
 Responsibilities: Data
 
 '''
@@ -42,7 +44,7 @@ Responsibilities: Data
 image::NgWeiXin.jpg[width="150", align="left"]
 {empty}[http://github.com/NgWeiXin[github]] [<<Ng Wei Xin#, portfolio>>]
 
-Role: Developer +
+Role: Developer
 Responsibilities: Dev Ops + Threading
 
 '''
@@ -51,7 +53,7 @@ Responsibilities: Dev Ops + Threading
 image::shimeilee.jpg[width="150", align="left"]
 {empty}[http://github.com/shimeilee[github]] [<<Lee Shi Mei#, portfolio>>]
 
-Role: Developer +
+Role: Developer
 Responsibilities: UI
 
 '''
