@@ -1,4 +1,4 @@
-= HomeworkManager-Level1 - Developer Guide
+= AddressBook Level 4 - Developer Guide
 :site-section: DeveloperGuide
 :toc:
 :toc-title:
@@ -13,7 +13,7 @@ ifdef::env-github[]
 :warning-caption: :warning:
 :experimental:
 endif::[]
-:repoURL: https://github.com/cs2103-ay1819s2-w09-1/main
+:repoURL: https://github.com/se-edu/addressbook-level4/tree/master
 
 By: `Team SE-EDU`      Since: `Jun 2016`      Licence: `MIT`
 
