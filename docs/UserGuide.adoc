@@ -104,6 +104,7 @@ Format: `find KEYWORD [MORE_KEYWORDS]`
 * Only the name is searched.
 * Only full words will be matched e.g. `Tutorial` will not match `Tutorials`
 * Homework matching at least one keyword will be returned (i.e. `OR` search). e.g. `Tutorial` will return `Tutorial 3`, `Create Tutorial Solutions`
+
 ****
 
 Examples:
@@ -122,6 +123,8 @@ Format: `delete INDEX`
 * Deletes the homework at the specified `INDEX`.
 * The index refers to the index number shown in the displayed homework list.
 * The index *must be a positive integer* 1, 2, 3, ...
+=======
+
 ****
 
 Examples:
@@ -233,4 +236,3 @@ e.g.`select 3`
 * *History* : `history`
 * *Undo* : `undo`
 * *Redo* : `redo`
-
