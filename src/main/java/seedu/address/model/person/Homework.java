@@ -1,15 +1,20 @@
 package seedu.address.model.person;
 
 import static java.util.Objects.requireNonNull;
-import static seedu.address.commons.util.AppUtil.checkArgument;
 
+/**
+ * Represents a homework entry in the address book.
+ */
 public class Homework {
-    String moduleCode;
-    String homeworkName;
-    String deadline;
 
     public static final String MESSAGE_CONSTRAINTS = "Homework should be inputted as MODULECODE; "
-                                                       + "HOMEWORKNAME; DEADLINE";
+            + "HOMEWORKNAME; DEADLINE";
+
+    private String moduleCode;
+    private String homeworkName;
+    private String deadline;
+
+
     //TOADD REGEX to only allow numbers, alphabets and spaces
 
     public Homework (String moduleCode, String homeworkName, String deadline) {
