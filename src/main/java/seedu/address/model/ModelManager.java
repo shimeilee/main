@@ -182,6 +182,7 @@ public class ModelManager implements Model {
         }
         selectedPerson.setValue(person);
     }
+    
 
     /**
      * Ensures {@code selectedPerson} is a valid person in {@code filteredPersons}.
