@@ -24,7 +24,7 @@ HomeworkManager-Level1 is for students who *prefer to use a desktop app for mana
 
 .  Ensure you have Java version `9` or later installed in your Computer.
 .  Download the latest `HomeworkManager.jar` link:{repoURL}/releases[here].
-.  Copy the file to the folder you want to use as the home folder for your Address Book.
+.  Copy the file to the folder you want to use as the home folder for your homework manager.
 .  Double-click the file to start the app. The GUI should appear in a few seconds.
 +
 image::UI-Homework.png[width="790"]
