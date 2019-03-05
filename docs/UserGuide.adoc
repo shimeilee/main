@@ -1,4 +1,4 @@
-= HomeworkManager-Level1 - User Guide
+= UltiStudent - User Guide
 :site-section: UserGuide
 :toc:
 :toc-title:
@@ -18,7 +18,7 @@ By: `Team W09-1`      Since: `Feb 2019`      Licence: `MIT`
 
 == Introduction
 
-HomeworkManager-Level1 is for students who *prefer to use a desktop app for managing their school activities*. More importantly, it is *optimized for students who prefer to work with a Command Line Interface* (CLI) while still having the benefits of a Graphical User Interface (GUI). If you can type fast, it can not only help you to manage your homework but also serve as a timetable, CAP calculator and Notes keeping! Interested? Jump to the <<Quick Start>> to get started. Enjoy!
+UltiStudent is for students who *prefer to use a desktop app for managing their school activities*. More importantly, it is *optimized for students who prefer to work with a Command Line Interface* (CLI) while still having the benefits of a Graphical User Interface (GUI). If you can type fast, it can not only help you to manage your homework but also serve as a timetable, CAP calculator and Notes keeping! Interested? Jump to the <<Quick Start>> to get started. Enjoy!
 
 == Quick Start
 
