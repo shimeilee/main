@@ -6,6 +6,7 @@ import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
  * Represents a Note in UltiStudent - Notes Keeping.
  */
 public class Note {
+    
     // Notes fields
     private String modulename;
     private String notename;
@@ -42,4 +43,5 @@ public class Note {
     @Override
     public int hashCode() { return notename.hashCode(); }
 }
+
 
