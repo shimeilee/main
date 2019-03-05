@@ -41,7 +41,7 @@ public interface Logic {
     ObservableList<String> getHistory();
 
     /**
-     * Returns the user prefs' address book file path.
+     * Returns the user prefs' UltiStudent file path.
      */
     Path getAddressBookFilePath();
 

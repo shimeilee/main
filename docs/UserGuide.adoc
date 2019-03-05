@@ -1,4 +1,4 @@
-= HomeworkManager-Level1 - User Guide
+= UltiStudent - User Guide
 :site-section: UserGuide
 :toc:
 :toc-title:
@@ -18,13 +18,13 @@ By: `Team W09-1`      Since: `Feb 2019`      Licence: `MIT`
 
 == Introduction
 
-HomeworkManager-Level1 is for students who *prefer to use a desktop app for managing their school activities*. More importantly, it is *optimized for students who prefer to work with a Command Line Interface* (CLI) while still having the benefits of a Graphical User Interface (GUI). If you can type fast, it can not only help you to manage your homework but also serve as a timetable, CAP calculator and Notes keeping! Interested? Jump to the <<Quick Start>> to get started. Enjoy!
+UltiStudent is for students who *prefer to use a desktop app for managing their school activities*. More importantly, it is *optimized for students who prefer to work with a Command Line Interface* (CLI) while still having the benefits of a Graphical User Interface (GUI). If you can type fast, it can not only help you to manage your homework but also serve as a timetable, CAP calculator and Notes keeping! Interested? Jump to the <<Quick Start>> to get started. Enjoy!
 
 == Quick Start
 
 .  Ensure you have Java version `9` or later installed in your Computer.
 .  Download the latest `HomeworkManager.jar` link:{repoURL}/releases[here].
-.  Copy the file to the folder you want to use as the home folder for your Address Book.
+.  Copy the file to the folder you want to use as the home folder for your UltiStudent.
 .  Double-click the file to start the app. The GUI should appear in a few seconds.
 +
 image::UI-Homework.png[width="790"]
@@ -59,7 +59,7 @@ Format: `help`
 
 === Adding a homework: `add`
 
-Adds a new homework task to the homework manager +
+Adds a new homework task to the UltiStudent +
 Format: `add  mc/MODULECODE mn/MODULENAME hw/HOMEWORK d/DEADLINE [p/PRIORITY]`
 
 [TIP]
@@ -72,12 +72,12 @@ Examples:
 
 === Listing all homework: `list`
 
-Shows a list of all homework in the homework manager. +
+Shows a list of all homework in the UltiStudent. +
 Format: `list`
 
 === Editing a homework: `edit`
 
-Edits an existing homework entry in the homework manager +
+Edits an existing homework entry in the UltiStudent +
 Format: `edit INDEX  [mc/MODULECODE] [mn/MODULENAME] [hw/HOMEWORK] [d/DEADLINE] [p/PRIORITY]`
 ****
 * Edits the homework at the specified `INDEX`. The index refers to the index number shown in the displayed homework list. The index *must be a positive integer* 1, 2, 3, ...
@@ -116,7 +116,7 @@ Returns any homework having names `Tutorial`, `Lecture`, or `Submission`
 
 === Deleting a homework: `delete`
 
-Deletes the specified homework from the homework manager. +
+Deletes the specified homework from the UltiStudent. +
 Format: `delete INDEX`
 
 ****
@@ -131,7 +131,7 @@ Examples:
 
 * `list` +
 `delete 2` +
-Deletes the 2nd homework in the homework manager.
+Deletes the 2nd homework in the UltiStudent.
 * `find Tutorial` +
 `delete 1` +
 Deletes the 1st homework in the results of the `find` command.
@@ -151,7 +151,7 @@ Examples:
 
 * `list` +
 `select 2` +
-Selects the 2nd homework in the homework manager.
+Selects the 2nd homework in the UltiStudent.
 * `find Tutorial` +
 `select 1` +
 Selects the 1st homework in the results of the `find` command.
@@ -164,12 +164,12 @@ Retrieves the last 3 commands which has been entered into the system before `his
 // tag::undoredo[]
 === Undoing previous command : `undo`
 
-Restores the homework manager to the state before the previous _undoable_ command was executed. +
+Restores the UltiStudent to the state before the previous _undoable_ command was executed. +
 Format: `undo`
 
 [NOTE]
 ====
-Undoable commands: those commands that modify the homework manager's content (`add`, `delete`, `edit`).
+Undoable commands: those commands that modify the UltiStudent's content (`add`, `delete`, `edit`).
 ====
 
 Examples:
@@ -211,13 +211,13 @@ Format: `exit`
 
 === Saving the data
 
-Homework manager data are saved in the hard disk automatically after any command that changes the data. +
+UltiStudent data are saved in the hard disk automatically after any command that changes the data. +
 There is no need to save manually.
 
 == FAQ
 
 *Q*: How do I transfer my data to another Computer? +
-*A*: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous Homework Manager folder.
+*A*: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous UltiStudent folder.
 
 == Command Summary
 
