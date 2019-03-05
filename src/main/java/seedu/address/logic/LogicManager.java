@@ -37,7 +37,7 @@ public class LogicManager implements Logic {
         history = new CommandHistory();
         addressBookParser = new AddressBookParser();
 
-        // Set addressBookModified to true whenever the models' homework manager is modified.
+        // Set addressBookModified to true whenever the models' UltiStudent is modified.
         model.getAddressBook().addListener(observable -> addressBookModified = true);
     }
 
@@ -55,7 +55,7 @@ public class LogicManager implements Logic {
         }
 
         if (addressBookModified) {
-            logger.info("homework manager modified, saving to file.");
+            logger.info("UltiStudent modified, saving to file.");
             try {
                 storage.saveAddressBook(model.getAddressBook());
             } catch (IOException ioe) {

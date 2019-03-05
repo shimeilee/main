@@ -69,9 +69,9 @@ public class MainApp extends Application {
     }
 
     /**
-     * Returns a {@code ModelManager} with the data from {@code storage}'s homework manager and {@code userPrefs}. <br>
-     * The data from the sample homework manager will be used instead if {@code storage}'s homework manager is not found,
-     * or an empty homework manager will be used instead if errors occur when reading {@code storage}'s homework manager.
+     * Returns a {@code ModelManager} with the data from {@code storage}'s UltiStudent and {@code userPrefs}. <br>
+     * The data from the sample UltiStudent will be used instead if {@code storage}'s UltiStudent is not found,
+     * or an empty UltiStudent will be used instead if errors occur when reading {@code storage}'s UltiStudent.
      */
     private Model initModelManager(Storage storage, ReadOnlyUserPrefs userPrefs) {
         Optional<ReadOnlyAddressBook> addressBookOptional;
@@ -173,7 +173,7 @@ public class MainApp extends Application {
 
     @Override
     public void stop() {
-        logger.info("============================ [ Stopping homework manager ] =============================");
+        logger.info("============================ [ Stopping UltiStudent ] =============================");
         try {
             storage.saveUserPrefs(model.getUserPrefs());
         } catch (IOException e) {

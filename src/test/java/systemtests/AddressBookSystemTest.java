@@ -134,7 +134,7 @@ public abstract class AddressBookSystemTest {
     }
 
     /**
-     * Displays all persons in the homework manager.
+     * Displays all persons in the UltiStudent.
      */
     protected void showAllPersons() {
         executeCommand(ListCommand.COMMAND_WORD);
@@ -158,7 +158,7 @@ public abstract class AddressBookSystemTest {
     }
 
     /**
-     * Deletes all persons in the homework manager.
+     * Deletes all persons in the UltiStudent.
      */
     protected void deleteAllPersons() {
         executeCommand(ClearCommand.COMMAND_WORD);

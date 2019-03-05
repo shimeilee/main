@@ -69,7 +69,7 @@ public class TestApp extends MainApp {
     }
 
     /**
-     * Returns a defensive copy of the homework manager data stored inside the storage file.
+     * Returns a defensive copy of the UltiStudent data stored inside the storage file.
      */
     public AddressBook readStorageAddressBook() {
         try {

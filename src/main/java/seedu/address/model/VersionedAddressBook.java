@@ -35,7 +35,7 @@ public class VersionedAddressBook extends AddressBook {
     }
 
     /**
-     * Restores the homework manager to its previous state.
+     * Restores the UltiStudent to its previous state.
      */
     public void undo() {
         if (!canUndo()) {
@@ -46,7 +46,7 @@ public class VersionedAddressBook extends AddressBook {
     }
 
     /**
-     * Restores the homework manager to its previously undone state.
+     * Restores the UltiStudent to its previously undone state.
      */
     public void redo() {
         if (!canRedo()) {
@@ -57,14 +57,14 @@ public class VersionedAddressBook extends AddressBook {
     }
 
     /**
-     * Returns true if {@code undo()} has homework manager states to undo.
+     * Returns true if {@code undo()} has UltiStudent states to undo.
      */
     public boolean canUndo() {
         return currentStatePointer > 0;
     }
 
     /**
-     * Returns true if {@code redo()} has homework manager states to redo.
+     * Returns true if {@code redo()} has UltiStudent states to redo.
      */
     public boolean canRedo() {
         return currentStatePointer < addressBookStateList.size() - 1;

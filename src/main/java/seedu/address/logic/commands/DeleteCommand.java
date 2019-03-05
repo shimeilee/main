@@ -12,7 +12,7 @@ import seedu.address.model.Model;
 import seedu.address.model.person.Person;
 
 /**
- * Deletes a person identified using it's displayed index from the homework manager.
+ * Deletes a person identified using it's displayed index from the UltiStudent.
  */
 public class DeleteCommand extends Command {
 

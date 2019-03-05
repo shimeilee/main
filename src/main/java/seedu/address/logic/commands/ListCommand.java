@@ -7,7 +7,7 @@ import seedu.address.logic.CommandHistory;
 import seedu.address.model.Model;
 
 /**
- * Lists all persons in the homework manager to the user.
+ * Lists all persons in the UltiStudent to the user.
  */
 public class ListCommand extends Command {
 

@@ -7,12 +7,12 @@ import seedu.address.model.AddressBook;
 import seedu.address.model.Model;
 
 /**
- * Clears the homework manager.
+ * Clears the UltiStudent.
  */
 public class ClearCommand extends Command {
 
     public static final String COMMAND_WORD = "clear";
-    public static final String MESSAGE_SUCCESS = "homework manager has been cleared!";
+    public static final String MESSAGE_SUCCESS = "UltiStudent has been cleared!";
 
 
     @Override
