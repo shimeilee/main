@@ -1,4 +1,4 @@
-= Homework Manager (Level 1)
+= UltiStudent (Level 1)
 ifdef::env-github,env-browser[:relfileprefix: docs/]
 
 https://travis-ci.org/cs2103-ay1819s2-w09-1/main[image:https://travis-ci.org/cs2103-ay1819s2-w09-1/main.svg?branch=master[Build Status]]
@@ -12,9 +12,9 @@ ifndef::env-github[]
 image::images/UI-Homework.png[width="600"]
 endif::[]
 
-* This is a desktop Homework Manager application. It has a GUI but **all** of the user interactions happen using a CLI (Command Line Interface).
+* This is a desktop UltiStudent application. It has a GUI but **all** of the user interactions happen using a CLI (Command Line Interface).
 * It is an application intended for students who prefer CLI over GUI to manage their school activities.
-* What students can achieve using this Homework Manager would be:
+* What students can achieve using this UltiStudent would be:
 ** Managing Homework
 ** Managing Timetable
 ** CAP calculation
