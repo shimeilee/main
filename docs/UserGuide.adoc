@@ -33,11 +33,10 @@ image::UI-Homework.png[width="790"]
 e.g. typing *`help`* and pressing kbd:[Enter] will open the help window.
 .  Some example commands you can try:
 
-* *`list`* : lists all  homeworks
-* *`add`* : mc/CS2103T mn/Software Engineering hw/Tutorial 01 d/050319
+* *`list`* : lists all  homework
+* **`add**` : mc/CS2103T mn/Software Engineering hw/Tutorial 01 d/050319
 Adds a homework “Tutorial 01” under CS2103T tab with the deadline on 05 March 2019
-* *`delete 3`* : deletes the 3rd  homework shown in the current list
-
+* **`delete`** `3` : deletes the 3rd  homework shown in the current list
 * *`exit`* : exits the app
 
 .  Refer to <<Features>> for details of each command.
@@ -237,3 +236,4 @@ e.g.`select 3`
 * *History* : `history`
 * *Undo* : `undo`
 * *Redo* : `redo`
+
