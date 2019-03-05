@@ -48,7 +48,7 @@ public class AddHomeworkCommand extends Command {
      * Creates an AddHomeworkCommand to add the specified {@code Homework}
      */
     public AddHomeworkCommand(Homework homework) {
-        requireNonNull(Homework homework);
+        requireNonNull(homework);
         toAdd = homework;
     }
 
