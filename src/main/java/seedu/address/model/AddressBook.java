@@ -9,7 +9,6 @@ import javafx.collections.ObservableList;
 import seedu.address.commons.util.InvalidationListenerManager;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.UniquePersonList;
-import seedu.address.model.tag.Tag;
 
 /**
  * Wraps all data at the address-book level
@@ -100,27 +99,6 @@ public class AddressBook implements ReadOnlyAddressBook {
         persons.remove(key);
         indicateModified();
     }
-    
-    /**
-     * Returns true if any {@code Person} from this {@code AddressBook} is still
-     * using {@code Tag}.
-     */
-    public boolean isTagUsed(Tag tag) {
-        return true;
-    }
-    
-    /**
-     * Removes {@code Tag} from each person from this {@code AddressBook}.
-     * {@code Tag} must exist in the address book.
-     */
-    
-    public void removeTag(Tag tag) {
-        if (isTagUsed(tag)) {
-            //
-            indicateModified();
-        }
-    }
-    
 
     @Override
     public void addListener(InvalidationListener listener) {
