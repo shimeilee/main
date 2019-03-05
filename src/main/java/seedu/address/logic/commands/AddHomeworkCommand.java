@@ -8,14 +8,11 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_HOMEWORK;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_DEADLINE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_PRIORITY;
 
-import java.util.Objects;
 
 import seedu.address.model.person.Homework;
 import seedu.address.logic.CommandHistory;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
-import seedu.address.logic.CommandHistory;
-import seedu.address.logic.commands.exceptions.CommandException;
 
 /**
  * AddHomeworkCommand is created with reference to AddCommand
@@ -55,20 +52,22 @@ public class AddHomeworkCommand extends Command {
     @Override
     public CommandResult execute(Model model, CommandHistory history) throws CommandException {
         requireNonNull(model);
-
+        /*
         if (model.hasHomework(toAdd)) {     //TODO: add hasHomework method into Model interface
             throw new CommandException(MESSAGE_DUPLICATE_HOMEWORK);
         }
 
         model.addHomework(toAdd);   //TODO: add addHomework method into Model interface
         model.commitHomework();     //TODO: add commitHomework method into Model interface
-        return new CommandResult(String.format(MESSAGE_SUCCESS, toAdd));
+        return new CommandResult(String.format(MESSAGE_SUCCESS, toAdd));*/
+
+        return null;
     }
 
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
-                || (other instanceof AddCommand // instanceof handles nulls
-                && toAdd.equals(((AddCommand) other).toAdd));
+                || (other instanceof AddHomeworkCommand // instanceof handles nulls
+                && toAdd.equals(((AddHomeworkCommand) other).toAdd));
     }
 }
