@@ -2,21 +2,20 @@ package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
 
+import static seedu.address.logic.parser.CliSyntax.PREFIX_DEADLINE;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_HOMEWORK;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_MODULECODE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_MODULENAME;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_HOMEWORK;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_DEADLINE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_PRIORITY;
 
-
-import seedu.address.model.person.Homework;
 import seedu.address.logic.CommandHistory;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
+import seedu.address.model.person.Homework;
+
 
 /**
- * AddHomeworkCommand is created with reference to AddCommand
- *
+ * AddHomeworkCommand is created with reference to AddCommand.
  */
 public class AddHomeworkCommand extends Command {
 
