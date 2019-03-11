@@ -20,10 +20,10 @@ public class CapEntry {
     /**
      * Every field must be present and not null.
      */
-    public CapEntry(String moduleCode, String Grade, int modularCredits) {
-        requireAllNonNull(moduleCode, Grade, modularCredits);
+    public CapEntry(String moduleCode, String grade, int modularCredits) {
+        requireAllNonNull(moduleCode, grade, modularCredits);
         this.moduleCode = moduleCode;
-        this.grade = Grade;
+        this.grade = grade;
         this.modularCredits = modularCredits;
     }
 
