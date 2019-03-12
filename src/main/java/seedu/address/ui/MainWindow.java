@@ -32,7 +32,7 @@ public class MainWindow extends UiPart<Stage> {
 
     // Independent Ui parts residing in this Ui container
     private BrowserPanel browserPanel;
-    private PersonListPanel personListPanel;
+    private SubInfoPanel subInfoPanel;
     private ResultDisplay resultDisplay;
     private HelpWindow helpWindow;
 
@@ -114,9 +114,9 @@ public class MainWindow extends UiPart<Stage> {
         browserPanel = new BrowserPanel(logic.selectedPersonProperty());
         browserPlaceholder.getChildren().add(browserPanel.getRoot());
 
-        personListPanel = new PersonListPanel(logic.getFilteredPersonList(), logic.selectedPersonProperty(),
+        subInfoPanel = new SubInfoPanel(logic.getFilteredPersonList(), logic.selectedPersonProperty(),
                 logic::setSelectedPerson);
-        personListPanelPlaceholder.getChildren().add(personListPanel.getRoot());
+        personListPanelPlaceholder.getChildren().add(subInfoPanel.getRoot());
 
         resultDisplay = new ResultDisplay();
         resultDisplayPlaceholder.getChildren().add(resultDisplay.getRoot());
@@ -168,8 +168,8 @@ public class MainWindow extends UiPart<Stage> {
         primaryStage.hide();
     }
 
-    public PersonListPanel getPersonListPanel() {
-        return personListPanel;
+    public SubInfoPanel getPersonListPanel() {
+        return subInfoPanel;
     }
 
     /**
@@ -197,5 +197,20 @@ public class MainWindow extends UiPart<Stage> {
             resultDisplay.setFeedbackToUser(e.getMessage());
             throw e;
         }
+    }
+
+    @FXML
+    public void handleSwitchToHomeworkManager() {
+        //TODO: handles the setting up of HomeworkManager view
+    }
+
+    @FXML
+    public void handleSwitchToCapCalculator() {
+        //TODO: handles the setting up of CapCalculator view
+    }
+
+    @FXML
+    public void handleSwitchToNotesManager() {
+        //TODO: handles the setting up of NotesManager view
     }
 }

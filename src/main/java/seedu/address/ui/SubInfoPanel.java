@@ -16,15 +16,15 @@ import seedu.address.model.person.Person;
 /**
  * Panel containing the list of persons.
  */
-public class PersonListPanel extends UiPart<Region> {
-    private static final String FXML = "PersonListPanel.fxml";
-    private final Logger logger = LogsCenter.getLogger(PersonListPanel.class);
+public class SubInfoPanel extends UiPart<Region> {
+    private static final String FXML = "SubInfoPanel.fxml";
+    private final Logger logger = LogsCenter.getLogger(SubInfoPanel.class);
 
     @FXML
     private ListView<Person> personListView;
 
-    public PersonListPanel(ObservableList<Person> personList, ObservableValue<Person> selectedPerson,
-            Consumer<Person> onSelectedPersonChange) {
+    public SubInfoPanel(ObservableList<Person> personList, ObservableValue<Person> selectedPerson,
+                        Consumer<Person> onSelectedPersonChange) {
         super(FXML);
         personListView.setItems(personList);
         personListView.setCellFactory(listView -> new PersonListViewCell());

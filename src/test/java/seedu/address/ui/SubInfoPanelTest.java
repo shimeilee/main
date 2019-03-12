@@ -23,7 +23,7 @@ import seedu.address.model.person.Name;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.Phone;
 
-public class PersonListPanelTest extends GuiUnitTest {
+public class SubInfoPanelTest extends GuiUnitTest {
     private static final ObservableList<Person> TYPICAL_PERSONS =
             FXCollections.observableList(getTypicalPersons());
 
@@ -59,7 +59,7 @@ public class PersonListPanelTest extends GuiUnitTest {
     }
 
     /**
-     * Verifies that creating and deleting large number of persons in {@code PersonListPanel} requires lesser than
+     * Verifies that creating and deleting large number of persons in {@code SubInfoPanel} requires lesser than
      * {@code CARD_CREATION_AND_DELETION_TIMEOUT} milliseconds to execute.
      */
     @Test
@@ -74,7 +74,7 @@ public class PersonListPanelTest extends GuiUnitTest {
 
     /**
      * Returns a list of persons containing {@code personCount} persons that is used to populate the
-     * {@code PersonListPanel}.
+     * {@code SubInfoPanel}.
      */
     private ObservableList<Person> createBackingList(int personCount) {
         ObservableList<Person> backingList = FXCollections.observableArrayList();
@@ -90,15 +90,15 @@ public class PersonListPanelTest extends GuiUnitTest {
     }
 
     /**
-     * Initializes {@code personListPanelHandle} with a {@code PersonListPanel} backed by {@code backingList}.
-     * Also shows the {@code Stage} that displays only {@code PersonListPanel}.
+     * Initializes {@code personListPanelHandle} with a {@code SubInfoPanel} backed by {@code backingList}.
+     * Also shows the {@code Stage} that displays only {@code SubInfoPanel}.
      */
     private void initUi(ObservableList<Person> backingList) {
-        PersonListPanel personListPanel =
-                new PersonListPanel(backingList, selectedPerson, selectedPerson::set);
-        uiPartRule.setUiPart(personListPanel);
+        SubInfoPanel subInfoPanel =
+                new SubInfoPanel(backingList, selectedPerson, selectedPerson::set);
+        uiPartRule.setUiPart(subInfoPanel);
 
-        personListPanelHandle = new PersonListPanelHandle(getChildNode(personListPanel.getRoot(),
+        personListPanelHandle = new PersonListPanelHandle(getChildNode(subInfoPanel.getRoot(),
                 PersonListPanelHandle.PERSON_LIST_VIEW_ID));
     }
 }
