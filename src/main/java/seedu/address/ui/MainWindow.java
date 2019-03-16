@@ -35,6 +35,7 @@ public class MainWindow extends UiPart<Stage> {
     private SubInfoPanel subInfoPanel;
     private ResultDisplay resultDisplay;
     private HelpWindow helpWindow;
+    private IconListPanel iconListPanel;
 
     @FXML
     private StackPane browserPlaceholder;
@@ -53,6 +54,9 @@ public class MainWindow extends UiPart<Stage> {
 
     @FXML
     private StackPane statusbarPlaceholder;
+
+    @FXML
+    private StackPane iconListPanelPlaceholder;
 
     public MainWindow(Stage primaryStage, Logic logic) {
         super(FXML, primaryStage);
@@ -117,6 +121,10 @@ public class MainWindow extends UiPart<Stage> {
         subInfoPanel = new SubInfoPanel(logic.getFilteredPersonList(), logic.selectedPersonProperty(),
                 logic::setSelectedPerson);
         personListPanelPlaceholder.getChildren().add(subInfoPanel.getRoot());
+
+        iconListPanel = new IconListPanel();
+        iconListPanelPlaceholder.getChildren().add(iconListPanel.getRoot());
+        handleSwitchToHomeworkManager();
 
         resultDisplay = new ResultDisplay();
         resultDisplayPlaceholder.getChildren().add(resultDisplay.getRoot());
@@ -202,15 +210,24 @@ public class MainWindow extends UiPart<Stage> {
     @FXML
     public void handleSwitchToHomeworkManager() {
         //TODO: handles the setting up of HomeworkManager view
+        iconListPanel.setHomeworkManagerIconBrightness(0.75);
+        iconListPanel.setNotesManagerIconBrightness(0.5);
+        iconListPanel.setCapManagerIconBrightness(0.5);
     }
 
     @FXML
     public void handleSwitchToCapCalculator() {
         //TODO: handles the setting up of CapCalculator view
+        iconListPanel.setHomeworkManagerIconBrightness(0.5);
+        iconListPanel.setNotesManagerIconBrightness(0.5);
+        iconListPanel.setCapManagerIconBrightness(0.75);
     }
 
     @FXML
     public void handleSwitchToNotesManager() {
         //TODO: handles the setting up of NotesManager view
+        iconListPanel.setHomeworkManagerIconBrightness(0.5);
+        iconListPanel.setNotesManagerIconBrightness(0.75);
+        iconListPanel.setCapManagerIconBrightness(0.5);
     }
 }
