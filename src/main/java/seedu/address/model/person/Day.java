@@ -1,7 +1,7 @@
 package seedu.address.model.person;
 
 import static java.util.Objects.requireNonNull;
-//import static seedu.address.commons.util.AppUtil.checkArgument;
+import static seedu.address.commons.util.AppUtil.checkArgument;
 
 /**
  * Represents a Date's day which is used to denote deadlines for a Homework.
@@ -9,8 +9,8 @@ import static java.util.Objects.requireNonNull;
 public class Day {
 
     public static final String MESSAGE_CONSTRAINTS =
-            "Day should only contain a number from 1-31";
-    //public static final String VALIDATION_REGEX = "\\d{3,}";
+            "Day should only contain a number from 1-31. Single digit numbers must start with a 0.";
+    public static final String VALIDATION_REGEX = "[0-2][0-9]|(3)[0-1]";
     public final String value;
 
     /**
@@ -20,15 +20,15 @@ public class Day {
      */
     public Day(String day) {
         requireNonNull(day);
-        //checkArgument(isValidDay(phone), MESSAGE_CONSTRAINTS);
+        checkArgument(isValidDay(day), MESSAGE_CONSTRAINTS);
         value = day;
     }
 
     /**
-     * Returns true if a given string is a valid phone number.
+     * Returns true if a given string is a valid day.
      */
     public static boolean isValidDay(String test) {
-        return true;
+        return test.matches(VALIDATION_REGEX);
     }
 
     @Override
