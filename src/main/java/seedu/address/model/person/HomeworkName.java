@@ -1,28 +1,29 @@
 package seedu.address.model.person;
 
 import static java.util.Objects.requireNonNull;
-//import static seedu.address.commons.util.AppUtil.checkArgument;
+import static seedu.address.commons.util.AppUtil.checkArgument;
 
 /**
  * Represents a Homework's homework name in UltiStudent
  */
 public class HomeworkName {
 
-    public static final String MESSAGE_CONSTRAINTS = "Homework names can contain letters and numbers.";
-    //public static final String VALIDATION_REGEX = "\\d{3,}";
+    public static final String MESSAGE_CONSTRAINTS = "Homework names can only contain letters, whitespaces and numbers.";
+    public static final String VALIDATION_REGEX = "[a-zA-Z\\s\\d]{1,}";
     public final String value;
 
     public HomeworkName(String homeworkName) {
         requireNonNull(homeworkName);
+        checkArgument(isValidHomeworkName(homeworkName), MESSAGE_CONSTRAINTS);
         value = homeworkName;
     }
 
     //TODO: Regex check for Homework Name
     /**
-     * Returns true if it is a valid ModuleCode
+     * Returns true if it is a valid HomeworkName
      */
     public static boolean isValidHomeworkName(String test) {
-        return true;
+        return test.matches(VALIDATION_REGEX);
     }
 
     @Override
