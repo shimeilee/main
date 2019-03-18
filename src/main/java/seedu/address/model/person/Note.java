@@ -41,5 +41,7 @@ public class Note {
     }
 
     @Override
-    public int hashCode() { return notename.hashCode(); }
+    public int hashCode() {
+        return notename.hashCode();
+    }
 }

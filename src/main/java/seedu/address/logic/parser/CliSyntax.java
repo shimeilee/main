@@ -18,4 +18,7 @@ public class CliSyntax {
     public static final Prefix PREFIX_DEADLINE = new Prefix("d/");
     public static final Prefix PREFIX_PRIORITY = new Prefix("p/");
 
+    public static final String HOMEWORK_MANAGER = "HomeworkManager";
+    public static final String NOTES_MANAGER = "NotesManager";
+    public static final String CAP_MANAGER = "CapManager";
 }
