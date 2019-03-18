@@ -12,6 +12,9 @@ import javafx.scene.layout.Region;
 
 import seedu.address.commons.core.LogsCenter;
 
+/**
+ * Icon List view
+ */
 public class IconListPanel extends UiPart<Region> {
     private static final String FXML = "IconList.fxml";
     private final Logger logger = LogsCenter.getLogger(SubInfoPanel.class);
