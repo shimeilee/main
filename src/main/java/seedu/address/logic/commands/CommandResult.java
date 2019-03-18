@@ -1,6 +1,9 @@
 package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
+import static seedu.address.logic.parser.CliSyntax.CAP_MANAGER;
+import static seedu.address.logic.parser.CliSyntax.HOMEWORK_MANAGER;
+import static seedu.address.logic.parser.CliSyntax.NOTES_MANAGER;
 
 import java.util.Objects;
 
@@ -44,6 +47,18 @@ public class CommandResult {
 
     public boolean isExit() {
         return exit;
+    }
+
+    /**
+     * Checks if the input is a command to change manager.
+     *
+     * @return true if it is an open acceptable manager command
+     */
+    public boolean isChangeManager() {
+        String [] feedbackParts = feedbackToUser.split(" ");
+        return feedbackParts[0].equals(HOMEWORK_MANAGER)
+                || feedbackParts[0].equals(NOTES_MANAGER)
+                || feedbackParts[0].equals(CAP_MANAGER);
     }
 
     @Override

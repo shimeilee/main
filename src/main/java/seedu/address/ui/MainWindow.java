@@ -191,6 +191,24 @@ public class MainWindow extends UiPart<Stage> {
             logger.info("Result: " + commandResult.getFeedbackToUser());
             resultDisplay.setFeedbackToUser(commandResult.getFeedbackToUser());
 
+            if (commandResult.isChangeManager()) {
+                String [] selectedManager = commandResult.getFeedbackToUser().split(" ");
+                logger.info(selectedManager[0]);
+                switch (selectedManager[0]) {
+                case "HomeworkManager":
+                    handleSwitchToHomeworkManager();
+                    break;
+                case "NotesManager":
+                    handleSwitchToNotesManager();
+                    break;
+                case "CapsManager":
+                    handleSwitchToCapsManager();
+                    break;
+                default:
+                    break;
+                }
+            }
+
             if (commandResult.isShowHelp()) {
                 handleHelp();
             }
@@ -207,27 +225,37 @@ public class MainWindow extends UiPart<Stage> {
         }
     }
 
+    /**
+     * Handles the view for Homework Manager.
+     */
     @FXML
     public void handleSwitchToHomeworkManager() {
         //TODO: handles the setting up of HomeworkManager view
-        iconListPanel.setHomeworkManagerIconBrightness(0.75);
-        iconListPanel.setNotesManagerIconBrightness(0.5);
-        iconListPanel.setCapManagerIconBrightness(0.5);
+        iconListPanel.setHomeworkManagerIconBrightness(0.8);
+        iconListPanel.setNotesManagerIconBrightness(0.4);
+        iconListPanel.setCapManagerIconBrightness(0.4);
     }
 
-    @FXML
-    public void handleSwitchToCapCalculator() {
-        //TODO: handles the setting up of CapCalculator view
-        iconListPanel.setHomeworkManagerIconBrightness(0.5);
-        iconListPanel.setNotesManagerIconBrightness(0.5);
-        iconListPanel.setCapManagerIconBrightness(0.75);
-    }
-
+    /**
+     * Handles the view for Notes Manager.
+     */
     @FXML
     public void handleSwitchToNotesManager() {
         //TODO: handles the setting up of NotesManager view
-        iconListPanel.setHomeworkManagerIconBrightness(0.5);
-        iconListPanel.setNotesManagerIconBrightness(0.75);
-        iconListPanel.setCapManagerIconBrightness(0.5);
+        iconListPanel.setHomeworkManagerIconBrightness(0.4);
+        iconListPanel.setNotesManagerIconBrightness(0.8);
+        iconListPanel.setCapManagerIconBrightness(0.4);
     }
+
+    /**
+     * Handles the view for Caps Manager.
+     */
+    @FXML
+    public void handleSwitchToCapsManager() {
+        //TODO: handles the setting up of CapCalculator view
+        iconListPanel.setHomeworkManagerIconBrightness(0.4);
+        iconListPanel.setNotesManagerIconBrightness(0.4);
+        iconListPanel.setCapManagerIconBrightness(0.8);
+    }
+
 }

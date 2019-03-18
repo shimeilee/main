@@ -40,9 +40,6 @@
                <effect>
                   <ColorAdjust fx:id="capManagerIconBrightness"/>
                </effect>
-               <VBox.margin>
-                  <Insets />
-               </VBox.margin>
             </ImageView>
          </children>
       </VBox>
