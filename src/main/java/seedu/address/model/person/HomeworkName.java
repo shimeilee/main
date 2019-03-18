@@ -8,7 +8,8 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
  */
 public class HomeworkName {
 
-    public static final String MESSAGE_CONSTRAINTS = "Homework names can only contain letters, whitespaces and numbers.";
+    public static final String MESSAGE_CONSTRAINTS = "Homework names can only contain letters,"
+            + " whitespaces and numbers.";
     public static final String VALIDATION_REGEX = "[a-zA-Z\\s\\d]{1,}";
     public final String value;
 
