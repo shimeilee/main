@@ -15,6 +15,8 @@ import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
+import seedu.address.model.cap.CapEntry;
+import seedu.address.model.cap.exceptions.CapEntryNotFoundException;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.exceptions.PersonNotFoundException;
 
@@ -28,6 +30,8 @@ public class ModelManager implements Model {
     private final UserPrefs userPrefs;
     private final FilteredList<Person> filteredPersons;
     private final SimpleObjectProperty<Person> selectedPerson = new SimpleObjectProperty<>();
+    private final FilteredList<CapEntry> filteredCapEntryList;
+    private final SimpleObjectProperty<CapEntry> selectedCapEntry = new SimpleObjectProperty<>();
 
     /**
      * Initializes a ModelManager with the given addressBook and userPrefs.
@@ -42,6 +46,8 @@ public class ModelManager implements Model {
         this.userPrefs = new UserPrefs(userPrefs);
         filteredPersons = new FilteredList<>(versionedAddressBook.getPersonList());
         filteredPersons.addListener(this::ensureSelectedPersonIsValid);
+        filteredCapEntryList = new FilteredList<>(versionedAddressBook.getCapEntryList());
+        filteredCapEntryList.addListener(this::ensureSelectedCapEntryIsValid);
     }
 
     public ModelManager() {
@@ -117,6 +123,94 @@ public class ModelManager implements Model {
         requireAllNonNull(target, editedPerson);
 
         versionedAddressBook.setPerson(target, editedPerson);
+    }
+
+    // Cap entry
+
+    @Override
+    public boolean hasCapEntry(CapEntry capEntry) {
+        requireNonNull(capEntry);
+        return versionedAddressBook.hasCapEntry(capEntry);
+    }
+
+    @Override
+    public void deleteCapEntry(CapEntry target) {
+        versionedAddressBook.removeCapEntry(target);
+    }
+
+    @Override
+    public void addCapEntry(CapEntry capEntry) {
+        versionedAddressBook.addCapEntry(capEntry);
+        updateFilteredCapEntryList(PREDICATE_SHOW_ALL_CAPENTRIES);
+    }
+
+    @Override
+    public void setCapEntry(CapEntry target, CapEntry editedCapEntry) {
+        requireAllNonNull(target, editedCapEntry);
+
+        versionedAddressBook.setCapEntry(target, editedCapEntry);
+    }
+
+    /**
+     * Returns an unmodifiable view of the list of {@code Person} backed by the internal list of
+     * {@code versionedAddressBook}
+     */
+    @Override
+    public ObservableList<CapEntry> getFilteredCapEntryList() {
+        return filteredCapEntryList;
+    }
+
+    @Override
+    public void updateFilteredCapEntryList(Predicate<CapEntry> predicate) {
+        requireNonNull(predicate);
+        filteredCapEntryList.setPredicate(predicate);
+    }
+
+    @Override
+    public ReadOnlyProperty<CapEntry> selectedCapEntryProperty() {
+        return selectedCapEntry;
+    }
+
+    @Override
+    public CapEntry getSelectedCapEntry() {
+        return selectedCapEntry.getValue();
+    }
+
+    @Override
+    public void setSelectedCapEntry(CapEntry capEntry) {
+        if (capEntry != null && !filteredCapEntryList.contains(capEntry)) {
+            throw new CapEntryNotFoundException();
+        }
+        selectedCapEntry.setValue(capEntry);
+    }
+
+    /**
+     * Ensures {@code selectedPerson} is a valid person in {@code filteredPersons}.
+     */
+    private void ensureSelectedCapEntryIsValid(ListChangeListener.Change<? extends CapEntry> change) {
+        while (change.next()) {
+            if (selectedCapEntry.getValue() == null) {
+                // null is always a valid selected person, so we do not need to check that it is valid anymore.
+                return;
+            }
+
+            boolean wasSelectedCapEntryReplaced = change.wasReplaced() && change.getAddedSize()
+                    == change.getRemovedSize() && change.getRemoved().contains(selectedCapEntry.getValue());
+            if (wasSelectedCapEntryReplaced) {
+                // Update selectedPerson to its new value.
+                int index = change.getRemoved().indexOf(selectedCapEntry.getValue());
+                selectedCapEntry.setValue(change.getAddedSubList().get(index));
+                continue;
+            }
+
+            boolean wasSelectedPersonRemoved = change.getRemoved().stream()
+                    .anyMatch(removedPerson -> selectedCapEntry.getValue().isSameCapEntry(removedPerson));
+            if (wasSelectedPersonRemoved) {
+                // Select the person that came before it in the list,
+                // or clear the selection if there is no such person.
+                selectedCapEntry.setValue(change.getFrom() > 0 ? change.getList().get(change.getFrom() - 1) : null);
+            }
+        }
     }
 
 

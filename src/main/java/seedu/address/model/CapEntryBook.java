@@ -18,7 +18,7 @@ import seedu.address.model.cap.UniqueCapEntryList;
 public class CapEntryBook implements ReadOnlyCapEntryBook {
 
     private final UniqueCapEntryList capEntryList;
-    private final InvalidationListenerManager invalidationListenerManager = new InvalidationListenerManager();
+    private final InvalidationListenerManager capEntryInvalidationListenerManager = new InvalidationListenerManager();
 
     /*
      * The 'unusual' code block below is an non-static initialization block, sometimes used to avoid duplication
@@ -103,19 +103,19 @@ public class CapEntryBook implements ReadOnlyCapEntryBook {
 
     @Override
     public void addListener(InvalidationListener listener) {
-        invalidationListenerManager.addListener(listener);
+        capEntryInvalidationListenerManager.addListener(listener);
     }
 
     @Override
     public void removeListener(InvalidationListener listener) {
-        invalidationListenerManager.removeListener(listener);
+        capEntryInvalidationListenerManager.removeListener(listener);
     }
 
     /**
      * Notifies listeners that the UltiStudent has been modified.
      */
     protected void indicateModified() {
-        invalidationListenerManager.callListeners(this);
+        capEntryInvalidationListenerManager.callListeners(this);
     }
 
     //// util methods

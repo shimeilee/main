@@ -6,6 +6,7 @@ import java.util.function.Predicate;
 import javafx.beans.property.ReadOnlyProperty;
 import javafx.collections.ObservableList;
 import seedu.address.commons.core.GuiSettings;
+import seedu.address.model.cap.CapEntry;
 import seedu.address.model.person.Person;
 
 /**
@@ -14,6 +15,7 @@ import seedu.address.model.person.Person;
 public interface Model {
     /** {@code Predicate} that always evaluate to true */
     Predicate<Person> PREDICATE_SHOW_ALL_PERSONS = unused -> true;
+    Predicate<CapEntry> PREDICATE_SHOW_ALL_CAPENTRIES = unused -> true;
 
     /**
      * Replaces user prefs data with the data in {@code userPrefs}.
@@ -127,5 +129,57 @@ public interface Model {
      * Sets the selected person in the filtered person list.
      */
     void setSelectedPerson(Person person);
+
+    //=========== Cap Entry ===========================================================================
+    /**
+     * Returns true if a cap entry with the same identity as {@code capEntry} exists in the UltiStudent.
+     */
+    boolean hasCapEntry(CapEntry capEntry);
+
+    /**
+     * Deletes the given cap entry.
+     * The cap entry must exist in the UltiStudent.
+     */
+    void deleteCapEntry(CapEntry target);
+
+    /**
+     * Adds the given cap entry.
+     * {@code codeEntry} must not already exist in the UltiStudent.
+     */
+    void addCapEntry(CapEntry capEntry);
+
+    /**
+     * Replaces the given cap entry {@code target} with {@code editedCapEntry}.
+     * {@code target} must exist in the UltiStudent.
+     * The cap entry identity of {@code editedCapEntry} must not be the same as another existing cap entry
+     * in the UltiStudent.
+     */
+    void setCapEntry(CapEntry target, CapEntry editedCapEntry);
+
+    /** Returns an unmodifiable view of the filtered cap entry list */
+    ObservableList<CapEntry> getFilteredCapEntryList();
+
+    /**
+     * Updates the filter of the filtered cap entry list to filter by the given {@code predicate}.
+     * @throws NullPointerException if {@code predicate} is null.
+     */
+    void updateFilteredCapEntryList(Predicate<CapEntry> predicate);
+
+    /**
+     * Selected cap entry in the filtered cap entry list.
+     * null if no person is selected.
+     */
+    ReadOnlyProperty<CapEntry> selectedCapEntryProperty();
+
+    /**
+     * Returns the selected cap entry in the filtered cap entry list.
+     * null if no cap entry is selected.
+     */
+    CapEntry getSelectedCapEntry();
+
+    /**
+     * Sets the selected cap entry in the filtered cap entry list.
+     */
+    void setSelectedCapEntry(CapEntry capEntry);
 
 }

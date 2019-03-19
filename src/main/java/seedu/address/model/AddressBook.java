@@ -7,6 +7,8 @@ import java.util.List;
 import javafx.beans.InvalidationListener;
 import javafx.collections.ObservableList;
 import seedu.address.commons.util.InvalidationListenerManager;
+import seedu.address.model.cap.CapEntry;
+import seedu.address.model.cap.UniqueCapEntryList;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.UniquePersonList;
 
@@ -16,6 +18,7 @@ import seedu.address.model.person.UniquePersonList;
  */
 public class AddressBook implements ReadOnlyAddressBook {
 
+    private final UniqueCapEntryList capEntryList;
     private final UniquePersonList persons;
     private final InvalidationListenerManager invalidationListenerManager = new InvalidationListenerManager();
 
@@ -28,6 +31,7 @@ public class AddressBook implements ReadOnlyAddressBook {
      */
     {
         persons = new UniquePersonList();
+        capEntryList = new UniqueCapEntryList();
     }
 
     public AddressBook() {}
@@ -52,6 +56,15 @@ public class AddressBook implements ReadOnlyAddressBook {
     }
 
     /**
+     * Replaces the contents of the cap entries list with {@code capEntryList}.
+     * {@code capEntryList} must not contain duplicate persons.
+     */
+    public void setCapEntryList(List<CapEntry> capEntryList) {
+        this.capEntryList.setCapEntryList(capEntryList);
+        indicateModified();
+    }
+
+    /**
      * Resets the existing data of this {@code AddressBook} with {@code newData}.
      */
     public void resetData(ReadOnlyAddressBook newData) {
@@ -70,6 +83,13 @@ public class AddressBook implements ReadOnlyAddressBook {
         return persons.contains(person);
     }
 
+    /**
+     * Returns true if a cap entry with the same identity as {@code person} exists in UltiStudent.
+     */
+    public boolean hasCapEntry(CapEntry capEntry) {
+        requireNonNull(capEntry);
+        return capEntryList.contains(capEntry);
+    }
 
     /**
      * Adds a person to the UltiStudent.
@@ -77,6 +97,15 @@ public class AddressBook implements ReadOnlyAddressBook {
      */
     public void addPerson(Person p) {
         persons.add(p);
+        indicateModified();
+    }
+
+    /**
+     * Adds a cap entry to UltiStudent.
+     * The cap entry must not already exist in UltiStudent.
+     */
+    public void addCapEntry(CapEntry c) {
+        capEntryList.add(c);
         indicateModified();
     }
 
@@ -93,11 +122,33 @@ public class AddressBook implements ReadOnlyAddressBook {
     }
 
     /**
+     * Replaces the given cap entry {@code target} in the list with {@code editedCapEntry}.
+     * {@code target} must exist in the UltiStudent.
+     * The cap entry identity of {@code editedPerson} must not be the same as another existing cap entry in
+     * the UltiStudent.
+     */
+    public void setCapEntry(CapEntry target, CapEntry editedCapEntry) {
+        requireNonNull(editedCapEntry);
+
+        capEntryList.setCapEntry(target, editedCapEntry);
+        indicateModified();
+    }
+
+    /**
      * Removes {@code key} from this {@code AddressBook}.
      * {@code key} must exist in the UltiStudent.
      */
     public void removePerson(Person key) {
         persons.remove(key);
+        indicateModified();
+    }
+
+    /**
+     * Removes {@code key} from this {@code AddressBook}.
+     * {@code key} must exist in the UltiStudent.
+     */
+    public void removeCapEntry(CapEntry key) {
+        capEntryList.remove(key);
         indicateModified();
     }
 
@@ -129,6 +180,11 @@ public class AddressBook implements ReadOnlyAddressBook {
     @Override
     public ObservableList<Person> getPersonList() {
         return persons.asUnmodifiableObservableList();
+    }
+
+    @Override
+    public ObservableList<CapEntry> getCapEntryList() {
+        return capEntryList.asUnmodifiableObservableList();
     }
 
     @Override

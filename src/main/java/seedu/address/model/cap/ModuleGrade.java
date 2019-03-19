@@ -5,6 +5,12 @@ package seedu.address.model.cap;
  * Represents a Homework's homework name in UltiStudent
  */
 public class ModuleGrade {
+
+    public static final String MESSAGE_CONSTRAINTS = "Module Grades should begin with One letter "
+            + "may end with an optional + or - sign at the back";
+
+    public static final String VALIDATION_REGEX = "\\w{1}[+-]{0,1}";
+
     public static final String A_PLUS_GRADE = "A+";
     public static final String A_GRADE = "A";
     public static final String A_MINUS_GRADE = "A-";
@@ -17,12 +23,16 @@ public class ModuleGrade {
     public static final String D_GRADE = "D";
     public static final String F_GRADE = "F";
 
-    private String grade;
+    private String value;
     private double points;
 
-    public ModuleGrade(String grade) {
-        this.grade = grade;
-        switch (grade) {
+    /**
+     * Constructs a {@code ModuleCode}.
+     * @param moduleGrade a valid moduleGrade
+     */
+    public ModuleGrade(String moduleGrade) {
+        this.value = moduleGrade;
+        switch (moduleGrade) {
         case A_PLUS_GRADE: case A_GRADE:
             this.points = 5.0;
             break;
@@ -62,10 +72,29 @@ public class ModuleGrade {
         return this.points;
     }
 
+    public String getGrade() {
+        return this.value;
+    }
+
+    //TODO: Regex check for moduleGrade
+    /**
+     * Returns true if it is a valid ModuleGrade
+     */
+    public static boolean isValidModuleGrade(String test) {
+        return test.matches(VALIDATION_REGEX);
+    }
+
+    @Override
+    public boolean equals(Object other) {
+        return other == this // short circuit if same object
+                || (other instanceof ModuleGrade // instanceof handles nulls
+                && value.equals(((ModuleGrade) other).value)); // state check
+    }
+
     @Override
     public String toString() {
         final StringBuilder builder = new StringBuilder();
-        builder.append(this.grade);
+        builder.append(this.value);
         return builder.toString();
     }
 }

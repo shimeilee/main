@@ -19,9 +19,9 @@ public class CapEntry {
             + "and it should not be blank";
 
     // Identity fields
-    private String moduleCode;
-    private String grade;
-    private int modularCredits;
+    private ModuleCode moduleCode;
+    private ModuleGrade moduleGrade;
+    private ModuleCredits moduleCredits;
 
     // Data fields
     private final Set<Tag> tags = new HashSet<>();
@@ -29,23 +29,24 @@ public class CapEntry {
     /**
      * Every field must be present and not null.
      */
-    public CapEntry(String moduleCode, String grade, int modularCredits) {
-        requireAllNonNull(moduleCode, grade, modularCredits);
+    public CapEntry(ModuleCode moduleCode, ModuleGrade moduleGrade, ModuleCredits modularCredits, Set<Tag> tags) {
+        requireAllNonNull(moduleCode, moduleGrade, modularCredits, tags);
         this.moduleCode = moduleCode;
-        this.grade = grade;
-        this.modularCredits = modularCredits;
+        this.moduleGrade = moduleGrade;
+        this.moduleCredits = moduleCredits;
+        this.tags.addAll(tags);
     }
 
-    public String getModuleCode() {
+    public ModuleCode getModuleCode() {
         return moduleCode;
     }
 
-    public String getModuleGrade() {
-        return grade;
+    public ModuleGrade getModuleGrade() {
+        return moduleGrade;
     }
 
-    public int getModularCredits() {
-        return modularCredits;
+    public ModuleCredits getModuleCredits() {
+        return moduleCredits;
     }
 
     /**
@@ -68,7 +69,7 @@ public class CapEntry {
         return otherCapEntry != null
                 && otherCapEntry.getModuleCode().equals(getModuleCode())
                 && (otherCapEntry.getModuleGrade().equals(getModuleGrade())
-                || otherCapEntry.getModularCredits() == (getModularCredits()));
+                || otherCapEntry.getModuleCredits().equals(getModuleGrade()));
     }
 
     /**
@@ -88,7 +89,7 @@ public class CapEntry {
         CapEntry otherCapEntry = (CapEntry) other;
         return otherCapEntry.getModuleCode().equals(getModuleCode())
                 && otherCapEntry.getModuleGrade().equals(getModuleGrade())
-                && otherCapEntry.getModularCredits() == (getModularCredits())
+                && otherCapEntry.getModuleCredits() == (getModuleCredits())
                 && otherCapEntry.getTags().equals(getTags());
     }
 
@@ -98,15 +99,17 @@ public class CapEntry {
         final StringBuilder builder = new StringBuilder();
         builder.append(moduleCode)
                 .append("; ")
-                .append(grade)
+                .append(moduleGrade)
                 .append("; ")
-                .append(modularCredits);
+                .append(moduleCredits)
+                .append(" Tags: ");
+        getTags().forEach(builder::append);
         return builder.toString();
     }
 
     @Override
     public int hashCode() {
         // use this method for custom fields hashing instead of implementing your own
-        return Objects.hash(moduleCode, grade, modularCredits);
+        return Objects.hash(moduleCode, moduleGrade, moduleCredits, tags);
     }
 }

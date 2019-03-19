@@ -10,7 +10,7 @@ public class ModuleCode {
 
     public static final String MESSAGE_CONSTRAINTS = "Module codes should begin with at least two capital letters "
             + "followed by at least four letters. May end with an optional capital letter at the back";
-    //public static final String VALIDATION_REGEX = "\\d{3,}";
+    public static final String VALIDATION_REGEX = "\\w{2}\\d{4}[a-zA-z]";
     public final String value;
 
     /**
@@ -27,7 +27,7 @@ public class ModuleCode {
      * Returns true if it is a valid ModuleCode
      */
     public static boolean isValidModuleCode(String test) {
-        return true;
+        return test.matches(VALIDATION_REGEX);
     }
 
     @Override
