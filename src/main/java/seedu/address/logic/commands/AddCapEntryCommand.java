@@ -1,16 +1,14 @@
 package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
-import static seedu.address.logic.commands.EditCommand.MESSAGE_DUPLICATE_PERSON;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_MODULARCREDITS;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_MODULECODE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_MODULEGRADE;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_MODULARCREDITS;
 
 import seedu.address.logic.CommandHistory;
 import seedu.address.logic.commands.exceptions.CommandException;
-import seedu.address.model.CapModel;
 import seedu.address.model.Model;
-import seedu.address.model.cap.*;
+import seedu.address.model.cap.CapEntry;
 
 /**
  * Adds a Cap Entry to the Cap Manager.
@@ -48,20 +46,20 @@ public class AddCapEntryCommand extends Command {
     public CommandResult execute(Model capModel, CommandHistory history) throws CommandException {
         requireNonNull(capModel);
 
-//        if (capModel.hasCapEntry(toAdd)) {
-//            throw new CommandException(MESSAGE_DUPLICATE_PERSON);
-//        }
-//
-//        capModel.addCapEntry(toAdd);
-//        model.commitAddressBook();
-//        return new CommandResult(String.format(MESSAGE_SUCCESS, toAdd));
+        //        if (capModel.hasCapEntry(toAdd)) {
+        //            throw new CommandException(MESSAGE_DUPLICATE_PERSON);
+        //        }
+        //
+        //        capModel.addCapEntry(toAdd);
+        //        model.commitAddressBook();
+        //        return new CommandResult(String.format(MESSAGE_SUCCESS, toAdd));
         return null;
     }
 
     @Override
     public boolean equals (Object other) {
         return other == this // short circuit if same object
-        || (other instanceof AddCapEntryCommand // instanceof handles nulls
-        && toAdd.equals(((AddCapEntryCommand) other).toAdd));
+            || (other instanceof AddCapEntryCommand // instanceof handles nulls
+            && toAdd.equals(((AddCapEntryCommand) other).toAdd));
     }
 }

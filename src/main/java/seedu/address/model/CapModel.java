@@ -8,6 +8,9 @@ import javafx.collections.ObservableList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.model.cap.CapEntry;
 
+/**
+ * The API of the CapModel component.
+ */
 public interface CapModel {
     /** {@code Predicate} that always evaluate to true */
     Predicate<CapEntry> PREDICATE_SHOW_ALL_PERSONS = unused -> true;

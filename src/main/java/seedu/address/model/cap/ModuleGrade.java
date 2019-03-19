@@ -23,38 +23,38 @@ public class ModuleGrade {
     public ModuleGrade(String grade) {
         this.grade = grade;
         switch (grade) {
-            case A_PLUS_GRADE: case A_GRADE:
-                this.points = 5.0;
-                break;
-            case A_MINUS_GRADE:
-                this.points = 4.5;
-                break;
-            case B_PLUS_GRADE:
-                this.points = 4.0;
-                break;
-            case B_GRADE:
-                this.points = 3.5;
-                break;
-            case B_MINUS_GRADE:
-                this.points = 3.0;
-                break;
-            case C_PLUS_GRADE:
-                this.points = 2.5;
-                break;
-            case C_GRADE:
-                this.points = 2.0;
-                break;
-            case D_PLUS_GRADE:
-                this.points = 1.5;
-                break;
-            case D_GRADE:
-                this.points = 1.0;
-                break;
-            case F_GRADE:
-                this.points = 0.0;
-                break;
-            default:
-                break;
+        case A_PLUS_GRADE: case A_GRADE:
+            this.points = 5.0;
+            break;
+        case A_MINUS_GRADE:
+            this.points = 4.5;
+            break;
+        case B_PLUS_GRADE:
+            this.points = 4.0;
+            break;
+        case B_GRADE:
+            this.points = 3.5;
+            break;
+        case B_MINUS_GRADE:
+            this.points = 3.0;
+            break;
+        case C_PLUS_GRADE:
+            this.points = 2.5;
+            break;
+        case C_GRADE:
+            this.points = 2.0;
+            break;
+        case D_PLUS_GRADE:
+            this.points = 1.5;
+            break;
+        case D_GRADE:
+            this.points = 1.0;
+            break;
+        case F_GRADE:
+            this.points = 0.0;
+            break;
+        default:
+            break;
         }
     }
 

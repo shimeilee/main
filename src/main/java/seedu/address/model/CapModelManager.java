@@ -16,9 +16,11 @@ import javafx.collections.transformation.FilteredList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.model.cap.CapEntry;
-import seedu.address.model.person.Person;
 import seedu.address.model.person.exceptions.PersonNotFoundException;
 
+/**
+ * Represents the in-memory model of the CapManager data.
+ */
 public class CapModelManager implements CapModel {
     private static final Logger logger = LogsCenter.getLogger(ModelManager.class);
 
@@ -192,8 +194,8 @@ public class CapModelManager implements CapModel {
                 return;
             }
 
-            boolean wasSelectedCapEntryReplaced = change.wasReplaced() && change.getAddedSize() == change.getRemovedSize()
-                    && change.getRemoved().contains(selectedCapEntry.getValue());
+            boolean wasSelectedCapEntryReplaced = change.wasReplaced() && change.getAddedSize()
+                    == change.getRemovedSize() && change.getRemoved().contains(selectedCapEntry.getValue());
             if (wasSelectedCapEntryReplaced) {
                 // Update selectedPerson to its new value.
                 int index = change.getRemoved().indexOf(selectedCapEntry.getValue());

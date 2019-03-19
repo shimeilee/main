@@ -7,7 +7,6 @@ import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
-import seedu.address.model.person.Address;
 import seedu.address.model.tag.Tag;
 
 /** Represents a CAP entry for the CAP calculator in the address book.
@@ -16,6 +15,9 @@ import seedu.address.model.tag.Tag;
 
 public class CapEntry {
 
+    public static final String MESSAGE_CONSTRAINTS = "Entries must beAddresses can take any values, "
+            + "and it should not be blank";
+
     // Identity fields
     private String moduleCode;
     private String grade;
@@ -23,10 +25,6 @@ public class CapEntry {
 
     // Data fields
     private final Set<Tag> tags = new HashSet<>();
-
-    public static final String MESSAGE_CONSTRAINTS = "Entries must beAddresses can take any values, "
-            + "and it should not be blank";
-
 
     /**
      * Every field must be present and not null.
@@ -69,8 +67,8 @@ public class CapEntry {
 
         return otherCapEntry != null
                 && otherCapEntry.getModuleCode().equals(getModuleCode())
-                && (otherCapEntry.getModuleGrade().equals(getModuleGrade()) ||
-                otherCapEntry.getModularCredits() == (getModularCredits()));
+                && (otherCapEntry.getModuleGrade().equals(getModuleGrade())
+                || otherCapEntry.getModularCredits() == (getModularCredits()));
     }
 
     /**

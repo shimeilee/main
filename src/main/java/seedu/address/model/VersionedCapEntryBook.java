@@ -3,7 +3,10 @@ package seedu.address.model;
 import java.util.ArrayList;
 import java.util.List;
 
-public class VersionedCapEntryBook extends CapEntryBook{
+/**
+ * {@code CapEntryBook} that keeps track of its own history.
+ */
+public class VersionedCapEntryBook extends CapEntryBook {
     private final List<ReadOnlyCapEntryBook> capEntryBookStateList;
     private int currentStatePointer;
 
