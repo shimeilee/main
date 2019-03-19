@@ -34,7 +34,7 @@ public class AddNoteCommand extends Command {
     private final Note toAdd;
 
     public AddNoteCommand parse(String fileName) {
-    
+        return new AddNoteCommand();
     }
 
     /**
