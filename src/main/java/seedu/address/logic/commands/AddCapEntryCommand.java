@@ -43,17 +43,16 @@ public class AddCapEntryCommand extends Command {
 
 
     @Override
-    public CommandResult execute(Model capModel, CommandHistory history) throws CommandException {
-        requireNonNull(capModel);
+    public CommandResult execute(Model model, CommandHistory history) throws CommandException {
+        requireNonNull(model);
 
-        //        if (capModel.hasCapEntry(toAdd)) {
-        //            throw new CommandException(MESSAGE_DUPLICATE_PERSON);
-        //        }
-        //
-        //        capModel.addCapEntry(toAdd);
-        //        model.commitAddressBook();
-        //        return new CommandResult(String.format(MESSAGE_SUCCESS, toAdd));
-        return null;
+        if (model.hasCapEntry(toAdd)) {
+            throw new CommandException(MESSAGE_DUPLICATE_CAPENTRY);
+        }
+
+        model.addCapEntry(toAdd);
+        model.commitAddressBook();
+        return new CommandResult(String.format(MESSAGE_SUCCESS, toAdd));
     }
 
     @Override
