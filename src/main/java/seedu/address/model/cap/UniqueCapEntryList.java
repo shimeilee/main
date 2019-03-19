@@ -21,7 +21,7 @@ import seedu.address.model.cap.exceptions.DuplicateCapEntryException;
  *
  * Supports a minimal set of list operations.
  *
- * @see Person#isSamePerson(Person)
+ * @see CapEntry#isSameCapEntry(CapEntry)
  */
 
 public class UniqueCapEntryList implements Iterable<CapEntry> {
