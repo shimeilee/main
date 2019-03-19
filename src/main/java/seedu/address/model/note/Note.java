@@ -7,6 +7,13 @@ import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
  */
 public class Note {
 
+    /*
+     * The first character of the address must not be a whitespace,
+     * otherwise " " (a blank string) becomes a valid input.
+     */
+    // TODO: change to validate according to input string
+    private static final String VALIDATION_REGEX = "[\\p{Alnum}][\\p{Alnum} ]*";
+
     // Notes fields
     private String moduleName;
     private String noteName;
@@ -14,13 +21,6 @@ public class Note {
     // Data fields
     // private File content;
     // AL of AL
-
-    /*
-     * The first character of the address must not be a whitespace,
-     * otherwise " " (a blank string) becomes a valid input.
-     */
-    // TODO: change to validate according to input string
-    private static final String VALIDATION_REGEX = "[\\p{Alnum}][\\p{Alnum} ]*";
 
     /**
      * Every field must be present and not null.
