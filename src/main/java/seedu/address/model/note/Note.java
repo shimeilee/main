@@ -33,10 +33,39 @@ public class Note {
     }
 
     /**
+    public Name getName() {
+        return name;
+    }
+
+    public Phone getPhone() {
+        return phone;
+    }
+
+    public Email getEmail() {
+        return email;
+    }
+
+    public Address getAddress() {
+        return address;
+    }
+     **/
+
+    /**
      * Returns true if a given string is a valid name.
      */
     public static boolean isValidName(String test) {
         return test.matches(VALIDATION_REGEX);
+    }
+
+    /**
+     * Returns true if both persons of the same name have at least one other identity field that is the same.
+     * This defines a weaker notion of equality between two persons.
+     */
+    public boolean isSameNote(Note otherNote) {
+        if (otherNote == this) {
+            return true;
+        }
+        return false;
     }
 
     @Override
