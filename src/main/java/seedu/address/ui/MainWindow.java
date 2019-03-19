@@ -35,6 +35,7 @@ public class MainWindow extends UiPart<Stage> {
     private SubInfoPanel subInfoPanel;
     private ResultDisplay resultDisplay;
     private HelpWindow helpWindow;
+    private IconListPanel iconListPanel;
 
     @FXML
     private StackPane browserPlaceholder;
@@ -53,6 +54,9 @@ public class MainWindow extends UiPart<Stage> {
 
     @FXML
     private StackPane statusbarPlaceholder;
+
+    @FXML
+    private StackPane iconListPanelPlaceholder;
 
     public MainWindow(Stage primaryStage, Logic logic) {
         super(FXML, primaryStage);
@@ -117,6 +121,10 @@ public class MainWindow extends UiPart<Stage> {
         subInfoPanel = new SubInfoPanel(logic.getFilteredPersonList(), logic.selectedPersonProperty(),
                 logic::setSelectedPerson);
         personListPanelPlaceholder.getChildren().add(subInfoPanel.getRoot());
+
+        iconListPanel = new IconListPanel();
+        iconListPanelPlaceholder.getChildren().add(iconListPanel.getRoot());
+        handleSwitchToHomeworkManager();
 
         resultDisplay = new ResultDisplay();
         resultDisplayPlaceholder.getChildren().add(resultDisplay.getRoot());
@@ -183,6 +191,24 @@ public class MainWindow extends UiPart<Stage> {
             logger.info("Result: " + commandResult.getFeedbackToUser());
             resultDisplay.setFeedbackToUser(commandResult.getFeedbackToUser());
 
+            if (commandResult.isChangeManager()) {
+                String [] selectedManager = commandResult.getFeedbackToUser().split(" ");
+                logger.info(selectedManager[0]);
+                switch (selectedManager[0]) {
+                case "HomeworkManager":
+                    handleSwitchToHomeworkManager();
+                    break;
+                case "NotesManager":
+                    handleSwitchToNotesManager();
+                    break;
+                case "CapsManager":
+                    handleSwitchToCapsManager();
+                    break;
+                default:
+                    break;
+                }
+            }
+
             if (commandResult.isShowHelp()) {
                 handleHelp();
             }
@@ -199,18 +225,37 @@ public class MainWindow extends UiPart<Stage> {
         }
     }
 
+    /**
+     * Handles the view for Homework Manager.
+     */
     @FXML
     public void handleSwitchToHomeworkManager() {
         //TODO: handles the setting up of HomeworkManager view
+        iconListPanel.setHomeworkManagerIconBrightness(0.8);
+        iconListPanel.setNotesManagerIconBrightness(0.4);
+        iconListPanel.setCapManagerIconBrightness(0.4);
     }
 
-    @FXML
-    public void handleSwitchToCapCalculator() {
-        //TODO: handles the setting up of CapCalculator view
-    }
-
+    /**
+     * Handles the view for Notes Manager.
+     */
     @FXML
     public void handleSwitchToNotesManager() {
         //TODO: handles the setting up of NotesManager view
+        iconListPanel.setHomeworkManagerIconBrightness(0.4);
+        iconListPanel.setNotesManagerIconBrightness(0.8);
+        iconListPanel.setCapManagerIconBrightness(0.4);
     }
+
+    /**
+     * Handles the view for Caps Manager.
+     */
+    @FXML
+    public void handleSwitchToCapsManager() {
+        //TODO: handles the setting up of CapCalculator view
+        iconListPanel.setHomeworkManagerIconBrightness(0.4);
+        iconListPanel.setNotesManagerIconBrightness(0.4);
+        iconListPanel.setCapManagerIconBrightness(0.8);
+    }
+
 }

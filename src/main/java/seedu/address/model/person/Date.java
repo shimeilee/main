@@ -36,8 +36,7 @@ public class Date {
     }
 
     /**
-     * Returns true if both persons of the same name have at least one other identity field that is the same.
-     * This defines a weaker notion of equality between two persons.
+     * Returns true if both homeworks have the same deadline.
      */
     public boolean isSameDate(Date otherDate) {
         if (otherDate == this) {
@@ -50,8 +49,7 @@ public class Date {
     }
 
     /**
-     * Returns true if both persons have the same identity and data fields.
-     * This defines a stronger notion of equality between two persons.
+     * Returns true if both persons have the same deadline.
      */
     @Override
     public boolean equals(Object other) {
