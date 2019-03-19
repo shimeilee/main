@@ -18,4 +18,7 @@ public class CliSyntax {
     public static final Prefix PREFIX_DEADLINE = new Prefix("d/");
     public static final Prefix PREFIX_PRIORITY = new Prefix("p/");
 
+    public static final Prefix PREFIX_MODULEGRADE = new Prefix("g/");
+    public static final Prefix PREFIX_MODULARCREDITS = new Prefix("mc/");
+
 }

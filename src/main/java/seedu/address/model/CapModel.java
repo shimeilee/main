@@ -7,14 +7,10 @@ import javafx.beans.property.ReadOnlyProperty;
 import javafx.collections.ObservableList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.model.cap.CapEntry;
-import seedu.address.model.person.Person;
 
-/**
- * The API of the Model component.
- */
-public interface Model {
+public interface CapModel {
     /** {@code Predicate} that always evaluate to true */
-    Predicate<Person> PREDICATE_SHOW_ALL_PERSONS = unused -> true;
+    Predicate<CapEntry> PREDICATE_SHOW_ALL_PERSONS = unused -> true;
 
     /**
      * Replaces user prefs data with the data in {@code userPrefs}.
@@ -39,94 +35,94 @@ public interface Model {
     /**
      * Returns the user prefs' UltiStudent file path.
      */
-    Path getAddressBookFilePath();
+    Path getCapEntryBookFilePath();
 
     /**
      * Sets the user prefs' UltiStudent file path.
      */
-    void setAddressBookFilePath(Path addressBookFilePath);
+    void setCapEntryBookFilePath(Path capEntryBookFilePath);
 
     /**
      * Replaces UltiStudent data with the data in {@code addressBook}.
      */
-    void setAddressBook(ReadOnlyAddressBook addressBook);
+    void setCapEntryBook(ReadOnlyCapEntryBook addressBook);
 
     /** Returns the AddressBook */
-    ReadOnlyAddressBook getAddressBook();
+    ReadOnlyCapEntryBook getCapEntryBook();
 
     /**
      * Returns true if a person with the same identity as {@code person} exists in the UltiStudent.
      */
-    boolean hasPerson(Person person);
+    boolean hasCapEntry(CapEntry capEntry);
 
     /**
      * Deletes the given person.
      * The person must exist in the UltiStudent.
      */
-    void deletePerson(Person target);
+    void deleteCapEntry(CapEntry target);
 
     /**
      * Adds the given person.
      * {@code person} must not already exist in the UltiStudent.
      */
-    void addPerson(Person person);
+    void addCapEntry(CapEntry capEntry);
 
     /**
      * Replaces the given person {@code target} with {@code editedPerson}.
      * {@code target} must exist in the UltiStudent.
      * The person identity of {@code editedPerson} must not be the same as another existing person in the UltiStudent.
      */
-    void setPerson(Person target, Person editedPerson);
+    void setCapEntry(CapEntry target, CapEntry editedCapEntry);
 
     /** Returns an unmodifiable view of the filtered person list */
-    ObservableList<Person> getFilteredPersonList();
+    ObservableList<CapEntry> getFilteredCapEntriesList();
 
     /**
      * Updates the filter of the filtered person list to filter by the given {@code predicate}.
      * @throws NullPointerException if {@code predicate} is null.
      */
-    void updateFilteredPersonList(Predicate<Person> predicate);
+    void updateFilteredCapEntriesList(Predicate<CapEntry> predicate);
 
     /**
      * Returns true if the model has previous UltiStudent states to restore.
      */
-    boolean canUndoAddressBook();
+    boolean canUndoCapEntryBook();
 
     /**
      * Returns true if the model has undone UltiStudent states to restore.
      */
-    boolean canRedoAddressBook();
+    boolean canRedoCapEntryBook();
 
     /**
      * Restores the model's UltiStudent to its previous state.
      */
-    void undoAddressBook();
+    void undoCapEntryBook();
 
     /**
      * Restores the model's UltiStudent to its previously undone state.
      */
-    void redoAddressBook();
+    void redoCapEntryBook();
 
     /**
      * Saves the current UltiStudent state for undo/redo.
      */
-    void commitAddressBook();
+    void commitCapEntryBook();
 
     /**
      * Selected person in the filtered person list.
      * null if no person is selected.
      */
-    ReadOnlyProperty<Person> selectedPersonProperty();
+    ReadOnlyProperty<CapEntry> selectedCapEntryProperty();
 
     /**
      * Returns the selected person in the filtered person list.
      * null if no person is selected.
      */
-    Person getSelectedPerson();
+    CapEntry getSelectedCapEntry();
 
     /**
      * Sets the selected person in the filtered person list.
      */
-    void setSelectedPerson(Person person);
+    void setSelectedCapEntry(CapEntry capEntry);
 
 }

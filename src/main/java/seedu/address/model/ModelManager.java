@@ -119,6 +119,7 @@ public class ModelManager implements Model {
         versionedAddressBook.setPerson(target, editedPerson);
     }
 
+
     //=========== Filtered Person List Accessors =============================================================
 
     /**
@@ -182,6 +183,7 @@ public class ModelManager implements Model {
         }
         selectedPerson.setValue(person);
     }
+
 
     /**
      * Ensures {@code selectedPerson} is a valid person in {@code filteredPersons}.
