@@ -9,6 +9,9 @@ import java.util.Set;
 import seedu.address.commons.core.index.Index;
 import seedu.address.commons.util.StringUtil;
 import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.model.cap.ModuleCode;
+import seedu.address.model.cap.ModuleCredits;
+import seedu.address.model.cap.ModuleGrade;
 import seedu.address.model.person.Address;
 import seedu.address.model.person.Email;
 import seedu.address.model.person.Name;
@@ -33,6 +36,51 @@ public class ParserUtil {
             throw new ParseException(MESSAGE_INVALID_INDEX);
         }
         return Index.fromOneBased(Integer.parseInt(trimmedIndex));
+    }
+
+    /**
+     * Parses a {@code String moduleCode} into a {@code ModuleCode}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code name} is invalid.
+     */
+    public static ModuleCode parseModuleCode(String moduleCode) throws ParseException {
+        requireNonNull(moduleCode);
+        String trimmedModuleCode = moduleCode.trim();
+        if (!ModuleCode.isValidModuleCode(trimmedModuleCode)) {
+            throw new ParseException(ModuleCode.MESSAGE_CONSTRAINTS);
+        }
+        return new ModuleCode(trimmedModuleCode);
+    }
+
+    /**
+     * Parses a {@code String moduleCredits} into a {@code ModuleCredits}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code moduleCredits} is invalid.
+     */
+    public static ModuleGrade parseModuleGrade(String moduleGrade) throws ParseException {
+        requireNonNull(moduleGrade);
+        String trimmedModuleGrade = moduleGrade.trim();
+        if (!ModuleGrade.isValidModuleGrade(trimmedModuleGrade)) {
+            throw new ParseException(ModuleGrade.MESSAGE_CONSTRAINTS);
+        }
+        return new ModuleGrade(trimmedModuleGrade);
+    }
+
+    /**
+     * Parses a {@code String moduleCredits} into a {@code ModuleCredits}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code moduleCredits} is invalid.
+     */
+    public static ModuleCredits parseModuleCredits(String moduleCredits) throws ParseException {
+        requireNonNull(moduleCredits);
+        String trimmedModuleCredits = moduleCredits.trim();
+        if (!ModuleCredits.isValidModuleCredits(trimmedModuleCredits)) {
+            throw new ParseException(ModuleCredits.MESSAGE_CONSTRAINTS);
+        }
+        return new ModuleCredits(trimmedModuleCredits);
     }
 
     /**
@@ -121,4 +169,5 @@ public class ParserUtil {
         }
         return tagSet;
     }
+
 }

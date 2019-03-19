@@ -9,18 +9,16 @@ import javafx.collections.ObservableList;
 import seedu.address.commons.util.InvalidationListenerManager;
 import seedu.address.model.cap.CapEntry;
 import seedu.address.model.cap.UniqueCapEntryList;
-import seedu.address.model.person.Person;
-import seedu.address.model.person.UniquePersonList;
 
 /**
  * Wraps all data at the address-book level
  * Duplicates are not allowed (by .isSamePerson comparison)
  */
-public class AddressBook implements ReadOnlyAddressBook {
+
+public class CapEntryBook implements ReadOnlyCapEntryBook {
 
     private final UniqueCapEntryList capEntryList;
-    private final UniquePersonList persons;
-    private final InvalidationListenerManager invalidationListenerManager = new InvalidationListenerManager();
+    private final InvalidationListenerManager capEntryInvalidationListenerManager = new InvalidationListenerManager();
 
     /*
      * The 'unusual' code block below is an non-static initialization block, sometimes used to avoid duplication
@@ -30,16 +28,15 @@ public class AddressBook implements ReadOnlyAddressBook {
      *   among constructors.
      */
     {
-        persons = new UniquePersonList();
         capEntryList = new UniqueCapEntryList();
     }
 
-    public AddressBook() {}
+    public CapEntryBook() {}
 
     /**
      * Creates an AddressBook using the Persons in the {@code toBeCopied}
      */
-    public AddressBook(ReadOnlyAddressBook toBeCopied) {
+    public CapEntryBook(ReadOnlyCapEntryBook toBeCopied) {
         this();
         resetData(toBeCopied);
     }
@@ -47,17 +44,8 @@ public class AddressBook implements ReadOnlyAddressBook {
     //// list overwrite operations
 
     /**
-     * Replaces the contents of the person list with {@code persons}.
-     * {@code persons} must not contain duplicate persons.
-     */
-    public void setPersons(List<Person> persons) {
-        this.persons.setPersons(persons);
-        indicateModified();
-    }
-
-    /**
-     * Replaces the contents of the cap entries list with {@code capEntryList}.
-     * {@code capEntryList} must not contain duplicate persons.
+     * Replaces the contents of the person list with {@code capEntryList}.
+     * {@code capEntryList} must not contain duplicate capEntry.
      */
     public void setCapEntryList(List<CapEntry> capEntryList) {
         this.capEntryList.setCapEntryList(capEntryList);
@@ -67,24 +55,16 @@ public class AddressBook implements ReadOnlyAddressBook {
     /**
      * Resets the existing data of this {@code AddressBook} with {@code newData}.
      */
-    public void resetData(ReadOnlyAddressBook newData) {
+    public void resetData(ReadOnlyCapEntryBook newData) {
         requireNonNull(newData);
 
-        setPersons(newData.getPersonList());
+        setCapEntryList(newData.getCapEntryList());
     }
 
     //// person-level operations
 
     /**
      * Returns true if a person with the same identity as {@code person} exists in the UltiStudent.
-     */
-    public boolean hasPerson(Person person) {
-        requireNonNull(person);
-        return persons.contains(person);
-    }
-
-    /**
-     * Returns true if a cap entry with the same identity as {@code person} exists in UltiStudent.
      */
     public boolean hasCapEntry(CapEntry capEntry) {
         requireNonNull(capEntry);
@@ -94,15 +74,6 @@ public class AddressBook implements ReadOnlyAddressBook {
     /**
      * Adds a person to the UltiStudent.
      * The person must not already exist in the UltiStudent.
-     */
-    public void addPerson(Person p) {
-        persons.add(p);
-        indicateModified();
-    }
-
-    /**
-     * Adds a cap entry to UltiStudent.
-     * The cap entry must not already exist in UltiStudent.
      */
     public void addCapEntry(CapEntry c) {
         capEntryList.add(c);
@@ -114,32 +85,10 @@ public class AddressBook implements ReadOnlyAddressBook {
      * {@code target} must exist in the UltiStudent.
      * The person identity of {@code editedPerson} must not be the same as another existing person in the UltiStudent.
      */
-    public void setPerson(Person target, Person editedPerson) {
-        requireNonNull(editedPerson);
-
-        persons.setPerson(target, editedPerson);
-        indicateModified();
-    }
-
-    /**
-     * Replaces the given cap entry {@code target} in the list with {@code editedCapEntry}.
-     * {@code target} must exist in the UltiStudent.
-     * The cap entry identity of {@code editedPerson} must not be the same as another existing cap entry in
-     * the UltiStudent.
-     */
     public void setCapEntry(CapEntry target, CapEntry editedCapEntry) {
         requireNonNull(editedCapEntry);
 
         capEntryList.setCapEntry(target, editedCapEntry);
-        indicateModified();
-    }
-
-    /**
-     * Removes {@code key} from this {@code AddressBook}.
-     * {@code key} must exist in the UltiStudent.
-     */
-    public void removePerson(Person key) {
-        persons.remove(key);
         indicateModified();
     }
 
@@ -154,32 +103,27 @@ public class AddressBook implements ReadOnlyAddressBook {
 
     @Override
     public void addListener(InvalidationListener listener) {
-        invalidationListenerManager.addListener(listener);
+        capEntryInvalidationListenerManager.addListener(listener);
     }
 
     @Override
     public void removeListener(InvalidationListener listener) {
-        invalidationListenerManager.removeListener(listener);
+        capEntryInvalidationListenerManager.removeListener(listener);
     }
 
     /**
      * Notifies listeners that the UltiStudent has been modified.
      */
     protected void indicateModified() {
-        invalidationListenerManager.callListeners(this);
+        capEntryInvalidationListenerManager.callListeners(this);
     }
 
     //// util methods
 
     @Override
     public String toString() {
-        return persons.asUnmodifiableObservableList().size() + " persons";
+        return capEntryList.asUnmodifiableObservableList().size() + " persons";
         // TODO: refine later
-    }
-
-    @Override
-    public ObservableList<Person> getPersonList() {
-        return persons.asUnmodifiableObservableList();
     }
 
     @Override
@@ -190,12 +134,13 @@ public class AddressBook implements ReadOnlyAddressBook {
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
-                || (other instanceof AddressBook // instanceof handles nulls
-                && persons.equals(((AddressBook) other).persons));
+                || (other instanceof CapEntryBook // instanceof handles nulls
+                && capEntryList.equals(((CapEntryBook) other).capEntryList));
     }
 
     @Override
     public int hashCode() {
-        return persons.hashCode();
+        return capEntryList.hashCode();
     }
 }
+
