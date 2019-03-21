@@ -235,15 +235,25 @@ Selects the 1st homework in the results of the `find` command.
 === Notes Manager
 ==== Adding a note : `addNote`
 Adds a new note to the Notes Manager +
-Format: `addNote`
+Format: `addNote mc/MODULECODE nn/NOTENAME`
 
 [TIP]
 Tags can be used to indicate which year and semester was the module taken.
 
 Examples:
 
-* `add mc/CS2103T g/A mcs/4 tag/Y2S2`
-* `add mc/CS2100 g/A+ mcs/4 tag/Y2S1`
+* `add mc/CS2103T nn/NOTENAME tag/Y2S2`
+* `add mc/CS2100 nn/NOTENAME tag/Y2S1`
+
+==== Editing a note : `editNote`
+Opens and allows editing on an existing note in the Notes Manager based on its
+index +
+Format: `editNote INDEX`
+
+Examples:
+
+* `editNOTE 1`
+* `editNOTE 2`
 
 ==== Listing all Notes: `listNotes`
 
@@ -264,6 +274,10 @@ Format: `deleteNote INDEX`
 ****
 
 Examples:
+
+* `listNotes` +
+`editNote 1` +
+Opens the 1st note in the Note Manager and allows editing into the note.
 
 * `listNotes` +
 `delete 2` +
