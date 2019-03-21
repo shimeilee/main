@@ -1,6 +1,6 @@
 package seedu.address.model.person;
 
-import static java.util.Objects.requireNonNull;
+import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
 /**
  * Represents a homework entry in the address book.
@@ -10,21 +10,15 @@ public class Homework {
     public static final String MESSAGE_CONSTRAINTS = "Homework should be inputted as MODULECODE; "
             + "HOMEWORKNAME; DEADLINE";
 
-    private String moduleCode;
-    private String homeworkName;
-    private String deadline;
+    private ModuleCode moduleCode;
+    private HomeworkName homeworkName;
+    private Date deadline;
 
+    public Homework (ModuleCode moduleCode, HomeworkName homeworkName, Date deadline) {
+        requireAllNonNull(moduleCode, homeworkName, deadline);
 
-    //TOADD REGEX to only allow numbers, alphabets and spaces
-
-    public Homework (String moduleCode, String homeworkName, String deadline) {
-        requireNonNull(moduleCode);
         this.moduleCode = moduleCode;
-
-        requireNonNull(homeworkName);
         this.homeworkName = homeworkName;
-
-        requireNonNull(deadline);
         this.deadline = deadline;
     }
 

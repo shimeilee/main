@@ -1,0 +1,51 @@
+package seedu.address.ui;
+/*
+import java.util.Objects;
+import java.util.function.Consumer;
+*/
+import java.util.logging.Logger;
+
+import javafx.fxml.FXML;
+
+import javafx.scene.effect.ColorAdjust;
+import javafx.scene.layout.Region;
+
+import seedu.address.commons.core.LogsCenter;
+
+/**
+ * Icon List view
+ */
+public class IconListPanel extends UiPart<Region> {
+    private static final String FXML = "IconList.fxml";
+    private final Logger logger = LogsCenter.getLogger(SubInfoPanel.class);
+
+    @FXML
+    private ColorAdjust homeworkManagerIconBrightness;
+
+    @FXML
+    private ColorAdjust notesManagerIconBrightness;
+
+    @FXML
+    private ColorAdjust capManagerIconBrightness;
+
+    public IconListPanel() {
+        super(FXML);
+        setHomeworkManagerIconBrightness(0.5);
+        setNotesManagerIconBrightness(0.5);
+        setCapManagerIconBrightness(0.5);
+    }
+
+    public void setHomeworkManagerIconBrightness(double brightness) {
+        homeworkManagerIconBrightness.setBrightness(brightness);
+    }
+
+    public void setNotesManagerIconBrightness(double brightness) {
+        notesManagerIconBrightness.setBrightness(brightness);
+    }
+
+    public void setCapManagerIconBrightness(double brightness) {
+        capManagerIconBrightness.setBrightness(brightness);
+    }
+
+
+}
