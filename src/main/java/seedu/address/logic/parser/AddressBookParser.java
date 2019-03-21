@@ -89,7 +89,7 @@ public class AddressBookParser {
 
         case RedoCommand.COMMAND_WORD:
             return new RedoCommand();
-            
+
         case OpenCommand.COMMAND_WORD:
             return new OpenCommandParser().parse(arguments);
 
