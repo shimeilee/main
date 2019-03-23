@@ -325,6 +325,7 @@ public class ModelManager implements Model {
         return versionedAddressBook.equals(other.versionedAddressBook)
                 && userPrefs.equals(other.userPrefs)
                 && filteredPersons.equals(other.filteredPersons)
+                && filteredCapEntryList.equals(other.filteredCapEntryList)
                 && Objects.equals(selectedPerson.get(), other.selectedPerson.get());
     }
 

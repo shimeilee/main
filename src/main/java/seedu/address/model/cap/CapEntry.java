@@ -29,8 +29,8 @@ public class CapEntry {
     /**
      * Every field must be present and not null.
      */
-    public CapEntry(ModuleCode moduleCode, ModuleGrade moduleGrade, ModuleCredits modularCredits, Set<Tag> tags) {
-        requireAllNonNull(moduleCode, moduleGrade, modularCredits, tags);
+    public CapEntry(ModuleCode moduleCode, ModuleGrade moduleGrade, ModuleCredits moduleCredits, Set<Tag> tags) {
+        requireAllNonNull(moduleCode, moduleGrade, moduleCredits, tags);
         this.moduleCode = moduleCode;
         this.moduleGrade = moduleGrade;
         this.moduleCredits = moduleCredits;
