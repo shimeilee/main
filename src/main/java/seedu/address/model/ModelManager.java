@@ -141,7 +141,7 @@ public class ModelManager implements Model {
     @Override
     public void addCapEntry(CapEntry capEntry) {
         versionedAddressBook.addCapEntry(capEntry);
-        updateFilteredCapEntryList(PREDICATE_SHOW_ALL_CAPENTRIES);
+        updateFilteredCapEntryList(PREDICATE_SHOW_ALL_CAP_ENTRIES);
     }
 
     @Override
