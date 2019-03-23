@@ -23,7 +23,7 @@ class JsonSerializableAddressBook {
     public static final String MESSAGE_DUPLICATE_PERSON = "Persons list contains duplicate person(s).";
     public static final String MESSAGE_DUPLICATE_CAP_ENTRY = "Cap Entry list contains duplicate cap entry(s).";
 
-//    private final List<JsonAdaptedPerson> persons = new ArrayList<>();
+    private final List<JsonAdaptedPerson> persons = new ArrayList<>();
     private final List<JsonAdaptedCapEntry> capEntryList = new ArrayList<>();
 
 //    /**
@@ -38,9 +38,9 @@ class JsonSerializableAddressBook {
      * Constructs a {@code JsonSerializableAddressBook} with the given capEntryList and persons.
      */
     @JsonCreator
-    public JsonSerializableAddressBook(
+    public JsonSerializableAddressBook(@JsonProperty("persons") List<JsonAdaptedPerson> persons,
                                        @JsonProperty("capEntryList") List<JsonAdaptedCapEntry> capEntryList) {
-//        this.persons.addAll(persons);
+        this.persons.addAll(persons);
         this.capEntryList.addAll(capEntryList);
     }
 
@@ -50,8 +50,9 @@ class JsonSerializableAddressBook {
      * @param source future changes to this will not affect the created {@code JsonSerializableAddressBook}.
      */
     public JsonSerializableAddressBook(ReadOnlyAddressBook source) {
-//        persons.addAll(source.getPersonList().stream().map(JsonAdaptedPerson::new).collect(Collectors.toList()));
-        capEntryList.addAll(source.getCapEntryList().stream().map(JsonAdaptedCapEntry::new).collect(Collectors.toList()));
+        persons.addAll(source.getPersonList().stream().map(JsonAdaptedPerson::new).collect(Collectors.toList()));
+        capEntryList.addAll(source.getCapEntryList().stream().map(JsonAdaptedCapEntry::new).
+                collect(Collectors.toList()));
     }
 
     /**
