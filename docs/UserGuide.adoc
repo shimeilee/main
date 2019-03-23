@@ -34,9 +34,9 @@ e.g. typing *`help`* and pressing kbd:[Enter] will open the help window.
 .  Some example commands you can try:
 
 * *`list`* : lists all  homework
-* **`add**` : mc/CS2103T mn/Software Engineering hw/Tutorial 01 d/050319
+* *`add mc/CS2103T mn/Software Engineering hw/Tutorial 01 d/050319`* :
 Adds a homework “Tutorial 01” under CS2103T tab with the deadline on 05 March 2019
-* **`delete`** `3` : deletes the 3rd  homework shown in the current list
+* *`delete 3`* : deletes the 3rd  homework shown in the current list
 * *`exit`* : exits the app
 
 .  Refer to <<Features>> for details of each command.
@@ -235,15 +235,25 @@ Selects the 1st homework in the results of the `find` command.
 === Notes Manager
 ==== Adding a note : `addNote`
 Adds a new note to the Notes Manager +
-Format: `addNote`
+Format: `addNote mc/MODULECODE nn/NOTENAME`
 
 [TIP]
 Tags can be used to indicate which year and semester was the module taken.
 
 Examples:
 
-* `add mc/CS2103T g/A mcs/4 tag/Y2S2`
-* `add mc/CS2100 g/A+ mcs/4 tag/Y2S1`
+* `add mc/CS2103T nn/NOTENAME tag/Y2S2`
+* `add mc/CS2100 nn/NOTENAME tag/Y2S1`
+
+==== Editing a note : `editNote`
+Opens and allows editing on an existing note in the Notes Manager based on its
+index +
+Format: `editNote INDEX`
+
+Examples:
+
+* `editNOTE 1`
+* `editNOTE 2`
 
 ==== Listing all Notes: `listNotes`
 
@@ -264,6 +274,10 @@ Format: `deleteNote INDEX`
 ****
 
 Examples:
+
+* `listNotes` +
+`editNote 1` +
+Opens the 1st note in the Note Manager and allows editing into the note.
 
 * `listNotes` +
 `delete 2` +
