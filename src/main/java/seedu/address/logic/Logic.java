@@ -9,6 +9,7 @@ import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.ReadOnlyAddressBook;
+import seedu.address.model.cap.CapEntry;
 import seedu.address.model.person.Person;
 
 /**
@@ -69,4 +70,23 @@ public interface Logic {
      * @see seedu.address.model.Model#setSelectedPerson(Person)
      */
     void setSelectedPerson(Person person);
+
+    // CapEntry
+    /** Returns an unmodifiable view of the filtered list of cap entries */
+    ObservableList<CapEntry> getFilteredCapEntryList();
+    /**
+     * Selected cap entry in the filtered cap entry list.
+     * null if no cap entry is selected.
+     *
+     * @see seedu.address.model.Model#selectedPersonProperty()
+     */
+    ReadOnlyProperty<CapEntry> selectedCapEntryProperty();
+
+    /**
+     * Sets the selected cap entry in the filtered cap entry list.
+     *
+     * @see seedu.address.model.Model#setSelectedCapEntry(CapEntry)
+     */
+    void setSelectedCapEntry(CapEntry capEntry);
+
 }

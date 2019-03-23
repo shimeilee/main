@@ -1,8 +1,8 @@
 package seedu.address.logic.parser;
 
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_MODULARCREDITS;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_MODULECODE;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_MODULECREDITS;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_MODULEGRADE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
 
@@ -29,17 +29,17 @@ public class AddCapEntryCommandParser {
      */
     public AddCapEntryCommand parse (String args) throws ParseException {
         ArgumentMultimap argMultimap =
-                ArgumentTokenizer.tokenize(args, PREFIX_MODULECODE, PREFIX_MODULEGRADE, PREFIX_MODULARCREDITS,
+                ArgumentTokenizer.tokenize(args, PREFIX_MODULECODE, PREFIX_MODULEGRADE, PREFIX_MODULECREDITS,
                         PREFIX_TAG);
 
-        if (!arePrefixesPresent(argMultimap, PREFIX_MODULECODE, PREFIX_MODULEGRADE, PREFIX_MODULARCREDITS)
+        if (!arePrefixesPresent(argMultimap, PREFIX_MODULECODE, PREFIX_MODULEGRADE, PREFIX_MODULECREDITS)
                 || !argMultimap.getPreamble().isEmpty()) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddCapEntryCommand.MESSAGE_USAGE));
         }
 
         ModuleCode moduleCode = ParserUtil.parseModuleCode(argMultimap.getValue(PREFIX_MODULECODE).get());
         ModuleGrade moduleGrade = ParserUtil.parseModuleGrade(argMultimap.getValue(PREFIX_MODULEGRADE).get());
-        ModuleCredits moduleCredits = ParserUtil.parseModuleCredits(argMultimap.getValue(PREFIX_MODULARCREDITS).get());
+        ModuleCredits moduleCredits = ParserUtil.parseModuleCredits(argMultimap.getValue(PREFIX_MODULECREDITS).get());
         Set<Tag> tagList = ParserUtil.parseTags(argMultimap.getAllValues(PREFIX_TAG));
 
         CapEntry capEntry = new CapEntry(moduleCode, moduleGrade, moduleCredits, tagList);

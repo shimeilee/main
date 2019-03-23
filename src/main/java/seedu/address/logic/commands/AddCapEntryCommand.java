@@ -1,9 +1,10 @@
 package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_MODULARCREDITS;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_MODULECODE;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_MODULECREDITS;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_MODULEGRADE;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
 
 import seedu.address.logic.CommandHistory;
 import seedu.address.logic.commands.exceptions.CommandException;
@@ -21,15 +22,16 @@ public class AddCapEntryCommand extends Command {
             + "Parameters: "
             + PREFIX_MODULECODE + "MODULE_CODE "
             + PREFIX_MODULEGRADE + "MODULE_GRADE "
-            + "[" + PREFIX_MODULARCREDITS + "MC] \n"
-            + "Modular Credits are 4 by default if not set. \n"
+            + PREFIX_MODULECREDITS + "MODULE_CREDITS "
+            + "[" + PREFIX_TAG + "TAG]...\n"
             + "Example: " + COMMAND_WORD + " "
-            + PREFIX_MODULECODE + "CS2103T"
-            + PREFIX_MODULEGRADE + "A+"
-            + PREFIX_MODULARCREDITS + "4";
+            + PREFIX_MODULECODE + "CS2103T "
+            + PREFIX_MODULEGRADE + "A+ "
+            + PREFIX_MODULECREDITS + "4 "
+            + PREFIX_TAG + "Y2S2";
 
     public static final String MESSAGE_SUCCESS = "New module added to CAP Manager: %1$s";
-    public static final String MESSAGE_DUPLICATE_CAPENTRY = "This module already exists in the CAP Manager";
+    public static final String MESSAGE_DUPLICATE_CAP_ENTRY = "This module already exists in the CAP Manager";
 
     private final CapEntry toAdd;
 
@@ -47,7 +49,7 @@ public class AddCapEntryCommand extends Command {
         requireNonNull(model);
 
         if (model.hasCapEntry(toAdd)) {
-            throw new CommandException(MESSAGE_DUPLICATE_CAPENTRY);
+            throw new CommandException(MESSAGE_DUPLICATE_CAP_ENTRY);
         }
 
         model.addCapEntry(toAdd);

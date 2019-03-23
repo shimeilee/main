@@ -141,7 +141,7 @@ public class ModelManager implements Model {
     @Override
     public void addCapEntry(CapEntry capEntry) {
         versionedAddressBook.addCapEntry(capEntry);
-        updateFilteredCapEntryList(PREDICATE_SHOW_ALL_CAPENTRIES);
+        updateFilteredCapEntryList(PREDICATE_SHOW_ALL_CAP_ENTRIES);
     }
 
     @Override
@@ -185,7 +185,7 @@ public class ModelManager implements Model {
     }
 
     /**
-     * Ensures {@code selectedPerson} is a valid person in {@code filteredPersons}.
+     * Ensures {@code selectedCapEntry} is a valid cap entry in {@code filteredCapEntryList}.
      */
     private void ensureSelectedCapEntryIsValid(ListChangeListener.Change<? extends CapEntry> change) {
         while (change.next()) {
@@ -203,9 +203,9 @@ public class ModelManager implements Model {
                 continue;
             }
 
-            boolean wasSelectedPersonRemoved = change.getRemoved().stream()
-                    .anyMatch(removedPerson -> selectedCapEntry.getValue().isSameCapEntry(removedPerson));
-            if (wasSelectedPersonRemoved) {
+            boolean wasSelectedCapEntryRemoved = change.getRemoved().stream()
+                    .anyMatch(removedCapEntry -> selectedCapEntry.getValue().isSameCapEntry(removedCapEntry));
+            if (wasSelectedCapEntryRemoved) {
                 // Select the person that came before it in the list,
                 // or clear the selection if there is no such person.
                 selectedCapEntry.setValue(change.getFrom() > 0 ? change.getList().get(change.getFrom() - 1) : null);
@@ -325,6 +325,7 @@ public class ModelManager implements Model {
         return versionedAddressBook.equals(other.versionedAddressBook)
                 && userPrefs.equals(other.userPrefs)
                 && filteredPersons.equals(other.filteredPersons)
+                && filteredCapEntryList.equals(other.filteredCapEntryList)
                 && Objects.equals(selectedPerson.get(), other.selectedPerson.get());
     }
 
