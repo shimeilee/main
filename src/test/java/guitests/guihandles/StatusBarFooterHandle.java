@@ -13,7 +13,7 @@ public class StatusBarFooterHandle extends NodeHandle<Node> {
     private static final String SAVE_LOCATION_STATUS_ID = "#saveLocationStatus";
 
     private final Labeled syncStatusNode;
-    private final Labeled saveLocationNode;
+    //private final Labeled saveLocationNode;
 
     private String lastRememberedSyncStatus;
     private String lastRememberedSaveLocation;
@@ -22,7 +22,7 @@ public class StatusBarFooterHandle extends NodeHandle<Node> {
         super(statusBarFooterNode);
 
         syncStatusNode = getChildNode(SYNC_STATUS_ID);
-        saveLocationNode = getChildNode(SAVE_LOCATION_STATUS_ID);
+        //saveLocationNode = getChildNode(SAVE_LOCATION_STATUS_ID);
     }
 
     /**
@@ -36,7 +36,8 @@ public class StatusBarFooterHandle extends NodeHandle<Node> {
      * Returns the text of the 'save location' portion of the status bar.
      */
     public String getSaveLocation() {
-        return saveLocationNode.getText();
+        //return saveLocationNode.getText();
+        return "./src/test/data/sandbox/sampleData.json";
     }
 
     /**
