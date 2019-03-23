@@ -11,7 +11,6 @@ import static seedu.address.ui.testutil.GuiTestAssert.assertListMatching;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
