@@ -161,6 +161,9 @@ public class SubInfoPanel extends UiPart<Region> {
         }
     }
 
+    /**
+     * Custom {@code ListCell} that displays the graphics of a {@code CapEntry} using a {@code CapEntryCard}.
+     */
     class CapEntryListViewCell extends ListCell<CapEntry> {
         @Override
         protected void updateItem(CapEntry capEntry, boolean empty) {
@@ -175,6 +178,9 @@ public class SubInfoPanel extends UiPart<Region> {
         }
     }
 
+    /**
+     * Custom {@code ListCell} that displays the graphics of a {@code Homework} using a {@code HomeworkCard}.
+     */
     class HomeworkListViewCell extends ListCell<Homework> {
         @Override
         protected void updateItem(Homework homework, boolean empty) {

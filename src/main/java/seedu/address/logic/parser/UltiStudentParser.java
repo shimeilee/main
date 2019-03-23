@@ -58,8 +58,8 @@ public class UltiStudentParser {
         case AddCapEntryCommand.COMMAND_WORD:
             return new AddCapEntryCommandParser().parse(arguments);
 
-            case AddHomeworkCommand.COMMAND_WORD:
-                return new AddHomeworkCommandParser().parse(arguments);
+        case AddHomeworkCommand.COMMAND_WORD:
+            return new AddHomeworkCommandParser().parse(arguments);
 
         case EditCommand.COMMAND_WORD:
             return new EditCommandParser().parse(arguments);

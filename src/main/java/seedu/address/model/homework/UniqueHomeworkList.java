@@ -12,6 +12,15 @@ import javafx.collections.ObservableList;
 import seedu.address.model.homework.exceptions.DuplicateHomeworkException;
 import seedu.address.model.homework.exceptions.HomeworkNotFoundException;
 
+/**
+ * A list of homework that enforces uniqueness between its elements and does not allow nulls.
+ * A homework is considered unique by comparing using Homework#equals(other). As such, adding and updating of
+ * homework uses Homework#equals(other) for equality so as to ensure that the homework being added or updated is
+ * unique in terms of identity in the UniqueHomeworkList. The removal of a homework uses Homework#equals(other) so
+ * as to ensure that the homework with exactly the same fields will be removed.
+ *
+ * Supports a minimal set of list operations.
+ */
 public class UniqueHomeworkList implements Iterable<Homework> {
 
     private final ObservableList<Homework> internalList = FXCollections.observableArrayList();
@@ -27,8 +36,8 @@ public class UniqueHomeworkList implements Iterable<Homework> {
     }
 
     /**
-     * Adds a person to the list.
-     * The person must not already exist in the list.
+     * Adds a homework to the list.
+     * The homework must not already exist in the list.
      */
     public void add(Homework toAdd) {
         requireNonNull(toAdd);
@@ -38,6 +47,10 @@ public class UniqueHomeworkList implements Iterable<Homework> {
         internalList.add(toAdd);
     }
 
+    /**
+     * Removes the equivalent homework from the list.
+     * The homework must exist in the list.
+     */
     public void remove(Homework toRemove) {
         requireNonNull(toRemove);
         if (!internalList.remove(toRemove)) {
@@ -75,7 +88,7 @@ public class UniqueHomeworkList implements Iterable<Homework> {
     }
 
     /**
-     *Returns true if {@code homeworks}
+     *Returns true if {@code homework}
      */
     private boolean homeworkAreUnique(List<Homework> homework) {
         for (int i = 0; i < homework.size() - 1; i++) {

@@ -45,7 +45,7 @@ public class StatusBarFooterTest extends GuiUnitTest {
 
     @Before
     public void setUp() {
-        StatusBarFooter statusBarFooter = new StatusBarFooter(STUB_SAVE_LOCATION, addressBook);
+        StatusBarFooter statusBarFooter = new StatusBarFooter("HomeworkManager", addressBook);
         uiPartRule.setUiPart(statusBarFooter);
 
         statusBarFooterHandle = new StatusBarFooterHandle(statusBarFooter.getRoot());

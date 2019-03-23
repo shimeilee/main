@@ -14,8 +14,16 @@ import seedu.address.model.homework.Homework;
 import seedu.address.model.homework.HomeworkName;
 import seedu.address.model.homework.ModuleCode;
 
+/**
+ * Parses input arguments and creates a new AddHomeworkCommad object
+ */
 public class AddHomeworkCommandParser implements Parser<AddHomeworkCommand> {
 
+    /**
+     * Parses the given {@code args} of arguments in the context of the AddHomeworkCommand
+     * and returns an AddHomeworkCommand object for execution.
+     * @throws ParseException if the user input does not conform the expected format
+     */
     public AddHomeworkCommand parse(String args) throws ParseException {
         ArgumentMultimap argMultimap =
                 ArgumentTokenizer.tokenize(args, PREFIX_HOMEWORK, PREFIX_MODULECODE, PREFIX_DEADLINE);

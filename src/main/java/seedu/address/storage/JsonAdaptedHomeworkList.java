@@ -2,9 +2,20 @@ package seedu.address.storage;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import seedu.address.commons.exceptions.IllegalValueException;
-import seedu.address.model.homework.*;
 
+import seedu.address.commons.exceptions.IllegalValueException;
+import seedu.address.model.homework.Date;
+import seedu.address.model.homework.Day;
+import seedu.address.model.homework.Homework;
+import seedu.address.model.homework.HomeworkName;
+import seedu.address.model.homework.ModuleCode;
+import seedu.address.model.homework.Month;
+import seedu.address.model.homework.Year;
+
+
+/**
+ * Jackson-friendly version of {@link Homework}.
+ */
 public class JsonAdaptedHomeworkList {
 
     public static final String MISSING_FIELD_MESSAGE_FORMAT = "Homework's %s field is missing!";
@@ -50,7 +61,8 @@ public class JsonAdaptedHomeworkList {
      */
     public Homework toModelType() throws IllegalValueException {
         if (moduleCode == null) {
-            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, ModuleCode.class.getSimpleName()));
+            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
+                    ModuleCode.class.getSimpleName()));
         }
         if (!ModuleCode.isValidModuleCode(moduleCode)) {
             throw new IllegalValueException(ModuleCode.MESSAGE_CONSTRAINTS);
@@ -58,7 +70,8 @@ public class JsonAdaptedHomeworkList {
         final ModuleCode modCode = new ModuleCode(moduleCode);
 
         if (homeworkName == null) {
-            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, HomeworkName.class.getSimpleName()));
+            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
+                    HomeworkName.class.getSimpleName()));
         }
         if (!HomeworkName.isValidHomeworkName(homeworkName)) {
             throw new IllegalValueException(HomeworkName.MESSAGE_CONSTRAINTS);
@@ -66,7 +79,8 @@ public class JsonAdaptedHomeworkList {
         final HomeworkName hwName = new HomeworkName(homeworkName);
 
         if (day == null || year == null || month == null) {
-            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Date.class.getSimpleName()));
+            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
+                    Date.class.getSimpleName()));
         }
         if (!Day.isValidDay(day)) {
             throw new IllegalValueException(Day.MESSAGE_CONSTRAINTS);

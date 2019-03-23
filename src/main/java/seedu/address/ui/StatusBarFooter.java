@@ -1,7 +1,5 @@
 package seedu.address.ui;
 
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.time.Clock;
 import java.util.Date;
 
