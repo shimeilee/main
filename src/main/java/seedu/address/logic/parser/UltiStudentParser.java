@@ -8,6 +8,7 @@ import java.util.regex.Pattern;
 
 import seedu.address.logic.commands.AddCapEntryCommand;
 import seedu.address.logic.commands.AddCommand;
+import seedu.address.logic.commands.AddHomeworkCommand;
 import seedu.address.logic.commands.AddNoteCommand;
 import seedu.address.logic.commands.ClearCommand;
 import seedu.address.logic.commands.Command;
@@ -29,7 +30,7 @@ import seedu.address.logic.parser.exceptions.ParseException;
 /**
  * Parses user input.
  */
-public class AddressBookParser {
+public class UltiStudentParser {
 
     /**
      * Used for initial separation of command word and args.
@@ -58,6 +59,9 @@ public class AddressBookParser {
 
         case AddCapEntryCommand.COMMAND_WORD:
             return new AddCapEntryCommandParser().parse(arguments);
+
+        case AddHomeworkCommand.COMMAND_WORD:
+            return new AddHomeworkCommandParser().parse(arguments);
 
         case EditCommand.COMMAND_WORD:
             return new EditCommandParser().parse(arguments);

@@ -17,6 +17,8 @@ import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.model.cap.CapEntry;
 import seedu.address.model.cap.exceptions.CapEntryNotFoundException;
+import seedu.address.model.homework.Homework;
+import seedu.address.model.homework.exceptions.HomeworkNotFoundException;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.exceptions.PersonNotFoundException;
 
@@ -32,6 +34,8 @@ public class ModelManager implements Model {
     private final SimpleObjectProperty<Person> selectedPerson = new SimpleObjectProperty<>();
     private final FilteredList<CapEntry> filteredCapEntryList;
     private final SimpleObjectProperty<CapEntry> selectedCapEntry = new SimpleObjectProperty<>();
+    private final FilteredList<Homework> filteredHomeworkList;
+    private final SimpleObjectProperty<Homework> selectedHomework = new SimpleObjectProperty<>();
 
     /**
      * Initializes a ModelManager with the given addressBook and userPrefs.
@@ -48,6 +52,8 @@ public class ModelManager implements Model {
         filteredPersons.addListener(this::ensureSelectedPersonIsValid);
         filteredCapEntryList = new FilteredList<>(versionedAddressBook.getCapEntryList());
         filteredCapEntryList.addListener(this::ensureSelectedCapEntryIsValid);
+        filteredHomeworkList = new FilteredList<>(versionedAddressBook.getHomeworkList());
+        filteredHomeworkList.addListener(this::ensureSelectedHomeworkIsValid);
     }
 
     public ModelManager() {
@@ -124,95 +130,6 @@ public class ModelManager implements Model {
 
         versionedAddressBook.setPerson(target, editedPerson);
     }
-
-    // Cap entry
-
-    @Override
-    public boolean hasCapEntry(CapEntry capEntry) {
-        requireNonNull(capEntry);
-        return versionedAddressBook.hasCapEntry(capEntry);
-    }
-
-    @Override
-    public void deleteCapEntry(CapEntry target) {
-        versionedAddressBook.removeCapEntry(target);
-    }
-
-    @Override
-    public void addCapEntry(CapEntry capEntry) {
-        versionedAddressBook.addCapEntry(capEntry);
-        updateFilteredCapEntryList(PREDICATE_SHOW_ALL_CAP_ENTRIES);
-    }
-
-    @Override
-    public void setCapEntry(CapEntry target, CapEntry editedCapEntry) {
-        requireAllNonNull(target, editedCapEntry);
-
-        versionedAddressBook.setCapEntry(target, editedCapEntry);
-    }
-
-    /**
-     * Returns an unmodifiable view of the list of {@code Person} backed by the internal list of
-     * {@code versionedAddressBook}
-     */
-    @Override
-    public ObservableList<CapEntry> getFilteredCapEntryList() {
-        return filteredCapEntryList;
-    }
-
-    @Override
-    public void updateFilteredCapEntryList(Predicate<CapEntry> predicate) {
-        requireNonNull(predicate);
-        filteredCapEntryList.setPredicate(predicate);
-    }
-
-    @Override
-    public ReadOnlyProperty<CapEntry> selectedCapEntryProperty() {
-        return selectedCapEntry;
-    }
-
-    @Override
-    public CapEntry getSelectedCapEntry() {
-        return selectedCapEntry.getValue();
-    }
-
-    @Override
-    public void setSelectedCapEntry(CapEntry capEntry) {
-        if (capEntry != null && !filteredCapEntryList.contains(capEntry)) {
-            throw new CapEntryNotFoundException();
-        }
-        selectedCapEntry.setValue(capEntry);
-    }
-
-    /**
-     * Ensures {@code selectedCapEntry} is a valid cap entry in {@code filteredCapEntryList}.
-     */
-    private void ensureSelectedCapEntryIsValid(ListChangeListener.Change<? extends CapEntry> change) {
-        while (change.next()) {
-            if (selectedCapEntry.getValue() == null) {
-                // null is always a valid selected person, so we do not need to check that it is valid anymore.
-                return;
-            }
-
-            boolean wasSelectedCapEntryReplaced = change.wasReplaced() && change.getAddedSize()
-                    == change.getRemovedSize() && change.getRemoved().contains(selectedCapEntry.getValue());
-            if (wasSelectedCapEntryReplaced) {
-                // Update selectedPerson to its new value.
-                int index = change.getRemoved().indexOf(selectedCapEntry.getValue());
-                selectedCapEntry.setValue(change.getAddedSubList().get(index));
-                continue;
-            }
-
-            boolean wasSelectedCapEntryRemoved = change.getRemoved().stream()
-                    .anyMatch(removedCapEntry -> selectedCapEntry.getValue().isSameCapEntry(removedCapEntry));
-            if (wasSelectedCapEntryRemoved) {
-                // Select the person that came before it in the list,
-                // or clear the selection if there is no such person.
-                selectedCapEntry.setValue(change.getFrom() > 0 ? change.getList().get(change.getFrom() - 1) : null);
-            }
-        }
-    }
-
 
     //=========== Filtered Person List Accessors =============================================================
 
@@ -308,6 +225,182 @@ public class ModelManager implements Model {
         }
     }
 
+    //================================================== CapManager ==================================================//
+
+    @Override
+    public boolean hasCapEntry(CapEntry capEntry) {
+        requireNonNull(capEntry);
+        return versionedAddressBook.hasCapEntry(capEntry);
+    }
+
+    @Override
+    public void deleteCapEntry(CapEntry target) {
+        versionedAddressBook.removeCapEntry(target);
+    }
+
+    @Override
+    public void addCapEntry(CapEntry capEntry) {
+        versionedAddressBook.addCapEntry(capEntry);
+        updateFilteredCapEntryList(PREDICATE_SHOW_ALL_CAP_ENTRIES);
+    }
+
+    @Override
+    public void setCapEntry(CapEntry target, CapEntry editedCapEntry) {
+        requireAllNonNull(target, editedCapEntry);
+
+        versionedAddressBook.setCapEntry(target, editedCapEntry);
+    }
+
+    /**
+     * Returns an unmodifiable view of the list of {@code Person} backed by the internal list of
+     * {@code versionedAddressBook}
+     */
+    @Override
+    public ObservableList<CapEntry> getFilteredCapEntryList() {
+        return filteredCapEntryList;
+    }
+
+    @Override
+    public void updateFilteredCapEntryList(Predicate<CapEntry> predicate) {
+        requireNonNull(predicate);
+        filteredCapEntryList.setPredicate(predicate);
+    }
+
+    @Override
+    public ReadOnlyProperty<CapEntry> selectedCapEntryProperty() {
+        return selectedCapEntry;
+    }
+
+    @Override
+    public CapEntry getSelectedCapEntry() {
+        return selectedCapEntry.getValue();
+    }
+
+    @Override
+    public void setSelectedCapEntry(CapEntry capEntry) {
+        if (capEntry != null && !filteredCapEntryList.contains(capEntry)) {
+            throw new CapEntryNotFoundException();
+        }
+        selectedCapEntry.setValue(capEntry);
+    }
+
+    /**
+     * Ensures {@code selectedCapEntry} is a valid cap entry in {@code filteredCapEntryList}.
+     */
+    private void ensureSelectedCapEntryIsValid(ListChangeListener.Change<? extends CapEntry> change) {
+        while (change.next()) {
+            if (selectedCapEntry.getValue() == null) {
+                // null is always a valid selected person, so we do not need to check that it is valid anymore.
+                return;
+            }
+
+            boolean wasSelectedCapEntryReplaced = change.wasReplaced() && change.getAddedSize()
+                    == change.getRemovedSize() && change.getRemoved().contains(selectedCapEntry.getValue());
+            if (wasSelectedCapEntryReplaced) {
+                // Update selectedPerson to its new value.
+                int index = change.getRemoved().indexOf(selectedCapEntry.getValue());
+                selectedCapEntry.setValue(change.getAddedSubList().get(index));
+                continue;
+            }
+
+            boolean wasSelectedCapEntryRemoved = change.getRemoved().stream()
+                    .anyMatch(removedCapEntry -> selectedCapEntry.getValue().isSameCapEntry(removedCapEntry));
+            if (wasSelectedCapEntryRemoved) {
+                // Select the person that came before it in the list,
+                // or clear the selection if there is no such person.
+                selectedCapEntry.setValue(change.getFrom() > 0 ? change.getList().get(change.getFrom() - 1) : null);
+            }
+        }
+    }
+
+    //=============================================== HomeworkManager ===============================================//
+
+    @Override
+    public boolean hasHomework(Homework homework) {
+        requireNonNull(homework);
+        return versionedAddressBook.hasHomework(homework);
+    }
+
+    @Override
+    public void deleteHomework(Homework target) {
+        versionedAddressBook.removeHomework(target);
+    }
+
+    @Override
+    public void addHomework(Homework homework) {
+        versionedAddressBook.addHomework(homework);
+        updateFilteredHomeworkList(PREDICATE_SHOW_ALL_HOMEWORK);
+    }
+
+    @Override
+    public void setHomework(Homework target, Homework editedHomework) {
+        requireAllNonNull(target, editedHomework);
+
+        versionedAddressBook.setHomework(target, editedHomework);
+    }
+
+    /**
+     * Returns an unmodifiable view of the list of {@code Person} backed by the internal list of
+     * {@code versionedAddressBook}
+     */
+    @Override
+    public ObservableList<Homework> getFilteredHomeworkList() {
+        return filteredHomeworkList;
+    }
+
+    @Override
+    public void updateFilteredHomeworkList(Predicate<Homework> predicate) {
+        requireNonNull(predicate);
+        filteredHomeworkList.setPredicate(predicate);
+    }
+
+    @Override
+    public ReadOnlyProperty<Homework> selectedHomeworkProperty() {
+        return selectedHomework;
+    }
+
+    @Override
+    public Homework getSelectedHomework() {
+        return selectedHomework.getValue();
+    }
+
+    @Override
+    public void setSelectedHomework(Homework homework) {
+        if (homework != null && !filteredCapEntryList.contains(homework)) {
+            throw new HomeworkNotFoundException();
+        }
+        selectedHomework.setValue(homework);
+    }
+
+    /**
+     * Ensures {@code selectedPerson} is a valid person in {@code filteredPersons}.
+     */
+    private void ensureSelectedHomeworkIsValid(ListChangeListener.Change<? extends Homework> change) {
+        while (change.next()) {
+            if (selectedHomework.getValue() == null) {
+                // null is always a valid selected person, so we do not need to check that it is valid anymore.
+                return;
+            }
+
+            boolean wasSelectedHomeworkReplaced = change.wasReplaced() && change.getAddedSize()
+                    == change.getRemovedSize() && change.getRemoved().contains(selectedHomework.getValue());
+            if (wasSelectedHomeworkReplaced) {
+                // Update selectedPerson to its new value.
+                int index = change.getRemoved().indexOf(selectedHomework.getValue());
+                selectedHomework.setValue(change.getAddedSubList().get(index));
+                continue;
+            }
+
+            boolean wasSelectedHomeworkRemoved = change.getRemoved().stream()
+                    .anyMatch(removedHomework -> selectedHomework.getValue().equals(removedHomework));
+            if (wasSelectedHomeworkRemoved) {
+                // Select the person that came before it in the list,
+                // or clear the selection if there is no such person.
+                selectedHomework.setValue(change.getFrom() > 0 ? change.getList().get(change.getFrom() - 1) : null);
+            }
+        }
+    }
+
     @Override
     public boolean equals(Object obj) {
         // short circuit if same object
@@ -326,7 +419,7 @@ public class ModelManager implements Model {
                 && userPrefs.equals(other.userPrefs)
                 && filteredPersons.equals(other.filteredPersons)
                 && filteredCapEntryList.equals(other.filteredCapEntryList)
+                && filteredHomeworkList.equals(other.filteredHomeworkList)
                 && Objects.equals(selectedPerson.get(), other.selectedPerson.get());
     }
-
 }

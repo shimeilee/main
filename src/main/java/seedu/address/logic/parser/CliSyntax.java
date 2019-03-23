@@ -12,13 +12,18 @@ public class CliSyntax {
     public static final Prefix PREFIX_ADDRESS = new Prefix("a/");
     public static final Prefix PREFIX_TAG = new Prefix("t/");
 
+    //===== HomeworkManager =====//
     public static final Prefix PREFIX_MODULECODE = new Prefix("mc/");
     public static final Prefix PREFIX_MODULENAME = new Prefix("mn/");
     public static final Prefix PREFIX_HOMEWORK = new Prefix("hw/");
     public static final Prefix PREFIX_DEADLINE = new Prefix("d/");
-    public static final Prefix PREFIX_PRIORITY = new Prefix("p/");
+    //public static final Prefix PREFIX_PRIORITY = new Prefix("p/");
+
+    //==== CapManager =====//
     public static final Prefix PREFIX_MODULEGRADE = new Prefix("g/");
     public static final Prefix PREFIX_MODULECREDITS = new Prefix("mcs/");
+
+    //===== UI =====//
     public static final String HOMEWORK_MANAGER = "HomeworkManager";
     public static final String NOTES_MANAGER = "NotesManager";
     public static final String CAP_MANAGER = "CapManager";

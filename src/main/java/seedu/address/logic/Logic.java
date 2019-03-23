@@ -10,6 +10,7 @@ import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.ReadOnlyAddressBook;
 import seedu.address.model.cap.CapEntry;
+import seedu.address.model.homework.Homework;
 import seedu.address.model.person.Person;
 
 /**
@@ -34,6 +35,8 @@ public interface Logic {
 
     /** Returns an unmodifiable view of the filtered list of persons */
     ObservableList<Person> getFilteredPersonList();
+
+    ObservableList<Homework> getFilteredHomeworkList();
 
     /**
      * Returns an unmodifiable view of the list of commands entered by the user.
@@ -64,12 +67,15 @@ public interface Logic {
      */
     ReadOnlyProperty<Person> selectedPersonProperty();
 
+    ReadOnlyProperty<Homework> selectedHomeworkProperty();
+
     /**
      * Sets the selected person in the filtered person list.
      *
      * @see seedu.address.model.Model#setSelectedPerson(Person)
      */
     void setSelectedPerson(Person person);
+
 
     // CapEntry
     /** Returns an unmodifiable view of the filtered list of cap entries */
@@ -89,4 +95,5 @@ public interface Logic {
      */
     void setSelectedCapEntry(CapEntry capEntry);
 
+    void setSelectedHomework(Homework homework);
 }
