@@ -138,7 +138,7 @@ public class MainWindow extends UiPart<Stage> {
         commandBoxPlaceholder.getChildren().add(commandBox.getRoot());
 
 
-        handleSwitchToCapsManager();
+        handleSwitchToHomeworkManager();
     }
 
     /**
@@ -240,12 +240,12 @@ public class MainWindow extends UiPart<Stage> {
         iconListPanel.setNotesManagerIconBrightness(0.4);
         iconListPanel.setCapManagerIconBrightness(0.4);
 
+        statusBarFooter.setCurrentManagerText(HOMEWORK_MANAGER);
+
         listPanelPlaceholder.getChildren().clear();
         subInfoPanel.updateSubInfoPanelToPersonList(logic.getFilteredPersonList(), logic.selectedPersonProperty(),
                 logic::setSelectedPerson);
         listPanelPlaceholder.getChildren().add(subInfoPanel.getRoot());
-
-        statusBarFooter.setCurrentManagerText(HOMEWORK_MANAGER);
 
     }
 
@@ -272,12 +272,13 @@ public class MainWindow extends UiPart<Stage> {
         iconListPanel.setNotesManagerIconBrightness(0.4);
         iconListPanel.setCapManagerIconBrightness(0.8);
 
+        statusBarFooter.setCurrentManagerText(CAP_MANAGER);
+
         listPanelPlaceholder.getChildren().clear();
         subInfoPanel.updateSubInfoPanelToCapEntryList(logic.getFilteredCapEntryList(), logic.selectedCapEntryProperty(),
                 logic::setSelectedCapEntry);
         listPanelPlaceholder.getChildren().add(subInfoPanel.getRoot());
 
-        statusBarFooter.setCurrentManagerText(CAP_MANAGER);
     }
 
 }

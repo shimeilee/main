@@ -1,8 +1,10 @@
-package seedu.address.model.person;
+package seedu.address.model.homework;
 
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
 import java.util.Objects;
+
+import seedu.address.model.person.Person;
 
 /**
  * Represents a Date for a deadline in a homework entry in UltiStudent.
