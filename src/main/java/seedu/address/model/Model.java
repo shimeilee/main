@@ -7,6 +7,7 @@ import javafx.beans.property.ReadOnlyProperty;
 import javafx.collections.ObservableList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.model.cap.CapEntry;
+import seedu.address.model.homework.Homework;
 import seedu.address.model.person.Person;
 
 /**
@@ -16,6 +17,7 @@ public interface Model {
     /** {@code Predicate} that always evaluate to true */
     Predicate<Person> PREDICATE_SHOW_ALL_PERSONS = unused -> true;
     Predicate<CapEntry> PREDICATE_SHOW_ALL_CAPENTRIES = unused -> true;
+    Predicate<Homework> PREDICATE_SHOW_ALL_HOMEWORK = unused -> true;
 
     /**
      * Replaces user prefs data with the data in {@code userPrefs}.
@@ -167,7 +169,7 @@ public interface Model {
 
     /**
      * Selected cap entry in the filtered cap entry list.
-     * null if no person is selected.
+     * null if no cap entry is selected.
      */
     ReadOnlyProperty<CapEntry> selectedCapEntryProperty();
 
@@ -182,4 +184,55 @@ public interface Model {
      */
     void setSelectedCapEntry(CapEntry capEntry);
 
+    //=========== Homework ===========================================================================
+    /**
+     * Returns true if a homework with the same identity as {@code homework} exists in the UltiStudent.
+     */
+    boolean hasHomework(Homework homework);
+
+    /**
+     * Deletes the given homework.
+     * The homework must exist in the UltiStudent.
+     */
+    void deleteHomework(Homework target);
+
+    /**
+     * Adds the given homework.
+     * {@code homework} must not already exist in the UltiStudent.
+     */
+    void addHomework(Homework homework);
+
+    /**
+     * Replaces the given cap entry {@code target} with {@code editedHomework}.
+     * {@code target} must exist in the UltiStudent.
+     * The homework identity of {@code editedHomework} must not be the same as another existing cap entry
+     * in the UltiStudent.
+     */
+    void setHomework(Homework target, Homework editedHomework);
+
+    /** Returns an unmodifiable view of the filtered homework list */
+    ObservableList<Homework> getFilteredHomeworkList();
+
+    /**
+     * Updates the filter of the filtered homework list to filter by the given {@code predicate}.
+     * @throws NullPointerException if {@code predicate} is null.
+     */
+    void updateFilteredHomeworkList(Predicate<Homework> predicate);
+
+    /**
+     * Selected homework in the filtered cap entry list.
+     * null if no homework is selected.
+     */
+    ReadOnlyProperty<Homework> selectedHomeworkProperty();
+
+    /**
+     * Returns the selected cap entry in the filtered homework list.
+     * null if no homework is selected.
+     */
+    Homework getSelectedHomework();
+
+    /**
+     * Sets the selected homework in the filtered homework list.
+     */
+    void setSelectedHomework(Homework homework);
 }
