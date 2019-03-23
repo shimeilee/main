@@ -3,6 +3,7 @@ package seedu.address.logic;
 import java.nio.file.Path;
 
 import javafx.beans.property.ReadOnlyProperty;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.ObservableList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.logic.commands.CommandResult;
@@ -10,6 +11,7 @@ import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.ReadOnlyAddressBook;
 import seedu.address.model.cap.CapEntry;
+import seedu.address.model.homework.Homework;
 import seedu.address.model.person.Person;
 
 /**
@@ -36,6 +38,8 @@ public interface Logic {
     ObservableList<Person> getFilteredPersonList();
 
     ObservableList<CapEntry> getFilteredCapEntryList();
+
+    ObservableList<Homework> getFilteredHomeworkList();
 
     /**
      * Returns an unmodifiable view of the list of commands entered by the user.
@@ -68,6 +72,8 @@ public interface Logic {
 
     ReadOnlyProperty<CapEntry> selectedCapEntryProperty();
 
+    ReadOnlyProperty<Homework> selectedHomeworkProperty();
+
     /**
      * Sets the selected person in the filtered person list.
      *
@@ -76,4 +82,6 @@ public interface Logic {
     void setSelectedPerson(Person person);
 
     void setSelectedCapEntry(CapEntry capEntry);
+
+    void setSelectedHomework(Homework homework);
 }

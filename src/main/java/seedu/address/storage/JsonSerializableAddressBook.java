@@ -11,6 +11,7 @@ import com.fasterxml.jackson.annotation.JsonRootName;
 import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.model.AddressBook;
 import seedu.address.model.ReadOnlyAddressBook;
+import seedu.address.model.homework.Homework;
 import seedu.address.model.person.Person;
 
 /**
@@ -23,6 +24,7 @@ class JsonSerializableAddressBook {
 
     private final List<JsonAdaptedPerson> persons = new ArrayList<>();
     private final List<JsonAdaptedCapEntry> capEntryList = new ArrayList<>();
+    private final List<JsonAdaptedHomeworkList> homeworkList = new ArrayList<>();
 
     /**
      * Constructs a {@code JsonSerializableAddressBook} with the given persons.
@@ -30,6 +32,7 @@ class JsonSerializableAddressBook {
     @JsonCreator
     public JsonSerializableAddressBook(@JsonProperty("persons") List<JsonAdaptedPerson> persons) {
         this.persons.addAll(persons);
+        this.homeworkList.addAll(homeworkList);
     }
 
     /**
@@ -39,6 +42,8 @@ class JsonSerializableAddressBook {
      */
     public JsonSerializableAddressBook(ReadOnlyAddressBook source) {
         persons.addAll(source.getPersonList().stream().map(JsonAdaptedPerson::new).collect(Collectors.toList()));
+        homeworkList.addAll(source.getHomeworkList().stream().map(JsonAdaptedHomeworkList::new)
+                .collect(Collectors.toList()));
     }
 
     /**
@@ -54,6 +59,13 @@ class JsonSerializableAddressBook {
                 throw new IllegalValueException(MESSAGE_DUPLICATE_PERSON);
             }
             addressBook.addPerson(person);
+        }
+        for (JsonAdaptedHomeworkList jsonAdaptedHomeworkList : homeworkList) {
+            Homework homework = jsonAdaptedHomeworkList.toModelType();
+            if (addressBook.hasHomework(homework)) {
+                throw new IllegalValueException(MESSAGE_DUPLICATE_PERSON);
+            }
+            addressBook.addHomework(homework);
         }
         return addressBook;
     }

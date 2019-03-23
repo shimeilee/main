@@ -245,7 +245,7 @@ public class ModelManager implements Model {
                 && Objects.equals(selectedPerson.get(), other.selectedPerson.get());
     }
 
-    //===== CapManager =====//
+    //================================================== CapManager ==================================================//
 
     @Override
     public boolean hasCapEntry(CapEntry capEntry) {
@@ -333,7 +333,7 @@ public class ModelManager implements Model {
         }
     }
 
-    //===== HomeworkManager =====//
+    //=============================================== HomeworkManager ===============================================//
 
     @Override
     public boolean hasHomework(Homework homework) {

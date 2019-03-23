@@ -22,6 +22,18 @@ public class Homework {
         this.deadline = deadline;
     }
 
+    public HomeworkName getHomeworkName() {
+        return homeworkName;
+    }
+
+    public Date getDeadline() {
+        return deadline;
+    }
+
+    public ModuleCode getModuleCode() {
+        return moduleCode;
+    }
+
     @Override
     public String toString() {
         return moduleCode + "; " + homeworkName + "; " + deadline + "; ";

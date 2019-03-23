@@ -16,6 +16,7 @@ import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.Model;
 import seedu.address.model.ReadOnlyAddressBook;
 import seedu.address.model.cap.CapEntry;
+import seedu.address.model.homework.Homework;
 import seedu.address.model.person.Person;
 import seedu.address.storage.Storage;
 
@@ -83,6 +84,11 @@ public class LogicManager implements Logic {
     }
 
     @Override
+    public ObservableList<Homework> getFilteredHomeworkList() {
+        return model.getFilteredHomeworkList();
+    }
+
+    @Override
     public ObservableList<String> getHistory() {
         return history.getHistory();
     }
@@ -113,6 +119,11 @@ public class LogicManager implements Logic {
     }
 
     @Override
+    public ReadOnlyProperty<Homework> selectedHomeworkProperty() {
+        return model.selectedHomeworkProperty();
+    }
+
+    @Override
     public void setSelectedPerson(Person person) {
         model.setSelectedPerson(person);
     }
@@ -120,5 +131,10 @@ public class LogicManager implements Logic {
     @Override
     public void setSelectedCapEntry(CapEntry capEntry) {
         model.setSelectedCapEntry(capEntry);
+    }
+
+    @Override
+    public void setSelectedHomework(Homework homework) {
+        model.setSelectedHomework(homework);
     }
 }
