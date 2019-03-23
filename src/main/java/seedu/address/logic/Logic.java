@@ -9,6 +9,7 @@ import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.ReadOnlyAddressBook;
+import seedu.address.model.cap.CapEntry;
 import seedu.address.model.person.Person;
 
 /**
@@ -33,6 +34,8 @@ public interface Logic {
 
     /** Returns an unmodifiable view of the filtered list of persons */
     ObservableList<Person> getFilteredPersonList();
+
+    ObservableList<CapEntry> getFilteredCapEntryList();
 
     /**
      * Returns an unmodifiable view of the list of commands entered by the user.
@@ -63,10 +66,14 @@ public interface Logic {
      */
     ReadOnlyProperty<Person> selectedPersonProperty();
 
+    ReadOnlyProperty<CapEntry> selectedCapEntryProperty();
+
     /**
      * Sets the selected person in the filtered person list.
      *
      * @see seedu.address.model.Model#setSelectedPerson(Person)
      */
     void setSelectedPerson(Person person);
+
+    void setSelectedCapEntry(CapEntry capEntry);
 }

@@ -17,7 +17,7 @@ public class AddCapEntryCommand extends Command {
 
     public static final String COMMAND_WORD = "addCapEntry";
 
-    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds a CAP Entry to UltiStudent's CAP Manager. "
+    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds a CAP Entry to UltiStudent's CAP Manager.\n"
             + "Parameters: "
             + PREFIX_MODULECODE + "MODULE_CODE "
             + PREFIX_MODULEGRADE + "MODULE_GRADE "

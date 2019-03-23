@@ -52,7 +52,7 @@ public class MainWindow extends UiPart<Stage> {
     private MenuItem helpMenuItem;
 
     @FXML
-    private StackPane personListPanelPlaceholder;
+    private StackPane listPanelPlaceholder;
 
     @FXML
     private StackPane resultDisplayPlaceholder;
@@ -123,9 +123,7 @@ public class MainWindow extends UiPart<Stage> {
         browserPanel = new BrowserPanel(logic.selectedPersonProperty());
         browserPlaceholder.getChildren().add(browserPanel.getRoot());
 
-        subInfoPanel = new SubInfoPanel(logic.getFilteredPersonList(), logic.selectedPersonProperty(),
-                logic::setSelectedPerson);
-        personListPanelPlaceholder.getChildren().add(subInfoPanel.getRoot());
+        subInfoPanel = new SubInfoPanel();
 
         iconListPanel = new IconListPanel();
         iconListPanelPlaceholder.getChildren().add(iconListPanel.getRoot());
@@ -139,7 +137,8 @@ public class MainWindow extends UiPart<Stage> {
         CommandBox commandBox = new CommandBox(this::executeCommand, logic.getHistory());
         commandBoxPlaceholder.getChildren().add(commandBox.getRoot());
 
-        handleSwitchToHomeworkManager();
+
+        handleSwitchToCapsManager();
     }
 
     /**
@@ -241,7 +240,13 @@ public class MainWindow extends UiPart<Stage> {
         iconListPanel.setNotesManagerIconBrightness(0.4);
         iconListPanel.setCapManagerIconBrightness(0.4);
 
+        listPanelPlaceholder.getChildren().clear();
+        subInfoPanel.updateSubInfoPanelToPersonList(logic.getFilteredPersonList(), logic.selectedPersonProperty(),
+                logic::setSelectedPerson);
+        listPanelPlaceholder.getChildren().add(subInfoPanel.getRoot());
+
         statusBarFooter.setCurrentManagerText(HOMEWORK_MANAGER);
+
     }
 
     /**
@@ -266,6 +271,11 @@ public class MainWindow extends UiPart<Stage> {
         iconListPanel.setHomeworkManagerIconBrightness(0.4);
         iconListPanel.setNotesManagerIconBrightness(0.4);
         iconListPanel.setCapManagerIconBrightness(0.8);
+
+        listPanelPlaceholder.getChildren().clear();
+        subInfoPanel.updateSubInfoPanelToCapEntryList(logic.getFilteredCapEntryList(), logic.selectedCapEntryProperty(),
+                logic::setSelectedCapEntry);
+        listPanelPlaceholder.getChildren().add(subInfoPanel.getRoot());
 
         statusBarFooter.setCurrentManagerText(CAP_MANAGER);
     }
