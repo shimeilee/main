@@ -26,13 +26,13 @@ class JsonSerializableAddressBook {
     private final List<JsonAdaptedPerson> persons = new ArrayList<>();
     private final List<JsonAdaptedCapEntry> capEntryList = new ArrayList<>();
 
-//    /**
-//     * Constructs a {@code JsonSerializableAddressBook} with the given persons.
-//     */
-//    @JsonCreator
-//    public JsonSerializableAddressBook(@JsonProperty("persons") List<JsonAdaptedPerson> persons) {
-//        this.persons.addAll(persons);
-//    }
+    //    /**
+    //     * Constructs a {@code JsonSerializableAddressBook} with the given persons.
+    //     */
+    //    @JsonCreator
+    //    public JsonSerializableAddressBook(@JsonProperty("persons") List<JsonAdaptedPerson> persons) {
+    //        this.persons.addAll(persons);
+    //    }
 
     /**
      * Constructs a {@code JsonSerializableAddressBook} with the given capEntryList and persons.
@@ -51,8 +51,8 @@ class JsonSerializableAddressBook {
      */
     public JsonSerializableAddressBook(ReadOnlyAddressBook source) {
         persons.addAll(source.getPersonList().stream().map(JsonAdaptedPerson::new).collect(Collectors.toList()));
-        capEntryList.addAll(source.getCapEntryList().stream().map(JsonAdaptedCapEntry::new).
-                collect(Collectors.toList()));
+        capEntryList.addAll(source.getCapEntryList().stream().map(JsonAdaptedCapEntry::new)
+                .collect(Collectors.toList()));
     }
 
     /**
@@ -62,13 +62,13 @@ class JsonSerializableAddressBook {
      */
     public AddressBook toModelType() throws IllegalValueException {
         AddressBook addressBook = new AddressBook();
-//        for (JsonAdaptedPerson jsonAdaptedPerson : persons) {
-//            Person person = jsonAdaptedPerson.toModelType();
-//            if (addressBook.hasPerson(person)) {
-//                throw new IllegalValueException(MESSAGE_DUPLICATE_PERSON);
-//            }
-//            addressBook.addPerson(person);
-//        }
+        for (JsonAdaptedPerson jsonAdaptedPerson : persons) {
+            Person person = jsonAdaptedPerson.toModelType();
+            if (addressBook.hasPerson(person)) {
+                throw new IllegalValueException(MESSAGE_DUPLICATE_PERSON);
+            }
+            addressBook.addPerson(person);
+        }
         for (JsonAdaptedCapEntry jsonAdaptedCapEntry : capEntryList) {
             CapEntry capEntry = jsonAdaptedCapEntry.toModelType();
             if (addressBook.hasCapEntry(capEntry)) {

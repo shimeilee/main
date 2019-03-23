@@ -11,7 +11,10 @@ import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.cap.CapEntry;
 
-public class DeleteCapEntryCommand extends Command{
+/**
+ * Deletes a cap entry identified using it's displayed index from the Cap Manager.
+ */
+public class DeleteCapEntryCommand extends Command {
 
     public static final String COMMAND_WORD = "deleteCapEntry";
 
