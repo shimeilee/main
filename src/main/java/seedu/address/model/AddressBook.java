@@ -9,6 +9,8 @@ import javafx.collections.ObservableList;
 import seedu.address.commons.util.InvalidationListenerManager;
 import seedu.address.model.cap.CapEntry;
 import seedu.address.model.cap.UniqueCapEntryList;
+import seedu.address.model.homework.Homework;
+import seedu.address.model.homework.UniqueHomeworkList;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.UniquePersonList;
 
@@ -20,6 +22,7 @@ public class AddressBook implements ReadOnlyAddressBook {
 
     private final UniqueCapEntryList capEntryList;
     private final UniquePersonList persons;
+    private final UniqueHomeworkList homeworkList;
     private final InvalidationListenerManager invalidationListenerManager = new InvalidationListenerManager();
 
     /*
@@ -32,6 +35,7 @@ public class AddressBook implements ReadOnlyAddressBook {
     {
         persons = new UniquePersonList();
         capEntryList = new UniqueCapEntryList();
+        homeworkList = new UniqueHomeworkList();
     }
 
     public AddressBook() {}
@@ -71,6 +75,7 @@ public class AddressBook implements ReadOnlyAddressBook {
         requireNonNull(newData);
         setCapEntryList(newData.getCapEntryList());
         setPersons(newData.getPersonList());
+        setHomework(newData.getHomeworkList());
     }
 
     //// person-level operations
@@ -152,6 +157,46 @@ public class AddressBook implements ReadOnlyAddressBook {
         indicateModified();
     }
 
+    public void setHomework(Homework target, Homework editedHomework) {
+        requireNonNull(editedHomework);
+
+        homeworkList.setHomework(target, editedHomework);
+        indicateModified();
+    }
+
+    public void setHomework(List<Homework> homework) {
+        this.homeworkList.setHomework(homework);
+        indicateModified();
+    }
+
+    /**
+     * Returns true if a person with the same identity as {@code person} exists in the UltiStudent.
+     */
+    public boolean hasHomework(Homework homework) {
+        requireNonNull(homework);
+        return this.homeworkList.contains(homework);
+    }
+
+    /**
+     * Adds a person to the UltiStudent.
+     * The person must not already exist in the UltiStudent.
+     */
+    public void addHomework(Homework homework) {
+        this.homeworkList.add(homework);
+        indicateModified();
+    }
+
+    /**
+     * Removes {@code key} from this {@code AddressBook}.
+     * {@code key} must exist in the UltiStudent.
+     */
+    public void removeHomework(Homework homework) {
+        this.homeworkList.remove(homework);
+        indicateModified();
+    }
+
+
+
     @Override
     public void addListener(InvalidationListener listener) {
         invalidationListenerManager.addListener(listener);
@@ -186,6 +231,12 @@ public class AddressBook implements ReadOnlyAddressBook {
     public ObservableList<CapEntry> getCapEntryList() {
         return capEntryList.asUnmodifiableObservableList();
     }
+
+    @Override
+    public ObservableList<Homework> getHomeworkList() {
+        return homeworkList.asUnmodifiableObservableList();
+    }
+
 
     @Override
     public boolean equals(Object other) {

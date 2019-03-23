@@ -94,8 +94,8 @@ public class SubInfoPanelTest extends GuiUnitTest {
      * Also shows the {@code Stage} that displays only {@code SubInfoPanel}.
      */
     private void initUi(ObservableList<Person> backingList) {
-        SubInfoPanel subInfoPanel =
-                new SubInfoPanel(backingList, selectedPerson, selectedPerson::set);
+        SubInfoPanel subInfoPanel = new SubInfoPanel();
+        subInfoPanel.updateSubInfoPanelToPersonList(backingList, selectedPerson, selectedPerson::set);
         uiPartRule.setUiPart(subInfoPanel);
 
         personListPanelHandle = new PersonListPanelHandle(getChildNode(subInfoPanel.getRoot(),

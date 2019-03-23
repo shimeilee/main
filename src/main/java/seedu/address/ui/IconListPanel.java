@@ -30,9 +30,9 @@ public class IconListPanel extends UiPart<Region> {
 
     public IconListPanel() {
         super(FXML);
-        setHomeworkManagerIconBrightness(0.5);
-        setNotesManagerIconBrightness(0.5);
-        setCapManagerIconBrightness(0.5);
+        setHomeworkManagerIconBrightness(0.4);
+        setNotesManagerIconBrightness(0.4);
+        setCapManagerIconBrightness(0.4);
     }
 
     public void setHomeworkManagerIconBrightness(double brightness) {

@@ -9,9 +9,13 @@ import java.util.Set;
 import seedu.address.commons.core.index.Index;
 import seedu.address.commons.util.StringUtil;
 import seedu.address.logic.parser.exceptions.ParseException;
-import seedu.address.model.cap.ModuleCode;
 import seedu.address.model.cap.ModuleCredits;
 import seedu.address.model.cap.ModuleGrade;
+import seedu.address.model.homework.Date;
+import seedu.address.model.homework.Day;
+import seedu.address.model.homework.HomeworkName;
+import seedu.address.model.homework.Month;
+import seedu.address.model.homework.Year;
 import seedu.address.model.person.Address;
 import seedu.address.model.person.Email;
 import seedu.address.model.person.Name;
@@ -38,19 +42,21 @@ public class ParserUtil {
         return Index.fromOneBased(Integer.parseInt(trimmedIndex));
     }
 
+    //===== CapManager =====//
+
     /**
      * Parses a {@code String moduleCode} into a {@code ModuleCode}.
      * Leading and trailing whitespaces will be trimmed.
      *
-     * @throws ParseException if the given {@code name} is invalid.
+     * @throws ParseException if the given {@code moduleCode} is invalid.
      */
-    public static ModuleCode parseModuleCode(String moduleCode) throws ParseException {
+    public static seedu.address.model.cap.ModuleCode parseModuleCode(String moduleCode) throws ParseException {
         requireNonNull(moduleCode);
         String trimmedModuleCode = moduleCode.trim();
-        if (!ModuleCode.isValidModuleCode(trimmedModuleCode)) {
-            throw new ParseException(ModuleCode.MESSAGE_CONSTRAINTS);
+        if (!seedu.address.model.cap.ModuleCode.isValidModuleCode(trimmedModuleCode)) {
+            throw new ParseException(seedu.address.model.cap.ModuleCode.MESSAGE_CONSTRAINTS);
         }
-        return new ModuleCode(trimmedModuleCode);
+        return new seedu.address.model.cap.ModuleCode(trimmedModuleCode);
     }
 
     /**
@@ -82,6 +88,63 @@ public class ParserUtil {
         }
         return new ModuleCredits(trimmedModuleCredits);
     }
+
+    //===== HomeworkManager =====//
+
+    /**
+     * Parses a {@code String homeworkName} into a {@code HomeworkName}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code homeworkName} is invalid.
+     */
+    public static HomeworkName parseHomeworkName(String homeworkName) throws ParseException {
+        requireNonNull(homeworkName);
+        String trimmedHomeworkName = homeworkName.trim();
+        if (!HomeworkName.isValidHomeworkName(trimmedHomeworkName)) {
+            throw new ParseException(HomeworkName.MESSAGE_CONSTRAINTS);
+        }
+        return new HomeworkName(homeworkName);
+    }
+
+    /**
+     * Parses a {@code String moduleCode} into a {@code ModuleCode}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code moduleCode} is invalid.
+     */
+    public static seedu.address.model.homework.ModuleCode parseHomeworkModuleCode(String moduleCode)
+            throws ParseException {
+        requireNonNull(moduleCode);
+        String trimmedModuleCode = moduleCode.trim();
+        if (!seedu.address.model.homework.ModuleCode.isValidModuleCode(trimmedModuleCode)) {
+            throw new ParseException(seedu.address.model.homework.ModuleCode.MESSAGE_CONSTRAINTS);
+        }
+        return new seedu.address.model.homework.ModuleCode(moduleCode);
+    }
+
+    /**
+     * Parses a {@code String deadline} into a {@code Date}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code deadline} is invalid.
+     */
+    public static Date parseDate(String deadline) throws ParseException {
+        requireNonNull(deadline);
+        String trimmedDeadline = deadline.trim();
+        String[] deadlineParts = trimmedDeadline.split("/");
+        if (!Day.isValidDay(deadlineParts[0])) {
+            throw new ParseException(Day.MESSAGE_CONSTRAINTS);
+        }
+        //TODO: if (!Month.isValidMonth())
+
+        if (!Year.isValidYear(deadlineParts[2])) {
+            throw new ParseException(Year.MESSAGE_CONSTRAINTS);
+        }
+        return new Date(new Day(deadlineParts[0]), Month.JAN, new Year(deadlineParts[2]));
+    }
+
+
+    //===== Person (AB4) =====//
 
     /**
      * Parses a {@code String name} into a {@code Name}.

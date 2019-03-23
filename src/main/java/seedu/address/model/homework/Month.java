@@ -1,4 +1,4 @@
-package seedu.address.model.person;
+package seedu.address.model.homework;
 
 /**
  * Represents a month for a date.
