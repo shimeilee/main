@@ -26,23 +26,23 @@ class JsonSerializableAddressBook {
     private final List<JsonAdaptedPerson> persons = new ArrayList<>();
     private final List<JsonAdaptedCapEntry> capEntryList = new ArrayList<>();
 
-    //    /**
-    //     * Constructs a {@code JsonSerializableAddressBook} with the given persons.
-    //     */
-    //    @JsonCreator
-    //    public JsonSerializableAddressBook(@JsonProperty("persons") List<JsonAdaptedPerson> persons) {
-    //        this.persons.addAll(persons);
-    //    }
-
     /**
-     * Constructs a {@code JsonSerializableAddressBook} with the given capEntryList and persons.
+     * Constructs a {@code JsonSerializableAddressBook} with the given persons.
      */
     @JsonCreator
-    public JsonSerializableAddressBook(@JsonProperty("persons") List<JsonAdaptedPerson> persons,
-                                       @JsonProperty("capEntryList") List<JsonAdaptedCapEntry> capEntryList) {
+    public JsonSerializableAddressBook(@JsonProperty("persons") List<JsonAdaptedPerson> persons) {
         this.persons.addAll(persons);
-        this.capEntryList.addAll(capEntryList);
     }
+
+    //    /**
+    //     * Constructs a {@code JsonSerializableAddressBook} with the given capEntryList and persons.
+    //     */
+    //    @JsonCreator
+    //    public JsonSerializableAddressBook(@JsonProperty("persons") List<JsonAdaptedPerson> persons,
+    //                                       @JsonProperty("capEntryList") List<JsonAdaptedCapEntry> capEntryList) {
+    //        this.persons.addAll(persons);
+    //        this.capEntryList.addAll(capEntryList);
+    //    }
 
     /**
      * Converts a given {@code ReadOnlyAddressBook} into this class for Jackson use.
