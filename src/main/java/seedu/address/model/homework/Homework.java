@@ -1,4 +1,4 @@
-package seedu.address.model.person;
+package seedu.address.model.homework;
 
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
@@ -20,6 +20,18 @@ public class Homework {
         this.moduleCode = moduleCode;
         this.homeworkName = homeworkName;
         this.deadline = deadline;
+    }
+
+    public HomeworkName getHomeworkName() {
+        return homeworkName;
+    }
+
+    public Date getDeadline() {
+        return deadline;
+    }
+
+    public ModuleCode getModuleCode() {
+        return moduleCode;
     }
 
     @Override

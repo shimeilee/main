@@ -24,6 +24,7 @@ import seedu.address.model.Model;
 import seedu.address.model.ReadOnlyAddressBook;
 import seedu.address.model.ReadOnlyUserPrefs;
 import seedu.address.model.cap.CapEntry;
+import seedu.address.model.homework.Homework;
 import seedu.address.model.person.Person;
 import seedu.address.testutil.PersonBuilder;
 
@@ -204,7 +205,7 @@ public class AddCommandTest {
         }
 
 
-        // Cap Entry
+        //============================================= Cap Entry =============================================//
 
         @Override
         public boolean hasCapEntry(CapEntry capEntry) {
@@ -250,6 +251,54 @@ public class AddCommandTest {
         public void setSelectedCapEntry(CapEntry capEntry) {
             throw new AssertionError("This method should not be called.");
         }
+
+        //============================================= Homework Manager =============================================//
+
+        @Override
+        public boolean hasHomework(Homework homework) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void deleteHomework(Homework homework) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void addHomework(Homework homework) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void setHomework(Homework target, Homework editedHomework) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public ObservableList<Homework> getFilteredHomeworkList() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void updateFilteredHomeworkList(Predicate<Homework> predicate) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public ReadOnlyProperty<Homework> selectedHomeworkProperty() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public Homework getSelectedHomework() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void setSelectedHomework(Homework homework) {
+            throw new AssertionError("This method should not be called.");
+        }
+
     }
 
     /**

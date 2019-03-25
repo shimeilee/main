@@ -9,14 +9,11 @@ import java.util.Set;
 
 import seedu.address.model.tag.Tag;
 
-/** Represents a CAP entry for the CAP calculator in the address book.
- * Guarantees: WIP.
+/** Represents a CAP entry for the CAP Manager in the address book.
+ * Guarantees: details are present and not null, field values are validated, immutable.
  */
 
 public class CapEntry {
-
-    public static final String MESSAGE_CONSTRAINTS = "Entries must beAddresses can take any values, "
-            + "and it should not be blank";
 
     // Identity fields
     private ModuleCode moduleCode;
@@ -29,8 +26,8 @@ public class CapEntry {
     /**
      * Every field must be present and not null.
      */
-    public CapEntry(ModuleCode moduleCode, ModuleGrade moduleGrade, ModuleCredits modularCredits, Set<Tag> tags) {
-        requireAllNonNull(moduleCode, moduleGrade, modularCredits, tags);
+    public CapEntry(ModuleCode moduleCode, ModuleGrade moduleGrade, ModuleCredits moduleCredits, Set<Tag> tags) {
+        requireAllNonNull(moduleCode, moduleGrade, moduleCredits, tags);
         this.moduleCode = moduleCode;
         this.moduleGrade = moduleGrade;
         this.moduleCredits = moduleCredits;

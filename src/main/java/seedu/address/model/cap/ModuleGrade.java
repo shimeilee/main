@@ -23,7 +23,7 @@ public class ModuleGrade {
     public static final String D_GRADE = "D";
     public static final String F_GRADE = "F";
 
-    private String value;
+    public final String value;
     private double points;
 
     /**

@@ -1,7 +1,5 @@
 package seedu.address.ui;
 
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.time.Clock;
 import java.util.Date;
 
@@ -33,14 +31,14 @@ public class StatusBarFooter extends UiPart<Region> {
     @FXML
     private Label syncStatus;
     @FXML
-    private Label saveLocationStatus;
+    private Label currentManager;
 
 
-    public StatusBarFooter(Path saveLocation, ReadOnlyAddressBook addressBook) {
+    public StatusBarFooter(String manager, ReadOnlyAddressBook addressBook) {
         super(FXML);
         addressBook.addListener(observable -> updateSyncStatus());
         syncStatus.setText(SYNC_STATUS_INITIAL);
-        saveLocationStatus.setText(Paths.get(".").resolve(saveLocation).toString());
+        currentManager.setText(manager);
     }
 
     /**
@@ -64,6 +62,14 @@ public class StatusBarFooter extends UiPart<Region> {
         long now = clock.millis();
         String lastUpdated = new Date(now).toString();
         syncStatus.setText(String.format(SYNC_STATUS_UPDATED, lastUpdated));
+    }
+
+    /**
+     * Updates the footer to the respective manager.
+     * @param manager the current manager that is being displayed.
+     */
+    public void setCurrentManagerText(String manager) {
+        currentManager.setText(manager);
     }
 
 }

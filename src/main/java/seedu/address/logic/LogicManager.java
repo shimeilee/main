@@ -11,10 +11,12 @@ import seedu.address.commons.core.LogsCenter;
 import seedu.address.logic.commands.Command;
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
-import seedu.address.logic.parser.AddressBookParser;
+import seedu.address.logic.parser.UltiStudentParser;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.Model;
 import seedu.address.model.ReadOnlyAddressBook;
+import seedu.address.model.cap.CapEntry;
+import seedu.address.model.homework.Homework;
 import seedu.address.model.person.Person;
 import seedu.address.storage.Storage;
 
@@ -28,14 +30,14 @@ public class LogicManager implements Logic {
     private final Model model;
     private final Storage storage;
     private final CommandHistory history;
-    private final AddressBookParser addressBookParser;
+    private final UltiStudentParser ultiStudentParser;
     private boolean addressBookModified;
 
     public LogicManager(Model model, Storage storage) {
         this.model = model;
         this.storage = storage;
         history = new CommandHistory();
-        addressBookParser = new AddressBookParser();
+        ultiStudentParser = new UltiStudentParser();
 
         // Set addressBookModified to true whenever the models' UltiStudent is modified.
         model.getAddressBook().addListener(observable -> addressBookModified = true);
@@ -48,7 +50,7 @@ public class LogicManager implements Logic {
 
         CommandResult commandResult;
         try {
-            Command command = addressBookParser.parseCommand(commandText);
+            Command command = ultiStudentParser.parseCommand(commandText);
             commandResult = command.execute(model, history);
         } finally {
             history.add(commandText);
@@ -77,6 +79,16 @@ public class LogicManager implements Logic {
     }
 
     @Override
+    public ObservableList<CapEntry> getFilteredCapEntryList() {
+        return model.getFilteredCapEntryList();
+    }
+
+    @Override
+    public ObservableList<Homework> getFilteredHomeworkList() {
+        return model.getFilteredHomeworkList();
+    }
+
+    @Override
     public ObservableList<String> getHistory() {
         return history.getHistory();
     }
@@ -102,7 +114,27 @@ public class LogicManager implements Logic {
     }
 
     @Override
+    public ReadOnlyProperty<CapEntry> selectedCapEntryProperty() {
+        return model.selectedCapEntryProperty();
+    }
+
+    @Override
+    public ReadOnlyProperty<Homework> selectedHomeworkProperty() {
+        return model.selectedHomeworkProperty();
+    }
+
+    @Override
     public void setSelectedPerson(Person person) {
         model.setSelectedPerson(person);
+    }
+
+    @Override
+    public void setSelectedCapEntry(CapEntry capEntry) {
+        model.setSelectedCapEntry(capEntry);
+    }
+
+    @Override
+    public void setSelectedHomework(Homework homework) {
+        model.setSelectedHomework(homework);
     }
 }

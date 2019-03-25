@@ -1,5 +1,9 @@
 package seedu.address.ui;
 
+import static seedu.address.logic.parser.CliSyntax.CAP_MANAGER;
+import static seedu.address.logic.parser.CliSyntax.HOMEWORK_MANAGER;
+import static seedu.address.logic.parser.CliSyntax.NOTES_MANAGER;
+
 import java.util.logging.Logger;
 
 import javafx.event.ActionEvent;
@@ -36,6 +40,7 @@ public class MainWindow extends UiPart<Stage> {
     private ResultDisplay resultDisplay;
     private HelpWindow helpWindow;
     private IconListPanel iconListPanel;
+    private StatusBarFooter statusBarFooter;
 
     @FXML
     private StackPane browserPlaceholder;
@@ -47,7 +52,7 @@ public class MainWindow extends UiPart<Stage> {
     private MenuItem helpMenuItem;
 
     @FXML
-    private StackPane personListPanelPlaceholder;
+    private StackPane listPanelPlaceholder;
 
     @FXML
     private StackPane resultDisplayPlaceholder;
@@ -118,22 +123,22 @@ public class MainWindow extends UiPart<Stage> {
         browserPanel = new BrowserPanel(logic.selectedPersonProperty());
         browserPlaceholder.getChildren().add(browserPanel.getRoot());
 
-        subInfoPanel = new SubInfoPanel(logic.getFilteredPersonList(), logic.selectedPersonProperty(),
-                logic::setSelectedPerson);
-        personListPanelPlaceholder.getChildren().add(subInfoPanel.getRoot());
+        subInfoPanel = new SubInfoPanel();
 
         iconListPanel = new IconListPanel();
         iconListPanelPlaceholder.getChildren().add(iconListPanel.getRoot());
-        handleSwitchToHomeworkManager();
 
         resultDisplay = new ResultDisplay();
         resultDisplayPlaceholder.getChildren().add(resultDisplay.getRoot());
 
-        StatusBarFooter statusBarFooter = new StatusBarFooter(logic.getAddressBookFilePath(), logic.getAddressBook());
+        statusBarFooter = new StatusBarFooter(HOMEWORK_MANAGER, logic.getAddressBook());
         statusbarPlaceholder.getChildren().add(statusBarFooter.getRoot());
 
         CommandBox commandBox = new CommandBox(this::executeCommand, logic.getHistory());
         commandBoxPlaceholder.getChildren().add(commandBox.getRoot());
+
+
+        handleSwitchToNotesManager();
     }
 
     /**
@@ -195,13 +200,13 @@ public class MainWindow extends UiPart<Stage> {
                 String [] selectedManager = commandResult.getFeedbackToUser().split(" ");
                 logger.info(selectedManager[0]);
                 switch (selectedManager[0]) {
-                case "HomeworkManager":
+                case HOMEWORK_MANAGER:
                     handleSwitchToHomeworkManager();
                     break;
-                case "NotesManager":
+                case NOTES_MANAGER:
                     handleSwitchToNotesManager();
                     break;
-                case "CapsManager":
+                case CAP_MANAGER:
                     handleSwitchToCapsManager();
                     break;
                 default:
@@ -234,6 +239,14 @@ public class MainWindow extends UiPart<Stage> {
         iconListPanel.setHomeworkManagerIconBrightness(0.8);
         iconListPanel.setNotesManagerIconBrightness(0.4);
         iconListPanel.setCapManagerIconBrightness(0.4);
+
+        statusBarFooter.setCurrentManagerText(HOMEWORK_MANAGER);
+
+        listPanelPlaceholder.getChildren().clear();
+        subInfoPanel.updateSubInfoPanelToHomeworkList(logic.getFilteredHomeworkList(), logic.selectedHomeworkProperty(),
+                logic::setSelectedHomework);
+        listPanelPlaceholder.getChildren().add(subInfoPanel.getRoot());
+
     }
 
     /**
@@ -245,6 +258,13 @@ public class MainWindow extends UiPart<Stage> {
         iconListPanel.setHomeworkManagerIconBrightness(0.4);
         iconListPanel.setNotesManagerIconBrightness(0.8);
         iconListPanel.setCapManagerIconBrightness(0.4);
+
+        statusBarFooter.setCurrentManagerText(NOTES_MANAGER);
+
+        listPanelPlaceholder.getChildren().clear();
+        subInfoPanel.updateSubInfoPanelToPersonList(logic.getFilteredPersonList(), logic.selectedPersonProperty(),
+                logic::setSelectedPerson);
+        listPanelPlaceholder.getChildren().add(subInfoPanel.getRoot());
     }
 
     /**
@@ -256,6 +276,14 @@ public class MainWindow extends UiPart<Stage> {
         iconListPanel.setHomeworkManagerIconBrightness(0.4);
         iconListPanel.setNotesManagerIconBrightness(0.4);
         iconListPanel.setCapManagerIconBrightness(0.8);
+
+        statusBarFooter.setCurrentManagerText(CAP_MANAGER);
+
+        listPanelPlaceholder.getChildren().clear();
+        subInfoPanel.updateSubInfoPanelToCapEntryList(logic.getFilteredCapEntryList(), logic.selectedCapEntryProperty(),
+                logic::setSelectedCapEntry);
+        listPanelPlaceholder.getChildren().add(subInfoPanel.getRoot());
+
     }
 
 }

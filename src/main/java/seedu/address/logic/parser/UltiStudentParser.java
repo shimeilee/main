@@ -8,15 +8,18 @@ import java.util.regex.Pattern;
 
 import seedu.address.logic.commands.AddCapEntryCommand;
 import seedu.address.logic.commands.AddCommand;
+import seedu.address.logic.commands.AddHomeworkCommand;
 import seedu.address.logic.commands.AddNoteCommand;
 import seedu.address.logic.commands.ClearCommand;
 import seedu.address.logic.commands.Command;
+import seedu.address.logic.commands.DeleteCapEntryCommand;
 import seedu.address.logic.commands.DeleteCommand;
 import seedu.address.logic.commands.EditCommand;
 import seedu.address.logic.commands.ExitCommand;
 import seedu.address.logic.commands.FindCommand;
 import seedu.address.logic.commands.HelpCommand;
 import seedu.address.logic.commands.HistoryCommand;
+import seedu.address.logic.commands.ListCapEntryCommand;
 import seedu.address.logic.commands.ListCommand;
 import seedu.address.logic.commands.OpenCommand;
 import seedu.address.logic.commands.RedoCommand;
@@ -27,7 +30,7 @@ import seedu.address.logic.parser.exceptions.ParseException;
 /**
  * Parses user input.
  */
-public class AddressBookParser {
+public class UltiStudentParser {
 
     /**
      * Used for initial separation of command word and args.
@@ -57,6 +60,9 @@ public class AddressBookParser {
         case AddCapEntryCommand.COMMAND_WORD:
             return new AddCapEntryCommandParser().parse(arguments);
 
+        case AddHomeworkCommand.COMMAND_WORD:
+            return new AddHomeworkCommandParser().parse(arguments);
+
         case EditCommand.COMMAND_WORD:
             return new EditCommandParser().parse(arguments);
 
@@ -66,6 +72,9 @@ public class AddressBookParser {
         case DeleteCommand.COMMAND_WORD:
             return new DeleteCommandParser().parse(arguments);
 
+        case DeleteCapEntryCommand.COMMAND_WORD:
+            return new DeleteCapEntryCommandParser().parse(arguments);
+
         case ClearCommand.COMMAND_WORD:
             return new ClearCommand();
 
@@ -74,6 +83,9 @@ public class AddressBookParser {
 
         case ListCommand.COMMAND_WORD:
             return new ListCommand();
+
+        case ListCapEntryCommand.COMMAND_WORD:
+            return new ListCapEntryCommand();
 
         case HistoryCommand.COMMAND_WORD:
             return new HistoryCommand();
