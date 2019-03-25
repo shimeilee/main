@@ -2,53 +2,43 @@ package seedu.address.model.note;
 
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
+import java.io.File;
+
+import seedu.address.model.tag.Tag;
+
 /**
  * Represents a Note in UltiStudent - Notes Keeping.
+ * Uses the Cornell method to help students write better notes in class.
+ * Cornell method consists of Keywords, Questions, and Summary.
  */
 public class Note {
 
-    /*
-     * The first character of the address must not be a whitespace,
-     * otherwise " " (a blank string) becomes a valid input.
-     */
-    // TODO: change to validate according to input string
-    private static final String VALIDATION_REGEX = "[\\p{Alnum}][\\p{Alnum} ]*";
-
     // Notes fields
-    private String moduleName;
-    private String noteName;
+    private ModuleCode moduleCode;
+    private NoteName noteName;
+    private Tag tag;
 
-    // Data fields
-    // private File content;
-    // AL of AL
+     // Data fields
+    private File content;
 
     /**
      * Every field must be present and not null.
      */
-    public Note(String moduleName, String noteName) {
-        requireAllNonNull(moduleName, noteName);
-        this.moduleName = moduleName;
+    public Note(ModuleCode moduleCode, NoteName noteName, Tag tag) {
+        requireAllNonNull(moduleCode, noteName);
+        this.moduleCode = moduleCode;
         this.noteName = noteName;
-        // content = new File(new );
+        this.tag = tag;
+        this.content = new File();
     }
 
-    /**
-    public Name getName() {
-        return name;
+    public ModuleCode getModuleCode() {
+        return moduleCode;
     }
 
-    public Phone getPhone() {
-        return phone;
+    public NoteName getNoteName() {
+        return noteName;
     }
-
-    public Email getEmail() {
-        return email;
-    }
-
-    public Address getAddress() {
-        return address;
-    }
-     **/
 
     /**
      * Returns true if a given string is a valid name.
@@ -67,20 +57,27 @@ public class Note {
         }
         return false;
     }
-
+    
     @Override
-    /**
-     * Returns a String containing the note name.
-     */
     public String toString() {
-        return moduleName + " " + noteName;
+        final StringBuilder builder = new StringBuilder();
+        builder.append(getName())
+                .append(" Phone: ")
+                .append(getPhone())
+                .append(" Email: ")
+                .append(getEmail())
+                .append(" Address: ")
+                .append(getAddress())
+                .append(" Tags: ");
+        getTags().forEach(builder::append);
+        return builder.toString();
     }
 
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
                 || (other instanceof Note // instanceof handles nulls
-                && moduleName.equals(((Note) other).moduleName) // state check
+                && moduleCode.equals(((Note) other).moduleCode) // state check
                 && noteName.equals(((Note) other).noteName)); // state check
     }
 
