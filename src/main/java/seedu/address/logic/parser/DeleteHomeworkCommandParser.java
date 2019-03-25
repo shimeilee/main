@@ -7,6 +7,9 @@ import seedu.address.logic.commands.DeleteHomeworkCommand;
 
 import seedu.address.logic.parser.exceptions.ParseException;
 
+/**
+ * Parses input arguments and creates a new DeleteHomeworkCommand object
+ */
 public class DeleteHomeworkCommandParser implements Parser<DeleteHomeworkCommand> {
 
     /**
