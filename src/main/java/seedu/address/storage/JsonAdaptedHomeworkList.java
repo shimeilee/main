@@ -40,7 +40,6 @@ public class JsonAdaptedHomeworkList {
         this.moduleCode = source.getModuleCode().value;
         this.homeworkName = source.getHomeworkName().value;
         this.date = source.getDeadline().getDate();
-
     }
 
     /**
