@@ -1,6 +1,7 @@
 package seedu.address.model.homework;
 
-import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
+import static java.util.Objects.requireNonNull;
+import static seedu.address.commons.util.AppUtil.checkArgument;
 
 import java.util.Objects;
 
@@ -11,44 +12,29 @@ import seedu.address.model.person.Person;
  */
 public class Date {
 
+    public static final String MESSAGE_CONSTRAINTS =
+            "The format for the date should follow DD/MM/YYYY.";
+    public static final String VALIDATION_REGEX = "^([0-2][0-9]|(3)[0-1])(\\/)(((0)[0-9])|((1)[0-2]))(\\/)\\d{4}$";
     // Identity fields
-    private final Day day;
-    private final Month month;
-    private final Year year;
+    public String value;
+
 
     /**
      * Every field must be present and not null.
      */
-    public Date(Day day, Month month, Year year) {
-        requireAllNonNull(day, month, year);
-        this.day = day;
-        this.month = month;
-        this.year = year;
+    public Date(String date) {
+        requireNonNull(date);
+        checkArgument(isValidDate(date), MESSAGE_CONSTRAINTS);
+        this.value = date;
     }
 
-    public Day getDay() {
-        return day;
+    public String getDate() {
+        return value;
     }
 
-    public Month getMonth() {
-        return month;
-    }
-
-    public Year getYear() {
-        return year;
-    }
-
-    /**
-     * Returns true if both homeworks have the same deadline.
-     */
-    public boolean isSameDate(Date otherDate) {
-        if (otherDate == this) {
-            return true;
-        }
-
-        return otherDate != null
-                && otherDate.getDay().equals(getDay())
-                && (otherDate.getMonth().equals(getMonth()) && otherDate.getYear().equals(getYear()));
+    public static boolean isValidDate(String test) {
+        System.out.println(test);
+        return test.matches(VALIDATION_REGEX);
     }
 
     /**
@@ -60,32 +46,21 @@ public class Date {
             return true;
         }
 
-        if (!(other instanceof Person)) {
+        if (!(other instanceof Date)) {
             return false;
         }
 
-        Date otherDate = (Date) other;
-        return otherDate.getDay().equals(getDay())
-                && otherDate.getMonth().equals(getMonth())
-                && otherDate.getYear().equals(getYear());
-
+        return value.equals(((Date) other).value);
     }
 
     @Override
     public int hashCode() {
         // use this method for custom fields hashing instead of implementing your own
-        return Objects.hash(day, month, year);
+        return Objects.hash(value);
     }
 
     @Override
     public String toString() {
-        final StringBuilder builder = new StringBuilder();
-        builder.append(getDay())
-                .append(" ")
-                .append(getMonth())
-                .append(" ")
-                .append(getYear());
-
-        return builder.toString();
+        return value;
     }
 }
