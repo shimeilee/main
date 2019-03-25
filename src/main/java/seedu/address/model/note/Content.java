@@ -4,12 +4,12 @@ import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.AppUtil.checkArgument;
 
 /**
- * Represents a Person's name in the UltiStudent.
+ * Represents content in Note.
  * Guarantees: immutable; is valid as declared in {@link #isValidNoteName(String)}
  */
-public class NoteName {
+public class Content {
 
-    public static final String MESSAGE_CONSTRAINTS = "Note names should only "
+    public static final String MESSAGE_CONSTRAINTS = "Content should only "
             + "contain alphanumeric characters and spaces, and it should not be "
             + "blank";
 
@@ -26,7 +26,8 @@ public class NoteName {
      *
      * @param name A valid name.
      */
-    public NoteName(String name) {
+    // Todo: amend content to accept string by string. Use string builder.
+    public Content(String name) {
         requireNonNull(name);
         checkArgument(isValidNoteName(name), MESSAGE_CONSTRAINTS);
         fullName = name;
@@ -48,8 +49,8 @@ public class NoteName {
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
-                || (other instanceof NoteName // instanceof handles nulls
-                && fullName.equals(((NoteName) other).fullName)); // state check
+                || (other instanceof Content // instanceof handles nulls
+                && fullName.equals(((Content) other).fullName)); // state check
     }
 
     @Override

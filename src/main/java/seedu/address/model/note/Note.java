@@ -2,7 +2,7 @@ package seedu.address.model.note;
 
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
-import java.io.File;
+import java.util.Objects;
 
 import seedu.address.model.tag.Tag;
 
@@ -16,20 +16,21 @@ public class Note {
     // Notes fields
     private ModuleCode moduleCode;
     private NoteName noteName;
-    private Tag tag;
 
-     // Data fields
-    private File content;
+    // Data fields
+    private Content content;
+    private Tag tag;
 
     /**
      * Every field must be present and not null.
      */
-    public Note(ModuleCode moduleCode, NoteName noteName, Tag tag) {
-        requireAllNonNull(moduleCode, noteName);
+    public Note(ModuleCode moduleCode, NoteName noteName, Tag tag, Content
+            content) {
+        requireAllNonNull(moduleCode, noteName, content);
         this.moduleCode = moduleCode;
         this.noteName = noteName;
         this.tag = tag;
-        this.content = new File();
+        this.content = content;
     }
 
     public ModuleCode getModuleCode() {
@@ -40,16 +41,14 @@ public class Note {
         return noteName;
     }
 
-    /**
-     * Returns true if a given string is a valid name.
-     */
-    public static boolean isValidName(String test) {
-        return test.matches(VALIDATION_REGEX);
+    public Content getContent() {
+        return content;
     }
 
     /**
-     * Returns true if both persons of the same name have at least one other identity field that is the same.
-     * This defines a weaker notion of equality between two persons.
+     * Returns true if both notes of the same name have at least one other
+     * identity field that is the same.
+     * This defines a weaker notion of equality between two notes.
      */
     public boolean isSameNote(Note otherNote) {
         if (otherNote == this) {
@@ -57,32 +56,37 @@ public class Note {
         }
         return false;
     }
-    
+
     @Override
     public String toString() {
         final StringBuilder builder = new StringBuilder();
-        builder.append(getName())
-                .append(" Phone: ")
-                .append(getPhone())
-                .append(" Email: ")
-                .append(getEmail())
-                .append(" Address: ")
-                .append(getAddress())
-                .append(" Tags: ");
-        getTags().forEach(builder::append);
+        builder.append(" Module: ")
+                .append(getModuleCode())
+                .append(" Note: ")
+                .append(getNoteName())
+                .append(" Content: ")
+                .append(getContent());
         return builder.toString();
     }
 
     @Override
     public boolean equals(Object other) {
-        return other == this // short circuit if same object
-                || (other instanceof Note // instanceof handles nulls
-                && moduleCode.equals(((Note) other).moduleCode) // state check
-                && noteName.equals(((Note) other).noteName)); // state check
+        if (other == this) {
+            return true;
+        }
+
+        if (!(other instanceof Note)) {
+            return false;
+        }
+
+        Note otherNote = (Note) other;
+        return otherNote.getModuleCode().equals(getModuleCode())
+                && otherNote.getNoteName().equals(getNoteName())
+                && otherNote.getContent().equals(getContent());
     }
 
     @Override
     public int hashCode() {
-        return noteName.hashCode();
+        return Objects.hash(moduleCode, noteName, content);
     }
 }
