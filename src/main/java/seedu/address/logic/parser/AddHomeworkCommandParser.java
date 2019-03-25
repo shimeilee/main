@@ -12,7 +12,7 @@ import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.homework.Date;
 import seedu.address.model.homework.Homework;
 import seedu.address.model.homework.HomeworkName;
-import seedu.address.model.homework.ModuleCode;
+import seedu.address.model.modulecode.ModuleCode;
 
 /**
  * Parses input arguments and creates a new AddHomeworkCommad object

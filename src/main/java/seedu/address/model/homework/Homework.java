@@ -2,6 +2,8 @@ package seedu.address.model.homework;
 
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
+import seedu.address.model.modulecode.ModuleCode;
+
 /**
  * Represents a homework entry in the address book.
  */

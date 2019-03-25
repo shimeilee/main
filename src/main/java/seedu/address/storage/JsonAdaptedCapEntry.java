@@ -32,7 +32,7 @@ public class JsonAdaptedCapEntry {
      * Constructs a {@code JsonAdaptedCapEntry} with the given person details.
      */
     @JsonCreator
-    public JsonAdaptedCapEntry(@JsonProperty("moduleCode") String moduleCode,
+    public JsonAdaptedCapEntry(@JsonProperty("modulecode") String moduleCode,
                                @JsonProperty("moduleGrade") String moduleGrade,
                                @JsonProperty("moduleCredits") String moduleCredits,
                                @JsonProperty("tagged") List<JsonAdaptedTag> tagged) {
