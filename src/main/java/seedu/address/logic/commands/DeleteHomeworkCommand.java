@@ -11,6 +11,10 @@ import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.homework.Homework;
 
+
+/**
+ * Deletes a homework identified using it's displayed index from the UltiStudent.
+ */
 public class DeleteHomeworkCommand extends Command {
 
     public static final String COMMAND_WORD = "deleteHomework";
