@@ -22,9 +22,7 @@ public class JsonAdaptedHomeworkList {
 
     private final String moduleCode;
     private final String homeworkName;
-    private final String day;
-    private final String year;
-    private final String month;
+    private final String date;
     //private final List<JsonAdaptedTag> tagged = new ArrayList<>();
 
     /**
@@ -33,14 +31,10 @@ public class JsonAdaptedHomeworkList {
     @JsonCreator
     public JsonAdaptedHomeworkList(@JsonProperty("homeworkName") String homeworkName,
                                    @JsonProperty("moduleCode") String moduleCode,
-                                   @JsonProperty("day") String day,
-                                   @JsonProperty("month") String month,
-                                   @JsonProperty("year") String year) {
+                                   @JsonProperty("date") String date) {
         this.moduleCode = moduleCode;
         this.homeworkName = homeworkName;
-        this.month = month;
-        this.day = day;
-        this.year = year;
+        this.date = date;
     }
     /**
      * Converts a given {@code Person} into this class for Jackson use.
@@ -48,9 +42,7 @@ public class JsonAdaptedHomeworkList {
     public JsonAdaptedHomeworkList(Homework source) {
         this.moduleCode = source.getModuleCode().value;
         this.homeworkName = source.getHomeworkName().value;
-        this.day = source.getDeadline().getDay().value;
-        this.year = source.getDeadline().getYear().value;
-        this.month = source.getDeadline().getMonth().name();
+        this.date = source.getDeadline().value;
 
     }
 
@@ -78,17 +70,14 @@ public class JsonAdaptedHomeworkList {
         }
         final HomeworkName hwName = new HomeworkName(homeworkName);
 
-        if (day == null || year == null || month == null) {
+        if (date == null) {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
                     Date.class.getSimpleName()));
         }
-        if (!Day.isValidDay(day)) {
-            throw new IllegalValueException(Day.MESSAGE_CONSTRAINTS);
+        if (!Date.isValidDate(date)) {
+            throw new IllegalValueException(Date.MESSAGE_CONSTRAINTS);
         }
-        if (!Year.isValidYear(year)) {
-            throw new IllegalValueException(Year.MESSAGE_CONSTRAINTS);
-        }
-        final Date deadline = new Date(new Day(day), Month.JAN, new Year(year));
+        final Date deadline = new Date(date);
 
         return new Homework(modCode, hwName, deadline);
     }
