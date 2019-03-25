@@ -28,6 +28,13 @@ public class ModuleCredits {
         return true;
     }
 
+    /**
+     * Returns true if it is a valid ModuleCode
+     */
+    public int getValue() {
+        return Integer.parseInt(this.value);
+    }
+
     @Override
     public String toString() {
         return value;
