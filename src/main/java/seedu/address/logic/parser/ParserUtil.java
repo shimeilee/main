@@ -131,16 +131,11 @@ public class ParserUtil {
     public static Date parseDate(String deadline) throws ParseException {
         requireNonNull(deadline);
         String trimmedDeadline = deadline.trim();
-        String[] deadlineParts = trimmedDeadline.split("/");
-        if (!Day.isValidDay(deadlineParts[0])) {
-            throw new ParseException(Day.MESSAGE_CONSTRAINTS);
-        }
-        //TODO: if (!Month.isValidMonth())
 
-        if (!Year.isValidYear(deadlineParts[2])) {
-            throw new ParseException(Year.MESSAGE_CONSTRAINTS);
+        if(!Date.isValidDate(deadline)) {
+            throw new ParseException(Date.MESSAGE_CONSTRAINTS);
         }
-        return new Date(new Day(deadlineParts[0]), Month.JAN, new Year(deadlineParts[2]));
+        return new Date(deadline);
     }
 
 
