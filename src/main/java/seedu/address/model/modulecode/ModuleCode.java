@@ -1,4 +1,4 @@
-package seedu.address.model.homework;
+package seedu.address.model.modulecode;
 
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.AppUtil.checkArgument;
@@ -23,7 +23,7 @@ public class ModuleCode {
         value = moduleCode;
     }
 
-    //TODO: Regex check for moduleCode
+    //TODO: Regex check for modulecode
     /**
      * Returns true if it is a valid ModuleCode
      */
