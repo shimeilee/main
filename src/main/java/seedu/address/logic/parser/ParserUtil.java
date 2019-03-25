@@ -12,10 +12,8 @@ import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.cap.ModuleCredits;
 import seedu.address.model.cap.ModuleGrade;
 import seedu.address.model.homework.Date;
-import seedu.address.model.homework.Day;
 import seedu.address.model.homework.HomeworkName;
-import seedu.address.model.homework.Month;
-import seedu.address.model.homework.Year;
+import seedu.address.model.modulecode.ModuleCode;
 import seedu.address.model.person.Address;
 import seedu.address.model.person.Email;
 import seedu.address.model.person.Name;
@@ -45,10 +43,10 @@ public class ParserUtil {
     //===== CapManager =====//
 
     /**
-     * Parses a {@code String moduleCode} into a {@code ModuleCode}.
+     * Parses a {@code String modulecode} into a {@code ModuleCode}.
      * Leading and trailing whitespaces will be trimmed.
      *
-     * @throws ParseException if the given {@code moduleCode} is invalid.
+     * @throws ParseException if the given {@code modulecode} is invalid.
      */
     public static seedu.address.model.cap.ModuleCode parseModuleCode(String moduleCode) throws ParseException {
         requireNonNull(moduleCode);
@@ -107,19 +105,19 @@ public class ParserUtil {
     }
 
     /**
-     * Parses a {@code String moduleCode} into a {@code ModuleCode}.
+     * Parses a {@code String modulecode} into a {@code ModuleCode}.
      * Leading and trailing whitespaces will be trimmed.
      *
-     * @throws ParseException if the given {@code moduleCode} is invalid.
+     * @throws ParseException if the given {@code modulecode} is invalid.
      */
-    public static seedu.address.model.homework.ModuleCode parseHomeworkModuleCode(String moduleCode)
+    public static ModuleCode parseHomeworkModuleCode(String moduleCode)
             throws ParseException {
         requireNonNull(moduleCode);
         String trimmedModuleCode = moduleCode.trim();
-        if (!seedu.address.model.homework.ModuleCode.isValidModuleCode(trimmedModuleCode)) {
-            throw new ParseException(seedu.address.model.homework.ModuleCode.MESSAGE_CONSTRAINTS);
+        if (!ModuleCode.isValidModuleCode(trimmedModuleCode)) {
+            throw new ParseException(ModuleCode.MESSAGE_CONSTRAINTS);
         }
-        return new seedu.address.model.homework.ModuleCode(moduleCode);
+        return new ModuleCode(moduleCode);
     }
 
     /**
@@ -132,7 +130,7 @@ public class ParserUtil {
         requireNonNull(deadline);
         String trimmedDeadline = deadline.trim();
 
-        if(!Date.isValidDate(deadline)) {
+        if (!Date.isValidDate(deadline)) {
             throw new ParseException(Date.MESSAGE_CONSTRAINTS);
         }
         return new Date(deadline);

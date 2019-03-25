@@ -5,8 +5,6 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
 
 import java.util.Objects;
 
-import seedu.address.model.person.Person;
-
 /**
  * Represents a Date for a deadline in a homework entry in UltiStudent.
  */
@@ -16,8 +14,7 @@ public class Date {
             "The format for the date should follow DD/MM/YYYY.";
     public static final String VALIDATION_REGEX = "^([0-2][0-9]|(3)[0-1])(\\/)(((0)[0-9])|((1)[0-2]))(\\/)\\d{4}$";
     // Identity fields
-    public String value;
-
+    private String value;
 
     /**
      * Every field must be present and not null.
@@ -28,10 +25,13 @@ public class Date {
         this.value = date;
     }
 
-    public String getDate() {
+    public String getDate () {
         return value;
     }
 
+    /**
+     * Returns true if it is a valid date.
+     */
     public static boolean isValidDate(String test) {
         System.out.println(test);
         return test.matches(VALIDATION_REGEX);

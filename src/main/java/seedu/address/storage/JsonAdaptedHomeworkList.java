@@ -5,12 +5,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.model.homework.Date;
-import seedu.address.model.homework.Day;
 import seedu.address.model.homework.Homework;
 import seedu.address.model.homework.HomeworkName;
-import seedu.address.model.homework.ModuleCode;
-import seedu.address.model.homework.Month;
-import seedu.address.model.homework.Year;
+import seedu.address.model.modulecode.ModuleCode;
 
 
 /**
@@ -30,7 +27,7 @@ public class JsonAdaptedHomeworkList {
      */
     @JsonCreator
     public JsonAdaptedHomeworkList(@JsonProperty("homeworkName") String homeworkName,
-                                   @JsonProperty("moduleCode") String moduleCode,
+                                   @JsonProperty("modulecode") String moduleCode,
                                    @JsonProperty("date") String date) {
         this.moduleCode = moduleCode;
         this.homeworkName = homeworkName;
@@ -42,7 +39,7 @@ public class JsonAdaptedHomeworkList {
     public JsonAdaptedHomeworkList(Homework source) {
         this.moduleCode = source.getModuleCode().value;
         this.homeworkName = source.getHomeworkName().value;
-        this.date = source.getDeadline().value;
+        this.date = source.getDeadline().getDate();
 
     }
 

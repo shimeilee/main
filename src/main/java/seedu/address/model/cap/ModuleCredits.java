@@ -20,7 +20,7 @@ public class ModuleCredits {
         value = moduleCredits;
     }
 
-    //TODO: Regex check for moduleCode
+    //TODO: Regex check for modulecode
     /**
      * Returns true if it is a valid ModuleCode
      */
