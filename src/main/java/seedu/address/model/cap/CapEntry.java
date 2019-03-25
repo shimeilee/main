@@ -15,13 +15,14 @@ import seedu.address.model.tag.Tag;
 
 public class CapEntry {
 
+    // Static fields
+    private static double capScore;
+    private static int totalScore;
+    private static int totalModuleCredits;
     // Identity fields
     private ModuleCode moduleCode;
     private ModuleGrade moduleGrade;
     private ModuleCredits moduleCredits;
-    private static double capScore;
-    private static int totalScore;
-    private static int totalModuleCredits;
 
     // Data fields
     private final Set<Tag> tags = new HashSet<>();
