@@ -15,6 +15,10 @@ import seedu.address.model.tag.Tag;
 
 public class CapEntry {
 
+    // Static fields
+    private static double capScore;
+    private static int totalScore;
+    private static int totalModuleCredits;
     // Identity fields
     private ModuleCode moduleCode;
     private ModuleGrade moduleGrade;
@@ -31,7 +35,14 @@ public class CapEntry {
         this.moduleCode = moduleCode;
         this.moduleGrade = moduleGrade;
         this.moduleCredits = moduleCredits;
+        updateCap(moduleGrade, moduleCredits);
         this.tags.addAll(tags);
+    }
+
+    private void updateCap(ModuleGrade moduleGrade, ModuleCredits moduleCredits) {
+        this.totalScore += moduleGrade.getScore();
+        this.totalModuleCredits += moduleCredits.getValue();
+        this.capScore = this.totalScore / this.totalModuleCredits;
     }
 
     public ModuleCode getModuleCode() {
@@ -64,9 +75,9 @@ public class CapEntry {
         }
 
         return otherCapEntry != null
-                && otherCapEntry.getModuleCode().equals(getModuleCode())
-                && (otherCapEntry.getModuleGrade().equals(getModuleGrade())
-                || otherCapEntry.getModuleCredits().equals(getModuleGrade()));
+                && otherCapEntry.getModuleCode().equals(getModuleCode());
+//                && (otherCapEntry.getModuleGrade().equals(getModuleGrade())
+//                || otherCapEntry.getModuleCredits().equals(getModuleGrade()));
     }
 
     /**

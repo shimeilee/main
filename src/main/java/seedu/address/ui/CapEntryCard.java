@@ -31,8 +31,8 @@ public class CapEntryCard extends UiPart<Region> {
         this.capEntry = capEntry;
         id.setText(displayedIndex + ". ");
         moduleCode.setText(capEntry.getModuleCode().toString());
-        moduleGrade.setText(capEntry.getModuleGrade().toString());
-        moduleCredits.setText(capEntry.getModuleCredits().toString());
+        moduleGrade.setText("Grade: " + capEntry.getModuleGrade().toString());
+        moduleCredits.setText("MC: " + capEntry.getModuleCredits().toString());
     }
 
     @Override
