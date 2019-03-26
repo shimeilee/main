@@ -20,7 +20,7 @@ public class ModuleCode {
     public ModuleCode (String moduleCode) {
         requireNonNull(moduleCode);
         checkArgument(isValidModuleCode(moduleCode), MESSAGE_CONSTRAINTS);
-        value = moduleCode;
+        value = moduleCode.toUpperCase();
     }
 
     //TODO: Regex check for modulecode
@@ -28,7 +28,15 @@ public class ModuleCode {
      * Returns true if it is a valid ModuleCode
      */
     public static boolean isValidModuleCode(String test) {
-        return test.matches(VALIDATION_REGEX);
+        return test.toUpperCase().matches(VALIDATION_REGEX);
+    }
+
+
+    /**
+     * Returns the value of the ModuleCode
+     */
+    public String getValue() {
+        return value;
     }
 
     @Override

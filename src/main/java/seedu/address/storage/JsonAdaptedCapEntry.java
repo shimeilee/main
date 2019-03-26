@@ -11,9 +11,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.model.cap.CapEntry;
-import seedu.address.model.cap.ModuleCode;
 import seedu.address.model.cap.ModuleCredits;
 import seedu.address.model.cap.ModuleGrade;
+import seedu.address.model.modulecode.ModuleCode;
 import seedu.address.model.tag.Tag;
 
 /**
