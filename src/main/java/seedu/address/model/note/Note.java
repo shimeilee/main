@@ -4,6 +4,7 @@ import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
 import java.util.Objects;
 
+import seedu.address.model.modulecode.ModuleCode;
 import seedu.address.model.tag.Tag;
 
 /**
@@ -43,6 +44,10 @@ public class Note {
 
     public Content getContent() {
         return content;
+    }
+
+    public Tag getTag() {
+        return tag;
     }
 
     /**
