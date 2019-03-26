@@ -25,6 +25,7 @@ import seedu.address.model.ReadOnlyAddressBook;
 import seedu.address.model.ReadOnlyUserPrefs;
 import seedu.address.model.cap.CapEntry;
 import seedu.address.model.homework.Homework;
+import seedu.address.model.note.Note;
 import seedu.address.model.person.Person;
 import seedu.address.testutil.PersonBuilder;
 
@@ -299,8 +300,53 @@ public class AddCommandTest {
             throw new AssertionError("This method should not be called.");
         }
 
-    }
+        //======= NotesManager ===========//
+        @Override
+        public boolean hasNote(Note note) {
+            throw new AssertionError("This method should not be called.");
+        }
 
+        @Override
+        public void deleteNote(Note note) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void addNote(Note note) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void setNote(Note target, Note editedNote) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public ObservableList<Note> getFilteredNoteList() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void updateFilteredNoteList(Predicate<Note> predicate) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public ReadOnlyProperty<Note> selectedNoteProperty() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public Note getSelectedNote() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void setSelectedNote(Note note) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+    }
     /**
      * A Model stub that contains a single person.
      */

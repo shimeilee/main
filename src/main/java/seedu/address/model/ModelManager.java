@@ -61,6 +61,10 @@ public class ModelManager implements Model {
         filteredNoteList.addListener(this::ensureSelectedNoteIsValid);
     }
 
+    public ModelManager() {
+        this(new AddressBook(), new UserPrefs());
+    }
+
     //=========== UserPrefs ==================================================================================
 
     @Override
@@ -403,7 +407,7 @@ public class ModelManager implements Model {
         }
     }
 
-    // ======================= Notes Manager ================================
+    // ======================= Notes Manager ==================================
     @Override
     public boolean hasNote(Note note) {
         requireNonNull(note);
