@@ -14,12 +14,9 @@ import seedu.address.logic.commands.ClearCommand;
 import seedu.address.logic.commands.Command;
 import seedu.address.logic.commands.DeleteCapEntryCommand;
 import seedu.address.logic.commands.DeleteCommand;
-<<<<<<< HEAD
 import seedu.address.logic.commands.EditCapEntryByModuleCodeCommand;
 import seedu.address.logic.commands.EditCapEntryCommand;
-=======
 import seedu.address.logic.commands.DeleteHomeworkCommand;
->>>>>>> 39df07c66104447385f5854a02ceef0d3609d598
 import seedu.address.logic.commands.EditCommand;
 import seedu.address.logic.commands.ExitCommand;
 import seedu.address.logic.commands.FindCommand;
