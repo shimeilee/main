@@ -19,9 +19,12 @@ public class CliSyntax {
     public static final Prefix PREFIX_DEADLINE = new Prefix("d/");
     //public static final Prefix PREFIX_PRIORITY = new Prefix("p/");
 
-    //==== CapManager =====//
+    //===== CapManager =====//
     public static final Prefix PREFIX_MODULEGRADE = new Prefix("g/");
     public static final Prefix PREFIX_MODULECREDITS = new Prefix("mcs/");
+
+    //===== NotesManager =====/
+    public static final Prefix PREFIX_NOTE_NAME = new Prefix("n/");
 
     //===== UI =====//
     public static final String HOMEWORK_MANAGER = "HomeworkManager";

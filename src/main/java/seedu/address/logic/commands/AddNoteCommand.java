@@ -1,10 +1,8 @@
 package seedu.address.logic.commands;
 
-import static seedu.address.logic.parser.CliSyntax.PREFIX_ADDRESS;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_EMAIL;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_PHONE;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
+import static java.util.Objects.requireNonNull;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_MODULECODE;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_NOTE_NAME;
 
 import seedu.address.logic.CommandHistory;
 import seedu.address.logic.commands.exceptions.CommandException;
@@ -16,44 +14,48 @@ import seedu.address.model.note.Note;
  */
 public class AddNoteCommand extends Command {
 
-    public static final String COMMAND_WORD = "addnote";
+    public static final String COMMAND_WORD = "addNote";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds a note"
-            + " to the UltiStudent Notes Manager. "
+            + " to the UltiStudent Notes Manager. \n"
             + "Parameters: "
-            + PREFIX_NAME + "NAME "
-            + PREFIX_PHONE + "PHONE "
-            + PREFIX_EMAIL + "EMAIL "
-            + PREFIX_ADDRESS + "ADDRESS "
-            + "[" + PREFIX_TAG + "TAG]...\n"
+            + PREFIX_MODULECODE + "MODULE_CODE "
+            + PREFIX_NOTE_NAME + "NOTE NAME \n"
             + "Example: " + COMMAND_WORD + " "
-            + PREFIX_NAME + "John Doe "
-            + PREFIX_PHONE + "98765432 "
-            + PREFIX_EMAIL + "johnd@example.com "
-            + PREFIX_ADDRESS + "311, Clementi Ave 2, #02-25 "
-            + PREFIX_TAG + "friends "
-            + PREFIX_TAG + "owesMoney";
+            + PREFIX_MODULECODE + "CS2103T "
+            + PREFIX_NOTE_NAME + "Week 7 Notes";
 
-    public static final String MESSAGE_SUCCESS = "New person added: %1$s";
-    public static final String MESSAGE_DUPLICATE_PERSON = "This person already exists in the UltiStudent";
+    public static final String MESSAGE_SUCCESS = "New note added: %1$s";
+    public static final String MESSAGE_DUPLICATE_NOTE = "This note already "
+            + "exists in the UltiStudent";
 
-    private final Note toAdd = new Note("test", "test");
-
-    public AddNoteCommand parse(String fileName) {
-        return new AddNoteCommand();
-    }
+    private final Note toAdd;
 
     /**
-     * Executes the command and returns the result message.
-     *
-     * @param model {@code Model} which the command should operate on.
-     * @param history {@code CommandHistory} which the command should operate on.
-     * @return feedback message of the operation result for display
-     * @throws CommandException If an error occurs during command execution.
+     * Creates an AddCAPEntryCommand to add the specified {@code CapEntry}
      */
+    public AddNoteCommand(Note note) {
+        requireNonNull(note);
+        toAdd = note;
+    }
+
     @Override
-    // todo: making the text/html file (path, java class File)
-    public CommandResult execute(Model model, CommandHistory history) {
-        return null;
+    public CommandResult execute(Model model, CommandHistory history) throws CommandException {
+        requireNonNull(model);
+
+        if (model.hasNote(toAdd)) {
+            throw new CommandException(MESSAGE_DUPLICATE_NOTE);
+        }
+
+        model.addNote(toAdd);
+        model.commitAddressBook();
+        return new CommandResult(String.format(MESSAGE_SUCCESS, toAdd));
+    }
+
+    @Override
+    public boolean equals (Object other) {
+        return other == this // short circuit if same object
+                || (other instanceof AddNoteCommand // instanceof handles nulls
+                && toAdd.equals(((AddNoteCommand) other).toAdd));
     }
 }

@@ -4,6 +4,7 @@ import javafx.beans.Observable;
 import javafx.collections.ObservableList;
 import seedu.address.model.cap.CapEntry;
 import seedu.address.model.homework.Homework;
+import seedu.address.model.note.Note;
 import seedu.address.model.person.Person;
 
 /**
@@ -24,9 +25,15 @@ public interface ReadOnlyAddressBook extends Observable {
     ObservableList<CapEntry> getCapEntryList();
 
     /**
-     * Returns an unmodifiable view of the persons list.
-     * This list will not contain any duplicate persons.
+     * Returns an unmodifiable view of the homework list.
+     * This list will not contain any duplicate homework.
      */
     ObservableList<Homework> getHomeworkList();
+
+    /**
+     * Returns an unmodifiable view of the homework list.
+     * This list will not contain any duplicate homework.
+     */
+    ObservableList<Note> getNoteList();
 
 }

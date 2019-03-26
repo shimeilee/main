@@ -11,6 +11,8 @@ import seedu.address.model.cap.CapEntry;
 import seedu.address.model.cap.UniqueCapEntryList;
 import seedu.address.model.homework.Homework;
 import seedu.address.model.homework.UniqueHomeworkList;
+import seedu.address.model.note.Note;
+import seedu.address.model.note.UniqueNoteList;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.UniquePersonList;
 
@@ -23,6 +25,7 @@ public class AddressBook implements ReadOnlyAddressBook {
     private final UniqueCapEntryList capEntryList;
     private final UniquePersonList persons;
     private final UniqueHomeworkList homeworkList;
+    private final UniqueNoteList noteList;
     private final InvalidationListenerManager invalidationListenerManager = new InvalidationListenerManager();
 
     /*
@@ -36,6 +39,7 @@ public class AddressBook implements ReadOnlyAddressBook {
         persons = new UniquePersonList();
         capEntryList = new UniqueCapEntryList();
         homeworkList = new UniqueHomeworkList();
+        noteList = new UniqueNoteList();
     }
 
     public AddressBook() {}
@@ -195,6 +199,40 @@ public class AddressBook implements ReadOnlyAddressBook {
         indicateModified();
     }
 
+    //===== Note Manager =====
+    public void setNote(Note target, Note editedNote) {
+        requireNonNull(editedNote);
+
+        noteList.setNote(target, editedNote);
+        indicateModified();
+    }
+
+    /**
+     * Returns true if a note with the same identity as {@code note} exists in
+     * the UltiStudent.
+     */
+    public boolean hasNote(Note note) {
+        requireNonNull(note);
+        return this.noteList.contains(note);
+    }
+
+    /**
+     * Adds a note to the UltiStudent.
+     * The note must not already exist in the UltiStudent.
+     */
+    public void addNote(Note note) {
+        this.noteList.add(note);
+        indicateModified();
+    }
+
+    /**
+     * Removes {@code key} from this {@code AddressBook}.
+     * {@code key} must exist in the UltiStudent.
+     */
+    public void removeNote(Note note) {
+        this.noteList.remove(note);
+        indicateModified();
+    }
 
 
     @Override
@@ -237,6 +275,10 @@ public class AddressBook implements ReadOnlyAddressBook {
         return homeworkList.asUnmodifiableObservableList();
     }
 
+    @Override
+    public ObservableList<Note> getNoteList() {
+        return noteList.asUnmodifiableObservableList();
+    }
 
     @Override
     public boolean equals(Object other) {

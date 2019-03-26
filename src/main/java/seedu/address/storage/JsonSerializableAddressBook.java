@@ -14,6 +14,7 @@ import seedu.address.model.ReadOnlyAddressBook;
 
 import seedu.address.model.cap.CapEntry;
 import seedu.address.model.homework.Homework;
+import seedu.address.model.note.Note;
 import seedu.address.model.person.Person;
 
 /**
@@ -24,10 +25,13 @@ class JsonSerializableAddressBook {
 
     public static final String MESSAGE_DUPLICATE_PERSON = "Persons list contains duplicate person(s).";
     public static final String MESSAGE_DUPLICATE_CAP_ENTRY = "Cap Entry list contains duplicate cap entry(s).";
+    public static final String MESSAGE_DUPLICATE_NOTE = "Notes contains "
+            + "duplicate.";
 
     private final List<JsonAdaptedPerson> persons = new ArrayList<>();
     private final List<JsonAdaptedCapEntry> capEntryList = new ArrayList<>();
     private final List<JsonAdaptedHomeworkList> homeworkList = new ArrayList<>();
+    private final List<JsonAdaptedNote> noteList = new ArrayList<>();
 
     /**
      * Constructs a {@code JsonSerializableAddressBook} with the given persons.
@@ -59,6 +63,7 @@ class JsonSerializableAddressBook {
                 .collect(Collectors.toList()));
         homeworkList.addAll(source.getHomeworkList().stream().map(JsonAdaptedHomeworkList::new)
                 .collect(Collectors.toList()));
+        noteList.addAll(source.getNoteList().stream().map(JsonAdaptedNote::new).collect(Collectors.toList()));
     }
 
     /**
@@ -90,7 +95,14 @@ class JsonSerializableAddressBook {
                 throw new IllegalValueException(MESSAGE_DUPLICATE_PERSON);
             }
             addressBook.addHomework(homework);
+        }
 
+        for (JsonAdaptedNote jsonAdaptedNote : noteList) {
+            Note note = jsonAdaptedNote.toModelType();
+            if (addressBook.hasNote(note)) {
+                throw new IllegalValueException(MESSAGE_DUPLICATE_NOTE);
+            }
+            addressBook.addNote(note);
         }
         return addressBook;
     }
