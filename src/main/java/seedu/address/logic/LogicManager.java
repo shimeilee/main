@@ -17,6 +17,7 @@ import seedu.address.model.Model;
 import seedu.address.model.ReadOnlyAddressBook;
 import seedu.address.model.cap.CapEntry;
 import seedu.address.model.homework.Homework;
+import seedu.address.model.note.Note;
 import seedu.address.model.person.Person;
 import seedu.address.storage.Storage;
 
@@ -89,6 +90,11 @@ public class LogicManager implements Logic {
     }
 
     @Override
+    public ObservableList<Note> getFilteredNoteList() {
+        return model.getFilteredNoteList();
+    }
+
+    @Override
     public ObservableList<String> getHistory() {
         return history.getHistory();
     }
@@ -124,6 +130,11 @@ public class LogicManager implements Logic {
     }
 
     @Override
+    public ReadOnlyProperty<Note> selectedNoteProperty() {
+        return model.selectedNoteProperty();
+    }
+
+    @Override
     public void setSelectedPerson(Person person) {
         model.setSelectedPerson(person);
     }
@@ -136,5 +147,10 @@ public class LogicManager implements Logic {
     @Override
     public void setSelectedHomework(Homework homework) {
         model.setSelectedHomework(homework);
+    }
+
+    @Override
+    public void setSelectedNote(Note note) {
+        model.setSelectedNote(note);
     }
 }

@@ -19,6 +19,7 @@ import seedu.address.model.cap.CapEntry;
 import seedu.address.model.cap.exceptions.CapEntryNotFoundException;
 import seedu.address.model.homework.Homework;
 import seedu.address.model.homework.exceptions.HomeworkNotFoundException;
+import seedu.address.model.note.Note;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.exceptions.PersonNotFoundException;
 
@@ -36,6 +37,8 @@ public class ModelManager implements Model {
     private final SimpleObjectProperty<CapEntry> selectedCapEntry = new SimpleObjectProperty<>();
     private final FilteredList<Homework> filteredHomeworkList;
     private final SimpleObjectProperty<Homework> selectedHomework = new SimpleObjectProperty<>();
+    private final FilteredList<Note> filteredNoteList;
+    private final SimpleObjectProperty<Note> selectedNote = new SimpleObjectProperty<>();
 
     /**
      * Initializes a ModelManager with the given addressBook and userPrefs.
@@ -54,6 +57,8 @@ public class ModelManager implements Model {
         filteredCapEntryList.addListener(this::ensureSelectedCapEntryIsValid);
         filteredHomeworkList = new FilteredList<>(versionedAddressBook.getHomeworkList());
         filteredHomeworkList.addListener(this::ensureSelectedHomeworkIsValid);
+        filteredNoteList = new FilteredList<>(versionedAddressBook.getNoteList());
+        filteredNoteList.addListener(this::ensureSelectedNoteIsValid);
     }
 
     public ModelManager() {
@@ -199,7 +204,8 @@ public class ModelManager implements Model {
     /**
      * Ensures {@code selectedPerson} is a valid person in {@code filteredPersons}.
      */
-    private void ensureSelectedPersonIsValid(ListChangeListener.Change<? extends Person> change) {
+    private void ensureSelectedPersonIsValid(ListChangeListener.Change<? extends
+            Person> change) {
         while (change.next()) {
             if (selectedPerson.getValue() == null) {
                 // null is always a valid selected person, so we do not need to check that it is valid anymore.
@@ -225,7 +231,7 @@ public class ModelManager implements Model {
         }
     }
 
-    //================================================== CapManager ==================================================//
+    //====================== CapManager ========================================
 
     @Override
     public boolean hasCapEntry(CapEntry capEntry) {
@@ -397,6 +403,104 @@ public class ModelManager implements Model {
                 // Select the person that came before it in the list,
                 // or clear the selection if there is no such person.
                 selectedHomework.setValue(change.getFrom() > 0 ? change.getList().get(change.getFrom() - 1) : null);
+            }
+        }
+    }
+
+    // ======================= Notes Manager ==================================
+    @Override
+    public boolean hasNote(Note note) {
+        requireNonNull(note);
+        return versionedAddressBook.hasNote(note);
+    }
+
+    @Override
+    public void deleteNote(Note target) {
+        versionedAddressBook.removeNote(target);
+    }
+
+    @Override
+    public void addNote(Note note) {
+        versionedAddressBook.addNote(note);
+        updateFilteredNoteList(PREDICATE_SHOW_ALL_NOTES);
+    }
+
+    @Override
+    public void setNote(Note target, Note editedNote) {
+        requireAllNonNull(target, editedNote);
+
+        versionedAddressBook.setNote(target, editedNote);
+    }
+
+    //=========== Filtered Note List Accessors =================================
+
+    /**
+     * Returns an unmodifiable view of the list of {@code Note} backed by the
+     * internal list of
+     * {@code versionedAddressBook}
+     */
+
+    @Override
+    public ObservableList<Note> getFilteredNoteList() {
+        return filteredNoteList;
+    }
+
+    @Override
+    public void updateFilteredNoteList(Predicate<Note> predicate) {
+        requireNonNull(predicate);
+        filteredNoteList.setPredicate(predicate);
+    }
+
+    //=========== Selected note ==============================================
+
+    @Override
+    public ReadOnlyProperty<Note> selectedNoteProperty() {
+        return selectedNote;
+    }
+
+    @Override
+    public Note getSelectedNote() {
+        return selectedNote.getValue();
+    }
+
+    @Override
+    public void setSelectedNote(Note note) {
+        if (note != null && !filteredPersons.contains(note)) {
+            throw new PersonNotFoundException();
+        }
+        selectedNote.setValue(note);
+    }
+
+    /**
+     * Ensures {@code selectedNote} is a valid note in {@code
+     * filteredNoteList}.
+     */
+    private void ensureSelectedNoteIsValid(ListChangeListener.Change<? extends Note> change) {
+        while (change.next()) {
+            if (selectedNote.getValue() == null) {
+                // null is always a valid selected note, so we do not need to
+                // check that it is valid anymore.
+                return;
+            }
+
+            boolean wasSelectedNoteReplaced = change.wasReplaced() && change.getAddedSize() == change.getRemovedSize()
+                    && change.getRemoved().contains(selectedNote.getValue());
+            if (wasSelectedNoteReplaced) {
+                // Update selectedPerson to its new value.
+                int index = change.getRemoved().indexOf(selectedNote.getValue
+                        ());
+                selectedNote.setValue(change.getAddedSubList().get(index));
+                continue;
+            }
+
+            boolean wasSelectedNoteRemoved = change.getRemoved().stream()
+                    .anyMatch(removedNote -> selectedNote.getValue()
+                            .isSameNote(removedNote));
+            if (wasSelectedNoteRemoved) {
+                // Select the person that came before it in the list,
+                // or clear the selection if there is no such person.
+                selectedNote.setValue(change.getFrom() > 0 ? change.getList()
+                        .get(change.getFrom() - 1) : null);
             }
         }
     }

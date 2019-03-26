@@ -11,6 +11,7 @@ import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.ReadOnlyAddressBook;
 import seedu.address.model.cap.CapEntry;
 import seedu.address.model.homework.Homework;
+import seedu.address.model.note.Note;
 import seedu.address.model.person.Person;
 
 /**
@@ -88,6 +89,17 @@ public interface Logic {
      */
     ReadOnlyProperty<CapEntry> selectedCapEntryProperty();
 
+    // Note
+    /** Returns an unmodifiable view of the filtered list of notes.*/
+    ObservableList<Note> getFilteredNoteList();
+    /**
+     * Selected note in the filtered note list.
+     * null if no note is selected.
+     *
+     * @see seedu.address.model.Model#selectedPersonProperty()
+     */
+    ReadOnlyProperty<Note> selectedNoteProperty();
+
     /**
      * Sets the selected cap entry in the filtered cap entry list.
      *
@@ -96,4 +108,6 @@ public interface Logic {
     void setSelectedCapEntry(CapEntry capEntry);
 
     void setSelectedHomework(Homework homework);
+
+    void setSelectedNote(Note note);
 }

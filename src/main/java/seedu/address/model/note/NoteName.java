@@ -17,10 +17,9 @@ public class NoteName {
      * The first character of the address must not be a whitespace,
      * otherwise " " (a blank string) becomes a valid input.
      */
-    // TODO: Amend regex to fulfill a module code and
     public static final String VALIDATION_REGEX = "[\\p{Alnum}][\\p{Alnum} ]*";
 
-    public final String fullName;
+    public final String noteName;
 
     /**
      * Constructs a {@code Name}.
@@ -30,7 +29,7 @@ public class NoteName {
     public NoteName(String name) {
         requireNonNull(name);
         checkArgument(isValidNoteName(name), MESSAGE_CONSTRAINTS);
-        fullName = name;
+        noteName = name;
     }
 
     /**
@@ -43,19 +42,19 @@ public class NoteName {
 
     @Override
     public String toString() {
-        return fullName;
+        return noteName;
     }
 
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
                 || (other instanceof NoteName // instanceof handles nulls
-                && fullName.equals(((NoteName) other).fullName)); // state check
+                && noteName.equals(((NoteName) other).noteName)); // state check
     }
 
     @Override
     public int hashCode() {
-        return fullName.hashCode();
+        return noteName.hashCode();
     }
 
 }

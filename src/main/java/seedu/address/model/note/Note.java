@@ -2,64 +2,53 @@ package seedu.address.model.note;
 
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
+import java.util.Objects;
+
+import seedu.address.model.modulecode.ModuleCode;
+
 /**
  * Represents a Note in UltiStudent - Notes Keeping.
+ * Uses the Cornell method to help students write better notes in class.
+ * Cornell method consists of Keywords, Questions, and Summary.
  */
 public class Note {
 
-    /*
-     * The first character of the address must not be a whitespace,
-     * otherwise " " (a blank string) becomes a valid input.
-     */
-    // TODO: change to validate according to input string
-    private static final String VALIDATION_REGEX = "[\\p{Alnum}][\\p{Alnum} ]*";
-
     // Notes fields
-    private String moduleName;
-    private String noteName;
+    private ModuleCode moduleCode;
+    private NoteName noteName;
 
     // Data fields
-    // private File content;
-    // AL of AL
+    private Content content;
+    //private Tag tag;
 
     /**
      * Every field must be present and not null.
      */
-    public Note(String moduleName, String noteName) {
-        requireAllNonNull(moduleName, noteName);
-        this.moduleName = moduleName;
+    public Note(ModuleCode moduleCode, NoteName noteName, Content
+            content) {
+        requireAllNonNull(moduleCode, noteName, content);
+        this.moduleCode = moduleCode;
         this.noteName = noteName;
-        // content = new File(new );
+        //this.tag = tag;
+        this.content = content;
+    }
+
+    public ModuleCode getModuleCode() {
+        return moduleCode;
+    }
+
+    public NoteName getNoteName() {
+        return noteName;
+    }
+
+    public Content getContent() {
+        return content;
     }
 
     /**
-    public Name getName() {
-        return name;
-    }
-
-    public Phone getPhone() {
-        return phone;
-    }
-
-    public Email getEmail() {
-        return email;
-    }
-
-    public Address getAddress() {
-        return address;
-    }
-     **/
-
-    /**
-     * Returns true if a given string is a valid name.
-     */
-    public static boolean isValidName(String test) {
-        return test.matches(VALIDATION_REGEX);
-    }
-
-    /**
-     * Returns true if both persons of the same name have at least one other identity field that is the same.
-     * This defines a weaker notion of equality between two persons.
+     * Returns true if both notes of the same name have at least one other
+     * identity field that is the same.
+     * This defines a weaker notion of equality between two notes.
      */
     public boolean isSameNote(Note otherNote) {
         if (otherNote == this) {
@@ -69,23 +58,35 @@ public class Note {
     }
 
     @Override
-    /**
-     * Returns a String containing the note name.
-     */
     public String toString() {
-        return moduleName + " " + noteName;
+        final StringBuilder builder = new StringBuilder();
+        builder.append(" Module: ")
+                .append(getModuleCode())
+                .append(" Note: ")
+                .append(getNoteName())
+                .append(" Content: ")
+                .append(getContent());
+        return builder.toString();
     }
 
     @Override
     public boolean equals(Object other) {
-        return other == this // short circuit if same object
-                || (other instanceof Note // instanceof handles nulls
-                && moduleName.equals(((Note) other).moduleName) // state check
-                && noteName.equals(((Note) other).noteName)); // state check
+        if (other == this) {
+            return true;
+        }
+
+        if (!(other instanceof Note)) {
+            return false;
+        }
+
+        Note otherNote = (Note) other;
+        return otherNote.getModuleCode().equals(getModuleCode())
+                && otherNote.getNoteName().equals(getNoteName())
+                && otherNote.getContent().equals(getContent());
     }
 
     @Override
     public int hashCode() {
-        return noteName.hashCode();
+        return Objects.hash(moduleCode, noteName, content);
     }
 }

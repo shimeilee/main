@@ -8,105 +8,111 @@ import java.util.List;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import seedu.address.model.person.Person;
-import seedu.address.model.person.exceptions.DuplicatePersonException;
-import seedu.address.model.person.exceptions.PersonNotFoundException;
+import seedu.address.model.note.exceptions.DuplicateNoteException;
+import seedu.address.model.note.exceptions.NoteNotFoundException;
 
 /**
- * A list of persons that enforces uniqueness between its elements and does not allow nulls.
- * A person is considered unique by comparing using {@code Person#isSamePerson(Person)}. As such, adding and updating of
- * persons uses Person#isSamePerson(Person) for equality so as to ensure that the person being added or updated is
- * unique in terms of identity in the UniquePersonList. However, the removal of a person uses Person#equals(Object) so
- * as to ensure that the person with exactly the same fields will be removed.
+ * A list of notes that enforces uniqueness between its elements and does not
+ * allow nulls.
+ * A person is considered unique by comparing using {@code Note#isSameNote
+ * (Note)}. As such, adding and updating of
+ * notes uses Note#isSameNote(Note) for equality so as to ensure that the
+ * note being added or updated is
+ * unique in terms of identity in the UniqueNoteList. However, the removal of a
+ * note uses Note#equals(Object) so as to ensure that the person with exactly
+ * the same fields will be removed.
  *
  * Supports a minimal set of list operations.
  *
- * @see Note#isSamePerson(Note)
+ * @see Note#isSameNote(Note)
  */
-public class UniqueNoteList implements Iterable<Person> {
+public class UniqueNoteList implements Iterable<Note> {
 
-    private final ObservableList<Person> internalList = FXCollections.observableArrayList();
-    private final ObservableList<Person> internalUnmodifiableList =
+    private final ObservableList<Note> internalList = FXCollections
+            .observableArrayList();
+    private final ObservableList<Note> internalUnmodifiableList =
             FXCollections.unmodifiableObservableList(internalList);
 
     /**
-     * Returns true if the list contains an equivalent person as the given argument.
+     * Returns true if the list contains an equivalent note as the given
+     * argument.
      */
-    public boolean contains(Person toCheck) {
+    public boolean contains(Note toCheck) {
         requireNonNull(toCheck);
-        return internalList.stream().anyMatch(toCheck::isSamePerson);
+        return internalList.stream().anyMatch(toCheck::isSameNote);
     }
 
     /**
-     * Adds a person to the list.
-     * The person must not already exist in the list.
+     * Adds a note to the list.
+     * The note must not already exist in the list.
      */
-    public void add(Person toAdd) {
+    public void add(Note toAdd) {
         requireNonNull(toAdd);
         if (contains(toAdd)) {
-            throw new DuplicatePersonException();
+            throw new DuplicateNoteException();
         }
         internalList.add(toAdd);
     }
 
     /**
-     * Replaces the person {@code target} in the list with {@code editedPerson}.
+     * Replaces the note {@code target} in the list with {@code editedNote}.
      * {@code target} must exist in the list.
-     * The person identity of {@code editedPerson} must not be the same as another existing person in the list.
+     * The note identity of {@code editedNote} must not be the same as
+     * another existing note in the list.
      */
-    public void setPerson(Person target, Person editedPerson) {
-        requireAllNonNull(target, editedPerson);
+    public void setNote(Note target, Note editedNote) {
+        requireAllNonNull(target, editedNote);
 
         int index = internalList.indexOf(target);
         if (index == -1) {
-            throw new PersonNotFoundException();
+            throw new NoteNotFoundException();
         }
 
-        if (!target.isSamePerson(editedPerson) && contains(editedPerson)) {
-            throw new DuplicatePersonException();
+        if (!target.isSameNote(editedNote) && contains(editedNote)) {
+            throw new DuplicateNoteException();
         }
 
-        internalList.set(index, editedPerson);
+        internalList.set(index, editedNote);
     }
 
     /**
-     * Removes the equivalent person from the list.
-     * The person must exist in the list.
+     * Removes the equivalent note from the list.
+     * The note must exist in the list.
      */
-    public void remove(Person toRemove) {
+    public void remove(Note toRemove) {
         requireNonNull(toRemove);
         if (!internalList.remove(toRemove)) {
-            throw new PersonNotFoundException();
+            throw new NoteNotFoundException();
         }
     }
 
-    public void setPersons(UniqueNoteList replacement) {
+    public void setNotes(UniqueNoteList replacement) {
         requireNonNull(replacement);
         internalList.setAll(replacement.internalList);
     }
 
     /**
-     * Replaces the contents of this list with {@code persons}.
-     * {@code persons} must not contain duplicate persons.
+     * Replaces the contents of this list with {@code notes}.
+     * {@code notes} must not contain duplicate notes.
      */
-    public void setPersons(List<Person> persons) {
-        requireAllNonNull(persons);
-        if (!personsAreUnique(persons)) {
-            throw new DuplicatePersonException();
+    public void setNotes(List<Note> notes) {
+        requireAllNonNull(notes);
+        if (!notesAreUnique(notes)) {
+            throw new DuplicateNoteException();
         }
 
-        internalList.setAll(persons);
+        internalList.setAll(notes);
     }
 
     /**
      * Returns the backing list as an unmodifiable {@code ObservableList}.
      */
-    public ObservableList<Person> asUnmodifiableObservableList() {
+    public ObservableList<Note> asUnmodifiableObservableList() {
         return internalUnmodifiableList;
     }
 
     @Override
-    public Iterator<Person> iterator() {
+    public Iterator<Note> iterator() {
         return internalList.iterator();
     }
 
@@ -123,12 +129,12 @@ public class UniqueNoteList implements Iterable<Person> {
     }
 
     /**
-     * Returns true if {@code persons} contains only unique persons.
+     * Returns true if {@code notes} contains only unique notes.
      */
-    private boolean personsAreUnique(List<Person> persons) {
-        for (int i = 0; i < persons.size() - 1; i++) {
-            for (int j = i + 1; j < persons.size(); j++) {
-                if (persons.get(i).isSamePerson(persons.get(j))) {
+    private boolean notesAreUnique(List<Note> notes) {
+        for (int i = 0; i < notes.size() - 1; i++) {
+            for (int j = i + 1; j < notes.size(); j++) {
+                if (notes.get(i).isSameNote(notes.get(j))) {
                     return false;
                 }
             }
