@@ -27,8 +27,7 @@ public class JsonAdaptedNote {
     @JsonCreator
     public JsonAdaptedNote(@JsonProperty("modulecode") String moduleCode,
                            @JsonProperty("noteName") String noteName,
-                           @JsonProperty("content") String content,
-                           @JsonProperty("tagged") List<JsonAdaptedTag> tagged) {
+                           @JsonProperty("content") String content) {
         this.moduleCode = moduleCode;
         this.noteName = noteName;
         this.content = content;
@@ -72,9 +71,9 @@ public class JsonAdaptedNote {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
                     Content.class.getSimpleName()));
         }
-        if (!Content.isValidNoteContent(content)) {
-            throw new IllegalValueException(Content.MESSAGE_CONSTRAINTS);
-        }
+        //if (!Content.isValidNoteContent(content)) {
+        //    throw new IllegalValueException(Content.MESSAGE_CONSTRAINTS);
+        //}
         final Content modelContent = new Content(content);
 
         //final Set<Tag> modelTags = new HashSet<>(capEntryTags);
