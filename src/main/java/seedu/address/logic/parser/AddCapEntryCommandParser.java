@@ -12,9 +12,9 @@ import java.util.stream.Stream;
 import seedu.address.logic.commands.AddCapEntryCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.cap.CapEntry;
-import seedu.address.model.cap.ModuleCode;
 import seedu.address.model.cap.ModuleCredits;
 import seedu.address.model.cap.ModuleGrade;
+import seedu.address.model.modulecode.ModuleCode;
 import seedu.address.model.tag.Tag;
 
 /**

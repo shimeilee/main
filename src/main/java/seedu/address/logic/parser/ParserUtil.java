@@ -48,13 +48,13 @@ public class ParserUtil {
      *
      * @throws ParseException if the given {@code modulecode} is invalid.
      */
-    public static seedu.address.model.cap.ModuleCode parseModuleCode(String moduleCode) throws ParseException {
+    public static ModuleCode parseModuleCode(String moduleCode) throws ParseException {
         requireNonNull(moduleCode);
         String trimmedModuleCode = moduleCode.trim();
-        if (!seedu.address.model.cap.ModuleCode.isValidModuleCode(trimmedModuleCode)) {
-            throw new ParseException(seedu.address.model.cap.ModuleCode.MESSAGE_CONSTRAINTS);
+        if (!ModuleCode.isValidModuleCode(trimmedModuleCode)) {
+            throw new ParseException(ModuleCode.MESSAGE_CONSTRAINTS);
         }
-        return new seedu.address.model.cap.ModuleCode(trimmedModuleCode);
+        return new ModuleCode(trimmedModuleCode);
     }
 
     /**

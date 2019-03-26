@@ -31,7 +31,7 @@ public class ModuleGrade {
      * @param moduleGrade a valid moduleGrade
      */
     public ModuleGrade(String moduleGrade) {
-        this.value = moduleGrade;
+        this.value = moduleGrade.toUpperCase();
         switch (moduleGrade) {
         case A_PLUS_GRADE: case A_GRADE:
             this.score = 5.0;
@@ -81,7 +81,7 @@ public class ModuleGrade {
      * Returns true if it is a valid ModuleGrade
      */
     public static boolean isValidModuleGrade(String test) {
-        return test.matches(VALIDATION_REGEX);
+        return test.toUpperCase().matches(VALIDATION_REGEX);
     }
 
     @Override

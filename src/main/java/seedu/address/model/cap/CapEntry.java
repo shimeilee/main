@@ -7,6 +7,7 @@ import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
+import seedu.address.model.modulecode.ModuleCode;
 import seedu.address.model.tag.Tag;
 
 /** Represents a CAP entry for the CAP Manager in the address book.
@@ -110,6 +111,7 @@ public class CapEntry {
                 .append(moduleGrade)
                 .append("; ")
                 .append(moduleCredits)
+                .append("MC ")
                 .append(" Tags: ");
         getTags().forEach(builder::append);
         return builder.toString();
