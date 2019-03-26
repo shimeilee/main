@@ -14,6 +14,7 @@ import seedu.address.model.cap.ModuleGrade;
 import seedu.address.model.homework.Date;
 import seedu.address.model.homework.HomeworkName;
 import seedu.address.model.modulecode.ModuleCode;
+import seedu.address.model.note.NoteName;
 import seedu.address.model.person.Address;
 import seedu.address.model.person.Email;
 import seedu.address.model.person.Name;
@@ -136,6 +137,38 @@ public class ParserUtil {
         return new Date(deadline);
     }
 
+    //===== Note ======/
+
+    /**
+     * Parses a {@code String modulecode} into a {@code ModuleCode}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code modulecode} is invalid.
+     */
+    public static ModuleCode parseNoteModuleCode(String moduleCode)
+            throws ParseException {
+        requireNonNull(moduleCode);
+        String trimmedModuleCode = moduleCode.trim();
+        if (!ModuleCode.isValidModuleCode(trimmedModuleCode)) {
+            throw new ParseException(ModuleCode.MESSAGE_CONSTRAINTS);
+        }
+        return new ModuleCode(moduleCode);
+    }
+
+    /**
+     * Parses a {@code String name} into a {@code note}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code name} is invalid.
+     */
+    public static NoteName parseNoteName(String name) throws ParseException {
+        requireNonNull(name);
+        String trimmedName = name.trim();
+        if (!NoteName.isValidNoteName(trimmedName)) {
+            throw new ParseException(Name.MESSAGE_CONSTRAINTS);
+        }
+        return new NoteName(trimmedName);
+    }
 
     //===== Person (AB4) =====//
 
