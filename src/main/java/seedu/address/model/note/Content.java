@@ -5,7 +5,6 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
 
 /**
  * Represents content in Note.
- * Guarantees: immutable; is valid as declared in {@link #isValidNoteContent(String)}
  */
 public class Content {
 
@@ -17,7 +16,8 @@ public class Content {
      * The first character of the address must not be a whitespace,
      * otherwise " " (a blank string) becomes a valid input.
      */
-    public static final String VALIDATION_REGEX = "[\\p{Alnum}][\\p{Alnum} ]*";
+    //public static final String VALIDATION_REGEX = "[\\p{Alnum}][\\p{Alnum}
+    // ]*";
 
     public final String content;
 
@@ -28,17 +28,16 @@ public class Content {
      */
     // Todo: amend content to accept string by string. Use string builder.
     public Content(String content) {
-        requireNonNull(content);
-        checkArgument(isValidNoteContent(content), MESSAGE_CONSTRAINTS);
+        //checkArgument(isValidNoteContent(content), MESSAGE_CONSTRAINTS);
         this.content = content;
     }
 
     /**
      * Returns true if a given string is a valid content string.
      */
-    public static boolean isValidNoteContent(String test) {
-        return test.matches(VALIDATION_REGEX);
-    }
+    //public static boolean isValidNoteContent(String test) {
+    //return test.matches(VALIDATION_REGEX);
+    // }
 
 
     @Override

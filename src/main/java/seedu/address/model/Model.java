@@ -8,17 +8,20 @@ import javafx.collections.ObservableList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.model.cap.CapEntry;
 import seedu.address.model.homework.Homework;
+import seedu.address.model.note.Note;
 import seedu.address.model.person.Person;
 
 /**
  * The API of the Model component.
  */
 public interface Model {
-    /** {@code Predicate} that always evaluate to true */
+    /**
+     * {@code Predicate} that always evaluate to true
+     */
     Predicate<Person> PREDICATE_SHOW_ALL_PERSONS = unused -> true;
     Predicate<CapEntry> PREDICATE_SHOW_ALL_CAP_ENTRIES = unused -> true;
     Predicate<Homework> PREDICATE_SHOW_ALL_HOMEWORK = unused -> true;
-
+    Predicate<Note> PREDICATE_SHOW_ALL_NOTES = unused -> true;
 
     /**
      * Replaces user prefs data with the data in {@code userPrefs}.
@@ -55,7 +58,9 @@ public interface Model {
      */
     void setAddressBook(ReadOnlyAddressBook addressBook);
 
-    /** Returns the AddressBook */
+    /**
+     * Returns the AddressBook
+     */
     ReadOnlyAddressBook getAddressBook();
 
     /**
@@ -82,11 +87,14 @@ public interface Model {
      */
     void setPerson(Person target, Person editedPerson);
 
-    /** Returns an unmodifiable view of the filtered person list */
+    /**
+     * Returns an unmodifiable view of the filtered person list
+     */
     ObservableList<Person> getFilteredPersonList();
 
     /**
      * Updates the filter of the filtered person list to filter by the given {@code predicate}.
+     *
      * @throws NullPointerException if {@code predicate} is null.
      */
     void updateFilteredPersonList(Predicate<Person> predicate);
@@ -134,6 +142,7 @@ public interface Model {
     void setSelectedPerson(Person person);
 
     //=========== Cap Entry ===========================================================================
+
     /**
      * Returns true if a cap entry with the same identity as {@code capEntry} exists in the UltiStudent.
      */
@@ -159,11 +168,14 @@ public interface Model {
      */
     void setCapEntry(CapEntry target, CapEntry editedCapEntry);
 
-    /** Returns an unmodifiable view of the filtered cap entry list */
+    /**
+     * Returns an unmodifiable view of the filtered cap entry list
+     */
     ObservableList<CapEntry> getFilteredCapEntryList();
 
     /**
      * Updates the filter of the filtered cap entry list to filter by the given {@code predicate}.
+     *
      * @throws NullPointerException if {@code predicate} is null.
      */
     void updateFilteredCapEntryList(Predicate<CapEntry> predicate);
@@ -186,6 +198,7 @@ public interface Model {
     void setSelectedCapEntry(CapEntry capEntry);
 
     //=========== Homework ===========================================================================
+
     /**
      * Returns true if a homework with the same identity as {@code homework} exists in the UltiStudent.
      */
@@ -211,11 +224,14 @@ public interface Model {
      */
     void setHomework(Homework target, Homework editedHomework);
 
-    /** Returns an unmodifiable view of the filtered homework list */
+    /**
+     * Returns an unmodifiable view of the filtered homework list
+     */
     ObservableList<Homework> getFilteredHomeworkList();
 
     /**
      * Updates the filter of the filtered homework list to filter by the given {@code predicate}.
+     *
      * @throws NullPointerException if {@code predicate} is null.
      */
     void updateFilteredHomeworkList(Predicate<Homework> predicate);
@@ -236,4 +252,62 @@ public interface Model {
      * Sets the selected homework in the filtered homework list.
      */
     void setSelectedHomework(Homework homework);
+
+    //=========== Notes ===================================================
+
+    /**
+     * Returns true if a Note with the same identity as {@code note} exists
+     * in the UltiStudent.
+     */
+    boolean hasNote(Note note);
+
+    /**
+     * Deletes the given note.
+     * The note must exist in the UltiStudent.
+     */
+    void deleteNote(Note note);
+
+    /**
+     * Adds the given note.
+     * {@code Note} must not already exist in the UltiStudent.
+     */
+    void addNote(Note note);
+
+    /**
+     * Replaces the given cap note {@code target} with {@code editedNote}.
+     * {@code target} must exist in the UltiStudent.
+     * The note identity of {@code editedNote} must not be the same as
+     * another note in the UltiStudent.
+     */
+    void setNote(Note target, Note editedNote);
+
+    /**
+     * Returns an unmodifiable view of the filtered note list
+     */
+    ObservableList<Note> getFilteredNoteList();
+
+    /**
+     * Updates the filter of the filtered note list to filter by the given
+     * {@code predicate}.
+     *
+     * @throws NullPointerException if {@code predicate} is null.
+     */
+    void updateFilteredNoteList(Predicate<Note> predicate);
+
+    /**
+     * Selected note in the filtered notes list.
+     * null if no note is selected.
+     */
+    ReadOnlyProperty<Note> selectedNoteProperty();
+
+    /**
+     * Returns the selected note in the filtered cap entry list.
+     * null if no note is selected.
+     */
+    Note getSelectedNote();
+
+    /**
+     * Sets the selected note in the filtered note list.
+     */
+    void setSelectedNote(Note note);
 }
