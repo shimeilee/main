@@ -5,7 +5,6 @@ import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 import java.util.Objects;
 
 import seedu.address.model.modulecode.ModuleCode;
-import seedu.address.model.tag.Tag;
 
 /**
  * Represents a Note in UltiStudent - Notes Keeping.
@@ -20,17 +19,17 @@ public class Note {
 
     // Data fields
     private Content content;
-    private Tag tag;
+    //private Tag tag;
 
     /**
      * Every field must be present and not null.
      */
-    public Note(ModuleCode moduleCode, NoteName noteName, Tag tag, Content
+    public Note(ModuleCode moduleCode, NoteName noteName, Content
             content) {
         requireAllNonNull(moduleCode, noteName, content);
         this.moduleCode = moduleCode;
         this.noteName = noteName;
-        this.tag = tag;
+        //this.tag = tag;
         this.content = content;
     }
 
@@ -44,10 +43,6 @@ public class Note {
 
     public Content getContent() {
         return content;
-    }
-
-    public Tag getTag() {
-        return tag;
     }
 
     /**
