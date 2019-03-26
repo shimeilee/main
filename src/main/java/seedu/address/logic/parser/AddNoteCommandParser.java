@@ -39,7 +39,7 @@ public class AddNoteCommandParser {
         NoteName noteName = ParserUtil.parseNoteName(argMultimap.getValue
                 (PREFIX_NOTE_NAME).get());
 
-        Note note = new Note(moduleCode, noteName, new Content(" "));
+        Note note = new Note(moduleCode, noteName, new Content(""));
 
         return new AddNoteCommand(note);
     }

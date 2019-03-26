@@ -1,7 +1,6 @@
 package seedu.address.model.note;
 
 import static java.util.Objects.requireNonNull;
-import static seedu.address.commons.util.AppUtil.checkArgument;
 
 /**
  * Represents content in Note.
@@ -28,6 +27,7 @@ public class Content {
      */
     // Todo: amend content to accept string by string. Use string builder.
     public Content(String content) {
+        requireNonNull(content);
         //checkArgument(isValidNoteContent(content), MESSAGE_CONSTRAINTS);
         this.content = content;
     }

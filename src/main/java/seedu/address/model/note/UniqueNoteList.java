@@ -10,9 +10,6 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import seedu.address.model.note.exceptions.DuplicateNoteException;
 import seedu.address.model.note.exceptions.NoteNotFoundException;
-import seedu.address.model.person.Person;
-import seedu.address.model.person.exceptions.DuplicatePersonException;
-import seedu.address.model.person.exceptions.PersonNotFoundException;
 
 /**
  * A list of notes that enforces uniqueness between its elements and does not
