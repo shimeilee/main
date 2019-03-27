@@ -20,6 +20,7 @@ import seedu.address.model.cap.exceptions.CapEntryNotFoundException;
 import seedu.address.model.homework.Homework;
 import seedu.address.model.homework.exceptions.HomeworkNotFoundException;
 import seedu.address.model.note.Note;
+import seedu.address.model.note.exceptions.NoteNotFoundException;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.exceptions.PersonNotFoundException;
 
@@ -372,7 +373,7 @@ public class ModelManager implements Model {
 
     @Override
     public void setSelectedHomework(Homework homework) {
-        if (homework != null && !filteredCapEntryList.contains(homework)) {
+        if (homework != null && !filteredHomeworkList.contains(homework)) {
             throw new HomeworkNotFoundException();
         }
         selectedHomework.setValue(homework);
@@ -465,8 +466,8 @@ public class ModelManager implements Model {
 
     @Override
     public void setSelectedNote(Note note) {
-        if (note != null && !filteredPersons.contains(note)) {
-            throw new PersonNotFoundException();
+        if (note != null && !filteredNoteList.contains(note)) {
+            throw new NoteNotFoundException();
         }
         selectedNote.setValue(note);
     }
