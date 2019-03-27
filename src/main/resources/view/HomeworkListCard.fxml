@@ -29,13 +29,8 @@
         <Label fx:id="moduleCode" prefHeight="17.0" prefWidth="125.0" styleClass="cell_big_label" text="\$moduleCode" />
       </HBox>
       <FlowPane fx:id="tags" />
-<<<<<<< HEAD:src/main/resources/view/ModulesListCard.fxml
-      <Label fx:id="moduleCode" styleClass="cell_small_label" text="\$moduleCode" />
-      <Label fx:id="numberOfHomework" styleClass="cell_small_label" text="\$numberOfHomework" />
-=======
       <Label fx:id="homeworkName" styleClass="cell_small_label" text="\$homeworkName" />
       <Label fx:id="deadline" styleClass="cell_small_label" text="\$deadline" />
->>>>>>> c52987e2e4dcaaf4cffee1ef76c028c595cfbbb2:src/main/resources/view/HomeworkListCard.fxml
     </VBox>
       <rowConstraints>
          <RowConstraints />
