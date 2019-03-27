@@ -40,7 +40,6 @@ public class Date {
      * Returns true if it is a valid date.
      */
     public static boolean isValidDate(String test) {
-        System.out.println(test);
         return test.matches(VALIDATION_REGEX);
     }
 
