@@ -7,8 +7,8 @@ import static java.util.Objects.requireNonNull;
  */
 public class ModuleCredits {
 
-    public static final String MESSAGE_CONSTRAINTS = "Modular credits should be positive whole numbers of 1 or " +
-            "2 digits";
+    public static final String MESSAGE_CONSTRAINTS = "Modular credits should be positive whole numbers of 1 or "
+            + "2 digits";
     public static final String VALIDATION_REGEX = "\\d{1,2}";
     public final String value;
 

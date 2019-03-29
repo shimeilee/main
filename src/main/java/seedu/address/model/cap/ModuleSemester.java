@@ -7,8 +7,8 @@ import static java.util.Objects.requireNonNull;
  */
 public class ModuleSemester {
 
-    public static final String MESSAGE_CONSTRAINTS = "Modular Semester should be entered in Y#S# format," +
-            " where # are whole numbers ";
+    public static final String MESSAGE_CONSTRAINTS = "Modular Semester should be entered in Y#S# format,"
+            + " where # are whole numbers ";
     public static final String VALIDATION_REGEX = "(Y)\\d{1}(S)\\d{1}";
     public final String value;
 
@@ -25,20 +25,20 @@ public class ModuleSemester {
      * Returns true if it is a valid ModuleCode
      */
     public static boolean isValidModuleSemester(String test) {
-            return test.toUpperCase().matches(VALIDATION_REGEX);
-        }
+        return test.toUpperCase().matches(VALIDATION_REGEX);
+    }
 
     /**
      * Returns true if it is a valid ModuleCode
      */
     public String getValue() {
-            return this.value;
-        }
+        return this.value;
+    }
 
     @Override
     public String toString() {
-            return value;
-        }
+        return value;
+    }
 
     @Override
     public boolean equals(Object other) {
@@ -49,7 +49,7 @@ public class ModuleSemester {
 
     @Override
     public int hashCode() {
-            return value.hashCode();
-        }
+        return value.hashCode();
+    }
 }
 

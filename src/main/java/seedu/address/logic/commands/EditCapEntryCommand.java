@@ -30,7 +30,7 @@ import seedu.address.model.tag.Tag;
  * Edits the details of an existing cap entry in the Cap Manager through the index.
  */
 public class EditCapEntryCommand extends Command {
-    public static final String COMMAND_WORD = "edit-cap";
+    public static final String COMMAND_WORD = "editcap";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Edits the details of the module identified "
             + "by the index number used in the displayed cap entry list. "
@@ -95,11 +95,12 @@ public class EditCapEntryCommand extends Command {
         assert capEntryToEdit != null;
 
         ModuleCode updatedModuleCode = editCapEntryDescriptor.getModuleCode().orElse(capEntryToEdit.getModuleCode());
-        ModuleGrade updatedModuleGrade = editCapEntryDescriptor.getModuleGrade().orElse(capEntryToEdit.getModuleGrade());
+        ModuleGrade updatedModuleGrade = editCapEntryDescriptor.getModuleGrade().orElse(capEntryToEdit
+                .getModuleGrade());
         ModuleCredits updatedModuleCredits = editCapEntryDescriptor.getModuleCredits().orElse(capEntryToEdit
                 .getModuleCredits());
         ModuleSemester updatedModuleSemester = editCapEntryDescriptor.getModuleSemester().orElse(capEntryToEdit
-        .getModuleSemester());
+                .getModuleSemester());
         Set<Tag> updatedTags = editCapEntryDescriptor.getTags().orElse(capEntryToEdit.getTags());
 
         return new CapEntry(updatedModuleCode, updatedModuleGrade, updatedModuleCredits, updatedModuleSemester,
