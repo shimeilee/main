@@ -22,6 +22,7 @@ public class CliSyntax {
     //===== CapManager =====//
     public static final Prefix PREFIX_MODULEGRADE = new Prefix("g/");
     public static final Prefix PREFIX_MODULECREDITS = new Prefix("mcs/");
+    public static final Prefix PREFIX_SEMESTER = new Prefix("sem/");
 
     //===== NotesManager =====/
     public static final Prefix PREFIX_NOTE_NAME = new Prefix("n/");

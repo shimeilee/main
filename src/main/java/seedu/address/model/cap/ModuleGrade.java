@@ -76,7 +76,6 @@ public class ModuleGrade {
         return this.value;
     }
 
-    //TODO: Regex check for moduleGrade
     /**
      * Returns true if it is a valid ModuleGrade
      */

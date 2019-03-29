@@ -13,6 +13,7 @@ import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.model.cap.CapEntry;
 import seedu.address.model.cap.ModuleCredits;
 import seedu.address.model.cap.ModuleGrade;
+import seedu.address.model.cap.ModuleSemester;
 import seedu.address.model.modulecode.ModuleCode;
 import seedu.address.model.tag.Tag;
 
@@ -25,6 +26,7 @@ public class JsonAdaptedCapEntry {
     private final String moduleCode;
     private final String moduleGrade;
     private final String moduleCredits;
+    private final String moduleSemester;
 
     private final List<JsonAdaptedTag> tagged = new ArrayList<>();
 
@@ -35,10 +37,12 @@ public class JsonAdaptedCapEntry {
     public JsonAdaptedCapEntry(@JsonProperty("modulecode") String moduleCode,
                                @JsonProperty("moduleGrade") String moduleGrade,
                                @JsonProperty("moduleCredits") String moduleCredits,
+                               @JsonProperty("moduleSemester") String moduleSemester,
                                @JsonProperty("tagged") List<JsonAdaptedTag> tagged) {
         this.moduleCode = moduleCode;
         this.moduleGrade = moduleGrade;
         this.moduleCredits = moduleCredits;
+        this.moduleSemester = moduleSemester;
         if (tagged != null) {
             this.tagged.addAll(tagged);
         }
@@ -51,6 +55,7 @@ public class JsonAdaptedCapEntry {
         moduleCode = source.getModuleCode().value;
         moduleGrade = source.getModuleGrade().value;
         moduleCredits = source.getModuleCredits().value;
+        moduleSemester = source.getModuleSemester().value;
         tagged.addAll(source.getTags().stream()
                 .map(JsonAdaptedTag::new)
                 .collect(Collectors.toList()));
@@ -94,8 +99,17 @@ public class JsonAdaptedCapEntry {
         }
         final ModuleCredits modelModuleCredits = new ModuleCredits(moduleCredits);
 
+        if (moduleSemester == null) {
+            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
+                    ModuleSemester.class.getSimpleName()));
+        }
+        if (!ModuleSemester.isValidModuleSemester(moduleSemester)) {
+            throw new IllegalValueException(ModuleSemester.MESSAGE_CONSTRAINTS);
+        }
+        final ModuleSemester modelModuleSemester = new ModuleSemester(moduleSemester);
+
         final Set<Tag> modelTags = new HashSet<>(capEntryTags);
-        return new CapEntry(modelModuleCode, modelModuleGrade, modelModuleCredits, modelTags);
+        return new CapEntry(modelModuleCode, modelModuleGrade, modelModuleCredits, modelModuleSemester, modelTags);
     }
 }
 

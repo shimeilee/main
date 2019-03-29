@@ -5,6 +5,7 @@ import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT
 import static seedu.address.logic.parser.CliSyntax.PREFIX_MODULECODE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_MODULECREDITS;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_MODULEGRADE;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_SEMESTER;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
 
 import java.util.Collection;
@@ -31,7 +32,7 @@ public class EditCapEntryByModuleCodeCommandParser {
     public EditCapEntryByModuleCodeCommand parse(String args) throws ParseException {
         requireNonNull(args);
         ArgumentMultimap argMultimap = ArgumentTokenizer.tokenize(args, PREFIX_MODULECODE, PREFIX_MODULEGRADE,
-                PREFIX_MODULECREDITS, PREFIX_TAG);
+                PREFIX_MODULECREDITS, PREFIX_SEMESTER, PREFIX_TAG);
 
         ModuleCode moduleCode;
 
@@ -54,6 +55,10 @@ public class EditCapEntryByModuleCodeCommandParser {
         if (argMultimap.getValue(PREFIX_MODULECREDITS).isPresent()) {
             editCapEntryDescriptor.setModuleCredits(ParserUtil.parseModuleCredits(argMultimap
                             .getValue(PREFIX_MODULECREDITS).get()));
+        }
+        if (argMultimap.getValue(PREFIX_SEMESTER).isPresent()) {
+            editCapEntryDescriptor.setModuleSemester(ParserUtil.parseModuleSemester(argMultimap
+                    .getValue(PREFIX_SEMESTER).get()));
         }
         parseTagsForEdit(argMultimap.getAllValues(PREFIX_TAG)).ifPresent(editCapEntryDescriptor::setTags);
 
