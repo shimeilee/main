@@ -1,8 +1,8 @@
 package seedu.ultistudent.ui;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+//import static org.junit.Assert.assertEquals;
+//import static org.junit.Assert.assertFalse;
+//import static org.junit.Assert.assertTrue;
 
 public class PersonCardTest extends GuiUnitTest {
 

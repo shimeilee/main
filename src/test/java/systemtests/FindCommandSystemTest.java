@@ -1,6 +1,6 @@
 package systemtests;
 
-import static org.junit.Assert.assertFalse;
+//import static org.junit.Assert.assertFalse;
 
 public class FindCommandSystemTest extends AddressBookSystemTest {
 

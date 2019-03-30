@@ -1,7 +1,7 @@
 package seedu.ultistudent.ui;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTimeoutPreemptively;
+//import static org.junit.Assert.assertEquals;
+//import static org.junit.jupiter.api.Assertions.assertTimeoutPreemptively;
 
 public class HomeworkManagerSubPanelTest extends GuiUnitTest {
 //    private static final ObservableList<Person> TYPICAL_PERSONS =
@@ -33,7 +33,8 @@ public class HomeworkManagerSubPanelTest extends GuiUnitTest {
 //        guiRobot.interact(() -> selectedPerson.set(secondPerson));
 //        guiRobot.pauseForHuman();
 //
-//        PersonCardHandle expectedPerson = personListPanelHandle.getPersonCardHandle(INDEX_SECOND_PERSON.getZeroBased());
+//        PersonCardHandle expectedPerson = personListPanelHandle.getPersonCardHandle(INDEX_SECOND_PERSON
+//                                          .getZeroBased());
 //        PersonCardHandle selectedPerson = personListPanelHandle.getHandleToSelectedCard();
 //        assertCardEquals(expectedPerson, selectedPerson);
 //    }
@@ -73,7 +74,8 @@ public class HomeworkManagerSubPanelTest extends GuiUnitTest {
 //     * Also shows the {@code Stage} that displays only {@code SubInfoPanel}.
 //     */
 //    private void initUi(ObservableList<Homework> backingList) {
-//        HomeworkManagerMainPanel homeworkManagerSubPanel = new HomeworkManagerMainPanel(backingList, selectedPerson, selectedPerson::set);
+//        HomeworkManagerMainPanel homeworkManagerSubPanel = new HomeworkManagerMainPanel(backingList, selectedPerson,
+//                                                                                        selectedPerson::set);
 //        uiPartRule.setUiPart(homeworkManagerSubPanel);
 //
 //        personListPanelHandle = new PersonListPanelHandle(getChildNode(homeworkManagerSubPanel.getRoot(),
