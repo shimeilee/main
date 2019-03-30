@@ -11,6 +11,7 @@ import seedu.address.commons.util.StringUtil;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.cap.ModuleCredits;
 import seedu.address.model.cap.ModuleGrade;
+import seedu.address.model.cap.ModuleSemester;
 import seedu.address.model.homework.Date;
 import seedu.address.model.homework.HomeworkName;
 import seedu.address.model.modulecode.ModuleCode;
@@ -47,7 +48,7 @@ public class ParserUtil {
      * Parses a {@code String modulecode} into a {@code ModuleCode}.
      * Leading and trailing whitespaces will be trimmed.
      *
-     * @throws ParseException if the given {@code modulecode} is invalid.
+     * @throws ParseException if the given {@code moduleCode} is invalid.
      */
     public static ModuleCode parseModuleCode(String moduleCode) throws ParseException {
         requireNonNull(moduleCode);
@@ -59,10 +60,10 @@ public class ParserUtil {
     }
 
     /**
-     * Parses a {@code String moduleCredits} into a {@code ModuleCredits}.
+     * Parses a {@code String moduleGrade} into a {@code moduleGrade}.
      * Leading and trailing whitespaces will be trimmed.
      *
-     * @throws ParseException if the given {@code moduleCredits} is invalid.
+     * @throws ParseException if the given {@code moduleGrade} is invalid.
      */
     public static ModuleGrade parseModuleGrade(String moduleGrade) throws ParseException {
         requireNonNull(moduleGrade);
@@ -74,7 +75,7 @@ public class ParserUtil {
     }
 
     /**
-     * Parses a {@code String moduleCredits} into a {@code ModuleCredits}.
+     * Parses a {@code String moduleCredits} into a {@code moduleCredits}.
      * Leading and trailing whitespaces will be trimmed.
      *
      * @throws ParseException if the given {@code moduleCredits} is invalid.
@@ -86,6 +87,21 @@ public class ParserUtil {
             throw new ParseException(ModuleCredits.MESSAGE_CONSTRAINTS);
         }
         return new ModuleCredits(trimmedModuleCredits);
+    }
+
+    /**
+     * Parses a {@code String moduleSemester} into a {@code moduleSemester}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code moduleSemester} is invalid.
+     */
+    public static ModuleSemester parseModuleSemester(String moduleSemester) throws ParseException {
+        requireNonNull(moduleSemester);
+        String trimmedModuleSemester = moduleSemester.trim();
+        if (!ModuleSemester.isValidModuleSemester(trimmedModuleSemester)) {
+            throw new ParseException(ModuleSemester.MESSAGE_CONSTRAINTS);
+        }
+        return new ModuleSemester(trimmedModuleSemester);
     }
 
     //===== HomeworkManager =====//

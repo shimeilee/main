@@ -24,6 +24,7 @@ public class CapEntry {
     private ModuleCode moduleCode;
     private ModuleGrade moduleGrade;
     private ModuleCredits moduleCredits;
+    private ModuleSemester moduleSemester;
 
     // Data fields
     private final Set<Tag> tags = new HashSet<>();
@@ -31,11 +32,13 @@ public class CapEntry {
     /**
      * Every field must be present and not null.
      */
-    public CapEntry(ModuleCode moduleCode, ModuleGrade moduleGrade, ModuleCredits moduleCredits, Set<Tag> tags) {
-        requireAllNonNull(moduleCode, moduleGrade, moduleCredits, tags);
+    public CapEntry(ModuleCode moduleCode, ModuleGrade moduleGrade, ModuleCredits moduleCredits,
+                    ModuleSemester moduleSemester, Set<Tag> tags) {
+        requireAllNonNull(moduleCode, moduleGrade, moduleCredits, moduleSemester, tags);
         this.moduleCode = moduleCode;
         this.moduleGrade = moduleGrade;
         this.moduleCredits = moduleCredits;
+        this.moduleSemester = moduleSemester;
         updateCap(moduleGrade, moduleCredits);
         this.tags.addAll(tags);
     }
@@ -56,6 +59,10 @@ public class CapEntry {
 
     public ModuleCredits getModuleCredits() {
         return moduleCredits;
+    }
+
+    public ModuleSemester getModuleSemester() {
+        return moduleSemester;
     }
 
     /**
@@ -98,7 +105,8 @@ public class CapEntry {
         CapEntry otherCapEntry = (CapEntry) other;
         return otherCapEntry.getModuleCode().equals(getModuleCode())
                 && otherCapEntry.getModuleGrade().equals(getModuleGrade())
-                && otherCapEntry.getModuleCredits() == (getModuleCredits())
+                && otherCapEntry.getModuleCredits().equals(getModuleCredits())
+                && otherCapEntry.getModuleSemester().equals(getModuleSemester())
                 && otherCapEntry.getTags().equals(getTags());
     }
 
@@ -111,7 +119,8 @@ public class CapEntry {
                 .append(moduleGrade)
                 .append("; ")
                 .append(moduleCredits)
-                .append("MC ")
+                .append("MC; ")
+                .append(moduleSemester)
                 .append(" Tags: ");
         getTags().forEach(builder::append);
         return builder.toString();
@@ -120,6 +129,6 @@ public class CapEntry {
     @Override
     public int hashCode() {
         // use this method for custom fields hashing instead of implementing your own
-        return Objects.hash(moduleCode, moduleGrade, moduleCredits, tags);
+        return Objects.hash(moduleCode, moduleGrade, moduleCredits, moduleSemester, tags);
     }
 }

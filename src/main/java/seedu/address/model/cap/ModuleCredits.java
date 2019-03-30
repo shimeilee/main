@@ -7,8 +7,9 @@ import static java.util.Objects.requireNonNull;
  */
 public class ModuleCredits {
 
-    public static final String MESSAGE_CONSTRAINTS = "Modular credits should be positive whole numbers ";
-    public static final String VALIDATION_REGEX = "\\d{1}";
+    public static final String MESSAGE_CONSTRAINTS = "Modular credits should be positive whole numbers of 1 or "
+            + "2 digits";
+    public static final String VALIDATION_REGEX = "\\d{1,2}";
     public final String value;
 
     /**
@@ -20,12 +21,11 @@ public class ModuleCredits {
         value = moduleCredits;
     }
 
-    //TODO: Regex check for modulecode
     /**
      * Returns true if it is a valid ModuleCode
      */
     public static boolean isValidModuleCredits(String test) {
-        return true;
+        return test.matches(VALIDATION_REGEX);
     }
 
     /**

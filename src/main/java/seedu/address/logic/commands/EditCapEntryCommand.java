@@ -4,6 +4,7 @@ import static java.util.Objects.requireNonNull;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_MODULECODE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_MODULECREDITS;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_MODULEGRADE;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_SEMESTER;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
 
 import java.util.Collections;
@@ -21,6 +22,7 @@ import seedu.address.model.Model;
 import seedu.address.model.cap.CapEntry;
 import seedu.address.model.cap.ModuleCredits;
 import seedu.address.model.cap.ModuleGrade;
+import seedu.address.model.cap.ModuleSemester;
 import seedu.address.model.modulecode.ModuleCode;
 import seedu.address.model.tag.Tag;
 
@@ -28,7 +30,7 @@ import seedu.address.model.tag.Tag;
  * Edits the details of an existing cap entry in the Cap Manager through the index.
  */
 public class EditCapEntryCommand extends Command {
-    public static final String COMMAND_WORD = "editCapEntry";
+    public static final String COMMAND_WORD = "editcap";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Edits the details of the module identified "
             + "by the index number used in the displayed cap entry list. "
@@ -37,6 +39,7 @@ public class EditCapEntryCommand extends Command {
             + "[" + PREFIX_MODULECODE + "MODULE_CODEN] "
             + "[" + PREFIX_MODULEGRADE + "MODULE_GRADE] "
             + "[" + PREFIX_MODULECREDITS + "MODULE_CREDITS] "
+            + "[" + PREFIX_SEMESTER + "MODULE_SEMESTER] "
             + "[" + PREFIX_TAG + "TAG]...\n"
             + "Example: " + COMMAND_WORD + " 1 "
             + PREFIX_MODULEGRADE + "B+ "
@@ -92,12 +95,16 @@ public class EditCapEntryCommand extends Command {
         assert capEntryToEdit != null;
 
         ModuleCode updatedModuleCode = editCapEntryDescriptor.getModuleCode().orElse(capEntryToEdit.getModuleCode());
-        ModuleGrade updatedPhone = editCapEntryDescriptor.getModuleGrade().orElse(capEntryToEdit.getModuleGrade());
-        ModuleCredits updatedEmail = editCapEntryDescriptor.getModuleCredits().orElse(capEntryToEdit
+        ModuleGrade updatedModuleGrade = editCapEntryDescriptor.getModuleGrade().orElse(capEntryToEdit
+                .getModuleGrade());
+        ModuleCredits updatedModuleCredits = editCapEntryDescriptor.getModuleCredits().orElse(capEntryToEdit
                 .getModuleCredits());
+        ModuleSemester updatedModuleSemester = editCapEntryDescriptor.getModuleSemester().orElse(capEntryToEdit
+                .getModuleSemester());
         Set<Tag> updatedTags = editCapEntryDescriptor.getTags().orElse(capEntryToEdit.getTags());
 
-        return new CapEntry(updatedModuleCode, updatedPhone, updatedEmail, updatedTags);
+        return new CapEntry(updatedModuleCode, updatedModuleGrade, updatedModuleCredits, updatedModuleSemester,
+                updatedTags);
     }
 
     @Override
@@ -126,6 +133,7 @@ public class EditCapEntryCommand extends Command {
         private ModuleCode moduleCode;
         private ModuleGrade moduleGrade;
         private ModuleCredits moduleCredits;
+        private ModuleSemester moduleSemester;
         private Set<Tag> tags;
 
         public EditCapEntryDescriptor() {}
@@ -138,6 +146,7 @@ public class EditCapEntryCommand extends Command {
             setModuleCode(toCopy.moduleCode);
             setModuleGrade(toCopy.moduleGrade);
             setModuleCredits(toCopy.moduleCredits);
+            setModuleSemester(toCopy.moduleSemester);
             setTags(toCopy.tags);
         }
 
@@ -145,7 +154,7 @@ public class EditCapEntryCommand extends Command {
          * Returns true if at least one field is edited.
          */
         public boolean isAnyFieldEdited() {
-            return CollectionUtil.isAnyNonNull(moduleCode, moduleGrade, moduleCredits, tags);
+            return CollectionUtil.isAnyNonNull(moduleCode, moduleGrade, moduleCredits, moduleSemester, tags);
         }
 
         public void setModuleCode(ModuleCode moduleCode) {
@@ -170,6 +179,14 @@ public class EditCapEntryCommand extends Command {
 
         public Optional<ModuleCredits> getModuleCredits() {
             return Optional.ofNullable(moduleCredits);
+        }
+
+        public void setModuleSemester(ModuleSemester moduleSemester) {
+            this.moduleSemester = moduleSemester;
+        }
+
+        public Optional<ModuleSemester> getModuleSemester() {
+            return Optional.ofNullable(moduleSemester);
         }
 
         /**
@@ -207,6 +224,7 @@ public class EditCapEntryCommand extends Command {
             return getModuleCode().equals(e.getModuleCode())
                     && getModuleGrade().equals(e.getModuleGrade())
                     && getModuleCredits().equals(e.getModuleCredits())
+                    && getModuleSemester().equals(e.getModuleSemester())
                     && getTags().equals(e.getTags());
         }
     }

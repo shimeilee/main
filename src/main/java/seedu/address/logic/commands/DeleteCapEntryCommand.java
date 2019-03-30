@@ -16,7 +16,7 @@ import seedu.address.model.cap.CapEntry;
  */
 public class DeleteCapEntryCommand extends Command {
 
-    public static final String COMMAND_WORD = "deleteCapEntry";
+    public static final String COMMAND_WORD = "deletecap";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD
             + ": Deletes the cap entry identified by the index number used in the displayed cap entry list.\n"

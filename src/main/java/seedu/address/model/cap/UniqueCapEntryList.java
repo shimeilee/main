@@ -14,10 +14,10 @@ import seedu.address.model.cap.exceptions.DuplicateCapEntryException;
 
 /**
  * A list of capEntry that enforces uniqueness between its elements and does not allow nulls.
- * A capEntry is considered unique by comparing using {@code Person#isSamePerson(Person)}. As such, adding and updating
- * of persons uses Person#isSamePerson(Person) for equality so as to ensure that the person being added or updated is
- * unique in terms of identity in the UniquePersonList. However, the removal of a person uses Person#equals(Object) so
- * as to ensure that the person with exactly the same fields will be removed.
+ * A capEntry is considered unique by comparing using {@code CapEntry#isSameCapEntry(CapEntry)}. As such, adding and
+ * updating of cap entries uses CapEntry#isSameCapEntry(CapEntry) for equality so as to ensure that the cap entry being
+ * added or updated is unique in terms of identity in the UniqueCapEntryList. However, the removal of a cap entry uses
+ * CapEntry#equals(Object) so as to ensure that the cap entry with exactly the same fields will be removed.
  *
  * Supports a minimal set of list operations.
  *
@@ -31,7 +31,7 @@ public class UniqueCapEntryList implements Iterable<CapEntry> {
             FXCollections.unmodifiableObservableList(internalList);
 
     /**
-     * Returns true if the list contains an equivalent person as the given argument.
+     * Returns true if the list contains an equivalent cap entry as the given argument.
      */
     public boolean contains(CapEntry toCheck) {
         requireNonNull(toCheck);
@@ -51,9 +51,9 @@ public class UniqueCapEntryList implements Iterable<CapEntry> {
     }
 
     /**
-     * Replaces the person {@code target} in the list with {@code editedPerson}.
+     * Replaces the cap entry {@code target} in the list with {@code editedCapEntry}.
      * {@code target} must exist in the list.
-     * The person identity of {@code editedPerson} must not be the same as another existing person in the list.
+     * The cap entry identity of {@code editedCapEntry} must not be the same as another existing entry in the list.
      */
     public void setCapEntry(CapEntry target, CapEntry editedCapEntry) {
         requireAllNonNull(target, editedCapEntry);
@@ -71,8 +71,8 @@ public class UniqueCapEntryList implements Iterable<CapEntry> {
     }
 
     /**
-     * Removes the equivalent person from the list.
-     * The person must exist in the list.
+     * Removes the equivalent cap entry from the list.
+     * The cap entry must exist in the list.
      */
     public void remove(CapEntry toRemove) {
         requireNonNull(toRemove);
@@ -88,7 +88,7 @@ public class UniqueCapEntryList implements Iterable<CapEntry> {
 
     /**
      * Replaces the contents of this list with {@code capEntries}.
-     * {@code capEntries} must not contain duplicate persons.
+     * {@code capEntries} must not contain duplicate cap entries.
      */
     public void setCapEntryList(List<CapEntry> capEntryList) {
         requireAllNonNull(capEntryList);
@@ -124,7 +124,7 @@ public class UniqueCapEntryList implements Iterable<CapEntry> {
     }
 
     /**
-     * Returns true if {@code persons} contains only unique persons.
+     * Returns true if {@code capEntryList} contains only unique persons.
      */
     private boolean capEntryListIsUnique(List<CapEntry> capEntryList) {
         for (int i = 0; i < capEntryList.size() - 1; i++) {
