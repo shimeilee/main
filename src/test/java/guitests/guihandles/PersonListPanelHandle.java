@@ -6,7 +6,7 @@ import java.util.Set;
 
 import javafx.scene.Node;
 import javafx.scene.control.ListView;
-import seedu.address.model.person.Person;
+import seedu.ultistudent.model.person.Person;
 
 /**
  * Provides a handle for {@code SubInfoPanel} containing the list of {@code PersonCard}.
