@@ -17,9 +17,9 @@ import seedu.ultistudent.model.tag.Tag;
 public class CapEntry {
 
     // Static fields
-    private static double capScore;
-    private static int totalScore;
-    private static int totalModuleCredits;
+    private static double capScore = 0;
+    private static double totalScore = 0;
+    private static double totalModuleCredits = 0;
     // Identity fields
     private ModuleCode moduleCode;
     private ModuleGrade moduleGrade;
@@ -44,7 +44,7 @@ public class CapEntry {
     }
 
     private void updateCap(ModuleGrade moduleGrade, ModuleCredits moduleCredits) {
-        this.totalScore += moduleGrade.getScore();
+        this.totalScore += moduleGrade.getScore() * moduleCredits.getValue();
         this.totalModuleCredits += moduleCredits.getValue();
         this.capScore = this.totalScore / this.totalModuleCredits;
     }
@@ -63,6 +63,10 @@ public class CapEntry {
 
     public ModuleSemester getModuleSemester() {
         return moduleSemester;
+    }
+
+    public static String getCapScore() {
+        return capScore + "";
     }
 
     /**

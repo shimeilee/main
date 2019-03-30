@@ -73,7 +73,7 @@ public class HomeworkManagerSubPanelTest extends GuiUnitTest {
 //     * Also shows the {@code Stage} that displays only {@code SubInfoPanel}.
 //     */
 //    private void initUi(ObservableList<Homework> backingList) {
-//        HomeworkManagerSubPanel homeworkManagerSubPanel = new HomeworkManagerSubPanel(backingList, selectedPerson, selectedPerson::set);
+//        HomeworkManagerMainPanel homeworkManagerSubPanel = new HomeworkManagerMainPanel(backingList, selectedPerson, selectedPerson::set);
 //        uiPartRule.setUiPart(homeworkManagerSubPanel);
 //
 //        personListPanelHandle = new PersonListPanelHandle(getChildNode(homeworkManagerSubPanel.getRoot(),

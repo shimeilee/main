@@ -16,16 +16,16 @@ import seedu.ultistudent.model.homework.Homework;
 /**
  * Panel containing the list of persons.
  */
-public class HomeworkManagerSubPanel extends UiPart<Region> {
-    private static final String FXML = "HomeworkManagerSubPanel.fxml";
-    private final Logger logger = LogsCenter.getLogger(HomeworkManagerSubPanel.class);
+public class HomeworkManagerMainPanel extends UiPart<Region> {
+    private static final String FXML = "HomeworkManagerMainPanel.fxml";
+    private final Logger logger = LogsCenter.getLogger(HomeworkManagerMainPanel.class);
 
     @FXML
     private ListView<Homework> homeworkListView;
 
-    public HomeworkManagerSubPanel(ObservableList<Homework> homeworkList,
-                                   ObservableValue<Homework> selectedHomework,
-                                   Consumer<Homework> onSelectedHomeworkChange) {
+    public HomeworkManagerMainPanel(ObservableList<Homework> homeworkList,
+                                    ObservableValue<Homework> selectedHomework,
+                                    Consumer<Homework> onSelectedHomeworkChange) {
         super(FXML);
         homeworkListView.setItems(homeworkList);
         homeworkListView.setCellFactory(listView -> new HomeworkListViewCell());

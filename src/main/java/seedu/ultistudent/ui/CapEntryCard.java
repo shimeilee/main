@@ -11,7 +11,7 @@ import seedu.ultistudent.model.cap.CapEntry;
  */
 public class CapEntryCard extends UiPart<Region> {
 
-    private static final String FXML = "CapEntryListCard.fxml";
+    private static final String FXML = "CapEntryCard.fxml";
 
     public final CapEntry capEntry;
 
@@ -25,6 +25,8 @@ public class CapEntryCard extends UiPart<Region> {
     private Label moduleGrade;
     @FXML
     private Label moduleCredits;
+    @FXML
+    private Label taken;
 
     public CapEntryCard(CapEntry capEntry, int displayedIndex) {
         super(FXML);
@@ -33,6 +35,7 @@ public class CapEntryCard extends UiPart<Region> {
         moduleCode.setText(capEntry.getModuleCode().toString());
         moduleGrade.setText("Grade: " + capEntry.getModuleGrade().toString());
         moduleCredits.setText("MC: " + capEntry.getModuleCredits().toString());
+        taken.setText("Taken: " + capEntry.getModuleSemester());
     }
 
     @Override

@@ -11,7 +11,7 @@ import seedu.ultistudent.model.homework.Homework;
  */
 public class HomeworkCard extends UiPart<Region> {
 
-    private static final String FXML = "HomeworkListCard.fxml";
+    private static final String FXML = "HomeworkCard.fxml";
 
     public final Homework homework;
 

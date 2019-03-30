@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.VBox?>
 
 <fx:root type="javafx.stage.Stage" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
-         title="UltiStudent" minWidth="900" minHeight="650" onCloseRequest="#handleExit">
+         title="UltiStudent" minWidth="750" minHeight="650" onCloseRequest="#handleExit">
   <icons>
     <Image url="@/images/address_book_32.png" />
   </icons>
@@ -59,11 +59,11 @@
               <padding>
                 <Insets top="10" right="10" bottom="10" left="10" />
               </padding>
-              <StackPane fx:id="listPanelPlaceholder" VBox.vgrow="ALWAYS"/>
+              <StackPane fx:id="subPanelPlaceholder" VBox.vgrow="ALWAYS"/>
             </VBox>
           </SplitPane>
 
-          <StackPane fx:id="browserPlaceholder" minWidth="550" prefWidth="550">
+          <StackPane fx:id="mainPanelPlaceholder" minWidth="380" prefWidth="380">
             <padding>
               <Insets top="10" right="10" bottom="10" left="10" />
             </padding>
