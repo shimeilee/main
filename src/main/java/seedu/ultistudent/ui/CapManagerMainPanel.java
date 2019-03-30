@@ -7,7 +7,6 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
-import javafx.scene.control.SplitPane;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.Region;
 import seedu.ultistudent.commons.core.LogsCenter;
@@ -24,7 +23,7 @@ public class CapManagerMainPanel extends UiPart<Region> {
     @FXML
     private FlowPane capEntryFlowPane;
     @FXML
-    private Label CAP;
+    private Label Cap;
     @FXML
     private ScrollPane scrollPane;
 
@@ -37,7 +36,7 @@ public class CapManagerMainPanel extends UiPart<Region> {
         capEntryFlowPane.setVgap(10);
         capEntryFlowPane.prefWidthProperty().bind(scrollPane.widthProperty());
         capEntryFlowPane.prefHeightProperty().bind(scrollPane.heightProperty());
-        CAP.setText(CapEntry.getCapScore());
+        Cap.setText(CapEntry.getCapScore());
 
         int index = 1;
         for (CapEntry capEntry: capEntries) {
@@ -52,7 +51,7 @@ public class CapManagerMainPanel extends UiPart<Region> {
                 capEntryFlowPane.getChildren().add(new CapEntryCard(capEntry, i).getRoot());
                 i++;
             }
-            CAP.setText(CapEntry.getCapScore());
+            Cap.setText(CapEntry.getCapScore());
         });
 
     }

@@ -16,7 +16,7 @@
     <AnchorPane maxHeight="64.0" minHeight="64.0" minWidth="64.0" prefHeight="64.0" prefWidth="400.0">
          <children>
             <Label layoutX="66.0" layoutY="17.0" styleClass="cap-label" text="Current Cap" AnchorPane.bottomAnchor="16.0" AnchorPane.leftAnchor="16.0" AnchorPane.topAnchor="17.0" />
-            <Label fx:id="CAP" layoutX="267.0" layoutY="12.0" styleClass="cap-label" AnchorPane.bottomAnchor="16.0" AnchorPane.rightAnchor="16.0" AnchorPane.topAnchor="17.0" />
+            <Label fx:id="Cap" layoutX="267.0" layoutY="12.0" styleClass="cap-label" AnchorPane.bottomAnchor="16.0" AnchorPane.rightAnchor="16.0" AnchorPane.topAnchor="17.0" />
          </children></AnchorPane>
   </items>
 </SplitPane>
