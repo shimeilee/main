@@ -17,7 +17,7 @@ import seedu.address.commons.core.LogsCenter;
  */
 public class IconListPanel extends UiPart<Region> {
     private static final String FXML = "IconList.fxml";
-    private final Logger logger = LogsCenter.getLogger(SubInfoPanel.class);
+    private final Logger logger = LogsCenter.getLogger(IconListPanel.class);
 
     @FXML
     private ColorAdjust homeworkManagerIconBrightness;

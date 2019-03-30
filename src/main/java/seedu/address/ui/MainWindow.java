@@ -36,7 +36,11 @@ public class MainWindow extends UiPart<Stage> {
 
     // Independent Ui parts residing in this Ui container
     private BrowserPanel browserPanel;
-    private SubInfoPanel subInfoPanel;
+
+    private HomeworkManagerSubPanel homeworkManagerSubPanel;
+    private CapManagerSubPanel capManagerSubPanel;
+    private NotesManagerSubPanel notesManagerSubPanel;
+
     private ResultDisplay resultDisplay;
     private HelpWindow helpWindow;
     private IconListPanel iconListPanel;
@@ -123,8 +127,6 @@ public class MainWindow extends UiPart<Stage> {
         browserPanel = new BrowserPanel(logic.selectedPersonProperty());
         browserPlaceholder.getChildren().add(browserPanel.getRoot());
 
-        subInfoPanel = new SubInfoPanel();
-
         iconListPanel = new IconListPanel();
         iconListPanelPlaceholder.getChildren().add(iconListPanel.getRoot());
 
@@ -179,10 +181,6 @@ public class MainWindow extends UiPart<Stage> {
         logic.setGuiSettings(guiSettings);
         helpWindow.hide();
         primaryStage.hide();
-    }
-
-    public SubInfoPanel getPersonListPanel() {
-        return subInfoPanel;
     }
 
     /**
@@ -243,9 +241,10 @@ public class MainWindow extends UiPart<Stage> {
         statusBarFooter.setCurrentManagerText(HOMEWORK_MANAGER);
 
         listPanelPlaceholder.getChildren().clear();
-        subInfoPanel.updateSubInfoPanelToHomeworkList(logic.getFilteredHomeworkList(), logic.selectedHomeworkProperty(),
-                logic::setSelectedHomework);
-        listPanelPlaceholder.getChildren().add(subInfoPanel.getRoot());
+        homeworkManagerSubPanel = new HomeworkManagerSubPanel(logic.getFilteredHomeworkList(),
+                                                              logic.selectedHomeworkProperty(),
+                                                              logic::setSelectedHomework);
+        listPanelPlaceholder.getChildren().add(homeworkManagerSubPanel.getRoot());
 
     }
 
@@ -262,9 +261,10 @@ public class MainWindow extends UiPart<Stage> {
         statusBarFooter.setCurrentManagerText(NOTES_MANAGER);
 
         listPanelPlaceholder.getChildren().clear();
-        subInfoPanel.updateSubInfoPanelToPersonList(logic.getFilteredPersonList(), logic.selectedPersonProperty(),
-                logic::setSelectedPerson);
-        listPanelPlaceholder.getChildren().add(subInfoPanel.getRoot());
+        notesManagerSubPanel = new NotesManagerSubPanel(logic.getFilteredNoteList(),
+                                                        logic.selectedNoteProperty(),
+                                                        logic::setSelectedNote);
+        listPanelPlaceholder.getChildren().add(notesManagerSubPanel.getRoot());
     }
 
     /**
@@ -280,9 +280,10 @@ public class MainWindow extends UiPart<Stage> {
         statusBarFooter.setCurrentManagerText(CAP_MANAGER);
 
         listPanelPlaceholder.getChildren().clear();
-        subInfoPanel.updateSubInfoPanelToCapEntryList(logic.getFilteredCapEntryList(), logic.selectedCapEntryProperty(),
-                logic::setSelectedCapEntry);
-        listPanelPlaceholder.getChildren().add(subInfoPanel.getRoot());
+        capManagerSubPanel = new CapManagerSubPanel(logic.getFilteredCapEntryList(),
+                                                    logic.selectedCapEntryProperty(),
+                                                    logic::setSelectedCapEntry);
+        listPanelPlaceholder.getChildren().add(capManagerSubPanel.getRoot());
 
     }
 

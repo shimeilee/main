@@ -30,9 +30,9 @@ public class HomeworkCard extends UiPart<Region> {
         super(FXML);
         this.homework = homework;
         id.setText(displayedIndex + ". ");
-        moduleCode.setText(homework.getModuleCode().toString());
         homeworkName.setText(homework.getHomeworkName().toString());
-        deadline.setText(homework.getDeadline().toString());
+        moduleCode.setText("Module: " + homework.getModuleCode().toString());
+        deadline.setText("Deadline: " + homework.getDeadline().toString());
     }
 
     @Override
