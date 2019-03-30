@@ -15,7 +15,6 @@ import seedu.address.model.ReadOnlyAddressBook;
 import seedu.address.model.cap.CapEntry;
 import seedu.address.model.homework.Homework;
 import seedu.address.model.note.Note;
-import seedu.address.model.person.Person;
 
 /**
  * An Immutable AddressBook that is serializable to JSON format.
@@ -28,18 +27,20 @@ class JsonSerializableAddressBook {
     public static final String MESSAGE_DUPLICATE_NOTE = "Notes contains "
             + "duplicate.";
 
-    private final List<JsonAdaptedPerson> persons = new ArrayList<>();
     private final List<JsonAdaptedCapEntry> capEntryList = new ArrayList<>();
     private final List<JsonAdaptedHomeworkList> homeworkList = new ArrayList<>();
     private final List<JsonAdaptedNote> noteList = new ArrayList<>();
 
     /**
-     * Constructs a {@code JsonSerializableAddressBook} with the given persons.
+     * Constructs a {@code JsonSerializableAddressBook} with the given cap.
      */
     @JsonCreator
-    public JsonSerializableAddressBook(@JsonProperty("persons") List<JsonAdaptedPerson> persons) {
-        this.persons.addAll(persons);
+    public JsonSerializableAddressBook(@JsonProperty("capEntryList") List<JsonAdaptedCapEntry> capEntries,
+                                       @JsonProperty("homeworkList") List<JsonAdaptedHomeworkList> homeworkList,
+                                       @JsonProperty("noteList") List<JsonAdaptedNote> notes) {
+        this.capEntryList.addAll(capEntries);
         this.homeworkList.addAll(homeworkList);
+        this.noteList.addAll(notes);
     }
 
     //    /**
@@ -58,7 +59,6 @@ class JsonSerializableAddressBook {
      * @param source future changes to this will not affect the created {@code JsonSerializableAddressBook}.
      */
     public JsonSerializableAddressBook(ReadOnlyAddressBook source) {
-        persons.addAll(source.getPersonList().stream().map(JsonAdaptedPerson::new).collect(Collectors.toList()));
         capEntryList.addAll(source.getCapEntryList().stream().map(JsonAdaptedCapEntry::new)
                 .collect(Collectors.toList()));
         homeworkList.addAll(source.getHomeworkList().stream().map(JsonAdaptedHomeworkList::new)
@@ -73,13 +73,6 @@ class JsonSerializableAddressBook {
      */
     public AddressBook toModelType() throws IllegalValueException {
         AddressBook addressBook = new AddressBook();
-        for (JsonAdaptedPerson jsonAdaptedPerson : persons) {
-            Person person = jsonAdaptedPerson.toModelType();
-            if (addressBook.hasPerson(person)) {
-                throw new IllegalValueException(MESSAGE_DUPLICATE_PERSON);
-            }
-            addressBook.addPerson(person);
-        }
 
         for (JsonAdaptedCapEntry jsonAdaptedCapEntry : capEntryList) {
             CapEntry capEntry = jsonAdaptedCapEntry.toModelType();

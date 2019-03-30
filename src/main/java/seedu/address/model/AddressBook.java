@@ -80,6 +80,7 @@ public class AddressBook implements ReadOnlyAddressBook {
         setCapEntryList(newData.getCapEntryList());
         setPersons(newData.getPersonList());
         setHomework(newData.getHomeworkList());
+        setNote(newData.getNoteList());
     }
 
     //// person-level operations
@@ -204,6 +205,11 @@ public class AddressBook implements ReadOnlyAddressBook {
         requireNonNull(editedNote);
 
         noteList.setNote(target, editedNote);
+        indicateModified();
+    }
+
+    public void setNote(List<Note> note) {
+        this.noteList.setNotes(note);
         indicateModified();
     }
 
