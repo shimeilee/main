@@ -18,6 +18,7 @@ import seedu.address.logic.commands.DeleteHomeworkCommand;
 import seedu.address.logic.commands.EditCapEntryByModuleCodeCommand;
 import seedu.address.logic.commands.EditCapEntryCommand;
 import seedu.address.logic.commands.EditCommand;
+import seedu.address.logic.commands.EditHomeworkCommand;
 import seedu.address.logic.commands.ExitCommand;
 import seedu.address.logic.commands.FindCommand;
 import seedu.address.logic.commands.HelpCommand;
@@ -71,6 +72,9 @@ public class UltiStudentParser {
 
         case EditCommand.COMMAND_WORD:
             return new EditCommandParser().parse(arguments);
+
+        case EditHomeworkCommand.COMMAND_WORD:
+            return new EditHomeworkCommandParser().parse(arguments);
 
         case EditCapEntryByModuleCodeCommand.COMMAND_WORD:
             return new EditCapEntryByModuleCodeCommandParser().parse(arguments);
