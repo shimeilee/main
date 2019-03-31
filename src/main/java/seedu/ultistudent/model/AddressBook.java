@@ -8,7 +8,9 @@ import javafx.beans.InvalidationListener;
 import javafx.collections.ObservableList;
 import seedu.ultistudent.commons.util.InvalidationListenerManager;
 import seedu.ultistudent.model.cap.CapEntry;
+import seedu.ultistudent.model.cap.ModuleSemester;
 import seedu.ultistudent.model.cap.UniqueCapEntryList;
+import seedu.ultistudent.model.cap.UniqueModuleSemesterList;
 import seedu.ultistudent.model.homework.Homework;
 import seedu.ultistudent.model.homework.UniqueHomeworkList;
 import seedu.ultistudent.model.note.Note;
@@ -25,6 +27,7 @@ public class AddressBook implements ReadOnlyAddressBook {
     private final UniqueCapEntryList capEntryList;
     private final UniquePersonList persons;
     private final UniqueHomeworkList homeworkList;
+    private final UniqueModuleSemesterList moduleSemesterList;
     private final UniqueNoteList noteList;
     private final InvalidationListenerManager invalidationListenerManager = new InvalidationListenerManager();
 
@@ -40,6 +43,7 @@ public class AddressBook implements ReadOnlyAddressBook {
         capEntryList = new UniqueCapEntryList();
         homeworkList = new UniqueHomeworkList();
         noteList = new UniqueNoteList();
+        moduleSemesterList = new UniqueModuleSemesterList();
     }
 
     public AddressBook() {}
@@ -73,6 +77,15 @@ public class AddressBook implements ReadOnlyAddressBook {
     }
 
     /**
+     * Replaces the contents of the cap entries list with {@code capEntryList}.
+     * {@code capEntryList} must not contain duplicate persons.
+     */
+    public void setModuleSemesterList(List<ModuleSemester> moduleSemesterList) {
+        this.moduleSemesterList.setModuleSemesterList(moduleSemesterList);
+        indicateModified();
+    }
+
+    /**
      * Resets the existing data of this {@code AddressBook} with {@code newData}.
      */
     public void resetData(ReadOnlyAddressBook newData) {
@@ -80,6 +93,7 @@ public class AddressBook implements ReadOnlyAddressBook {
         setCapEntryList(newData.getCapEntryList());
         setPersons(newData.getPersonList());
         setHomework(newData.getHomeworkList());
+        setModuleSemesterList(newData.getModuleSemesterList());
         setNote(newData.getNoteList());
     }
 
@@ -102,6 +116,14 @@ public class AddressBook implements ReadOnlyAddressBook {
     }
 
     /**
+     * Returns true if a module semester with the same identity as {@code moduleSemester} exists in UltiStudent.
+     */
+    public boolean hasModuleSemester(ModuleSemester moduleSemester) {
+        requireNonNull(moduleSemester);
+        return moduleSemesterList.contains(moduleSemester);
+    }
+
+    /**
      * Adds a person to the UltiStudent.
      * The person must not already exist in the UltiStudent.
      */
@@ -116,6 +138,15 @@ public class AddressBook implements ReadOnlyAddressBook {
      */
     public void addCapEntry(CapEntry c) {
         capEntryList.add(c);
+        indicateModified();
+    }
+
+    /**
+     * Adds a cap entry to UltiStudent.
+     * The cap entry must not already exist in UltiStudent.
+     */
+    public void addModuleSemester(ModuleSemester moduleSemester) {
+        moduleSemesterList.add(moduleSemester);
         indicateModified();
     }
 
@@ -145,6 +176,19 @@ public class AddressBook implements ReadOnlyAddressBook {
     }
 
     /**
+     * Replaces the given cap entry {@code target} in the list with {@code editedCapEntry}.
+     * {@code target} must exist in the UltiStudent.
+     * The cap entry identity of {@code editedPerson} must not be the same as another existing cap entry in
+     * the UltiStudent.
+     */
+    public void setModuleSemester(ModuleSemester target, ModuleSemester editedModuleSemester) {
+        requireNonNull(editedModuleSemester);
+
+        moduleSemesterList.setModuleSemester(target, editedModuleSemester);
+        indicateModified();
+    }
+
+    /**
      * Removes {@code key} from this {@code AddressBook}.
      * {@code key} must exist in the UltiStudent.
      */
@@ -159,6 +203,15 @@ public class AddressBook implements ReadOnlyAddressBook {
      */
     public void removeCapEntry(CapEntry key) {
         capEntryList.remove(key);
+        indicateModified();
+    }
+
+    /**
+     * Removes {@code key} from this {@code AddressBook}.
+     * {@code key} must exist in the UltiStudent.
+     */
+    public void removeModuleSemester(ModuleSemester key) {
+        moduleSemesterList.remove(key);
         indicateModified();
     }
 
@@ -279,6 +332,11 @@ public class AddressBook implements ReadOnlyAddressBook {
     @Override
     public ObservableList<Homework> getHomeworkList() {
         return homeworkList.asUnmodifiableObservableList();
+    }
+
+    @Override
+    public ObservableList<ModuleSemester> getModuleSemesterList() {
+        return moduleSemesterList.asUnmodifiableObservableList();
     }
 
     @Override

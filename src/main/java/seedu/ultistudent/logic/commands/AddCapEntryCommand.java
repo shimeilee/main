@@ -11,6 +11,7 @@ import seedu.ultistudent.logic.CommandHistory;
 import seedu.ultistudent.logic.commands.exceptions.CommandException;
 import seedu.ultistudent.model.Model;
 import seedu.ultistudent.model.cap.CapEntry;
+import seedu.ultistudent.model.cap.ModuleSemester;
 
 /**
  * Adds a Cap Entry to the Cap Manager.
@@ -56,6 +57,14 @@ public class AddCapEntryCommand extends Command {
         }
 
         model.addCapEntry(toAdd);
+
+        //updates module semester
+        ModuleSemester toAddModuleSemester = toAdd.getModuleSemester();
+        if (!model.hasModuleSemester(toAddModuleSemester)) {
+            model.addModuleSemester(toAddModuleSemester);
+        }
+
+
         model.commitAddressBook();
         return new CommandResult(String.format(MESSAGE_SUCCESS, toAdd));
     }

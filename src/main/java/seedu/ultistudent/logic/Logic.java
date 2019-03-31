@@ -8,8 +8,10 @@ import seedu.ultistudent.commons.core.GuiSettings;
 import seedu.ultistudent.logic.commands.CommandResult;
 import seedu.ultistudent.logic.commands.exceptions.CommandException;
 import seedu.ultistudent.logic.parser.exceptions.ParseException;
+import seedu.ultistudent.model.Model;
 import seedu.ultistudent.model.ReadOnlyAddressBook;
 import seedu.ultistudent.model.cap.CapEntry;
+import seedu.ultistudent.model.cap.ModuleSemester;
 import seedu.ultistudent.model.homework.Homework;
 import seedu.ultistudent.model.note.Note;
 import seedu.ultistudent.model.person.Person;
@@ -81,6 +83,7 @@ public interface Logic {
     // CapEntry
     /** Returns an unmodifiable view of the filtered list of cap entries */
     ObservableList<CapEntry> getFilteredCapEntryList();
+
     /**
      * Selected cap entry in the filtered cap entry list.
      * null if no cap entry is selected.
@@ -88,6 +91,18 @@ public interface Logic {
      * @see seedu.ultistudent.model.Model#selectedPersonProperty()
      */
     ReadOnlyProperty<CapEntry> selectedCapEntryProperty();
+
+    // ModuleSemester
+    /** Returns an unmodifiable view of the filtered list of module semesters */
+    ObservableList<ModuleSemester> getFilteredModuleSemesterList();
+
+    /**
+     * Selected module semester in the filtered module semester list.
+     * null if no module semester is selected.
+     *
+     * @see Model#selectedModuleSemesterProperty()
+     */
+    ReadOnlyProperty<ModuleSemester> selectedModuleSemesterProperty();
 
     // Note
     /** Returns an unmodifiable view of the filtered list of notes.*/
@@ -110,4 +125,6 @@ public interface Logic {
     void setSelectedHomework(Homework homework);
 
     void setSelectedNote(Note note);
+
+    void setSelectedModuleSemester (ModuleSemester moduleSemester);
 }

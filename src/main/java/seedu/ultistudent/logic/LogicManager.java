@@ -16,6 +16,7 @@ import seedu.ultistudent.logic.parser.exceptions.ParseException;
 import seedu.ultistudent.model.Model;
 import seedu.ultistudent.model.ReadOnlyAddressBook;
 import seedu.ultistudent.model.cap.CapEntry;
+import seedu.ultistudent.model.cap.ModuleSemester;
 import seedu.ultistudent.model.homework.Homework;
 import seedu.ultistudent.model.note.Note;
 import seedu.ultistudent.model.person.Person;
@@ -85,6 +86,11 @@ public class LogicManager implements Logic {
     }
 
     @Override
+    public ObservableList<ModuleSemester> getFilteredModuleSemesterList() {
+        return model.getFilteredModuleSemesterList();
+    }
+
+    @Override
     public ObservableList<Homework> getFilteredHomeworkList() {
         return model.getFilteredHomeworkList();
     }
@@ -125,6 +131,11 @@ public class LogicManager implements Logic {
     }
 
     @Override
+    public ReadOnlyProperty<ModuleSemester> selectedModuleSemesterProperty() {
+        return model.selectedModuleSemesterProperty();
+    }
+
+    @Override
     public ReadOnlyProperty<Homework> selectedHomeworkProperty() {
         return model.selectedHomeworkProperty();
     }
@@ -142,6 +153,11 @@ public class LogicManager implements Logic {
     @Override
     public void setSelectedCapEntry(CapEntry capEntry) {
         model.setSelectedCapEntry(capEntry);
+    }
+
+    @Override
+    public void setSelectedModuleSemester(ModuleSemester moduleSemester) {
+        model.setSelectedModuleSemester(moduleSemester);
     }
 
     @Override

@@ -3,6 +3,7 @@ package seedu.ultistudent.model;
 import javafx.beans.Observable;
 import javafx.collections.ObservableList;
 import seedu.ultistudent.model.cap.CapEntry;
+import seedu.ultistudent.model.cap.ModuleSemester;
 import seedu.ultistudent.model.homework.Homework;
 import seedu.ultistudent.model.note.Note;
 import seedu.ultistudent.model.person.Person;
@@ -23,6 +24,12 @@ public interface ReadOnlyAddressBook extends Observable {
      * This list will not contain any duplicate cap entries.
      */
     ObservableList<CapEntry> getCapEntryList();
+
+    /**
+     * Returns an unmodifiable view of the module semesters list.
+     * This list will not contain any duplicate module semesters.
+     */
+    ObservableList<ModuleSemester> getModuleSemesterList();
 
     /**
      * Returns an unmodifiable view of the homework list.
