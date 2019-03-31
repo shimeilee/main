@@ -1,24 +1,24 @@
-package seedu.address.logic.commands;
+package seedu.ultistudent.logic.commands;
 
 import static java.util.Objects.requireNonNull;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_DEADLINE;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_HOMEWORK;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_MODULECODE;
-import static seedu.address.model.Model.PREDICATE_SHOW_ALL_HOMEWORK;
+import static seedu.ultistudent.logic.parser.CliSyntax.PREFIX_DEADLINE;
+import static seedu.ultistudent.logic.parser.CliSyntax.PREFIX_HOMEWORK;
+import static seedu.ultistudent.logic.parser.CliSyntax.PREFIX_MODULECODE;
+import static seedu.ultistudent.model.Model.PREDICATE_SHOW_ALL_HOMEWORK;
 
 import java.util.List;
 import java.util.Optional;
 
-import seedu.address.commons.core.Messages;
-import seedu.address.commons.core.index.Index;
-import seedu.address.commons.util.CollectionUtil;
-import seedu.address.logic.CommandHistory;
-import seedu.address.logic.commands.exceptions.CommandException;
-import seedu.address.model.Model;
-import seedu.address.model.homework.Date;
-import seedu.address.model.homework.Homework;
-import seedu.address.model.homework.HomeworkName;
-import seedu.address.model.modulecode.ModuleCode;
+import seedu.ultistudent.commons.core.Messages;
+import seedu.ultistudent.commons.core.index.Index;
+import seedu.ultistudent.commons.util.CollectionUtil;
+import seedu.ultistudent.logic.CommandHistory;
+import seedu.ultistudent.logic.commands.exceptions.CommandException;
+import seedu.ultistudent.model.Model;
+import seedu.ultistudent.model.homework.Date;
+import seedu.ultistudent.model.homework.Homework;
+import seedu.ultistudent.model.homework.HomeworkName;
+import seedu.ultistudent.model.modulecode.ModuleCode;
 
 /**
  * Edits the details of a homework entry in the HomeworkManager.

@@ -18,6 +18,7 @@ import seedu.ultistudent.logic.commands.DeleteHomeworkCommand;
 import seedu.ultistudent.logic.commands.EditCapEntryByModuleCodeCommand;
 import seedu.ultistudent.logic.commands.EditCapEntryCommand;
 import seedu.ultistudent.logic.commands.EditCommand;
+import seedu.ultistudent.logic.commands.EditHomeworkCommand;
 import seedu.ultistudent.logic.commands.ExitCommand;
 import seedu.ultistudent.logic.commands.FindCommand;
 import seedu.ultistudent.logic.commands.HelpCommand;

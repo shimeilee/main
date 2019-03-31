@@ -1,23 +1,23 @@
-package seedu.address.logic.parser;
+package seedu.ultistudent.logic.parser;
 
 import static java.util.Objects.requireNonNull;
-import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
-import static seedu.address.logic.commands.EditHomeworkCommand.MESSAGE_NOT_EDITED;
-import static seedu.address.logic.commands.EditHomeworkCommand.MESSAGE_USAGE;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_DEADLINE;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_HOMEWORK;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_MODULECODE;
+import static seedu.ultistudent.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
+import static seedu.ultistudent.logic.commands.EditHomeworkCommand.MESSAGE_NOT_EDITED;
+import static seedu.ultistudent.logic.commands.EditHomeworkCommand.MESSAGE_USAGE;
+import static seedu.ultistudent.logic.parser.CliSyntax.PREFIX_DEADLINE;
+import static seedu.ultistudent.logic.parser.CliSyntax.PREFIX_HOMEWORK;
+import static seedu.ultistudent.logic.parser.CliSyntax.PREFIX_MODULECODE;
 
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Optional;
 import java.util.Set;
 
-import seedu.address.commons.core.index.Index;
-import seedu.address.logic.commands.EditHomeworkCommand.EditHomeworkDescriptor;
-import seedu.address.logic.commands.EditHomeworkCommand;
-import seedu.address.logic.parser.exceptions.ParseException;
-import seedu.address.model.tag.Tag;
+import seedu.ultistudent.commons.core.index.Index;
+import seedu.ultistudent.logic.commands.EditHomeworkCommand.EditHomeworkDescriptor;
+import seedu.ultistudent.logic.commands.EditHomeworkCommand;
+import seedu.ultistudent.logic.parser.exceptions.ParseException;
+import seedu.ultistudent.model.tag.Tag;
 
 /**
  * Parses input arguments and creates a new EditHomeworkCommand object
