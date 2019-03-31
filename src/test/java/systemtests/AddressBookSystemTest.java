@@ -4,9 +4,9 @@ import static guitests.guihandles.WebViewUtil.waitUntilBrowserLoaded;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
-import static seedu.address.ui.StatusBarFooter.SYNC_STATUS_INITIAL;
-import static seedu.address.ui.StatusBarFooter.SYNC_STATUS_UPDATED;
-import static seedu.address.ui.testutil.GuiTestAssert.assertListMatching;
+import static seedu.ultistudent.ui.StatusBarFooter.SYNC_STATUS_INITIAL;
+import static seedu.ultistudent.ui.StatusBarFooter.SYNC_STATUS_UPDATED;
+import static seedu.ultistudent.ui.testutil.GuiTestAssert.assertListMatching;
 
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -27,17 +27,17 @@ import guitests.guihandles.MainWindowHandle;
 import guitests.guihandles.PersonListPanelHandle;
 import guitests.guihandles.ResultDisplayHandle;
 import guitests.guihandles.StatusBarFooterHandle;
-import seedu.address.TestApp;
-import seedu.address.commons.core.index.Index;
-import seedu.address.logic.commands.ClearCommand;
-import seedu.address.logic.commands.FindCommand;
-import seedu.address.logic.commands.ListCommand;
-import seedu.address.logic.commands.SelectCommand;
-import seedu.address.model.AddressBook;
-import seedu.address.model.Model;
-import seedu.address.testutil.TypicalPersons;
-import seedu.address.ui.BrowserPanel;
-import seedu.address.ui.CommandBox;
+import seedu.ultistudent.TestApp;
+import seedu.ultistudent.commons.core.index.Index;
+import seedu.ultistudent.logic.commands.ClearCommand;
+import seedu.ultistudent.logic.commands.FindCommand;
+import seedu.ultistudent.logic.commands.ListCommand;
+import seedu.ultistudent.logic.commands.SelectCommand;
+import seedu.ultistudent.model.AddressBook;
+import seedu.ultistudent.model.Model;
+import seedu.ultistudent.testutil.TypicalPersons;
+import seedu.ultistudent.ui.BrowserPanel;
+import seedu.ultistudent.ui.CommandBox;
 
 /**
  * A system test class for AddressBook, which provides access to handles of GUI components and helper methods
