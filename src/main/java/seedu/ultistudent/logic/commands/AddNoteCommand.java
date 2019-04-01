@@ -10,24 +10,24 @@ import seedu.ultistudent.model.Model;
 import seedu.ultistudent.model.note.Note;
 
 /**
- * Command that adds a note.
+ * Adds a Note to the NotesManager.
  */
 public class AddNoteCommand extends Command {
 
-    public static final String COMMAND_WORD = "addNote";
+    public static final String COMMAND_WORD = "add-note";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds a note"
             + " to the UltiStudent Notes Manager. \n"
             + "Parameters: "
             + PREFIX_MODULECODE + "MODULE_CODE "
             + PREFIX_NOTE_NAME + "NOTE NAME \n"
+
             + "Example: " + COMMAND_WORD + " "
             + PREFIX_MODULECODE + "CS2103T "
             + PREFIX_NOTE_NAME + "Week 7 Notes";
 
     public static final String MESSAGE_SUCCESS = "New note added: %1$s";
-    public static final String MESSAGE_DUPLICATE_NOTE = "This note already "
-            + "exists in the UltiStudent";
+    public static final String MESSAGE_DUPLICATE_NOTE = "This note already exists in the UltiStudent";
 
     private final Note toAdd;
 

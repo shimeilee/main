@@ -42,7 +42,7 @@ public class AddHomeworkCommandTest {
     @Test
     public void constructor_nullHomework_throwsNullPointerException() {
         thrown.expect(NullPointerException.class);
-        new AddCommand(null);
+        new AddHomeworkCommand(null);
     }
 
     @Test
