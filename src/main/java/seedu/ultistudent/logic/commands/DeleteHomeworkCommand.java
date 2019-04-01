@@ -24,7 +24,7 @@ public class DeleteHomeworkCommand extends Command {
             + "Parameters: INDEX (must be a positive integer)\n"
             + "Example: " + COMMAND_WORD + " 1";
 
-    public static final String MESSAGE_DELETE_PERSON_SUCCESS = "Deleted Homework: %1$s";
+    public static final String MESSAGE_DELETE_HOMEWORK_SUCCESS = "Deleted Homework: %1$s";
 
     private final Index targetIndex;
 
@@ -38,13 +38,13 @@ public class DeleteHomeworkCommand extends Command {
         List<Homework> lastShownList = model.getFilteredHomeworkList();
 
         if (targetIndex.getZeroBased() >= lastShownList.size()) {
-            throw new CommandException(Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
+            throw new CommandException(Messages.MESSAGE_INVALID_HOMEWORK_DISPLAYED_INDEX);
         }
 
         Homework homeworkToDelete = lastShownList.get(targetIndex.getZeroBased());
         model.deleteHomework(homeworkToDelete);
         model.commitAddressBook();
-        return new CommandResult(String.format(MESSAGE_DELETE_PERSON_SUCCESS, homeworkToDelete));
+        return new CommandResult(String.format(MESSAGE_DELETE_HOMEWORK_SUCCESS, homeworkToDelete));
     }
 
     @Override
