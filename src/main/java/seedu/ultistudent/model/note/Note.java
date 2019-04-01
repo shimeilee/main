@@ -45,6 +45,11 @@ public class Note {
         return content;
     }
 
+    public void setContent(String content) {
+        Content newContent = new Content(content);
+        this.content = newContent;
+    }
+
     /**
      * Returns true if both notes of the same name have at least one other
      * identity field that is the same.
