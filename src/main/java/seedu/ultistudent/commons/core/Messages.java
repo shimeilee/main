@@ -11,6 +11,8 @@ public class Messages {
     public static final String MESSAGE_PERSONS_LISTED_OVERVIEW = "%1$d persons listed!";
     public static final String MESSAGE_INVALID_HOMEWORK_DISPLAYED_INDEX = "The homework index provided is invalid";
     public static final String MESSAGE_INVALID_CAP_ENTRY_DISPLAYED_INDEX = "The cap entry index provided is invalid";
+    public static final String MESSAGE_INVALID_NOTE_DISPLAYED_INDEX = "The "
+            + "note entry index provided is invalid";
     public static final String MESSAGE_CAP_ENTRY_LISTED_OVERVIEW = "%1$d cap entries listed!";
 
 }
