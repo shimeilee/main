@@ -17,6 +17,8 @@ import seedu.ultistudent.logic.CommandHistory;
 import seedu.ultistudent.logic.commands.exceptions.CommandException;
 import seedu.ultistudent.model.AddressBook;
 import seedu.ultistudent.model.Model;
+import seedu.ultistudent.model.homework.Homework;
+import seedu.ultistudent.model.homework.HomeworkNameContainsKeywordsPredicate;
 import seedu.ultistudent.model.person.NameContainsKeywordsPredicate;
 import seedu.ultistudent.model.person.Person;
 import seedu.ultistudent.testutil.EditPersonDescriptorBuilder;
@@ -139,6 +141,20 @@ public class CommandTestUtil {
         model.updateFilteredPersonList(new NameContainsKeywordsPredicate(Arrays.asList(splitName[0])));
 
         assertEquals(1, model.getFilteredPersonList().size());
+    }
+
+    /**
+     * Updates {@code model}'s filtered list to show only the homework at the given {@code targetIndex} in the
+     * {@code model}'s UltiStudent.
+     */
+    public static void showHomeworkAtIndex(Model model, Index targetIndex) {
+        assertTrue(targetIndex.getZeroBased() < model.getFilteredHomeworkList().size());
+
+        Homework homework = model.getFilteredHomeworkList().get(targetIndex.getZeroBased());
+        final String[] splitHomework = homework.getHomeworkName().value.split("\\s+");
+        model.updateFilteredHomeworkList(new HomeworkNameContainsKeywordsPredicate(Arrays.asList(splitHomework[0])));
+
+        assertEquals(1, model.getFilteredHomeworkList().size());
     }
 
     /**
