@@ -35,12 +35,13 @@ public class MainWindow extends UiPart<Stage> {
     private Logic logic;
 
     // Independent Ui parts residing in this Ui container
-    private BrowserPanel browserPanel;
 
     private HomeworkManagerMainPanel homeworkManagerMainPanel;
+    private NotesManagerMainPanel notesManagerMainPanel;
     private CapManagerMainPanel capManagerMainPanel;
 
     private NotesManagerSubPanel notesManagerSubPanel;
+    private CapManagerSubPanel capManagerSubPanel;
 
     private ResultDisplay resultDisplay;
     private HelpWindow helpWindow;
@@ -125,9 +126,6 @@ public class MainWindow extends UiPart<Stage> {
      * Fills up all the placeholders of this window.
      */
     void fillInnerParts() {
-        browserPanel = new BrowserPanel(logic.selectedPersonProperty());
-        mainPanelPlaceholder.getChildren().add(browserPanel.getRoot());
-
         iconListPanel = new IconListPanel();
         iconListPanelPlaceholder.getChildren().add(iconListPanel.getRoot());
 
@@ -139,7 +137,6 @@ public class MainWindow extends UiPart<Stage> {
 
         CommandBox commandBox = new CommandBox(this::executeCommand, logic.getHistory());
         commandBoxPlaceholder.getChildren().add(commandBox.getRoot());
-
 
         handleSwitchToHomeworkManager();
     }
@@ -235,20 +232,16 @@ public class MainWindow extends UiPart<Stage> {
     @FXML
     public void handleSwitchToHomeworkManager() {
         //TODO: handles the setting up of HomeworkManager view
+        dimAllIcons();
         iconListPanel.setHomeworkManagerIconBrightness(0.8);
-        iconListPanel.setNotesManagerIconBrightness(0.4);
-        iconListPanel.setCapManagerIconBrightness(0.4);
 
         statusBarFooter.setCurrentManagerText(HOMEWORK_MANAGER);
 
-        subPanelPlaceholder.getChildren().clear();
-        mainPanelPlaceholder.getChildren().clear();
+        clearDisplay();
         homeworkManagerMainPanel = new HomeworkManagerMainPanel(logic.getFilteredHomeworkList(),
                                                               logic.selectedHomeworkProperty(),
                                                               logic::setSelectedHomework);
-        //listPanelPlaceholder.getChildren().add();
         mainPanelPlaceholder.getChildren().add(homeworkManagerMainPanel.getRoot());
-
     }
 
     /**
@@ -257,16 +250,17 @@ public class MainWindow extends UiPart<Stage> {
     @FXML
     public void handleSwitchToNotesManager() {
         //TODO: handles the setting up of NotesManager view
-        iconListPanel.setHomeworkManagerIconBrightness(0.4);
+        dimAllIcons();
         iconListPanel.setNotesManagerIconBrightness(0.8);
-        iconListPanel.setCapManagerIconBrightness(0.4);
 
         statusBarFooter.setCurrentManagerText(NOTES_MANAGER);
 
-        subPanelPlaceholder.getChildren().clear();
+        clearDisplay();
+        notesManagerMainPanel = new NotesManagerMainPanel(logic.selectedNoteProperty());
         notesManagerSubPanel = new NotesManagerSubPanel(logic.getFilteredNoteList(),
                                                         logic.selectedNoteProperty(),
                                                         logic::setSelectedNote);
+        mainPanelPlaceholder.getChildren().add(notesManagerMainPanel.getRoot());
         subPanelPlaceholder.getChildren().add(notesManagerSubPanel.getRoot());
     }
 
@@ -276,17 +270,29 @@ public class MainWindow extends UiPart<Stage> {
     @FXML
     public void handleSwitchToCapsManager() {
         //TODO: handles the setting up of CapCalculator view
-        iconListPanel.setHomeworkManagerIconBrightness(0.4);
-        iconListPanel.setNotesManagerIconBrightness(0.4);
+        dimAllIcons();
         iconListPanel.setCapManagerIconBrightness(0.8);
 
         statusBarFooter.setCurrentManagerText(CAP_MANAGER);
 
-        //subPanelPlaceholder.getChildren().clear();
-        mainPanelPlaceholder.getChildren().clear();
+        clearDisplay();
         capManagerMainPanel = new CapManagerMainPanel(logic.getFilteredCapEntryList());
+        capManagerSubPanel = new CapManagerSubPanel(logic.getFilteredModuleSemesterList(),
+                                                    logic.selectedModuleSemesterProperty(),
+                                                    logic::setSelectedModuleSemester);
         mainPanelPlaceholder.getChildren().add(capManagerMainPanel.getRoot());
+        subPanelPlaceholder.getChildren().add(capManagerSubPanel.getRoot());
+    }
 
+    private void clearDisplay() {
+        mainPanelPlaceholder.getChildren().clear();
+        subPanelPlaceholder.getChildren().clear();
+    }
+
+    private void dimAllIcons() {
+        iconListPanel.setHomeworkManagerIconBrightness(0.4);
+        iconListPanel.setNotesManagerIconBrightness(0.4);
+        iconListPanel.setCapManagerIconBrightness(0.4);
     }
 
 }
