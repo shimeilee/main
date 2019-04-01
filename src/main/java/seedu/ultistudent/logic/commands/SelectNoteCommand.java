@@ -44,4 +44,11 @@ public class SelectNoteCommand extends Command {
         model.setSelectedNote(filteredNoteList.get(targetIndex.getZeroBased()));
         return new CommandResult(String.format(MESSAGE_SELECT_NOTE_SUCCESS, targetIndex.getOneBased()));
     }
+
+    @Override
+    public boolean equals(Object other) {
+        return other == this // short circuit if same object
+            || (other instanceof SelectNoteCommand
+            && targetIndex.equals(((SelectNoteCommand) other).targetIndex));
+    }
 }
