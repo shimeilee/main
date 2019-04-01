@@ -16,7 +16,9 @@ import javafx.collections.transformation.FilteredList;
 import seedu.ultistudent.commons.core.GuiSettings;
 import seedu.ultistudent.commons.core.LogsCenter;
 import seedu.ultistudent.model.cap.CapEntry;
+import seedu.ultistudent.model.cap.ModuleSemester;
 import seedu.ultistudent.model.cap.exceptions.CapEntryNotFoundException;
+import seedu.ultistudent.model.cap.exceptions.ModuleSemesterNotFoundException;
 import seedu.ultistudent.model.homework.Homework;
 import seedu.ultistudent.model.homework.exceptions.HomeworkNotFoundException;
 import seedu.ultistudent.model.note.Note;
@@ -40,6 +42,8 @@ public class ModelManager implements Model {
     private final SimpleObjectProperty<Homework> selectedHomework = new SimpleObjectProperty<>();
     private final FilteredList<Note> filteredNoteList;
     private final SimpleObjectProperty<Note> selectedNote = new SimpleObjectProperty<>();
+    private final FilteredList<ModuleSemester> filteredModuleSemesterList;
+    private final SimpleObjectProperty<ModuleSemester> selectedModuleSemester = new SimpleObjectProperty<>();
 
     /**
      * Initializes a ModelManager with the given addressBook and userPrefs.
@@ -60,6 +64,8 @@ public class ModelManager implements Model {
         filteredHomeworkList.addListener(this::ensureSelectedHomeworkIsValid);
         filteredNoteList = new FilteredList<>(versionedAddressBook.getNoteList());
         filteredNoteList.addListener(this::ensureSelectedNoteIsValid);
+        filteredModuleSemesterList = new FilteredList<>(versionedAddressBook.getModuleSemesterList());
+        filteredModuleSemesterList.addListener(this::ensureSelectedModuleSemesterIsValid);
     }
 
     public ModelManager() {
@@ -319,6 +325,95 @@ public class ModelManager implements Model {
             }
         }
     }
+    //====================== Module Semester List ========================================
+
+    @Override
+    public boolean hasModuleSemester(ModuleSemester moduleSemester) {
+        requireNonNull(moduleSemester);
+        return versionedAddressBook.hasModuleSemester(moduleSemester);
+    }
+
+    @Override
+    public void deleteModuleSemester(ModuleSemester target) {
+        versionedAddressBook.removeModuleSemester(target);
+    }
+
+    @Override
+    public void addModuleSemester(ModuleSemester moduleSemester) {
+        versionedAddressBook.addModuleSemester(moduleSemester);
+        updateFilteredModuleSemesterList(PREDICATE_SHOW_ALL_MODULE_SEMESTERS);
+    }
+
+    @Override
+    public void setModuleSemester(ModuleSemester target, ModuleSemester editedModuleSemester) {
+        requireAllNonNull(target, editedModuleSemester);
+
+        versionedAddressBook.setModuleSemester(target, editedModuleSemester);
+    }
+
+    /**
+     * Returns an unmodifiable view of the list of {@code Person} backed by the internal list of
+     * {@code versionedAddressBook}
+     */
+    @Override
+    public ObservableList<ModuleSemester> getFilteredModuleSemesterList() {
+        return filteredModuleSemesterList;
+    }
+
+    @Override
+    public void updateFilteredModuleSemesterList(Predicate<ModuleSemester> predicate) {
+        requireNonNull(predicate);
+        filteredModuleSemesterList.setPredicate(predicate);
+    }
+
+    @Override
+    public ReadOnlyProperty<ModuleSemester> selectedModuleSemesterProperty() {
+        return selectedModuleSemester;
+    }
+
+    @Override
+    public ModuleSemester getSelectedModuleSemester() {
+        return selectedModuleSemester.getValue();
+    }
+
+    @Override
+    public void setSelectedModuleSemester(ModuleSemester moduleSemester) {
+        if (moduleSemester != null && !filteredModuleSemesterList.contains(moduleSemester)) {
+            throw new ModuleSemesterNotFoundException();
+        }
+        selectedModuleSemester.setValue(moduleSemester);
+    }
+
+    /**
+     * Ensures {@code selectedCapEntry} is a valid cap entry in {@code filteredCapEntryList}.
+     */
+    private void ensureSelectedModuleSemesterIsValid(ListChangeListener.Change<? extends ModuleSemester> change) {
+        while (change.next()) {
+            if (selectedModuleSemester.getValue() == null) {
+                // null is always a valid selected person, so we do not need to check that it is valid anymore.
+                return;
+            }
+
+            boolean wasSelectedModuleSemesterReplaced = change.wasReplaced() && change.getAddedSize()
+                    == change.getRemovedSize() && change.getRemoved().contains(selectedModuleSemester.getValue());
+            if (wasSelectedModuleSemesterReplaced) {
+                // Update selectedPerson to its new value.
+                int index = change.getRemoved().indexOf(selectedModuleSemester.getValue());
+                selectedModuleSemester.setValue(change.getAddedSubList().get(index));
+                continue;
+            }
+
+            boolean wasSelectedModuleSemsterRemoved = change.getRemoved().stream()
+                    .anyMatch(removedModuleSemester -> selectedModuleSemester.getValue().equals(removedModuleSemester));
+            if (wasSelectedModuleSemsterRemoved) {
+                // Select the person that came before it in the list,
+                // or clear the selection if there is no such person.
+                selectedModuleSemester.setValue(change.getFrom() > 0 ? change.getList().get(change.getFrom() - 1)
+                        : null);
+            }
+        }
+    }
+
 
     //=============================================== HomeworkManager ===============================================//
 

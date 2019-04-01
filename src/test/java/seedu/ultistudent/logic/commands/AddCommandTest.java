@@ -24,6 +24,7 @@ import seedu.ultistudent.model.Model;
 import seedu.ultistudent.model.ReadOnlyAddressBook;
 import seedu.ultistudent.model.ReadOnlyUserPrefs;
 import seedu.ultistudent.model.cap.CapEntry;
+import seedu.ultistudent.model.cap.ModuleSemester;
 import seedu.ultistudent.model.homework.Homework;
 import seedu.ultistudent.model.note.Note;
 import seedu.ultistudent.model.person.Person;
@@ -250,6 +251,53 @@ public class AddCommandTest {
 
         @Override
         public void setSelectedCapEntry(CapEntry capEntry) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        //============================================= Module Semester =============================================//
+
+        @Override
+        public boolean hasModuleSemester(ModuleSemester moduleSemester) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void deleteModuleSemester(ModuleSemester target) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void addModuleSemester(ModuleSemester moduleSemester) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void setModuleSemester(ModuleSemester target, ModuleSemester editedModuleSemester) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public ObservableList<ModuleSemester> getFilteredModuleSemesterList() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void updateFilteredModuleSemesterList(Predicate<ModuleSemester> predicate) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public ReadOnlyProperty<ModuleSemester> selectedModuleSemesterProperty() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public ModuleSemester getSelectedModuleSemester() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void setSelectedModuleSemester(ModuleSemester moduleSemester) {
             throw new AssertionError("This method should not be called.");
         }
 

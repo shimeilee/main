@@ -260,7 +260,7 @@ Examples:
 Shows a list of all the notes in the Notes Manager. +
 Format: `listNotes`
 
-==== Deleting a CAP entry: `deleteNote`
+==== Deleting a Note: `deleteNote`
 
 Deletes the specified note from the Notes Manager. +
 Format: `deleteNote INDEX`

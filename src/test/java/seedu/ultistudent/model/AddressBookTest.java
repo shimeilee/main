@@ -22,6 +22,7 @@ import javafx.beans.property.SimpleIntegerProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import seedu.ultistudent.model.cap.CapEntry;
+import seedu.ultistudent.model.cap.ModuleSemester;
 import seedu.ultistudent.model.homework.Homework;
 import seedu.ultistudent.model.note.Note;
 import seedu.ultistudent.model.person.Person;
@@ -123,6 +124,7 @@ public class AddressBookTest {
         private final ObservableList<CapEntry> capEntryList = FXCollections.observableArrayList();
         private final ObservableList<Homework> homeworkList = FXCollections.observableArrayList();
         private final ObservableList<Note> noteList = FXCollections.observableArrayList();
+        private final ObservableList<ModuleSemester> moduleSemesterList = FXCollections.observableArrayList();
         AddressBookStub(Collection<Person> persons) {
             this.persons.setAll(persons);
         }
@@ -145,6 +147,11 @@ public class AddressBookTest {
         @Override
         public ObservableList<Note> getNoteList() {
             return noteList;
+        }
+
+        @Override
+        public ObservableList<ModuleSemester> getModuleSemesterList() {
+            return moduleSemesterList;
         }
 
         @Override

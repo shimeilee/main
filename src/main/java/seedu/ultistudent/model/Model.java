@@ -7,6 +7,7 @@ import javafx.beans.property.ReadOnlyProperty;
 import javafx.collections.ObservableList;
 import seedu.ultistudent.commons.core.GuiSettings;
 import seedu.ultistudent.model.cap.CapEntry;
+import seedu.ultistudent.model.cap.ModuleSemester;
 import seedu.ultistudent.model.homework.Homework;
 import seedu.ultistudent.model.note.Note;
 import seedu.ultistudent.model.person.Person;
@@ -22,6 +23,7 @@ public interface Model {
     Predicate<CapEntry> PREDICATE_SHOW_ALL_CAP_ENTRIES = unused -> true;
     Predicate<Homework> PREDICATE_SHOW_ALL_HOMEWORK = unused -> true;
     Predicate<Note> PREDICATE_SHOW_ALL_NOTES = unused -> true;
+    Predicate<ModuleSemester> PREDICATE_SHOW_ALL_MODULE_SEMESTERS = unused -> true;
 
     /**
      * Replaces user prefs data with the data in {@code userPrefs}.
@@ -196,6 +198,62 @@ public interface Model {
      * Sets the selected cap entry in the filtered cap entry list.
      */
     void setSelectedCapEntry(CapEntry capEntry);
+
+    //=========== Module Semester ===========================================================================
+
+    /**
+     * Returns true if a cap entry with the same identity as {@code capEntry} exists in the UltiStudent.
+     */
+    boolean hasModuleSemester(ModuleSemester moduleSemester);
+
+    /**
+     * Deletes the given cap entry.
+     * The cap entry must exist in the UltiStudent.
+     */
+    void deleteModuleSemester(ModuleSemester target);
+
+    /**
+     * Adds the given cap entry.
+     * {@code codeEntry} must not already exist in the UltiStudent.
+     */
+    void addModuleSemester(ModuleSemester moduleSemester);
+
+    /**
+     * Replaces the given cap entry {@code target} with {@code editedCapEntry}.
+     * {@code target} must exist in the UltiStudent.
+     * The cap entry identity of {@code editedCapEntry} must not be the same as another existing cap entry
+     * in the UltiStudent.
+     */
+    void setModuleSemester(ModuleSemester target, ModuleSemester editedCapEntry);
+
+    /**
+     * Returns an unmodifiable view of the filtered cap entry list
+     */
+    ObservableList<ModuleSemester> getFilteredModuleSemesterList();
+
+    /**
+     * Updates the filter of the filtered cap entry list to filter by the given {@code predicate}.
+     *
+     * @throws NullPointerException if {@code predicate} is null.
+     */
+    void updateFilteredModuleSemesterList(Predicate<ModuleSemester> predicate);
+
+    /**
+     * Selected cap entry in the filtered cap entry list.
+     * null if no cap entry is selected.
+     */
+    ReadOnlyProperty<ModuleSemester> selectedModuleSemesterProperty();
+
+    /**
+     * Returns the selected cap entry in the filtered cap entry list.
+     * null if no cap entry is selected.
+     */
+    ModuleSemester getSelectedModuleSemester();
+
+    /**
+     * Sets the selected cap entry in the filtered cap entry list.
+     */
+    void setSelectedModuleSemester(ModuleSemester moduleSemester);
 
     //=========== Homework ===========================================================================
 

@@ -74,7 +74,9 @@ public class EditCapEntryCommand extends Command {
         }
 
         CapEntry capEntryToEdit = lastShownList.get(index.getZeroBased());
+        ModuleSemester moduleSemesterOfCapEntryToEdit = capEntryToEdit.getModuleSemester();
         CapEntry editedCapEntry = createEditedCapEntry(capEntryToEdit, editCapEntryDescriptor);
+        ModuleSemester moduleSemesterOfEditedCapEntry = editedCapEntry.getModuleSemester();
 
         if (!capEntryToEdit.isSameCapEntry(editedCapEntry) && model.hasCapEntry(editedCapEntry)) {
             throw new CommandException(MESSAGE_DUPLICATE_CAP_ENTRY);
@@ -82,6 +84,18 @@ public class EditCapEntryCommand extends Command {
 
         model.setCapEntry(capEntryToEdit, editedCapEntry);
         model.updateFilteredCapEntryList(Model.PREDICATE_SHOW_ALL_CAP_ENTRIES);
+
+        //update module semester
+        if (!moduleSemesterOfCapEntryToEdit.equals(moduleSemesterOfEditedCapEntry)) {
+            if (!model.hasModuleSemester(moduleSemesterOfCapEntryToEdit)) {
+                model.deleteModuleSemester(moduleSemesterOfCapEntryToEdit);
+            }
+            if (!model.hasModuleSemester(moduleSemesterOfEditedCapEntry)) {
+                model.addModuleSemester(moduleSemesterOfEditedCapEntry);
+            }
+        }
+        model.updateFilteredModuleSemesterList(Model.PREDICATE_SHOW_ALL_MODULE_SEMESTERS);
+
         model.commitAddressBook();
         return new CommandResult(String.format(MESSAGE_EDIT_CAP_ENTRY_SUCCESS, editedCapEntry));
     }
