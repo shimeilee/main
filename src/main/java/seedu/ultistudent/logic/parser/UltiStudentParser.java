@@ -15,6 +15,7 @@ import seedu.ultistudent.logic.commands.Command;
 import seedu.ultistudent.logic.commands.DeleteCapEntryCommand;
 import seedu.ultistudent.logic.commands.DeleteCommand;
 import seedu.ultistudent.logic.commands.DeleteHomeworkCommand;
+import seedu.ultistudent.logic.commands.DeleteNoteCommand;
 import seedu.ultistudent.logic.commands.EditCapEntryByModuleCodeCommand;
 import seedu.ultistudent.logic.commands.EditCapEntryCommand;
 import seedu.ultistudent.logic.commands.EditCommand;
@@ -93,6 +94,9 @@ public class UltiStudentParser {
 
         case DeleteCapEntryCommand.COMMAND_WORD:
             return new DeleteCapEntryCommandParser().parse(arguments);
+
+        case DeleteNoteCommand.COMMAND_WORD:
+            return new DeleteNoteCommandParser().parse(arguments);
 
         case ClearCommand.COMMAND_WORD:
             return new ClearCommand();
