@@ -29,6 +29,7 @@ import seedu.ultistudent.logic.commands.ListCommand;
 import seedu.ultistudent.logic.commands.OpenCommand;
 import seedu.ultistudent.logic.commands.RedoCommand;
 import seedu.ultistudent.logic.commands.SelectCommand;
+import seedu.ultistudent.logic.commands.SelectNoteCommand;
 import seedu.ultistudent.logic.commands.UndoCommand;
 import seedu.ultistudent.logic.parser.exceptions.ParseException;
 
@@ -127,6 +128,9 @@ public class UltiStudentParser {
 
         case OpenCommand.COMMAND_WORD:
             return new OpenCommandParser().parse(arguments);
+
+        case SelectNoteCommand.COMMAND_WORD:
+            return new SelectNoteCommandParser().parse(arguments);
 
         default:
             throw new ParseException(MESSAGE_UNKNOWN_COMMAND);
