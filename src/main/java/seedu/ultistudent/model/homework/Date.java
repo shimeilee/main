@@ -12,6 +12,7 @@ public class Date {
 
     public static final String MESSAGE_CONSTRAINTS =
             "The format for the date should follow DD/MM/YYYY. "
+                    + "It is possible to use single digits for the DD and MM fields. "
                     + "Invalid dates such as 30 Feb 2019 or 29 Feb on non-leap years are not accepted.";
 
     //regex reference to https://stackoverflow.com/questions/15491894/regex-to-validate-date-format-dd-mm-yyyy
