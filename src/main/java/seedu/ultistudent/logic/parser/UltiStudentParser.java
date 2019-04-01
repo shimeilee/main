@@ -28,6 +28,7 @@ import seedu.ultistudent.logic.commands.ListCapEntryCommand;
 import seedu.ultistudent.logic.commands.ListCommand;
 import seedu.ultistudent.logic.commands.OpenCommand;
 import seedu.ultistudent.logic.commands.RedoCommand;
+import seedu.ultistudent.logic.commands.SaveNoteCommand;
 import seedu.ultistudent.logic.commands.SelectCommand;
 import seedu.ultistudent.logic.commands.SelectNoteCommand;
 import seedu.ultistudent.logic.commands.UndoCommand;
@@ -60,8 +61,9 @@ public class UltiStudentParser {
         final String arguments = matcher.group("arguments");
         switch (commandWord) {
 
+        //===== Add commands in UltiStudent =====//
         case AddCommand.COMMAND_WORD:
-            return new AddCommandParser().parse(arguments);
+            return new AddCommand();
 
         case AddCapEntryCommand.COMMAND_WORD:
             return new AddCapEntryCommandParser().parse(arguments);
@@ -72,6 +74,7 @@ public class UltiStudentParser {
         case AddNoteCommand.COMMAND_WORD:
             return new AddNoteCommandParser().parse(arguments);
 
+        //===== Edit Commands in UltiStudent =====//
         case EditCommand.COMMAND_WORD:
             return new EditCommandParser().parse(arguments);
 
@@ -131,6 +134,9 @@ public class UltiStudentParser {
 
         case SelectNoteCommand.COMMAND_WORD:
             return new SelectNoteCommandParser().parse(arguments);
+
+        case SaveNoteCommand.COMMAND_WORD:
+            return new SaveNoteCommand();
 
         default:
             throw new ParseException(MESSAGE_UNKNOWN_COMMAND);

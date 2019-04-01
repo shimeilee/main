@@ -14,11 +14,11 @@ import seedu.ultistudent.model.cap.CapEntry;
 import seedu.ultistudent.model.cap.ModuleSemester;
 
 /**
- * Adds a Cap Entry to the Cap Manager.
+ * Adds a Cap Entry to the CapManager.
  */
 public class AddCapEntryCommand extends Command {
 
-    public static final String COMMAND_WORD = "addcap";
+    public static final String COMMAND_WORD = "add-cap";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds a CAP Entry to UltiStudent's CAP Manager.\n"
             + "Parameters: "

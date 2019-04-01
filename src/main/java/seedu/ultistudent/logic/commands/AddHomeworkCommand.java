@@ -13,22 +13,22 @@ import seedu.ultistudent.model.homework.Homework;
 
 
 /**
- * AddHomeworkCommand is created with reference to AddCommand.
+ * Adds a Homework to the HomeworkManager.
  */
 public class AddHomeworkCommand extends Command {
 
-    public static final String COMMAND_WORD = "addHomework";
+    public static final String COMMAND_WORD = "add-homework";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds a homework to UltiStudent's homework manager.\n"
             + "Parameters: "
             + PREFIX_MODULECODE + "MODULECODE "
             + PREFIX_HOMEWORK + "HOMEWORK "
             + PREFIX_DEADLINE + "DEADLINE\n"
-            + "Priorities are low by default if not set, and acceptable values are low, normal, high.\n"
+
             + "Example: " + COMMAND_WORD + " "
             + PREFIX_MODULECODE + "CS2103T "
             + PREFIX_HOMEWORK + "User Guide Draft 1"
-            + PREFIX_DEADLINE + "dd/mmm/yyyy";
+            + PREFIX_DEADLINE + "dd/mm/yyyy";
 
     public static final String MESSAGE_SUCCESS = "New homework added: %1$s";
     public static final String MESSAGE_DUPLICATE_HOMEWORK = "This homework already exists in UltiStudent";

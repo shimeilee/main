@@ -26,6 +26,9 @@ public class NotesManagerMainPanel extends UiPart<Region> {
 
         // To prevent triggering events for typing inside
         getRoot().setOnKeyPressed(Event::consume);
+        if (selectedNote.getValue() == null) {
+            notesText.setDisable(true);
+        }
 
         // Load note page when selected note changes
         selectedNote.addListener((observable, oldValue, newValue)-> {
@@ -46,6 +49,7 @@ public class NotesManagerMainPanel extends UiPart<Region> {
                 note.setContent(arg2);
             }
         });
+        notesText.setDisable(false);
     }
 
     private void loadDefaultNotes () {
