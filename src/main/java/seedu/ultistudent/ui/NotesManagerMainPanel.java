@@ -42,6 +42,10 @@ public class NotesManagerMainPanel extends UiPart<Region> {
         loadDefaultNotes();
     }
 
+    /**
+     * Loads the selected notes page on the main panel
+     * @param note
+     */
     private void loadNotesPage (Note note) {
         notesText.setDisable(false);
         notesText.setText(note.getContent().toString());
