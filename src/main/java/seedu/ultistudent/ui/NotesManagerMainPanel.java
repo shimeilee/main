@@ -2,11 +2,12 @@ package seedu.ultistudent.ui;
 
 import java.util.logging.Logger;
 
-import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.Event;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextArea;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Region;
 import seedu.ultistudent.commons.core.LogsCenter;
 import seedu.ultistudent.model.note.Note;
@@ -42,14 +43,16 @@ public class NotesManagerMainPanel extends UiPart<Region> {
     }
 
     private void loadNotesPage (Note note) {
+        notesText.setDisable(false);
         notesText.setText(note.getContent().toString());
-        notesText.textProperty().addListener(new ChangeListener<String>() {
+        notesText.addEventFilter(KeyEvent.KEY_TYPED, new EventHandler<KeyEvent>() {
             @Override
-            public void changed(ObservableValue<? extends String> arg0, String arg1, String arg2) {
-                note.setContent(arg2);
+            public void handle(KeyEvent event) {
+                String content = note.getContent().content;
+                content += event.getCharacter();
+                note.setContent(content);
             }
         });
-        notesText.setDisable(false);
     }
 
     private void loadDefaultNotes () {
