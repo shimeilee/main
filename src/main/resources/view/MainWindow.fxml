@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.VBox?>
 
 <fx:root type="javafx.stage.Stage" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
-         title="UltiStudent" minWidth="750" minHeight="650" onCloseRequest="#handleExit">
+         title="UltiStudent" minWidth="850" minHeight="650" onCloseRequest="#handleExit">
   <icons>
     <Image url="@/images/address_book_32.png" />
   </icons>
@@ -55,7 +55,7 @@
           </VBox>
 
           <SplitPane id="splitPane2" fx:id="splitPane2" dividerPositions="0.4" VBox.vgrow="ALWAYS">
-            <VBox fx:id="personList" minWidth="250" prefWidth="250" SplitPane.resizableWithParent="true">
+            <VBox fx:id="personList" minWidth="300" prefWidth="300" SplitPane.resizableWithParent="false">
               <padding>
                 <Insets top="10" right="10" bottom="10" left="10" />
               </padding>
@@ -63,7 +63,7 @@
             </VBox>
           </SplitPane>
 
-          <StackPane fx:id="mainPanelPlaceholder" minWidth="380" prefWidth="380">
+          <StackPane fx:id="mainPanelPlaceholder" minWidth="400" prefWidth="400">
             <padding>
               <Insets top="10" right="10" bottom="10" left="10" />
             </padding>

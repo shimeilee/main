@@ -27,7 +27,7 @@ public class AddHomeworkCommand extends Command {
 
             + "Example: " + COMMAND_WORD + " "
             + PREFIX_MODULECODE + "CS2103T "
-            + PREFIX_HOMEWORK + "User Guide Draft 1"
+            + PREFIX_HOMEWORK + "User Guide Draft 1 "
             + PREFIX_DEADLINE + "dd/mm/yyyy";
 
     public static final String MESSAGE_SUCCESS = "New homework added: %1$s";

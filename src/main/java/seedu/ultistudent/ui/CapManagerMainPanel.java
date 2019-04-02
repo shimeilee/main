@@ -14,7 +14,7 @@ import seedu.ultistudent.model.cap.CapEntry;
 
 
 /**
- * Panel containing the list of CapEntrys.
+ * Panel containing the list of CapEntries.
  */
 public class CapManagerMainPanel extends UiPart<Region> {
     private static final String FXML = "CapManagerMainPanel.fxml";

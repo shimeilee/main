@@ -1,7 +1,5 @@
 package seedu.ultistudent.logic.parser;
 
-import static seedu.ultistudent.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
-
 import seedu.ultistudent.logic.commands.OpenCommand;
 import seedu.ultistudent.logic.parser.exceptions.ParseException;
 
@@ -19,7 +17,7 @@ public class OpenCommandParser implements Parser<OpenCommand> {
 
         String[] argsParts = args.split(" ");
         if (argsParts.length < 2) {
-            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, OpenCommand.MESSAGE_USAGE));
+            throw new ParseException(String.format(OpenCommand.MESSAGE_USAGE));
         }
         return new OpenCommand(argsParts[1]);
     }
