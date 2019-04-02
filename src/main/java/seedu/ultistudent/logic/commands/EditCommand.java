@@ -12,7 +12,7 @@ public class EditCommand extends Command {
 
     public static final String MESSAGE_USAGE = COMMAND_WORD
             + ": There are 3 different edit commands in UltiStudent.\n"
-            + "They are: edit-hw, edit-note, edit-cap"
+            + "They are: edit-hw, edit-note, edit-cap\n"
             + "Type: 'help' for more";
 
     @Override
