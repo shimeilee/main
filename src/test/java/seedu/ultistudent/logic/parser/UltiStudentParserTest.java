@@ -15,7 +15,6 @@ import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
 import seedu.ultistudent.logic.commands.ClearCommand;
-import seedu.ultistudent.logic.commands.DeleteCommand;
 import seedu.ultistudent.logic.commands.EditCommand;
 import seedu.ultistudent.logic.commands.EditCommand.EditPersonDescriptor;
 import seedu.ultistudent.logic.commands.ExitCommand;
@@ -34,6 +33,7 @@ import seedu.ultistudent.testutil.PersonBuilder;
 import seedu.ultistudent.testutil.PersonUtil;
 
 //import seedu.ultistudent.logic.commands.AddCommand;
+//import seedu.ultistudent.logic.commands.DeleteCommand;
 
 public class UltiStudentParserTest {
     @Rule
@@ -54,12 +54,12 @@ public class UltiStudentParserTest {
         assertTrue(parser.parseCommand(ClearCommand.COMMAND_WORD + " 3") instanceof ClearCommand);
     }
 
-    @Test
-    public void parseCommand_delete() throws Exception {
-        DeleteCommand command = (DeleteCommand) parser.parseCommand(
-                DeleteCommand.COMMAND_WORD + " " + INDEX_FIRST_PERSON.getOneBased());
-        assertEquals(new DeleteCommand(INDEX_FIRST_PERSON), command);
-    }
+    //    @Test
+    //    public void parseCommand_delete() throws Exception {
+    //        DeleteCommand command = (DeleteCommand) parser.parseCommand(
+    //                DeleteCommand.COMMAND_WORD + " " + INDEX_FIRST_PERSON.getOneBased());
+    //        assertEquals(new DeleteCommand(INDEX_FIRST_PERSON), command);
+    //    }
 
     @Test
     public void parseCommand_edit() throws Exception {
