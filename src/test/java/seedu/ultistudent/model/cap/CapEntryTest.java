@@ -2,13 +2,13 @@ package seedu.ultistudent.model.cap;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
-import static seedu.ultistudent.logic.commands.CommandTestUtil.VALID_MODULE_GRADE_CS1002;
-import static seedu.ultistudent.logic.commands.CommandTestUtil.VALID_MODULE_CREDITS_CS1002;
-import static seedu.ultistudent.logic.commands.CommandTestUtil.VALID_MODULE_SEMESTER_CS1002;
 import static seedu.ultistudent.logic.commands.CommandTestUtil.VALID_MODULE_CODE_CS1002;
+import static seedu.ultistudent.logic.commands.CommandTestUtil.VALID_MODULE_CREDITS_CS1002;
+import static seedu.ultistudent.logic.commands.CommandTestUtil.VALID_MODULE_GRADE_CS1002;
+import static seedu.ultistudent.logic.commands.CommandTestUtil.VALID_MODULE_SEMESTER_CS1002;
 
-import static seedu.ultistudent.testutil.TypicalCapEntry.CS2101;
 import static seedu.ultistudent.testutil.TypicalCapEntry.CS1002;
+import static seedu.ultistudent.testutil.TypicalCapEntry.CS2101;
 
 import org.junit.Rule;
 import org.junit.Test;
@@ -42,8 +42,8 @@ public class CapEntryTest {
     @Test
     public void equals() {
         // same values -> returns true
-        CapEntry CS2101Copy = new CapEntryBuilder(CS2101).build();
-        assertTrue(CS2101.equals(CS2101Copy));
+        CapEntry cs2101Copy = new CapEntryBuilder(CS2101).build();
+        assertTrue(CS2101.equals(cs2101Copy));
 
         // same object -> returns true
         assertTrue(CS2101.equals(CS2101));
@@ -58,20 +58,20 @@ public class CapEntryTest {
         assertFalse(CS2101.equals(CS1002));
 
         // different moduleCode -> returns false
-        CapEntry editedCS2101 = new CapEntryBuilder(CS2101).withModuleCode(VALID_MODULE_CODE_CS1002).build();
-        assertFalse(CS2101.equals(editedCS2101));
+        CapEntry editedCs2101 = new CapEntryBuilder(CS2101).withModuleCode(VALID_MODULE_CODE_CS1002).build();
+        assertFalse(CS2101.equals(editedCs2101));
 
         // different moduleSemester -> returns false
-        editedCS2101 = new CapEntryBuilder(CS2101).withModuleSemester(VALID_MODULE_SEMESTER_CS1002).build();
-        assertFalse(CS2101.equals(editedCS2101));
+        editedCs2101 = new CapEntryBuilder(CS2101).withModuleSemester(VALID_MODULE_SEMESTER_CS1002).build();
+        assertFalse(CS2101.equals(editedCs2101));
 
         // different moduleCredits -> returns false
-        editedCS2101 = new CapEntryBuilder(CS2101).withModuleCredits(VALID_MODULE_CREDITS_CS1002).build();
-        assertFalse(CS2101.equals(editedCS2101));
+        editedCs2101 = new CapEntryBuilder(CS2101).withModuleCredits(VALID_MODULE_CREDITS_CS1002).build();
+        assertFalse(CS2101.equals(editedCs2101));
 
         // different moduleGrade -> returns false
-        editedCS2101 = new CapEntryBuilder(CS2101).withModuleGrade(VALID_MODULE_GRADE_CS1002).build();
-        assertFalse(CS2101.equals(editedCS2101));
+        editedCs2101 = new CapEntryBuilder(CS2101).withModuleGrade(VALID_MODULE_GRADE_CS1002).build();
+        assertFalse(CS2101.equals(editedCs2101));
 
     }
 

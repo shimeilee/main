@@ -209,15 +209,25 @@ Examples:
 * `add-note mc/CS2103T n/NOTENAME`
 * `add-note mc/CS2100 n/NOTENAME`
 
-==== Editing a note : `edit-note`
+==== Editing a note : `selectNote`
 Opens and allows editing on an existing note in the Notes Manager based on its
 index +
-Format: `edit-note INDEX`
+Format: `selectNote INDEX`
 
 Examples:
 
-* `edit-note 1`
-* `edit-note 2`
+* `selectNote 1`
+* `selectNote 2`
+
+==== Editing a note : `saveNote`
+Saves and closes the current note in editing in the Notes Manager based on its
+index +
+Format: `saveNote INDEX`
+
+Examples:
+
+* `saveNote 1`
+* `saveNote 2`
 
 ==== Deleting a Note: `delete-note`
 
@@ -307,7 +317,7 @@ Examples:
 * `edit-cap CS2103T mc/CS2102 g/A+` +
 Edits the cap entry of CS2103T to become that of a cap entry for CS2102 and sets the grade obtained to `B+`.
 
-==== Calculating your CAP : 
+==== Calculating your CAP :
 CapManager automatically calculates your CAP score with every command that relates to it. You can view your CAP in the Cap Manager window.
 Format: -
 
@@ -328,8 +338,10 @@ e.g. `edit 2 d/030319 p/`
 e.g. `add-note mc/CS2103T n/Lecture  3`
 * *Delete Note* : `delete-note INDEX` +
 e.g. `delete 2`
-* *Edit Note* : `edit-note INDEX` +
-e.g. `edit-note 2`
+* *Selecting Note to Edit* : `selectNote INDEX` +
+e.g. `selectNote 2`
+* *Saving an Edited Note* : `saveNote INDEX` +
+e.g. `saveNote 5`
 
 * *Add Cap Entry* `add-cap mc/MODULECODE nn/NOTENAME hw/HOMEWORK [p/PRIORITY]...` +
 e.g. `add-cap mc/CS2101 g/A- mcs/4 sem/Y2S2 `

@@ -2,10 +2,10 @@ package seedu.ultistudent.testutil;
 
 import static seedu.ultistudent.logic.commands.CommandTestUtil.VALID_MODULE_CODE_CS1001;
 import static seedu.ultistudent.logic.commands.CommandTestUtil.VALID_MODULE_CODE_CS1002;
-import static seedu.ultistudent.logic.commands.CommandTestUtil.VALID_MODULE_GRADE_CS1001;
-import static seedu.ultistudent.logic.commands.CommandTestUtil.VALID_MODULE_GRADE_CS1002;
 import static seedu.ultistudent.logic.commands.CommandTestUtil.VALID_MODULE_CREDITS_CS1001;
 import static seedu.ultistudent.logic.commands.CommandTestUtil.VALID_MODULE_CREDITS_CS1002;
+import static seedu.ultistudent.logic.commands.CommandTestUtil.VALID_MODULE_GRADE_CS1001;
+import static seedu.ultistudent.logic.commands.CommandTestUtil.VALID_MODULE_GRADE_CS1002;
 import static seedu.ultistudent.logic.commands.CommandTestUtil.VALID_MODULE_SEMESTER_CS1001;
 import static seedu.ultistudent.logic.commands.CommandTestUtil.VALID_MODULE_SEMESTER_CS1002;
 

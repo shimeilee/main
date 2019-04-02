@@ -8,7 +8,6 @@ import static seedu.ultistudent.logic.commands.CommandTestUtil.VALID_MODULE_GRAD
 import static seedu.ultistudent.testutil.TypicalCapEntry.CS1002;
 import static seedu.ultistudent.testutil.TypicalCapEntry.CS2101;
 
-
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
