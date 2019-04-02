@@ -91,7 +91,7 @@ public class UltiStudentParser {
             return new SelectCommandParser().parse(arguments);
 
         case DeleteCommand.COMMAND_WORD:
-            return new DeleteCommandParser().parse(arguments);
+            return new DeleteCommand();
 
         case DeleteHomeworkCommand.COMMAND_WORD:
             return new DeleteHomeworkCommandParser().parse(arguments);
