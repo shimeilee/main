@@ -39,7 +39,7 @@ e.g. typing *`help`* and pressing kbd:[Enter] will open the help window.
 
 * *`open HomeworkManager`* : Opens the Homework Manager and its existing
 homework
-* *`add mc/CS2103T mn/Software Engineering hw/Tutorial 01 d/050319`* :
+* *`add mc/CS2103T hw/Tutorial 01 d/05/03/2019`* :
 Adds a homework “Tutorial 01” under CS2103T tab with the deadline on 05 March 2019
 * *`delete 3`* : deletes the 3rd  item shown in the current manager
 * *`exit`* : exits the app
@@ -71,8 +71,7 @@ As UltiStudent contains many different commands and features, do refer to the co
 
 * Words in `UPPER_CASE` are the parameters to be supplied by the user e.g. in `add mc/MODULECODE`, `MODULECODE` is a parameter which can be used as `add c/CS2103T`.
 
-* All parameters must be supplied by users in this order:  `add mc/MODULECODE mn/MODULENAME hw/HOMEWORK d/DEADLINE`. Deadline format: DDMMYY
-*Items in square brackets are optional e.g.[p/PRIORITY], which is an optional field. Priority is set to low by default.
+* All parameters must be supplied by users in this order:  `add mc/MODULECODE hw/HOMEWORK d/DEADLINE`. Deadline format: DDMMYY
 ====
 
 === General Commands
@@ -103,25 +102,21 @@ Format: `undo`
 ====
 Undoable commands: those commands that modify the UltiStudent's content in
 the various manager e.g. for Homework Manager
-(`add-homework`, `delete-homework`, `edit-homework`).
+(`add-hw`, `delete-hw`, `edit-hw`).
 ====
 
 Examples:
 
-* `delete-homework 1` +
-`undo` (reverses the `delete 1` command) +
+* `delete-hw 1` +
+`undo` (reverses the `delete-hw 1` command) +
 
 * `delete-note 1` +
-`undo` (reverses the `delete 1` command) +
+`undo` (reverses the `delete-note 1` command) +
 
-* `select-homework 1` +
-`undo` +
-The `undo` command fails as there are no undoable commands executed previously.
-
-* `delete 1` +
-`add mc/CS2101 mn/Effective Communication for Computing Professionals hw/Tutorial 1’ +
+* `delete-hw 1` +
+`add mc/CS2101 hw/Tutorial 1’ d/03/03/2019+
 `undo` (reverses the `add` command) +
-`undo` (reverses the `delete 1` command) +
+`undo` (reverses the `delete-hw 1` command) +
 
 ==== Redoing the previously undone command : `redo`
 
@@ -131,8 +126,8 @@ Format: `redo`
 Examples:
 
 * `delete-hw 1` +
-`undo` (reverses the `delete 1` command) +
-`redo` (reapplies the `delete 1` command) +
+`undo` (reverses the `delete-hw 1` command) +
+`redo` (reapplies the `delete-hw 1` command) +
 
 * `delete-note 1` +
 `redo` +
@@ -151,31 +146,26 @@ There is no need to save manually.
 
 === Homework Manager
 
-==== Adding a homework: `add-homework`
+==== Adding a homework: `add-hw`
 
 Adds a new homework task to the UltiStudent +
-Format: `add  mc/MODULECODE mn/MODULENAME hw/HOMEWORK d/DEADLINE [p/PRIORITY]`
+Format: `add  mc/MODULECODE hw/HOMEWORK d/DEADLINE`
 
 [TIP]
 Priorities are low by default if not set, and acceptable values are low, normal, high.
 
 Examples:
 
-* `add-homework mc/CS2103T mn/Software Engineering hw/User Guide Draft 1
-d/05032019`
-* `add-homework mc/CS3230 mn/Data Structures and Algorithms II hw/Tutorial 3
-d/07032019 p/high`
+* `add-hw mc/CS2103T hw/User Guide Draft 1
+d/05/03/2019`
+* `add-hw mc/CS3230 hw/Tutorial 3
+d/07/03/2019`
 
-==== Listing all homework: `list-homework`
-
-Shows a list of all homework in the UltiStudent. +
-Format: `list-homework`
-
-==== Editing a homework: `edit-homework`
+==== Editing a homework: `edit-hw`
 
 Edits an existing homework entry in the UltiStudent +
-Format: `edit-homework INDEX  [mc/MODULECODE] [mn/MODULENAME] [hw/HOMEWORK]
-[d/DEADLINE] [p/PRIORITY]`
+Format: `edit-homework INDEX  [mc/MODULECODE] [hw/HOMEWORK]
+[d/DEADLINE]`
 ****
 * Edits the homework at the specified `INDEX`. The index refers to the index number shown in the displayed homework list. The index *must be a positive integer* 1, 2, 3, ...
 * At least one of the optional fields must be provided.
@@ -185,36 +175,15 @@ Format: `edit-homework INDEX  [mc/MODULECODE] [mn/MODULENAME] [hw/HOMEWORK]
 
 Examples:
 
-* `edit-homework 1 p/high d/100319` +
- Edits the priority and deadline of the 1st homework to be `high` and `10 March 2019`
-* `edit-homework 2 d/030319 p/` +
-Edits the deadline of the 2nd homework and set the priority to low
+* `edit-homework 1 d/10/03/2019` +
+ Edits the deadline of the 1st homework to be `10 March 2019`
+* `edit-homework 2 hw/Tutorial 1 d/03/03/2019 +
+Edits the deadline of the 2nd homework and set the name of the homework to be `Tutorial 1`.
 
-==== Locating homework by keywords in `hw/HOMEWORK` parameter: `find`
-
-Finds homework whose homework name contain any of the given keywords. +
-Format: `find KEYWORD [MORE_KEYWORDS]`
-
-****
-* The search is not case sensitive. e.g `tutorial` will match `Tutorial`
-* The order of the keywords does not matter. e.g. `Lecture 3` will match `3 Lecture`
-* Only the name is searched.
-* Only full words will be matched e.g. `Tutorial` will not match `Tutorials`
-* Homework matching at least one keyword will be returned (i.e. `OR` search). e.g. `Tutorial` will return `Tutorial 3`, `Create Tutorial Solutions`
-
-****
-
-Examples:
-
-* `find Draft` +
-Returns `Presentation Script Draft` and `User Guide Draft`
-* `find Tutorial Lecture Submission` +
-Returns any homework having names `Tutorial`, `Lecture`, or `Submission`
-
-==== Deleting a homework: `delete`
+==== Deleting a homework: `delete-hw`
 
 Deletes the specified homework from the UltiStudent. +
-Format: `delete-homework INDEX`
+Format: `delete-hw INDEX`
 
 ****
 * Deletes the homework at the specified `INDEX`.
@@ -226,32 +195,10 @@ Format: `delete-homework INDEX`
 
 Examples:
 
-* `list` +
-`delete-homework 2` +
+* `delete-homework 2` +
 Deletes the 2nd homework in the UltiStudent.
-* `find Tutorial` +
-`delete-homework 1` +
-Deletes the 1st homework in the results of the `find` command.
-
-==== Selecting a homework: `select`
-
-Selects the homework identified by the index number used in the displayed homework list. +
-Format: `select INDEX`
-
-****
-* Selects the homework and loads the homework details at the specified `INDEX`.
-* The index refers to the index number shown in the displayed homework list.
-* The index *must be a positive integer* `1, 2, 3, ...`
-****
-
-Examples:
-
-* `list` +
-`select-homework 2` +
-Selects the 2nd homework in the UltiStudent.
-* `find Tutorial` +
-`select-homework 1` +
-Selects the 1st homework in the results of the `find` command.
+* `delete-homework 1` +
+Deletes the 1st homework in UltiStudent.
 
 === Notes Manager
 ==== Adding a note : `add-note`
