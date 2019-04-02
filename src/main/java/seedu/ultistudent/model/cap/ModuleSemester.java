@@ -7,9 +7,9 @@ import static java.util.Objects.requireNonNull;
  */
 public class ModuleSemester {
 
-    public static final String MESSAGE_CONSTRAINTS = "Modular Semester should be entered in Y#S# format,"
-            + " where # are whole numbers ";
-    public static final String VALIDATION_REGEX = "(Y)\\d{1}(S)\\d{1}";
+    public static final String MESSAGE_CONSTRAINTS = "Modular Semester should be entered in Y#S@ format,"
+            + " where # is a whole number from 1 to 5 and @ is from 1 to 2";
+    public static final String VALIDATION_REGEX = "[Y][1-5][S][1-2]";
     public final String value;
 
     /**

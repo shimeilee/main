@@ -5,13 +5,9 @@ import static seedu.ultistudent.logic.parser.CliSyntax.PREFIX_MODULECODE;
 import static seedu.ultistudent.logic.parser.CliSyntax.PREFIX_MODULECREDITS;
 import static seedu.ultistudent.logic.parser.CliSyntax.PREFIX_MODULEGRADE;
 import static seedu.ultistudent.logic.parser.CliSyntax.PREFIX_SEMESTER;
-import static seedu.ultistudent.logic.parser.CliSyntax.PREFIX_TAG;
 
-import java.util.Collections;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
-import java.util.Set;
 
 import seedu.ultistudent.commons.core.Messages;
 import seedu.ultistudent.commons.core.index.Index;
@@ -24,13 +20,12 @@ import seedu.ultistudent.model.cap.ModuleCredits;
 import seedu.ultistudent.model.cap.ModuleGrade;
 import seedu.ultistudent.model.cap.ModuleSemester;
 import seedu.ultistudent.model.modulecode.ModuleCode;
-import seedu.ultistudent.model.tag.Tag;
 
 /**
  * Edits the details of an existing cap entry in the Cap Manager through the index.
  */
 public class EditCapEntryCommand extends Command {
-    public static final String COMMAND_WORD = "editcap";
+    public static final String COMMAND_WORD = "edit-cap";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Edits the details of the module identified "
             + "by the index number used in the displayed cap entry list. "
@@ -40,7 +35,6 @@ public class EditCapEntryCommand extends Command {
             + "[" + PREFIX_MODULEGRADE + "MODULE_GRADE] "
             + "[" + PREFIX_MODULECREDITS + "MODULE_CREDITS] "
             + "[" + PREFIX_SEMESTER + "MODULE_SEMESTER] "
-            + "[" + PREFIX_TAG + "TAG]...\n"
             + "Example: " + COMMAND_WORD + " 1 "
             + PREFIX_MODULEGRADE + "B+ "
             + PREFIX_MODULECREDITS + "6";
@@ -115,10 +109,8 @@ public class EditCapEntryCommand extends Command {
                 .getModuleCredits());
         ModuleSemester updatedModuleSemester = editCapEntryDescriptor.getModuleSemester().orElse(capEntryToEdit
                 .getModuleSemester());
-        Set<Tag> updatedTags = editCapEntryDescriptor.getTags().orElse(capEntryToEdit.getTags());
 
-        return new CapEntry(updatedModuleCode, updatedModuleGrade, updatedModuleCredits, updatedModuleSemester,
-                updatedTags);
+        return new CapEntry(updatedModuleCode, updatedModuleGrade, updatedModuleCredits, updatedModuleSemester);
     }
 
     @Override
@@ -148,7 +140,6 @@ public class EditCapEntryCommand extends Command {
         private ModuleGrade moduleGrade;
         private ModuleCredits moduleCredits;
         private ModuleSemester moduleSemester;
-        private Set<Tag> tags;
 
         public EditCapEntryDescriptor() {}
 
@@ -161,14 +152,13 @@ public class EditCapEntryCommand extends Command {
             setModuleGrade(toCopy.moduleGrade);
             setModuleCredits(toCopy.moduleCredits);
             setModuleSemester(toCopy.moduleSemester);
-            setTags(toCopy.tags);
         }
 
         /**
          * Returns true if at least one field is edited.
          */
         public boolean isAnyFieldEdited() {
-            return CollectionUtil.isAnyNonNull(moduleCode, moduleGrade, moduleCredits, moduleSemester, tags);
+            return CollectionUtil.isAnyNonNull(moduleCode, moduleGrade, moduleCredits, moduleSemester);
         }
 
         public void setModuleCode(ModuleCode moduleCode) {
@@ -203,23 +193,6 @@ public class EditCapEntryCommand extends Command {
             return Optional.ofNullable(moduleSemester);
         }
 
-        /**
-         * Sets {@code tags} to this object's {@code tags}.
-         * A defensive copy of {@code tags} is used internally.
-         */
-        public void setTags(Set<Tag> tags) {
-            this.tags = (tags != null) ? new HashSet<>(tags) : null;
-        }
-
-        /**
-         * Returns an unmodifiable tag set, which throws {@code UnsupportedOperationException}
-         * if modification is attempted.
-         * Returns {@code Optional#empty()} if {@code tags} is null.
-         */
-        public Optional<Set<Tag>> getTags() {
-            return (tags != null) ? Optional.of(Collections.unmodifiableSet(tags)) : Optional.empty();
-        }
-
         @Override
         public boolean equals(Object other) {
             // short circuit if same object
@@ -238,8 +211,7 @@ public class EditCapEntryCommand extends Command {
             return getModuleCode().equals(e.getModuleCode())
                     && getModuleGrade().equals(e.getModuleGrade())
                     && getModuleCredits().equals(e.getModuleCredits())
-                    && getModuleSemester().equals(e.getModuleSemester())
-                    && getTags().equals(e.getTags());
+                    && getModuleSemester().equals(e.getModuleSemester());
         }
     }
 }

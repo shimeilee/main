@@ -17,6 +17,8 @@ import seedu.ultistudent.logic.CommandHistory;
 import seedu.ultistudent.logic.commands.exceptions.CommandException;
 import seedu.ultistudent.model.AddressBook;
 import seedu.ultistudent.model.Model;
+import seedu.ultistudent.model.cap.CapEntry;
+import seedu.ultistudent.model.cap.ModuleCodeContainsKeywordsPredicate;
 import seedu.ultistudent.model.homework.Homework;
 import seedu.ultistudent.model.homework.HomeworkNameContainsKeywordsPredicate;
 import seedu.ultistudent.model.person.NameContainsKeywordsPredicate;
@@ -153,6 +155,20 @@ public class CommandTestUtil {
         Homework homework = model.getFilteredHomeworkList().get(targetIndex.getZeroBased());
         final String[] splitHomework = homework.getHomeworkName().value.split("\\s+");
         model.updateFilteredHomeworkList(new HomeworkNameContainsKeywordsPredicate(Arrays.asList(splitHomework[0])));
+
+        assertEquals(1, model.getFilteredHomeworkList().size());
+    }
+
+    /**
+     * Updates {@code model}'s filtered list to show only the capEntry at the given {@code targetIndex} in the
+     * {@code model}'s UltiStudent.
+     */
+    public static void showCapEntryAtIndex(Model model, Index targetIndex) {
+        assertTrue(targetIndex.getZeroBased() < model.getFilteredCapEntryList().size());
+
+        CapEntry capEntry = model.getFilteredCapEntryList().get(targetIndex.getZeroBased());
+        final String[] splitCapEntry = capEntry.getModuleCode().value.split("\\s+");
+        model.updateFilteredCapEntryList(new ModuleCodeContainsKeywordsPredicate(Arrays.asList(splitCapEntry[0])));
 
         assertEquals(1, model.getFilteredHomeworkList().size());
     }

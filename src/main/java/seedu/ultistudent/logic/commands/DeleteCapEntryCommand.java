@@ -17,7 +17,7 @@ import seedu.ultistudent.model.cap.ModuleSemester;
  */
 public class DeleteCapEntryCommand extends Command {
 
-    public static final String COMMAND_WORD = "deletecap";
+    public static final String COMMAND_WORD = "delete-cap";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD
             + ": Deletes the cap entry identified by the index number used in the displayed cap entry list.\n"
@@ -42,11 +42,21 @@ public class DeleteCapEntryCommand extends Command {
         }
 
         CapEntry capEntryToDelete = lastShownList.get(targetIndex.getZeroBased());
-        ModuleSemester moduleSemesterOfDeletedCapEntry = capEntryToDelete.getModuleSemester();
+
+        CapEntry.updateCapForDeleteCommand(capEntryToDelete);
         model.deleteCapEntry(capEntryToDelete);
 
         //updates module semester - need to check if only 1 such entry with such module semester.
-        if (!model.hasModuleSemester(moduleSemesterOfDeletedCapEntry)) {
+        ModuleSemester moduleSemesterOfDeletedCapEntry = capEntryToDelete.getModuleSemester();
+        List<CapEntry> afterDeleteList = model.getFilteredCapEntryList();
+        int numCapEntriesWithSameSemester = 0;
+        for (int i = 0; i < afterDeleteList.size(); i++) {
+            if (afterDeleteList.get(i).getModuleSemester().equals(moduleSemesterOfDeletedCapEntry)) {
+                numCapEntriesWithSameSemester++;
+            }
+        }
+
+        if (numCapEntriesWithSameSemester == 0) {
             model.deleteModuleSemester(moduleSemesterOfDeletedCapEntry);
         }
 

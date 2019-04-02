@@ -17,7 +17,7 @@ import seedu.ultistudent.model.homework.Homework;
  */
 public class AddHomeworkCommand extends Command {
 
-    public static final String COMMAND_WORD = "add-homework";
+    public static final String COMMAND_WORD = "add-hw";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds a homework to UltiStudent's homework manager.\n"
             + "Parameters: "

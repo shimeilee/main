@@ -14,7 +14,7 @@ import seedu.ultistudent.model.cap.CapEntry;
 
 
 /**
- * Panel containing the list of persons.
+ * Panel containing the list of CapEntrys.
  */
 public class CapManagerMainPanel extends UiPart<Region> {
     private static final String FXML = "CapManagerMainPanel.fxml";
@@ -23,7 +23,7 @@ public class CapManagerMainPanel extends UiPart<Region> {
     @FXML
     private FlowPane capEntryFlowPane;
     @FXML
-    private Label Cap;
+    private Label cap;
     @FXML
     private ScrollPane scrollPane;
 
@@ -36,7 +36,7 @@ public class CapManagerMainPanel extends UiPart<Region> {
         capEntryFlowPane.setVgap(10);
         capEntryFlowPane.prefWidthProperty().bind(scrollPane.widthProperty());
         capEntryFlowPane.prefHeightProperty().bind(scrollPane.heightProperty());
-        Cap.setText(CapEntry.getCapScore());
+        cap.setText(CapEntry.getCapScore());
 
         int index = 1;
         for (CapEntry capEntry: capEntries) {
@@ -51,7 +51,7 @@ public class CapManagerMainPanel extends UiPart<Region> {
                 capEntryFlowPane.getChildren().add(new CapEntryCard(capEntry, i).getRoot());
                 i++;
             }
-            Cap.setText(CapEntry.getCapScore());
+            cap.setText(CapEntry.getCapScore());
         });
 
     }
