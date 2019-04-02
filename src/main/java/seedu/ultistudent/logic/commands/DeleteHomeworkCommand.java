@@ -17,7 +17,7 @@ import seedu.ultistudent.model.homework.Homework;
  */
 public class DeleteHomeworkCommand extends Command {
 
-    public static final String COMMAND_WORD = "deleteHomework";
+    public static final String COMMAND_WORD = "delete-hw";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD
             + ": Deletes the homework entry identified by the index number used in the displayed person list.\n"

@@ -5,9 +5,7 @@ import static seedu.ultistudent.logic.parser.CliSyntax.PREFIX_MODULECODE;
 import static seedu.ultistudent.logic.parser.CliSyntax.PREFIX_MODULECREDITS;
 import static seedu.ultistudent.logic.parser.CliSyntax.PREFIX_MODULEGRADE;
 import static seedu.ultistudent.logic.parser.CliSyntax.PREFIX_SEMESTER;
-import static seedu.ultistudent.logic.parser.CliSyntax.PREFIX_TAG;
 
-import java.util.Set;
 import java.util.stream.Stream;
 
 import seedu.ultistudent.logic.commands.AddCapEntryCommand;
@@ -17,7 +15,6 @@ import seedu.ultistudent.model.cap.ModuleCredits;
 import seedu.ultistudent.model.cap.ModuleGrade;
 import seedu.ultistudent.model.cap.ModuleSemester;
 import seedu.ultistudent.model.modulecode.ModuleCode;
-import seedu.ultistudent.model.tag.Tag;
 
 /**
  * Parses input arguments and creates a new AddCapEntryCommand object
@@ -32,7 +29,7 @@ public class AddCapEntryCommandParser {
     public AddCapEntryCommand parse (String args) throws ParseException {
         ArgumentMultimap argMultimap =
                 ArgumentTokenizer.tokenize(args, PREFIX_MODULECODE, PREFIX_MODULEGRADE, PREFIX_MODULECREDITS,
-                        PREFIX_SEMESTER, PREFIX_TAG);
+                        PREFIX_SEMESTER);
 
         if (!arePrefixesPresent(argMultimap, PREFIX_MODULECODE, PREFIX_MODULEGRADE, PREFIX_MODULECREDITS,
                 PREFIX_SEMESTER) || !argMultimap.getPreamble().isEmpty()) {
@@ -43,9 +40,8 @@ public class AddCapEntryCommandParser {
         ModuleGrade moduleGrade = ParserUtil.parseModuleGrade(argMultimap.getValue(PREFIX_MODULEGRADE).get());
         ModuleCredits moduleCredits = ParserUtil.parseModuleCredits(argMultimap.getValue(PREFIX_MODULECREDITS).get());
         ModuleSemester moduleSemester = ParserUtil.parseModuleSemester(argMultimap.getValue(PREFIX_SEMESTER).get());
-        Set<Tag> tagList = ParserUtil.parseTags(argMultimap.getAllValues(PREFIX_TAG));
 
-        CapEntry capEntry = new CapEntry(moduleCode, moduleGrade, moduleCredits, moduleSemester, tagList);
+        CapEntry capEntry = new CapEntry(moduleCode, moduleGrade, moduleCredits, moduleSemester);
 
         return new AddCapEntryCommand(capEntry);
     }

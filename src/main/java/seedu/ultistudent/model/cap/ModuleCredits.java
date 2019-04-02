@@ -1,6 +1,7 @@
 package seedu.ultistudent.model.cap;
 
 import static java.util.Objects.requireNonNull;
+import static seedu.ultistudent.commons.util.AppUtil.checkArgument;
 
 /**
  * Represents a cap entry's modular credits in the UltiStudent.
@@ -18,6 +19,7 @@ public class ModuleCredits {
      */
     public ModuleCredits (String moduleCredits) {
         requireNonNull(moduleCredits);
+        checkArgument(isValidModuleCredits(moduleCredits), MESSAGE_CONSTRAINTS);
         value = moduleCredits;
     }
 

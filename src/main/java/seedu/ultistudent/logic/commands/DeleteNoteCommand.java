@@ -16,7 +16,7 @@ import seedu.ultistudent.model.note.Note;
  */
 public class DeleteNoteCommand extends Command {
 
-    public static final String COMMAND_WORD = "deleteNote";
+    public static final String COMMAND_WORD = "delete-note";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD
             + ": Deletes the note identified by the index number used in the "
