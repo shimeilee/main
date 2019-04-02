@@ -11,7 +11,7 @@ import seedu.ultistudent.model.note.Note;
  * Save the notes after editing is done
  */
 public class SaveNoteCommand extends Command {
-    public static final String COMMAND_WORD = "saveNote";
+    public static final String COMMAND_WORD = "save-note";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Saves the current selected note.\n"
             + "There is no parameters for saveNote. "

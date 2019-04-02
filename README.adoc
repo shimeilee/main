@@ -1,4 +1,4 @@
-= UltiStudent (Level 1)
+= UltiStudent
 ifdef::env-github,env-browser[:relfileprefix: docs/]
 
 https://travis-ci.org/cs2103-ay1819s2-w09-1/main[image:https://travis-ci.org/cs2103-ay1819s2-w09-1/main.svg?branch=master[Build Status]]
@@ -12,13 +12,16 @@ ifndef::env-github[]
 image::images/Ui.png[width="600"]
 endif::[]
 
-* This is a desktop UltiStudent application. It has a GUI but **all** of the user interactions happen using a CLI (Command Line Interface).
-* It is an application intended for students who prefer CLI over GUI to manage their school activities.
-* What students can achieve using this UltiStudent would be:
-** Managing Homework
-** Managing Timetable
-** CAP calculation
-** Notes keeping
+* *UltiStudent* is a student application that effectively tackles the problem of having too many applications to manage
+  their school life. To improve the quality of student life in computing, UltiStudent provides a centralised platform
+  for them to manage their homework, cumulative average point and notes.
+* *UltiStudent* is a desktop application which has a GUI but **most** of the user interactions happen using a
+CLI (Command Line Interface). It is an application intended for students who prefer CLI over GUI to manage their
+school activities.
+* What students can achieve using *UltiStudent* would be:
+** Homework management
+** Notes creation and management
+** CAP tracking and calculation
 
 == Site Map
 

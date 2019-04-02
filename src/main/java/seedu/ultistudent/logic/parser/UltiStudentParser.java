@@ -20,6 +20,7 @@ import seedu.ultistudent.logic.commands.EditCapEntryByModuleCodeCommand;
 import seedu.ultistudent.logic.commands.EditCapEntryCommand;
 import seedu.ultistudent.logic.commands.EditCommand;
 import seedu.ultistudent.logic.commands.EditHomeworkCommand;
+import seedu.ultistudent.logic.commands.EditNoteCommand;
 import seedu.ultistudent.logic.commands.ExitCommand;
 import seedu.ultistudent.logic.commands.FindCommand;
 import seedu.ultistudent.logic.commands.HelpCommand;
@@ -30,7 +31,6 @@ import seedu.ultistudent.logic.commands.OpenCommand;
 import seedu.ultistudent.logic.commands.RedoCommand;
 import seedu.ultistudent.logic.commands.SaveNoteCommand;
 import seedu.ultistudent.logic.commands.SelectCommand;
-import seedu.ultistudent.logic.commands.SelectNoteCommand;
 import seedu.ultistudent.logic.commands.UndoCommand;
 import seedu.ultistudent.logic.parser.exceptions.ParseException;
 
@@ -74,9 +74,22 @@ public class UltiStudentParser {
         case AddNoteCommand.COMMAND_WORD:
             return new AddNoteCommandParser().parse(arguments);
 
+        //===== DeleteCommand in UltiStudent =====//
+        case DeleteCommand.COMMAND_WORD:
+            return new DeleteCommand();
+
+        case DeleteHomeworkCommand.COMMAND_WORD:
+            return new DeleteHomeworkCommandParser().parse(arguments);
+
+        case DeleteCapEntryCommand.COMMAND_WORD:
+            return new DeleteCapEntryCommandParser().parse(arguments);
+
+        case DeleteNoteCommand.COMMAND_WORD:
+            return new DeleteNoteCommandParser().parse(arguments);
+
         //===== Edit Commands in UltiStudent =====//
         case EditCommand.COMMAND_WORD:
-            return new EditCommandParser().parse(arguments);
+            return new EditCommand();
 
         case EditHomeworkCommand.COMMAND_WORD:
             return new EditHomeworkCommandParser().parse(arguments);
@@ -87,20 +100,15 @@ public class UltiStudentParser {
         case EditCapEntryCommand.COMMAND_WORD:
             return new EditCapEntryCommandParser().parse(arguments);
 
+        case EditNoteCommand.COMMAND_WORD:
+            return new EditNoteCommandParser().parse(arguments);
+
+        //===== Other useful Commands in UltiStudent =====//
+        case SaveNoteCommand.COMMAND_WORD:
+            return new SaveNoteCommand();
+
         case SelectCommand.COMMAND_WORD:
             return new SelectCommandParser().parse(arguments);
-
-        case DeleteCommand.COMMAND_WORD:
-            return new DeleteCommandParser().parse(arguments);
-
-        case DeleteHomeworkCommand.COMMAND_WORD:
-            return new DeleteHomeworkCommandParser().parse(arguments);
-
-        case DeleteCapEntryCommand.COMMAND_WORD:
-            return new DeleteCapEntryCommandParser().parse(arguments);
-
-        case DeleteNoteCommand.COMMAND_WORD:
-            return new DeleteNoteCommandParser().parse(arguments);
 
         case ClearCommand.COMMAND_WORD:
             return new ClearCommand();
@@ -132,11 +140,6 @@ public class UltiStudentParser {
         case OpenCommand.COMMAND_WORD:
             return new OpenCommandParser().parse(arguments);
 
-        case SelectNoteCommand.COMMAND_WORD:
-            return new SelectNoteCommandParser().parse(arguments);
-
-        case SaveNoteCommand.COMMAND_WORD:
-            return new SaveNoteCommand();
 
         default:
             throw new ParseException(MESSAGE_UNKNOWN_COMMAND);
