@@ -76,6 +76,9 @@ public class CapEntry {
     }
 
     public static String getCapScore() {
+        if (Double.isNaN(capScore)) {
+            capScore = 0;
+        }
         return String.format("%.2f", capScore) + "";
     }
 

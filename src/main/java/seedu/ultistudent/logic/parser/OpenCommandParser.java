@@ -19,7 +19,7 @@ public class OpenCommandParser implements Parser<OpenCommand> {
 
         String[] argsParts = args.split(" ");
         if (argsParts.length < 2) {
-            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, OpenCommand.MESSAGE_USAGE));
+            throw new ParseException(String.format(OpenCommand.MESSAGE_USAGE));
         }
         return new OpenCommand(argsParts[1]);
     }
