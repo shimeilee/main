@@ -5,7 +5,6 @@ import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
-import seedu.ultistudent.model.modulecode.ModuleCode;
 import seedu.ultistudent.testutil.Assert;
 
 public class HomeworkNameTest {
