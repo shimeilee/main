@@ -1,7 +1,6 @@
 package seedu.ultistudent.model.note;
 
 import static java.util.Objects.requireNonNull;
-import static seedu.ultistudent.commons.util.AppUtil.checkArgument;
 
 /**
  * Represents content in Note.
