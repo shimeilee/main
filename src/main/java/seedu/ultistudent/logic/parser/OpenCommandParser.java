@@ -1,7 +1,5 @@
 package seedu.ultistudent.logic.parser;
 
-import static seedu.ultistudent.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
-
 import seedu.ultistudent.logic.commands.OpenCommand;
 import seedu.ultistudent.logic.parser.exceptions.ParseException;
 
