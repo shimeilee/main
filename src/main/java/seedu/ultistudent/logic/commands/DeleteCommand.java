@@ -1,7 +1,6 @@
 package seedu.ultistudent.logic.commands;
 
 import seedu.ultistudent.logic.CommandHistory;
-import seedu.ultistudent.logic.commands.exceptions.CommandException;
 import seedu.ultistudent.model.Model;
 
 
@@ -18,7 +17,7 @@ public class DeleteCommand extends Command {
             + "Type: 'help' for more";
 
     @Override
-    public CommandResult execute(Model model, CommandHistory history) throws CommandException {
+    public CommandResult execute(Model model, CommandHistory history) {
         return new CommandResult(MESSAGE_USAGE);
     }
 }
