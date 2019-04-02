@@ -71,7 +71,7 @@ As UltiStudent contains many different commands and features, do refer to the co
 
 * Words in `UPPER_CASE` are the parameters to be supplied by the user e.g. in `add mc/MODULECODE`, `MODULECODE` is a parameter which can be used as `add c/CS2103T`.
 
-* All parameters must be supplied by users in this order:  `add mc/MODULECODE hw/HOMEWORK d/DEADLINE`. Deadline format: DDMMYY
+* All parameters must be supplied by users in this order:  `add mc/MODULECODE hw/HOMEWORK d/DEADLINE`. Deadline format: DD/MM/YYYY
 ====
 
 === General Commands
@@ -195,9 +195,9 @@ Format: `delete-hw INDEX`
 
 Examples:
 
-* `delete-homework 2` +
+* `delete-hw 2` +
 Deletes the 2nd homework in the UltiStudent.
-* `delete-homework 1` +
+* `delete-hw 1` +
 Deletes the 1st homework in UltiStudent.
 
 === Notes Manager
