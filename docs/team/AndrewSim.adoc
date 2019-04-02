@@ -1,4 +1,4 @@
-= Ng Wei Xin - Project Portfolio
+= Andrew Sim - Project Portfolio
 :site-section: AboutUs
 :imagesDir: ../images
 :stylesDir: ../stylesheets

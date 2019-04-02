@@ -1,4 +1,4 @@
-= Ng Wei Xin - Project Portfolio
+= Lee Shi Mei - Project Portfolio
 :site-section: AboutUs
 :imagesDir: ../images
 :stylesDir: ../stylesheets
