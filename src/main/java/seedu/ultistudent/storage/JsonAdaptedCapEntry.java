@@ -1,11 +1,5 @@
 package seedu.ultistudent.storage;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-import java.util.stream.Collectors;
-
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
@@ -15,7 +9,6 @@ import seedu.ultistudent.model.cap.ModuleCredits;
 import seedu.ultistudent.model.cap.ModuleGrade;
 import seedu.ultistudent.model.cap.ModuleSemester;
 import seedu.ultistudent.model.modulecode.ModuleCode;
-import seedu.ultistudent.model.tag.Tag;
 
 /**
  * Jackson-friendly version of {@link CapEntry}.
@@ -28,8 +21,6 @@ public class JsonAdaptedCapEntry {
     private final String moduleCredits;
     private final String moduleSemester;
 
-    private final List<JsonAdaptedTag> tagged = new ArrayList<>();
-
     /**
      * Constructs a {@code JsonAdaptedCapEntry} with the given person details.
      */
@@ -37,15 +28,11 @@ public class JsonAdaptedCapEntry {
     public JsonAdaptedCapEntry(@JsonProperty("modulecode") String moduleCode,
                                @JsonProperty("moduleGrade") String moduleGrade,
                                @JsonProperty("moduleCredits") String moduleCredits,
-                               @JsonProperty("moduleSemester") String moduleSemester,
-                               @JsonProperty("tagged") List<JsonAdaptedTag> tagged) {
+                               @JsonProperty("moduleSemester") String moduleSemester) {
         this.moduleCode = moduleCode;
         this.moduleGrade = moduleGrade;
         this.moduleCredits = moduleCredits;
         this.moduleSemester = moduleSemester;
-        if (tagged != null) {
-            this.tagged.addAll(tagged);
-        }
     }
 
     /**
@@ -56,9 +43,6 @@ public class JsonAdaptedCapEntry {
         moduleGrade = source.getModuleGrade().value;
         moduleCredits = source.getModuleCredits().value;
         moduleSemester = source.getModuleSemester().value;
-        tagged.addAll(source.getTags().stream()
-                .map(JsonAdaptedTag::new)
-                .collect(Collectors.toList()));
     }
 
     /**
@@ -67,11 +51,6 @@ public class JsonAdaptedCapEntry {
      * @throws IllegalValueException if there were any data constraints violated in the adapted cap entry.
      */
     public CapEntry toModelType() throws IllegalValueException {
-        final List<Tag> capEntryTags = new ArrayList<>();
-        for (JsonAdaptedTag tag : tagged) {
-            capEntryTags.add(tag.toModelType());
-        }
-
         if (moduleCode == null) {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
                     ModuleCode.class.getSimpleName()));
@@ -108,8 +87,7 @@ public class JsonAdaptedCapEntry {
         }
         final ModuleSemester modelModuleSemester = new ModuleSemester(moduleSemester);
 
-        final Set<Tag> modelTags = new HashSet<>(capEntryTags);
-        return new CapEntry(modelModuleCode, modelModuleGrade, modelModuleCredits, modelModuleSemester, modelTags);
+        return new CapEntry(modelModuleCode, modelModuleGrade, modelModuleCredits, modelModuleSemester);
     }
 }
 
