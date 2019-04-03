@@ -2,7 +2,10 @@ package seedu.ultistudent.model.note;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
-import static seedu.ultistudent.logic.commands.CommandTestUtil.*;
+
+import static seedu.ultistudent.logic.commands.CommandTestUtil.VALID_CONTENT_LOWER;
+import static seedu.ultistudent.logic.commands.CommandTestUtil.VALID_MODULE_CODE_CS1001;
+import static seedu.ultistudent.logic.commands.CommandTestUtil.VALID_NOTE_NAME_LOWER;
 import static seedu.ultistudent.testutil.TypicalNote.NOTE_FIRST;
 import static seedu.ultistudent.testutil.TypicalNote.NOTE_SECOND;
 
@@ -17,14 +20,6 @@ public class NoteTest {
     @Rule
     public ExpectedException thrown = ExpectedException.none();
 
-    //@Test
-    //public void
-    // asObservableList_modifyList_throwsUnsupportedOperationException() {
-    // Note note = new NoteBuilder().build();
-    // thrown.expect(UnsupportedOperationException.class);
-    //note.getTags().remove(0);
-    //}
-
     @Test
     public void isSameNote() {
         // same object -> returns true
@@ -33,67 +28,58 @@ public class NoteTest {
         // null -> returns false
         assertFalse(NOTE_FIRST.isSameNote(null));
 
-        // different phone and email -> returns false
+        // different note name, module code, and content -> returns false
         Note editedNoteFirst = new NoteBuilder(NOTE_FIRST).withNoteName
-                (VALID_PHONE_BOB)
-                .withEmail(VALID_EMAIL_BOB).build();
-        assertFalse(ALICE.isSamePerson(editedAlice));
+                (VALID_NOTE_NAME_LOWER)
+                .withModuleCode(VALID_MODULE_CODE_CS1001)
+                .withContent(VALID_CONTENT_LOWER).build();
+        assertFalse(NOTE_FIRST.isSameNote(editedNoteFirst));
 
-        // different name -> returns false
-        editedAlice = new PersonBuilder(ALICE).withName(VALID_NAME_BOB).build();
-        assertFalse(ALICE.isSamePerson(editedAlice));
+        // different note name -> returns false
+        editedNoteFirst = new NoteBuilder(NOTE_FIRST).withNoteName(VALID_NOTE_NAME_LOWER)
+                .build();
+        assertFalse(NOTE_FIRST.isSameNote(editedNoteFirst));
 
-        // same name, same phone, different attributes -> returns true
-        editedAlice = new PersonBuilder(ALICE).withEmail(VALID_EMAIL_BOB).withAddress(VALID_ADDRESS_BOB)
-                .withTags(VALID_TAG_HUSBAND).build();
-        assertTrue(ALICE.isSamePerson(editedAlice));
+        // different module code -> returns false
+        editedNoteFirst = new NoteBuilder(NOTE_FIRST).withModuleCode
+                (VALID_MODULE_CODE_CS1001)
+                .build();
+        assertFalse(NOTE_FIRST.isSameNote(editedNoteFirst));
 
-        // same name, same email, different attributes -> returns true
-        editedAlice = new PersonBuilder(ALICE).withPhone(VALID_PHONE_BOB).withAddress(VALID_ADDRESS_BOB)
-                .withTags(VALID_TAG_HUSBAND).build();
-        assertTrue(ALICE.isSamePerson(editedAlice));
-
-        // same name, same phone, same email, different attributes -> returns true
-        editedAlice = new PersonBuilder(ALICE).withAddress(VALID_ADDRESS_BOB).withTags(VALID_TAG_HUSBAND).build();
-        assertTrue(ALICE.isSamePerson(editedAlice));
+        // same note name and module code, different content -> returns false
+        editedNoteFirst = new NoteBuilder(NOTE_FIRST).withContent
+                (VALID_CONTENT_LOWER).build();
+        assertFalse(NOTE_FIRST.isSameNote(editedNoteFirst));
     }
 
     @Test
     public void equals() {
         // same values -> returns true
-        Person aliceCopy = new PersonBuilder(ALICE).build();
-        assertTrue(ALICE.equals(aliceCopy));
+        Note noteFirstCopy = new NoteBuilder(NOTE_FIRST).build();
+        assertTrue(NOTE_FIRST.equals(noteFirstCopy));
 
         // same object -> returns true
-        assertTrue(ALICE.equals(ALICE));
+        assertTrue(NOTE_FIRST.equals(NOTE_FIRST));
 
         // null -> returns false
-        assertFalse(ALICE.equals(null));
+        assertFalse(NOTE_FIRST.equals(null));
 
         // different type -> returns false
-        assertFalse(ALICE.equals(5));
+        assertFalse(NOTE_FIRST.equals(5));
 
-        // different person -> returns false
-        assertFalse(ALICE.equals(BOB));
+        // different note -> returns false
+        assertFalse(NOTE_FIRST.equals(NOTE_SECOND));
 
-        // different name -> returns false
-        Person editedAlice = new PersonBuilder(ALICE).withName(VALID_NAME_BOB).build();
-        assertFalse(ALICE.equals(editedAlice));
+        // different note name -> returns false
+        Note noteFirstCopy1 = new NoteBuilder(NOTE_FIRST).withNoteName
+                (VALID_NOTE_NAME_LOWER)
+                .build();
+        assertFalse(NOTE_FIRST.equals(noteFirstCopy1));
 
-        // different phone -> returns false
-        editedAlice = new PersonBuilder(ALICE).withPhone(VALID_PHONE_BOB).build();
-        assertFalse(ALICE.equals(editedAlice));
-
-        // different email -> returns false
-        editedAlice = new PersonBuilder(ALICE).withEmail(VALID_EMAIL_BOB).build();
-        assertFalse(ALICE.equals(editedAlice));
-
-        // different ultistudent -> returns false
-        editedAlice = new PersonBuilder(ALICE).withAddress(VALID_ADDRESS_BOB).build();
-        assertFalse(ALICE.equals(editedAlice));
-
-        // different tags -> returns false
-        editedAlice = new PersonBuilder(ALICE).withTags(VALID_TAG_HUSBAND).build();
-        assertFalse(ALICE.equals(editedAlice));
+        // different module code -> returns false
+        noteFirstCopy1 = new NoteBuilder(NOTE_FIRST).withModuleCode
+                (VALID_MODULE_CODE_CS1001)
+                .build();
+        assertFalse(NOTE_FIRST.equals(noteFirstCopy1));
     }
 }

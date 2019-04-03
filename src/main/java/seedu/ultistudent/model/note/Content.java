@@ -15,7 +15,7 @@ public class Content {
      * The first character of the UltiStudent must not be a whitespace,
      * otherwise " " (a blank string) becomes a valid input.
      */
-    //public static final String VALIDATION_REGEX = "[\\p{Alnum}][\\p{Alnum}]*";
+    public static final String VALIDATION_REGEX = "^(?!\\s*$)[-a-zA-Z0-9_:,.' ']{1,100}$";
 
     public final String content;
 
@@ -33,9 +33,9 @@ public class Content {
     /**
      * Returns true if a given string is a valid content string.
      */
-    //public static boolean isValidNoteContent(String test) {
-    //    return test.matches(VALIDATION_REGEX);
-    //}
+    public static boolean isValidNoteContent(String test) {
+        return test.matches(VALIDATION_REGEX);
+    }
 
 
     @Override
