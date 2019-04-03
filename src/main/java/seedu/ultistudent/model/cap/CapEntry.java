@@ -2,13 +2,9 @@ package seedu.ultistudent.model.cap;
 
 import static seedu.ultistudent.commons.util.CollectionUtil.requireAllNonNull;
 
-import java.util.Collections;
-import java.util.HashSet;
 import java.util.Objects;
-import java.util.Set;
 
 import seedu.ultistudent.model.modulecode.ModuleCode;
-import seedu.ultistudent.model.tag.Tag;
 
 /** Represents a CAP entry for the CAP Manager in the ultistudent book.
  * Guarantees: details are present and not null, field values are validated, immutable.
@@ -26,27 +22,41 @@ public class CapEntry {
     private ModuleCredits moduleCredits;
     private ModuleSemester moduleSemester;
 
-    // Data fields
-    private final Set<Tag> tags = new HashSet<>();
-
     /**
      * Every field must be present and not null.
      */
     public CapEntry(ModuleCode moduleCode, ModuleGrade moduleGrade, ModuleCredits moduleCredits,
-                    ModuleSemester moduleSemester, Set<Tag> tags) {
-        requireAllNonNull(moduleCode, moduleGrade, moduleCredits, moduleSemester, tags);
+                    ModuleSemester moduleSemester) {
+        requireAllNonNull(moduleCode, moduleGrade, moduleCredits, moduleSemester);
         this.moduleCode = moduleCode;
         this.moduleGrade = moduleGrade;
         this.moduleCredits = moduleCredits;
         this.moduleSemester = moduleSemester;
-        updateCap(moduleGrade, moduleCredits);
-        this.tags.addAll(tags);
+        updateCapForAddCommand(this);
     }
 
-    private void updateCap(ModuleGrade moduleGrade, ModuleCredits moduleCredits) {
-        this.totalScore += moduleGrade.getScore() * moduleCredits.getValue();
-        this.totalModuleCredits += moduleCredits.getValue();
-        this.capScore = this.totalScore / this.totalModuleCredits;
+    /**
+     * Takes in a valid cap entry that is to be added and updates the capScore
+     * {@code capEntryToAdd} must be valid.
+     */
+    public static void updateCapForAddCommand(CapEntry capEntryToAdd) {
+        ModuleGrade moduleGrade = capEntryToAdd.getModuleGrade();
+        ModuleCredits moduleCredits = capEntryToAdd.getModuleCredits();
+        totalScore += moduleGrade.getScore() * moduleCredits.getValue();
+        totalModuleCredits += moduleCredits.getValue();
+        capScore = totalScore / totalModuleCredits;
+    }
+
+    /**
+     * Takes in a valid cap entry that is to be deleted and updates the capScore
+     * {@code capEntryToDelete} must exists.
+     */
+    public static void updateCapForDeleteCommand(CapEntry capEntryToDelete) {
+        ModuleGrade moduleGrade = capEntryToDelete.getModuleGrade();
+        ModuleCredits moduleCredits = capEntryToDelete.getModuleCredits();
+        totalScore -= moduleGrade.getScore() * moduleCredits.getValue();
+        totalModuleCredits -= moduleCredits.getValue();
+        capScore = totalScore / totalModuleCredits;
     }
 
     public ModuleCode getModuleCode() {
@@ -66,15 +76,10 @@ public class CapEntry {
     }
 
     public static String getCapScore() {
-        return capScore + "";
-    }
-
-    /**
-     * Returns an immutable tag set, which throws {@code UnsupportedOperationException}
-     * if modification is attempted.
-     */
-    public Set<Tag> getTags() {
-        return Collections.unmodifiableSet(tags);
+        if (Double.isNaN(capScore)) {
+            capScore = 0;
+        }
+        return String.format("%.2f", capScore) + "";
     }
 
     /**
@@ -110,8 +115,7 @@ public class CapEntry {
         return otherCapEntry.getModuleCode().equals(getModuleCode())
                 && otherCapEntry.getModuleGrade().equals(getModuleGrade())
                 && otherCapEntry.getModuleCredits().equals(getModuleCredits())
-                && otherCapEntry.getModuleSemester().equals(getModuleSemester())
-                && otherCapEntry.getTags().equals(getTags());
+                && otherCapEntry.getModuleSemester().equals(getModuleSemester());
     }
 
 
@@ -124,15 +128,13 @@ public class CapEntry {
                 .append("; ")
                 .append(moduleCredits)
                 .append("MC; ")
-                .append(moduleSemester)
-                .append(" Tags: ");
-        getTags().forEach(builder::append);
+                .append(moduleSemester);
         return builder.toString();
     }
 
     @Override
     public int hashCode() {
         // use this method for custom fields hashing instead of implementing your own
-        return Objects.hash(moduleCode, moduleGrade, moduleCredits, moduleSemester, tags);
+        return Objects.hash(moduleCode, moduleGrade, moduleCredits, moduleSemester);
     }
 }

@@ -39,7 +39,7 @@ e.g. typing *`help`* and pressing kbd:[Enter] will open the help window.
 
 * *`open HomeworkManager`* : Opens the Homework Manager and its existing
 homework
-* *`add mc/CS2103T mn/Software Engineering hw/Tutorial 01 d/050319`* :
+* *`add mc/CS2103T hw/Tutorial 01 d/05/03/2019`* :
 Adds a homework “Tutorial 01” under CS2103T tab with the deadline on 05 March 2019
 * *`delete 3`* : deletes the 3rd  item shown in the current manager
 * *`exit`* : exits the app
@@ -71,21 +71,20 @@ As UltiStudent contains many different commands and features, do refer to the co
 
 * Words in `UPPER_CASE` are the parameters to be supplied by the user e.g. in `add mc/MODULECODE`, `MODULECODE` is a parameter which can be used as `add c/CS2103T`.
 
-* All parameters must be supplied by users in this order:  `add mc/MODULECODE mn/MODULENAME hw/HOMEWORK d/DEADLINE`. Deadline format: DDMMYY
-*Items in square brackets are optional e.g.[p/PRIORITY], which is an optional field. Priority is set to low by default.
+* All parameters must be supplied by users in this order:  `add mc/MODULECODE hw/HOMEWORK d/DEADLINE`. Deadline format: DD/MM/YYYY
 ====
 
 === General Commands
-The commands here are applicable in UltiStudent's 3 Managers (Homework
-Manager, NotesManager, CapManager).
+The commands here are applicable in UltiStudent's 3 Managers +
+HomeworkManager, NotesManager, CapManager.
 
 The commands differ by the entity placed at the end of each command.
 `add-xx`, `delete-xx`, `edit-xx` where xx should be replaced by either
-"homework", "note", or "cap".
+"hw" for homework, "note", or "cap".
 
 
 ==== Viewing help : `help`
-Opens up the help window.
+Opens up the help window. +
 Format: `help`
 
 ==== Listing entered commands : `history`
@@ -103,25 +102,21 @@ Format: `undo`
 ====
 Undoable commands: those commands that modify the UltiStudent's content in
 the various manager e.g. for Homework Manager
-(`add-homework`, `delete-homework`, `edit-homework`).
+(`add-hw`, `delete-hw`, `edit-hw`).
 ====
 
 Examples:
 
-* `delete-homework 1` +
-`undo` (reverses the `delete 1` command) +
+* `delete-hw 1` +
+`undo` (reverses the `delete-hw 1` command) +
 
 * `delete-note 1` +
-`undo` (reverses the `delete 1` command) +
+`undo` (reverses the `delete-note 1` command) +
 
-* `select-homework 1` +
-`undo` +
-The `undo` command fails as there are no undoable commands executed previously.
-
-* `delete 1` +
-`add mc/CS2101 mn/Effective Communication for Computing Professionals hw/Tutorial 1’ +
+* `delete-hw 1` +
+`add mc/CS2101 hw/Tutorial 1 d/03/03/2019` +
 `undo` (reverses the `add` command) +
-`undo` (reverses the `delete 1` command) +
+`undo` (reverses the `delete-hw 1` command) +
 
 ==== Redoing the previously undone command : `redo`
 
@@ -131,8 +126,8 @@ Format: `redo`
 Examples:
 
 * `delete-hw 1` +
-`undo` (reverses the `delete 1` command) +
-`redo` (reapplies the `delete 1` command) +
+`undo` (reverses the `delete-hw 1` command) +
+`redo` (reapplies the `delete-hw 1` command) +
 
 * `delete-note 1` +
 `redo` +
@@ -151,31 +146,26 @@ There is no need to save manually.
 
 === Homework Manager
 
-==== Adding a homework: `add-homework`
+==== Adding a homework: `add-hw`
 
 Adds a new homework task to the UltiStudent +
-Format: `add  mc/MODULECODE mn/MODULENAME hw/HOMEWORK d/DEADLINE [p/PRIORITY]`
+Format: `add  mc/MODULECODE hw/HOMEWORK d/DEADLINE`
 
 [TIP]
 Priorities are low by default if not set, and acceptable values are low, normal, high.
 
 Examples:
 
-* `add-homework mc/CS2103T mn/Software Engineering hw/User Guide Draft 1
-d/05032019`
-* `add-homework mc/CS3230 mn/Data Structures and Algorithms II hw/Tutorial 3
-d/07032019 p/high`
+* `add-hw mc/CS2103T hw/User Guide Draft 1
+d/05/03/2019`
+* `add-hw mc/CS3230 hw/Tutorial 3
+d/07/03/2019`
 
-==== Listing all homework: `list-homework`
-
-Shows a list of all homework in the UltiStudent. +
-Format: `list-homework`
-
-==== Editing a homework: `edit-homework`
+==== Editing a homework: `edit-hw`
 
 Edits an existing homework entry in the UltiStudent +
-Format: `edit-homework INDEX  [mc/MODULECODE] [mn/MODULENAME] [hw/HOMEWORK]
-[d/DEADLINE] [p/PRIORITY]`
+Format: `edit-homework INDEX  [mc/MODULECODE] [hw/HOMEWORK]
+[d/DEADLINE]`
 ****
 * Edits the homework at the specified `INDEX`. The index refers to the index number shown in the displayed homework list. The index *must be a positive integer* 1, 2, 3, ...
 * At least one of the optional fields must be provided.
@@ -185,73 +175,29 @@ Format: `edit-homework INDEX  [mc/MODULECODE] [mn/MODULENAME] [hw/HOMEWORK]
 
 Examples:
 
-* `edit-homework 1 p/high d/100319` +
- Edits the priority and deadline of the 1st homework to be `high` and `10 March 2019`
-* `edit-homework 2 d/030319 p/` +
-Edits the deadline of the 2nd homework and set the priority to low
+* `edit-homework 1 d/10/03/2019` +
+ Edits the deadline of the 1st homework to be `10 March 2019`
+* `edit-homework 2 hw/Tutorial 1 d/03/03/2019 +
+Edits the deadline of the 2nd homework and set the name of the homework to be `Tutorial 1`.
 
-==== Locating homework by keywords in `hw/HOMEWORK` parameter: `find`
-
-Finds homework whose homework name contain any of the given keywords. +
-Format: `find KEYWORD [MORE_KEYWORDS]`
-
-****
-* The search is not case sensitive. e.g `tutorial` will match `Tutorial`
-* The order of the keywords does not matter. e.g. `Lecture 3` will match `3 Lecture`
-* Only the name is searched.
-* Only full words will be matched e.g. `Tutorial` will not match `Tutorials`
-* Homework matching at least one keyword will be returned (i.e. `OR` search). e.g. `Tutorial` will return `Tutorial 3`, `Create Tutorial Solutions`
-
-****
-
-Examples:
-
-* `find Draft` +
-Returns `Presentation Script Draft` and `User Guide Draft`
-* `find Tutorial Lecture Submission` +
-Returns any homework having names `Tutorial`, `Lecture`, or `Submission`
-
-==== Deleting a homework: `delete`
+==== Deleting a homework: `delete-hw`
 
 Deletes the specified homework from the UltiStudent. +
-Format: `delete-homework INDEX`
+Format: `delete-hw INDEX`
 
 ****
 * Deletes the homework at the specified `INDEX`.
 * The index refers to the index number shown in the displayed homework list.
 * The index *must be a positive integer* 1, 2, 3, ...
-=======
 
 ****
 
 Examples:
 
-* `list` +
-`delete-homework 2` +
+* `delete-hw 2` +
 Deletes the 2nd homework in the UltiStudent.
-* `find Tutorial` +
-`delete-homework 1` +
-Deletes the 1st homework in the results of the `find` command.
-
-==== Selecting a homework: `select`
-
-Selects the homework identified by the index number used in the displayed homework list. +
-Format: `select INDEX`
-
-****
-* Selects the homework and loads the homework details at the specified `INDEX`.
-* The index refers to the index number shown in the displayed homework list.
-* The index *must be a positive integer* `1, 2, 3, ...`
-****
-
-Examples:
-
-* `list` +
-`select-homework 2` +
-Selects the 2nd homework in the UltiStudent.
-* `find Tutorial` +
-`select-homework 1` +
-Selects the 1st homework in the results of the `find` command.
+* `delete-hw 1` +
+Deletes the 1st homework in UltiStudent.
 
 === Notes Manager
 ==== Adding a note : `add-note`
@@ -260,18 +206,28 @@ Format: `add-note mc/MODULECODE nn/NOTENAME`
 
 Examples:
 
-* `add-note mc/CS2103T nn/NOTENAME`
-* `add-note mc/CS2100 nn/NOTENAME`
+* `add-note mc/CS2103T n/NOTENAME`
+* `add-note mc/CS2100 n/NOTENAME`
 
-==== Editing a note : `edit-note`
+==== Editing a note : `selectNote`
 Opens and allows editing on an existing note in the Notes Manager based on its
 index +
-Format: `edit-note INDEX`
+Format: `selectNote INDEX`
 
 Examples:
 
-* `edit-note 1`
-* `edit-note 2`
+* `selectNote 1`
+* `selectNote 2`
+
+==== Editing a note : `saveNote`
+Saves and closes the current note in editing in the Notes Manager based on its
+index +
+Format: `saveNote INDEX`
+
+Examples:
+
+* `saveNote 1`
+* `saveNote 2`
 
 ==== Deleting a Note: `delete-note`
 
@@ -282,7 +238,6 @@ Format: `delete-note INDEX`
 * Deletes the Note at the specified `INDEX`.
 * The index refers to the index number shown in the displayed CAP Entries list.
 * The index *must be a positive integer* 1, 2, 3, ...
-=======
 
 ****
 
@@ -300,20 +255,13 @@ Deletes the 2nd note in the Note Manager.
 ==== Adding a CAP entry: `add-cap`
 
 Adds a new CAP entry to the CAP Manager +
-Format: `add-cap mc/MODULECODE g/MODULEGRADE mcs/MODULECREDITS [t/tag]`
+Format: `add-cap mc/MODULECODE g/MODULEGRADE mcs/MODULECREDITS sem/MODULESEMESTER`
 
-[TIP]
-Tags can be used to indicate which year and semester was the module taken.
 
 Examples:
 
-* `add-cap mc/CS2103T g/A mcs/4 tag/Y2S2`
-* `add-cap mc/CS2100 g/A+ mcs/4 tag/Y2S1`
-
-==== Listing all CAP Entries: `list-cap`
-
-Shows a list of all CAP entries in the CAP Manager. +
-Format: `list-cap`
+* `add-cap mc/CS2103T g/A mcs/4 sem/Y2S2`
+* `add-cap mc/CS2100 g/A+ mcs/4 sem/Y2S1`
 
 ==== Deleting a CAP entry: `delete-cap`
 
@@ -324,21 +272,19 @@ Format: `delete-cap INDEX`
 * Deletes the CAP entry at the specified `INDEX`.
 * The index refers to the index number shown in the displayed CAP Entries list.
 * The index *must be a positive integer* 1, 2, 3, ...
-=======
 
 ****
 
 Examples:
 
-* `list-cap` +
-`delete-cap 2` +
+* `delete-cap 2` +
 Deletes the 2nd CAP Entry in the UltiStudent.
 
 
-==== Editing a CAP Entry: `edit-cap`
+==== Editing a CAP Entry by index: `edit-cap`
 
-Edits an existing homework entry in the UltiStudent +
-Format: `edit-cap INDEX  [mc/MODULECODE] [g/MODULEGRADE] [mcs/MODULECREDITS] [t/TAG]`
+Edits an existing cap entry in the UltiStudent by the use of index. +
+Format: `edit-cap INDEX  [mc/MODULECODE] [g/MODULEGRADE] [mcs/MODULECREDITS] [sem/MODULESEMESTER]`
 ****
 * Edits the CAP entry at the specified `INDEX`. The index refers to the index number shown in the displayed CAP Entries list. The index *must be a positive integer* 1, 2, 3, ...
 * At least one of the optional fields must be provided.
@@ -349,21 +295,16 @@ Format: `edit-cap INDEX  [mc/MODULECODE] [g/MODULEGRADE] [mcs/MODULECREDITS] [t/
 Examples:
 
 * `edit-cap 1 g/A` +
- Edits the module grade of the 1st module in CAP manager to be `A`
+ Edits the module grade of the 1st cap entry in cap manager to be `A`
 * `edit-cap 3 mc/CS2102 g/B+` +
-Edits the module code of the 3rd homework and the grade the student got to `B+`.
+Edits the module code of the 3rd cap entry and the grade obtained to `B+`.
 
-==== Calculating your CAP : `calculateCAP`
+==== Editing a CAP Entry by module code: `edit-cap-mc`
 
-Calculates your current CAP based on the CAP entries in CAP Manager +
-Format: `calculateCAP`
-
-==== Indicating that you wish to SU a module: `SU`
-
-SUs the CAP Entry +
-Format: `SU INDEX`
+Edits an existing cap entry in the UltiStudent by the use of module code. +
+Format: `edit-cap-mc MODULECODE [mc/MODULECODE] [g/MODULEGRADE] [mcs/MODULECREDITS] [sem/MODULESEMESTER]`
 ****
-* SUs the CAP entry at the specified `INDEX`. The index refers to the index number shown in the displayed CAP Entries list. The index *must be a positive integer* 1, 2, 3, ...
+* Edits the CAP entry with the specified MODULECODE. The module code *must* be valid.
 * At least one of the optional fields must be provided.
 * Existing values will be updated to the input values.
 
@@ -371,9 +312,14 @@ Format: `SU INDEX`
 
 Examples:
 
-* `listCapEntry` +
- `SU 1` +
- Edits the module grade of the 1st module in CAP manager to be `S` or `U`.
+* `edit-cap-mc CS2100 g/B-` +
+ Edits the module grade of CS2100 in cap manager to be `B-`
+* `edit-cap CS2103T mc/CS2102 g/A+` +
+Edits the cap entry of CS2103T to become that of a cap entry for CS2102 and sets the grade obtained to `B+`.
+
+==== Calculating your CAP :
+CapManager automatically calculates your CAP score with every command that relates to it. You can view your CAP in the Cap Manager window.
+Format: -
 
 == FAQ
 
@@ -381,15 +327,33 @@ Examples:
 *A*: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous UltiStudent folder.
 
 == Command Summary
-* *Add* `add mc/MODULECODE mn/MODULENAME hw/HOMEWORK [p/PRIORITY]...` +
-e.g. `add mc/CS2103T mn/Software Engineering hw/Tutorial 3 p/high`
-* *Delete* : `delete INDEX` +
+* *Add Homework* `add-hw mc/MODULECODE hw/HOMEWORK d/DEADLINE [p/PRIORITY]...` +
+e.g. `add-hw mc/CS2103T hw/Tutorial 3 p/high`
+* *Delete Homework* : `delete INDEX` +
 e.g. `delete 2`
-* *Edit* : `edit INDEX  [mc/MODULECODE] [mn/MODULENAME] [hw/HOMEWORK] [d/DEADLINE] [p/PRIORITY]...` +
+* *Edit Homework* : `edit-note INDEX  [mc/MODULECODE] [hw/HOMEWORK] [d/DEADLINE] [p/PRIORITY]...` +
 e.g. `edit 2 d/030319 p/`
+
+* *Add Note* `add-note mc/MODULECODE n/NOTENAME hw/HOMEWORK [p/PRIORITY]...` +
+e.g. `add-note mc/CS2103T n/Lecture  3`
+* *Delete Note* : `delete-note INDEX` +
+e.g. `delete 2`
+* *Selecting Note to Edit* : `selectNote INDEX` +
+e.g. `selectNote 2`
+* *Saving an Edited Note* : `saveNote INDEX` +
+e.g. `saveNote 5`
+
+* *Add Cap Entry* `add-cap mc/MODULECODE nn/NOTENAME hw/HOMEWORK [p/PRIORITY]...` +
+e.g. `add-cap mc/CS2101 g/A- mcs/4 sem/Y2S2 `
+* *Delete Cap Entry* : `delete-note INDEX` +
+e.g. `delete 1`
+* *Edit Cap Entry by Index* : `edit-note INDEX  [mc/MODULECODE] [mn/MODULENAME] [hw/HOMEWORK] [d/DEADLINE] [p/PRIORITY]...` +
+e.g. `edit-cap 2 g/B+ mcs/4`
+* *Edit Cap Entry by Code* : `edit-note MODULECODE  [mc/MODULECODE] [mn/MODULENAME] [hw/HOMEWORK] [d/DEADLINE] [p/PRIORITY]...` +
+e.g. `edit-cap-mc CS3203 g/A- mcs/8`
+
 * *Find* : `find KEYWORD [MORE_KEYWORDS]` +
 e.g. `find Tutorial 3`
-* *List* : `list`
 * *Help* : `help`
 * *Select* : `select INDEX` +
 e.g.`select 3`

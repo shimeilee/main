@@ -5,7 +5,6 @@ import static seedu.ultistudent.logic.parser.CliSyntax.PREFIX_MODULECODE;
 import static seedu.ultistudent.logic.parser.CliSyntax.PREFIX_MODULECREDITS;
 import static seedu.ultistudent.logic.parser.CliSyntax.PREFIX_MODULEGRADE;
 import static seedu.ultistudent.logic.parser.CliSyntax.PREFIX_SEMESTER;
-import static seedu.ultistudent.logic.parser.CliSyntax.PREFIX_TAG;
 
 import seedu.ultistudent.logic.CommandHistory;
 import seedu.ultistudent.logic.commands.exceptions.CommandException;
@@ -25,14 +24,12 @@ public class AddCapEntryCommand extends Command {
             + PREFIX_MODULECODE + "MODULE_CODE "
             + PREFIX_MODULEGRADE + "MODULE_GRADE "
             + PREFIX_MODULECREDITS + "MODULE_CREDITS "
-            + PREFIX_SEMESTER + "MODULE_SEMESTER"
-            + "[" + PREFIX_TAG + "TAG]...\n"
+            + PREFIX_SEMESTER + "MODULE_SEMESTER\n"
             + "Example: " + COMMAND_WORD + " "
             + PREFIX_MODULECODE + "CS2103T "
             + PREFIX_MODULEGRADE + "A+ "
             + PREFIX_MODULECREDITS + "4 "
-            + PREFIX_SEMESTER + "Y2S2 "
-            + PREFIX_TAG + "Y2S2";
+            + PREFIX_SEMESTER + "Y2S2 ";
 
     public static final String MESSAGE_SUCCESS = "New module added to CAP Manager: %1$s";
     public static final String MESSAGE_DUPLICATE_CAP_ENTRY = "This module already exists in the CAP Manager";
@@ -56,14 +53,13 @@ public class AddCapEntryCommand extends Command {
             throw new CommandException(MESSAGE_DUPLICATE_CAP_ENTRY);
         }
 
-        model.addCapEntry(toAdd);
-
         //updates module semester
         ModuleSemester toAddModuleSemester = toAdd.getModuleSemester();
         if (!model.hasModuleSemester(toAddModuleSemester)) {
             model.addModuleSemester(toAddModuleSemester);
         }
 
+        model.addCapEntry(toAdd);
 
         model.commitAddressBook();
         return new CommandResult(String.format(MESSAGE_SUCCESS, toAdd));

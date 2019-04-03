@@ -17,11 +17,12 @@ import seedu.ultistudent.logic.CommandHistory;
 import seedu.ultistudent.logic.commands.exceptions.CommandException;
 import seedu.ultistudent.model.AddressBook;
 import seedu.ultistudent.model.Model;
+import seedu.ultistudent.model.cap.CapEntry;
+import seedu.ultistudent.model.cap.ModuleCodeContainsKeywordsPredicate;
 import seedu.ultistudent.model.homework.Homework;
 import seedu.ultistudent.model.homework.HomeworkNameContainsKeywordsPredicate;
 import seedu.ultistudent.model.person.NameContainsKeywordsPredicate;
 import seedu.ultistudent.model.person.Person;
-import seedu.ultistudent.testutil.EditPersonDescriptorBuilder;
 
 /**
  * Contains helper methods for testing commands.
@@ -59,17 +60,14 @@ public class CommandTestUtil {
     public static final String PREAMBLE_WHITESPACE = "\t  \r  \n";
     public static final String PREAMBLE_NON_EMPTY = "NonEmptyPreamble";
 
-    public static final EditCommand.EditPersonDescriptor DESC_AMY;
-    public static final EditCommand.EditPersonDescriptor DESC_BOB;
-
-    static {
-        DESC_AMY = new EditPersonDescriptorBuilder().withName(VALID_NAME_AMY)
-                .withPhone(VALID_PHONE_AMY).withEmail(VALID_EMAIL_AMY).withAddress(VALID_ADDRESS_AMY)
-                .withTags(VALID_TAG_FRIEND).build();
-        DESC_BOB = new EditPersonDescriptorBuilder().withName(VALID_NAME_BOB)
-                .withPhone(VALID_PHONE_BOB).withEmail(VALID_EMAIL_BOB).withAddress(VALID_ADDRESS_BOB)
-                .withTags(VALID_TAG_HUSBAND, VALID_TAG_FRIEND).build();
-    }
+    public static final String VALID_MODULE_CODE_CS1001 = "CS1001";
+    public static final String VALID_MODULE_CODE_CS1002 = "CS1002";
+    public static final String VALID_MODULE_GRADE_CS1001 = "B-";
+    public static final String VALID_MODULE_GRADE_CS1002 = "C+";
+    public static final String VALID_MODULE_CREDITS_CS1001 = "4";
+    public static final String VALID_MODULE_CREDITS_CS1002 = "12";
+    public static final String VALID_MODULE_SEMESTER_CS1001 = "Y2S2";
+    public static final String VALID_MODULE_SEMESTER_CS1002 = "Y4S1";
 
     /**
      * Executes the given {@code command}, confirms that <br>
@@ -153,6 +151,20 @@ public class CommandTestUtil {
         Homework homework = model.getFilteredHomeworkList().get(targetIndex.getZeroBased());
         final String[] splitHomework = homework.getHomeworkName().value.split("\\s+");
         model.updateFilteredHomeworkList(new HomeworkNameContainsKeywordsPredicate(Arrays.asList(splitHomework[0])));
+
+        assertEquals(1, model.getFilteredHomeworkList().size());
+    }
+
+    /**
+     * Updates {@code model}'s filtered list to show only the capEntry at the given {@code targetIndex} in the
+     * {@code model}'s UltiStudent.
+     */
+    public static void showCapEntryAtIndex(Model model, Index targetIndex) {
+        assertTrue(targetIndex.getZeroBased() < model.getFilteredCapEntryList().size());
+
+        CapEntry capEntry = model.getFilteredCapEntryList().get(targetIndex.getZeroBased());
+        final String[] splitCapEntry = capEntry.getModuleCode().value.split("\\s+");
+        model.updateFilteredCapEntryList(new ModuleCodeContainsKeywordsPredicate(Arrays.asList(splitCapEntry[0])));
 
         assertEquals(1, model.getFilteredHomeworkList().size());
     }

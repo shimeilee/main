@@ -1,5 +1,8 @@
 package seedu.ultistudent.model.cap;
 
+import static java.util.Objects.requireNonNull;
+
+import static seedu.ultistudent.commons.util.AppUtil.checkArgument;
 
 /**
  * Represents a Homework's homework name in UltiStudent
@@ -31,8 +34,11 @@ public class ModuleGrade {
      * @param moduleGrade a valid moduleGrade
      */
     public ModuleGrade(String moduleGrade) {
-        this.value = moduleGrade.toUpperCase();
-        switch (moduleGrade) {
+        String capitalisedModuleGrade = moduleGrade.toUpperCase();
+        requireNonNull(moduleGrade);
+        checkArgument(isValidModuleGrade(capitalisedModuleGrade), MESSAGE_CONSTRAINTS);
+        this.value = capitalisedModuleGrade;
+        switch (capitalisedModuleGrade) {
         case A_PLUS_GRADE: case A_GRADE:
             this.score = 5.0;
             break;

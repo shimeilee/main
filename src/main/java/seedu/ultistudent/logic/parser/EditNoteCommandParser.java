@@ -4,26 +4,26 @@ import static seedu.ultistudent.commons.core.Messages.MESSAGE_INVALID_COMMAND_FO
 
 import seedu.ultistudent.commons.core.index.Index;
 
-import seedu.ultistudent.logic.commands.SelectNoteCommand;
+import seedu.ultistudent.logic.commands.EditNoteCommand;
 import seedu.ultistudent.logic.parser.exceptions.ParseException;
 
 /**
- * Parse input arguments and creates a new SelectNoteCommand object
+ * Parse input arguments and creates a new EditNoteCommand object
  */
-public class SelectNoteCommandParser implements Parser<SelectNoteCommand> {
+public class EditNoteCommandParser implements Parser<EditNoteCommand> {
 
     /**
-     * Parses the given {@code String} of arguments in the context of the SelectNoteCommand
+     * Parses the given {@code String} of arguments in the context of the EditNoteCommand
      * and returns an SelectCommand object for execution.
      * @throws ParseException if the user input does not conform the expected format
      */
-    public SelectNoteCommand parse(String args) throws ParseException {
+    public EditNoteCommand parse(String args) throws ParseException {
         try {
             Index index = ParserUtil.parseIndex(args);
-            return new SelectNoteCommand(index);
+            return new EditNoteCommand(index);
         } catch (ParseException pe) {
             throw new ParseException(
-                    String.format(MESSAGE_INVALID_COMMAND_FORMAT, SelectNoteCommand.MESSAGE_USAGE), pe);
+                    String.format(MESSAGE_INVALID_COMMAND_FORMAT, EditNoteCommand.MESSAGE_USAGE), pe);
         }
     }
 }

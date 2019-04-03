@@ -25,7 +25,7 @@ import seedu.ultistudent.model.modulecode.ModuleCode;
  */
 public class EditHomeworkCommand extends Command {
 
-    public static final String COMMAND_WORD = "editHomework";
+    public static final String COMMAND_WORD = "edit-hw";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Edi"
             + "ts the details of the homework "

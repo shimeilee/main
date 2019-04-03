@@ -13,6 +13,7 @@ import seedu.ultistudent.model.AddressBook;
 import seedu.ultistudent.model.ReadOnlyAddressBook;
 
 import seedu.ultistudent.model.cap.CapEntry;
+import seedu.ultistudent.model.cap.ModuleSemester;
 import seedu.ultistudent.model.homework.Homework;
 import seedu.ultistudent.model.note.Note;
 
@@ -24,12 +25,15 @@ class JsonSerializableAddressBook {
 
     public static final String MESSAGE_DUPLICATE_PERSON = "Persons list contains duplicate person(s).";
     public static final String MESSAGE_DUPLICATE_CAP_ENTRY = "Cap Entry list contains duplicate cap entry(s).";
-    public static final String MESSAGE_DUPLICATE_NOTE = "Notes contains "
-            + "duplicate.";
+    public static final String MESSAGE_DUPLICATE_HOMEWORK = "Homework list contains duplicate homework";
+    public static final String MESSAGE_DUPLICATE_NOTE = "Notes contains duplicate.";
+    public static final String MESSAGE_DUPLICATE_MODULE_SEMESTER = "Module Semester list contains duplicate module "
+            + "semester(s).";
 
     private final List<JsonAdaptedCapEntry> capEntryList = new ArrayList<>();
     private final List<JsonAdaptedHomeworkList> homeworkList = new ArrayList<>();
     private final List<JsonAdaptedNote> noteList = new ArrayList<>();
+    private final List<JsonAdaptedModuleSemester> moduleSemesterList = new ArrayList<>();
 
     /**
      * Constructs a {@code JsonSerializableAddressBook} with the given cap.
@@ -37,21 +41,14 @@ class JsonSerializableAddressBook {
     @JsonCreator
     public JsonSerializableAddressBook(@JsonProperty("capEntryList") List<JsonAdaptedCapEntry> capEntries,
                                        @JsonProperty("homeworkList") List<JsonAdaptedHomeworkList> homeworkList,
-                                       @JsonProperty("noteList") List<JsonAdaptedNote> notes) {
+                                       @JsonProperty("noteList") List<JsonAdaptedNote> notes,
+                                       @JsonProperty("moduleSemesterList") List<JsonAdaptedModuleSemester>
+                                                   moduleSemesterList) {
         this.capEntryList.addAll(capEntries);
         this.homeworkList.addAll(homeworkList);
         this.noteList.addAll(notes);
+        this.moduleSemesterList.addAll(moduleSemesterList);
     }
-
-    //    /**
-    //     * Constructs a {@code JsonSerializableAddressBook} with the given capEntryList and persons.
-    //     */
-    //    @JsonCreator
-    //    public JsonSerializableAddressBook(@JsonProperty("persons") List<JsonAdaptedPerson> persons,
-    //                                       @JsonProperty("capEntryList") List<JsonAdaptedCapEntry> capEntryList) {
-    //        this.persons.addAll(persons);
-    //        this.capEntryList.addAll(capEntryList);
-    //    }
 
     /**
      * Converts a given {@code ReadOnlyAddressBook} into this class for Jackson use.
@@ -64,6 +61,8 @@ class JsonSerializableAddressBook {
         homeworkList.addAll(source.getHomeworkList().stream().map(JsonAdaptedHomeworkList::new)
                 .collect(Collectors.toList()));
         noteList.addAll(source.getNoteList().stream().map(JsonAdaptedNote::new).collect(Collectors.toList()));
+        moduleSemesterList.addAll(source.getModuleSemesterList().stream().map(JsonAdaptedModuleSemester::new)
+                .collect(Collectors.toList()));
     }
 
     /**
@@ -85,7 +84,7 @@ class JsonSerializableAddressBook {
         for (JsonAdaptedHomeworkList jsonAdaptedHomeworkList : homeworkList) {
             Homework homework = jsonAdaptedHomeworkList.toModelType();
             if (addressBook.hasHomework(homework)) {
-                throw new IllegalValueException(MESSAGE_DUPLICATE_PERSON);
+                throw new IllegalValueException(MESSAGE_DUPLICATE_HOMEWORK);
             }
             addressBook.addHomework(homework);
         }
@@ -97,6 +96,15 @@ class JsonSerializableAddressBook {
             }
             addressBook.addNote(note);
         }
+
+        for (JsonAdaptedModuleSemester jsonAdaptedModuleSemester : moduleSemesterList) {
+            ModuleSemester moduleSemester = jsonAdaptedModuleSemester.toModelType();
+            if (addressBook.hasModuleSemester(moduleSemester)) {
+                throw new IllegalValueException(MESSAGE_DUPLICATE_MODULE_SEMESTER);
+            }
+            addressBook.addModuleSemester(moduleSemester);
+        }
+
         return addressBook;
     }
 

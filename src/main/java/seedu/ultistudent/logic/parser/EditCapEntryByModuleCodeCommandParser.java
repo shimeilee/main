@@ -6,18 +6,11 @@ import static seedu.ultistudent.logic.parser.CliSyntax.PREFIX_MODULECODE;
 import static seedu.ultistudent.logic.parser.CliSyntax.PREFIX_MODULECREDITS;
 import static seedu.ultistudent.logic.parser.CliSyntax.PREFIX_MODULEGRADE;
 import static seedu.ultistudent.logic.parser.CliSyntax.PREFIX_SEMESTER;
-import static seedu.ultistudent.logic.parser.CliSyntax.PREFIX_TAG;
-
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Optional;
-import java.util.Set;
 
 import seedu.ultistudent.logic.commands.EditCapEntryByModuleCodeCommand;
 import seedu.ultistudent.logic.commands.EditCapEntryByModuleCodeCommand.EditCapEntryDescriptor;
 import seedu.ultistudent.logic.parser.exceptions.ParseException;
 import seedu.ultistudent.model.modulecode.ModuleCode;
-import seedu.ultistudent.model.tag.Tag;
 
 /**
  * Parses input arguments and creates a new EditCapEntryCommand object
@@ -32,7 +25,7 @@ public class EditCapEntryByModuleCodeCommandParser {
     public EditCapEntryByModuleCodeCommand parse(String args) throws ParseException {
         requireNonNull(args);
         ArgumentMultimap argMultimap = ArgumentTokenizer.tokenize(args, PREFIX_MODULECODE, PREFIX_MODULEGRADE,
-                PREFIX_MODULECREDITS, PREFIX_SEMESTER, PREFIX_TAG);
+                PREFIX_MODULECREDITS, PREFIX_SEMESTER);
 
         ModuleCode moduleCode;
 
@@ -60,7 +53,6 @@ public class EditCapEntryByModuleCodeCommandParser {
             editCapEntryDescriptor.setModuleSemester(ParserUtil.parseModuleSemester(argMultimap
                     .getValue(PREFIX_SEMESTER).get()));
         }
-        parseTagsForEdit(argMultimap.getAllValues(PREFIX_TAG)).ifPresent(editCapEntryDescriptor::setTags);
 
         if (!editCapEntryDescriptor.isAnyFieldEdited()) {
             throw new ParseException(EditCapEntryByModuleCodeCommand.MESSAGE_NOT_EDITED);
@@ -69,19 +61,5 @@ public class EditCapEntryByModuleCodeCommandParser {
         return new EditCapEntryByModuleCodeCommand(moduleCode, editCapEntryDescriptor);
     }
 
-    /**
-     * Parses {@code Collection<String> tags} into a {@code Set<Tag>} if {@code tags} is non-empty.
-     * If {@code tags} contain only one element which is an empty string, it will be parsed into a
-     * {@code Set<Tag>} containing zero tags.
-     */
-    private Optional<Set<Tag>> parseTagsForEdit(Collection<String> tags) throws ParseException {
-        assert tags != null;
-
-        if (tags.isEmpty()) {
-            return Optional.empty();
-        }
-        Collection<String> tagSet = tags.size() == 1 && tags.contains("") ? Collections.emptySet() : tags;
-        return Optional.of(ParserUtil.parseTags(tagSet));
-    }
 }
 
