@@ -3,37 +3,40 @@ package seedu.ultistudent.model.note;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import static seedu.ultistudent.logic.commands.CommandTestUtil.*;
-import static seedu.ultistudent.testutil.TypicalPersons.ALICE;
-import static seedu.ultistudent.testutil.TypicalPersons.BOB;
+import static seedu.ultistudent.testutil.TypicalNote.NOTE_FIRST;
+import static seedu.ultistudent.testutil.TypicalNote.NOTE_SECOND;
 
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
-import seedu.ultistudent.model.person.Person;
-import seedu.ultistudent.testutil.PersonBuilder;
+import seedu.ultistudent.testutil.NoteBuilder;
+
 
 public class NoteTest {
     @Rule
     public ExpectedException thrown = ExpectedException.none();
 
-    @Test
-    public void asObservableList_modifyList_throwsUnsupportedOperationException() {
-        Person person = new PersonBuilder().build();
-        thrown.expect(UnsupportedOperationException.class);
-        person.getTags().remove(0);
-    }
+    //@Test
+    //public void
+    // asObservableList_modifyList_throwsUnsupportedOperationException() {
+    // Note note = new NoteBuilder().build();
+    // thrown.expect(UnsupportedOperationException.class);
+    //note.getTags().remove(0);
+    //}
 
     @Test
-    public void isSamePerson() {
+    public void isSameNote() {
         // same object -> returns true
-        assertTrue(ALICE.isSamePerson(ALICE));
+        assertTrue(NOTE_FIRST.isSameNote(NOTE_FIRST));
 
         // null -> returns false
-        assertFalse(ALICE.isSamePerson(null));
+        assertFalse(NOTE_FIRST.isSameNote(null));
 
         // different phone and email -> returns false
-        Person editedAlice = new PersonBuilder(ALICE).withPhone(VALID_PHONE_BOB).withEmail(VALID_EMAIL_BOB).build();
+        Note editedNoteFirst = new NoteBuilder(NOTE_FIRST).withNoteName
+                (VALID_PHONE_BOB)
+                .withEmail(VALID_EMAIL_BOB).build();
         assertFalse(ALICE.isSamePerson(editedAlice));
 
         // different name -> returns false

@@ -35,6 +35,6 @@ public class ContentTest {
         // characters and spaces
         //assertTrue(Content.isValidNoteContent("-")); // one character
         // assertTrue(Content.isValidNoteContent("Print('Give me an A please');"
-        //     + "San Francisco CA 2349879; " + "USA")); //long content
+    //     + "San Francisco CA 2349879; " + "USA")); //long content
     //}
 }

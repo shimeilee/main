@@ -9,9 +9,7 @@ import java.util.List;
 
 import org.junit.Test;
 
-import seedu.ultistudent.model.person.NameContainsKeywordsPredicate;
 import seedu.ultistudent.testutil.NoteBuilder;
-import seedu.ultistudent.testutil.PersonBuilder;
 
 public class NoteNameContainsKeywordsPredicateTest {
 
