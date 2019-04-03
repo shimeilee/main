@@ -32,7 +32,7 @@ public class AddNoteCommand extends Command {
     private final Note toAdd;
 
     /**
-     * Creates an AddCAPEntryCommand to add the specified {@code CapEntry}
+     * Creates an AddNoteCommand to add the specified {@code Note}
      */
     public AddNoteCommand(Note note) {
         requireNonNull(note);

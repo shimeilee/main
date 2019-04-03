@@ -62,12 +62,22 @@ public class CommandTestUtil {
 
     public static final String VALID_MODULE_CODE_CS1001 = "CS1001";
     public static final String VALID_MODULE_CODE_CS1002 = "CS1002";
+
     public static final String VALID_MODULE_GRADE_CS1001 = "B-";
     public static final String VALID_MODULE_GRADE_CS1002 = "C+";
+
     public static final String VALID_MODULE_CREDITS_CS1001 = "4";
     public static final String VALID_MODULE_CREDITS_CS1002 = "12";
     public static final String VALID_MODULE_SEMESTER_CS1001 = "Y2S2";
     public static final String VALID_MODULE_SEMESTER_CS1002 = "Y4S1";
+
+    public static final String VALID_NOTE_NAME_LOWER = "lowercase";
+    public static final String VALID_NOTE_NAME_LOWER_WITH_SPACE = "lower case";
+    public static final String VALID_NOTE_NAME_UPPER = "UPPERCASE";
+    public static final String VALID_NOTE_NAME_MIXED = "UPPERcase";
+
+    public static final String VALID_CONTENT_LOWER = "testlower";
+    public static final String VALID_CONTENT_UPPER = "TESTUPPER";
 
     /**
      * Executes the given {@code command}, confirms that <br>

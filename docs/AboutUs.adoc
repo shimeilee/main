@@ -21,7 +21,7 @@ Role: Project Advisor
 
 === Benjamin Lim
 image::LimZhengJieBenjamin.png[width="150", align="left"]
-{empty}[http://github.com/LimZhengJieBenjamin[github]] [<<Benjamin Lim#, portfolio>>]
+{empty}[http://github.com/LimZhengJieBenjamin[github]] [<<LimZhengJieBenjamin#, portfolio>>]
 
 Role: Team Lead
 Responsibilities: UI
@@ -30,7 +30,7 @@ Responsibilities: UI
 
 === Andrew Sim
 image::andrewscw.png[width="150", align="left"]
-{empty}[http://github.com/andrewscw[github]] [<<Andrew Sim#, portfolio>>]
+{empty}[http://github.com/andrewscw[github]] [<<andrewscw#, portfolio>>]
 
 Role: Developer
 Responsibilities: Data
@@ -39,7 +39,7 @@ Responsibilities: Data
 
 === Ng Wei Xin
 image::NgWeiXin.png[width="150", align="left"]
-{empty}[http://github.com/NgWeiXin[github]] [<<Ng Wei Xin#, portfolio>>]
+{empty}[http://github.com/NgWeiXin[github]] [<<NgWeiXin#, portfolio>>]
 
 Role: Developer
 Responsibilities: Dev Ops + Threading
@@ -48,7 +48,7 @@ Responsibilities: Dev Ops + Threading
 
 === Lee Shi Mei
 image::shimeilee.png[width="150", align="left"]
-{empty}[http://github.com/shimeilee[github]] [<<Lee Shi Mei#, portfolio>>]
+{empty}[http://github.com/shimeilee[github]] [<<shimeilee#, portfolio>>]
 
 Role: Developer
 Responsibilities: UI
