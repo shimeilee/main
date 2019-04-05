@@ -157,7 +157,9 @@ public class AddressBookTest {
         }
 
         @Override
-        public ObservableList<ModuleCode> getModuleCodeList() { return moduleCodeList; }
+        public ObservableList<ModuleCode> getModuleCodeList() {
+            return moduleCodeList;
+        }
 
         @Override
         public void addListener(InvalidationListener listener) {
