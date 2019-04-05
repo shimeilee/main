@@ -24,6 +24,7 @@ import javafx.collections.ObservableList;
 import seedu.ultistudent.model.cap.CapEntry;
 import seedu.ultistudent.model.cap.ModuleSemester;
 import seedu.ultistudent.model.homework.Homework;
+import seedu.ultistudent.model.modulecode.ModuleCode;
 import seedu.ultistudent.model.note.Note;
 import seedu.ultistudent.model.person.Person;
 import seedu.ultistudent.model.person.exceptions.DuplicatePersonException;
@@ -125,6 +126,7 @@ public class AddressBookTest {
         private final ObservableList<Homework> homeworkList = FXCollections.observableArrayList();
         private final ObservableList<Note> noteList = FXCollections.observableArrayList();
         private final ObservableList<ModuleSemester> moduleSemesterList = FXCollections.observableArrayList();
+        private final ObservableList<ModuleCode> moduleCodeList = FXCollections.observableArrayList();
         AddressBookStub(Collection<Person> persons) {
             this.persons.setAll(persons);
         }
@@ -153,6 +155,9 @@ public class AddressBookTest {
         public ObservableList<ModuleSemester> getModuleSemesterList() {
             return moduleSemesterList;
         }
+
+        @Override
+        public ObservableList<ModuleCode> getModuleCodeList() { return moduleCodeList; }
 
         @Override
         public void addListener(InvalidationListener listener) {
