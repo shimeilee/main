@@ -26,7 +26,7 @@
             <Region fx:constant="USE_PREF_SIZE" />
           </minWidth>
         </Label>
-        <Label fx:id="moduleCodeLabel" prefHeight="17.0" prefWidth="125.0" styleClass="cell_big_label" text="\$ModuleCode" />
+        <Label fx:id="moduleCodeLabel" styleClass="cell_big_label" text="\$ModuleCode" />
       </HBox>
     </VBox>
       <rowConstraints>
