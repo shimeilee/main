@@ -76,13 +76,6 @@ public class EditCapEntryByModuleCodeCommand extends Command {
         ModuleSemester moduleSemesterOfCapEntryToEdit = capEntryToEdit.getModuleSemester();
         ModuleSemester moduleSemesterOfEditedCapEntry = editedCapEntry.getModuleSemester();
 
-        //        if (moduleCode.getValue() >= lastShownList.size()) {
-        //            throw new CommandException(Messages.MESSAGE_INVALID_CAP_ENTRY_DISPLAYED_INDEX);
-        //        }
-        //
-        //        CapEntry capEntryToEdit = lastShownList.get(index.getZeroBased());
-        //        CapEntry editedCapEntry = createEditedCapEntry(capEntryToEdit, editCapEntryDescriptor);
-
         if (!capEntryToEdit.isSameCapEntry(editedCapEntry) && model.hasCapEntry(editedCapEntry)) {
             throw new CommandException(MESSAGE_DUPLICATE_CAP_ENTRY);
         }
@@ -92,13 +85,21 @@ public class EditCapEntryByModuleCodeCommand extends Command {
 
         //update module semester
         if (!moduleSemesterOfCapEntryToEdit.equals(moduleSemesterOfEditedCapEntry)) {
-            if (!model.hasModuleSemester(moduleSemesterOfCapEntryToEdit)) {
-                model.deleteModuleSemester(moduleSemesterOfCapEntryToEdit);
-            }
+            List<CapEntry> afterEditList = model.getFilteredCapEntryList();
             if (!model.hasModuleSemester(moduleSemesterOfEditedCapEntry)) {
                 model.addModuleSemester(moduleSemesterOfEditedCapEntry);
             }
+            int numCapEntriesWithSameSemester = 0;
+            for (int i = 0; i < afterEditList.size(); i++) {
+                if (afterEditList.get(i).getModuleSemester().equals(moduleSemesterOfCapEntryToEdit)) {
+                    numCapEntriesWithSameSemester++;
+                }
+            }
+            if (numCapEntriesWithSameSemester == 0) {
+                model.deleteModuleSemester(moduleSemesterOfCapEntryToEdit);
+            }
         }
+
         model.updateFilteredModuleSemesterList(Model.PREDICATE_SHOW_ALL_MODULE_SEMESTERS);
 
         model.commitAddressBook();

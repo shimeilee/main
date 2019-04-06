@@ -347,9 +347,9 @@ e.g. `saveNote 5`
 e.g. `add-cap mc/CS2101 g/A- mcs/4 sem/Y2S2 `
 * *Delete Cap Entry* : `delete-note INDEX` +
 e.g. `delete 1`
-* *Edit Cap Entry by Index* : `edit-note INDEX  [mc/MODULECODE] [mn/MODULENAME] [hw/HOMEWORK] [d/DEADLINE] [p/PRIORITY]...` +
+* *Edit Cap Entry by Index* : `edit-note INDEX  [mc/MODULECODE] [g/MODULEGRADE] [mcs/MODULECREDITS] [sem/MODULESEMESTER]` +
 e.g. `edit-cap 2 g/B+ mcs/4`
-* *Edit Cap Entry by Code* : `edit-note MODULECODE  [mc/MODULECODE] [mn/MODULENAME] [hw/HOMEWORK] [d/DEADLINE] [p/PRIORITY]...` +
+* *Edit Cap Entry by Code* : `edit-note MODULECODE  [mc/MODULECODE] [g/MODULEGRADE] [mcs/MODULECREDITS] [semd/MODULESEMESTER]` +
 e.g. `edit-cap-mc CS3203 g/A- mcs/8`
 
 * *Find* : `find KEYWORD [MORE_KEYWORDS]` +

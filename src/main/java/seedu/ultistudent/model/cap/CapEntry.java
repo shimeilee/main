@@ -32,7 +32,6 @@ public class CapEntry {
         this.moduleGrade = moduleGrade;
         this.moduleCredits = moduleCredits;
         this.moduleSemester = moduleSemester;
-        updateCapForAddCommand(this);
     }
 
     /**
