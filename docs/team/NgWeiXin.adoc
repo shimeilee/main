@@ -3,28 +3,39 @@
 :imagesDir: ../images
 :stylesDir: ../stylesheets
 
-== PROJECT: UltiStudent - Level 4
+== PROJECT: UltiStudent
 
 ---
 
 == Overview
-
-
-UltiStudent is a student application that effectively tackles the problem of having too many applications to manage
-their school life. To improve the quality of student life in computing, UltiStudent provides a centralised platform
+UltiStudent is a student application that effectively tackles the problem of having
+too many applications to manage their school life by providing a centralised platform
 for them to manage their homework, cumulative average point and notes.
 
-UltiStudent is a desktop application used for teaching Software Engineering principles. The user interacts with it using a CLI, and it has a GUI created with JavaFX. It is written in Java, and has about 10 kLoC.
+UltiStudent is catered for students who prefer to use a desktop app for managing their
+school activities through a Command Line Interface (CLI) while still having the benefits
+of a Graphical User Interface (GUI).
 
 == Summary of contributions
 
-* *Major enhancement*: added *the ability to undo/redo previous commands*
-** What it does: allows the user to undo all previous commands one at a time. Preceding undo commands can be reversed by using the redo command.
-** Justification: This feature improves the product significantly because a user can make mistakes in commands and the app should provide a convenient way to rectify them.
-** Highlights: This enhancement affects existing commands and commands to be added in future. It required an in-depth analysis of design alternatives. The implementation too was challenging as it required changes to existing commands.
-** Credits: _{mention here if you reused any code/ideas from elsewhere or if a third-party library is heavily used in the feature so that a reader can make a more accurate judgement of how much effort went into the feature}_
+=== Major enhancement:
+* Added the *ability to add homework* to homework manager through `add-hw` command.
 
-* *Minor enhancement*: added a history command that allows the user to navigate to previous commands using up/down keys.
+** It allows the user to add homework to the homework manager. This feature is essential
+and the foundation of homework manager as it enables homework manager to start keeping
+track of user's homework.
+
+** This functionality was a challenging as it requires an in-depth analysis
+and understanding of AddressBook-Level4's UI, Logic, Model and Storage. A need to
+understand how each component communicate with one another.
+
+** *Credits*: AddressBook-Level4's add functionality was being used as a reference
+
+* *Minor enhancement*:
+** Most of the UI in UltiStudent
+** Modified AddressBook's `add`, `delete` and `edit` command to guide users on what `add`,
+`delete` and `edit` command UltiStudent has to offer.
+
 
 * *Code contributed*: [https://github.com[Functional code]] [https://github.com[Test code]] _{give links to collated code files}_
 
@@ -55,7 +66,7 @@ _{you can add/remove categories in the list above}_
 |_Given below are sections I contributed to the User Guide. They showcase my ability to write documentation targeting end-users._
 |===
 
-include::../UserGuide.adoc[tag=undoredo]
+include::../UserGuide.adoc[tag=add-hw]
 
 == Contributions to the Developer Guide
 
@@ -66,10 +77,3 @@ include::../UserGuide.adoc[tag=undoredo]
 include::../DeveloperGuide.adoc[tag=undoredo]
 
 include::../DeveloperGuide.adoc[tag=dataencryption]
-
-
-== PROJECT: PowerPointLabs
-
----
-
-_{Optionally, you may include other projects in your portfolio.}_
