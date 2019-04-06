@@ -8,7 +8,6 @@ import static seedu.ultistudent.testutil.TypicalIndexes.INDEX_FIRST_NOTE;
 import org.junit.Test;
 
 import seedu.ultistudent.logic.commands.EditNoteCommand;
-import seedu.ultistudent.logic.commands.SelectCommand;
 
 /**
  * Test scope: similar to {@code SelectCommandParserTest}.

@@ -2,8 +2,8 @@ package seedu.ultistudent.logic.commands;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
-import static seedu.ultistudent.logic.commands.CommandTestUtil.assertCommandFailure;
 import static seedu.ultistudent.logic.commands.CommandTestUtil.assertCommandSuccess;
+import static seedu.ultistudent.logic.commands.CommandTestUtil.assertNoteCommandFailure;
 import static seedu.ultistudent.logic.commands.CommandTestUtil.showNoteAtIndex;
 import static seedu.ultistudent.testutil.TypicalIndexes.INDEX_FIRST_NOTE;
 import static seedu.ultistudent.testutil.TypicalIndexes.INDEX_SECOND_NOTE;
@@ -103,6 +103,6 @@ public class EditNoteCommandTest {
      */
     private void assertExecutionFailure(Index index, String expectedMessage) {
         EditNoteCommand editNoteCommand = new EditNoteCommand(index);
-        assertCommandFailure(editNoteCommand, model, commandHistory, expectedMessage);
+        assertNoteCommandFailure(editNoteCommand, model, commandHistory, expectedMessage);
     }
 }
