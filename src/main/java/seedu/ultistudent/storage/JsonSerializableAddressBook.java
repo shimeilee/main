@@ -48,7 +48,7 @@ class JsonSerializableAddressBook {
                                        @JsonProperty("noteList") List<JsonAdaptedNote> notes,
                                        @JsonProperty("moduleSemesterList") List<JsonAdaptedModuleSemester>
                                                    moduleSemesterList,
-                                       @JsonProperty("moduleCode") List<JsonAdaptedModuleCode> moduleCodeList) {
+                                       @JsonProperty("moduleCodeList") List<JsonAdaptedModuleCode> moduleCodeList) {
         this.capEntryList.addAll(capEntries);
         this.homeworkList.addAll(homeworkList);
         this.noteList.addAll(notes);

@@ -9,10 +9,11 @@ import static seedu.ultistudent.commons.util.AppUtil.checkArgument;
  */
 public class ModuleGrade {
 
-    public static final String MESSAGE_CONSTRAINTS = "Module Grades should begin with One letter "
-            + "may end with an optional + or - sign at the back";
+    public static final String MESSAGE_CONSTRAINTS = "Module Grades should begin with one letter  and "
+            + "may end with an optional + or - sign at the back. \n"
+            + "Valid grades are: A+, A, A-, B+, B, B-, C+, C, D+, D, F";
 
-    public static final String VALIDATION_REGEX = "\\w{1}[+-]{0,1}";
+    public static final String VALIDATION_REGEX = "([AB]{1}[+-]{0,1})|([CD]{1}[+]{0,1})|[F]";
 
     public static final String A_PLUS_GRADE = "A+";
     public static final String A_GRADE = "A";

@@ -59,6 +59,8 @@ public class AddCapEntryCommand extends Command {
             model.addModuleSemester(toAddModuleSemester);
         }
 
+        //update cap
+        CapEntry.updateCapForAddCommand(toAdd);
         model.addCapEntry(toAdd);
 
         model.commitAddressBook();
