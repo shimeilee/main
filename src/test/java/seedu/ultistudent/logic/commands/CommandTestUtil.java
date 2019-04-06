@@ -21,6 +21,8 @@ import seedu.ultistudent.model.cap.CapEntry;
 import seedu.ultistudent.model.cap.ModuleCodeContainsKeywordsPredicate;
 import seedu.ultistudent.model.homework.Homework;
 import seedu.ultistudent.model.homework.HomeworkNameContainsKeywordsPredicate;
+import seedu.ultistudent.model.note.Note;
+import seedu.ultistudent.model.note.NoteNameContainsKeywordsPredicate;
 import seedu.ultistudent.model.person.NameContainsKeywordsPredicate;
 import seedu.ultistudent.model.person.Person;
 
@@ -149,6 +151,20 @@ public class CommandTestUtil {
         model.updateFilteredPersonList(new NameContainsKeywordsPredicate(Arrays.asList(splitName[0])));
 
         assertEquals(1, model.getFilteredPersonList().size());
+    }
+
+    /**
+     * Updates {@code model}'s filtered list to show only the note at the given {@code targetIndex} in the
+     * {@code model}'s UltiStudent.
+     */
+    public static void showNoteAtIndex(Model model, Index targetIndex) {
+        assertTrue(targetIndex.getZeroBased() < model.getFilteredNoteList().size());
+
+        Note note = model.getFilteredNoteList().get(targetIndex.getZeroBased());
+        final String[] splitName = ((Note) note).getNoteName().noteName.split("\\s+");
+        model.updateFilteredNoteList(new NoteNameContainsKeywordsPredicate(Arrays.asList(splitName[0])));
+
+        assertEquals(1, model.getFilteredNoteList().size());
     }
 
     /**
