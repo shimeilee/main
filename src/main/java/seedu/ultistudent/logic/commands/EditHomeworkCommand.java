@@ -82,11 +82,18 @@ public class EditHomeworkCommand extends Command {
 
         //update module code
         if (!moduleCodeOfHomeworkToEdit.equals(moduleCodeOfEditedHomework)) {
-            if (!model.hasModuleCode(moduleCodeOfHomeworkToEdit)) {
-                model.deleteModuleCode(moduleCodeOfHomeworkToEdit);
-            }
+            List<Homework> afterEditList = model.getFilteredHomeworkList();
             if (!model.hasModuleCode(moduleCodeOfEditedHomework)) {
                 model.addModuleCode(moduleCodeOfEditedHomework);
+            }
+            int numHomeworkWithSameModuleCode = 0;
+            for (int i = 0; i < afterEditList.size(); i++) {
+                if (afterEditList.get(i).getModuleCode().equals(moduleCodeOfHomeworkToEdit)) {
+                   numHomeworkWithSameModuleCode++;
+                }
+            }
+            if (numHomeworkWithSameModuleCode == 0) {
+                model.deleteModuleCode(moduleCodeOfHomeworkToEdit);
             }
         }
         model.updateFilteredModuleCodeList(PREDICATE_SHOW_ALL_MODULE_CODE);
