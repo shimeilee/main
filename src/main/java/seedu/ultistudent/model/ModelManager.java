@@ -519,6 +519,7 @@ public class ModelManager implements Model {
 
     @Override
     public void deleteModuleCode(ModuleCode target) {
+        requireNonNull(target);
         versionedAddressBook.removeModuleCode(target);
     }
 
