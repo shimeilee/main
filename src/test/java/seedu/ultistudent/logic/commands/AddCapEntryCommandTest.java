@@ -26,6 +26,7 @@ import seedu.ultistudent.model.ReadOnlyUserPrefs;
 import seedu.ultistudent.model.cap.CapEntry;
 import seedu.ultistudent.model.cap.ModuleSemester;
 import seedu.ultistudent.model.homework.Homework;
+import seedu.ultistudent.model.modulecode.ModuleCode;
 import seedu.ultistudent.model.note.Note;
 import seedu.ultistudent.model.person.Person;
 import seedu.ultistudent.testutil.CapEntryBuilder;
@@ -347,6 +348,53 @@ public class AddCapEntryCommandTest {
 
         @Override
         public void setSelectedHomework(Homework homework) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        //============================================= Module Code =============================================//
+
+        @Override
+        public boolean hasModuleCode(ModuleCode moduleCode) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void deleteModuleCode(ModuleCode target) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void addModuleCode(ModuleCode moduleCode) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void setModuleCode(ModuleCode target, ModuleCode editedModuleCode) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public ObservableList<ModuleCode> getFilteredModuleCodeList() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void updateFilteredModuleCodeList(Predicate<ModuleCode> predicate) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public ReadOnlyProperty<ModuleCode> selectedModuleCodeProperty() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public ModuleCode getSelectedModuleCode() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void setSelectedModuleCode(ModuleCode moduleCode) {
             throw new AssertionError("This method should not be called.");
         }
 

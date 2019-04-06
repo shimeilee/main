@@ -10,6 +10,7 @@ import seedu.ultistudent.logic.CommandHistory;
 import seedu.ultistudent.logic.commands.exceptions.CommandException;
 import seedu.ultistudent.model.Model;
 import seedu.ultistudent.model.homework.Homework;
+import seedu.ultistudent.model.modulecode.ModuleCode;
 
 
 /**
@@ -42,7 +43,23 @@ public class DeleteHomeworkCommand extends Command {
         }
 
         Homework homeworkToDelete = lastShownList.get(targetIndex.getZeroBased());
+
         model.deleteHomework(homeworkToDelete);
+
+        //updates module code - need to check if only 1 such entry with such module code.
+        ModuleCode moduleCodeOfDeletedHomework = homeworkToDelete.getModuleCode();
+        List<Homework> afterDeleteList = model.getFilteredHomeworkList();
+        int numHomeworkWithModuleCode = 0;
+        for (int i = 0; i < afterDeleteList.size(); i++) {
+            if (afterDeleteList.get(i).getModuleCode().equals(moduleCodeOfDeletedHomework)) {
+                numHomeworkWithModuleCode++;
+            }
+        }
+
+        if (numHomeworkWithModuleCode == 0) {
+            model.deleteModuleCode(moduleCodeOfDeletedHomework);
+        }
+
         model.commitAddressBook();
         return new CommandResult(String.format(MESSAGE_DELETE_HOMEWORK_SUCCESS, homeworkToDelete));
     }

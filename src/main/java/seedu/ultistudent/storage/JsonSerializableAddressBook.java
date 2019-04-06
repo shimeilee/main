@@ -15,6 +15,7 @@ import seedu.ultistudent.model.ReadOnlyAddressBook;
 import seedu.ultistudent.model.cap.CapEntry;
 import seedu.ultistudent.model.cap.ModuleSemester;
 import seedu.ultistudent.model.homework.Homework;
+import seedu.ultistudent.model.modulecode.ModuleCode;
 import seedu.ultistudent.model.note.Note;
 
 /**
@@ -29,11 +30,14 @@ class JsonSerializableAddressBook {
     public static final String MESSAGE_DUPLICATE_NOTE = "Notes contains duplicate.";
     public static final String MESSAGE_DUPLICATE_MODULE_SEMESTER = "Module Semester list contains duplicate module "
             + "semester(s).";
+    public static final String MESSAGE_DUPLICATE_MODULE_CODE = "Module Code list contains duplicate module "
+            + "code(s).";
 
     private final List<JsonAdaptedCapEntry> capEntryList = new ArrayList<>();
     private final List<JsonAdaptedHomeworkList> homeworkList = new ArrayList<>();
     private final List<JsonAdaptedNote> noteList = new ArrayList<>();
     private final List<JsonAdaptedModuleSemester> moduleSemesterList = new ArrayList<>();
+    private final List<JsonAdaptedModuleCode> moduleCodeList = new ArrayList<>();
 
     /**
      * Constructs a {@code JsonSerializableAddressBook} with the given cap.
@@ -43,11 +47,13 @@ class JsonSerializableAddressBook {
                                        @JsonProperty("homeworkList") List<JsonAdaptedHomeworkList> homeworkList,
                                        @JsonProperty("noteList") List<JsonAdaptedNote> notes,
                                        @JsonProperty("moduleSemesterList") List<JsonAdaptedModuleSemester>
-                                                   moduleSemesterList) {
+                                                   moduleSemesterList,
+                                       @JsonProperty("moduleCodeList") List<JsonAdaptedModuleCode> moduleCodeList) {
         this.capEntryList.addAll(capEntries);
         this.homeworkList.addAll(homeworkList);
         this.noteList.addAll(notes);
         this.moduleSemesterList.addAll(moduleSemesterList);
+        this.moduleCodeList.addAll(moduleCodeList);
     }
 
     /**
@@ -62,6 +68,8 @@ class JsonSerializableAddressBook {
                 .collect(Collectors.toList()));
         noteList.addAll(source.getNoteList().stream().map(JsonAdaptedNote::new).collect(Collectors.toList()));
         moduleSemesterList.addAll(source.getModuleSemesterList().stream().map(JsonAdaptedModuleSemester::new)
+                .collect(Collectors.toList()));
+        moduleCodeList.addAll(source.getModuleCodeList().stream().map(JsonAdaptedModuleCode::new)
                 .collect(Collectors.toList()));
     }
 
@@ -103,6 +111,13 @@ class JsonSerializableAddressBook {
                 throw new IllegalValueException(MESSAGE_DUPLICATE_MODULE_SEMESTER);
             }
             addressBook.addModuleSemester(moduleSemester);
+        }
+
+        for (JsonAdaptedModuleCode jsonAdaptedModuleCode : moduleCodeList) {
+            ModuleCode moduleCode = jsonAdaptedModuleCode.toModelType();
+            if (addressBook.hasModuleCode(moduleCode)) {
+                throw new IllegalValueException((MESSAGE_DUPLICATE_MODULE_CODE));
+            }
         }
 
         return addressBook;

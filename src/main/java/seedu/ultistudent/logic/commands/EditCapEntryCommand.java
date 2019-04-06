@@ -76,18 +76,30 @@ public class EditCapEntryCommand extends Command {
             throw new CommandException(MESSAGE_DUPLICATE_CAP_ENTRY);
         }
 
+        //update CapScore
+        CapEntry.updateCapForDeleteCommand(capEntryToEdit);
+        CapEntry.updateCapForAddCommand(editedCapEntry);
+
         model.setCapEntry(capEntryToEdit, editedCapEntry);
         model.updateFilteredCapEntryList(Model.PREDICATE_SHOW_ALL_CAP_ENTRIES);
 
         //update module semester
         if (!moduleSemesterOfCapEntryToEdit.equals(moduleSemesterOfEditedCapEntry)) {
-            if (!model.hasModuleSemester(moduleSemesterOfCapEntryToEdit)) {
-                model.deleteModuleSemester(moduleSemesterOfCapEntryToEdit);
-            }
+            List<CapEntry> afterEditList = model.getFilteredCapEntryList();
             if (!model.hasModuleSemester(moduleSemesterOfEditedCapEntry)) {
                 model.addModuleSemester(moduleSemesterOfEditedCapEntry);
             }
+            int numCapEntriesWithSameSemester = 0;
+            for (int i = 0; i < afterEditList.size(); i++) {
+                if (afterEditList.get(i).getModuleSemester().equals(moduleSemesterOfCapEntryToEdit)) {
+                    numCapEntriesWithSameSemester++;
+                }
+            }
+            if (numCapEntriesWithSameSemester == 0) {
+                model.deleteModuleSemester(moduleSemesterOfCapEntryToEdit);
+            }
         }
+
         model.updateFilteredModuleSemesterList(Model.PREDICATE_SHOW_ALL_MODULE_SEMESTERS);
 
         model.commitAddressBook();
