@@ -26,11 +26,8 @@
             <Region fx:constant="USE_PREF_SIZE" />
           </minWidth>
         </Label>
-        <Label fx:id="homeworkName" styleClass="cell_big_label" text="\$homeworkName" />
+        <Label fx:id="moduleCodeLabel" styleClass="cell_big_label" text="\$ModuleCode" />
       </HBox>
-      <FlowPane fx:id="tags" />
-      <Label fx:id="moduleCode" styleClass="cell_small_label" text="\$moduleCode" />
-      <Label fx:id="deadline" styleClass="cell_small_label" text="\$deadline" />
     </VBox>
       <rowConstraints>
          <RowConstraints />

@@ -1,6 +1,7 @@
 package seedu.ultistudent.logic.commands;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 import static seedu.ultistudent.logic.parser.CliSyntax.PREFIX_ADDRESS;
 import static seedu.ultistudent.logic.parser.CliSyntax.PREFIX_EMAIL;
@@ -21,6 +22,8 @@ import seedu.ultistudent.model.cap.CapEntry;
 import seedu.ultistudent.model.cap.ModuleCodeContainsKeywordsPredicate;
 import seedu.ultistudent.model.homework.Homework;
 import seedu.ultistudent.model.homework.HomeworkNameContainsKeywordsPredicate;
+import seedu.ultistudent.model.note.Note;
+import seedu.ultistudent.model.note.NoteNameContainsKeywordsPredicate;
 import seedu.ultistudent.model.person.NameContainsKeywordsPredicate;
 import seedu.ultistudent.model.person.Person;
 
@@ -152,6 +155,20 @@ public class CommandTestUtil {
     }
 
     /**
+     * Updates {@code model}'s filtered list to show only the note at the given {@code targetIndex} in the
+     * {@code model}'s UltiStudent.
+     */
+    public static void showNoteAtIndex(Model model, Index targetIndex) {
+        assertTrue(targetIndex.getZeroBased() < model.getFilteredNoteList().size());
+
+        Note note = model.getFilteredNoteList().get(targetIndex.getZeroBased());
+        final String[] splitName = ((Note) note).getNoteName().noteName.split("\\s+");
+        model.updateFilteredNoteList(new NoteNameContainsKeywordsPredicate(Arrays.asList(splitName[0])));
+
+        assertEquals(1, model.getFilteredNoteList().size());
+    }
+
+    /**
      * Updates {@code model}'s filtered list to show only the homework at the given {@code targetIndex} in the
      * {@code model}'s UltiStudent.
      */
@@ -188,4 +205,47 @@ public class CommandTestUtil {
         model.commitAddressBook();
     }
 
+    /**
+     * Update model's selected note to the note given at targetIndex in the model's UltiStudent.
+     * @param model
+     * @param targetIndex
+     */
+    public static void selectNoteAtIndex(Model model, Index targetIndex) {
+        assertTrue(targetIndex.getZeroBased() < model.getFilteredNoteList().size());
+
+        Note note = model.getFilteredNoteList().get(targetIndex.getZeroBased());
+        model.setSelectedNote(note);
+
+        assertNotNull(model.getSelectedNote());
+    }
+
+    /**
+     * Executes the given {@code command}, confirms that <br>
+     * - a {@code CommandException} is thrown <br>
+     * - the CommandException message matches {@code expectedMessage} <br>
+     * - the UltiStudent, filtered person list and selected person in {@code actualModel} remain unchanged <br>
+     * - {@code actualCommandHistory} remains unchanged.
+     */
+    public static void assertNoteCommandFailure(Command command, Model actualModel,
+                                                CommandHistory actualCommandHistory,
+                                                String expectedMessage) {
+        // we are unable to defensively copy the model for comparison later, so we can
+        // only do so by copying its components.
+        AddressBook expectedAddressBook = new AddressBook(actualModel.getAddressBook());
+        List<Note> expectedFilteredList = new ArrayList<>(actualModel.getFilteredNoteList());
+        Note expectedSelectedNote = actualModel.getSelectedNote();
+
+        CommandHistory expectedCommandHistory = new CommandHistory(actualCommandHistory);
+
+        try {
+            command.execute(actualModel, actualCommandHistory);
+            throw new AssertionError("The expected CommandException was not thrown.");
+        } catch (CommandException e) {
+            assertEquals(expectedMessage, e.getMessage());
+            assertEquals(expectedAddressBook, actualModel.getAddressBook());
+            assertEquals(expectedFilteredList, actualModel.getFilteredNoteList());
+            assertEquals(expectedSelectedNote, actualModel.getSelectedNote());
+            assertEquals(expectedCommandHistory, actualCommandHistory);
+        }
+    }
 }

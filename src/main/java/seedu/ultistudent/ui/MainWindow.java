@@ -40,6 +40,7 @@ public class MainWindow extends UiPart<Stage> {
     private NotesManagerMainPanel notesManagerMainPanel;
     private CapManagerMainPanel capManagerMainPanel;
 
+    private HomeworkManagerSubPanel homeworkManagerSubPanel;
     private NotesManagerSubPanel notesManagerSubPanel;
     private CapManagerSubPanel capManagerSubPanel;
 
@@ -231,7 +232,6 @@ public class MainWindow extends UiPart<Stage> {
      */
     @FXML
     public void handleSwitchToHomeworkManager() {
-        //TODO: handles the setting up of HomeworkManager view
         dimAllIcons();
         iconListPanel.setHomeworkManagerIconBrightness(0.8);
 
@@ -241,6 +241,7 @@ public class MainWindow extends UiPart<Stage> {
         homeworkManagerMainPanel = new HomeworkManagerMainPanel(logic.getFilteredHomeworkList(),
                                                               logic.selectedHomeworkProperty(),
                                                               logic::setSelectedHomework);
+        //TODO
         mainPanelPlaceholder.getChildren().add(homeworkManagerMainPanel.getRoot());
     }
 
@@ -249,7 +250,6 @@ public class MainWindow extends UiPart<Stage> {
      */
     @FXML
     public void handleSwitchToNotesManager() {
-        //TODO: handles the setting up of NotesManager view
         dimAllIcons();
         iconListPanel.setNotesManagerIconBrightness(0.8);
 
@@ -269,7 +269,6 @@ public class MainWindow extends UiPart<Stage> {
      */
     @FXML
     public void handleSwitchToCapsManager() {
-        //TODO: handles the setting up of CapCalculator view
         dimAllIcons();
         iconListPanel.setCapManagerIconBrightness(0.8);
 
