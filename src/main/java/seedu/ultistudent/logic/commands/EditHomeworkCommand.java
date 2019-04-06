@@ -89,7 +89,7 @@ public class EditHomeworkCommand extends Command {
             int numHomeworkWithSameModuleCode = 0;
             for (int i = 0; i < afterEditList.size(); i++) {
                 if (afterEditList.get(i).getModuleCode().equals(moduleCodeOfHomeworkToEdit)) {
-                   numHomeworkWithSameModuleCode++;
+                    numHomeworkWithSameModuleCode++;
                 }
             }
             if (numHomeworkWithSameModuleCode == 0) {
