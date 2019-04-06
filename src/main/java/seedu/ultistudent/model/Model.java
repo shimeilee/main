@@ -9,6 +9,7 @@ import seedu.ultistudent.commons.core.GuiSettings;
 import seedu.ultistudent.model.cap.CapEntry;
 import seedu.ultistudent.model.cap.ModuleSemester;
 import seedu.ultistudent.model.homework.Homework;
+import seedu.ultistudent.model.modulecode.ModuleCode;
 import seedu.ultistudent.model.note.Note;
 import seedu.ultistudent.model.person.Person;
 
@@ -24,6 +25,7 @@ public interface Model {
     Predicate<Homework> PREDICATE_SHOW_ALL_HOMEWORK = unused -> true;
     Predicate<Note> PREDICATE_SHOW_ALL_NOTES = unused -> true;
     Predicate<ModuleSemester> PREDICATE_SHOW_ALL_MODULE_SEMESTERS = unused -> true;
+    Predicate<ModuleCode> PREDICATE_SHOW_ALL_MODULE_CODE = unused -> true;
 
     /**
      * Replaces user prefs data with the data in {@code userPrefs}.
@@ -311,6 +313,62 @@ public interface Model {
      */
     void setSelectedHomework(Homework homework);
 
+    //=========== Module Code ===========================================================================
+
+    /**
+     * Returns true if a cap entry with the same identity as {@code capEntry} exists in the UltiStudent.
+     */
+    boolean hasModuleCode(ModuleCode moduleCode);
+
+    /**
+     * Deletes the given cap entry.
+     * The cap entry must exist in the UltiStudent.
+     */
+    void deleteModuleCode(ModuleCode target);
+
+    /**
+     * Adds the given cap entry.
+     * {@code codeEntry} must not already exist in the UltiStudent.
+     */
+    void addModuleCode(ModuleCode moduleCode);
+
+    /**
+     * Replaces the given cap entry {@code target} with {@code edited}.
+     * {@code target} must exist in the UltiStudent.
+     * The cap entry identity of {@code editedCapEntry} must not be the same as another existing module code
+     * in the UltiStudent.
+     */
+    void setModuleCode(ModuleCode target, ModuleCode editedModuleCode);
+
+    /**
+     * Returns an unmodifiable view of the filtered module code list
+     */
+    ObservableList<ModuleCode> getFilteredModuleCodeList();
+
+    /**
+     * Updates the filter of the filtered module code list to filter by the given {@code predicate}.
+     *
+     * @throws NullPointerException if {@code predicate} is null.
+     */
+    void updateFilteredModuleCodeList(Predicate<ModuleCode> predicate);
+
+    /**
+     * Selected cap entry in the filtered module code list.
+     * null if no cap entry is selected.
+     */
+    ReadOnlyProperty<ModuleCode> selectedModuleCodeProperty();
+
+    /**
+     * Returns the selected cap entry in the filtered module code list.
+     * null if no cap entry is selected.
+     */
+    ModuleCode getSelectedModuleCode();
+
+    /**
+     * Sets the selected cap entry in the filtered module code list.
+     */
+    void setSelectedModuleCode(ModuleCode moduleCode);
+
     //=========== Notes ===================================================
 
     /**
@@ -368,4 +426,5 @@ public interface Model {
      * Sets the selected note in the filtered note list.
      */
     void setSelectedNote(Note note);
+
 }

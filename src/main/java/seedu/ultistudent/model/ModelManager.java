@@ -4,7 +4,6 @@ import static java.util.Objects.requireNonNull;
 import static seedu.ultistudent.commons.util.CollectionUtil.requireAllNonNull;
 
 import java.nio.file.Path;
-import java.util.Objects;
 import java.util.function.Predicate;
 import java.util.logging.Logger;
 
@@ -21,6 +20,8 @@ import seedu.ultistudent.model.cap.exceptions.CapEntryNotFoundException;
 import seedu.ultistudent.model.cap.exceptions.ModuleSemesterNotFoundException;
 import seedu.ultistudent.model.homework.Homework;
 import seedu.ultistudent.model.homework.exceptions.HomeworkNotFoundException;
+import seedu.ultistudent.model.homework.exceptions.ModuleCodeNotFoundException;
+import seedu.ultistudent.model.modulecode.ModuleCode;
 import seedu.ultistudent.model.note.Note;
 import seedu.ultistudent.model.note.exceptions.NoteNotFoundException;
 import seedu.ultistudent.model.person.Person;
@@ -44,6 +45,9 @@ public class ModelManager implements Model {
     private final SimpleObjectProperty<Note> selectedNote = new SimpleObjectProperty<>();
     private final FilteredList<ModuleSemester> filteredModuleSemesterList;
     private final SimpleObjectProperty<ModuleSemester> selectedModuleSemester = new SimpleObjectProperty<>();
+    private final FilteredList<ModuleCode> filteredModuleCodeList;
+    private final SimpleObjectProperty<ModuleCode> selectedModuleCode = new SimpleObjectProperty<>();
+
 
     /**
      * Initializes a ModelManager with the given addressBook and userPrefs.
@@ -66,6 +70,8 @@ public class ModelManager implements Model {
         filteredNoteList.addListener(this::ensureSelectedNoteIsValid);
         filteredModuleSemesterList = new FilteredList<>(versionedAddressBook.getModuleSemesterList());
         filteredModuleSemesterList.addListener(this::ensureSelectedModuleSemesterIsValid);
+        filteredModuleCodeList = new FilteredList<>(versionedAddressBook.getModuleCodeList());
+        filteredModuleCodeList.addListener(this::ensureSelectedModuleCodeIsValid);
     }
 
     public ModelManager() {
@@ -503,6 +509,96 @@ public class ModelManager implements Model {
         }
     }
 
+    //====================== Module Code List ========================================
+
+    @Override
+    public boolean hasModuleCode(ModuleCode moduleCode) {
+        requireNonNull(moduleCode);
+        return versionedAddressBook.hasModuleCode(moduleCode);
+    }
+
+    @Override
+    public void deleteModuleCode(ModuleCode target) {
+        requireNonNull(target);
+        versionedAddressBook.removeModuleCode(target);
+    }
+
+    @Override
+    public void addModuleCode(ModuleCode moduleCode) {
+        versionedAddressBook.addModuleCode(moduleCode);
+        updateFilteredModuleCodeList(PREDICATE_SHOW_ALL_MODULE_CODE);
+    }
+
+    @Override
+    public void setModuleCode(ModuleCode target, ModuleCode editedModuleCode) {
+        requireAllNonNull(target, editedModuleCode);
+
+        versionedAddressBook.setModuleCode(target, editedModuleCode);
+    }
+
+    /**
+     * Returns an unmodifiable view of the list of {@code Person} backed by the internal list of
+     * {@code versionedAddressBook}
+     */
+    @Override
+    public ObservableList<ModuleCode> getFilteredModuleCodeList() {
+        return filteredModuleCodeList;
+    }
+
+    @Override
+    public void updateFilteredModuleCodeList(Predicate<ModuleCode> predicate) {
+        requireNonNull(predicate);
+        filteredModuleCodeList.setPredicate(predicate);
+    }
+
+    @Override
+    public ReadOnlyProperty<ModuleCode> selectedModuleCodeProperty() {
+        return selectedModuleCode;
+    }
+
+    @Override
+    public ModuleCode getSelectedModuleCode() {
+        return selectedModuleCode.getValue();
+    }
+
+    @Override
+    public void setSelectedModuleCode(ModuleCode moduleCode) {
+        if (moduleCode != null && !filteredModuleSemesterList.contains(moduleCode)) {
+            throw new ModuleCodeNotFoundException();
+        }
+        selectedModuleCode.setValue(moduleCode);
+    }
+
+    /**
+     * Ensures {@code selectedCapEntry} is a valid cap entry in {@code filteredCapEntryList}.
+     */
+    private void ensureSelectedModuleCodeIsValid(ListChangeListener.Change<? extends ModuleCode> change) {
+        while (change.next()) {
+            if (selectedModuleCode.getValue() == null) {
+                // null is always a valid selected person, so we do not need to check that it is valid anymore.
+                return;
+            }
+
+            boolean wasSelectedModuleCodeReplaced = change.wasReplaced() && change.getAddedSize()
+                    == change.getRemovedSize() && change.getRemoved().contains(selectedModuleCode.getValue());
+            if (wasSelectedModuleCodeReplaced) {
+                // Update selectedPerson to its new value.
+                int index = change.getRemoved().indexOf(selectedModuleCode.getValue());
+                selectedModuleCode.setValue(change.getAddedSubList().get(index));
+                continue;
+            }
+
+            boolean wasSelectedModuleCodeRemoved = change.getRemoved().stream()
+                    .anyMatch(removedModuleCode -> selectedModuleCode.getValue().equals(removedModuleCode));
+            if (wasSelectedModuleCodeRemoved) {
+                // Select the person that came before it in the list,
+                // or clear the selection if there is no such person.
+                selectedModuleCode.setValue(change.getFrom() > 0 ? change.getList().get(change.getFrom() - 1)
+                        : null);
+            }
+        }
+    }
+
     // ======================= Notes Manager ==================================
     @Override
     public boolean hasNote(Note note) {
@@ -619,7 +715,6 @@ public class ModelManager implements Model {
                 && userPrefs.equals(other.userPrefs)
                 && filteredPersons.equals(other.filteredPersons)
                 && filteredCapEntryList.equals(other.filteredCapEntryList)
-                && filteredHomeworkList.equals(other.filteredHomeworkList)
-                && Objects.equals(selectedPerson.get(), other.selectedPerson.get());
+                && filteredHomeworkList.equals(other.filteredHomeworkList);
     }
 }

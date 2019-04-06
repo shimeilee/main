@@ -5,6 +5,7 @@ import javafx.collections.ObservableList;
 import seedu.ultistudent.model.cap.CapEntry;
 import seedu.ultistudent.model.cap.ModuleSemester;
 import seedu.ultistudent.model.homework.Homework;
+import seedu.ultistudent.model.modulecode.ModuleCode;
 import seedu.ultistudent.model.note.Note;
 import seedu.ultistudent.model.person.Person;
 
@@ -42,5 +43,11 @@ public interface ReadOnlyAddressBook extends Observable {
      * This list will not contain any duplicate homework.
      */
     ObservableList<Note> getNoteList();
+
+    /**
+     * Returns an unmodifiable view of the module code list.
+     * This list will not contain any duplicate module code.
+     */
+    ObservableList<ModuleCode> getModuleCodeList();
 
 }
