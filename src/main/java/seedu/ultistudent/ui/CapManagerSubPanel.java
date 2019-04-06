@@ -54,7 +54,8 @@ public class CapManagerSubPanel extends UiPart<Region> {
     }
 
     /**
-     * Custom {@code ListCell} that displays the graphics of a {@code ModuleSemester} using a {@code ModuleSemesterCard}.
+     * Custom {@code ListCell} that displays the graphics of a {@code ModuleSemester}
+     * using a {@code ModuleSemesterCard}.
      */
     class ModuleSemesterListViewCell extends ListCell<ModuleSemester> {
         @Override
