@@ -12,20 +12,18 @@ public class Content {
             + "blank";
 
     /*
-     * The first character of the ultistudent must not be a whitespace,
+     * The first character of the UltiStudent must not be a whitespace,
      * otherwise " " (a blank string) becomes a valid input.
      */
-    //public static final String VALIDATION_REGEX = "[\\p{Alnum}][\\p{Alnum}
-    // ]*";
+    public static final String VALIDATION_REGEX = "^(?!\\s*$)[-a-zA-Z0-9_:,.' ']{1,100}$";
 
     public final String content;
 
     /**
-     * Constructs a {@code Name}.
+     * Constructs a {@code Content}.
      *
-     * @param content A valid name.
+     * @param content A valid content.
      */
-    // Todo: amend content to accept string by string. Use string builder.
     public Content(String content) {
         requireNonNull(content);
         //checkArgument(isValidNoteContent(content), MESSAGE_CONSTRAINTS);
@@ -35,9 +33,9 @@ public class Content {
     /**
      * Returns true if a given string is a valid content string.
      */
-    //public static boolean isValidNoteContent(String test) {
-    //return test.matches(VALIDATION_REGEX);
-    // }
+    public static boolean isValidNoteContent(String test) {
+        return test.matches(VALIDATION_REGEX);
+    }
 
 
     @Override

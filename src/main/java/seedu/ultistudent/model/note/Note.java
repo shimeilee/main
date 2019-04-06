@@ -19,7 +19,6 @@ public class Note {
 
     // Data fields
     private Content content;
-    //private Tag tag;
 
     /**
      * Every field must be present and not null.
@@ -29,7 +28,6 @@ public class Note {
         requireAllNonNull(moduleCode, noteName, content);
         this.moduleCode = moduleCode;
         this.noteName = noteName;
-        //this.tag = tag;
         this.content = content;
     }
 

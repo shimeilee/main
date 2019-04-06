@@ -1,4 +1,4 @@
-= Ng Wei Xin - Project Portfolio
+= Lim Zheng Jie Benjamin - Project Portfolio
 :site-section: AboutUs
 :imagesDir: ../images
 :stylesDir: ../stylesheets
