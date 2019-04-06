@@ -14,7 +14,7 @@ import seedu.ultistudent.commons.core.LogsCenter;
 import seedu.ultistudent.model.note.Note;
 
 /**
- * Panel containing the list of persons.
+ * Panel containing the list of Notes.
  */
 public class NotesManagerSubPanel extends UiPart<Region> {
     private static final String FXML = "NotesManagerSubPanel.fxml";

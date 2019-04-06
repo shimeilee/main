@@ -14,7 +14,7 @@ public class SaveNoteCommand extends Command {
     public static final String COMMAND_WORD = "save-note";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Saves the current selected note.\n"
-            + "There is no parameters for saveNote. "
+            + "There is no parameters for save-note. "
             + "Error will be prompt if there's no selected note.";
 
     public static final String MESSAGE_SAVE_NOTE_SUCCESS = "Saved note, %s";

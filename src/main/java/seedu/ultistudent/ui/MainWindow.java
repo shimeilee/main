@@ -40,6 +40,7 @@ public class MainWindow extends UiPart<Stage> {
     private NotesManagerMainPanel notesManagerMainPanel;
     private CapManagerMainPanel capManagerMainPanel;
 
+    private HomeworkManagerSubPanel homeworkManagerSubPanel;
     private NotesManagerSubPanel notesManagerSubPanel;
     private CapManagerSubPanel capManagerSubPanel;
 
@@ -241,6 +242,7 @@ public class MainWindow extends UiPart<Stage> {
         homeworkManagerMainPanel = new HomeworkManagerMainPanel(logic.getFilteredHomeworkList(),
                                                               logic.selectedHomeworkProperty(),
                                                               logic::setSelectedHomework);
+        //TODO
         mainPanelPlaceholder.getChildren().add(homeworkManagerMainPanel.getRoot());
     }
 

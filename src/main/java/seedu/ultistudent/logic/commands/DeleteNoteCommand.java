@@ -24,7 +24,7 @@ public class DeleteNoteCommand extends Command {
             + "Parameters: INDEX (must be a positive integer)\n"
             + "Example: " + COMMAND_WORD + " 1";
 
-    public static final String MESSAGE_DELETE_NOTE_SUCCESS = "Deleted Cap Entry: %1$s";
+    public static final String MESSAGE_DELETE_NOTE_SUCCESS = "Deleted Note: %1$s";
 
     private final Index targetIndex;
 
