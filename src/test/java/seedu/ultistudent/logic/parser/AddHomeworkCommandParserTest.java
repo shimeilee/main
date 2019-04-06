@@ -29,7 +29,7 @@ public class AddHomeworkCommandParserTest {
     }
 
     @Test
-    public void parse_invalidMCFormatArgs_throwsParseException() {
+    public void parse_invalidMcFormatArgs_throwsParseException() {
         assertParseFailure(parser,
                 "mc/CSqqqqT hw/Tutorial 5 d/15/05/2019.",
                 String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddHomeworkCommand.MESSAGE_USAGE));

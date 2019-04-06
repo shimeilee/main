@@ -13,31 +13,31 @@ import seedu.ultistudent.model.homework.Homework;
 public class TypicalHomework {
 
     public static final Homework HOMEWORK_FIRST = new HomeworkBuilder().withModuleCode("CS2103T")
-            .withHomeworkName("Demo Script Draft").withDeadline("15/03/2019")
+            .withHomeworkName("Demo Script Draft").withDeadline("15/05/2019")
             .build();
     public static final Homework HOMEWORK_SECOND = new HomeworkBuilder().withModuleCode("CS2101")
-            .withHomeworkName("Oral Presentation 1").withDeadline("17/03/2019")
+            .withHomeworkName("Oral Presentation 1").withDeadline("17/05/2019")
             .build();
 
     public static final Homework HOMEWORK_THIRD = new HomeworkBuilder().withModuleCode("CS2103T")
-            .withHomeworkName("Milestone2").withDeadline("19/03/2019")
+            .withHomeworkName("Milestone2").withDeadline("19/05/2019")
             .build();
     public static final Homework HOMEWORK_FOURTH = new HomeworkBuilder().withModuleCode("CS2103T")
-            .withHomeworkName("Milestone3").withDeadline("02/04/2019")
+            .withHomeworkName("Milestone3").withDeadline("02/05/2019")
             .build();
     public static final Homework HOMEWORK_FIFTH = new HomeworkBuilder().withModuleCode("CS3243")
-            .withHomeworkName("Tutorial7").withDeadline("21/03/2019")
+            .withHomeworkName("Tutorial7").withDeadline("21/05/2019")
             .build();
     public static final Homework HOMEWORK_SIXTH = new HomeworkBuilder().withModuleCode("CS3243")
-            .withHomeworkName("Assignment1").withDeadline("22/03/2019")
+            .withHomeworkName("Assignment1").withDeadline("22/05/2019")
             .build();
     public static final Homework HOMEWORK_SEVENTH = new HomeworkBuilder().withModuleCode("CS2101")
-            .withHomeworkName("User Guide Peer Review").withDeadline("23/03/2019")
+            .withHomeworkName("User Guide Peer Review").withDeadline("23/05/2019")
             .build();
 
     // Manually added
     public static final Homework HOMEWORK_EIGHTH = new HomeworkBuilder().withModuleCode("CS2103T")
-            .withHomeworkName("Milestone 4").withDeadline("03/04/2019")
+            .withHomeworkName("Milestone 4").withDeadline("03/05/2019")
             .build();
     public static final Homework HOMEWORK_NINETH = new HomeworkBuilder().withModuleCode("CS2103T")
             .withHomeworkName("Milestone 5").withDeadline("04/05/2019")

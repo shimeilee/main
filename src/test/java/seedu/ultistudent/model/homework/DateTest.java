@@ -36,9 +36,9 @@ public class DateTest {
 
 
         // valid module codes
-        assertTrue(Date.isValidDate("01/01/2019"));
-        assertTrue(Date.isValidDate("01/1/2019")); // single digit for month
-        assertTrue(Date.isValidDate("1/01/2019")); // single digit for day
+        assertTrue(Date.isValidDate("01/01/2020"));
+        assertTrue(Date.isValidDate("01/1/2020")); // single digit for month
+        assertTrue(Date.isValidDate("1/01/2020")); // single digit for day
 
     }
 }
