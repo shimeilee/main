@@ -245,6 +245,7 @@ public class MainWindow extends UiPart<Stage> {
                                                               logic.selectedModuleCodeProperty(),
                                                               logic::setSelectedModuleCode);
         mainPanelPlaceholder.getChildren().add(homeworkManagerMainPanel.getRoot());
+        subPanelPlaceholder.getChildren().add(homeworkManagerSubPanel.getRoot());
     }
 
     /**
