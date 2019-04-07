@@ -140,4 +140,6 @@ public interface Logic {
     void setSelectedNote(Note note);
 
     void setSelectedModuleSemester (ModuleSemester moduleSemester);
+
+    void setSelectedModuleCode (ModuleCode moduleCode);
 }

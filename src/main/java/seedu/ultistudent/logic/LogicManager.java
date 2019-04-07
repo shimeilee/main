@@ -180,4 +180,9 @@ public class LogicManager implements Logic {
     public void setSelectedNote(Note note) {
         model.setSelectedNote(note);
     }
+
+    @Override
+    public void setSelectedModuleCode(ModuleCode moduleCode) {
+        model.setSelectedModuleCode(moduleCode);
+    }
 }

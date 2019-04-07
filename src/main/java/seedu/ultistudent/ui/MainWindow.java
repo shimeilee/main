@@ -241,7 +241,9 @@ public class MainWindow extends UiPart<Stage> {
         homeworkManagerMainPanel = new HomeworkManagerMainPanel(logic.getFilteredHomeworkList(),
                                                               logic.selectedHomeworkProperty(),
                                                               logic::setSelectedHomework);
-        //TODO
+        homeworkManagerSubPanel = new HomeworkManagerSubPanel(logic.getFilteredModuleCodeList(),
+                                                              logic.selectedModuleCodeProperty(),
+                                                              logic::setSelectedModuleCode);
         mainPanelPlaceholder.getChildren().add(homeworkManagerMainPanel.getRoot());
     }
 
