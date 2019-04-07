@@ -118,6 +118,7 @@ class JsonSerializableAddressBook {
             if (addressBook.hasModuleCode(moduleCode)) {
                 throw new IllegalValueException((MESSAGE_DUPLICATE_MODULE_CODE));
             }
+            addressBook.addModuleCode(moduleCode);
         }
 
         return addressBook;
