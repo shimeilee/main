@@ -18,6 +18,7 @@ import seedu.ultistudent.model.ReadOnlyAddressBook;
 import seedu.ultistudent.model.cap.CapEntry;
 import seedu.ultistudent.model.cap.ModuleSemester;
 import seedu.ultistudent.model.homework.Homework;
+import seedu.ultistudent.model.modulecode.ModuleCode;
 import seedu.ultistudent.model.note.Note;
 import seedu.ultistudent.model.person.Person;
 import seedu.ultistudent.storage.Storage;
@@ -88,6 +89,16 @@ public class LogicManager implements Logic {
     @Override
     public ObservableList<ModuleSemester> getFilteredModuleSemesterList() {
         return model.getFilteredModuleSemesterList();
+    }
+
+    @Override
+    public ObservableList<ModuleCode> getFilteredModuleCodeList() {
+        return model.getFilteredModuleCodeList();
+    }
+
+    @Override
+    public ReadOnlyProperty<ModuleCode> selectedModuleCodeProperty() {
+        return model.selectedModuleCodeProperty();
     }
 
     @Override
