@@ -10,7 +10,7 @@ import seedu.ultistudent.model.modulecode.ModuleCode;
  * Jackson-friendly version of {@link seedu.ultistudent.model.modulecode.ModuleCode}.
  */
 public class JsonAdaptedModuleCode {
-    public static final String MISSING_FIELD_MESSAGE_FORMAT = "Cap Entry's %s field is missing!";
+    public static final String MISSING_FIELD_MESSAGE_FORMAT = "Module Code's %s field is missing!";
 
     private final String moduleCode;
 
