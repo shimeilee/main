@@ -244,7 +244,7 @@ public class ModelManager implements Model {
         }
     }
 
-    //====================== CapManager ========================================
+    //====================== CapManager =====================================================================
 
     @Override
     public boolean hasCapEntry(CapEntry capEntry) {
@@ -271,7 +271,7 @@ public class ModelManager implements Model {
     }
 
     /**
-     * Returns an unmodifiable view of the list of {@code Person} backed by the internal list of
+     * Returns an unmodifiable view of the list of {@code CapEntry} backed by the internal list of
      * {@code versionedAddressBook}
      */
     @Override
@@ -309,14 +309,14 @@ public class ModelManager implements Model {
     private void ensureSelectedCapEntryIsValid(ListChangeListener.Change<? extends CapEntry> change) {
         while (change.next()) {
             if (selectedCapEntry.getValue() == null) {
-                // null is always a valid selected person, so we do not need to check that it is valid anymore.
+                // null is always a valid selected cap entry, so we do not need to check that it is valid anymore.
                 return;
             }
 
             boolean wasSelectedCapEntryReplaced = change.wasReplaced() && change.getAddedSize()
                     == change.getRemovedSize() && change.getRemoved().contains(selectedCapEntry.getValue());
             if (wasSelectedCapEntryReplaced) {
-                // Update selectedPerson to its new value.
+                // Update selectedCapEntry to its new value.
                 int index = change.getRemoved().indexOf(selectedCapEntry.getValue());
                 selectedCapEntry.setValue(change.getAddedSubList().get(index));
                 continue;
@@ -325,13 +325,13 @@ public class ModelManager implements Model {
             boolean wasSelectedCapEntryRemoved = change.getRemoved().stream()
                     .anyMatch(removedCapEntry -> selectedCapEntry.getValue().isSameCapEntry(removedCapEntry));
             if (wasSelectedCapEntryRemoved) {
-                // Select the person that came before it in the list,
-                // or clear the selection if there is no such person.
+                // Select the cap entry that came before it in the list,
+                // or clear the selection if there is no such cap entry.
                 selectedCapEntry.setValue(change.getFrom() > 0 ? change.getList().get(change.getFrom() - 1) : null);
             }
         }
     }
-    //====================== Module Semester List ========================================
+    //====================== Module Semester List ===========================================================
 
     @Override
     public boolean hasModuleSemester(ModuleSemester moduleSemester) {
@@ -358,7 +358,7 @@ public class ModelManager implements Model {
     }
 
     /**
-     * Returns an unmodifiable view of the list of {@code Person} backed by the internal list of
+     * Returns an unmodifiable view of the list of {@code ModuleSemester} backed by the internal list of
      * {@code versionedAddressBook}
      */
     @Override
@@ -396,14 +396,14 @@ public class ModelManager implements Model {
     private void ensureSelectedModuleSemesterIsValid(ListChangeListener.Change<? extends ModuleSemester> change) {
         while (change.next()) {
             if (selectedModuleSemester.getValue() == null) {
-                // null is always a valid selected person, so we do not need to check that it is valid anymore.
+                // null is always a valid selected module semester, so we do not need to check that it is valid anymore.
                 return;
             }
 
             boolean wasSelectedModuleSemesterReplaced = change.wasReplaced() && change.getAddedSize()
                     == change.getRemovedSize() && change.getRemoved().contains(selectedModuleSemester.getValue());
             if (wasSelectedModuleSemesterReplaced) {
-                // Update selectedPerson to its new value.
+                // Update selectedModuleSemester to its new value.
                 int index = change.getRemoved().indexOf(selectedModuleSemester.getValue());
                 selectedModuleSemester.setValue(change.getAddedSubList().get(index));
                 continue;
@@ -412,8 +412,8 @@ public class ModelManager implements Model {
             boolean wasSelectedModuleSemsterRemoved = change.getRemoved().stream()
                     .anyMatch(removedModuleSemester -> selectedModuleSemester.getValue().equals(removedModuleSemester));
             if (wasSelectedModuleSemsterRemoved) {
-                // Select the person that came before it in the list,
-                // or clear the selection if there is no such person.
+                // Select the module semester that came before it in the list,
+                // or clear the selection if there is no such module semester.
                 selectedModuleSemester.setValue(change.getFrom() > 0 ? change.getList().get(change.getFrom() - 1)
                         : null);
             }
