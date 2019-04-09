@@ -4,6 +4,7 @@ import static java.util.Objects.requireNonNull;
 import static seedu.ultistudent.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.ultistudent.logic.commands.EditHomeworkCommand.MESSAGE_NOT_EDITED;
 import static seedu.ultistudent.logic.commands.EditHomeworkCommand.MESSAGE_USAGE;
+import static seedu.ultistudent.logic.parser.CliSyntax.HOMEWORK_MANAGER;
 import static seedu.ultistudent.logic.parser.CliSyntax.PREFIX_DEADLINE;
 import static seedu.ultistudent.logic.parser.CliSyntax.PREFIX_HOMEWORK;
 import static seedu.ultistudent.logic.parser.CliSyntax.PREFIX_MODULECODE;
@@ -18,6 +19,7 @@ import seedu.ultistudent.logic.commands.EditHomeworkCommand.EditHomeworkDescript
 import seedu.ultistudent.logic.commands.EditHomeworkCommand;
 import seedu.ultistudent.logic.parser.exceptions.ParseException;
 import seedu.ultistudent.model.tag.Tag;
+import seedu.ultistudent.ui.StatusBarFooter;
 
 /**
  * Parses input arguments and creates a new EditHomeworkCommand object
@@ -36,6 +38,10 @@ public class EditHomeworkCommandParser implements Parser<EditHomeworkCommand> {
                 ArgumentTokenizer.tokenize(args, PREFIX_MODULECODE, PREFIX_HOMEWORK, PREFIX_DEADLINE);
 
         Index index;
+
+        if (!StatusBarFooter.getCurrentManagerStatus().equals(HOMEWORK_MANAGER)) {
+            throw new ParseException("Please open Homework Manager before using 'edit-hw' command.");
+        }
 
         try {
             index = ParserUtil.parseIndex(argMultimap.getPreamble());
