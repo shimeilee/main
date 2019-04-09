@@ -7,6 +7,7 @@ import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextArea;
+import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Region;
 import seedu.ultistudent.commons.core.LogsCenter;
@@ -28,7 +29,7 @@ public class NotesManagerMainPanel extends UiPart<Region> {
         // To prevent triggering events for typing inside
         getRoot().setOnKeyPressed(Event::consume);
         if (selectedNote.getValue() == null) {
-            notesText.setDisable(true);
+            disableTextArea();
         }
 
         // Load note page when selected note changes
@@ -47,19 +48,42 @@ public class NotesManagerMainPanel extends UiPart<Region> {
      * @param note
      */
     private void loadNotesPage (Note note) {
-        notesText.setDisable(false);
+        enableTextArea();
         notesText.setText(note.getContent().toString());
-        notesText.addEventFilter(KeyEvent.KEY_TYPED, new EventHandler<KeyEvent>() {
+
+        notesText.addEventFilter(KeyEvent.KEY_PRESSED, new EventHandler<KeyEvent>() {
             @Override
             public void handle(KeyEvent event) {
-                String content = note.getContent().content;
-                content += event.getCharacter();
+                String content = notesText.getText();
+                if (event.getCode().equals(KeyCode.ENTER)) {
+                    content += '\n';
+                } else if (event.isAltDown() || event.isShortcutDown() || event.isShortcutDown()) {
+                    // Do Nothing
+                } else if (event.getCode().equals(KeyCode.BACK_SPACE)) {
+                    if (content.length() > 0) {
+                        content = content.substring(0, content.length() - 1);
+                    } else {
+                        content = "";
+                    }
+                } else {
+                    content += event.getText();
+                }
                 note.setContent(content);
             }
         });
     }
 
+    private void disableTextArea() {
+        notesText.setDisable(true);
+    }
+
+    private void enableTextArea() {
+        notesText.setDisable(false);
+    }
+
     private void loadDefaultNotes () {
         notesText.setPromptText("Key in something");
+        notesText.setText("");
+        disableTextArea();
     }
 }
