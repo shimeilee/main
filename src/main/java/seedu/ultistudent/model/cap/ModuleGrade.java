@@ -5,7 +5,7 @@ import static java.util.Objects.requireNonNull;
 import static seedu.ultistudent.commons.util.AppUtil.checkArgument;
 
 /**
- * Represents a Homework's homework name in UltiStudent
+ * Represents a CapEntry's module grade in UltiStudent
  */
 public class ModuleGrade {
 
@@ -31,7 +31,7 @@ public class ModuleGrade {
     private double score;
 
     /**
-     * Constructs a {@code ModuleCode}.
+     * Constructs a {@code ModuleGrade}.
      * @param moduleGrade a valid moduleGrade
      */
     public ModuleGrade(String moduleGrade) {
@@ -39,6 +39,7 @@ public class ModuleGrade {
         requireNonNull(moduleGrade);
         checkArgument(isValidModuleGrade(capitalisedModuleGrade), MESSAGE_CONSTRAINTS);
         this.value = capitalisedModuleGrade;
+
         switch (capitalisedModuleGrade) {
         case A_PLUS_GRADE: case A_GRADE:
             this.score = 5.0;

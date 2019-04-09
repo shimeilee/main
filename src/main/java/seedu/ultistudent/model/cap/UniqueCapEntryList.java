@@ -40,6 +40,7 @@ public class UniqueCapEntryList implements Iterable<CapEntry> {
 
     /**
      * Adds a capEntry to the list.
+     * Also updates the CapScore
      * The capEntry must not already exist in the list.
      */
     public void add(CapEntry toAdd) {
@@ -47,6 +48,7 @@ public class UniqueCapEntryList implements Iterable<CapEntry> {
         if (contains(toAdd)) {
             throw new DuplicateCapEntryException();
         }
+        CapEntry.updateCapForAdd(toAdd);
         internalList.add(toAdd);
     }
 
@@ -67,15 +69,19 @@ public class UniqueCapEntryList implements Iterable<CapEntry> {
             throw new DuplicateCapEntryException();
         }
 
+        CapEntry.updateCapForDelete(target);
+        CapEntry.updateCapForAdd(editedCapEntry);
         internalList.set(index, editedCapEntry);
     }
 
     /**
      * Removes the equivalent cap entry from the list.
+     * Also updates the CapScore.
      * The cap entry must exist in the list.
      */
     public void remove(CapEntry toRemove) {
         requireNonNull(toRemove);
+        CapEntry.updateCapForDelete(toRemove);
         if (!internalList.remove(toRemove)) {
             throw new CapEntryNotFoundException();
         }
@@ -88,7 +94,8 @@ public class UniqueCapEntryList implements Iterable<CapEntry> {
 
     /**
      * Replaces the contents of this list with {@code capEntries}.
-     * {@code capEntries} must not contain duplicate cap entries.
+     * Also updates the CapScore
+     * {@code capEntryList} must not contain duplicate cap entries.
      */
     public void setCapEntryList(List<CapEntry> capEntryList) {
         requireAllNonNull(capEntryList);
@@ -124,7 +131,7 @@ public class UniqueCapEntryList implements Iterable<CapEntry> {
     }
 
     /**
-     * Returns true if {@code capEntryList} contains only unique persons.
+     * Returns true if {@code capEntryList} contains only unique cap entries.
      */
     private boolean capEntryListIsUnique(List<CapEntry> capEntryList) {
         for (int i = 0; i < capEntryList.size() - 1; i++) {

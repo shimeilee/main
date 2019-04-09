@@ -73,8 +73,8 @@ public class AddressBook implements ReadOnlyAddressBook {
     }
 
     /**
-     * Replaces the contents of the cap entries list with {@code capEntryList}.
-     * {@code capEntryList} must not contain duplicate persons.
+     * Replaces the contents of the cap entries list list with {@code capEntryList}.
+     * {@code capEntryList} must not contain duplicate cap entries.
      */
     public void setCapEntryList(List<CapEntry> capEntryList) {
         this.capEntryList.setCapEntryList(capEntryList);
@@ -82,8 +82,8 @@ public class AddressBook implements ReadOnlyAddressBook {
     }
 
     /**
-     * Replaces the contents of the cap entries list with {@code capEntryList}.
-     * {@code capEntryList} must not contain duplicate persons.
+     * Replaces the contents of the module semesters list with {@code moduleSemesterList}.
+     * {@code moduleSemesterList} must not contain duplicate module semester.
      */
     public void setModuleSemesterList(List<ModuleSemester> moduleSemesterList) {
         this.moduleSemesterList.setModuleSemesterList(moduleSemesterList);
@@ -119,7 +119,7 @@ public class AddressBook implements ReadOnlyAddressBook {
     }
 
     /**
-     * Returns true if a cap entry with the same identity as {@code person} exists in UltiStudent.
+     * Returns true if a cap entry with the same identity as {@code capEntry} exists in UltiStudent.
      */
     public boolean hasCapEntry(CapEntry capEntry) {
         requireNonNull(capEntry);
@@ -161,8 +161,8 @@ public class AddressBook implements ReadOnlyAddressBook {
     }
 
     /**
-     * Adds a cap entry to UltiStudent.
-     * The cap entry must not already exist in UltiStudent.
+     * Adds a module semester to UltiStudent.
+     * The module semester must not already exist in UltiStudent.
      */
     public void addModuleSemester(ModuleSemester moduleSemester) {
         moduleSemesterList.add(moduleSemester);
@@ -195,7 +195,7 @@ public class AddressBook implements ReadOnlyAddressBook {
     /**
      * Replaces the given cap entry {@code target} in the list with {@code editedCapEntry}.
      * {@code target} must exist in the UltiStudent.
-     * The cap entry identity of {@code editedPerson} must not be the same as another existing cap entry in
+     * The cap entry identity of {@code editedCapEntry} must not be the same as another existing cap entry in
      * the UltiStudent.
      */
     public void setCapEntry(CapEntry target, CapEntry editedCapEntry) {
@@ -206,9 +206,9 @@ public class AddressBook implements ReadOnlyAddressBook {
     }
 
     /**
-     * Replaces the given cap entry {@code target} in the list with {@code editedCapEntry}.
+     * Replaces the given cap entry {@code target} in the list with {@code editedModuleSemester}.
      * {@code target} must exist in the UltiStudent.
-     * The cap entry identity of {@code editedPerson} must not be the same as another existing cap entry in
+     * The cap entry identity of {@code editedModuleSemester} must not be the same as another existing cap entry in
      * the UltiStudent.
      */
     public void setModuleSemester(ModuleSemester target, ModuleSemester editedModuleSemester) {
@@ -243,7 +243,7 @@ public class AddressBook implements ReadOnlyAddressBook {
     }
 
     /**
-     * Removes {@code key} from this {@code AddressBook}.
+     * Removes the cap entry, {@code key} from this {@code AddressBook}.
      * {@code key} must exist in the UltiStudent.
      */
     public void removeCapEntry(CapEntry key) {
@@ -252,7 +252,7 @@ public class AddressBook implements ReadOnlyAddressBook {
     }
 
     /**
-     * Removes {@code key} from this {@code AddressBook}.
+     * Removes the module semester. {@code key} from this {@code AddressBook}.
      * {@code key} must exist in the UltiStudent.
      */
     public void removeModuleSemester(ModuleSemester key) {

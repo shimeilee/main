@@ -3,7 +3,7 @@ package seedu.ultistudent.model.cap;
 import static java.util.Objects.requireNonNull;
 
 /**
- * Represents a cap entry's modular credits in the UltiStudent.
+ * Represents a cap entry's modular semester in the UltiStudent.
  */
 public class ModuleSemester {
 
@@ -13,8 +13,8 @@ public class ModuleSemester {
     public final String value;
 
     /**
-     * Constructs a {@code ModuleCredits}.
-     * @param moduleSemester
+     * Constructs a {@code ModuleSemester}.
+     * @param moduleSemester a valid moduleSemester
      */
     public ModuleSemester (String moduleSemester) {
         requireNonNull(moduleSemester);
@@ -22,14 +22,14 @@ public class ModuleSemester {
     }
 
     /**
-     * Returns true if it is a valid ModuleCode
+     * Returns true if it is a valid ModuleSemester
      */
     public static boolean isValidModuleSemester(String test) {
         return test.toUpperCase().matches(VALIDATION_REGEX);
     }
 
     /**
-     * Returns true if it is a valid ModuleCode
+     * Returns the value of the ModuleSemester.
      */
     public String getValue() {
         return this.value;
