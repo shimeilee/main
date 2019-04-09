@@ -3,7 +3,6 @@ package seedu.ultistudent.logic.parser;
 import static java.util.Objects.requireNonNull;
 import static seedu.ultistudent.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.ultistudent.logic.parser.CliSyntax.CAP_MANAGER;
-import static seedu.ultistudent.logic.parser.CliSyntax.NOTES_MANAGER;
 import static seedu.ultistudent.logic.parser.CliSyntax.PREFIX_MODULECODE;
 import static seedu.ultistudent.logic.parser.CliSyntax.PREFIX_MODULECREDITS;
 import static seedu.ultistudent.logic.parser.CliSyntax.PREFIX_MODULEGRADE;
