@@ -2,6 +2,9 @@ package seedu.ultistudent.logic.parser;
 
 import static seedu.ultistudent.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.ultistudent.commons.core.Messages.MESSAGE_UNKNOWN_COMMAND;
+import static seedu.ultistudent.logic.parser.CliSyntax.CAP_MANAGER;
+import static seedu.ultistudent.logic.parser.CliSyntax.HOMEWORK_MANAGER;
+import static seedu.ultistudent.logic.parser.CliSyntax.NOTES_MANAGER;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -33,6 +36,7 @@ import seedu.ultistudent.logic.commands.SaveNoteCommand;
 import seedu.ultistudent.logic.commands.SelectCommand;
 import seedu.ultistudent.logic.commands.UndoCommand;
 import seedu.ultistudent.logic.parser.exceptions.ParseException;
+import seedu.ultistudent.ui.StatusBarFooter;
 
 /**
  * Parses user input.
@@ -92,15 +96,27 @@ public class UltiStudentParser {
             return new EditCommand();
 
         case EditHomeworkCommand.COMMAND_WORD:
+            if (!StatusBarFooter.getCurrentManagerStatus().equals(HOMEWORK_MANAGER)) {
+                throw new ParseException("Please open Homework Manager before using 'edit-hw' command.");
+            }
             return new EditHomeworkCommandParser().parse(arguments);
 
         case EditCapEntryByModuleCodeCommand.COMMAND_WORD:
+            if (!StatusBarFooter.getCurrentManagerStatus().equals(CAP_MANAGER)) {
+                throw new ParseException("Please open Cap Manager before using 'edit-cap-mc' command.");
+            }
             return new EditCapEntryByModuleCodeCommandParser().parse(arguments);
 
         case EditCapEntryCommand.COMMAND_WORD:
+            if (!StatusBarFooter.getCurrentManagerStatus().equals(CAP_MANAGER)) {
+                throw new ParseException("Please open Cap Manager before using 'edit-cap' command.");
+            }
             return new EditCapEntryCommandParser().parse(arguments);
 
         case EditNoteCommand.COMMAND_WORD:
+            if (!StatusBarFooter.getCurrentManagerStatus().equals(NOTES_MANAGER)) {
+                throw new ParseException("Please open Notes Manager before using 'edit-note' command.");
+            }
             return new EditNoteCommandParser().parse(arguments);
 
         //===== Other useful Commands in UltiStudent =====//

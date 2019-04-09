@@ -28,6 +28,8 @@ public class StatusBarFooter extends UiPart<Region> {
 
     private static final String FXML = "StatusBarFooter.fxml";
 
+    private static String openedManager = "";
+
     @FXML
     private Label syncStatus;
     @FXML
@@ -70,6 +72,11 @@ public class StatusBarFooter extends UiPart<Region> {
      */
     public void setCurrentManagerText(String manager) {
         currentManager.setText(manager);
+        openedManager = manager;
+    }
+
+    public static String getCurrentManagerStatus() {
+        return openedManager;
     }
 
 }
