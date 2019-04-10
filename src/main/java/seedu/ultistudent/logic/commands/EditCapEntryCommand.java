@@ -34,7 +34,7 @@ public class EditCapEntryCommand extends Command {
             + "[" + PREFIX_MODULECODE + "MODULE_CODEN] "
             + "[" + PREFIX_MODULEGRADE + "MODULE_GRADE] "
             + "[" + PREFIX_MODULECREDITS + "MODULE_CREDITS] "
-            + "[" + PREFIX_SEMESTER + "MODULE_SEMESTER] "
+            + "[" + PREFIX_SEMESTER + "MODULE_SEMESTER]. \n"
             + "Example: " + COMMAND_WORD + " 1 "
             + PREFIX_MODULEGRADE + "B+ "
             + PREFIX_MODULECREDITS + "6";
@@ -68,24 +68,20 @@ public class EditCapEntryCommand extends Command {
         }
 
         CapEntry capEntryToEdit = lastShownList.get(index.getZeroBased());
-        ModuleSemester moduleSemesterOfCapEntryToEdit = capEntryToEdit.getModuleSemester();
         CapEntry editedCapEntry = createEditedCapEntry(capEntryToEdit, editCapEntryDescriptor);
+        ModuleSemester moduleSemesterOfCapEntryToEdit = capEntryToEdit.getModuleSemester();
         ModuleSemester moduleSemesterOfEditedCapEntry = editedCapEntry.getModuleSemester();
 
         if (!capEntryToEdit.isSameCapEntry(editedCapEntry) && model.hasCapEntry(editedCapEntry)) {
             throw new CommandException(MESSAGE_DUPLICATE_CAP_ENTRY);
         }
 
-        //update CapScore
-        CapEntry.updateCapForDeleteCommand(capEntryToEdit);
-        CapEntry.updateCapForAddCommand(editedCapEntry);
-
         model.setCapEntry(capEntryToEdit, editedCapEntry);
         model.updateFilteredCapEntryList(Model.PREDICATE_SHOW_ALL_CAP_ENTRIES);
 
         //update module semester
+        List<CapEntry> afterEditList = model.getFilteredCapEntryList();
         if (!moduleSemesterOfCapEntryToEdit.equals(moduleSemesterOfEditedCapEntry)) {
-            List<CapEntry> afterEditList = model.getFilteredCapEntryList();
             if (!model.hasModuleSemester(moduleSemesterOfEditedCapEntry)) {
                 model.addModuleSemester(moduleSemesterOfEditedCapEntry);
             }
