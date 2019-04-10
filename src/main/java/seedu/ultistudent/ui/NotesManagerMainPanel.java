@@ -13,6 +13,7 @@ import javafx.scene.layout.Region;
 import seedu.ultistudent.commons.core.LogsCenter;
 import seedu.ultistudent.model.note.Note;
 
+
 /**
  * The NotesManager Main Panel of the App
  */
@@ -23,21 +24,48 @@ public class NotesManagerMainPanel extends UiPart<Region> {
     @FXML
     private TextArea notesText;
 
+    private Note currentNote;
+    private EventHandler<KeyEvent> keyEvent;
+
     public NotesManagerMainPanel(ObservableValue<Note> selectedNote) {
         super(FXML);
 
         // To prevent triggering events for typing inside
         getRoot().setOnKeyPressed(Event::consume);
         if (selectedNote.getValue() == null) {
-            disableTextArea();
+            notesText.setDisable(true);
         }
+
+        keyEvent = new EventHandler<KeyEvent>() {
+            @Override
+            public void handle(KeyEvent event) {
+                String content = notesText.getText();
+                if (event.getCode().equals(KeyCode.ENTER)) {
+                    content += '\n';
+                } else if (event.isAltDown() || event.isControlDown() || event.isShortcutDown()) {
+                    //Do nothing if its these keys
+                } else if (event.getCode().equals(KeyCode.BACK_SPACE)) {
+                    if (content.length() != 0) {
+                        content = content.substring(0, content.length() - 1);
+                    } else {
+                        content = "";
+                    }
+                } else {
+                    content += event.getText();
+                }
+                currentNote.setContent(content);
+            }
+        };
 
         // Load note page when selected note changes
         selectedNote.addListener((observable, oldValue, newValue)-> {
+            resetNotesText();
             if (newValue == null) {
                 loadDefaultNotes();
                 return;
             }
+            notesText.removeEventFilter(KeyEvent.KEY_PRESSED, keyEvent);
+            currentNote = newValue;
             loadNotesPage(newValue);
         });
         loadDefaultNotes();
@@ -48,42 +76,23 @@ public class NotesManagerMainPanel extends UiPart<Region> {
      * @param note
      */
     private void loadNotesPage (Note note) {
-        enableTextArea();
+        notesText.setDisable(false);
         notesText.setText(note.getContent().toString());
 
-        notesText.addEventFilter(KeyEvent.KEY_PRESSED, new EventHandler<KeyEvent>() {
-            @Override
-            public void handle(KeyEvent event) {
-                String content = notesText.getText();
-                if (event.getCode().equals(KeyCode.ENTER)) {
-                    content += '\n';
-                } else if (event.isAltDown() || event.isShortcutDown() || event.isShortcutDown()) {
-                    // Do Nothing
-                } else if (event.getCode().equals(KeyCode.BACK_SPACE)) {
-                    if (content.length() > 0) {
-                        content = content.substring(0, content.length() - 1);
-                    } else {
-                        content = "";
-                    }
-                } else {
-                    content += event.getText();
-                }
-                note.setContent(content);
-            }
-        });
+        notesText.addEventFilter(KeyEvent.KEY_PRESSED, keyEvent);
     }
 
-    private void disableTextArea() {
+    /**
+     * Clears the text field and disable it
+     */
+    private void loadDefaultNotes () {
+        notesText.removeEventFilter(KeyEvent.KEY_PRESSED, keyEvent);
+        notesText.setText("");
+        notesText.setPromptText("Key in something");
         notesText.setDisable(true);
     }
 
-    private void enableTextArea() {
-        notesText.setDisable(false);
-    }
-
-    private void loadDefaultNotes () {
-        notesText.setPromptText("Key in something");
+    private void resetNotesText() {
         notesText.setText("");
-        disableTextArea();
     }
 }
