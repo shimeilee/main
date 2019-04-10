@@ -17,7 +17,7 @@ import seedu.ultistudent.model.AddressBook;
 import seedu.ultistudent.model.cap.CapEntry;
 
 /**
- * A utility class containing a list of {@code Person} objects to be used in tests.
+ * A utility class containing a list of {@code CapEntry} objects to be used in tests.
  */
 public class TypicalCapEntry {
 
@@ -64,17 +64,16 @@ public class TypicalCapEntry {
             .withModuleGrade(VALID_MODULE_GRADE_CS1002)
             .withModuleCredits(VALID_MODULE_CREDITS_CS1002).withModuleSemester(VALID_MODULE_SEMESTER_CS1002).build();
 
-    public static final String KEYWORD_MATCHING_MEIER = "Meier"; // A keyword that matches MEIER
-
     private TypicalCapEntry() {} // prevents instantiation
 
     /**
-     * Returns an {@code AddressBook} with all the typical cap entries.
+     * Returns an {@code AddressBook} with all the typical cap entries and module semesters.
      */
     public static AddressBook getTypicalAddressBook() {
         AddressBook ab = new AddressBook();
         for (CapEntry capEntry : getTypicalCapEntryList()) {
             ab.addCapEntry(capEntry);
+            ab.addModuleSemester(capEntry.getModuleSemester());
         }
         return ab;
     }

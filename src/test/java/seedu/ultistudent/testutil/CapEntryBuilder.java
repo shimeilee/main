@@ -29,7 +29,7 @@ public class CapEntryBuilder {
     }
 
     /**
-     * Initializes the PersonBuilder with the data of {@code personToCopy}.
+     * Initializes the CapEntryBuilder with the data of {@code capEntryToCopy}.
      */
     public CapEntryBuilder(CapEntry capEntryToCopy) {
         moduleCode = capEntryToCopy.getModuleCode();
@@ -55,7 +55,7 @@ public class CapEntryBuilder {
     }
 
     /**
-     * Sets the {@code Phone} of the {@code Person} that we are building.
+     * Sets the {@code ModuleGrade} of the {@code CapEntry} that we are building.
      */
     public CapEntryBuilder withModuleGrade(String moduleGrade) {
         this.moduleGrade = new ModuleGrade(moduleGrade);
@@ -63,7 +63,7 @@ public class CapEntryBuilder {
     }
 
     /**
-     * Sets the {@code Email} of the {@code Person} that we are building.
+     * Sets the {@code ModuleCredits} of the {@code CapEntry} that we are building.
      */
     public CapEntryBuilder withModuleCredits(String moduleCredits) {
         this.moduleCredits = new ModuleCredits(moduleCredits);
