@@ -26,6 +26,7 @@ import seedu.ultistudent.logic.commands.EditHomeworkCommand;
 import seedu.ultistudent.logic.commands.EditNoteCommand;
 import seedu.ultistudent.logic.commands.ExitCommand;
 import seedu.ultistudent.logic.commands.FindCommand;
+import seedu.ultistudent.logic.commands.FindSemesterCommand;
 import seedu.ultistudent.logic.commands.HelpCommand;
 import seedu.ultistudent.logic.commands.HistoryCommand;
 import seedu.ultistudent.logic.commands.ListCapEntryCommand;
@@ -128,6 +129,9 @@ public class UltiStudentParser {
 
         case ClearCommand.COMMAND_WORD:
             return new ClearCommand();
+
+        case FindSemesterCommand.COMMAND_WORD:
+            return new FindSemesterCommandParser().parse(arguments);
 
         case FindCommand.COMMAND_WORD:
             return new FindCommandParser().parse(arguments);
