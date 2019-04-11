@@ -3,6 +3,7 @@ package seedu.ultistudent.model.cap;
 import static java.util.Objects.requireNonNull;
 import static seedu.ultistudent.commons.util.CollectionUtil.requireAllNonNull;
 
+import java.util.Comparator;
 import java.util.Iterator;
 import java.util.List;
 
@@ -30,6 +31,12 @@ public class UniqueModuleSemesterList implements Iterable<ModuleSemester> {
     private final ObservableList<ModuleSemester> internalUnmodifiableList =
             FXCollections.unmodifiableObservableList(internalList);
 
+    private Comparator<? super ModuleSemester> comparatorSemesterAscending = new Comparator<ModuleSemester>() {
+        public int compare(ModuleSemester o1, ModuleSemester o2) {
+            return o1.getValue().compareToIgnoreCase(o2.getValue());
+        }
+    };
+
     /**
      * Returns true if the list contains an equivalent module semester as the given argument.
      */
@@ -48,6 +55,8 @@ public class UniqueModuleSemesterList implements Iterable<ModuleSemester> {
             throw new DuplicateModuleSemesterException();
         }
         internalList.add(toAdd);
+        internalList.sort(comparatorSemesterAscending);
+
     }
 
     /**
@@ -69,6 +78,7 @@ public class UniqueModuleSemesterList implements Iterable<ModuleSemester> {
         }
 
         internalList.set(index, editedModuleSemester);
+        internalList.sort(comparatorSemesterAscending);
     }
 
     /**
@@ -80,6 +90,7 @@ public class UniqueModuleSemesterList implements Iterable<ModuleSemester> {
         if (!internalList.remove(toRemove)) {
             throw new ModuleSemesterNotFoundException();
         }
+        internalList.sort(comparatorSemesterAscending);
     }
 
     public void setModuleSemesterList(UniqueModuleSemesterList replacement) {
