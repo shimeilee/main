@@ -20,8 +20,8 @@ Role: Project Advisor
 '''
 
 === Benjamin Lim
-image::LimZhengJieBenjamin.png[width="150", align="left"]
-{empty}[http://github.com/LimZhengJieBenjamin[github]] [<<LimZhengJieBenjamin#, portfolio>>]
+image::limzhengjiebenjamin.png[width="150", align="left"]
+{empty}[http://github.com/LimZhengJieBenjamin[github]] [<<limzhengjiebenjamin#, portfolio>>]
 
 Role: Team Lead
 Responsibilities: UI
