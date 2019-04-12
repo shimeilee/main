@@ -2,7 +2,6 @@ package seedu.ultistudent.logic.parser;
 
 import static java.util.Objects.requireNonNull;
 import static seedu.ultistudent.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
-import static seedu.ultistudent.logic.parser.CliSyntax.CAP_MANAGER;
 import static seedu.ultistudent.logic.parser.CliSyntax.PREFIX_MODULECODE;
 import static seedu.ultistudent.logic.parser.CliSyntax.PREFIX_MODULECREDITS;
 import static seedu.ultistudent.logic.parser.CliSyntax.PREFIX_MODULEGRADE;
@@ -12,12 +11,11 @@ import seedu.ultistudent.commons.core.index.Index;
 import seedu.ultistudent.logic.commands.EditCapEntryCommand;
 import seedu.ultistudent.logic.commands.EditCapEntryCommand.EditCapEntryDescriptor;
 import seedu.ultistudent.logic.parser.exceptions.ParseException;
-import seedu.ultistudent.ui.StatusBarFooter;
 
 /**
  * Parses input arguments and creates a new EditCapEntryCommand object
  */
-public class EditCapEntryCommandParser {
+public class EditCapEntryCommandParser implements Parser<EditCapEntryCommand> {
 
     /**
      * Parses the given {@code String} of arguments in the context of the EditCommand
@@ -30,10 +28,6 @@ public class EditCapEntryCommandParser {
                 PREFIX_MODULECREDITS, PREFIX_SEMESTER);
 
         Index index;
-
-        if (!StatusBarFooter.getCurrentManagerStatus().equals(CAP_MANAGER)) {
-            throw new ParseException("Please open Cap Manager before using 'edit-cap' command.");
-        }
 
         try {
             index = ParserUtil.parseIndex(argMultimap.getPreamble());

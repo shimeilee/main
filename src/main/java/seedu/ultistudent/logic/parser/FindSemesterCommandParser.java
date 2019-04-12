@@ -9,13 +9,13 @@ import seedu.ultistudent.logic.parser.exceptions.ParseException;
 import seedu.ultistudent.model.cap.ModuleSemesterContainsKeywordsPredicate;
 
 /**
- * Parses input arguments and creates a new FindCommand object
+ * Parses input arguments and creates a new FindSemesterCommand object
  */
 public class FindSemesterCommandParser implements Parser<FindSemesterCommand> {
 
     /**
-     * Parses the given {@code String} of arguments in the context of the FindCommand
-     * and returns an FindCommand object for execution.
+     * Parses the given {@code String} of arguments in the context of the FindSemesterCommand
+     * and returns a FindSemesterCommand object for execution.
      * @throws ParseException if the user input does not conform the expected format
      */
     public FindSemesterCommand parse(String args) throws ParseException {
