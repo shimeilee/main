@@ -61,7 +61,7 @@ public class EditCapEntryCommandParserTest {
         assertParseFailure(parser, "-5" + MODULE_CODE_DESC_CS1001, MESSAGE_INVALID_FORMAT);
 
         // zero index
-        assertParseFailure(parser, "01234" + MODULE_CODE_DESC_CS1001, MESSAGE_INVALID_FORMAT);
+        assertParseFailure(parser, "0" + MODULE_CODE_DESC_CS1001, MESSAGE_INVALID_FORMAT);
 
         // invalid arguments being parsed as preamble
         assertParseFailure(parser, "abc def", MESSAGE_INVALID_FORMAT);
