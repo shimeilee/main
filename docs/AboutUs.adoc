@@ -38,7 +38,7 @@ Responsibilities: Data
 '''
 
 === Ng Wei Xin
-image::NgWeiXin.png[width="150", align="left"]
+image::ngweixin.png[width="150", align="left"]
 {empty}[http://github.com/NgWeiXin[github]] [<<ngweixin#, portfolio>>]
 
 Role: Developer
