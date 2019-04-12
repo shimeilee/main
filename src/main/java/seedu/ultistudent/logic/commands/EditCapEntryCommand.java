@@ -129,7 +129,7 @@ public class EditCapEntryCommand extends Command {
         }
 
         // instanceof handles nulls
-        if (!(other instanceof EditCommand)) {
+        if (!(other instanceof EditCapEntryCommand)) {
             return false;
         }
 

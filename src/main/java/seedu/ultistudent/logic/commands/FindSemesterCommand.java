@@ -8,7 +8,7 @@ import seedu.ultistudent.model.Model;
 import seedu.ultistudent.model.cap.ModuleSemesterContainsKeywordsPredicate;
 
 /**
- * Finds and lists all persons in UltiStudent whose name contains any of the argument keywords.
+ * Finds and lists all cap entries in UltiStudent whose module semester contains any of the argument keywords.
  * Keyword matching is case insensitive.
  */
 public class FindSemesterCommand extends Command {
