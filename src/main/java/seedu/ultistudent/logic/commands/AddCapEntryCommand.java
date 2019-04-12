@@ -6,7 +6,6 @@ import static seedu.ultistudent.logic.parser.CliSyntax.PREFIX_MODULECREDITS;
 import static seedu.ultistudent.logic.parser.CliSyntax.PREFIX_MODULEGRADE;
 import static seedu.ultistudent.logic.parser.CliSyntax.PREFIX_SEMESTER;
 
-import javafx.collections.ObservableList;
 import seedu.ultistudent.logic.CommandHistory;
 import seedu.ultistudent.logic.commands.exceptions.CommandException;
 import seedu.ultistudent.model.Model;
@@ -61,18 +60,6 @@ public class AddCapEntryCommand extends Command {
         }
 
         model.addCapEntry(toAdd);
-
-//        //update capScore
-//        ObservableList<CapEntry> capEntryList = model.getFilteredCapEntryList();
-//        double newTotalModuleCredits = 0;
-//        double newTotalModuleScore = 0;
-//        for (CapEntry ce : capEntryList) {
-//            double currentModuleCredits = ce.getModuleCredits().getValue();
-//            double currentModuleScore = ce.getModuleGrade().getScore();
-//            newTotalModuleCredits += currentModuleCredits;
-//            newTotalModuleScore += currentModuleScore * currentModuleCredits;
-//        }
-//        CapEntry.setCapScore(newTotalModuleScore/newTotalModuleCredits);
 
         model.commitAddressBook();
         return new CommandResult(String.format(MESSAGE_SUCCESS, toAdd));

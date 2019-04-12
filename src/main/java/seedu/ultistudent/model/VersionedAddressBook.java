@@ -3,9 +3,6 @@ package seedu.ultistudent.model;
 import java.util.ArrayList;
 import java.util.List;
 
-import javafx.collections.ObservableList;
-import seedu.ultistudent.model.cap.CapEntry;
-
 /**
  * {@code AddressBook} that keeps track of its own history.
  */

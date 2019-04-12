@@ -93,8 +93,8 @@ public class AddressBook implements ReadOnlyAddressBook {
             newTotalModuleCredits += currentModuleCredits;
             newTotalModuleScore += currentModuleScore * currentModuleCredits;
         }
-        CapEntry.setCapScore(newTotalModuleScore/newTotalModuleCredits);
-//        indicateModified();
+        CapEntry.setCapScore(newTotalModuleScore / newTotalModuleCredits);
+        //indicateModified();
     }
 
     /**
@@ -123,17 +123,6 @@ public class AddressBook implements ReadOnlyAddressBook {
         setModuleSemesterList(newData.getModuleSemesterList());
         setNote(newData.getNoteList());
         setModuleCodeList(newData.getModuleCodeList());
-
-//        ObservableList<CapEntry> capEntryList = newData.getCapEntryList();
-//        double newTotalModuleCredits = 0;
-//        double newTotalModuleScore = 0;
-//        for (CapEntry ce : capEntryList) {
-//            double currentModuleCredits = ce.getModuleCredits().getValue();
-//            double currentModuleScore = ce.getModuleGrade().getScore();
-//            newTotalModuleCredits += currentModuleCredits;
-//            newTotalModuleScore += currentModuleScore * currentModuleCredits;
-//        }
-//        CapEntry.setCapScore(newTotalModuleScore/newTotalModuleCredits);
     }
 
     //// person-level operations

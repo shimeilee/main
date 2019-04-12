@@ -41,7 +41,7 @@ public class UndoCommand extends Command {
             newTotalModuleCredits += currentModuleCredits;
             newTotalModuleScore += currentModuleScore * currentModuleCredits;
         }
-        CapEntry.setCapScore(newTotalModuleScore/newTotalModuleCredits);
+        CapEntry.setCapScore(newTotalModuleScore / newTotalModuleCredits);
 
         return new CommandResult(MESSAGE_SUCCESS);
     }

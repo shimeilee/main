@@ -29,7 +29,7 @@ public class RedoCommand extends Command {
 
         model.redoAddressBook();
         model.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
-//        model.updateFilteredCapEntryList(PREDICATE_SHOW_ALL_CAP_ENTRIES);
+        model.updateFilteredCapEntryList(PREDICATE_SHOW_ALL_CAP_ENTRIES);
 
         //update capScore
         ObservableList<CapEntry> capEntryList = model.getFilteredCapEntryList();
@@ -41,7 +41,7 @@ public class RedoCommand extends Command {
             newTotalModuleCredits += currentModuleCredits;
             newTotalModuleScore += currentModuleScore * currentModuleCredits;
         }
-        CapEntry.setCapScore(newTotalModuleScore/newTotalModuleCredits);
+        CapEntry.setCapScore(newTotalModuleScore / newTotalModuleCredits);
 
         return new CommandResult(MESSAGE_SUCCESS);
     }
