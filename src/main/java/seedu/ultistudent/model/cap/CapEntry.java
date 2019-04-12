@@ -81,6 +81,10 @@ public class CapEntry {
         return String.format("%.2f", capScore) + "";
     }
 
+    public static void setCapScore(double newCapScore) {
+        capScore = newCapScore;
+    }
+
     /**
      * Returns true if both cap entries are of the same module code.
      * This defines a weaker notion of equality between two cap entries.
