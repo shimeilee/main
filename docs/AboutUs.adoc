@@ -39,7 +39,7 @@ Responsibilities: Data
 
 === Ng Wei Xin
 image::NgWeiXin.png[width="150", align="left"]
-{empty}[http://github.com/NgWeiXin[github]] [<<NgWeiXin#, portfolio>>]
+{empty}[http://github.com/NgWeiXin[github]] [<<ngweixin#, portfolio>>]
 
 Role: Developer
 Responsibilities: Dev Ops + Threading
