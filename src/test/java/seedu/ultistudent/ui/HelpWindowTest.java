@@ -35,12 +35,6 @@ public class HelpWindowTest extends GuiUnitTest {
     }
 
     @Test
-    public void isShowing_helpWindowIsShowing_returnsTrue() {
-        guiRobot.interact(helpWindow::show);
-        assertTrue(helpWindow.isShowing());
-    }
-
-    @Test
     public void isShowing_helpWindowIsHiding_returnsFalse() {
         assertFalse(helpWindow.isShowing());
     }
