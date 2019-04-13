@@ -44,6 +44,7 @@ and `save-note` command.
 *** *Credits*: AddressBook-Level4's select functionality was being used as a reference.
 
 * *Minor enhancement*:
+** Open command that opens the respective managers `open MANAGER`
 ** Most of the UI in UltiStudent
 (Pull requests https://github.com/cs2103-ay1819s2-w09-1/main/pull/23/files?file-filters%5B%5D=[#23],
                https://github.com/cs2103-ay1819s2-w09-1/main/pull/41/files?file-filters%5B%5D=[#41],
@@ -51,44 +52,57 @@ and `save-note` command.
 ** Wrote test cases to improve coverage
 (Pull request https://github.com/cs2103-ay1819s2-w09-1/main/pull/151/files?file-filters%5B%5D=[#151])
 
-* *Code contributed*: [https://nus-cs2103-ay1819s2.github.io/cs2103-dashboard/#=undefined&search=NgWeiXin[RepoSense]]
+* *Code contributed*: Click
+https://nus-cs2103-ay1819s2.github.io/cs2103-dashboard/#=undefined&search=NgWeiXin[here]
+to view my code on the CS2103T Project Code Dashboard.
 
 * *Other contributions*:
 
 ** Project management:
-*** Managed releases `v1.3` - `v1.4` (3 releases) on GitHub
-** Enhancements to existing features:
-*** Updated the GUI color scheme (Pull requests https://github.com[#33], https://github.com[#34])
-*** ** Modified AddressBook's `add`, `delete` and `edit` command to guide users on what `add`,
-    `delete` and `edit` command UltiStudent has to offer.
-** Documentation:
-*** Did cosmetic tweaks to existing contents of the User Guide: https://github.com[#14]
-** Community:
-*** PRs reviewed (with non-trivial review comments): https://github.com[#12], https://github.com[#32], https://github.com[#19], https://github.com[#42]
-*** Contributed to forum discussions (examples:  https://github.com[1], https://github.com[2], https://github.com[3], https://github.com[4])
-*** Reported bugs and suggestions for other teams in the class (examples:  https://github.com[1], https://github.com[2], https://github.com[3])
-*** Some parts of the history feature I added was adopted by several other class mates (https://github.com[1], https://github.com[2])
-** Tools:
-*** Integrated a third party library (Natty) to the project (https://github.com[#42])
-*** Integrated a new Github plugin (CircleCI) to the team repo
+*** Managed https://github.com/cs2103-ay1819s2-w09-1/main/issues?utf8=✓&q=is%3Aissue+is%3Aclosed[issue tracker],
+    closing issues upon fixes and implementations.
+*** Refracted addressbook to ultistudent
+    (Pull request https://github.com/cs2103-ay1819s2-w09-1/main/pull/167/files?file-filters%5B%5D=[#167])
 
-_{you can add/remove categories in the list above}_
+** Enhancements to existing features:
+*** Modified AddressBook's `add`, `delete` and `edit` command to guide users on what `add`,
+    `delete` and `edit` command UltiStudent has to offer. (Pull request
+    https://github.com/cs2103-ay1819s2-w09-1/main/pull/99/files?file-filters%5B%5D=[#99])
+
+** Documentation:
+*** Updated existing contents of the User and Developer Guide:
+*** Update and Maintain README:
+    https://github.com/cs2103-ay1819s2-w09-1/main/pull/6[#6],
+    https://github.com/cs2103-ay1819s2-w09-1/main/pull/23[#23],
+    https://github.com/cs2103-ay1819s2-w09-1/main/pull/99[#99]
+
+** Community:
+*** Open issues and assigned respective team-mates (examples:
+    https://github.com/cs2103-ay1819s2-w09-1/main/issues/33[33],
+    https://github.com/cs2103-ay1819s2-w09-1/main/issues/101[101],
+    https://github.com/cs2103-ay1819s2-w09-1/main/issues/109[109])
+*** Reported bugs and suggestions for other teams in the class (examples:
+    https://github.com/cs2103-ay1819S2-w11-2/main/issues/167[167]
+    https://github.com/cs2103-ay1819S2-w11-2/main/issues/174[174]
+    https://github.com/cs2103-ay1819S2-w11-2/main/issues/180[180])
 
 == Contributions to the User Guide
-
-
 |===
-|_Given below are sections I contributed to the User Guide. They showcase my ability to write documentation targeting end-users._
+_Below are the main contributions to the User Guide, which consist of Add Homework, Edit and Save commands.
+ They showcase my ability to write documentation targeting end-users in a clear and concise manner._
 |===
 
 include::../UserGuide.adoc[tag=add-hw]
+include::../UserGuide.adoc[tag=edit-note]
 
 == Contributions to the Developer Guide
 
 |===
-|_Given below are sections I contributed to the Developer Guide. They showcase my ability to write technical documentation and the technical depth of my contributions to the project._
+_Below are the main contributions to the User Guide, which consist of Add Homework, Edit and Save commands.
+ They showcase my ability to write technical documentation and the technical depth of my contribution to
+ UltiStudent in a clear and concise manner._
 |===
 
-include::../DeveloperGuide.adoc[tag=undoredo]
-
-include::../DeveloperGuide.adoc[tag=dataencryption]
+include::../DeveloperGuide.adoc[tag=add-hw]
+include::../DeveloperGuide.adoc[tag=edit-note]
+include::../DeveloperGuide.adoc[tag=save-note]
