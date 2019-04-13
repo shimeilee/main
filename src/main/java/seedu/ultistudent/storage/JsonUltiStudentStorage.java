@@ -17,32 +17,32 @@ import seedu.ultistudent.model.ReadOnlyUltiStudent;
 /**
  * A class to access UltiStudent data stored as a json file on the hard disk.
  */
-public class JsonAddressBookStorage implements AddressBookStorage {
+public class JsonUltiStudentStorage implements UltiStudentStorage {
 
-    private static final Logger logger = LogsCenter.getLogger(JsonAddressBookStorage.class);
+    private static final Logger logger = LogsCenter.getLogger(JsonUltiStudentStorage.class);
 
     private Path filePath;
 
-    public JsonAddressBookStorage(Path filePath) {
+    public JsonUltiStudentStorage(Path filePath) {
         this.filePath = filePath;
     }
 
-    public Path getAddressBookFilePath() {
+    public Path getUltiStudentFilePath() {
         return filePath;
     }
 
     @Override
-    public Optional<ReadOnlyUltiStudent> readAddressBook() throws DataConversionException {
-        return readAddressBook(filePath);
+    public Optional<ReadOnlyUltiStudent> readUltiStudent() throws DataConversionException {
+        return readUltiStudent(filePath);
     }
 
     /**
-     * Similar to {@link #readAddressBook()}.
+     * Similar to {@link #readUltiStudent()}.
      *
      * @param filePath location of the data. Cannot be null.
      * @throws DataConversionException if the file is not in the correct format.
      */
-    public Optional<ReadOnlyUltiStudent> readAddressBook(Path filePath) throws DataConversionException {
+    public Optional<ReadOnlyUltiStudent> readUltiStudent(Path filePath) throws DataConversionException {
         requireNonNull(filePath);
 
         Optional<JsonSerializableAddressBook> jsonAddressBook = JsonUtil.readJsonFile(
@@ -60,21 +60,21 @@ public class JsonAddressBookStorage implements AddressBookStorage {
     }
 
     @Override
-    public void saveAddressBook(ReadOnlyUltiStudent addressBook) throws IOException {
-        saveAddressBook(addressBook, filePath);
+    public void saveUltiStudent(ReadOnlyUltiStudent ultiStudent) throws IOException {
+        saveUltiStudent(ultiStudent, filePath);
     }
 
     /**
-     * Similar to {@link #saveAddressBook(ReadOnlyUltiStudent)}.
+     * Similar to {@link #saveUltiStudent(ReadOnlyUltiStudent)}.
      *
      * @param filePath location of the data. Cannot be null.
      */
-    public void saveAddressBook(ReadOnlyUltiStudent addressBook, Path filePath) throws IOException {
-        requireNonNull(addressBook);
+    public void saveUltiStudent(ReadOnlyUltiStudent ultiStudent, Path filePath) throws IOException {
+        requireNonNull(ultiStudent);
         requireNonNull(filePath);
 
         FileUtil.createIfMissing(filePath);
-        JsonUtil.saveJsonFile(new JsonSerializableAddressBook(addressBook), filePath);
+        JsonUtil.saveJsonFile(new JsonSerializableAddressBook(ultiStudent), filePath);
     }
 
 }

@@ -15,8 +15,8 @@ import seedu.ultistudent.commons.exceptions.DataConversionException;
 import seedu.ultistudent.model.ReadOnlyUltiStudent;
 import seedu.ultistudent.model.UltiStudent;
 
-public class JsonAddressBookStorageTest {
-    private static final Path TEST_DATA_FOLDER = Paths.get("src", "test", "data", "JsonAddressBookStorageTest");
+public class JsonUltiStudentStorageTest {
+    private static final Path TEST_DATA_FOLDER = Paths.get("src", "test", "data", "JsonUltiStudentStorageTest");
 
     @Rule
     public ExpectedException thrown = ExpectedException.none();
@@ -27,11 +27,11 @@ public class JsonAddressBookStorageTest {
     @Test
     public void readAddressBook_nullFilePath_throwsNullPointerException() throws Exception {
         thrown.expect(NullPointerException.class);
-        readAddressBook(null);
+        readUltiStudent(null);
     }
 
-    private java.util.Optional<ReadOnlyUltiStudent> readAddressBook(String filePath) throws Exception {
-        return new JsonAddressBookStorage(Paths.get(filePath)).readAddressBook(addToTestDataPathIfNotNull(filePath));
+    private java.util.Optional<ReadOnlyUltiStudent> readUltiStudent(String filePath) throws Exception {
+        return new JsonUltiStudentStorage(Paths.get(filePath)).readUltiStudent(addToTestDataPathIfNotNull(filePath));
     }
 
     private Path addToTestDataPathIfNotNull(String prefsFileInTestDataFolder) {
@@ -42,14 +42,14 @@ public class JsonAddressBookStorageTest {
 
     @Test
     public void read_missingFile_emptyResult() throws Exception {
-        assertFalse(readAddressBook("NonExistentFile.json").isPresent());
+        assertFalse(readUltiStudent("NonExistentFile.json").isPresent());
     }
 
     @Test
     public void read_notJsonFormat_exceptionThrown() throws Exception {
 
         thrown.expect(DataConversionException.class);
-        readAddressBook("notJsonFormatAddressBook.json");
+        readUltiStudent("notJsonFormatAddressBook.json");
 
         // IMPORTANT: Any code below an exception-throwing line (like the one above) will be ignored.
         // That means you should not have more than one exception test in one method
@@ -58,13 +58,13 @@ public class JsonAddressBookStorageTest {
     @Test
     public void readAddressBook_invalidPersonAddressBook_throwDataConversionException() throws Exception {
         thrown.expect(DataConversionException.class);
-        readAddressBook("invalidPersonAddressBook.json");
+        readUltiStudent("invalidPersonAddressBook.json");
     }
 
     @Test
     public void readAddressBook_invalidAndValidPersonAddressBook_throwDataConversionException() throws Exception {
         thrown.expect(DataConversionException.class);
-        readAddressBook("invalidAndValidPersonAddressBook.json");
+        readUltiStudent("invalidAndValidPersonAddressBook.json");
     }
 
     @Test
@@ -78,8 +78,8 @@ public class JsonAddressBookStorageTest {
      */
     private void saveAddressBook(ReadOnlyUltiStudent addressBook, String filePath) {
         try {
-            new JsonAddressBookStorage(Paths.get(filePath))
-                    .saveAddressBook(addressBook, addToTestDataPathIfNotNull(filePath));
+            new JsonUltiStudentStorage(Paths.get(filePath))
+                    .saveUltiStudent(addressBook, addToTestDataPathIfNotNull(filePath));
         } catch (IOException ioe) {
             throw new AssertionError("There should not be an error writing to the file.", ioe);
         }
