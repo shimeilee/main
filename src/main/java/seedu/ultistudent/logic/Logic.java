@@ -33,7 +33,7 @@ public interface Logic {
     /**
      * Returns the UltiStudent.
      *
-     * @see seedu.ultistudent.model.Model#getAddressBook()
+     * @see seedu.ultistudent.model.Model#getUltiStudent()
      */
     ReadOnlyUltiStudent getAddressBook();
 

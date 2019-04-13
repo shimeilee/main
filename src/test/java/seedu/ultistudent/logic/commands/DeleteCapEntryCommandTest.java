@@ -37,7 +37,7 @@ public class DeleteCapEntryCommandTest {
         String expectedMessage = String.format(DeleteCapEntryCommand.MESSAGE_DELETE_CAP_ENTRY_SUCCESS,
                 capEntryToDelete);
 
-        ModelManager expectedModel = new ModelManager(model.getAddressBook(), new UserPrefs());
+        ModelManager expectedModel = new ModelManager(model.getUltiStudent(), new UserPrefs());
         expectedModel.deleteCapEntry(capEntryToDelete);
         expectedModel.commitUltiStudent();
 
@@ -63,7 +63,7 @@ public class DeleteCapEntryCommandTest {
         String expectedMessage = String.format(DeleteCapEntryCommand.MESSAGE_DELETE_CAP_ENTRY_SUCCESS,
                 capEntryToDelete);
 
-        Model expectedModel = new ModelManager(model.getAddressBook(), new UserPrefs());
+        Model expectedModel = new ModelManager(model.getUltiStudent(), new UserPrefs());
         expectedModel.deleteCapEntry(capEntryToDelete);
         expectedModel.commitUltiStudent();
         showNoCapEntry(expectedModel);
@@ -77,7 +77,7 @@ public class DeleteCapEntryCommandTest {
 
         Index outOfBoundIndex = INDEX_SECOND_CAP_ENTRY;
         // ensures that outOfBoundIndex is still in bounds of UltiStudent list
-        assertTrue(outOfBoundIndex.getZeroBased() < model.getAddressBook().getCapEntryList().size());
+        assertTrue(outOfBoundIndex.getZeroBased() < model.getUltiStudent().getCapEntryList().size());
 
         DeleteCapEntryCommand deleteCapEntryCommand = new DeleteCapEntryCommand(outOfBoundIndex);
 
@@ -89,7 +89,7 @@ public class DeleteCapEntryCommandTest {
     public void executeUndoRedo_validIndexUnfilteredList_success() throws Exception {
         CapEntry capEntryToDelete = model.getFilteredCapEntryList().get(INDEX_FIRST_CAP_ENTRY.getZeroBased());
         DeleteCapEntryCommand deleteCapEntryCommand = new DeleteCapEntryCommand(INDEX_FIRST_CAP_ENTRY);
-        Model expectedModel = new ModelManager(model.getAddressBook(), new UserPrefs());
+        Model expectedModel = new ModelManager(model.getUltiStudent(), new UserPrefs());
         expectedModel.deleteCapEntry(capEntryToDelete);
         expectedModel.commitUltiStudent();
 
@@ -97,11 +97,11 @@ public class DeleteCapEntryCommandTest {
         deleteCapEntryCommand.execute(model, commandHistory);
 
         // undo -> reverts addressbook back to previous state and filtered person list to show all persons
-        expectedModel.undoAddressBook();
+        expectedModel.undoUltiStudent();
         assertCommandSuccess(new UndoCommand(), model, commandHistory, UndoCommand.MESSAGE_SUCCESS, expectedModel);
 
         // redo -> same first person deleted again
-        expectedModel.redoAddressBook();
+        expectedModel.redoUltiStudent();
         assertCommandSuccess(new RedoCommand(), model, commandHistory, RedoCommand.MESSAGE_SUCCESS, expectedModel);
     }
 
@@ -129,7 +129,7 @@ public class DeleteCapEntryCommandTest {
     @Test
     public void executeUndoRedo_validIndexFilteredList_sameCapEntryDeleted() throws Exception {
         DeleteCapEntryCommand deleteCapEntryCommand = new DeleteCapEntryCommand(INDEX_FIRST_CAP_ENTRY);
-        Model expectedModel = new ModelManager(model.getAddressBook(), new UserPrefs());
+        Model expectedModel = new ModelManager(model.getUltiStudent(), new UserPrefs());
 
         showCapEntryAtIndex(model, INDEX_SECOND_CAP_ENTRY);
         CapEntry capEntryToDelete = model.getFilteredCapEntryList().get(INDEX_FIRST_CAP_ENTRY.getZeroBased());
@@ -140,12 +140,12 @@ public class DeleteCapEntryCommandTest {
         deleteCapEntryCommand.execute(model, commandHistory);
 
         // undo -> reverts addressbook back to previous state and filtered person list to show all persons
-        expectedModel.undoAddressBook();
+        expectedModel.undoUltiStudent();
         assertCommandSuccess(new UndoCommand(), model, commandHistory, UndoCommand.MESSAGE_SUCCESS, expectedModel);
 
         assertNotEquals(capEntryToDelete, model.getFilteredCapEntryList().get(INDEX_FIRST_CAP_ENTRY.getZeroBased()));
         // redo -> deletes same second person in unfiltered person list
-        expectedModel.redoAddressBook();
+        expectedModel.redoUltiStudent();
         assertCommandSuccess(new RedoCommand(), model, commandHistory, RedoCommand.MESSAGE_SUCCESS, expectedModel);
     }
 

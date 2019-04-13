@@ -82,12 +82,12 @@ public class VersionedUltiStudent extends UltiStudent {
             return false;
         }
 
-        VersionedUltiStudent otherVersionedAddressBook = (VersionedUltiStudent) other;
+        VersionedUltiStudent otherVersionedUltiStudent = (VersionedUltiStudent) other;
 
         // state check
-        return super.equals(otherVersionedAddressBook)
-                && ultiStudentStateList.equals(otherVersionedAddressBook.ultiStudentStateList)
-                && currentStatePointer == otherVersionedAddressBook.currentStatePointer;
+        return super.equals(otherVersionedUltiStudent)
+                && ultiStudentStateList.equals(otherVersionedUltiStudent.ultiStudentStateList)
+                && currentStatePointer == otherVersionedUltiStudent.currentStatePointer;
     }
 
     /**

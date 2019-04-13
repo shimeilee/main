@@ -45,7 +45,7 @@ public class EditCapEntryCommandTest {
 
         String expectedMessage = String.format(EditCapEntryCommand.MESSAGE_EDIT_CAP_ENTRY_SUCCESS, editedCapEntry);
 
-        Model expectedModel = new ModelManager(new UltiStudent(model.getAddressBook()), new UserPrefs());
+        Model expectedModel = new ModelManager(new UltiStudent(model.getUltiStudent()), new UserPrefs());
         expectedModel.setCapEntry(model.getFilteredCapEntryList().get(0), editedCapEntry);
         expectedModel.commitUltiStudent();
 
@@ -67,7 +67,7 @@ public class EditCapEntryCommandTest {
 
         String expectedMessage = String.format(EditCapEntryCommand.MESSAGE_EDIT_CAP_ENTRY_SUCCESS, editedCapEntry);
 
-        Model expectedModel = new ModelManager(new UltiStudent(model.getAddressBook()), new UserPrefs());
+        Model expectedModel = new ModelManager(new UltiStudent(model.getUltiStudent()), new UserPrefs());
         expectedModel.setCapEntry(lastCapEntry, editedCapEntry);
         expectedModel.commitUltiStudent();
 
@@ -82,7 +82,7 @@ public class EditCapEntryCommandTest {
 
         String expectedMessage = String.format(EditCapEntryCommand.MESSAGE_EDIT_CAP_ENTRY_SUCCESS, editedCapEntry);
 
-        Model expectedModel = new ModelManager(new UltiStudent(model.getAddressBook()), new UserPrefs());
+        Model expectedModel = new ModelManager(new UltiStudent(model.getUltiStudent()), new UserPrefs());
         expectedModel.commitUltiStudent();
 
         assertCommandSuccess(editCapEntryCommand, model, commandHistory, expectedMessage, expectedModel);
@@ -100,7 +100,7 @@ public class EditCapEntryCommandTest {
 
         String expectedMessage = String.format(EditCapEntryCommand.MESSAGE_EDIT_CAP_ENTRY_SUCCESS, editedCapEntry);
 
-        Model expectedModel = new ModelManager(new UltiStudent(model.getAddressBook()), new UserPrefs());
+        Model expectedModel = new ModelManager(new UltiStudent(model.getUltiStudent()), new UserPrefs());
         expectedModel.setCapEntry(model.getFilteredCapEntryList().get(0), editedCapEntry);
         expectedModel.commitUltiStudent();
 
@@ -122,7 +122,7 @@ public class EditCapEntryCommandTest {
         showCapEntryAtIndex(model, INDEX_FIRST_CAP_ENTRY);
 
         // edit person in filtered list into a duplicate in UltiStudent
-        CapEntry capEntryInList = model.getAddressBook().getCapEntryList().get(INDEX_SECOND_CAP_ENTRY.getZeroBased());
+        CapEntry capEntryInList = model.getUltiStudent().getCapEntryList().get(INDEX_SECOND_CAP_ENTRY.getZeroBased());
         EditCapEntryCommand editCapEntryCommand = new EditCapEntryCommand(INDEX_FIRST_CAP_ENTRY,
                 new EditCapEntryDescriptorBuilder(capEntryInList).build());
         assertCommandFailure(editCapEntryCommand, model, commandHistory,
@@ -149,7 +149,7 @@ public class EditCapEntryCommandTest {
         showCapEntryAtIndex(model, INDEX_FIRST_CAP_ENTRY);
         Index outOfBoundIndex = INDEX_SECOND_CAP_ENTRY;
         // ensures that outOfBoundIndex is still in bounds of UltiStudent list
-        assertTrue(outOfBoundIndex.getZeroBased() < model.getAddressBook().getCapEntryList().size());
+        assertTrue(outOfBoundIndex.getZeroBased() < model.getUltiStudent().getCapEntryList().size());
 
         EditCapEntryCommand editCapEntryCommand = new EditCapEntryCommand(outOfBoundIndex,
                 new EditCapEntryDescriptorBuilder().withModuleCode(VALID_MODULE_CODE_CS1002).build());
@@ -164,7 +164,7 @@ public class EditCapEntryCommandTest {
         CapEntry capEntryToEdit = model.getFilteredCapEntryList().get(INDEX_FIRST_CAP_ENTRY.getZeroBased());
         EditCapEntryDescriptor descriptor = new EditCapEntryDescriptorBuilder(editedCapEntry).build();
         EditCapEntryCommand editCapEntryCommand = new EditCapEntryCommand(INDEX_FIRST_CAP_ENTRY, descriptor);
-        Model expectedModel = new ModelManager(new UltiStudent(model.getAddressBook()), new UserPrefs());
+        Model expectedModel = new ModelManager(new UltiStudent(model.getUltiStudent()), new UserPrefs());
         expectedModel.setCapEntry(capEntryToEdit, editedCapEntry);
         expectedModel.commitUltiStudent();
 
@@ -172,11 +172,11 @@ public class EditCapEntryCommandTest {
         editCapEntryCommand.execute(model, commandHistory);
 
         // undo -> reverts addressbook back to previous state and filtered cap entry list to show all cap entries
-        expectedModel.undoAddressBook();
+        expectedModel.undoUltiStudent();
         assertCommandSuccess(new UndoCommand(), model, commandHistory, UndoCommand.MESSAGE_SUCCESS, expectedModel);
 
         // redo -> same first cap entry edited again
-        expectedModel.redoAddressBook();
+        expectedModel.redoUltiStudent();
         assertCommandSuccess(new RedoCommand(), model, commandHistory, RedoCommand.MESSAGE_SUCCESS, expectedModel);
     }
 
@@ -208,7 +208,7 @@ public class EditCapEntryCommandTest {
         CapEntry editedCapEntry = new CapEntryBuilder().build();
         EditCapEntryDescriptor descriptor = new EditCapEntryDescriptorBuilder(editedCapEntry).build();
         EditCapEntryCommand editCapEntryCommand = new EditCapEntryCommand(INDEX_FIRST_CAP_ENTRY, descriptor);
-        Model expectedModel = new ModelManager(new UltiStudent(model.getAddressBook()), new UserPrefs());
+        Model expectedModel = new ModelManager(new UltiStudent(model.getUltiStudent()), new UserPrefs());
 
         showCapEntryAtIndex(model, INDEX_SECOND_CAP_ENTRY);
         CapEntry capEntryToEdit = model.getFilteredCapEntryList().get(INDEX_FIRST_CAP_ENTRY.getZeroBased());
@@ -219,12 +219,12 @@ public class EditCapEntryCommandTest {
         editCapEntryCommand.execute(model, commandHistory);
 
         // undo -> reverts addressbook back to previous state and filtered person list to show all persons
-        expectedModel.undoAddressBook();
+        expectedModel.undoUltiStudent();
         assertCommandSuccess(new UndoCommand(), model, commandHistory, UndoCommand.MESSAGE_SUCCESS, expectedModel);
 
         assertNotEquals(model.getFilteredCapEntryList().get(INDEX_FIRST_CAP_ENTRY.getZeroBased()), capEntryToEdit);
         // redo -> edits same second person in unfiltered person list
-        expectedModel.redoAddressBook();
+        expectedModel.redoUltiStudent();
         assertCommandSuccess(new RedoCommand(), model, commandHistory, RedoCommand.MESSAGE_SUCCESS, expectedModel);
     }
 

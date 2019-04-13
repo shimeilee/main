@@ -60,7 +60,7 @@ public class SampleDataUtil {
         };
     }
 
-    public static ReadOnlyUltiStudent getSampleAddressBook() {
+    public static ReadOnlyUltiStudent getSampleUltiStudent() {
         UltiStudent sampleAb = new UltiStudent();
         for (Person samplePerson : getSamplePersons()) {
             sampleAb.addPerson(samplePerson);

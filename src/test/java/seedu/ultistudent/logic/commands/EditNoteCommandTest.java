@@ -58,7 +58,7 @@ public class EditNoteCommandTest {
 
         Index outOfBoundsIndex = INDEX_SECOND_NOTE;
         // ensures that outOfBoundIndex is still in bounds of UltiStudent list
-        assertTrue(outOfBoundsIndex.getZeroBased() < model.getAddressBook().getNoteList().size());
+        assertTrue(outOfBoundsIndex.getZeroBased() < model.getUltiStudent().getNoteList().size());
 
         assertExecutionFailure(outOfBoundsIndex, Messages.MESSAGE_INVALID_NOTE_DISPLAYED_INDEX);
     }

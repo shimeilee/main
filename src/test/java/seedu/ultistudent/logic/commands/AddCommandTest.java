@@ -59,12 +59,12 @@ public class AddCommandTest {
         }
 
         @Override
-        public Path getAddressBookFilePath() {
+        public Path getUltiStudentFilePath() {
             throw new AssertionError("This method should not be called.");
         }
 
         @Override
-        public void setAddressBookFilePath(Path addressBookFilePath) {
+        public void setUltiStudentFilePath(Path addressBookFilePath) {
             throw new AssertionError("This method should not be called.");
         }
 
@@ -74,12 +74,12 @@ public class AddCommandTest {
         }
 
         @Override
-        public void setAddressBook(ReadOnlyUltiStudent newData) {
+        public void setUltiStudent(ReadOnlyUltiStudent newData) {
             throw new AssertionError("This method should not be called.");
         }
 
         @Override
-        public ReadOnlyUltiStudent getAddressBook() {
+        public ReadOnlyUltiStudent getUltiStudent() {
             throw new AssertionError("This method should not be called.");
         }
 
@@ -109,22 +109,22 @@ public class AddCommandTest {
         }
 
         @Override
-        public boolean canUndoAddressBook() {
+        public boolean canUndoUltiStudent() {
             throw new AssertionError("This method should not be called.");
         }
 
         @Override
-        public boolean canRedoAddressBook() {
+        public boolean canRedoUltiStudent() {
             throw new AssertionError("This method should not be called.");
         }
 
         @Override
-        public void undoAddressBook() {
+        public void undoUltiStudent() {
             throw new AssertionError("This method should not be called.");
         }
 
         @Override
-        public void redoAddressBook() {
+        public void redoUltiStudent() {
             throw new AssertionError("This method should not be called.");
         }
 
@@ -426,7 +426,7 @@ public class AddCommandTest {
         }
 
         @Override
-        public ReadOnlyUltiStudent getAddressBook() {
+        public ReadOnlyUltiStudent getUltiStudent() {
             return new UltiStudent();
         }
     }

@@ -50,22 +50,22 @@ public interface Model {
     /**
      * Returns the user prefs' UltiStudent file path.
      */
-    Path getAddressBookFilePath();
+    Path getUltiStudentFilePath();
 
     /**
      * Sets the user prefs' UltiStudent file path.
      */
-    void setAddressBookFilePath(Path ultiStudentFilePath);
+    void setUltiStudentFilePath(Path ultiStudentFilePath);
 
     /**
      * Replaces UltiStudent data with the data in {@code ultiStudent}.
      */
-    void setAddressBook(ReadOnlyUltiStudent ultiStudent);
+    void setUltiStudent(ReadOnlyUltiStudent ultiStudent);
 
     /**
      * Returns the UltiStudent
      */
-    ReadOnlyUltiStudent getAddressBook();
+    ReadOnlyUltiStudent getUltiStudent();
 
     /**
      * Returns true if a person with the same identity as {@code person} exists in the UltiStudent.
@@ -106,22 +106,22 @@ public interface Model {
     /**
      * Returns true if the model has previous UltiStudent states to restore.
      */
-    boolean canUndoAddressBook();
+    boolean canUndoUltiStudent();
 
     /**
      * Returns true if the model has undone UltiStudent states to restore.
      */
-    boolean canRedoAddressBook();
+    boolean canRedoUltiStudent();
 
     /**
      * Restores the model's UltiStudent to its previous state.
      */
-    void undoAddressBook();
+    void undoUltiStudent();
 
     /**
      * Restores the model's UltiStudent to its previously undone state.
      */
-    void redoAddressBook();
+    void redoUltiStudent();
 
     /**
      * Saves the current UltiStudent state for undo/redo.

@@ -35,7 +35,7 @@ public class ModelManagerTest {
     public void constructor() {
         assertEquals(new UserPrefs(), modelManager.getUserPrefs());
         assertEquals(new GuiSettings(), modelManager.getGuiSettings());
-        assertEquals(new UltiStudent(), new UltiStudent(modelManager.getAddressBook()));
+        assertEquals(new UltiStudent(), new UltiStudent(modelManager.getUltiStudent()));
         assertEquals(null, modelManager.getSelectedPerson());
     }
 
@@ -48,14 +48,14 @@ public class ModelManagerTest {
     @Test
     public void setUserPrefs_validUserPrefs_copiesUserPrefs() {
         UserPrefs userPrefs = new UserPrefs();
-        userPrefs.setAddressBookFilePath(Paths.get("ultistudent/book/file/path"));
+        userPrefs.setUltiStudentFilePath(Paths.get("ultistudent/book/file/path"));
         userPrefs.setGuiSettings(new GuiSettings(1, 2, 3, 4));
         modelManager.setUserPrefs(userPrefs);
         assertEquals(userPrefs, modelManager.getUserPrefs());
 
         // Modifying userPrefs should not modify modelManager's userPrefs
         UserPrefs oldUserPrefs = new UserPrefs(userPrefs);
-        userPrefs.setAddressBookFilePath(Paths.get("new/ultistudent/book/file/path"));
+        userPrefs.setUltiStudentFilePath(Paths.get("new/ultistudent/book/file/path"));
         assertEquals(oldUserPrefs, modelManager.getUserPrefs());
     }
 
@@ -75,14 +75,14 @@ public class ModelManagerTest {
     @Test
     public void setAddressBookFilePath_nullPath_throwsNullPointerException() {
         thrown.expect(NullPointerException.class);
-        modelManager.setAddressBookFilePath(null);
+        modelManager.setUltiStudentFilePath(null);
     }
 
     @Test
     public void setAddressBookFilePath_validPath_setsAddressBookFilePath() {
         Path path = Paths.get("ultistudent/book/file/path");
-        modelManager.setAddressBookFilePath(path);
-        assertEquals(path, modelManager.getAddressBookFilePath());
+        modelManager.setUltiStudentFilePath(path);
+        assertEquals(path, modelManager.getUltiStudentFilePath());
     }
 
     @Test
@@ -182,7 +182,7 @@ public class ModelManagerTest {
 
         // different userPrefs -> returns false
         UserPrefs differentUserPrefs = new UserPrefs();
-        differentUserPrefs.setAddressBookFilePath(Paths.get("differentFilePath"));
+        differentUserPrefs.setUltiStudentFilePath(Paths.get("differentFilePath"));
         assertFalse(modelManager.equals(new ModelManager(addressBook, differentUserPrefs)));
     }
 }
