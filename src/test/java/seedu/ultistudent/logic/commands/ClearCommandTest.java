@@ -6,9 +6,9 @@ import static seedu.ultistudent.testutil.TypicalPersons.getTypicalAddressBook;
 import org.junit.Test;
 
 import seedu.ultistudent.logic.CommandHistory;
-import seedu.ultistudent.model.AddressBook;
 import seedu.ultistudent.model.Model;
 import seedu.ultistudent.model.ModelManager;
+import seedu.ultistudent.model.UltiStudent;
 import seedu.ultistudent.model.UserPrefs;
 
 public class ClearCommandTest {
@@ -28,7 +28,7 @@ public class ClearCommandTest {
     public void execute_nonEmptyAddressBook_success() {
         Model model = new ModelManager(getTypicalAddressBook(), new UserPrefs());
         Model expectedModel = new ModelManager(getTypicalAddressBook(), new UserPrefs());
-        expectedModel.setAddressBook(new AddressBook());
+        expectedModel.setAddressBook(new UltiStudent());
         expectedModel.commitUltiStudent();
 
         assertCommandSuccess(new ClearCommand(), model, commandHistory, ClearCommand.MESSAGE_SUCCESS, expectedModel);

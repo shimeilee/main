@@ -20,9 +20,9 @@ import seedu.ultistudent.commons.core.Messages;
 import seedu.ultistudent.commons.core.index.Index;
 import seedu.ultistudent.logic.CommandHistory;
 import seedu.ultistudent.logic.commands.EditCapEntryCommand.EditCapEntryDescriptor;
-import seedu.ultistudent.model.AddressBook;
 import seedu.ultistudent.model.Model;
 import seedu.ultistudent.model.ModelManager;
+import seedu.ultistudent.model.UltiStudent;
 import seedu.ultistudent.model.UserPrefs;
 import seedu.ultistudent.model.cap.CapEntry;
 import seedu.ultistudent.testutil.CapEntryBuilder;
@@ -45,7 +45,7 @@ public class EditCapEntryCommandTest {
 
         String expectedMessage = String.format(EditCapEntryCommand.MESSAGE_EDIT_CAP_ENTRY_SUCCESS, editedCapEntry);
 
-        Model expectedModel = new ModelManager(new AddressBook(model.getAddressBook()), new UserPrefs());
+        Model expectedModel = new ModelManager(new UltiStudent(model.getAddressBook()), new UserPrefs());
         expectedModel.setCapEntry(model.getFilteredCapEntryList().get(0), editedCapEntry);
         expectedModel.commitUltiStudent();
 
@@ -67,7 +67,7 @@ public class EditCapEntryCommandTest {
 
         String expectedMessage = String.format(EditCapEntryCommand.MESSAGE_EDIT_CAP_ENTRY_SUCCESS, editedCapEntry);
 
-        Model expectedModel = new ModelManager(new AddressBook(model.getAddressBook()), new UserPrefs());
+        Model expectedModel = new ModelManager(new UltiStudent(model.getAddressBook()), new UserPrefs());
         expectedModel.setCapEntry(lastCapEntry, editedCapEntry);
         expectedModel.commitUltiStudent();
 
@@ -82,7 +82,7 @@ public class EditCapEntryCommandTest {
 
         String expectedMessage = String.format(EditCapEntryCommand.MESSAGE_EDIT_CAP_ENTRY_SUCCESS, editedCapEntry);
 
-        Model expectedModel = new ModelManager(new AddressBook(model.getAddressBook()), new UserPrefs());
+        Model expectedModel = new ModelManager(new UltiStudent(model.getAddressBook()), new UserPrefs());
         expectedModel.commitUltiStudent();
 
         assertCommandSuccess(editCapEntryCommand, model, commandHistory, expectedMessage, expectedModel);
@@ -100,7 +100,7 @@ public class EditCapEntryCommandTest {
 
         String expectedMessage = String.format(EditCapEntryCommand.MESSAGE_EDIT_CAP_ENTRY_SUCCESS, editedCapEntry);
 
-        Model expectedModel = new ModelManager(new AddressBook(model.getAddressBook()), new UserPrefs());
+        Model expectedModel = new ModelManager(new UltiStudent(model.getAddressBook()), new UserPrefs());
         expectedModel.setCapEntry(model.getFilteredCapEntryList().get(0), editedCapEntry);
         expectedModel.commitUltiStudent();
 
@@ -164,7 +164,7 @@ public class EditCapEntryCommandTest {
         CapEntry capEntryToEdit = model.getFilteredCapEntryList().get(INDEX_FIRST_CAP_ENTRY.getZeroBased());
         EditCapEntryDescriptor descriptor = new EditCapEntryDescriptorBuilder(editedCapEntry).build();
         EditCapEntryCommand editCapEntryCommand = new EditCapEntryCommand(INDEX_FIRST_CAP_ENTRY, descriptor);
-        Model expectedModel = new ModelManager(new AddressBook(model.getAddressBook()), new UserPrefs());
+        Model expectedModel = new ModelManager(new UltiStudent(model.getAddressBook()), new UserPrefs());
         expectedModel.setCapEntry(capEntryToEdit, editedCapEntry);
         expectedModel.commitUltiStudent();
 
@@ -208,7 +208,7 @@ public class EditCapEntryCommandTest {
         CapEntry editedCapEntry = new CapEntryBuilder().build();
         EditCapEntryDescriptor descriptor = new EditCapEntryDescriptorBuilder(editedCapEntry).build();
         EditCapEntryCommand editCapEntryCommand = new EditCapEntryCommand(INDEX_FIRST_CAP_ENTRY, descriptor);
-        Model expectedModel = new ModelManager(new AddressBook(model.getAddressBook()), new UserPrefs());
+        Model expectedModel = new ModelManager(new UltiStudent(model.getAddressBook()), new UserPrefs());
 
         showCapEntryAtIndex(model, INDEX_SECOND_CAP_ENTRY);
         CapEntry capEntryToEdit = model.getFilteredCapEntryList().get(INDEX_FIRST_CAP_ENTRY.getZeroBased());

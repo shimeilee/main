@@ -60,12 +60,12 @@ public interface Model {
     /**
      * Replaces UltiStudent data with the data in {@code addressBook}.
      */
-    void setAddressBook(ReadOnlyAddressBook addressBook);
+    void setAddressBook(ReadOnlyUltiStudent addressBook);
 
     /**
-     * Returns the AddressBook
+     * Returns the UltiStudent
      */
-    ReadOnlyAddressBook getAddressBook();
+    ReadOnlyUltiStudent getAddressBook();
 
     /**
      * Returns true if a person with the same identity as {@code person} exists in the UltiStudent.

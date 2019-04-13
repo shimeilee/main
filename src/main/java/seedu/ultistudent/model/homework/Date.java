@@ -1,7 +1,6 @@
 package seedu.ultistudent.model.homework;
 
 import static java.util.Objects.requireNonNull;
-import static seedu.ultistudent.commons.util.AppUtil.checkArgument;
 
 import java.text.DateFormat;
 import java.text.ParseException;

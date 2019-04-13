@@ -24,7 +24,7 @@ import seedu.ultistudent.model.person.UniquePersonList;
  * Wraps all data at the ultistudent-book level
  * Duplicates are not allowed (by .isSamePerson comparison)
  */
-public class AddressBook implements ReadOnlyAddressBook {
+public class UltiStudent implements ReadOnlyUltiStudent {
 
     private final UniqueCapEntryList capEntryList;
     private final UniquePersonList persons;
@@ -51,12 +51,12 @@ public class AddressBook implements ReadOnlyAddressBook {
         moduleCodeList = new UniqueModuleCodeList();
     }
 
-    public AddressBook() {}
+    public UltiStudent() {}
 
     /**
-     * Creates an AddressBook using the Persons in the {@code toBeCopied}
+     * Creates an UltiStudent using the Persons in the {@code toBeCopied}
      */
-    public AddressBook(ReadOnlyAddressBook toBeCopied) {
+    public UltiStudent(ReadOnlyUltiStudent toBeCopied) {
         this();
         resetData(toBeCopied);
     }
@@ -96,9 +96,9 @@ public class AddressBook implements ReadOnlyAddressBook {
     }
 
     /**
-     * Resets the existing data of this {@code AddressBook} with {@code newData}.
+     * Resets the existing data of this {@code UltiStudent} with {@code newData}.
      */
-    public void resetData(ReadOnlyAddressBook newData) {
+    public void resetData(ReadOnlyUltiStudent newData) {
         requireNonNull(newData);
         setCapEntryList(newData.getCapEntryList());
         setPersons(newData.getPersonList());
@@ -234,7 +234,7 @@ public class AddressBook implements ReadOnlyAddressBook {
 
 
     /**
-     * Removes {@code key} from this {@code AddressBook}.
+     * Removes {@code key} from this {@code UltiStudent}.
      * {@code key} must exist in the UltiStudent.
      */
     public void removePerson(Person key) {
@@ -243,7 +243,7 @@ public class AddressBook implements ReadOnlyAddressBook {
     }
 
     /**
-     * Removes the cap entry, {@code key} from this {@code AddressBook}.
+     * Removes the cap entry, {@code key} from this {@code UltiStudent}.
      * {@code key} must exist in the UltiStudent.
      */
     public void removeCapEntry(CapEntry key) {
@@ -252,7 +252,7 @@ public class AddressBook implements ReadOnlyAddressBook {
     }
 
     /**
-     * Removes the module semester. {@code key} from this {@code AddressBook}.
+     * Removes the module semester. {@code key} from this {@code UltiStudent}.
      * {@code key} must exist in the UltiStudent.
      */
     public void removeModuleSemester(ModuleSemester key) {
@@ -261,7 +261,7 @@ public class AddressBook implements ReadOnlyAddressBook {
     }
 
     /**
-     * Removes {@code key} from this {@code AddressBook}.
+     * Removes {@code key} from this {@code UltiStudent}.
      * {@code key} must exist in the UltiStudent.
      */
     public void removeModuleCode(ModuleCode key) {
@@ -299,7 +299,7 @@ public class AddressBook implements ReadOnlyAddressBook {
     }
 
     /**
-     * Removes {@code key} from this {@code AddressBook}.
+     * Removes {@code key} from this {@code UltiStudent}.
      * {@code key} must exist in the UltiStudent.
      */
     public void removeHomework(Homework homework) {
@@ -339,7 +339,7 @@ public class AddressBook implements ReadOnlyAddressBook {
     }
 
     /**
-     * Removes {@code key} from this {@code AddressBook}.
+     * Removes {@code key} from this {@code UltiStudent}.
      * {@code key} must exist in the UltiStudent.
      */
     public void removeNote(Note note) {
@@ -406,8 +406,8 @@ public class AddressBook implements ReadOnlyAddressBook {
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
-                || (other instanceof AddressBook // instanceof handles nulls
-                && persons.equals(((AddressBook) other).persons));
+                || (other instanceof UltiStudent // instanceof handles nulls
+                && persons.equals(((UltiStudent) other).persons));
     }
 
     @Override

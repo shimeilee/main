@@ -14,7 +14,7 @@ import seedu.ultistudent.logic.commands.exceptions.CommandException;
 import seedu.ultistudent.logic.parser.UltiStudentParser;
 import seedu.ultistudent.logic.parser.exceptions.ParseException;
 import seedu.ultistudent.model.Model;
-import seedu.ultistudent.model.ReadOnlyAddressBook;
+import seedu.ultistudent.model.ReadOnlyUltiStudent;
 import seedu.ultistudent.model.cap.CapEntry;
 import seedu.ultistudent.model.cap.ModuleSemester;
 import seedu.ultistudent.model.homework.Homework;
@@ -72,7 +72,7 @@ public class LogicManager implements Logic {
     }
 
     @Override
-    public ReadOnlyAddressBook getAddressBook() {
+    public ReadOnlyUltiStudent getAddressBook() {
         return model.getAddressBook();
     }
 

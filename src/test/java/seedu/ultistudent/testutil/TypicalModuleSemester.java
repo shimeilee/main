@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import seedu.ultistudent.model.AddressBook;
+import seedu.ultistudent.model.UltiStudent;
 import seedu.ultistudent.model.cap.ModuleSemester;
 
 /**
@@ -43,10 +43,10 @@ public class TypicalModuleSemester {
     private TypicalModuleSemester() {} // prevents instantiation
 
     /**
-     * Returns an {@code AddressBook} with all the typical moduleSemester.
+     * Returns an {@code UltiStudent} with all the typical moduleSemester.
      */
-    public static AddressBook getTypicalAddressBook() {
-        AddressBook ab = new AddressBook();
+    public static UltiStudent getTypicalAddressBook() {
+        UltiStudent ab = new UltiStudent();
         for (ModuleSemester moduleSemester : getTypicalModuleSemester()) {
             ab.addModuleSemester(moduleSemester);
         }

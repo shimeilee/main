@@ -3,8 +3,8 @@ package seedu.ultistudent.logic.commands;
 import static java.util.Objects.requireNonNull;
 
 import seedu.ultistudent.logic.CommandHistory;
-import seedu.ultistudent.model.AddressBook;
 import seedu.ultistudent.model.Model;
+import seedu.ultistudent.model.UltiStudent;
 
 /**
  * Clears the UltiStudent.
@@ -18,7 +18,7 @@ public class ClearCommand extends Command {
     @Override
     public CommandResult execute(Model model, CommandHistory history) {
         requireNonNull(model);
-        model.setAddressBook(new AddressBook());
+        model.setAddressBook(new UltiStudent());
         model.commitUltiStudent();
         return new CommandResult(MESSAGE_SUCCESS);
     }

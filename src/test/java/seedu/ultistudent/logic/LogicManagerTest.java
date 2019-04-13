@@ -26,7 +26,7 @@ import seedu.ultistudent.logic.commands.exceptions.CommandException;
 import seedu.ultistudent.logic.parser.exceptions.ParseException;
 import seedu.ultistudent.model.Model;
 import seedu.ultistudent.model.ModelManager;
-import seedu.ultistudent.model.ReadOnlyAddressBook;
+import seedu.ultistudent.model.ReadOnlyUltiStudent;
 import seedu.ultistudent.model.UserPrefs;
 import seedu.ultistudent.model.person.Person;
 import seedu.ultistudent.storage.JsonAddressBookStorage;
@@ -182,7 +182,7 @@ public class LogicManagerTest {
         }
 
         @Override
-        public void saveAddressBook(ReadOnlyAddressBook addressBook, Path filePath) throws IOException {
+        public void saveAddressBook(ReadOnlyUltiStudent addressBook, Path filePath) throws IOException {
             throw DUMMY_IO_EXCEPTION;
         }
     }

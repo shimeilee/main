@@ -20,8 +20,8 @@ import java.util.List;
 import seedu.ultistudent.commons.core.index.Index;
 import seedu.ultistudent.logic.CommandHistory;
 import seedu.ultistudent.logic.commands.exceptions.CommandException;
-import seedu.ultistudent.model.AddressBook;
 import seedu.ultistudent.model.Model;
+import seedu.ultistudent.model.UltiStudent;
 import seedu.ultistudent.model.cap.CapEntry;
 import seedu.ultistudent.model.cap.ModuleCodeContainsKeywordsPredicate;
 import seedu.ultistudent.model.homework.Homework;
@@ -156,7 +156,7 @@ public class CommandTestUtil {
             String expectedMessage) {
         // we are unable to defensively copy the model for comparison later, so we can
         // only do so by copying its components.
-        AddressBook expectedAddressBook = new AddressBook(actualModel.getAddressBook());
+        UltiStudent expectedAddressBook = new UltiStudent(actualModel.getAddressBook());
         List<Person> expectedFilteredList = new ArrayList<>(actualModel.getFilteredPersonList());
         Person expectedSelectedPerson = actualModel.getSelectedPerson();
 
@@ -265,7 +265,7 @@ public class CommandTestUtil {
                                                 String expectedMessage) {
         // we are unable to defensively copy the model for comparison later, so we can
         // only do so by copying its components.
-        AddressBook expectedAddressBook = new AddressBook(actualModel.getAddressBook());
+        UltiStudent expectedAddressBook = new UltiStudent(actualModel.getAddressBook());
         List<Note> expectedFilteredList = new ArrayList<>(actualModel.getFilteredNoteList());
         Note expectedSelectedNote = actualModel.getSelectedNote();
 

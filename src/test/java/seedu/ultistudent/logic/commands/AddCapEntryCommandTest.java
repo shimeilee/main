@@ -19,10 +19,10 @@ import javafx.collections.ObservableList;
 import seedu.ultistudent.commons.core.GuiSettings;
 import seedu.ultistudent.logic.CommandHistory;
 import seedu.ultistudent.logic.commands.exceptions.CommandException;
-import seedu.ultistudent.model.AddressBook;
 import seedu.ultistudent.model.Model;
-import seedu.ultistudent.model.ReadOnlyAddressBook;
+import seedu.ultistudent.model.ReadOnlyUltiStudent;
 import seedu.ultistudent.model.ReadOnlyUserPrefs;
+import seedu.ultistudent.model.UltiStudent;
 import seedu.ultistudent.model.cap.CapEntry;
 import seedu.ultistudent.model.cap.ModuleSemester;
 import seedu.ultistudent.model.homework.Homework;
@@ -135,12 +135,12 @@ public class AddCapEntryCommandTest {
         }
 
         @Override
-        public void setAddressBook(ReadOnlyAddressBook newData) {
+        public void setAddressBook(ReadOnlyUltiStudent newData) {
             throw new AssertionError("This method should not be called.");
         }
 
         @Override
-        public ReadOnlyAddressBook getAddressBook() {
+        public ReadOnlyUltiStudent getAddressBook() {
             throw new AssertionError("This method should not be called.");
         }
 
@@ -500,8 +500,8 @@ public class AddCapEntryCommandTest {
         }
 
         @Override
-        public ReadOnlyAddressBook getAddressBook() {
-            return new AddressBook();
+        public ReadOnlyUltiStudent getAddressBook() {
+            return new UltiStudent();
         }
     }
 
