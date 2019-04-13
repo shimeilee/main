@@ -2,7 +2,6 @@ package seedu.ultistudent.storage;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
-//import static seedu.ultistudent.testutil.TypicalPersons.getTypicalAddressBook;
 
 import java.nio.file.Path;
 
@@ -12,8 +11,6 @@ import org.junit.Test;
 import org.junit.rules.TemporaryFolder;
 
 import seedu.ultistudent.commons.core.GuiSettings;
-//import seedu.ultistudent.model.UltiStudent;
-//import seedu.ultistudent.model.ReadOnlyUltiStudent;
 import seedu.ultistudent.model.UserPrefs;
 
 public class StorageManagerTest {
@@ -48,19 +45,6 @@ public class StorageManagerTest {
         UserPrefs retrieved = storageManager.readUserPrefs().get();
         assertEquals(original, retrieved);
     }
-
-    //    @Test
-    //    public void addressBookReadSave() throws Exception {
-    //        /*
-    //         * Note: This is an integration test that verifies the StorageManager is properly wired to the
-    //         * {@link JsonUltiStudentStorage} class.
-    //         * More extensive testing of UserPref saving/reading is done in {@link JsonUltiStudentStorageTest} class.
-    //         */
-    //        UltiStudent original = getTypicalAddressBook();
-    //        storageManager.saveUltiStudent(original);
-    //        ReadOnlyUltiStudent retrieved = storageManager.readUltiStudent().get();
-    //        //assertEquals(original, new UltiStudent(retrieved));
-    //    }
 
     @Test
     public void getAddressBookFilePath() {
