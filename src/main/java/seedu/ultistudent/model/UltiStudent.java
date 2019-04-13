@@ -21,7 +21,7 @@ import seedu.ultistudent.model.person.Person;
 import seedu.ultistudent.model.person.UniquePersonList;
 
 /**
- * Wraps all data at the ultistudent-book level
+ * Wraps all data at the ultistudent level
  * Duplicates are not allowed (by .isSamePerson comparison)
  */
 public class UltiStudent implements ReadOnlyUltiStudent {
