@@ -22,7 +22,7 @@ import seedu.ultistudent.model.note.Note;
  * An Immutable UltiStudent that is serializable to JSON format.
  */
 @JsonRootName(value = "addressbook")
-class JsonSerializableAddressBook {
+class JsonSerializableUltiStudent {
 
     public static final String MESSAGE_DUPLICATE_PERSON = "Persons list contains duplicate person(s).";
     public static final String MESSAGE_DUPLICATE_CAP_ENTRY = "Cap Entry list contains duplicate cap entry(s).";
@@ -40,10 +40,10 @@ class JsonSerializableAddressBook {
     private final List<JsonAdaptedModuleCode> moduleCodeList = new ArrayList<>();
 
     /**
-     * Constructs a {@code JsonSerializableAddressBook} with the given cap.
+     * Constructs a {@code JsonSerializableUltiStudent} with the given cap.
      */
     @JsonCreator
-    public JsonSerializableAddressBook(@JsonProperty("capEntryList") List<JsonAdaptedCapEntry> capEntries,
+    public JsonSerializableUltiStudent(@JsonProperty("capEntryList") List<JsonAdaptedCapEntry> capEntries,
                                        @JsonProperty("homeworkList") List<JsonAdaptedHomeworkList> homeworkList,
                                        @JsonProperty("noteList") List<JsonAdaptedNote> notes,
                                        @JsonProperty("moduleSemesterList") List<JsonAdaptedModuleSemester>
@@ -59,9 +59,9 @@ class JsonSerializableAddressBook {
     /**
      * Converts a given {@code ReadOnlyUltiStudent} into this class for Jackson use.
      *
-     * @param source future changes to this will not affect the created {@code JsonSerializableAddressBook}.
+     * @param source future changes to this will not affect the created {@code JsonSerializableUltiStudent}.
      */
-    public JsonSerializableAddressBook(ReadOnlyUltiStudent source) {
+    public JsonSerializableUltiStudent(ReadOnlyUltiStudent source) {
         capEntryList.addAll(source.getCapEntryList().stream().map(JsonAdaptedCapEntry::new)
                 .collect(Collectors.toList()));
         homeworkList.addAll(source.getHomeworkList().stream().map(JsonAdaptedHomeworkList::new)

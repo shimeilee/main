@@ -45,8 +45,8 @@ public class JsonUltiStudentStorage implements UltiStudentStorage {
     public Optional<ReadOnlyUltiStudent> readUltiStudent(Path filePath) throws DataConversionException {
         requireNonNull(filePath);
 
-        Optional<JsonSerializableAddressBook> jsonAddressBook = JsonUtil.readJsonFile(
-                filePath, JsonSerializableAddressBook.class);
+        Optional<JsonSerializableUltiStudent> jsonAddressBook = JsonUtil.readJsonFile(
+                filePath, JsonSerializableUltiStudent.class);
         if (!jsonAddressBook.isPresent()) {
             return Optional.empty();
         }
@@ -74,7 +74,7 @@ public class JsonUltiStudentStorage implements UltiStudentStorage {
         requireNonNull(filePath);
 
         FileUtil.createIfMissing(filePath);
-        JsonUtil.saveJsonFile(new JsonSerializableAddressBook(ultiStudent), filePath);
+        JsonUtil.saveJsonFile(new JsonSerializableUltiStudent(ultiStudent), filePath);
     }
 
 }
