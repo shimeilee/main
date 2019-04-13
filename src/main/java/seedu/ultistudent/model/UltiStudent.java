@@ -34,7 +34,6 @@ public class UltiStudent implements ReadOnlyUltiStudent {
     private final UniqueNoteList noteList;
     private final InvalidationListenerManager invalidationListenerManager = new InvalidationListenerManager();
 
-
     /*
      * The 'unusual' code block below is an non-static initialization block, sometimes used to avoid duplication
      * between constructors. See https://docs.oracle.com/javase/tutorial/java/javaOO/initial.html
@@ -82,6 +81,23 @@ public class UltiStudent implements ReadOnlyUltiStudent {
     }
 
     /**
+     * Replaces the contents of the cap entries list list with {@code capEntryList}.
+     * {@code capEntryList} must not contain duplicate cap entries.
+     */
+    public void setCapScore(List<CapEntry> capEntryList) {
+        double newTotalModuleCredits = 0;
+        double newTotalModuleScore = 0;
+        for (CapEntry ce : capEntryList) {
+            double currentModuleCredits = ce.getModuleCredits().getValue();
+            double currentModuleScore = ce.getModuleGrade().getScore();
+            newTotalModuleCredits += currentModuleCredits;
+            newTotalModuleScore += currentModuleScore * currentModuleCredits;
+        }
+        CapEntry.setCapScore(newTotalModuleScore / newTotalModuleCredits);
+        //indicateModified();
+    }
+
+    /**
      * Replaces the contents of the module semesters list with {@code moduleSemesterList}.
      * {@code moduleSemesterList} must not contain duplicate module semester.
      */
@@ -100,6 +116,7 @@ public class UltiStudent implements ReadOnlyUltiStudent {
      */
     public void resetData(ReadOnlyUltiStudent newData) {
         requireNonNull(newData);
+        setCapScore(newData.getCapEntryList());
         setCapEntryList(newData.getCapEntryList());
         setPersons(newData.getPersonList());
         setHomework(newData.getHomeworkList());
