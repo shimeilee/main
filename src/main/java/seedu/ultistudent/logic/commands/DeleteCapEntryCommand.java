@@ -13,7 +13,7 @@ import seedu.ultistudent.model.cap.CapEntry;
 import seedu.ultistudent.model.cap.ModuleSemester;
 
 /**
- * Deletes a cap entry identified using it's displayed index from the Cap Manager.
+ * Deletes a cap entry identified using its displayed index from the Cap Manager.
  */
 public class DeleteCapEntryCommand extends Command {
 
@@ -42,8 +42,6 @@ public class DeleteCapEntryCommand extends Command {
         }
 
         CapEntry capEntryToDelete = lastShownList.get(targetIndex.getZeroBased());
-
-        CapEntry.updateCapForDeleteCommand(capEntryToDelete);
         model.deleteCapEntry(capEntryToDelete);
 
         //updates module semester - need to check if only 1 such entry with such module semester.
@@ -60,7 +58,7 @@ public class DeleteCapEntryCommand extends Command {
             model.deleteModuleSemester(moduleSemesterOfDeletedCapEntry);
         }
 
-        model.commitAddressBook();
+        model.commitUltiStudent();
         return new CommandResult(String.format(MESSAGE_DELETE_CAP_ENTRY_SUCCESS, capEntryToDelete));
     }
 

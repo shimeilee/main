@@ -10,6 +10,7 @@ import seedu.ultistudent.logic.CommandHistory;
 import seedu.ultistudent.logic.commands.exceptions.CommandException;
 import seedu.ultistudent.model.Model;
 import seedu.ultistudent.model.homework.Homework;
+import seedu.ultistudent.model.modulecode.ModuleCode;
 
 
 /**
@@ -51,8 +52,15 @@ public class AddHomeworkCommand extends Command {
             throw new CommandException(MESSAGE_DUPLICATE_HOMEWORK);
         }
 
+        //updates module semester
+        ModuleCode toAddModuleCode = toAdd.getModuleCode();
+        if (!model.hasModuleCode(toAddModuleCode)) {
+            model.addModuleCode(toAddModuleCode);
+        }
+
         model.addHomework(toAdd);
-        model.commitAddressBook();
+
+        model.commitUltiStudent();
         return new CommandResult(String.format(MESSAGE_SUCCESS, toAdd));
 
     }

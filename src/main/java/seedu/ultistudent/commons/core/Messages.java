@@ -14,5 +14,6 @@ public class Messages {
     public static final String MESSAGE_INVALID_NOTE_DISPLAYED_INDEX = "The "
             + "note entry index provided is invalid";
     public static final String MESSAGE_CAP_ENTRY_LISTED_OVERVIEW = "%1$d cap entries listed!";
+    public static final String MESSAGE_HOMEWORK_LISTED_OVERVIEW = "%1$d homework listed!";
 
 }

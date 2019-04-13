@@ -1,7 +1,7 @@
 package seedu.ultistudent.model.cap.exceptions;
 
 /**
- * Signals that the operation will result in duplicate Cap Entries (Cap Entries are considered duplicates if they have
+ * Signals that the operation will result in duplicate cap entries (Cap entries are considered duplicates if they have
  * the same identity).
  */
 public class DuplicateCapEntryException extends RuntimeException {

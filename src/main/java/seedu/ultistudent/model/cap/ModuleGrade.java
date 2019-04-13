@@ -5,14 +5,15 @@ import static java.util.Objects.requireNonNull;
 import static seedu.ultistudent.commons.util.AppUtil.checkArgument;
 
 /**
- * Represents a Homework's homework name in UltiStudent
+ * Represents a CapEntry's module grade in UltiStudent
  */
 public class ModuleGrade {
 
-    public static final String MESSAGE_CONSTRAINTS = "Module Grades should begin with One letter "
-            + "may end with an optional + or - sign at the back";
+    public static final String MESSAGE_CONSTRAINTS = "Module Grades should begin with one letter  and "
+            + "may end with an optional + or - sign at the back. \n"
+            + "Valid grades are: A+, A, A-, B+, B, B-, C+, C, D+, D, F";
 
-    public static final String VALIDATION_REGEX = "\\w{1}[+-]{0,1}";
+    public static final String VALIDATION_REGEX = "([AB]{1}[+-]{0,1})|([CD]{1}[+]{0,1})|[F]";
 
     public static final String A_PLUS_GRADE = "A+";
     public static final String A_GRADE = "A";
@@ -30,7 +31,7 @@ public class ModuleGrade {
     private double score;
 
     /**
-     * Constructs a {@code ModuleCode}.
+     * Constructs a {@code ModuleGrade}.
      * @param moduleGrade a valid moduleGrade
      */
     public ModuleGrade(String moduleGrade) {
@@ -38,6 +39,7 @@ public class ModuleGrade {
         requireNonNull(moduleGrade);
         checkArgument(isValidModuleGrade(capitalisedModuleGrade), MESSAGE_CONSTRAINTS);
         this.value = capitalisedModuleGrade;
+
         switch (capitalisedModuleGrade) {
         case A_PLUS_GRADE: case A_GRADE:
             this.score = 5.0;

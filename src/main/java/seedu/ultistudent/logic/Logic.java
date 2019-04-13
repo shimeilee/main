@@ -9,10 +9,11 @@ import seedu.ultistudent.logic.commands.CommandResult;
 import seedu.ultistudent.logic.commands.exceptions.CommandException;
 import seedu.ultistudent.logic.parser.exceptions.ParseException;
 import seedu.ultistudent.model.Model;
-import seedu.ultistudent.model.ReadOnlyAddressBook;
+import seedu.ultistudent.model.ReadOnlyUltiStudent;
 import seedu.ultistudent.model.cap.CapEntry;
 import seedu.ultistudent.model.cap.ModuleSemester;
 import seedu.ultistudent.model.homework.Homework;
+import seedu.ultistudent.model.modulecode.ModuleCode;
 import seedu.ultistudent.model.note.Note;
 import seedu.ultistudent.model.person.Person;
 
@@ -30,11 +31,11 @@ public interface Logic {
     CommandResult execute(String commandText) throws CommandException, ParseException;
 
     /**
-     * Returns the AddressBook.
+     * Returns the UltiStudent.
      *
-     * @see seedu.ultistudent.model.Model#getAddressBook()
+     * @see seedu.ultistudent.model.Model#getUltiStudent()
      */
-    ReadOnlyAddressBook getAddressBook();
+    ReadOnlyUltiStudent getUltiStudent();
 
     /** Returns an unmodifiable view of the filtered list of persons */
     ObservableList<Person> getFilteredPersonList();
@@ -50,7 +51,7 @@ public interface Logic {
     /**
      * Returns the user prefs' UltiStudent file path.
      */
-    Path getAddressBookFilePath();
+    Path getUltiStudentFilePath();
 
     /**
      * Returns the user prefs' GUI settings.
@@ -104,6 +105,18 @@ public interface Logic {
      */
     ReadOnlyProperty<ModuleSemester> selectedModuleSemesterProperty();
 
+    // Module Code
+    /** Returns an unmodifiable view of the filtered list of module code */
+    ObservableList<ModuleCode> getFilteredModuleCodeList();
+
+    /**
+     * Selected module semester in the filtered module semester list.
+     * null if no module semester is selected.
+     *
+     * @see Model#selectedModuleSemesterProperty()
+     */
+    ReadOnlyProperty<ModuleCode> selectedModuleCodeProperty();
+
     // Note
     /** Returns an unmodifiable view of the filtered list of notes.*/
     ObservableList<Note> getFilteredNoteList();
@@ -127,4 +140,6 @@ public interface Logic {
     void setSelectedNote(Note note);
 
     void setSelectedModuleSemester (ModuleSemester moduleSemester);
+
+    void setSelectedModuleCode (ModuleCode moduleCode);
 }

@@ -18,7 +18,7 @@ public class ModuleCodeContainsKeywordsPredicate implements Predicate<CapEntry> 
     @Override
     public boolean test(CapEntry capEntry) {
         return keywords.stream()
-                .anyMatch(keyword -> StringUtil.containsWordIgnoreCase(capEntry.getModuleGrade().getGrade(), keyword));
+                .anyMatch(keyword -> StringUtil.containsWordIgnoreCase(capEntry.getModuleCode().getValue(), keyword));
     }
 
     @Override

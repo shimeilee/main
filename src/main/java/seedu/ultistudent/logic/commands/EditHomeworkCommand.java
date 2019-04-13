@@ -5,6 +5,7 @@ import static seedu.ultistudent.logic.parser.CliSyntax.PREFIX_DEADLINE;
 import static seedu.ultistudent.logic.parser.CliSyntax.PREFIX_HOMEWORK;
 import static seedu.ultistudent.logic.parser.CliSyntax.PREFIX_MODULECODE;
 import static seedu.ultistudent.model.Model.PREDICATE_SHOW_ALL_HOMEWORK;
+import static seedu.ultistudent.model.Model.PREDICATE_SHOW_ALL_MODULE_CODE;
 
 import java.util.List;
 import java.util.Optional;
@@ -68,7 +69,9 @@ public class EditHomeworkCommand extends Command {
         }
 
         Homework homeworkToEdit = lastShownList.get(index.getZeroBased());
+        ModuleCode moduleCodeOfHomeworkToEdit = homeworkToEdit.getModuleCode();
         Homework editedHomework = createEditedHomework(homeworkToEdit, editHomeworkDescriptor);
+        ModuleCode moduleCodeOfEditedHomework = editedHomework.getModuleCode();
 
         if (!homeworkToEdit.equals(editedHomework) && model.hasHomework(editedHomework)) {
             throw new CommandException(MESSAGE_DUPLICATE_HOMEWORK);
@@ -76,7 +79,26 @@ public class EditHomeworkCommand extends Command {
 
         model.setHomework(homeworkToEdit, editedHomework);
         model.updateFilteredHomeworkList(PREDICATE_SHOW_ALL_HOMEWORK);
-        model.commitAddressBook();
+
+        //update module code
+        if (!moduleCodeOfHomeworkToEdit.equals(moduleCodeOfEditedHomework)) {
+            List<Homework> afterEditList = model.getFilteredHomeworkList();
+            if (!model.hasModuleCode(moduleCodeOfEditedHomework)) {
+                model.addModuleCode(moduleCodeOfEditedHomework);
+            }
+            int numHomeworkWithSameModuleCode = 0;
+            for (int i = 0; i < afterEditList.size(); i++) {
+                if (afterEditList.get(i).getModuleCode().equals(moduleCodeOfHomeworkToEdit)) {
+                    numHomeworkWithSameModuleCode++;
+                }
+            }
+            if (numHomeworkWithSameModuleCode == 0) {
+                model.deleteModuleCode(moduleCodeOfHomeworkToEdit);
+            }
+        }
+        model.updateFilteredModuleCodeList(PREDICATE_SHOW_ALL_MODULE_CODE);
+
+        model.commitUltiStudent();
         return new CommandResult(String.format(MESSAGE_EDIT_HOMEWORK_SUCCESS, editedHomework));
     }
 

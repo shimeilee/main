@@ -1,12 +1,10 @@
 package systemtests;
 
-//import static seedu.ultistudent.ui.testutil.GuiTestAssert.assertListMatching;
-
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 
-import seedu.ultistudent.model.AddressBook;
+import seedu.ultistudent.model.UltiStudent;
 import seedu.ultistudent.testutil.TestUtil;
 
 public class SampleDataTest extends AddressBookSystemTest {
@@ -14,7 +12,7 @@ public class SampleDataTest extends AddressBookSystemTest {
      * Returns null to force test app to load data of the file in {@code getDataFileLocation()}.
      */
     @Override
-    protected AddressBook getInitialData() {
+    protected UltiStudent getInitialData() {
         return null;
     }
 
@@ -38,10 +36,4 @@ public class SampleDataTest extends AddressBookSystemTest {
             throw new AssertionError(ioe);
         }
     }
-
-    //@Test
-    //public void addressBook_dataFileDoesNotExist_loadSampleData() {
-    //Person[] expectedList = SampleDataUtil.getSamplePersons();
-    //assertListMatching(getPersonListPanel(), expectedList);
-    //}
 }

@@ -24,6 +24,7 @@ import javafx.collections.ObservableList;
 import seedu.ultistudent.model.cap.CapEntry;
 import seedu.ultistudent.model.cap.ModuleSemester;
 import seedu.ultistudent.model.homework.Homework;
+import seedu.ultistudent.model.modulecode.ModuleCode;
 import seedu.ultistudent.model.note.Note;
 import seedu.ultistudent.model.person.Person;
 import seedu.ultistudent.model.person.exceptions.DuplicatePersonException;
@@ -34,7 +35,7 @@ public class AddressBookTest {
     @Rule
     public ExpectedException thrown = ExpectedException.none();
 
-    private final AddressBook addressBook = new AddressBook();
+    private final UltiStudent addressBook = new UltiStudent();
 
     @Test
     public void constructor() {
@@ -49,7 +50,7 @@ public class AddressBookTest {
 
     @Test
     public void resetData_withValidReadOnlyAddressBook_replacesData() {
-        AddressBook newData = getTypicalAddressBook();
+        UltiStudent newData = getTypicalAddressBook();
         addressBook.resetData(newData);
         assertEquals(newData, addressBook);
     }
@@ -60,7 +61,7 @@ public class AddressBookTest {
         Person editedAlice = new PersonBuilder(ALICE).withAddress(VALID_ADDRESS_BOB).withTags(VALID_TAG_HUSBAND)
                 .build();
         List<Person> newPersons = Arrays.asList(ALICE, editedAlice);
-        AddressBookStub newData = new AddressBookStub(newPersons);
+        UltiStudentStub newData = new UltiStudentStub(newPersons);
 
         thrown.expect(DuplicatePersonException.class);
         addressBook.resetData(newData);
@@ -117,15 +118,16 @@ public class AddressBookTest {
     }
 
     /**
-     * A stub ReadOnlyAddressBook whose persons list can violate interface constraints.
+     * A stub ReadOnlyUltiStudent whose persons list can violate interface constraints.
      */
-    private static class AddressBookStub implements ReadOnlyAddressBook {
+    private static class UltiStudentStub implements ReadOnlyUltiStudent {
         private final ObservableList<Person> persons = FXCollections.observableArrayList();
         private final ObservableList<CapEntry> capEntryList = FXCollections.observableArrayList();
         private final ObservableList<Homework> homeworkList = FXCollections.observableArrayList();
         private final ObservableList<Note> noteList = FXCollections.observableArrayList();
         private final ObservableList<ModuleSemester> moduleSemesterList = FXCollections.observableArrayList();
-        AddressBookStub(Collection<Person> persons) {
+        private final ObservableList<ModuleCode> moduleCodeList = FXCollections.observableArrayList();
+        UltiStudentStub(Collection<Person> persons) {
             this.persons.setAll(persons);
         }
 
@@ -152,6 +154,11 @@ public class AddressBookTest {
         @Override
         public ObservableList<ModuleSemester> getModuleSemesterList() {
             return moduleSemesterList;
+        }
+
+        @Override
+        public ObservableList<ModuleCode> getModuleCodeList() {
+            return moduleCodeList;
         }
 
         @Override

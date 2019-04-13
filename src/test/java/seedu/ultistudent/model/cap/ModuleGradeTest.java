@@ -28,6 +28,7 @@ public class ModuleGradeTest {
         // invalid module grades
         assertFalse(ModuleGrade.isValidModuleGrade("")); // empty string
         assertFalse(ModuleGrade.isValidModuleGrade(" ")); // spaces only
+        assertFalse(ModuleGrade.isValidModuleGrade("Q")); // invalid character
         assertFalse(ModuleGrade.isValidModuleGrade("AB")); // more than 1 character
         assertFalse(ModuleGrade.isValidModuleGrade("A+-")); // more than 1 sign
         assertFalse(ModuleGrade.isValidModuleGrade("123")); // non-alphabetical

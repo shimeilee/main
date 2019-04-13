@@ -14,10 +14,11 @@ import seedu.ultistudent.logic.commands.exceptions.CommandException;
 import seedu.ultistudent.logic.parser.UltiStudentParser;
 import seedu.ultistudent.logic.parser.exceptions.ParseException;
 import seedu.ultistudent.model.Model;
-import seedu.ultistudent.model.ReadOnlyAddressBook;
+import seedu.ultistudent.model.ReadOnlyUltiStudent;
 import seedu.ultistudent.model.cap.CapEntry;
 import seedu.ultistudent.model.cap.ModuleSemester;
 import seedu.ultistudent.model.homework.Homework;
+import seedu.ultistudent.model.modulecode.ModuleCode;
 import seedu.ultistudent.model.note.Note;
 import seedu.ultistudent.model.person.Person;
 import seedu.ultistudent.storage.Storage;
@@ -33,7 +34,7 @@ public class LogicManager implements Logic {
     private final Storage storage;
     private final CommandHistory history;
     private final UltiStudentParser ultiStudentParser;
-    private boolean addressBookModified;
+    private boolean ultiStudentModified;
 
     public LogicManager(Model model, Storage storage) {
         this.model = model;
@@ -41,14 +42,14 @@ public class LogicManager implements Logic {
         history = new CommandHistory();
         ultiStudentParser = new UltiStudentParser();
 
-        // Set addressBookModified to true whenever the models' UltiStudent is modified.
-        model.getAddressBook().addListener(observable -> addressBookModified = true);
+        // Set ultiStudentModified to true whenever the models' UltiStudent is modified.
+        model.getUltiStudent().addListener(observable -> ultiStudentModified = true);
     }
 
     @Override
     public CommandResult execute(String commandText) throws CommandException, ParseException {
         logger.info("----------------[USER COMMAND][" + commandText + "]");
-        addressBookModified = false;
+        ultiStudentModified = false;
 
         CommandResult commandResult;
         try {
@@ -58,10 +59,10 @@ public class LogicManager implements Logic {
             history.add(commandText);
         }
 
-        if (addressBookModified) {
+        if (ultiStudentModified) {
             logger.info("UltiStudent modified, saving to file.");
             try {
-                storage.saveAddressBook(model.getAddressBook());
+                storage.saveUltiStudent(model.getUltiStudent());
             } catch (IOException ioe) {
                 throw new CommandException(FILE_OPS_ERROR_MESSAGE + ioe, ioe);
             }
@@ -71,8 +72,8 @@ public class LogicManager implements Logic {
     }
 
     @Override
-    public ReadOnlyAddressBook getAddressBook() {
-        return model.getAddressBook();
+    public ReadOnlyUltiStudent getUltiStudent() {
+        return model.getUltiStudent();
     }
 
     @Override
@@ -91,6 +92,16 @@ public class LogicManager implements Logic {
     }
 
     @Override
+    public ObservableList<ModuleCode> getFilteredModuleCodeList() {
+        return model.getFilteredModuleCodeList();
+    }
+
+    @Override
+    public ReadOnlyProperty<ModuleCode> selectedModuleCodeProperty() {
+        return model.selectedModuleCodeProperty();
+    }
+
+    @Override
     public ObservableList<Homework> getFilteredHomeworkList() {
         return model.getFilteredHomeworkList();
     }
@@ -106,8 +117,8 @@ public class LogicManager implements Logic {
     }
 
     @Override
-    public Path getAddressBookFilePath() {
-        return model.getAddressBookFilePath();
+    public Path getUltiStudentFilePath() {
+        return model.getUltiStudentFilePath();
     }
 
     @Override
@@ -168,5 +179,10 @@ public class LogicManager implements Logic {
     @Override
     public void setSelectedNote(Note note) {
         model.setSelectedNote(note);
+    }
+
+    @Override
+    public void setSelectedModuleCode(ModuleCode moduleCode) {
+        model.setSelectedModuleCode(moduleCode);
     }
 }

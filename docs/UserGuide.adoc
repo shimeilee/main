@@ -18,10 +18,17 @@ By: `Team W09-1`      Since: `Feb 2019`      Licence: `MIT`
 
 == Introduction
 
-UltiStudent is for students who *prefer to use a desktop app for managing their school activities*.
-More importantly, it is *optimized for students who prefer to work with a Command Line Interface* (CLI) while still having the benefits of a Graphical User Interface (GUI).
-If you can type fast, it can not only help you to manage your homework but
-also serve as a CAP calculator and Notes keeper!
+UltiStudent is a student application that effectively tackles the problem of having
+too many applications to manage their school life by providing a centralised platform
+for them to manage their homework, cumulative average point and notes.
+
+UltiStudent is catered for students who prefer to use a desktop app for managing their
+school activities through a Command Line Interface (CLI) while still having the benefits
+of a Graphical User Interface (GUI).
+
+Therefore if you can type fast, why not give UltiStudent a try to speed up your
+management of school activities!
+
 Interested? Jump to the <<Quick Start>> to get started. Enjoy!
 
 == Quick Start
@@ -39,9 +46,9 @@ e.g. typing *`help`* and pressing kbd:[Enter] will open the help window.
 
 * *`open HomeworkManager`* : Opens the Homework Manager and its existing
 homework
-* *`add mc/CS2103T hw/Tutorial 01 d/05/03/2019`* :
-Adds a homework “Tutorial 01” under CS2103T tab with the deadline on 05 March 2019
-* *`delete 3`* : deletes the 3rd  item shown in the current manager
+* *`add-hw mc/CS2103T hw/Tutorial 01 d/05/05/2019`* :
+Adds a CS2103T homework “Tutorial 01” with the deadline on 05 May 2019
+* *`delete-hw 3`* : deletes the 3rd homework shown in the homework manager
 * *`exit`* : exits the app
 
 .  Refer to <<Features>> for details of each command.
@@ -53,35 +60,54 @@ UltiStudent consists of 3 key features to help you manage your student life:
 Homework Manager, Notes Manager, CAP Manager.
 
 === HomeworkManager
-You can record and manage your homework here by adding, deleting, editing
-your homework based on your progress.
+Let this handy manage manage your homework by adding, deleting, editing your homework
+based on your progress. You can also check on the deadlines of all your homework before
+deciding which homework to attempt!
 
 === NotesManager
-You can add, delete, and edit your notes here.
+In this manager, you can add, delete, edit and save your notes here. Every note saved
+here counts toward saving the environment by not using paper! Lets fight against global
+warming! Fighting!
 
 === CAPManager
-You can record and keep track of your Cumulative Aggregate Points (CAP) here by adding, deleting the grades you have received for modules you have taken and also project your expected CAP.
+This manager allows you to record and keep track of your Cumulative Aggregate Points (CAP)
+by adding, deleting the grades you have received for modules you have taken and also
+project your current CAP.
+
+This manager will always be your reminder to work hard and get
+more 'A's for future modules! At the same time allows you to have an overview of your
+completed modules which provides you the assistance you need to plan for your upcoming
+semesters.
 
 [[Commands]]
 == Commands
-As UltiStudent contains many different commands and features, do refer to the command format below to help you better understand how to use each command to their best.
+As UltiStudent contains many different commands and features, do refer to the command
+format below to help you better understand how to use each command to their best.
 
 ====
 *Command Format*
 
-* Words in `UPPER_CASE` are the parameters to be supplied by the user e.g. in `add mc/MODULECODE`, `MODULECODE` is a parameter which can be used as `add c/CS2103T`.
+* Words in `UPPER_CASE` are the parameters to be supplied by the user e.g. in
+`add-hw mc/MODULECODE hw/HOMEWORK d/dd/mm/yyyy`, `MODULECODE` is a parameter which
+can be used as `add-hw mc/CS2103T` but of course you would have to do the same for
+`HOMEWORK` and `dd/mm/yyyy`.
 
-* All parameters must be supplied by users in this order:  `add mc/MODULECODE hw/HOMEWORK d/DEADLINE`. Deadline format: DD/MM/YYYY
+* All parameters must be supplied by users: `add-hw mc/MODULECODE hw/HOMEWORK d/DEADLINE`.
+
+[IMPORTANT]
+=====
+DEADLINE must be in dd/mm/yyyy
+=====
+
 ====
 
 === General Commands
 The commands here are applicable in UltiStudent's 3 Managers +
 HomeworkManager, NotesManager, CapManager.
 
-The commands differ by the entity placed at the end of each command.
-`add-xx`, `delete-xx`, `edit-xx` where xx should be replaced by either
-"hw" for homework, "note", or "cap".
-
+The commands differ by the entity placed at the end of each command. `add-x`, `delete-x`,
+`edit-x` where `x` should be replaced by either "hw" for homework, "note" for note,
+or "cap" for cumulative average point!
 
 ==== Viewing help : `help`
 Opens up the help window. +
@@ -145,21 +171,37 @@ UltiStudent data are saved in the hard disk automatically after any command that
 There is no need to save manually.
 
 === Homework Manager
-
+// tag::add-hw[]
 ==== Adding a homework: `add-hw`
 
-Adds a new homework task to the UltiStudent +
-Format: `add  mc/MODULECODE hw/HOMEWORK d/DEADLINE`
+Have a homework but unable to attend to it immediately? No worries! Let Homework Manager help
+you keep track of them! By using `add-hw`, you can command this manager to remember your homework
+for you!
+
+Sadly, it doesn't do your homework for you... but hey it reduces your worries on forgetting
+your homework!
+
+To use this command you have to adhere to this format: `add-hw mc/MODULECODE hw/HOMEWORK d/DEADLINE`
+else homework manager would not be able to understand what you are trying to tell it to do.
+
+[IMPORTANT]
+DEADLINE must be in dd/mm/yyyy format and DEADLINE should not be a date that is before today!
+
+Okay enough explanation and time for an example!
+
+Lets say we have to do Tutorial 1 for CS1101S by 1st May 2019. We could command this manager to
+remember it for us by using `add-hw mc/CS1101S hw/Tutorial 1 d/01/05/2019`.
+
 
 [TIP]
-Priorities are low by default if not set, and acceptable values are low, normal, high.
+Pro tip here! The ordering of `mc/MODULECODE`, `hw/HOMEWORK` and `d/DEADLINE` can be jumbled around!
+so do not worry that this handy manager will not understand what you are trying to command it to do!
 
-Examples:
+[CAUTION]
+Sadly Homework Manager is english educated only... Therefore it only accepts english characters and numbers.
+Maybe Homework Manager would be educated in other languages to accept other characters in future!
 
-* `add-hw mc/CS2103T hw/User Guide Draft 1
-d/05/03/2019`
-* `add-hw mc/CS3230 hw/Tutorial 3
-d/07/03/2019`
+// end::add-hw[]
 
 ==== Editing a homework: `edit-hw`
 
@@ -327,8 +369,8 @@ Format: -
 *A*: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous UltiStudent folder.
 
 == Command Summary
-* *Add Homework* `add-hw mc/MODULECODE hw/HOMEWORK d/DEADLINE [p/PRIORITY]...` +
-e.g. `add-hw mc/CS2103T hw/Tutorial 3 p/high`
+* *Add Homework* `add-hw mc/MODULECODE hw/HOMEWORK d/DEADLINE` +
+e.g. `add-hw mc/CS2103T hw/Tutorial 3 d/01/05/2019`
 * *Delete Homework* : `delete INDEX` +
 e.g. `delete 2`
 * *Edit Homework* : `edit-note INDEX  [mc/MODULECODE] [hw/HOMEWORK] [d/DEADLINE] [p/PRIORITY]...` +
@@ -347,9 +389,9 @@ e.g. `saveNote 5`
 e.g. `add-cap mc/CS2101 g/A- mcs/4 sem/Y2S2 `
 * *Delete Cap Entry* : `delete-note INDEX` +
 e.g. `delete 1`
-* *Edit Cap Entry by Index* : `edit-note INDEX  [mc/MODULECODE] [mn/MODULENAME] [hw/HOMEWORK] [d/DEADLINE] [p/PRIORITY]...` +
+* *Edit Cap Entry by Index* : `edit-note INDEX  [mc/MODULECODE] [g/MODULEGRADE] [mcs/MODULECREDITS] [sem/MODULESEMESTER]` +
 e.g. `edit-cap 2 g/B+ mcs/4`
-* *Edit Cap Entry by Code* : `edit-note MODULECODE  [mc/MODULECODE] [mn/MODULENAME] [hw/HOMEWORK] [d/DEADLINE] [p/PRIORITY]...` +
+* *Edit Cap Entry by Code* : `edit-note MODULECODE  [mc/MODULECODE] [g/MODULEGRADE] [mcs/MODULECREDITS] [semd/MODULESEMESTER]` +
 e.g. `edit-cap-mc CS3203 g/A- mcs/8`
 
 * *Find* : `find KEYWORD [MORE_KEYWORDS]` +

@@ -15,18 +15,18 @@ import seedu.ultistudent.commons.util.ConfigUtil;
 import seedu.ultistudent.commons.util.StringUtil;
 import seedu.ultistudent.logic.Logic;
 import seedu.ultistudent.logic.LogicManager;
-import seedu.ultistudent.model.AddressBook;
 import seedu.ultistudent.model.Model;
 import seedu.ultistudent.model.ModelManager;
-import seedu.ultistudent.model.ReadOnlyAddressBook;
+import seedu.ultistudent.model.ReadOnlyUltiStudent;
 import seedu.ultistudent.model.ReadOnlyUserPrefs;
+import seedu.ultistudent.model.UltiStudent;
 import seedu.ultistudent.model.UserPrefs;
 import seedu.ultistudent.model.util.SampleDataUtil;
-import seedu.ultistudent.storage.AddressBookStorage;
-import seedu.ultistudent.storage.JsonAddressBookStorage;
+import seedu.ultistudent.storage.JsonUltiStudentStorage;
 import seedu.ultistudent.storage.JsonUserPrefsStorage;
 import seedu.ultistudent.storage.Storage;
 import seedu.ultistudent.storage.StorageManager;
+import seedu.ultistudent.storage.UltiStudentStorage;
 import seedu.ultistudent.storage.UserPrefsStorage;
 import seedu.ultistudent.ui.Ui;
 import seedu.ultistudent.ui.UiManager;
@@ -36,7 +36,7 @@ import seedu.ultistudent.ui.UiManager;
  */
 public class MainApp extends Application {
 
-    public static final Version VERSION = new Version(0, 6, 0, true);
+    public static final Version VERSION = new Version(1, 4, 0, true);
 
     private static final Logger logger = LogsCenter.getLogger(MainApp.class);
 
@@ -48,7 +48,7 @@ public class MainApp extends Application {
 
     @Override
     public void init() throws Exception {
-        logger.info("=============================[ Initializing AddressBook ]===========================");
+        logger.info("=============================[ Initializing UltiStudent ]===========================");
         super.init();
 
         AppParameters appParameters = AppParameters.parse(getParameters());
@@ -56,8 +56,8 @@ public class MainApp extends Application {
 
         UserPrefsStorage userPrefsStorage = new JsonUserPrefsStorage(config.getUserPrefsFilePath());
         UserPrefs userPrefs = initPrefs(userPrefsStorage);
-        AddressBookStorage addressBookStorage = new JsonAddressBookStorage(userPrefs.getAddressBookFilePath());
-        storage = new StorageManager(addressBookStorage, userPrefsStorage);
+        UltiStudentStorage ultiStudentStorage = new JsonUltiStudentStorage(userPrefs.getUltiStudentFilePath());
+        storage = new StorageManager(ultiStudentStorage, userPrefsStorage);
 
         initLogging(config);
 
@@ -74,20 +74,20 @@ public class MainApp extends Application {
      * or an empty UltiStudent will be used instead if errors occur when reading {@code storage}'s UltiStudent.
      */
     private Model initModelManager(Storage storage, ReadOnlyUserPrefs userPrefs) {
-        Optional<ReadOnlyAddressBook> addressBookOptional;
-        ReadOnlyAddressBook initialData;
+        Optional<ReadOnlyUltiStudent> ultiStudentOptional;
+        ReadOnlyUltiStudent initialData;
         try {
-            addressBookOptional = storage.readAddressBook();
-            if (!addressBookOptional.isPresent()) {
-                logger.info("Data file not found. Will be starting with a sample AddressBook");
+            ultiStudentOptional = storage.readUltiStudent();
+            if (!ultiStudentOptional.isPresent()) {
+                logger.info("Data file not found. Will be starting with a sample UltiStudent");
             }
-            initialData = addressBookOptional.orElseGet(SampleDataUtil::getSampleAddressBook);
+            initialData = ultiStudentOptional.orElseGet(SampleDataUtil::getSampleUltiStudent);
         } catch (DataConversionException e) {
-            logger.warning("Data file not in the correct format. Will be starting with an empty AddressBook");
-            initialData = new AddressBook();
+            logger.warning("Data file not in the correct format. Will be starting with an empty UltiStudent");
+            initialData = new UltiStudent();
         } catch (IOException e) {
-            logger.warning("Problem while reading from the file. Will be starting with an empty AddressBook");
-            initialData = new AddressBook();
+            logger.warning("Problem while reading from the file. Will be starting with an empty UltiStudent");
+            initialData = new UltiStudent();
         }
 
         return new ModelManager(initialData, userPrefs);
@@ -151,7 +151,7 @@ public class MainApp extends Application {
                     + "Using default user prefs");
             initializedPrefs = new UserPrefs();
         } catch (IOException e) {
-            logger.warning("Problem while reading from the file. Will be starting with an empty AddressBook");
+            logger.warning("Problem while reading from the file. Will be starting with an empty UltiStudent");
             initializedPrefs = new UserPrefs();
         }
 
@@ -167,7 +167,7 @@ public class MainApp extends Application {
 
     @Override
     public void start(Stage primaryStage) {
-        logger.info("Starting AddressBook " + MainApp.VERSION);
+        logger.info("Starting UltiStudent " + MainApp.VERSION);
         ui.start(primaryStage);
     }
 

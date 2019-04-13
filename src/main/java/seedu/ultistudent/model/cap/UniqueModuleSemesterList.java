@@ -3,6 +3,7 @@ package seedu.ultistudent.model.cap;
 import static java.util.Objects.requireNonNull;
 import static seedu.ultistudent.commons.util.CollectionUtil.requireAllNonNull;
 
+import java.util.Comparator;
 import java.util.Iterator;
 import java.util.List;
 
@@ -30,8 +31,14 @@ public class UniqueModuleSemesterList implements Iterable<ModuleSemester> {
     private final ObservableList<ModuleSemester> internalUnmodifiableList =
             FXCollections.unmodifiableObservableList(internalList);
 
+    private Comparator<? super ModuleSemester> comparatorSemesterAscending = new Comparator<ModuleSemester>() {
+        public int compare(ModuleSemester o1, ModuleSemester o2) {
+            return o1.getValue().compareToIgnoreCase(o2.getValue());
+        }
+    };
+
     /**
-     * Returns true if the list contains an equivalent cap entry as the given argument.
+     * Returns true if the list contains an equivalent module semester as the given argument.
      */
     public boolean contains(ModuleSemester toCheck) {
         requireNonNull(toCheck);
@@ -39,8 +46,8 @@ public class UniqueModuleSemesterList implements Iterable<ModuleSemester> {
     }
 
     /**
-     * Adds a capEntry to the list.
-     * The capEntry must not already exist in the list.
+     * Adds a moduleSemester to the list.
+     * The moduleSemester must not already exist in the list.
      */
     public void add(ModuleSemester toAdd) {
         requireNonNull(toAdd);
@@ -48,12 +55,15 @@ public class UniqueModuleSemesterList implements Iterable<ModuleSemester> {
             throw new DuplicateModuleSemesterException();
         }
         internalList.add(toAdd);
+        internalList.sort(comparatorSemesterAscending);
+
     }
 
     /**
-     * Replaces the cap entry {@code target} in the list with {@code editedCapEntry}.
+     * Replaces the module semester {@code target} in the list with {@code editedModuleSemester}.
      * {@code target} must exist in the list.
-     * The cap entry identity of {@code editedCapEntry} must not be the same as another existing entry in the list.
+     * The module semester identity of {@code editedModuleSemester} must not be the same as another existing
+     * module semester in the list.
      */
     public void setModuleSemester(ModuleSemester target, ModuleSemester editedModuleSemester) {
         requireAllNonNull(target, editedModuleSemester);
@@ -68,17 +78,19 @@ public class UniqueModuleSemesterList implements Iterable<ModuleSemester> {
         }
 
         internalList.set(index, editedModuleSemester);
+        internalList.sort(comparatorSemesterAscending);
     }
 
     /**
-     * Removes the equivalent cap entry from the list.
-     * The cap entry must exist in the list.
+     * Removes the equivalent module semester from the list.
+     * The module semester must exist in the list.
      */
     public void remove(ModuleSemester toRemove) {
         requireNonNull(toRemove);
         if (!internalList.remove(toRemove)) {
             throw new ModuleSemesterNotFoundException();
         }
+        internalList.sort(comparatorSemesterAscending);
     }
 
     public void setModuleSemesterList(UniqueModuleSemesterList replacement) {
@@ -87,8 +99,8 @@ public class UniqueModuleSemesterList implements Iterable<ModuleSemester> {
     }
 
     /**
-     * Replaces the contents of this list with {@code capEntries}.
-     * {@code capEntries} must not contain duplicate cap entries.
+     * Replaces the contents of this list with {@code moduleSemesterList}.
+     * {@code moduleSemesterList} must not contain duplicate module semesters.
      */
     public void setModuleSemesterList(List<ModuleSemester> moduleSemesterList) {
         requireAllNonNull(moduleSemesterList);
@@ -124,7 +136,7 @@ public class UniqueModuleSemesterList implements Iterable<ModuleSemester> {
     }
 
     /**
-     * Returns true if {@code capEntryList} contains only unique persons.
+     * Returns true if {@code moduleSemesterList} contains only unique module semesters.
      */
     private boolean moduleSemesterListIsUnique(List<ModuleSemester> moduleSemesterList) {
         for (int i = 0; i < moduleSemesterList.size() - 1; i++) {

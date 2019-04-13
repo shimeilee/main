@@ -4,8 +4,13 @@ import java.util.Arrays;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-import seedu.ultistudent.model.AddressBook;
-import seedu.ultistudent.model.ReadOnlyAddressBook;
+import seedu.ultistudent.model.ReadOnlyUltiStudent;
+import seedu.ultistudent.model.UltiStudent;
+import seedu.ultistudent.model.cap.CapEntry;
+import seedu.ultistudent.model.cap.ModuleCredits;
+import seedu.ultistudent.model.cap.ModuleGrade;
+import seedu.ultistudent.model.cap.ModuleSemester;
+import seedu.ultistudent.model.modulecode.ModuleCode;
 import seedu.ultistudent.model.person.Address;
 import seedu.ultistudent.model.person.Email;
 import seedu.ultistudent.model.person.Name;
@@ -14,7 +19,7 @@ import seedu.ultistudent.model.person.Phone;
 import seedu.ultistudent.model.tag.Tag;
 
 /**
- * Contains utility methods for populating {@code AddressBook} with sample data.
+ * Contains utility methods for populating {@code UltiStudent} with sample data.
  */
 public class SampleDataUtil {
     public static Person[] getSamplePersons() {
@@ -40,10 +45,28 @@ public class SampleDataUtil {
         };
     }
 
-    public static ReadOnlyAddressBook getSampleAddressBook() {
-        AddressBook sampleAb = new AddressBook();
+    public static CapEntry[] getSampleCapEntryList() {
+        return new CapEntry[]{
+            new CapEntry(new ModuleCode("CS1010"), new ModuleGrade("B+"), new ModuleCredits("4"),
+                new ModuleSemester("Y1S1")),
+            new CapEntry(new ModuleCode("CS1231"), new ModuleGrade("A-"), new ModuleCredits("4"),
+                    new ModuleSemester("Y1S2")),
+            new CapEntry(new ModuleCode("GER1000"), new ModuleGrade("A-"), new ModuleCredits("4"),
+                    new ModuleSemester("Y1S2")),
+            new CapEntry(new ModuleCode("CS2030"), new ModuleGrade("B+"), new ModuleCredits("4"),
+                new ModuleSemester("Y1S2")),
+            new CapEntry(new ModuleCode("CS2101"), new ModuleGrade("B+"), new ModuleCredits("4"),
+                new ModuleSemester("Y2S1"))
+        };
+    }
+
+    public static ReadOnlyUltiStudent getSampleUltiStudent() {
+        UltiStudent sampleAb = new UltiStudent();
         for (Person samplePerson : getSamplePersons()) {
             sampleAb.addPerson(samplePerson);
+        }
+        for (CapEntry sampleCapEntry : getSampleCapEntryList()) {
+            sampleAb.addCapEntry(sampleCapEntry);
         }
         return sampleAb;
     }

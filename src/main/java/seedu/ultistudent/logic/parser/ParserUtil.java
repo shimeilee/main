@@ -146,11 +146,21 @@ public class ParserUtil {
     public static Date parseDate(String deadline) throws ParseException {
         requireNonNull(deadline);
         String trimmedDeadline = deadline.trim();
-
-        if (!Date.isValidDate(deadline)) {
+        String[] trimmedDeadlineParts = trimmedDeadline.split("/");
+        String processed = "";
+        for (String parts : trimmedDeadlineParts) {
+            if (parts.length() < 2) {
+                processed += "0" + parts + "/";
+            } else if (parts.length() == 4) {
+                processed += parts;
+            } else {
+                processed += parts + "/";
+            }
+        }
+        if (!Date.isValidDate(processed, false)) {
             throw new ParseException(Date.MESSAGE_CONSTRAINTS);
         }
-        return new Date(deadline);
+        return new Date(processed);
     }
 
     //===== Note ======/

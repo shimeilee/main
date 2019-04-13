@@ -6,7 +6,7 @@ import java.util.Date;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.layout.Region;
-import seedu.ultistudent.model.ReadOnlyAddressBook;
+import seedu.ultistudent.model.ReadOnlyUltiStudent;
 
 /**
  * A ui for the status bar that is displayed at the footer of the application.
@@ -28,15 +28,17 @@ public class StatusBarFooter extends UiPart<Region> {
 
     private static final String FXML = "StatusBarFooter.fxml";
 
+    private static String openedManager = "";
+
     @FXML
     private Label syncStatus;
     @FXML
     private Label currentManager;
 
 
-    public StatusBarFooter(String manager, ReadOnlyAddressBook addressBook) {
+    public StatusBarFooter(String manager, ReadOnlyUltiStudent ultiStudent) {
         super(FXML);
-        addressBook.addListener(observable -> updateSyncStatus());
+        ultiStudent.addListener(observable -> updateSyncStatus());
         syncStatus.setText(SYNC_STATUS_INITIAL);
         currentManager.setText(manager);
     }
@@ -70,6 +72,11 @@ public class StatusBarFooter extends UiPart<Region> {
      */
     public void setCurrentManagerText(String manager) {
         currentManager.setText(manager);
+        openedManager = manager;
+    }
+
+    public static String getCurrentManagerStatus() {
+        return openedManager;
     }
 
 }

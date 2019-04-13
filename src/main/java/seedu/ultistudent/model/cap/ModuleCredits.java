@@ -15,7 +15,7 @@ public class ModuleCredits {
 
     /**
      * Constructs a {@code ModuleCredits}.
-     * @param moduleCredits
+     * @param moduleCredits a valid moduleCredits
      */
     public ModuleCredits (String moduleCredits) {
         requireNonNull(moduleCredits);
@@ -24,14 +24,14 @@ public class ModuleCredits {
     }
 
     /**
-     * Returns true if it is a valid ModuleCode
+     * Returns true if it is a valid ModuleCredits
      */
     public static boolean isValidModuleCredits(String test) {
         return test.matches(VALIDATION_REGEX);
     }
 
     /**
-     * Returns true if it is a valid ModuleCode
+     * Returns the value of the ModuleCredits.
      */
     public int getValue() {
         return Integer.parseInt(this.value);

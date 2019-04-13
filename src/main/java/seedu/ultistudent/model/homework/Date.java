@@ -1,8 +1,10 @@
 package seedu.ultistudent.model.homework;
 
 import static java.util.Objects.requireNonNull;
-import static seedu.ultistudent.commons.util.AppUtil.checkArgument;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Objects;
 
 /**
@@ -10,10 +12,11 @@ import java.util.Objects;
  */
 public class Date {
 
-    public static final String MESSAGE_CONSTRAINTS =
-            "The format for the date should follow DD/MM/YYYY. "
-                    + "It is possible to use single digits for the DD and MM fields. "
-                    + "Invalid dates such as 30 Feb 2019 or 29 Feb on non-leap years are not accepted.";
+    public static final String MESSAGE_CONSTRAINTS = "The format for the date should follow DD/MM/YYYY.\n"
+                            + "It is possible to use single digits for the DD and MM fields.\n"
+                            + "Invalid dates are not accepted. For example: "
+                            + "29 Feb on non-leap years or "
+                            + "a past date from today";
 
     //regex reference to https://stackoverflow.com/questions/15491894/regex-to-validate-date-format-dd-mm-yyyy
     //credits to: Ofir Luzon
@@ -29,7 +32,6 @@ public class Date {
      */
     public Date(String date) {
         requireNonNull(date);
-        checkArgument(isValidDate(date), MESSAGE_CONSTRAINTS);
         this.value = date;
     }
 
@@ -40,7 +42,19 @@ public class Date {
     /**
      * Returns true if it is a valid date.
      */
-    public static boolean isValidDate(String test) {
+    public static boolean isValidDate(String test, Boolean bypass) {
+        if (!bypass) {
+            DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+            java.util.Date today = new java.util.Date();
+            try {
+                java.util.Date givenDate = dateFormat.parse(test);
+                if (today.compareTo(givenDate) > 0) {
+                    return false;
+                }
+            } catch (ParseException pe) {
+                return false;
+            }
+        }
         return test.matches(VALIDATION_REGEX);
     }
 

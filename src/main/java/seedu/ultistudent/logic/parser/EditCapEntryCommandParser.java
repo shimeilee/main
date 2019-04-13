@@ -15,7 +15,7 @@ import seedu.ultistudent.logic.parser.exceptions.ParseException;
 /**
  * Parses input arguments and creates a new EditCapEntryCommand object
  */
-public class EditCapEntryCommandParser {
+public class EditCapEntryCommandParser implements Parser<EditCapEntryCommand> {
 
     /**
      * Parses the given {@code String} of arguments in the context of the EditCommand

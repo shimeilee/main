@@ -34,6 +34,7 @@ public class EditNoteCommand extends Command {
     @Override
     public CommandResult execute(Model model, CommandHistory history) throws CommandException {
         requireNonNull(model);
+        model.setSelectedNote(null);
 
         List<Note> filteredNoteList = model.getFilteredNoteList();
 

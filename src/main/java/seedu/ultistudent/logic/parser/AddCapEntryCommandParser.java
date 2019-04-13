@@ -19,7 +19,7 @@ import seedu.ultistudent.model.modulecode.ModuleCode;
 /**
  * Parses input arguments and creates a new AddCapEntryCommand object
  */
-public class AddCapEntryCommandParser {
+public class AddCapEntryCommandParser implements Parser<AddCapEntryCommand> {
 
     /**
      * Parses the given {@code String} of arguments in the context of the AddCapEntryCommand

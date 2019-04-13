@@ -6,7 +6,7 @@ import java.util.Objects;
 
 import seedu.ultistudent.model.modulecode.ModuleCode;
 
-/** Represents a CAP entry for the CAP Manager in the ultistudent book.
+/** Represents a cap entry for the cap manager in the Ultistudent.
  * Guarantees: details are present and not null, field values are validated, immutable.
  */
 
@@ -32,14 +32,13 @@ public class CapEntry {
         this.moduleGrade = moduleGrade;
         this.moduleCredits = moduleCredits;
         this.moduleSemester = moduleSemester;
-        updateCapForAddCommand(this);
     }
 
     /**
-     * Takes in a valid cap entry that is to be added and updates the capScore
+     * Takes in a valid cap entry that is to be added to the uniqueCapEntryList and updates the capScore
      * {@code capEntryToAdd} must be valid.
      */
-    public static void updateCapForAddCommand(CapEntry capEntryToAdd) {
+    public static void updateCapForAdd(CapEntry capEntryToAdd) {
         ModuleGrade moduleGrade = capEntryToAdd.getModuleGrade();
         ModuleCredits moduleCredits = capEntryToAdd.getModuleCredits();
         totalScore += moduleGrade.getScore() * moduleCredits.getValue();
@@ -48,10 +47,10 @@ public class CapEntry {
     }
 
     /**
-     * Takes in a valid cap entry that is to be deleted and updates the capScore
+     * Takes in a valid cap entry that is to be deleted from the uniqueCapEntryList and updates the capScore
      * {@code capEntryToDelete} must exists.
      */
-    public static void updateCapForDeleteCommand(CapEntry capEntryToDelete) {
+    public static void updateCapForDelete(CapEntry capEntryToDelete) {
         ModuleGrade moduleGrade = capEntryToDelete.getModuleGrade();
         ModuleCredits moduleCredits = capEntryToDelete.getModuleCredits();
         totalScore -= moduleGrade.getScore() * moduleCredits.getValue();
@@ -82,9 +81,13 @@ public class CapEntry {
         return String.format("%.2f", capScore) + "";
     }
 
+    public static void setCapScore(double newCapScore) {
+        capScore = newCapScore;
+    }
+
     /**
-     * Returns true if both cap entries of the same module code have at least one other identity field that is the same.
-     * This defines a weaker notion of equality between two persons.
+     * Returns true if both cap entries are of the same module code.
+     * This defines a weaker notion of equality between two cap entries.
      */
     public boolean isSameCapEntry(CapEntry otherCapEntry) {
         if (otherCapEntry == this) {
@@ -98,8 +101,8 @@ public class CapEntry {
     }
 
     /**
-     * Returns true if both capEntry have the same identity and data fields.
-     * This defines a stronger notion of equality between two capEntry.
+     * Returns true if both cap entries have the same identity and data fields.
+     * This defines a stronger notion of equality between two cap entries.
      */
     @Override
     public boolean equals(Object other) {

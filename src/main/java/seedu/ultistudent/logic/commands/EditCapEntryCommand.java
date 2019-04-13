@@ -34,7 +34,7 @@ public class EditCapEntryCommand extends Command {
             + "[" + PREFIX_MODULECODE + "MODULE_CODEN] "
             + "[" + PREFIX_MODULEGRADE + "MODULE_GRADE] "
             + "[" + PREFIX_MODULECREDITS + "MODULE_CREDITS] "
-            + "[" + PREFIX_SEMESTER + "MODULE_SEMESTER] "
+            + "[" + PREFIX_SEMESTER + "MODULE_SEMESTER]. \n"
             + "Example: " + COMMAND_WORD + " 1 "
             + PREFIX_MODULEGRADE + "B+ "
             + PREFIX_MODULECREDITS + "6";
@@ -68,8 +68,8 @@ public class EditCapEntryCommand extends Command {
         }
 
         CapEntry capEntryToEdit = lastShownList.get(index.getZeroBased());
-        ModuleSemester moduleSemesterOfCapEntryToEdit = capEntryToEdit.getModuleSemester();
         CapEntry editedCapEntry = createEditedCapEntry(capEntryToEdit, editCapEntryDescriptor);
+        ModuleSemester moduleSemesterOfCapEntryToEdit = capEntryToEdit.getModuleSemester();
         ModuleSemester moduleSemesterOfEditedCapEntry = editedCapEntry.getModuleSemester();
 
         if (!capEntryToEdit.isSameCapEntry(editedCapEntry) && model.hasCapEntry(editedCapEntry)) {
@@ -80,17 +80,25 @@ public class EditCapEntryCommand extends Command {
         model.updateFilteredCapEntryList(Model.PREDICATE_SHOW_ALL_CAP_ENTRIES);
 
         //update module semester
+        List<CapEntry> afterEditList = model.getFilteredCapEntryList();
         if (!moduleSemesterOfCapEntryToEdit.equals(moduleSemesterOfEditedCapEntry)) {
-            if (!model.hasModuleSemester(moduleSemesterOfCapEntryToEdit)) {
-                model.deleteModuleSemester(moduleSemesterOfCapEntryToEdit);
-            }
             if (!model.hasModuleSemester(moduleSemesterOfEditedCapEntry)) {
                 model.addModuleSemester(moduleSemesterOfEditedCapEntry);
             }
+            int numCapEntriesWithSameSemester = 0;
+            for (int i = 0; i < afterEditList.size(); i++) {
+                if (afterEditList.get(i).getModuleSemester().equals(moduleSemesterOfCapEntryToEdit)) {
+                    numCapEntriesWithSameSemester++;
+                }
+            }
+            if (numCapEntriesWithSameSemester == 0) {
+                model.deleteModuleSemester(moduleSemesterOfCapEntryToEdit);
+            }
         }
+
         model.updateFilteredModuleSemesterList(Model.PREDICATE_SHOW_ALL_MODULE_SEMESTERS);
 
-        model.commitAddressBook();
+        model.commitUltiStudent();
         return new CommandResult(String.format(MESSAGE_EDIT_CAP_ENTRY_SUCCESS, editedCapEntry));
     }
 
@@ -121,7 +129,7 @@ public class EditCapEntryCommand extends Command {
         }
 
         // instanceof handles nulls
-        if (!(other instanceof EditCommand)) {
+        if (!(other instanceof EditCapEntryCommand)) {
             return false;
         }
 

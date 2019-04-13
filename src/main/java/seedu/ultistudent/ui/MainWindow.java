@@ -40,6 +40,7 @@ public class MainWindow extends UiPart<Stage> {
     private NotesManagerMainPanel notesManagerMainPanel;
     private CapManagerMainPanel capManagerMainPanel;
 
+    private HomeworkManagerSubPanel homeworkManagerSubPanel;
     private NotesManagerSubPanel notesManagerSubPanel;
     private CapManagerSubPanel capManagerSubPanel;
 
@@ -132,7 +133,7 @@ public class MainWindow extends UiPart<Stage> {
         resultDisplay = new ResultDisplay();
         resultDisplayPlaceholder.getChildren().add(resultDisplay.getRoot());
 
-        statusBarFooter = new StatusBarFooter(HOMEWORK_MANAGER, logic.getAddressBook());
+        statusBarFooter = new StatusBarFooter(HOMEWORK_MANAGER, logic.getUltiStudent());
         statusbarPlaceholder.getChildren().add(statusBarFooter.getRoot());
 
         CommandBox commandBox = new CommandBox(this::executeCommand, logic.getHistory());
@@ -231,9 +232,8 @@ public class MainWindow extends UiPart<Stage> {
      */
     @FXML
     public void handleSwitchToHomeworkManager() {
-        //TODO: handles the setting up of HomeworkManager view
         dimAllIcons();
-        iconListPanel.setHomeworkManagerIconBrightness(0.8);
+        iconListPanel.setHomeworkManagerIconBrightness(1);
 
         statusBarFooter.setCurrentManagerText(HOMEWORK_MANAGER);
 
@@ -241,7 +241,11 @@ public class MainWindow extends UiPart<Stage> {
         homeworkManagerMainPanel = new HomeworkManagerMainPanel(logic.getFilteredHomeworkList(),
                                                               logic.selectedHomeworkProperty(),
                                                               logic::setSelectedHomework);
+        homeworkManagerSubPanel = new HomeworkManagerSubPanel(logic.getFilteredModuleCodeList(),
+                                                              logic.selectedModuleCodeProperty(),
+                                                              logic::setSelectedModuleCode);
         mainPanelPlaceholder.getChildren().add(homeworkManagerMainPanel.getRoot());
+        subPanelPlaceholder.getChildren().add(homeworkManagerSubPanel.getRoot());
     }
 
     /**
@@ -249,9 +253,8 @@ public class MainWindow extends UiPart<Stage> {
      */
     @FXML
     public void handleSwitchToNotesManager() {
-        //TODO: handles the setting up of NotesManager view
         dimAllIcons();
-        iconListPanel.setNotesManagerIconBrightness(0.8);
+        iconListPanel.setNotesManagerIconBrightness(1);
 
         statusBarFooter.setCurrentManagerText(NOTES_MANAGER);
 
@@ -269,9 +272,8 @@ public class MainWindow extends UiPart<Stage> {
      */
     @FXML
     public void handleSwitchToCapsManager() {
-        //TODO: handles the setting up of CapCalculator view
         dimAllIcons();
-        iconListPanel.setCapManagerIconBrightness(0.8);
+        iconListPanel.setCapManagerIconBrightness(1);
 
         statusBarFooter.setCurrentManagerText(CAP_MANAGER);
 
@@ -290,9 +292,9 @@ public class MainWindow extends UiPart<Stage> {
     }
 
     private void dimAllIcons() {
-        iconListPanel.setHomeworkManagerIconBrightness(0.4);
-        iconListPanel.setNotesManagerIconBrightness(0.4);
-        iconListPanel.setCapManagerIconBrightness(0.4);
+        iconListPanel.setHomeworkManagerIconBrightness(0.5);
+        iconListPanel.setNotesManagerIconBrightness(0.5);
+        iconListPanel.setCapManagerIconBrightness(0.5);
     }
 
 }

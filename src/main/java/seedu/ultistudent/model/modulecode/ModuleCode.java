@@ -9,7 +9,7 @@ import static seedu.ultistudent.commons.util.AppUtil.checkArgument;
 public class ModuleCode {
 
     public static final String MESSAGE_CONSTRAINTS = "Module codes should begin with at least two capital letters "
-            + "followed by at least four letters. May end with an optional capital letter at the back";
+            + "followed by four digits. May end with an optional capital letter at the back";
     public static final String VALIDATION_REGEX = "([a-zA-Z]{2,3})(\\d{4})([a-zA-Z]{1})?";
     public final String value;
 

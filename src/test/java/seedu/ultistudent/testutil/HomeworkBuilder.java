@@ -12,7 +12,7 @@ public class HomeworkBuilder {
 
     public static final String DEFAULT_MODULECODE = "CS2103T";
     public static final String DEFAULT_HOMEWORK = "Tutorial 5";
-    public static final String DEFAULT_DEADLINE = "15/03/2019";
+    public static final String DEFAULT_DEADLINE = "15/05/2019";
 
     private ModuleCode moduleCode;
     private HomeworkName homeworkName;

@@ -9,6 +9,7 @@ import seedu.ultistudent.commons.core.GuiSettings;
 import seedu.ultistudent.model.cap.CapEntry;
 import seedu.ultistudent.model.cap.ModuleSemester;
 import seedu.ultistudent.model.homework.Homework;
+import seedu.ultistudent.model.modulecode.ModuleCode;
 import seedu.ultistudent.model.note.Note;
 import seedu.ultistudent.model.person.Person;
 
@@ -24,6 +25,7 @@ public interface Model {
     Predicate<Homework> PREDICATE_SHOW_ALL_HOMEWORK = unused -> true;
     Predicate<Note> PREDICATE_SHOW_ALL_NOTES = unused -> true;
     Predicate<ModuleSemester> PREDICATE_SHOW_ALL_MODULE_SEMESTERS = unused -> true;
+    Predicate<ModuleCode> PREDICATE_SHOW_ALL_MODULE_CODE = unused -> true;
 
     /**
      * Replaces user prefs data with the data in {@code userPrefs}.
@@ -48,22 +50,22 @@ public interface Model {
     /**
      * Returns the user prefs' UltiStudent file path.
      */
-    Path getAddressBookFilePath();
+    Path getUltiStudentFilePath();
 
     /**
      * Sets the user prefs' UltiStudent file path.
      */
-    void setAddressBookFilePath(Path addressBookFilePath);
+    void setUltiStudentFilePath(Path ultiStudentFilePath);
 
     /**
-     * Replaces UltiStudent data with the data in {@code addressBook}.
+     * Replaces UltiStudent data with the data in {@code ultiStudent}.
      */
-    void setAddressBook(ReadOnlyAddressBook addressBook);
+    void setUltiStudent(ReadOnlyUltiStudent ultiStudent);
 
     /**
-     * Returns the AddressBook
+     * Returns the UltiStudent
      */
-    ReadOnlyAddressBook getAddressBook();
+    ReadOnlyUltiStudent getUltiStudent();
 
     /**
      * Returns true if a person with the same identity as {@code person} exists in the UltiStudent.
@@ -104,27 +106,27 @@ public interface Model {
     /**
      * Returns true if the model has previous UltiStudent states to restore.
      */
-    boolean canUndoAddressBook();
+    boolean canUndoUltiStudent();
 
     /**
      * Returns true if the model has undone UltiStudent states to restore.
      */
-    boolean canRedoAddressBook();
+    boolean canRedoUltiStudent();
 
     /**
      * Restores the model's UltiStudent to its previous state.
      */
-    void undoAddressBook();
+    void undoUltiStudent();
 
     /**
      * Restores the model's UltiStudent to its previously undone state.
      */
-    void redoAddressBook();
+    void redoUltiStudent();
 
     /**
      * Saves the current UltiStudent state for undo/redo.
      */
-    void commitAddressBook();
+    void commitUltiStudent();
 
     /**
      * Selected person in the filtered person list.
@@ -202,56 +204,56 @@ public interface Model {
     //=========== Module Semester ===========================================================================
 
     /**
-     * Returns true if a cap entry with the same identity as {@code capEntry} exists in the UltiStudent.
+     * Returns true if a module semester with the same identity as {@code moduleSemester} exists in the UltiStudent.
      */
     boolean hasModuleSemester(ModuleSemester moduleSemester);
 
     /**
-     * Deletes the given cap entry.
-     * The cap entry must exist in the UltiStudent.
+     * Deletes the given module semester.
+     * The module semester must exist in the UltiStudent.
      */
     void deleteModuleSemester(ModuleSemester target);
 
     /**
-     * Adds the given cap entry.
-     * {@code codeEntry} must not already exist in the UltiStudent.
+     * Adds the given module semester.
+     * {@code moduleSemester} must not already exist in the UltiStudent.
      */
     void addModuleSemester(ModuleSemester moduleSemester);
 
     /**
-     * Replaces the given cap entry {@code target} with {@code editedCapEntry}.
+     * Replaces the given module semester {@code target} with {@code editedModuleSemester}.
      * {@code target} must exist in the UltiStudent.
-     * The cap entry identity of {@code editedCapEntry} must not be the same as another existing cap entry
-     * in the UltiStudent.
+     * The module semester identity of {@code editedModuleSemester} must not be the same as another existing
+     * module semester in the UltiStudent.
      */
-    void setModuleSemester(ModuleSemester target, ModuleSemester editedCapEntry);
+    void setModuleSemester(ModuleSemester target, ModuleSemester editedModuleSemester);
 
     /**
-     * Returns an unmodifiable view of the filtered cap entry list
+     * Returns an unmodifiable view of the filtered module semester list
      */
     ObservableList<ModuleSemester> getFilteredModuleSemesterList();
 
     /**
-     * Updates the filter of the filtered cap entry list to filter by the given {@code predicate}.
+     * Updates the filter of the filtered module semester list to filter by the given {@code predicate}.
      *
      * @throws NullPointerException if {@code predicate} is null.
      */
     void updateFilteredModuleSemesterList(Predicate<ModuleSemester> predicate);
 
     /**
-     * Selected cap entry in the filtered cap entry list.
-     * null if no cap entry is selected.
+     * Selected module semester in the filtered module semester list.
+     * null if no module semester is selected.
      */
     ReadOnlyProperty<ModuleSemester> selectedModuleSemesterProperty();
 
     /**
-     * Returns the selected cap entry in the filtered cap entry list.
-     * null if no cap entry is selected.
+     * Returns the selected module semester in the filtered module semester list.
+     * null if no module semester is selected.
      */
     ModuleSemester getSelectedModuleSemester();
 
     /**
-     * Sets the selected cap entry in the filtered cap entry list.
+     * Sets the selected module semester in the filtered module semester list.
      */
     void setSelectedModuleSemester(ModuleSemester moduleSemester);
 
@@ -311,6 +313,62 @@ public interface Model {
      */
     void setSelectedHomework(Homework homework);
 
+    //=========== Module Code ===========================================================================
+
+    /**
+     * Returns true if a cap entry with the same identity as {@code capEntry} exists in the UltiStudent.
+     */
+    boolean hasModuleCode(ModuleCode moduleCode);
+
+    /**
+     * Deletes the given cap entry.
+     * The cap entry must exist in the UltiStudent.
+     */
+    void deleteModuleCode(ModuleCode target);
+
+    /**
+     * Adds the given cap entry.
+     * {@code codeEntry} must not already exist in the UltiStudent.
+     */
+    void addModuleCode(ModuleCode moduleCode);
+
+    /**
+     * Replaces the given cap entry {@code target} with {@code edited}.
+     * {@code target} must exist in the UltiStudent.
+     * The cap entry identity of {@code editedCapEntry} must not be the same as another existing module code
+     * in the UltiStudent.
+     */
+    void setModuleCode(ModuleCode target, ModuleCode editedModuleCode);
+
+    /**
+     * Returns an unmodifiable view of the filtered module code list
+     */
+    ObservableList<ModuleCode> getFilteredModuleCodeList();
+
+    /**
+     * Updates the filter of the filtered module code list to filter by the given {@code predicate}.
+     *
+     * @throws NullPointerException if {@code predicate} is null.
+     */
+    void updateFilteredModuleCodeList(Predicate<ModuleCode> predicate);
+
+    /**
+     * Selected cap entry in the filtered module code list.
+     * null if no cap entry is selected.
+     */
+    ReadOnlyProperty<ModuleCode> selectedModuleCodeProperty();
+
+    /**
+     * Returns the selected cap entry in the filtered module code list.
+     * null if no cap entry is selected.
+     */
+    ModuleCode getSelectedModuleCode();
+
+    /**
+     * Sets the selected cap entry in the filtered module code list.
+     */
+    void setSelectedModuleCode(ModuleCode moduleCode);
+
     //=========== Notes ===================================================
 
     /**
@@ -368,4 +426,5 @@ public interface Model {
      * Sets the selected note in the filtered note list.
      */
     void setSelectedNote(Note note);
+
 }

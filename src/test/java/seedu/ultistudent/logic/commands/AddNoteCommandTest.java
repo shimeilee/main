@@ -20,13 +20,14 @@ import javafx.collections.ObservableList;
 import seedu.ultistudent.commons.core.GuiSettings;
 import seedu.ultistudent.logic.CommandHistory;
 import seedu.ultistudent.logic.commands.exceptions.CommandException;
-import seedu.ultistudent.model.AddressBook;
 import seedu.ultistudent.model.Model;
-import seedu.ultistudent.model.ReadOnlyAddressBook;
+import seedu.ultistudent.model.ReadOnlyUltiStudent;
 import seedu.ultistudent.model.ReadOnlyUserPrefs;
+import seedu.ultistudent.model.UltiStudent;
 import seedu.ultistudent.model.cap.CapEntry;
 import seedu.ultistudent.model.cap.ModuleSemester;
 import seedu.ultistudent.model.homework.Homework;
+import seedu.ultistudent.model.modulecode.ModuleCode;
 import seedu.ultistudent.model.note.Note;
 import seedu.ultistudent.model.person.Person;
 import seedu.ultistudent.testutil.NoteBuilder;
@@ -120,12 +121,12 @@ public class AddNoteCommandTest {
         }
 
         @Override
-        public Path getAddressBookFilePath() {
+        public Path getUltiStudentFilePath() {
             throw new AssertionError("This method should not be called.");
         }
 
         @Override
-        public void setAddressBookFilePath(Path addressBookFilePath) {
+        public void setUltiStudentFilePath(Path addressBookFilePath) {
             throw new AssertionError("This method should not be called.");
         }
 
@@ -135,12 +136,12 @@ public class AddNoteCommandTest {
         }
 
         @Override
-        public void setAddressBook(ReadOnlyAddressBook newData) {
+        public void setUltiStudent(ReadOnlyUltiStudent newData) {
             throw new AssertionError("This method should not be called.");
         }
 
         @Override
-        public ReadOnlyAddressBook getAddressBook() {
+        public ReadOnlyUltiStudent getUltiStudent() {
             throw new AssertionError("This method should not be called.");
         }
 
@@ -170,27 +171,27 @@ public class AddNoteCommandTest {
         }
 
         @Override
-        public boolean canUndoAddressBook() {
+        public boolean canUndoUltiStudent() {
             throw new AssertionError("This method should not be called.");
         }
 
         @Override
-        public boolean canRedoAddressBook() {
+        public boolean canRedoUltiStudent() {
             throw new AssertionError("This method should not be called.");
         }
 
         @Override
-        public void undoAddressBook() {
+        public void undoUltiStudent() {
             throw new AssertionError("This method should not be called.");
         }
 
         @Override
-        public void redoAddressBook() {
+        public void redoUltiStudent() {
             throw new AssertionError("This method should not be called.");
         }
 
         @Override
-        public void commitAddressBook() {
+        public void commitUltiStudent() {
             throw new AssertionError("This method should not be called.");
         }
 
@@ -349,6 +350,53 @@ public class AddNoteCommandTest {
             throw new AssertionError("This method should not be called.");
         }
 
+        //======= Module Code ===========//
+
+        @Override
+        public boolean hasModuleCode(ModuleCode moduleCode) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void deleteModuleCode(ModuleCode target) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void addModuleCode(ModuleCode moduleCode) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void setModuleCode(ModuleCode target, ModuleCode editedCapEntry) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public ObservableList<ModuleCode> getFilteredModuleCodeList() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void updateFilteredModuleCodeList(Predicate<ModuleCode> predicate) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public ReadOnlyProperty<ModuleCode> selectedModuleCodeProperty() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public ModuleCode getSelectedModuleCode() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void setSelectedModuleCode(ModuleCode moduleCode) {
+            throw new AssertionError("This method should not be called.");
+        }
+
         //======= NotesManager ===========//
         @Override
         public boolean hasNote(Note note) {
@@ -433,13 +481,13 @@ public class AddNoteCommandTest {
         }
 
         @Override
-        public void commitAddressBook() {
+        public void commitUltiStudent() {
             // called by {@code AddCommand#execute()}
         }
 
         @Override
-        public ReadOnlyAddressBook getAddressBook() {
-            return new AddressBook();
+        public ReadOnlyUltiStudent getUltiStudent() {
+            return new UltiStudent();
         }
     }
 
