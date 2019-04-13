@@ -13,8 +13,8 @@ import seedu.ultistudent.model.homework.exceptions.ModuleCodeNotFoundException;
 import seedu.ultistudent.model.modulecode.ModuleCode;
 
 /**
- * A list of moduleCode that enforces uniqueness between its elements and does not allow nulls.
- * A moduleCode is considered unique by comparing using {@code ModuleCode#equals(ModuleCode)}. As such,
+ * A list of module codes that enforces uniqueness between its elements and does not allow nulls.
+ * A module code is considered unique by comparing using {@code ModuleCode#equals(ModuleCode)}. As such,
  * adding and updating of module codes uses ModuleCode#equals(ModuleCode) for equality so as to ensure that
  * the module code being added or updated is unique in terms of identity in the UniqueModuleCodeList. Similarly,
  * the removal of a cap entry uses ModuleCode#equals(Object) so as to ensure that the cap entry with exactly the
@@ -31,7 +31,7 @@ public class UniqueModuleCodeList implements Iterable<ModuleCode> {
             FXCollections.unmodifiableObservableList(internalList);
 
     /**
-     * Returns true if the list contains an equivalent cap entry as the given argument.
+     * Returns true if the list contains an equivalent ModuleCode as the given argument.
      */
     public boolean contains(ModuleCode toCheck) {
         requireNonNull(toCheck);
@@ -39,8 +39,8 @@ public class UniqueModuleCodeList implements Iterable<ModuleCode> {
     }
 
     /**
-     * Adds a capEntry to the list.
-     * The capEntry must not already exist in the list.
+     * Adds a ModuleCode to the list.
+     * The ModuleCode must not already exist in the list.
      */
     public void add(ModuleCode toAdd) {
         requireNonNull(toAdd);
@@ -51,9 +51,10 @@ public class UniqueModuleCodeList implements Iterable<ModuleCode> {
     }
 
     /**
-     * Replaces the cap entry {@code target} in the list with {@code editedCapEntry}.
+     * Replaces the modeule code {@code target} in the list with {@code editedModuleCode}.
      * {@code target} must exist in the list.
-     * The cap entry identity of {@code editedCapEntry} must not be the same as another existing entry in the list.
+     * The module code identity of {@code editedModuleCode} must not be the same as another
+     * existing module code in the list.
      */
     public void setModuleCode(ModuleCode target, ModuleCode editedModuleCode) {
         requireAllNonNull(target, editedModuleCode);
@@ -71,8 +72,8 @@ public class UniqueModuleCodeList implements Iterable<ModuleCode> {
     }
 
     /**
-     * Removes the equivalent cap entry from the list.
-     * The cap entry must exist in the list.
+     * Removes the equivalent module code from the list.
+     * The module code must exist in the list.
      */
     public void remove(ModuleCode toRemove) {
         requireNonNull(toRemove);
@@ -87,8 +88,8 @@ public class UniqueModuleCodeList implements Iterable<ModuleCode> {
     }
 
     /**
-     * Replaces the contents of this list with {@code capEntries}.
-     * {@code capEntries} must not contain duplicate cap entries.
+     * Replaces the contents of this list with {@code moduleCode}.
+     * {@code moduleCode} must not contain duplicate module codes.
      */
     public void setModuleCodeList(List<ModuleCode> moduleCodeList) {
         requireAllNonNull(moduleCodeList);
@@ -124,7 +125,7 @@ public class UniqueModuleCodeList implements Iterable<ModuleCode> {
     }
 
     /**
-     * Returns true if {@code capEntryList} contains only unique persons.
+     * Returns true if {@code moduleCodeList} contains only unique module codes.
      */
     private boolean moduleCodeListIsUnique(List<ModuleCode> moduleCodeList) {
         for (int i = 0; i < moduleCodeList.size() - 1; i++) {
