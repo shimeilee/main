@@ -15,14 +15,14 @@ import seedu.ultistudent.model.homework.HomeworkName;
 import seedu.ultistudent.model.modulecode.ModuleCode;
 
 /**
- * Parses input arguments and creates a new AddHomeworkCommad object
+ * Parses input arguments and creates a new AddHomeworkCommand object
  */
 public class AddHomeworkCommandParser implements Parser<AddHomeworkCommand> {
 
     /**
      * Parses the given {@code args} of arguments in the context of the AddHomeworkCommand
      * and returns an AddHomeworkCommand object for execution.
-     * @throws ParseException if the user input does not conform the expected format
+     * @throws ParseException if the user input does not conform the expected format.
      */
     public AddHomeworkCommand parse(String args) throws ParseException {
         ArgumentMultimap argMultimap =
