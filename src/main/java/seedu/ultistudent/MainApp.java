@@ -74,14 +74,14 @@ public class MainApp extends Application {
      * or an empty UltiStudent will be used instead if errors occur when reading {@code storage}'s UltiStudent.
      */
     private Model initModelManager(Storage storage, ReadOnlyUserPrefs userPrefs) {
-        Optional<ReadOnlyUltiStudent> addressBookOptional;
+        Optional<ReadOnlyUltiStudent> ultiStudentOptional;
         ReadOnlyUltiStudent initialData;
         try {
-            addressBookOptional = storage.readUltiStudent();
-            if (!addressBookOptional.isPresent()) {
+            ultiStudentOptional = storage.readUltiStudent();
+            if (!ultiStudentOptional.isPresent()) {
                 logger.info("Data file not found. Will be starting with a sample UltiStudent");
             }
-            initialData = addressBookOptional.orElseGet(SampleDataUtil::getSampleUltiStudent);
+            initialData = ultiStudentOptional.orElseGet(SampleDataUtil::getSampleUltiStudent);
         } catch (DataConversionException e) {
             logger.warning("Data file not in the correct format. Will be starting with an empty UltiStudent");
             initialData = new UltiStudent();

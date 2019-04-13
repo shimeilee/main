@@ -21,7 +21,7 @@ import seedu.ultistudent.model.note.Note;
 /**
  * An Immutable UltiStudent that is serializable to JSON format.
  */
-@JsonRootName(value = "addressbook")
+@JsonRootName(value = "ultistudent")
 class JsonSerializableUltiStudent {
 
     public static final String MESSAGE_DUPLICATE_PERSON = "Persons list contains duplicate person(s).";
@@ -79,49 +79,49 @@ class JsonSerializableUltiStudent {
      * @throws IllegalValueException if there were any data constraints violated.
      */
     public UltiStudent toModelType() throws IllegalValueException {
-        UltiStudent addressBook = new UltiStudent();
+        UltiStudent ultiStudent = new UltiStudent();
 
         for (JsonAdaptedCapEntry jsonAdaptedCapEntry : capEntryList) {
             CapEntry capEntry = jsonAdaptedCapEntry.toModelType();
-            if (addressBook.hasCapEntry(capEntry)) {
+            if (ultiStudent.hasCapEntry(capEntry)) {
                 throw new IllegalValueException(MESSAGE_DUPLICATE_CAP_ENTRY);
             }
-            addressBook.addCapEntry(capEntry);
+            ultiStudent.addCapEntry(capEntry);
         }
 
         for (JsonAdaptedHomeworkList jsonAdaptedHomeworkList : homeworkList) {
             Homework homework = jsonAdaptedHomeworkList.toModelType();
-            if (addressBook.hasHomework(homework)) {
+            if (ultiStudent.hasHomework(homework)) {
                 throw new IllegalValueException(MESSAGE_DUPLICATE_HOMEWORK);
             }
-            addressBook.addHomework(homework);
+            ultiStudent.addHomework(homework);
         }
 
         for (JsonAdaptedNote jsonAdaptedNote : noteList) {
             Note note = jsonAdaptedNote.toModelType();
-            if (addressBook.hasNote(note)) {
+            if (ultiStudent.hasNote(note)) {
                 throw new IllegalValueException(MESSAGE_DUPLICATE_NOTE);
             }
-            addressBook.addNote(note);
+            ultiStudent.addNote(note);
         }
 
         for (JsonAdaptedModuleSemester jsonAdaptedModuleSemester : moduleSemesterList) {
             ModuleSemester moduleSemester = jsonAdaptedModuleSemester.toModelType();
-            if (addressBook.hasModuleSemester(moduleSemester)) {
+            if (ultiStudent.hasModuleSemester(moduleSemester)) {
                 throw new IllegalValueException(MESSAGE_DUPLICATE_MODULE_SEMESTER);
             }
-            addressBook.addModuleSemester(moduleSemester);
+            ultiStudent.addModuleSemester(moduleSemester);
         }
 
         for (JsonAdaptedModuleCode jsonAdaptedModuleCode : moduleCodeList) {
             ModuleCode moduleCode = jsonAdaptedModuleCode.toModelType();
-            if (addressBook.hasModuleCode(moduleCode)) {
+            if (ultiStudent.hasModuleCode(moduleCode)) {
                 throw new IllegalValueException((MESSAGE_DUPLICATE_MODULE_CODE));
             }
-            addressBook.addModuleCode(moduleCode);
+            ultiStudent.addModuleCode(moduleCode);
         }
 
-        return addressBook;
+        return ultiStudent;
     }
 
 }

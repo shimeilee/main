@@ -45,14 +45,14 @@ public class JsonUltiStudentStorage implements UltiStudentStorage {
     public Optional<ReadOnlyUltiStudent> readUltiStudent(Path filePath) throws DataConversionException {
         requireNonNull(filePath);
 
-        Optional<JsonSerializableUltiStudent> jsonAddressBook = JsonUtil.readJsonFile(
+        Optional<JsonSerializableUltiStudent> jsonUltiStudent = JsonUtil.readJsonFile(
                 filePath, JsonSerializableUltiStudent.class);
-        if (!jsonAddressBook.isPresent()) {
+        if (!jsonUltiStudent.isPresent()) {
             return Optional.empty();
         }
 
         try {
-            return Optional.of(jsonAddressBook.get().toModelType());
+            return Optional.of(jsonUltiStudent.get().toModelType());
         } catch (IllegalValueException ive) {
             logger.info("Illegal values found in " + filePath + ": " + ive.getMessage());
             throw new DataConversionException(ive);

@@ -35,7 +35,7 @@ public interface Logic {
      *
      * @see seedu.ultistudent.model.Model#getUltiStudent()
      */
-    ReadOnlyUltiStudent getAddressBook();
+    ReadOnlyUltiStudent getUltiStudent();
 
     /** Returns an unmodifiable view of the filtered list of persons */
     ObservableList<Person> getFilteredPersonList();
@@ -51,7 +51,7 @@ public interface Logic {
     /**
      * Returns the user prefs' UltiStudent file path.
      */
-    Path getAddressBookFilePath();
+    Path getUltiStudentFilePath();
 
     /**
      * Returns the user prefs' GUI settings.

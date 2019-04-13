@@ -36,9 +36,9 @@ public class StatusBarFooter extends UiPart<Region> {
     private Label currentManager;
 
 
-    public StatusBarFooter(String manager, ReadOnlyUltiStudent addressBook) {
+    public StatusBarFooter(String manager, ReadOnlyUltiStudent ultiStudent) {
         super(FXML);
-        addressBook.addListener(observable -> updateSyncStatus());
+        ultiStudent.addListener(observable -> updateSyncStatus());
         syncStatus.setText(SYNC_STATUS_INITIAL);
         currentManager.setText(manager);
     }
