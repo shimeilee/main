@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.VBox?>
 
 <VBox xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1">
-  <Label layoutX="0" layoutY="0" styleClass="cap-label" text="Completed Semesters" textAlignment="CENTER" underline="true">
+  <Label layoutX="0" layoutY="0" styleClass="cap-label" text="Semesters" textAlignment="CENTER" underline="true">
       <VBox.margin>
          <Insets />
       </VBox.margin>

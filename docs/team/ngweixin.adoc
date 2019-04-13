@@ -2,12 +2,15 @@
 :site-section: AboutUs
 :imagesDir: ../images
 :stylesDir: ../stylesheets
+:toc:
+:toc-title: Table of Contents
+:sectnums:
 
 == PROJECT: UltiStudent
 
 ---
 
-== Overview
+=== Overview
 UltiStudent is a student application that effectively tackles the problem of having
 too many applications to manage their school life by providing a centralised platform
 for them to manage their homework, cumulative average point and notes.
@@ -18,34 +21,46 @@ of a Graphical User Interface (GUI).
 
 == Summary of contributions
 
-=== Major enhancement:
-* Added the *ability to add homework* to homework manager through `add-hw` command.
+* *Enhancement*:
+** Added the *ability to add homework* to homework manager through the use of  `add-hw`
+command.
 
-** It allows the user to add homework to the homework manager. This feature is essential
+*** It allows the user to add homework to the homework manager. This feature is essential
 and the foundation of homework manager as it enables homework manager to start keeping
 track of user's homework.
 
-** This functionality was a challenging as it requires an in-depth analysis
+*** This functionality was a challenging as it requires an in-depth analysis
 and understanding of AddressBook-Level4's UI, Logic, Model and Storage. A need to
 understand how each component communicate with one another.
 
-** *Credits*: AddressBook-Level4's add functionality was being used as a reference
+*** *Credits*: AddressBook-Level4's add functionality was being used as a reference.
+
+** Added the ability to *edit and save note* for Notes Manager through the use of `edit-note`
+and `save-note` command.
+
+*** A core functionality for NotesManager.
+*** This allows the user to edit the content of the empty note that was created using `add-note`.
+
+*** *Credits*: AddressBook-Level4's select functionality was being used as a reference.
 
 * *Minor enhancement*:
 ** Most of the UI in UltiStudent
-** Modified AddressBook's `add`, `delete` and `edit` command to guide users on what `add`,
-`delete` and `edit` command UltiStudent has to offer.
+(Pull requests https://github.com/cs2103-ay1819s2-w09-1/main/pull/23/files?file-filters%5B%5D=[#23],
+               https://github.com/cs2103-ay1819s2-w09-1/main/pull/41/files?file-filters%5B%5D=[#41],
+               https://github.com/cs2103-ay1819s2-w09-1/main/pull/55/files?file-filters%5B%5D=[#55])
+** Wrote test cases to improve coverage
+(Pull request https://github.com/cs2103-ay1819s2-w09-1/main/pull/151/files?file-filters%5B%5D=[#151])
 
-
-* *Code contributed*: [https://github.com[Functional code]] [https://github.com[Test code]] _{give links to collated code files}_
+* *Code contributed*: [https://nus-cs2103-ay1819s2.github.io/cs2103-dashboard/#=undefined&search=NgWeiXin[RepoSense]]
 
 * *Other contributions*:
 
 ** Project management:
-*** Managed releases `v1.3` - `v1.5rc` (3 releases) on GitHub
+*** Managed releases `v1.3` - `v1.4` (3 releases) on GitHub
 ** Enhancements to existing features:
 *** Updated the GUI color scheme (Pull requests https://github.com[#33], https://github.com[#34])
-*** Wrote additional tests for existing features to increase coverage from 88% to 92% (Pull requests https://github.com[#36], https://github.com[#38])
+*** ** Modified AddressBook's `add`, `delete` and `edit` command to guide users on what `add`,
+    `delete` and `edit` command UltiStudent has to offer.
 ** Documentation:
 *** Did cosmetic tweaks to existing contents of the User Guide: https://github.com[#14]
 ** Community:

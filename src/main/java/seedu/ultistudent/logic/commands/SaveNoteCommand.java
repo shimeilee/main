@@ -35,6 +35,7 @@ public class SaveNoteCommand extends Command {
         model.setNote(oldNote, editedNote);
         model.updateFilteredNoteList(Model.PREDICATE_SHOW_ALL_NOTES);
         model.commitAddressBook();
+        model.setSelectedNote(null);
 
         return new CommandResult(String.format(MESSAGE_SAVE_NOTE_SUCCESS, editedNote));
     }

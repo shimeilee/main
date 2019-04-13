@@ -233,7 +233,7 @@ public class MainWindow extends UiPart<Stage> {
     @FXML
     public void handleSwitchToHomeworkManager() {
         dimAllIcons();
-        iconListPanel.setHomeworkManagerIconBrightness(0.8);
+        iconListPanel.setHomeworkManagerIconBrightness(1);
 
         statusBarFooter.setCurrentManagerText(HOMEWORK_MANAGER);
 
@@ -254,7 +254,7 @@ public class MainWindow extends UiPart<Stage> {
     @FXML
     public void handleSwitchToNotesManager() {
         dimAllIcons();
-        iconListPanel.setNotesManagerIconBrightness(0.8);
+        iconListPanel.setNotesManagerIconBrightness(1);
 
         statusBarFooter.setCurrentManagerText(NOTES_MANAGER);
 
@@ -273,7 +273,7 @@ public class MainWindow extends UiPart<Stage> {
     @FXML
     public void handleSwitchToCapsManager() {
         dimAllIcons();
-        iconListPanel.setCapManagerIconBrightness(0.8);
+        iconListPanel.setCapManagerIconBrightness(1);
 
         statusBarFooter.setCurrentManagerText(CAP_MANAGER);
 
@@ -292,9 +292,9 @@ public class MainWindow extends UiPart<Stage> {
     }
 
     private void dimAllIcons() {
-        iconListPanel.setHomeworkManagerIconBrightness(0.4);
-        iconListPanel.setNotesManagerIconBrightness(0.4);
-        iconListPanel.setCapManagerIconBrightness(0.4);
+        iconListPanel.setHomeworkManagerIconBrightness(0.5);
+        iconListPanel.setNotesManagerIconBrightness(0.5);
+        iconListPanel.setCapManagerIconBrightness(0.5);
     }
 
 }
