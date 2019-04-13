@@ -60,7 +60,7 @@ public class AddHomeworkCommand extends Command {
 
         model.addHomework(toAdd);
 
-        model.commitAddressBook();
+        model.commitUltiStudent();
         return new CommandResult(String.format(MESSAGE_SUCCESS, toAdd));
 
     }

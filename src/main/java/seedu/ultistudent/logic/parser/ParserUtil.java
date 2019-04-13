@@ -157,7 +157,7 @@ public class ParserUtil {
                 processed += parts + "/";
             }
         }
-        if (!Date.isValidDate(processed)) {
+        if (!Date.isValidDate(processed, false)) {
             throw new ParseException(Date.MESSAGE_CONSTRAINTS);
         }
         return new Date(processed);

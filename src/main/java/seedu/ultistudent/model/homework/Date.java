@@ -1,7 +1,6 @@
 package seedu.ultistudent.model.homework;
 
 import static java.util.Objects.requireNonNull;
-import static seedu.ultistudent.commons.util.AppUtil.checkArgument;
 
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -33,7 +32,6 @@ public class Date {
      */
     public Date(String date) {
         requireNonNull(date);
-        checkArgument(isValidDate(date), MESSAGE_CONSTRAINTS);
         this.value = date;
     }
 
@@ -44,16 +42,18 @@ public class Date {
     /**
      * Returns true if it is a valid date.
      */
-    public static boolean isValidDate(String test) {
-        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-        java.util.Date today = new java.util.Date();
-        try {
-            java.util.Date givenDate = dateFormat.parse(test);
-            if (today.compareTo(givenDate) > 0) {
+    public static boolean isValidDate(String test, Boolean bypass) {
+        if (!bypass) {
+            DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+            java.util.Date today = new java.util.Date();
+            try {
+                java.util.Date givenDate = dateFormat.parse(test);
+                if (today.compareTo(givenDate) > 0) {
+                    return false;
+                }
+            } catch (ParseException pe) {
                 return false;
             }
-        } catch (ParseException pe) {
-            return false;
         }
         return test.matches(VALIDATION_REGEX);
     }

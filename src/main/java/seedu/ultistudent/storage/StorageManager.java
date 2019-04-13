@@ -7,23 +7,23 @@ import java.util.logging.Logger;
 
 import seedu.ultistudent.commons.core.LogsCenter;
 import seedu.ultistudent.commons.exceptions.DataConversionException;
-import seedu.ultistudent.model.ReadOnlyAddressBook;
+import seedu.ultistudent.model.ReadOnlyUltiStudent;
 import seedu.ultistudent.model.ReadOnlyUserPrefs;
 import seedu.ultistudent.model.UserPrefs;
 
 /**
- * Manages storage of AddressBook data in local storage.
+ * Manages storage of UltiStudent data in local storage.
  */
 public class StorageManager implements Storage {
 
     private static final Logger logger = LogsCenter.getLogger(StorageManager.class);
-    private AddressBookStorage addressBookStorage;
+    private UltiStudentStorage ultiStudentStorage;
     private UserPrefsStorage userPrefsStorage;
 
 
-    public StorageManager(AddressBookStorage addressBookStorage, UserPrefsStorage userPrefsStorage) {
+    public StorageManager(UltiStudentStorage ultiStudentStorage, UserPrefsStorage userPrefsStorage) {
         super();
-        this.addressBookStorage = addressBookStorage;
+        this.ultiStudentStorage = ultiStudentStorage;
         this.userPrefsStorage = userPrefsStorage;
     }
 
@@ -45,33 +45,33 @@ public class StorageManager implements Storage {
     }
 
 
-    // ================ AddressBook methods ==============================
+    // ================ UltiStudent methods ==============================
 
     @Override
-    public Path getAddressBookFilePath() {
-        return addressBookStorage.getAddressBookFilePath();
+    public Path getUltiStudentFilePath() {
+        return ultiStudentStorage.getUltiStudentFilePath();
     }
 
     @Override
-    public Optional<ReadOnlyAddressBook> readAddressBook() throws DataConversionException, IOException {
-        return readAddressBook(addressBookStorage.getAddressBookFilePath());
+    public Optional<ReadOnlyUltiStudent> readUltiStudent() throws DataConversionException, IOException {
+        return readUltiStudent(ultiStudentStorage.getUltiStudentFilePath());
     }
 
     @Override
-    public Optional<ReadOnlyAddressBook> readAddressBook(Path filePath) throws DataConversionException, IOException {
+    public Optional<ReadOnlyUltiStudent> readUltiStudent(Path filePath) throws DataConversionException, IOException {
         logger.fine("Attempting to read data from file: " + filePath);
-        return addressBookStorage.readAddressBook(filePath);
+        return ultiStudentStorage.readUltiStudent(filePath);
     }
 
     @Override
-    public void saveAddressBook(ReadOnlyAddressBook addressBook) throws IOException {
-        saveAddressBook(addressBook, addressBookStorage.getAddressBookFilePath());
+    public void saveUltiStudent(ReadOnlyUltiStudent ultiStudent) throws IOException {
+        saveUltiStudent(ultiStudent, ultiStudentStorage.getUltiStudentFilePath());
     }
 
     @Override
-    public void saveAddressBook(ReadOnlyAddressBook addressBook, Path filePath) throws IOException {
+    public void saveUltiStudent(ReadOnlyUltiStudent ultiStudent, Path filePath) throws IOException {
         logger.fine("Attempting to write to data file: " + filePath);
-        addressBookStorage.saveAddressBook(addressBook, filePath);
+        ultiStudentStorage.saveUltiStudent(ultiStudent, filePath);
     }
 
 }
