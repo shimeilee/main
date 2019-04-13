@@ -26,7 +26,7 @@ class JsonSerializableUltiStudent {
 
     public static final String MESSAGE_DUPLICATE_PERSON = "Persons list contains duplicate person(s).";
     public static final String MESSAGE_DUPLICATE_CAP_ENTRY = "Cap Entry list contains duplicate cap entry(s).";
-    public static final String MESSAGE_DUPLICATE_HOMEWORK = "Homework list contains duplicate homework";
+    public static final String MESSAGE_DUPLICATE_HOMEWORK = "Homework list contains duplicate homework.";
     public static final String MESSAGE_DUPLICATE_NOTE = "Notes contains duplicate.";
     public static final String MESSAGE_DUPLICATE_MODULE_SEMESTER = "Module Semester list contains duplicate module "
             + "semester(s).";

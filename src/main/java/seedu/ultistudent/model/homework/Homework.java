@@ -5,7 +5,7 @@ import static seedu.ultistudent.commons.util.CollectionUtil.requireAllNonNull;
 import seedu.ultistudent.model.modulecode.ModuleCode;
 
 /**
- * Represents a homework entry in the ultistudent.
+ * Represents a homework entry in the Ultistudent.
  */
 public class Homework {
 

@@ -4,7 +4,7 @@ import static java.util.Objects.requireNonNull;
 import static seedu.ultistudent.commons.util.AppUtil.checkArgument;
 
 /**
- * Represents a Homework's homework name in UltiStudent
+ * Represents a Homework's homework name in UltiStudent.
  */
 public class HomeworkName {
 
@@ -19,9 +19,8 @@ public class HomeworkName {
         value = homeworkName;
     }
 
-    //TODO: Regex check for Homework Name
     /**
-     * Returns true if it is a valid HomeworkName
+     * Returns true if it is a valid HomeworkName.
      */
     public static boolean isValidHomeworkName(String test) {
         return test.matches(VALIDATION_REGEX);

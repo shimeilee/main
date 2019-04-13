@@ -88,12 +88,12 @@ public class UniqueHomeworkList implements Iterable<Homework> {
     }
 
     /**
-     *Returns true if {@code homework}
+     *Returns true if {@code homeworkList} contains only unique module codes.
      */
-    private boolean homeworkAreUnique(List<Homework> homework) {
-        for (int i = 0; i < homework.size() - 1; i++) {
-            for (int j = i + 1; j < homework.size(); j++) {
-                if (homework.get(i).equals(homework.get(j))) {
+    private boolean homeworkAreUnique(List<Homework> homeworkList) {
+        for (int i = 0; i < homeworkList.size() - 1; i++) {
+            for (int j = i + 1; j < homeworkList.size(); j++) {
+                if (homeworkList.get(i).equals(homeworkList.get(j))) {
                     return false;
                 }
             }

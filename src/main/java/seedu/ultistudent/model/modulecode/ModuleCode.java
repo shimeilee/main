@@ -4,7 +4,7 @@ import static java.util.Objects.requireNonNull;
 import static seedu.ultistudent.commons.util.AppUtil.checkArgument;
 
 /**
- * Represents a Homework's modulecode in the UltiStudent.
+ * Represents modulecode in the UltiStudent which is used in Homework entry and the CapEntry.
  */
 public class ModuleCode {
 
@@ -23,17 +23,15 @@ public class ModuleCode {
         value = moduleCode.toUpperCase();
     }
 
-    //TODO: Regex check for modulecode
     /**
-     * Returns true if it is a valid ModuleCode
+     * Returns true if it is a valid ModuleCode.
      */
     public static boolean isValidModuleCode(String test) {
         return test.toUpperCase().matches(VALIDATION_REGEX);
     }
 
-
     /**
-     * Returns the value of the ModuleCode
+     * Returns the value of the ModuleCode.
      */
     public String getValue() {
         return value;

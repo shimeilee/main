@@ -2,74 +2,107 @@
 :site-section: AboutUs
 :imagesDir: ../images
 :stylesDir: ../stylesheets
+:toc:
+:toc-title: Table of Contents
+:sectnums:
 
-== PROJECT: UltiStudent - Level 4
+== PROJECT: UltiStudent
 
 ---
 
-== Overview
-
-
-UltiStudent is a student application that effectively tackles the problem of having too many applications to manage
-their school life. To improve the quality of student life in computing, UltiStudent provides a centralised platform
+=== Overview
+UltiStudent is a student application that effectively tackles the problem of having
+too many applications to manage their school life by providing a centralised platform
 for them to manage their homework, cumulative average point and notes.
 
-UltiStudent is a desktop application used for teaching Software Engineering principles. The user interacts with it using a CLI, and it has a GUI created with JavaFX. It is written in Java, and has about 10 kLoC.
+UltiStudent is catered for students who prefer to use a desktop app for managing their
+school activities through a Command Line Interface (CLI) while still having the benefits
+of a Graphical User Interface (GUI).
 
 == Summary of contributions
 
-* *Major enhancement*: added *the ability to undo/redo previous commands*
-** What it does: allows the user to undo all previous commands one at a time. Preceding undo commands can be reversed by using the redo command.
-** Justification: This feature improves the product significantly because a user can make mistakes in commands and the app should provide a convenient way to rectify them.
-** Highlights: This enhancement affects existing commands and commands to be added in future. It required an in-depth analysis of design alternatives. The implementation too was challenging as it required changes to existing commands.
-** Credits: _{mention here if you reused any code/ideas from elsewhere or if a third-party library is heavily used in the feature so that a reader can make a more accurate judgement of how much effort went into the feature}_
+* *Enhancement*:
+** Added the *ability to add homework* to homework manager through the use of  `add-hw`
+command.
 
-* *Minor enhancement*: added a history command that allows the user to navigate to previous commands using up/down keys.
+*** It allows the user to add homework to the homework manager. This feature is essential
+and the foundation of homework manager as it enables homework manager to start keeping
+track of user's homework.
 
-* *Code contributed*: [https://github.com[Functional code]] [https://github.com[Test code]] _{give links to collated code files}_
+*** This functionality was a challenging as it requires an in-depth analysis
+and understanding of AddressBook-Level4's UI, Logic, Model and Storage. A need to
+understand how each component communicate with one another.
+
+*** *Credits*: AddressBook-Level4's add functionality was being used as a reference.
+
+** Added the ability to *edit and save note* for Notes Manager through the use of `edit-note`
+and `save-note` command.
+
+*** A core functionality for NotesManager.
+*** This allows the user to edit the content of the empty note that was created using `add-note`.
+
+*** *Credits*: AddressBook-Level4's select functionality was being used as a reference.
+
+* *Minor enhancement*:
+** Open command that opens the respective managers `open MANAGER`
+** Most of the UI in UltiStudent
+(Pull requests https://github.com/cs2103-ay1819s2-w09-1/main/pull/23/files?file-filters%5B%5D=[#23],
+               https://github.com/cs2103-ay1819s2-w09-1/main/pull/41/files?file-filters%5B%5D=[#41],
+               https://github.com/cs2103-ay1819s2-w09-1/main/pull/55/files?file-filters%5B%5D=[#55])
+** Wrote test cases to improve coverage
+(Pull request https://github.com/cs2103-ay1819s2-w09-1/main/pull/151/files?file-filters%5B%5D=[#151])
+
+* *Code contributed*: Click
+https://nus-cs2103-ay1819s2.github.io/cs2103-dashboard/#=undefined&search=NgWeiXin[here]
+to view my code on the CS2103T Project Code Dashboard.
 
 * *Other contributions*:
 
 ** Project management:
-*** Managed releases `v1.3` - `v1.5rc` (3 releases) on GitHub
-** Enhancements to existing features:
-*** Updated the GUI color scheme (Pull requests https://github.com[#33], https://github.com[#34])
-*** Wrote additional tests for existing features to increase coverage from 88% to 92% (Pull requests https://github.com[#36], https://github.com[#38])
-** Documentation:
-*** Did cosmetic tweaks to existing contents of the User Guide: https://github.com[#14]
-** Community:
-*** PRs reviewed (with non-trivial review comments): https://github.com[#12], https://github.com[#32], https://github.com[#19], https://github.com[#42]
-*** Contributed to forum discussions (examples:  https://github.com[1], https://github.com[2], https://github.com[3], https://github.com[4])
-*** Reported bugs and suggestions for other teams in the class (examples:  https://github.com[1], https://github.com[2], https://github.com[3])
-*** Some parts of the history feature I added was adopted by several other class mates (https://github.com[1], https://github.com[2])
-** Tools:
-*** Integrated a third party library (Natty) to the project (https://github.com[#42])
-*** Integrated a new Github plugin (CircleCI) to the team repo
+*** Managed https://github.com/cs2103-ay1819s2-w09-1/main/issues?utf8=✓&q=is%3Aissue+is%3Aclosed[issue tracker],
+    closing issues upon fixes and implementations.
+*** Refracted addressbook to ultistudent
+    (Pull request https://github.com/cs2103-ay1819s2-w09-1/main/pull/167/files?file-filters%5B%5D=[#167])
 
-_{you can add/remove categories in the list above}_
+** Enhancements to existing features:
+*** Modified AddressBook's `add`, `delete` and `edit` command to guide users on what `add`,
+    `delete` and `edit` command UltiStudent has to offer. (Pull request
+    https://github.com/cs2103-ay1819s2-w09-1/main/pull/99/files?file-filters%5B%5D=[#99])
+
+** Documentation:
+*** Updated existing contents of the User and Developer Guide:
+*** Update and Maintain README:
+    https://github.com/cs2103-ay1819s2-w09-1/main/pull/6[#6],
+    https://github.com/cs2103-ay1819s2-w09-1/main/pull/23[#23],
+    https://github.com/cs2103-ay1819s2-w09-1/main/pull/99[#99]
+
+** Community:
+*** Open issues and assigned respective team-mates (examples:
+    https://github.com/cs2103-ay1819s2-w09-1/main/issues/33[33],
+    https://github.com/cs2103-ay1819s2-w09-1/main/issues/101[101],
+    https://github.com/cs2103-ay1819s2-w09-1/main/issues/109[109])
+*** Reported bugs and suggestions for other teams in the class (examples:
+    https://github.com/cs2103-ay1819S2-w11-2/main/issues/167[167]
+    https://github.com/cs2103-ay1819S2-w11-2/main/issues/174[174]
+    https://github.com/cs2103-ay1819S2-w11-2/main/issues/180[180])
 
 == Contributions to the User Guide
-
-
 |===
-|_Given below are sections I contributed to the User Guide. They showcase my ability to write documentation targeting end-users._
+_Below are the main contributions to the User Guide, which consist of Add Homework, Edit and Save commands.
+ They showcase my ability to write documentation targeting end-users in a clear and concise manner._
 |===
 
-include::../UserGuide.adoc[tag=undoredo]
+include::../UserGuide.adoc[tag=add-hw]
+include::../UserGuide.adoc[tag=edit-note]
 
 == Contributions to the Developer Guide
 
 |===
-|_Given below are sections I contributed to the Developer Guide. They showcase my ability to write technical documentation and the technical depth of my contributions to the project._
+_Below are the main contributions to the User Guide, which consist of Add Homework, Edit and Save commands.
+ They showcase my ability to write technical documentation and the technical depth of my contribution to
+ UltiStudent in a clear and concise manner._
 |===
 
-include::../DeveloperGuide.adoc[tag=undoredo]
-
-include::../DeveloperGuide.adoc[tag=dataencryption]
-
-
-== PROJECT: PowerPointLabs
-
----
-
-_{Optionally, you may include other projects in your portfolio.}_
+include::../DeveloperGuide.adoc[tag=add-hw]
+include::../DeveloperGuide.adoc[tag=edit-note]
+include::../DeveloperGuide.adoc[tag=save-note]

@@ -8,14 +8,14 @@ import seedu.ultistudent.logic.commands.DeleteHomeworkCommand;
 import seedu.ultistudent.logic.parser.exceptions.ParseException;
 
 /**
- * Parses input arguments and creates a new DeleteHomeworkCommand object
+ * Parses input arguments and creates a new DeleteHomeworkCommand object.
  */
 public class DeleteHomeworkCommandParser implements Parser<DeleteHomeworkCommand> {
 
     /**
      * Parses the given {@code String} of arguments in the context of the DeleteCommand
      * and returns an DeleteCommand object for execution.
-     * @throws ParseException if the user input does not conform the expected format
+     * @throws ParseException if the user input does not conform the expected format.
      */
     public DeleteHomeworkCommand parse(String args) throws ParseException {
         try {

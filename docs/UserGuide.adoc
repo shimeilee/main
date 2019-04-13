@@ -60,7 +60,7 @@ UltiStudent consists of 3 key features to help you manage your student life:
 Homework Manager, Notes Manager, CAP Manager.
 
 === HomeworkManager
-Let this handy manage manage your homework by adding, deleting, editing your homework
+Let this handy manager can help you to manage your homework by adding, deleting, editing your homework
 based on your progress. You can also check on the deadlines of all your homework before
 deciding which homework to attempt!
 
@@ -70,9 +70,9 @@ here counts toward saving the environment by not using paper! Lets fight against
 warming! Fighting!
 
 === CAPManager
-This manager allows you to record and keep track of your Cumulative Aggregate Points (CAP)
-by adding, deleting the grades you have received for modules you have taken and also
-project your current CAP.
+This manager will help you to record and keep track of your Cumulative Aggregate Points (CAP)!
+Simply add, deleting and editing the grades for modules you have taken to see immediately what your updated CAP score is!
+Not only that, you can even use the CAPManager to project future CAP scores!
 
 This manager will always be your reminder to work hard and get
 more 'A's for future modules! At the same time allows you to have an overview of your
@@ -84,7 +84,6 @@ semesters.
 As UltiStudent contains many different commands and features, do refer to the command
 format below to help you better understand how to use each command to their best.
 
-====
 *Command Format*
 
 * Words in `UPPER_CASE` are the parameters to be supplied by the user e.g. in
@@ -94,28 +93,38 @@ can be used as `add-hw mc/CS2103T` but of course you would have to do the same f
 
 * All parameters must be supplied by users: `add-hw mc/MODULECODE hw/HOMEWORK d/DEADLINE`.
 
-[IMPORTANT]
-=====
-DEADLINE must be in dd/mm/yyyy
-=====
-
-====
 
 === General Commands
-The commands here are applicable in UltiStudent's 3 Managers +
-HomeworkManager, NotesManager, CapManager.
+The commands here are applicable in UltiStudent's 3 Managers: HomeworkManager, NotesManager, CapManager.
 
 The commands differ by the entity placed at the end of each command. `add-x`, `delete-x`,
 `edit-x` where `x` should be replaced by either "hw" for homework, "note" for note,
 or "cap" for cumulative average point!
 
+==== Opening a manager : `open`
+This command will usually be your first and frequently used command in UltiStudent! But fret not, I will teach
+you on how to use this powerful command that is applicable to all Managers in UltiStudent.
+
+To use this command, we have to adhere to this format: `open MANAGER` else UltiStudent would not be able to
+understand what we are trying to tell it to do.
+
+Example time!
+
+Lets say we have a Homework to add, edit or delete, we can easily use `open HomeworkManager` to command UltiStudent
+to open Homework Manager for us! Same goes for Notes Manager `open NotesManager` and Cap Manager `open CapManager`.
+
+With this, we can begin our journey with UltiStudent to become an ultimate student!
+
 ==== Viewing help : `help`
+Not sure how to get started? Not to worry! Simply type 'help' for more clarity!
 Opens up the help window. +
+
 Format: `help`
 
 ==== Listing entered commands : `history`
+If you would like to review what you have done in your current session of UltiStudent, simply use our history command!
+This command will help to retrieve the previously executed commands which has been entered into the system before `history`.
 
-Retrieves the last 3 commands which has been entered into the system before `history`.
 
 
 // tag::undoredo[]
@@ -175,14 +184,13 @@ There is no need to save manually.
 ==== Adding a homework: `add-hw`
 
 Have a homework but unable to attend to it immediately? No worries! Let Homework Manager help
-you keep track of them! By using `add-hw`, you can command this manager to remember your homework
-for you!
+us keep track of them! By using `add-hw`, we can command this manager to remember our homework
+for us! Make sure we are in the Homework Manager by using `open HomeworkManager` first!
 
-Sadly, it doesn't do your homework for you... but hey it reduces your worries on forgetting
-your homework!
+Sadly, it doesn't do our homework for us... but hey it reduces our worries on forgetting our homework!
 
-To use this command you have to adhere to this format: `add-hw mc/MODULECODE hw/HOMEWORK d/DEADLINE`
-else homework manager would not be able to understand what you are trying to tell it to do.
+To use this command we have to adhere to this format: `add-hw mc/MODULECODE hw/HOMEWORK d/DEADLINE`
+else Homework Manager would not be able to understand what we are trying to tell it to do.
 
 [IMPORTANT]
 DEADLINE must be in dd/mm/yyyy format and DEADLINE should not be a date that is before today!
@@ -190,8 +198,15 @@ DEADLINE must be in dd/mm/yyyy format and DEADLINE should not be a date that is 
 Okay enough explanation and time for an example!
 
 Lets say we have to do Tutorial 1 for CS1101S by 1st May 2019. We could command this manager to
-remember it for us by using `add-hw mc/CS1101S hw/Tutorial 1 d/01/05/2019`.
+remember it for us by using `add-hw mc/CS1101S hw/Tutorial 1 d/01/05/2019` in the red highlighted box and
+do make sure that you are in the homework manager which is indicated by the highlighted icon in the white
+highlighted box as shown below.
 
+image::Add-Hw UG.png[width="790"]
+
+When CS1101S tutorial 1 has been successfully added, the green highlighted box would indicate the success.
+We will also be able to view the CS1101S being added into the blue highlighted box since this is the first
+homework for CS1101S we have and the orange highlighted box would show us what homework we have.
 
 [TIP]
 Pro tip here! The ordering of `mc/MODULECODE`, `hw/HOMEWORK` and `d/DEADLINE` can be jumbled around!
@@ -251,26 +266,41 @@ Examples:
 * `add-note mc/CS2103T n/NOTENAME`
 * `add-note mc/CS2100 n/NOTENAME`
 
-==== Editing a note : `selectNote`
-Opens and allows editing on an existing note in the Notes Manager based on its
-index +
-Format: `selectNote INDEX`
+// tag::edit-note[]
+==== Editing and Saving a note : `edit-note` `save-note`
 
-Examples:
+===== Editing note: `edit-note`
+Hurray! We've successfully added a note therefore it is time for us to learn how to edit and save the edited notes!
+But first! we got to make sure we are in the Notes Manager by looking at the Notes icon in the white highlighted
+box as shown below.
 
-* `selectNote 1`
-* `selectNote 2`
+image::Edit&Save-Note UG.png[width="790"]
 
-==== Editing a note : `saveNote`
-Saves and closes the current note in editing in the Notes Manager based on its
-index +
-Format: `saveNote INDEX`
+Now that we are in the Notes Manager. It is time for us to start editing our note! First off, we have to use
+`edit-note INDEX` to select the notes that we want to edit.
 
-Examples:
+For example, we have 2 notes currently as shown in the image above, and we would like to edit our Personal
+Project Portfolio note. We will use `edit-note 1` in the red highlighted box to open *Personal Project
+Portfolio* note for editing.
 
-* `saveNote 1`
-* `saveNote 2`
+When Notes Manager has successfully open our note, it will indicate in the green highlighted box. At the same
+time, the note will be highlighted in blue in the blue highlighted box and the text field in the orange
+highlighted box will turn white and allow us to start jotting down our notes!
 
+===== Saving note: `save-note`
+
+Now that we are done editing our note, it is time to save them! We can do this easily by using the `save-note` in
+the red highlighted box!
+
+Once the note is saved, Notes Manager will let us know by indicating what we have saved
+in the green highlighted box. At the same time, the textfield in the orange highlighted box will be disabled. For
+`save-note` there is no parameters as it will save all edited notes in notes manager.
+
+[TIP]
+Pro tip here! We can edit multiple notes at the same time by using edit-note 1 then edit-note 2 to open the
+respective notes to edit. Once we are done editing, we can simply use `save-note` to save all the edited notes!
+
+// end::edit-note[]
 ==== Deleting a Note: `delete-note`
 
 Deletes the specified note from the Notes Manager. +
@@ -293,37 +323,56 @@ Deletes the 2nd note in the Note Manager.
 
 
 === CAP Manager
+Climbing to your first class honours? Or struggling to keep within your desired class? Worry no more, let CAP Manager
+help you with keeping count. All you need to do is to key in your grades and TADAH your CAP will be calculated for you.
+CAP Manager's interface is split into a few key sections. Do refer to the image below to familiarise yourself with
+Cap Manager!
+
+image::CapManagerInterface.png[width="790"]
+
+
+Now that you're all set, let's see how Cap Manager can help us!
 
 ==== Adding a CAP entry: `add-cap`
-
 Adds a new CAP entry to the CAP Manager +
+
+Let's assume it's the end of the semester and you just got your grades back.
+Simply add your modules to the Cap Manager with the `add-cap` command to view your updated CAP!
+
 Format: `add-cap mc/MODULECODE g/MODULEGRADE mcs/MODULECREDITS sem/MODULESEMESTER`
 
+[width="80%",cols="1,2,2",options="header"]
+|=========================================================
+|Parameter |Input type |Example
+|mc/MODULECODE |Module Code of the Module | mc/CS2103T
+|g/MODULEGRADE |Module Grade received| g/A
+|mcs/MODULECREDITS |Number of Modular Credits the module is worth| mcs/4
+|sem/MODULESEMESTER |The Semester the module was taken in| sem/Y1S1
+
+|=========================================================
 
 Examples:
 
-* `add-cap mc/CS2103T g/A mcs/4 sem/Y2S2`
-* `add-cap mc/CS2100 g/A+ mcs/4 sem/Y2S1`
+* `add-cap mc/CS2101 g/B+ mcs/4 sem/Y2S2`
 
-==== Deleting a CAP entry: `delete-cap`
+Adds CS2101 into the CAP Manager, with a grade of B+ and 4 Modular Credits.
 
-Deletes the specified CAP entry from the CAP Manager. +
-Format: `delete-cap INDEX`
+First open CAP Manager
 
-****
-* Deletes the CAP entry at the specified `INDEX`.
-* The index refers to the index number shown in the displayed CAP Entries list.
-* The index *must be a positive integer* 1, 2, 3, ...
+image::OpenCapManager.png[width="790"]
 
-****
+Then use the `add-cap` command.
 
-Examples:
+//image of added cap
 
-* `delete-cap 2` +
-Deletes the 2nd CAP Entry in the UltiStudent.
+And just like that your CAP Manager will now include the module you just added.
+The semester list will also be updated if you are adding a module that is newly taken.
+Not only that, your CAP score will be updated right away!
 
 
 ==== Editing a CAP Entry by index: `edit-cap`
+If you made a mistake in entering the information for any particular CAP entry, do not worry!
+ `edit-cap` command can easily fix that.
 
 Edits an existing cap entry in the UltiStudent by the use of index. +
 Format: `edit-cap INDEX  [mc/MODULECODE] [g/MODULEGRADE] [mcs/MODULECREDITS] [sem/MODULESEMESTER]`
@@ -342,8 +391,11 @@ Examples:
 Edits the module code of the 3rd cap entry and the grade obtained to `B+`.
 
 ==== Editing a CAP Entry by module code: `edit-cap-mc`
+UltiStudent understands that students have to take many modules in their University life, as such,
 
-Edits an existing cap entry in the UltiStudent by the use of module code. +
+As such the `edit-cap-mc` allows users to edit the parameters of a __ by the using the module code instead of the index
+for more convenience!
+
 Format: `edit-cap-mc MODULECODE [mc/MODULECODE] [g/MODULEGRADE] [mcs/MODULECREDITS] [sem/MODULESEMESTER]`
 ****
 * Edits the CAP entry with the specified MODULECODE. The module code *must* be valid.
@@ -359,9 +411,41 @@ Examples:
 * `edit-cap CS2103T mc/CS2102 g/A+` +
 Edits the cap entry of CS2103T to become that of a cap entry for CS2102 and sets the grade obtained to `B+`.
 
-==== Calculating your CAP :
-CapManager automatically calculates your CAP score with every command that relates to it. You can view your CAP in the Cap Manager window.
-Format: -
+==== Deleting a CAP entry: `delete-cap`
+
+If you ever do need to delete a CAP entry in the CAP Manager, you may use this command to easily delete that specific CAP Entry.
+After executing the command
+Deletes the specified CAP entry from the CAP Manager. +
+Format: `delete-cap INDEX`
+
+****
+* Deletes the CAP entry at the specified `INDEX`.
+* The index refers to the index number shown in the displayed CAP Entries list.
+* The index *must be a positive integer* 1, 2, 3, ...
+
+****
+
+Examples:
+
+* `delete-cap 2` +
+Deletes the 2nd CAP Entry in the UltiStudent.
+
+==== Filtering a CAP entry: `find-sem`
+
+If you would like to view the modules you have taken for particular semester(s), then find-sem will be handy!
+
+Format: `find-sem SEMESTER ...`
+
+//warning: do note that cap score does not update such that it only calculates the CAP score for the modules displayed
+// using the find-sem method. The cap score is stil that for all the modules in the cap entry.
+// if you wish to exist, refer to list command
+
+==== Filtering a CAP entry: `list-cap`
+
+This command displays all the modules inside the CAP manager.
+This command is most helpful after the use of `find-sem` command.
+
+Format: `list-cap`
 
 == FAQ
 
@@ -369,31 +453,9 @@ Format: -
 *A*: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous UltiStudent folder.
 
 == Command Summary
-* *Add Homework* `add-hw mc/MODULECODE hw/HOMEWORK d/DEADLINE` +
-e.g. `add-hw mc/CS2103T hw/Tutorial 3 d/01/05/2019`
-* *Delete Homework* : `delete INDEX` +
-e.g. `delete 2`
-* *Edit Homework* : `edit-note INDEX  [mc/MODULECODE] [hw/HOMEWORK] [d/DEADLINE] [p/PRIORITY]...` +
-e.g. `edit 2 d/030319 p/`
-
-* *Add Note* `add-note mc/MODULECODE n/NOTENAME hw/HOMEWORK [p/PRIORITY]...` +
-e.g. `add-note mc/CS2103T n/Lecture  3`
-* *Delete Note* : `delete-note INDEX` +
-e.g. `delete 2`
-* *Selecting Note to Edit* : `selectNote INDEX` +
-e.g. `selectNote 2`
-* *Saving an Edited Note* : `saveNote INDEX` +
-e.g. `saveNote 5`
-
-* *Add Cap Entry* `add-cap mc/MODULECODE nn/NOTENAME hw/HOMEWORK [p/PRIORITY]...` +
-e.g. `add-cap mc/CS2101 g/A- mcs/4 sem/Y2S2 `
-* *Delete Cap Entry* : `delete-note INDEX` +
-e.g. `delete 1`
-* *Edit Cap Entry by Index* : `edit-note INDEX  [mc/MODULECODE] [g/MODULEGRADE] [mcs/MODULECREDITS] [sem/MODULESEMESTER]` +
-e.g. `edit-cap 2 g/B+ mcs/4`
-* *Edit Cap Entry by Code* : `edit-note MODULECODE  [mc/MODULECODE] [g/MODULEGRADE] [mcs/MODULECREDITS] [semd/MODULESEMESTER]` +
-e.g. `edit-cap-mc CS3203 g/A- mcs/8`
-
+=== General
+* *Open* : `open MANAGER` +
+e.g. `open HomeworkManager`, `open NotesManager`, `open CapManager`
 * *Find* : `find KEYWORD [MORE_KEYWORDS]` +
 e.g. `find Tutorial 3`
 * *Help* : `help`
@@ -402,3 +464,31 @@ e.g.`select 3`
 * *History* : `history`
 * *Undo* : `undo`
 * *Redo* : `redo`
+
+=== Homework Manager
+* *Add Homework* : `add-hw mc/MODULECODE hw/HOMEWORK d/DEADLINE` +
+e.g. `add-hw mc/CS1101S hw/Tutorial 1 d/01/05/2019`
+* *Delete Homework* : `delete INDEX` +
+e.g. `delete 2`
+* *Edit Homework* : `edit-note INDEX  [mc/MODULECODE] [hw/HOMEWORK] [d/DEADLINE] [p/PRIORITY]...` +
+e.g. `edit 2 d/030319 p/`
+
+=== Notes Manager
+* *Add Note* : `add-note mc/MODULECODE n/NOTENAME hw/HOMEWORK [p/PRIORITY]...` +
+e.g. `add-note mc/CS2103T n/Lecture  3`
+* *Delete Note* : `delete-note INDEX` +
+e.g. `delete 2`
+* *Editing Note to Edit* : `edit-note INDEX` +
+e.g. `edit-note 1`
+* *Saving an Edited Note* : `save-note` +
+e.g. `save-note`
+
+=== Cap Manager
+* *Add Cap Entry* `add-cap mc/MODULECODE nn/NOTENAME hw/HOMEWORK [p/PRIORITY]...` +
+e.g. `add-cap mc/CS2101 g/A- mcs/4 sem/Y2S2 `
+* *Delete Cap Entry* : `delete-note INDEX` +
+e.g. `delete 1`
+* *Edit Cap Entry by Index* : `edit-note INDEX  [mc/MODULECODE] [g/MODULEGRADE] [mcs/MODULECREDITS] [sem/MODULESEMESTER]` +
+e.g. `edit-cap 2 g/B+ mcs/4`
+* *Edit Cap Entry by Code* : `edit-note MODULECODE  [mc/MODULECODE] [g/MODULEGRADE] [mcs/MODULECREDITS] [semd/MODULESEMESTER]` +
+e.g. `edit-cap-mc CS3203 g/A- mcs/8`

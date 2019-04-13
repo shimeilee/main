@@ -21,7 +21,7 @@ import seedu.ultistudent.model.tag.Tag;
 
 
 /**
- * Parses input arguments and creates a new EditHomeworkCommand object
+ * Parses input arguments and creates a new EditHomeworkCommand object.
  */
 public class EditHomeworkCommandParser implements Parser<EditHomeworkCommand> {
 
@@ -29,7 +29,7 @@ public class EditHomeworkCommandParser implements Parser<EditHomeworkCommand> {
      * Parses the given {@code String} of arguments in the context of the EditHomeworkCommand
      * and returns an EditHomeworkCommand object for execution.
      *
-     * @throws ParseException if the user input does not conform the expected format
+     * @throws ParseException if the user input does not conform the expected format.
      */
     public EditHomeworkCommand parse(String args) throws ParseException {
         requireNonNull(args);
