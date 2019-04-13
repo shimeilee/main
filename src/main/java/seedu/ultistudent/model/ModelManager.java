@@ -537,7 +537,7 @@ public class ModelManager implements Model {
     }
 
     /**
-     * Returns an unmodifiable view of the list of {@code Person} backed by the internal list of
+     * Returns an unmodifiable view of the list of {@code ModuleCode} backed by the internal list of
      * {@code versionedUltiStudent}
      */
     @Override
@@ -570,7 +570,7 @@ public class ModelManager implements Model {
     }
 
     /**
-     * Ensures {@code selectedCapEntry} is a valid cap entry in {@code filteredCapEntryList}.
+     * Ensures {@code selectedModuleCode} is a valid cap entry in {@code filteredModuleCodeList}.
      */
     private void ensureSelectedModuleCodeIsValid(ListChangeListener.Change<? extends ModuleCode> change) {
         while (change.next()) {
