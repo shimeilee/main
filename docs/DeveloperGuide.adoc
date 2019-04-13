@@ -17,7 +17,30 @@ endif::[]
 
 By: `Team W09-1`      Since: `Feb 2019`      Licence: `MIT`
 
+== Introduction
+//what UltiStudent is about
+UltiStudent is a desktop-based application intended for students.
+//What developer guide provide, and intended audience
+This developer Guide is written by *UltiStudent*
+for anyone who wishes to contribute to our project.
+
+This guide will provide _____ /
+D
+
+//how to use developer guide
+=== Symbols
+Before proceeding, do keep in mind the bel
+
+[WARNING]
+
+[NOTE]
+
+[TIP]
+
+
 == Setting up
+Do follow the instructions in order to set up our project on your device.
+//
 
 === Prerequisites
 
@@ -185,7 +208,7 @@ image::DeletePersonSdForLogic.png[width="800"]
 === Model component
 
 .Structure of the Model Component
-image::ModelClassDiagram.png[width="800"]
+image::ModelComponentClass.png[width="800"]
 
 *API* : link:{repoURL}/src/main/java/seedu/address/model/Model.java[`Model.java`]
 
