@@ -8,7 +8,7 @@ import static seedu.ultistudent.logic.parser.CliSyntax.PREFIX_MODULEGRADE;
 import static seedu.ultistudent.logic.parser.CliSyntax.PREFIX_SEMESTER;
 
 import seedu.ultistudent.logic.commands.EditCapEntryByModuleCodeCommand;
-import seedu.ultistudent.logic.commands.EditCapEntryByModuleCodeCommand.EditCapEntryDescriptor;
+import seedu.ultistudent.logic.commands.EditCapEntryCommand.EditCapEntryDescriptor;
 import seedu.ultistudent.logic.parser.exceptions.ParseException;
 import seedu.ultistudent.model.modulecode.ModuleCode;
 

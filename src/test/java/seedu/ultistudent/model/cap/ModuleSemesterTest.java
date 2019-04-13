@@ -21,7 +21,7 @@ public class ModuleSemesterTest {
 
     @Test
     public void isValidModuleSemester() {
-        // null phone number
+        // null module semester
         Assert.assertThrows(NullPointerException.class, () -> ModuleSemester.isValidModuleSemester(null));
 
         // invalid phone numbers

@@ -7,10 +7,9 @@ import static seedu.ultistudent.logic.parser.CliSyntax.PREFIX_MODULEGRADE;
 import static seedu.ultistudent.logic.parser.CliSyntax.PREFIX_SEMESTER;
 
 import java.util.List;
-import java.util.Optional;
 
-import seedu.ultistudent.commons.util.CollectionUtil;
 import seedu.ultistudent.logic.CommandHistory;
+import seedu.ultistudent.logic.commands.EditCapEntryCommand.EditCapEntryDescriptor;
 import seedu.ultistudent.logic.commands.exceptions.CommandException;
 import seedu.ultistudent.model.Model;
 import seedu.ultistudent.model.cap.CapEntry;
@@ -141,89 +140,5 @@ public class EditCapEntryByModuleCodeCommand extends Command {
         EditCapEntryByModuleCodeCommand e = (EditCapEntryByModuleCodeCommand) other;
         return moduleCode.equals(e.moduleCode)
                 && editCapEntryDescriptor.equals(e.editCapEntryDescriptor);
-    }
-
-    /**
-     * Stores the details to edit the person with. Each non-empty field value will replace the
-     * corresponding field value of the person.
-     */
-    public static class EditCapEntryDescriptor {
-        private ModuleCode moduleCode;
-        private ModuleGrade moduleGrade;
-        private ModuleCredits moduleCredits;
-        private ModuleSemester moduleSemester;
-
-        public EditCapEntryDescriptor() {}
-
-        /**
-         * Copy constructor.
-         * A defensive copy of {@code tags} is used internally.
-         */
-        public EditCapEntryDescriptor(EditCapEntryDescriptor toCopy) {
-            setModuleCode(toCopy.moduleCode);
-            setModuleGrade(toCopy.moduleGrade);
-            setModuleCredits(toCopy.moduleCredits);
-            setModuleSemester(toCopy.moduleSemester);
-        }
-
-        /**
-         * Returns true if at least one field is edited.
-         */
-        public boolean isAnyFieldEdited() {
-            return CollectionUtil.isAnyNonNull(moduleCode, moduleGrade, moduleCredits, moduleSemester);
-        }
-
-        public void setModuleCode(ModuleCode moduleCode) {
-            this.moduleCode = moduleCode;
-        }
-
-        public Optional<ModuleCode> getModuleCode() {
-            return Optional.ofNullable(moduleCode);
-        }
-
-        public void setModuleGrade(ModuleGrade moduleGrade) {
-            this.moduleGrade = moduleGrade;
-        }
-
-        public Optional<ModuleGrade> getModuleGrade() {
-            return Optional.ofNullable(moduleGrade);
-        }
-
-        public void setModuleCredits(ModuleCredits moduleCredits) {
-            this.moduleCredits = moduleCredits;
-        }
-
-        public Optional<ModuleCredits> getModuleCredits() {
-            return Optional.ofNullable(moduleCredits);
-        }
-
-        public void setModuleSemester(ModuleSemester moduleSemester) {
-            this.moduleSemester = moduleSemester;
-        }
-
-        public Optional<ModuleSemester> getModuleSemester() {
-            return Optional.ofNullable(moduleSemester);
-        }
-
-        @Override
-        public boolean equals(Object other) {
-            // short circuit if same object
-            if (other == this) {
-                return true;
-            }
-
-            // instanceof handles nulls
-            if (!(other instanceof EditCapEntryDescriptor)) {
-                return false;
-            }
-
-            // state check
-            EditCapEntryDescriptor e = (EditCapEntryDescriptor) other;
-
-            return getModuleCode().equals(e.getModuleCode())
-                    && getModuleGrade().equals(e.getModuleGrade())
-                    && getModuleCredits().equals(e.getModuleCredits())
-                    && getModuleSemester().equals(e.getModuleSemester());
-        }
     }
 }

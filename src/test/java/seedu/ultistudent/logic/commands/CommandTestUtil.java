@@ -5,8 +5,12 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 import static seedu.ultistudent.logic.parser.CliSyntax.PREFIX_ADDRESS;
 import static seedu.ultistudent.logic.parser.CliSyntax.PREFIX_EMAIL;
+import static seedu.ultistudent.logic.parser.CliSyntax.PREFIX_MODULECODE;
+import static seedu.ultistudent.logic.parser.CliSyntax.PREFIX_MODULECREDITS;
+import static seedu.ultistudent.logic.parser.CliSyntax.PREFIX_MODULEGRADE;
 import static seedu.ultistudent.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.ultistudent.logic.parser.CliSyntax.PREFIX_PHONE;
+import static seedu.ultistudent.logic.parser.CliSyntax.PREFIX_SEMESTER;
 import static seedu.ultistudent.logic.parser.CliSyntax.PREFIX_TAG;
 
 import java.util.ArrayList;
@@ -26,6 +30,7 @@ import seedu.ultistudent.model.note.Note;
 import seedu.ultistudent.model.note.NoteNameContainsKeywordsPredicate;
 import seedu.ultistudent.model.person.NameContainsKeywordsPredicate;
 import seedu.ultistudent.model.person.Person;
+import seedu.ultistudent.testutil.EditCapEntryDescriptorBuilder;
 
 /**
  * Contains helper methods for testing commands.
@@ -65,14 +70,31 @@ public class CommandTestUtil {
 
     public static final String VALID_MODULE_CODE_CS1001 = "CS1001";
     public static final String VALID_MODULE_CODE_CS1002 = "CS1002";
-
     public static final String VALID_MODULE_GRADE_CS1001 = "B-";
     public static final String VALID_MODULE_GRADE_CS1002 = "C+";
-
     public static final String VALID_MODULE_CREDITS_CS1001 = "4";
     public static final String VALID_MODULE_CREDITS_CS1002 = "12";
     public static final String VALID_MODULE_SEMESTER_CS1001 = "Y2S2";
     public static final String VALID_MODULE_SEMESTER_CS1002 = "Y4S1";
+
+    public static final String MODULE_CODE_DESC_CS1001 = " " + PREFIX_MODULECODE + VALID_MODULE_CODE_CS1001;
+    public static final String MODULE_CODE_DESC_CS1002 = " " + PREFIX_MODULECODE + VALID_MODULE_CODE_CS1002;
+    public static final String MODULE_GRADE_DESC_CS1001 = " " + PREFIX_MODULEGRADE + VALID_MODULE_GRADE_CS1001;
+    public static final String MODULE_GRADE_DESC_CS1002 = " " + PREFIX_MODULEGRADE + VALID_MODULE_GRADE_CS1002;
+    public static final String MODULE_CREDITS_DESC_CS1001 = " " + PREFIX_MODULECREDITS + VALID_MODULE_CREDITS_CS1001;
+    public static final String MODULE_CREDITS_DESC_CS1002 = " " + PREFIX_MODULECREDITS + VALID_MODULE_CREDITS_CS1002;
+    public static final String MODULE_SEMESTER_DESC_CS1001 = " " + PREFIX_SEMESTER + VALID_MODULE_SEMESTER_CS1001;
+    public static final String MODULE_SEMESTER_DESC_CS1002 = " " + PREFIX_SEMESTER + VALID_MODULE_SEMESTER_CS1002;
+
+    // '&' not allowed in module code
+    public static final String INVALID_MODULE_CODE_DESC = " " + PREFIX_MODULECODE + "CS1231&";
+    // numbers' not allowed in grade
+    public static final String INVALID_MODULE_GRADE_DESC = " " + PREFIX_MODULEGRADE + "911A";
+    // negative credits not allowed
+    public static final String INVALID_MODULE_CREDITS_DESC = " " + PREFIX_MODULECREDITS + "-50";
+    // empty string not allowed for semester
+    public static final String INVALID_MODULE_SEMESTER_DESC = " " + PREFIX_SEMESTER;
+
 
     public static final String VALID_NOTE_NAME_LOWER = "lowercase";
     public static final String VALID_NOTE_NAME_LOWER_WITH_SPACE = "lower case";
@@ -81,6 +103,18 @@ public class CommandTestUtil {
 
     public static final String VALID_CONTENT_LOWER = "testlower";
     public static final String VALID_CONTENT_UPPER = "TESTUPPER";
+
+    public static final EditCapEntryCommand.EditCapEntryDescriptor DESC_CS1001;
+    public static final EditCapEntryCommand.EditCapEntryDescriptor DESC_CS1002;
+
+    static {
+        DESC_CS1001 = new EditCapEntryDescriptorBuilder().withModuleCode(VALID_MODULE_CODE_CS1001)
+                .withModuleGrade(VALID_MODULE_GRADE_CS1001).withModuleCredits(VALID_MODULE_CREDITS_CS1001)
+                .withModuleSemester(VALID_MODULE_SEMESTER_CS1001).build();
+        DESC_CS1002 = new EditCapEntryDescriptorBuilder().withModuleCode(VALID_MODULE_CODE_CS1002)
+                .withModuleGrade(VALID_MODULE_GRADE_CS1002).withModuleCredits(VALID_MODULE_CREDITS_CS1002)
+                .withModuleSemester(VALID_MODULE_SEMESTER_CS1002).build();
+    }
 
     /**
      * Executes the given {@code command}, confirms that <br>
@@ -193,7 +227,7 @@ public class CommandTestUtil {
         final String[] splitCapEntry = capEntry.getModuleCode().value.split("\\s+");
         model.updateFilteredCapEntryList(new ModuleCodeContainsKeywordsPredicate(Arrays.asList(splitCapEntry[0])));
 
-        assertEquals(1, model.getFilteredHomeworkList().size());
+        assertEquals(1, model.getFilteredCapEntryList().size());
     }
 
     /**
