@@ -6,47 +6,42 @@ import static seedu.ultistudent.logic.parser.CommandParserTestUtil.assertParseSu
 
 import org.junit.Test;
 
-import seedu.ultistudent.logic.commands.AddHomeworkCommand;
-import seedu.ultistudent.model.homework.Homework;
-import seedu.ultistudent.testutil.HomeworkBuilder;
+import seedu.ultistudent.logic.commands.AddNoteCommand;
+import seedu.ultistudent.model.note.Note;
+import seedu.ultistudent.testutil.NoteBuilder;
 
-public class AddHomeworkCommandParserTest {
-    private AddHomeworkCommandParser parser = new AddHomeworkCommandParser();
+public class AddNoteCommandParserTest {
+    private AddNoteCommandParser parser = new AddNoteCommandParser();
 
     @Test
-    public void parse_validArgs_returnsAddHomeworkCommand() {
-        Homework homework = new HomeworkBuilder().build();
+    public void parse_validArgs_returnsAddNoteCommand() {
+        Note note = new NoteBuilder().build();
         assertParseSuccess(parser,
-                " mc/CS2103T hw/Tutorial 5 d/15/05/2019",
-                new AddHomeworkCommand(homework));
+                " mc/CS2103T n/Tutorial 1",
+                new AddNoteCommand(note));
     }
 
     @Test
     public void parse_emptyArgs_throwsParseException() {
         assertParseFailure(parser,
-                "mc/ hw/ d/",
-                String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddHomeworkCommand.MESSAGE_USAGE));
+                "mc/ n/",
+                String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddNoteCommand.MESSAGE_USAGE));
     }
 
     @Test
     public void parse_invalidMcFormatArgs_throwsParseException() {
         assertParseFailure(parser,
-                "mc/CSqqqqT hw/Tutorial 5 d/15/05/2019.",
-                String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddHomeworkCommand.MESSAGE_USAGE));
+                "mc/CSqqqqT n/Tutorial 5",
+                String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddNoteCommand.MESSAGE_USAGE));
     }
 
     @Test
-    public void parse_invalidDeadlineFormatArgs_throwsParseException() {
-        assertParseFailure(parser,
-                "mc/CS2103T hw/Homework1 d/100/02/2001",
-                String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddHomeworkCommand.MESSAGE_USAGE));
+    public void parse_invalidNoteNameFormatArgs_throwsParseException() {
+        assertParseFailure(parser, "mc/CS2103T n/__",
+                String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddNoteCommand.MESSAGE_USAGE));
 
         assertParseFailure(parser,
-                "mc/CS2103T hw/Homework1 d/10/20/2001",
-                String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddHomeworkCommand.MESSAGE_USAGE));
-
-        assertParseFailure(parser,
-                "mc/CS2103T hw/Homework1 d/10/12/0000",
-                String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddHomeworkCommand.MESSAGE_USAGE));
+                "mc/CS2103T n/ ",
+                String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddNoteCommand.MESSAGE_USAGE));
     }
 }
