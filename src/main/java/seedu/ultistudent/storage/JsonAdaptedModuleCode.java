@@ -23,7 +23,7 @@ public class JsonAdaptedModuleCode {
     }
 
     /**
-     * Converts a given {@code CapEntry} into this class for Jackson use.
+     * Converts a given {@code ModuleCode} into this class for Jackson use.
      */
     public JsonAdaptedModuleCode(ModuleCode source) {
         moduleCode = source.value;
