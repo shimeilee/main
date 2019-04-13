@@ -50,15 +50,15 @@ public class ModelManager implements Model {
 
 
     /**
-     * Initializes a ModelManager with the given addressBook and userPrefs.
+     * Initializes a ModelManager with the given ultiStudent and userPrefs.
      */
-    public ModelManager(ReadOnlyUltiStudent addressBook, ReadOnlyUserPrefs userPrefs) {
+    public ModelManager(ReadOnlyUltiStudent ultiStudent, ReadOnlyUserPrefs userPrefs) {
         super();
-        requireAllNonNull(addressBook, userPrefs);
+        requireAllNonNull(ultiStudent, userPrefs);
 
-        logger.fine("Initializing with UltiStudent: " + addressBook + " and user prefs " + userPrefs);
+        logger.fine("Initializing with UltiStudent: " + ultiStudent + " and user prefs " + userPrefs);
 
-        versionedAddressBook = new VersionedUltiStudent(addressBook);
+        versionedAddressBook = new VersionedUltiStudent(ultiStudent);
         this.userPrefs = new UserPrefs(userPrefs);
         filteredPersons = new FilteredList<>(versionedAddressBook.getPersonList());
         filteredPersons.addListener(this::ensureSelectedPersonIsValid);
@@ -108,16 +108,16 @@ public class ModelManager implements Model {
     }
 
     @Override
-    public void setAddressBookFilePath(Path addressBookFilePath) {
-        requireNonNull(addressBookFilePath);
-        userPrefs.setAddressBookFilePath(addressBookFilePath);
+    public void setAddressBookFilePath(Path ultiStudentFilePath) {
+        requireNonNull(ultiStudentFilePath);
+        userPrefs.setAddressBookFilePath(ultiStudentFilePath);
     }
 
     //=========== UltiStudent ================================================================================
 
     @Override
-    public void setAddressBook(ReadOnlyUltiStudent addressBook) {
-        versionedAddressBook.resetData(addressBook);
+    public void setAddressBook(ReadOnlyUltiStudent ultiStudent) {
+        versionedAddressBook.resetData(ultiStudent);
     }
 
     @Override

@@ -55,12 +55,12 @@ public interface Model {
     /**
      * Sets the user prefs' UltiStudent file path.
      */
-    void setAddressBookFilePath(Path addressBookFilePath);
+    void setAddressBookFilePath(Path ultiStudentFilePath);
 
     /**
-     * Replaces UltiStudent data with the data in {@code addressBook}.
+     * Replaces UltiStudent data with the data in {@code ultiStudent}.
      */
-    void setAddressBook(ReadOnlyUltiStudent addressBook);
+    void setAddressBook(ReadOnlyUltiStudent ultiStudent);
 
     /**
      * Returns the UltiStudent
