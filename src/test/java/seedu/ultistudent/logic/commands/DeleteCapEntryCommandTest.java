@@ -39,7 +39,7 @@ public class DeleteCapEntryCommandTest {
 
         ModelManager expectedModel = new ModelManager(model.getAddressBook(), new UserPrefs());
         expectedModel.deleteCapEntry(capEntryToDelete);
-        expectedModel.commitAddressBook();
+        expectedModel.commitUltiStudent();
 
         assertCommandSuccess(deleteCapEntryCommand, model, commandHistory, expectedMessage, expectedModel);
     }
@@ -65,7 +65,7 @@ public class DeleteCapEntryCommandTest {
 
         Model expectedModel = new ModelManager(model.getAddressBook(), new UserPrefs());
         expectedModel.deleteCapEntry(capEntryToDelete);
-        expectedModel.commitAddressBook();
+        expectedModel.commitUltiStudent();
         showNoCapEntry(expectedModel);
 
         assertCommandSuccess(deleteCapEntryCommand, model, commandHistory, expectedMessage, expectedModel);
@@ -91,7 +91,7 @@ public class DeleteCapEntryCommandTest {
         DeleteCapEntryCommand deleteCapEntryCommand = new DeleteCapEntryCommand(INDEX_FIRST_CAP_ENTRY);
         Model expectedModel = new ModelManager(model.getAddressBook(), new UserPrefs());
         expectedModel.deleteCapEntry(capEntryToDelete);
-        expectedModel.commitAddressBook();
+        expectedModel.commitUltiStudent();
 
         // delete -> first person deleted
         deleteCapEntryCommand.execute(model, commandHistory);
@@ -134,7 +134,7 @@ public class DeleteCapEntryCommandTest {
         showCapEntryAtIndex(model, INDEX_SECOND_CAP_ENTRY);
         CapEntry capEntryToDelete = model.getFilteredCapEntryList().get(INDEX_FIRST_CAP_ENTRY.getZeroBased());
         expectedModel.deleteCapEntry(capEntryToDelete);
-        expectedModel.commitAddressBook();
+        expectedModel.commitUltiStudent();
 
         // delete -> deletes second person in unfiltered person list / first person in filtered person list
         deleteCapEntryCommand.execute(model, commandHistory);

@@ -190,7 +190,7 @@ public class AddCapEntryCommandTest {
         }
 
         @Override
-        public void commitAddressBook() {
+        public void commitUltiStudent() {
             throw new AssertionError("This method should not be called.");
         }
 
@@ -495,7 +495,7 @@ public class AddCapEntryCommandTest {
         }
 
         @Override
-        public void commitAddressBook() {
+        public void commitUltiStudent() {
             // called by {@code AddCapEntryCommand#execute()}
         }
 

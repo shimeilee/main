@@ -60,7 +60,7 @@ public class DeleteHomeworkCommand extends Command {
             model.deleteModuleCode(moduleCodeOfDeletedHomework);
         }
 
-        model.commitAddressBook();
+        model.commitUltiStudent();
         return new CommandResult(String.format(MESSAGE_DELETE_HOMEWORK_SUCCESS, homeworkToDelete));
     }
 

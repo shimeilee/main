@@ -38,7 +38,7 @@ public class DeleteHomeworkCommandTest {
 
         ModelManager expectedModel = new ModelManager(model.getAddressBook(), new UserPrefs());
         expectedModel.deleteHomework(homeworkToDelete);
-        expectedModel.commitAddressBook();
+        expectedModel.commitUltiStudent();
 
         assertCommandSuccess(deleteHomeworkCommand, model, commandHistory, expectedMessage, expectedModel);
     }
@@ -64,7 +64,7 @@ public class DeleteHomeworkCommandTest {
     //
     //        Model expectedModel = new ModelManager(model.getAddressBook(), new UserPrefs());
     //        expectedModel.deleteHomework(homeworkToDelete);
-    //        expectedModel.commitAddressBook();
+    //        expectedModel.commitUltiStudent();
     //        showNoHomework(expectedModel);
     //
     //        assertCommandSuccess(deleteHomeworkCommand, model, commandHistory, expectedMessage, expectedModel);
@@ -90,7 +90,7 @@ public class DeleteHomeworkCommandTest {
         DeleteHomeworkCommand deleteHomeworkCommand = new DeleteHomeworkCommand(INDEX_FIRST_HOMEWORK);
         Model expectedModel = new ModelManager(model.getAddressBook(), new UserPrefs());
         expectedModel.deleteHomework(homeworkToDelete);
-        expectedModel.commitAddressBook();
+        expectedModel.commitUltiStudent();
 
         // delete -> first person deleted
         deleteHomeworkCommand.execute(model, commandHistory);

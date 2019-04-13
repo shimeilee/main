@@ -98,7 +98,7 @@ public class EditHomeworkCommand extends Command {
         }
         model.updateFilteredModuleCodeList(PREDICATE_SHOW_ALL_MODULE_CODE);
 
-        model.commitAddressBook();
+        model.commitUltiStudent();
         return new CommandResult(String.format(MESSAGE_EDIT_HOMEWORK_SUCCESS, editedHomework));
     }
 

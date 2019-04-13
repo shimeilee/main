@@ -126,7 +126,7 @@ public interface Model {
     /**
      * Saves the current UltiStudent state for undo/redo.
      */
-    void commitAddressBook();
+    void commitUltiStudent();
 
     /**
      * Selected person in the filtered person list.

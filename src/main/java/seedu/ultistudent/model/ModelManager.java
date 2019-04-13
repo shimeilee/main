@@ -189,7 +189,7 @@ public class ModelManager implements Model {
     }
 
     @Override
-    public void commitAddressBook() {
+    public void commitUltiStudent() {
         versionedAddressBook.commit();
     }
 

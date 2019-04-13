@@ -58,7 +58,7 @@ public class DeleteCapEntryCommand extends Command {
             model.deleteModuleSemester(moduleSemesterOfDeletedCapEntry);
         }
 
-        model.commitAddressBook();
+        model.commitUltiStudent();
         return new CommandResult(String.format(MESSAGE_DELETE_CAP_ENTRY_SUCCESS, capEntryToDelete));
     }
 
