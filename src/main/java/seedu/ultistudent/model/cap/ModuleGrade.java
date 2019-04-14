@@ -4,6 +4,9 @@ import static java.util.Objects.requireNonNull;
 
 import static seedu.ultistudent.commons.util.AppUtil.checkArgument;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * Represents a CapEntry's module grade in UltiStudent
  */
@@ -15,17 +18,21 @@ public class ModuleGrade {
 
     public static final String VALIDATION_REGEX = "([AB]{1}[+-]{0,1})|([CD]{1}[+]{0,1})|[F]";
 
-    public static final String A_PLUS_GRADE = "A+";
-    public static final String A_GRADE = "A";
-    public static final String A_MINUS_GRADE = "A-";
-    public static final String B_PLUS_GRADE = "B+";
-    public static final String B_GRADE = "B";
-    public static final String B_MINUS_GRADE = "B-";
-    public static final String C_PLUS_GRADE = "C+";
-    public static final String C_GRADE = "C";
-    public static final String D_PLUS_GRADE = "D+";
-    public static final String D_GRADE = "D";
-    public static final String F_GRADE = "F";
+    private static final Map<String, Float> scoreSystem = new HashMap<>() {
+        {
+            put("A+", 5.0F);
+            put("A", 5.0F);
+            put("A-", 4.5F);
+            put("B+", 4.0F);
+            put("B", 3.5F);
+            put("B-", 3.0F);
+            put("C+", 2.5F);
+            put("C", 2.0F);
+            put("D+", 1.5F);
+            put("D", 1.0F);
+            put("F", 0.0F);
+        }
+    };
 
     public final String value;
     private double score;
@@ -39,41 +46,7 @@ public class ModuleGrade {
         requireNonNull(moduleGrade);
         checkArgument(isValidModuleGrade(capitalisedModuleGrade), MESSAGE_CONSTRAINTS);
         this.value = capitalisedModuleGrade;
-
-        switch (capitalisedModuleGrade) {
-        case A_PLUS_GRADE: case A_GRADE:
-            this.score = 5.0;
-            break;
-        case A_MINUS_GRADE:
-            this.score = 4.5;
-            break;
-        case B_PLUS_GRADE:
-            this.score = 4.0;
-            break;
-        case B_GRADE:
-            this.score = 3.5;
-            break;
-        case B_MINUS_GRADE:
-            this.score = 3.0;
-            break;
-        case C_PLUS_GRADE:
-            this.score = 2.5;
-            break;
-        case C_GRADE:
-            this.score = 2.0;
-            break;
-        case D_PLUS_GRADE:
-            this.score = 1.5;
-            break;
-        case D_GRADE:
-            this.score = 1.0;
-            break;
-        case F_GRADE:
-            this.score = 0.0;
-            break;
-        default:
-            break;
-        }
+        this.score = scoreSystem.get(capitalisedModuleGrade);
     }
 
     public double getScore() {

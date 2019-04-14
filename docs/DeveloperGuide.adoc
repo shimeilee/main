@@ -331,7 +331,92 @@ image::EditCapManagerSequenceDiagram.png[width="800"]
 The sequence diagram for the "Update Module Semester" reference frame above can be seen below.
 
 image::EditCapManagerSequenceDiagram2.png[width="800"]
+
+Given below is an example usage scenario of how `edit-cap` behaves at each step.
+
+*Step 1*: The user executes `edit-cap 2 g/A sem/Y2S2` to edit the cap entry in the 2nd index with grade A and
+moduleSemester of `Y2S2`.
+
+*Step 2*: The user executes `edit-cap 2 g/A sem/Y2S2` to edit the cap entry in the 2nd index with grade A and
+moduleSemester of `Y2S2`.
+
+*Step 3*: The user executes `edit-cap 2 g/A sem/Y2S2` to edit the cap entry in the 2nd index with grade A and
+moduleSemester of `Y2S2`.
+
+*Step 4*: The user executes `edit-cap 2 g/A sem/Y2S2` to edit the cap entry in the 2nd index with grade A and
+moduleSemester of `Y2S2`.
+
+*Step 5*: The user executes `edit-cap 2 g/A sem/Y2S2` to edit the cap entry in the 2nd index with grade A and
+moduleSemester of `Y2S2`.
+
+*Step 6*: The user executes `edit-cap 2 g/A sem/Y2S2` to edit the cap entry in the 2nd index with grade A and
+moduleSemester of `Y2S2`.
+
+==== Design Considerations
+===== Aspect: How to store the Cap Score.
+
+* **Alternative 1 (current choice):** Store the cap score as a static variable in CapEntry class.
+** Pros: Easy to implement.
+** Cons:
+* **Alternative 2:** Store the cap score as a separate class that is then store in UltiStudent.
+** Pros:
+** Cons: Will use more memory and is harder to implement.
+
+===== Aspect: How to calculate score of module grade.
+
+* **Alternative 1 (current choice):** Use a Hash Map to get the Store the cap score as a static variable in CapEntry class.
+** Pros: Lower time complexity O(1) and cleaner code.
+** Cons: Larger memory occupation.
+* **Alternative 2:** Use switch cases to find and allocate score to grade.
+** Pros: Easier readability.
+** Cons: Slower time complexity, worst case O(N).
 // end::edit-cap[]
+
+//tag::delete-cap[]
+=== Finding a Cap Entry : `delete-cap`
+This feature allows the user to delete a cap entry from the cap entry list. Users can do so either via:
+the cap entry's index with the `edit-cap` command or the cap entry's module code with the `edit-cap-mc`
+
+==== Current Implementation
+The `delete-cap` command is facilitated by the Logic and Model components of the application, UltiStudent.
+
+The activity diagram below shows how the deleting of cap entries work when the user enters
+`delete-cap`
+
+image::DeleteCapEntryActivityDiagram.png[width="800"]
+
+The sequence diagram for the "Update Module Semester" reference frame above can be seen below.
+
+image::EditCapManagerSequenceDiagram2.png[width="800"]
+
+Given below is an example usage scenario of how `delete-cap` behaves at each step.
+
+*Step 1*: The user executes `edit-cap 2 g/A sem/Y2S2` to edit the cap entry in the 2nd index with grade A and
+moduleSemester of `Y2S2`.
+
+*Step 2*: The user executes `edit-cap 2 g/A sem/Y2S2` to edit the cap entry in the 2nd index with grade A and
+moduleSemester of `Y2S2`.
+
+
+==== Design Considerations
+===== Aspect: How to store the Cap Score.
+
+* **Alternative 1 (current choice):** Store the cap score as a static variable in CapEntry class.
+** Pros: Easy to implement.
+** Cons:
+* **Alternative 2:** Store the cap score as a separate class that is then store in UltiStudent.
+** Pros:
+** Cons: Will use more memory and is harder to implement.
+
+===== Aspect: How to calculate score of module grade.
+
+* **Alternative 1 (current choice):** Use a Hash Map to get the Store the cap score as a static variable in CapEntry class.
+** Pros: Lower time complexity O(1) and cleaner code.
+** Cons: Larger memory occupation.
+* **Alternative 2:** Use switch cases to find and allocate score to grade.
+** Pros: Easier readability.
+** Cons: Slower time complexity, worst case O(N).
+// end::delete-cap[]
 
 // tag::undoredo[]
 === Undo/Redo feature
