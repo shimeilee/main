@@ -79,19 +79,7 @@ public class EditCapEntryByModuleCodeCommand extends Command {
         model.updateFilteredCapEntryList(Model.PREDICATE_SHOW_ALL_CAP_ENTRIES);
 
         //update module semester list
-        if (!moduleSemesterOfCapEntryToEdit.equals(moduleSemesterOfEditedCapEntry)) {
-            if (!model.hasModuleSemester(moduleSemesterOfEditedCapEntry)) {
-                model.addModuleSemester(moduleSemesterOfEditedCapEntry);
-            }
-
-            boolean hasCapEntriesWithSameSemester = false;
-            List<CapEntry> afterEditList = model.getFilteredCapEntryList();
-            hasCapEntriesWithSameSemester = checkForModuleSemester(moduleSemesterOfCapEntryToEdit, afterEditList);
-
-            if (hasCapEntriesWithSameSemester == false) {
-                model.deleteModuleSemester(moduleSemesterOfCapEntryToEdit);
-            }
-        }
+        updateModuleSemester(model, moduleSemesterOfCapEntryToEdit, moduleSemesterOfEditedCapEntry);
 
         model.updateFilteredModuleSemesterList(Model.PREDICATE_SHOW_ALL_MODULE_SEMESTERS);
 
@@ -118,6 +106,25 @@ public class EditCapEntryByModuleCodeCommand extends Command {
         return new CapEntry(updatedModuleCode, updatedModuleGrade, updatedModuleCredits, updatedModuleSemester);
     }
 
+    /**
+     * Updates the module semester list in the {@code model}.
+     */
+    private void updateModuleSemester(Model model, ModuleSemester moduleSemesterOfCapEntryToEdit,
+                         ModuleSemester moduleSemesterOfEditedCapEntry) {
+        if (!moduleSemesterOfCapEntryToEdit.equals(moduleSemesterOfEditedCapEntry)) {
+            if (!model.hasModuleSemester(moduleSemesterOfEditedCapEntry)) {
+                model.addModuleSemester(moduleSemesterOfEditedCapEntry);
+            }
+
+            boolean hasCapEntriesWithSameSemester = false;
+            List<CapEntry> afterEditList = model.getFilteredCapEntryList();
+            hasCapEntriesWithSameSemester = checkForModuleSemester(moduleSemesterOfCapEntryToEdit, afterEditList);
+
+            if (hasCapEntriesWithSameSemester == false) {
+                model.deleteModuleSemester(moduleSemesterOfCapEntryToEdit);
+            }
+        }
+    }
 
     /**
      * Checks the contents of {@code capEntryList} if the list contains a cap with entry the module code of

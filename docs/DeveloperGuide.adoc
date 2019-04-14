@@ -315,6 +315,24 @@ image::AddHomeworkSequentialDiagram.png[width="800"]
 === Editing and Saving a note : `edit-note` `save-note`
 // end::edit-note[]
 
+//tag::edit-cap[]
+=== Editing a Cap Entry : `edit-cap`
+This feature allows the user to edit a cap entry from the cap entry list. Users can do so either via:
+the cap entry's index with the `edit-cap` command or the cap entry's module code with the `edit-cap-mc`
+
+==== Current Implementation
+The `edit-cap` command is facilitated by the Logic and Model components of the application, UltiStudent.
+
+The sequence diagram below shows how the editing of cap entries work when the user enters
+`edit-cap`
+
+image::EditCapManagerSequenceDiagram.png[width="800"]
+
+The sequence diagram for the "Update Module Semester" reference frame above can be seen below.
+
+image::EditCapManagerSequenceDiagram2.png[width="800"]
+// end::edit-cap[]
+
 // tag::undoredo[]
 === Undo/Redo feature
 ==== Current Implementation

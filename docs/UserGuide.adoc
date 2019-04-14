@@ -473,11 +473,14 @@ The format for this command is that of `delete-cap INDEX`.
 
 Examples:
 For example, if you would like to delete the module ST2334 from CAP Manager, simply look for its index number. and apply it to the format!
-In this case, we would enter `delete-cap 14`.
+In this case, we would enter:
 
+* `delete-cap 14`
+
+Before deleting:
 image::EditedCapManager.png[width="790"]
 
-After entering the command:
+After entering the delete command:
 
 image::DeletedCapManager.png[width="790"]
 
@@ -509,7 +512,7 @@ In the previous sub-section, we saw how using the `find-cap` can help us to filt
 see the modules of the semesters we are interested in. Now let's see how we can view all of our modules again!
 
 The `list-cap` command will help you to view your full list of modules in the CAP Manager.
-All you have to do is enter `list-cap` into the command box and TADAH.
+All you have to do is enter `list-cap` into the command box and TADAH! You will see all the modules you have taken.
 
 == FAQ
 
@@ -550,9 +553,13 @@ e.g. `save-note`
 === Cap Manager
 * *Add Cap Entry* `add-cap mc/MODULECODE nn/NOTENAME hw/HOMEWORK [p/PRIORITY]...` +
 e.g. `add-cap mc/CS2101 g/A- mcs/4 sem/Y2S2 `
-* *Delete Cap Entry* : `delete-note INDEX` +
-e.g. `delete 1`
-* *Edit Cap Entry by Index* : `edit-note INDEX  [mc/MODULECODE] [g/MODULEGRADE] [mcs/MODULECREDITS] [sem/MODULESEMESTER]` +
+* *Delete Cap Entry* : `delete-cap INDEX` +
+e.g. `delete-cap 1`
+* *Edit Cap Entry by Index* : `edit-cap INDEX  [mc/MODULECODE] [g/MODULEGRADE] [mcs/MODULECREDITS] [sem/MODULESEMESTER]` +
 e.g. `edit-cap 2 g/B+ mcs/4`
-* *Edit Cap Entry by Code* : `edit-note MODULECODE  [mc/MODULECODE] [g/MODULEGRADE] [mcs/MODULECREDITS] [semd/MODULESEMESTER]` +
+* *Edit Cap Entry by Code* : `edit-cap MODULECODE  [mc/MODULECODE] [g/MODULEGRADE] [mcs/MODULECREDITS] [sem/MODULESEMESTER]` +
 e.g. `edit-cap-mc CS3203 g/A- mcs/8`
+* *Find Cap Entry by Semester* : `find-cap MODULESEMESTER` +
+e.g. `find-cap Y2S2 Y3S1`
+* *List all Modules in the CAP Manager* : `list-cap` +
+e.g. `list-cap`
