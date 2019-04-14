@@ -13,7 +13,7 @@ public class ListHomeworkCommand extends Command {
 
     public static final String COMMAND_WORD = "list-hw";
 
-    public static final String MESSAGE_SUCCESS = "Listed all homeworks.";
+    public static final String MESSAGE_SUCCESS = "Listed all homework.";
 
     @Override
     public CommandResult execute(Model model, CommandHistory history) {
