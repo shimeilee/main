@@ -310,7 +310,7 @@ image::AddHomeworkSequentialDiagram.png[width="800"]
 
 //tag::edit-note[]
 === Editing and Saving a note : `edit-note` `save-note`
-// edn::edit-note[]
+// end::edit-note[]
 
 // tag::undoredo[]
 === Undo/Redo feature
