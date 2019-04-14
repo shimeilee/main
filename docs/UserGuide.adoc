@@ -236,15 +236,15 @@ However, you should take note of the slight difference that you do not have to i
 Instead, only include those you wish to change. Any other attribute(s) is optional.
 
 Now let's take a look at an example so that you can understand what I mean more clearly.
-If you already have a homework entry in the homework manager that which has these
+So you already have a homework entry in the homework manager which has these
 `mc/CS1101S hw/Tutorial 1 d/01/05/2019` as its attributes.
-So let's say our professor has decided to extend the deadline by a week upon requests by students.
+Now let's say our professor has decided to extend the deadline by a week upon requests by students.
 Simply type `edit-hw 1 d/08/05/2019` and the update will be reflected in your homework entry.
 
 image::edit-hw UG.png[width="790"]
 
 After entering your `edit-hw` command, the message you see in the green highlighted box
-in the diagram above that you have successfully done it.
+in the diagram above indicates that you have successfully done it.
 You can also see how the deadline of the attribute has been updated according to the deadline you wish to edit it to.
 
 [TIP]
@@ -268,9 +268,9 @@ simply refer to the diagram in the edit-hw section (Section 4.2.2) to understand
 ==== Finding homework from a specified module: `find-mod`
 
 As we get later into the semester, there will be more work for us to do.
-Every single module has some form of submissions and you have so many entries in your homework semester
+Every single module has some form of submission and you will soon have so many entries in your homework list
 that it makes it difficult to read and find a particular entry.
-We have a special command for you to use to find all the homework entries belonging to a specific module(s).
+We have a special command for you to use and find all the homework entries belonging to a specific module(s).
 
 The format of this command is simple. `find-mod [KEYWORDS]`.
 As you can see from the diagram below, after adding a module code as part of a keyword,
@@ -287,8 +287,8 @@ You can add more of them if you wish.
 
 ==== Reverting back to a full list view: `list-hw`
 
-In the previous sub-section, we looked at how we can us the command `find-mod` to display
-homework entries from selected module codes. You are probably wondering now how to display a full list of modules now.
+In the previous sub-section, we looked at how we can use the command `find-mod` to display
+homework entries from selected module codes. Now, you are probably wondering now how to display a full list of modules.
 
 To display the full list, simply use this command `list-hw`. This command has no additional inputs for you to type
 and that makes this simple and easy to use!
