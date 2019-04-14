@@ -18,24 +18,27 @@ endif::[]
 By: `Team W09-1`      Since: `Feb 2019`      Licence: `MIT`
 
 == Introduction
+Welcome to UltiStudent!
 //what UltiStudent is about
 UltiStudent is a desktop-based application intended for students.
 //What developer guide provide, and intended audience
-This developer Guide is written by *UltiStudent*
-for anyone who wishes to contribute to our project.
+This developer Guide is written for anyone who wishes to contribute to our project.
 
 This guide will provide _____ /
 D
 
 //how to use developer guide
 === Symbols
-Before proceeding, do keep in mind the bel
+Before proceeding, do keep in mind the below call out signs.
 
 [WARNING]
+This callout indicates that there is something worth noting.
 
 [NOTE]
+Key information that you should take note of.
 
 [TIP]
+Helpful tips that can prove to be really handy for you!
 
 
 == Setting up

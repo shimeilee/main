@@ -94,7 +94,7 @@ public class UltiStudent implements ReadOnlyUltiStudent {
             newTotalModuleScore += currentModuleScore * currentModuleCredits;
         }
         CapEntry.setCapScore(newTotalModuleScore / newTotalModuleCredits);
-        //indicateModified();
+        indicateModified();
     }
 
     /**

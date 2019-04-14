@@ -59,14 +59,10 @@ public class EditCapEntryByModuleCodeCommand extends Command {
     public CommandResult execute(Model model, CommandHistory history) throws CommandException {
         requireNonNull(model);
         List<CapEntry> lastShownList = model.getFilteredCapEntryList();
-        CapEntry capEntryToEdit = null;
+        CapEntry capEntryToEdit;
         CapEntry editedCapEntry;
 
-        for (int i = 0; i < lastShownList.size(); i++) {
-            if (moduleCode.equals(lastShownList.get(i).getModuleCode())) {
-                capEntryToEdit = lastShownList.get(i);
-            }
-        }
+        capEntryToEdit = checkForModuleCode(lastShownList, moduleCode);
         if (capEntryToEdit == null) {
             throw new CommandException(("MODULE NOT FOUND IN CAP MANAGER"));
         }
@@ -84,17 +80,16 @@ public class EditCapEntryByModuleCodeCommand extends Command {
 
         //update module semester
         if (!moduleSemesterOfCapEntryToEdit.equals(moduleSemesterOfEditedCapEntry)) {
-            List<CapEntry> afterEditList = model.getFilteredCapEntryList();
             if (!model.hasModuleSemester(moduleSemesterOfEditedCapEntry)) {
                 model.addModuleSemester(moduleSemesterOfEditedCapEntry);
             }
-            int numCapEntriesWithSameSemester = 0;
-            for (int i = 0; i < afterEditList.size(); i++) {
-                if (afterEditList.get(i).getModuleSemester().equals(moduleSemesterOfCapEntryToEdit)) {
-                    numCapEntriesWithSameSemester++;
-                }
-            }
-            if (numCapEntriesWithSameSemester == 0) {
+
+            boolean hasCapEntriesWithSameSemester = false;
+            List<CapEntry> afterEditList = model.getFilteredCapEntryList();
+            hasCapEntriesWithSameSemester = checkForModuleSemester(moduleSemesterOfCapEntryToEdit,
+                    moduleSemesterOfEditedCapEntry, afterEditList);
+
+            if (hasCapEntriesWithSameSemester == false) {
                 model.deleteModuleSemester(moduleSemesterOfCapEntryToEdit);
             }
         }
@@ -122,6 +117,27 @@ public class EditCapEntryByModuleCodeCommand extends Command {
                 .getModuleSemester());
 
         return new CapEntry(updatedModuleCode, updatedModuleGrade, updatedModuleCredits, updatedModuleSemester);
+    }
+
+    private CapEntry checkForModuleCode (List<CapEntry> capEntryList, ModuleCode moduleCode) {
+        CapEntry capEntryWithSameModuleCode = null;
+        for (int i = 0; i < capEntryList.size(); i++) {
+            if (moduleCode.equals(capEntryList.get(i).getModuleCode())) {
+                capEntryWithSameModuleCode = capEntryList.get(i);
+            }
+        }
+        return capEntryWithSameModuleCode;
+    }
+
+    private boolean checkForModuleSemester(ModuleSemester moduleSemesterOfCapEntryToEdit,
+                           ModuleSemester moduleSemesterOfEditedCapEntry, List<CapEntry> afterEditList) {
+        boolean hasCapEntriesWithSameSemester = false;
+        for (int i = 0; i < afterEditList.size(); i++) {
+            if (afterEditList.get(i).getModuleSemester().equals(moduleSemesterOfCapEntryToEdit)) {
+                hasCapEntriesWithSameSemester = true;
+            }
+        }
+        return hasCapEntriesWithSameSemester;
     }
 
     @Override

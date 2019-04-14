@@ -80,18 +80,17 @@ public class EditCapEntryCommand extends Command {
         model.updateFilteredCapEntryList(Model.PREDICATE_SHOW_ALL_CAP_ENTRIES);
 
         //update module semester
-        List<CapEntry> afterEditList = model.getFilteredCapEntryList();
         if (!moduleSemesterOfCapEntryToEdit.equals(moduleSemesterOfEditedCapEntry)) {
             if (!model.hasModuleSemester(moduleSemesterOfEditedCapEntry)) {
                 model.addModuleSemester(moduleSemesterOfEditedCapEntry);
             }
-            int numCapEntriesWithSameSemester = 0;
-            for (int i = 0; i < afterEditList.size(); i++) {
-                if (afterEditList.get(i).getModuleSemester().equals(moduleSemesterOfCapEntryToEdit)) {
-                    numCapEntriesWithSameSemester++;
-                }
-            }
-            if (numCapEntriesWithSameSemester == 0) {
+
+            boolean hasCapEntriesWithSameSemester = false;
+            List<CapEntry> afterEditList = model.getFilteredCapEntryList();
+            hasCapEntriesWithSameSemester = checkForModuleSemester(moduleSemesterOfCapEntryToEdit,
+                    moduleSemesterOfEditedCapEntry, afterEditList);
+
+            if (hasCapEntriesWithSameSemester == false) {
                 model.deleteModuleSemester(moduleSemesterOfCapEntryToEdit);
             }
         }
@@ -137,6 +136,17 @@ public class EditCapEntryCommand extends Command {
         EditCapEntryCommand e = (EditCapEntryCommand) other;
         return index.equals(e.index)
                 && editCapEntryDescriptor.equals(e.editCapEntryDescriptor);
+    }
+
+    private boolean checkForModuleSemester(ModuleSemester moduleSemesterOfCapEntryToEdit,
+                                           ModuleSemester moduleSemesterOfEditedCapEntry, List<CapEntry> afterEditList) {
+        boolean hasCapEntriesWithSameSemester = false;
+        for (int i = 0; i < afterEditList.size(); i++) {
+            if (afterEditList.get(i).getModuleSemester().equals(moduleSemesterOfCapEntryToEdit)) {
+                hasCapEntriesWithSameSemester = true;
+            }
+        }
+        return hasCapEntriesWithSameSemester;
     }
 
     /**

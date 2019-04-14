@@ -32,16 +32,16 @@ public class UndoCommand extends Command {
         model.updateFilteredCapEntryList(PREDICATE_SHOW_ALL_CAP_ENTRIES);
 
         //update capScore
-        ObservableList<CapEntry> capEntryList = model.getFilteredCapEntryList();
-        double newTotalModuleCredits = 0;
-        double newTotalModuleScore = 0;
-        for (CapEntry ce : capEntryList) {
-            double currentModuleCredits = ce.getModuleCredits().getValue();
-            double currentModuleScore = ce.getModuleGrade().getScore();
-            newTotalModuleCredits += currentModuleCredits;
-            newTotalModuleScore += currentModuleScore * currentModuleCredits;
-        }
-        CapEntry.setCapScore(newTotalModuleScore / newTotalModuleCredits);
+//        ObservableList<CapEntry> capEntryList = model.getFilteredCapEntryList();
+//        double newTotalModuleCredits = 0;
+//        double newTotalModuleScore = 0;
+//        for (CapEntry ce : capEntryList) {
+//            double currentModuleCredits = ce.getModuleCredits().getValue();
+//            double currentModuleScore = ce.getModuleGrade().getScore();
+//            newTotalModuleCredits += currentModuleCredits;
+//            newTotalModuleScore += currentModuleScore * currentModuleCredits;
+//        }
+//        CapEntry.setCapScore(newTotalModuleScore / newTotalModuleCredits);
 
         return new CommandResult(MESSAGE_SUCCESS);
     }
