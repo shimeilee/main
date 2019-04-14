@@ -14,39 +14,57 @@ UltiStudent is a student application that effectively tackles the problem of hav
 their school life. To improve the quality of student life in computing, UltiStudent provides a centralised platform
 for them to manage their homework, cumulative average point and notes.
 
-UltiStudent is a desktop application used for teaching Software Engineering principles. The user interacts with it using a CLI, and it has a GUI created with JavaFX. It is written in Java, and has about 10 kLoC.
+My role was to design and write the codes for the features in CAP manager. THe following sections of this document
+illustrate the enhancement i made and also
+
+Do note the following callouts and formatting used in this document.
+
+=== Callouts and Format
+
+
+=== Definitions of Terms
+Across our project and documents, the term `cap entry` is used a lot, especially so for the CAP Manager.
+In our Developer Guide and Code, we use this term `cap entry` to refer to what the CAP Manager stores and keeps track
+of. This was done intentionally to avoid confusion for developers as the NotesManager and HomeworkManager of UltiStudent
+both store and organise documents by the module the document is for.
+However, we are aware that to the users, it is more intuitive to consider that the CAP manager stores modules and keep
+tracks of the grades of the said modules, hence in our User Guide, we describe module as what the CAP manager stores.
 
 == Summary of contributions
+* *Code contributed*: https://nus-cs2103-ay1819s2.github.io/cs2103-dashboard/#search=andrewscw&sort=displayName&since=2019-02-10&until=2019-04-14&timeframe=day&reverse=false&repoSort=true[RepoSense]
 
-* *Major enhancement*: added *the ability to undo/redo previous commands*
-** What it does: allows the user to undo all previous commands one at a time. Preceding undo commands can be reversed by using the redo command.
-** Justification: This feature improves the product significantly because a user can make mistakes in commands and the app should provide a convenient way to rectify them.
+* *Major enhancement*: Developed the logic, model and storage components of the CAP manager feature of UltiStudent.
+Which allow users to record the modules they have taken and the grades they received. This lets users keep track and forecast their CAP score.
+
+** What it does: CAP Manager allows users to add, delete and edit cap entries. The CAP Manager also automatically calculates
+the user's CAP score whenever a change is made in the CAP manager. CAP Manager also allows users to filter through the
+cap entries they have taken by the semester by the `find-sem` command.
+
+** Justification: The features in CAP manager helps.
+Allows users to forecast their cap score in advance, this lets users be able toquantify the importance of each grade,
+such that if they wish to pull up their CAP, they would know how many 'A's they require.
+s feature improves the product significantly because a user can make mistakes in commands and the app should provide a convenient way to rectify them.
+
 ** Highlights: This enhancement affects existing commands and commands to be added in future. It required an in-depth analysis of design alternatives. The implementation too was challenging as it required changes to existing commands.
-** Credits: _{mention here if you reused any code/ideas from elsewhere or if a third-party library is heavily used in the feature so that a reader can make a more accurate judgement of how much effort went into the feature}_
-
-* *Minor enhancement*: added a history command that allows the user to navigate to previous commands using up/down keys.
-
-* *Code contributed*: [https://github.com[Functional code]] [https://github.com[Test code]] _{give links to collated code files}_
 
 * *Other contributions*:
 
 ** Project management:
 *** Managed releases `v1.3` - `v1.5rc` (3 releases) on GitHub
+*** Ensured loose coupling between each manager and seamless integration of CAP manager into UltiStudent.
+
 ** Enhancements to existing features:
-*** Updated the GUI color scheme (Pull requests https://github.com[#33], https://github.com[#34])
-*** Wrote additional tests for existing features to increase coverage from 88% to 92% (Pull requests https://github.com[#36], https://github.com[#38])
+*** Wrote unit and integration tests for CAP manager's commands and model.  (Pull requests https://github.com[#36], https://github.com[#38])
+
 ** Documentation:
 *** Did cosmetic tweaks to existing contents of the User Guide: https://github.com[#14]
+*** Wrote the introduction for the Developer Guide.
+
 ** Community:
 *** PRs reviewed (with non-trivial review comments): https://github.com[#12], https://github.com[#32], https://github.com[#19], https://github.com[#42]
 *** Contributed to forum discussions (examples:  https://github.com[1], https://github.com[2], https://github.com[3], https://github.com[4])
 *** Reported bugs and suggestions for other teams in the class (examples:  https://github.com[1], https://github.com[2], https://github.com[3])
-*** Some parts of the history feature I added was adopted by several other class mates (https://github.com[1], https://github.com[2])
-** Tools:
-*** Integrated a third party library (Natty) to the project (https://github.com[#42])
-*** Integrated a new Github plugin (CircleCI) to the team repo
 
-_{you can add/remove categories in the list above}_
 
 == Contributions to the User Guide
 
@@ -55,7 +73,13 @@ _{you can add/remove categories in the list above}_
 |_Given below are sections I contributed to the User Guide. They showcase my ability to write documentation targeting end-users._
 |===
 
-include::../UserGuide.adoc[tag=undoredo]
+include::../UserGuide.adoc[tag=capmanager]
+include::../UserGuide.adoc[tag=add-cap]
+include::../UserGuide.adoc[tag=edit-cap]
+include::../UserGuide.adoc[tag=edit-cap-mc]
+include::../UserGuide.adoc[tag=delete-cap]
+include::../UserGuide.adoc[tag=find-cap]
+include::../UserGuide.adoc[tag=list-cap]
 
 == Contributions to the Developer Guide
 
@@ -63,13 +87,11 @@ include::../UserGuide.adoc[tag=undoredo]
 |_Given below are sections I contributed to the Developer Guide. They showcase my ability to write technical documentation and the technical depth of my contributions to the project._
 |===
 
-include::../DeveloperGuide.adoc[tag=undoredo]
+include::../DeveloperGuide.adoc[tag=edit-cap]
 
-include::../DeveloperGuide.adoc[tag=dataencryption]
+include::../DeveloperGuide.adoc[tag=delete-cap]
 
 
-== PROJECT: PowerPointLabs
+== PROJECT: UltiStudent
 
 ---
-
-_{Optionally, you may include other projects in your portfolio.}_

@@ -296,7 +296,7 @@ and that makes this simple and easy to use!
 === Notes Manager
 ==== Adding a note : `add-note`
 Adds a new note to the Notes Manager +
-Format: `add-note mc/MODULECODE nn/NOTENAME`
+Format: `add-note mc/MODULECODE n/NOTENAME`
 
 Examples:
 
@@ -366,6 +366,7 @@ Opens the 1st note in the Note Manager and allows editing into the note.
 Deletes the 2nd note in the Note Manager.
 
 // tag::capmanager[]
+
 === CAP Manager
 Climbing to your first class honours? Or struggling to keep within your desired class? Worry no more, let CAP Manager
 help you with keeping count. All you need to do is to key in your grades and TADAH your CAP will be calculated for you.
@@ -376,7 +377,10 @@ image::CapManagerInterface.png[width="790"]
 
 Now that you're all set, let's see how Cap Manager can help us!
 
+// end::capmanager[]
+
 // tag::add-cap[]
+
 ==== Adding a CAP entry: `add-cap`
 Adds a new Module to the CAP Manager +
 
@@ -418,9 +422,11 @@ In addition, the semester list will also be updated if you are adding a module t
 [CAUTION]
 Unfortunately, UltiStudent's CAP Manager does not allows U or S grade as of this version.
 Do look out for our next update, where we add the SU Command!
+
 // end::add-cap[]
 
 // tag::edit-cap[]
+
 ==== Editing a CAP Entry by index: `edit-cap`
 If you made a mistake in entering the information for any particular CAP entry, do not worry!
  `edit-cap` command can easily fix that.
@@ -454,9 +460,11 @@ image::EditedCapManager.png[width="790"]
 
 With that, all changes you have made will be reflected straightaway in the CAP manager.
 This of course includes the module list, semester list and your CAP score!
+
 // end::edit-cap[]
 
 // tag::edit-cap-mc[]
+
 ==== Editing a CAP Entry by module code: `edit-cap-mc`
 
 UltiStudent understands the large amount of modules students have to take as such, to bring more convenience, CAP Manager
@@ -466,9 +474,11 @@ for more convenience!
 The format for the `edit-cap-mc` command is `edit-cap-mc MODULECODE [mc/MODULECODE] [g/MODULEGRADE] [mcs/MODULECREDITS] [sem/MODULESEMESTER]`
 
 Just like the `edit-cap` command, `edit-cap-mc` has the same
+
 // end::edit-cap-mc[]
 
 // tag::delete-cap[]
+
 ==== Deleting a CAP entry: `delete-cap`
 
 If you ever do need to delete a module in the CAP Manager, you may use this command to easily delete
@@ -490,9 +500,11 @@ After entering the delete command:
 image::DeletedCapManager.png[width="790"]
 
 And just like that the module is deleted! Once again, your CAP will be updated rightaway in the CAP Indicator!
+
 // end::delete-cap[]
 
 // tag::find-sem[]
+
 ==== Filtering a CAP entry: `find-sem`
 Here at UltiStudent, we understand that students have many modules and it can become difficult to find and filter
 through the many modules that they take. To help you with this, the `find-sem` will be handy!
@@ -511,9 +523,11 @@ Psst..! You can use the find-sem command to view more than 1 semester of modules
 [CAUTION]
 Do be careful and know that your CAP reflected in CAP indicator is still for that of all your modules.
 CAP indicator does not calculate your CAP score for only the displayed modules!
+
 // end::find-sem[]
 
 // tag::list-cap[]
+
 ==== Filtering a CAP entry: `list-cap`
 
 In the previous sub-section, we saw how using the `find-sem` can help us to filter through the entire CAP Manager and only
@@ -521,8 +535,9 @@ see the modules of the semesters we are interested in. Now let's see how we can 
 
 The `list-cap` command will help you to view your full list of modules in the CAP Manager.
 All you have to do is enter `list-cap` into the command box and TADAH! You will see all the modules you have taken.
+
 // end::list-cap[]
-// end::capmanager[]
+
 == FAQ
 
 *Q*: How do I transfer my data to another Computer? +
@@ -560,7 +575,7 @@ e.g. `edit-note 1`
 e.g. `save-note`
 
 === Cap Manager
-* *Add Cap Entry* `add-cap mc/MODULECODE nn/NOTENAME hw/HOMEWORK [p/PRIORITY]...` +
+* *Add Cap Entry* `add-cap mc/MODULECODE g/MODULEGRADE mcs/MODULECREDITS sem/MODULESEMESTER` +
 e.g. `add-cap mc/CS2101 g/A- mcs/4 sem/Y2S2 `
 * *Delete Cap Entry* : `delete-cap INDEX` +
 e.g. `delete-cap 1`

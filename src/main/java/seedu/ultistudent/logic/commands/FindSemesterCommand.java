@@ -13,7 +13,7 @@ import seedu.ultistudent.model.cap.ModuleSemesterContainsKeywordsPredicate;
  */
 public class FindSemesterCommand extends Command {
 
-    public static final String COMMAND_WORD = "find-cap";
+    public static final String COMMAND_WORD = "find-sem";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Finds all cap entries that was taken at any of the "
             + "semester entered (case-insensitive) and displays them as a list with "
