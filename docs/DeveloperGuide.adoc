@@ -326,15 +326,13 @@ The delete command is part of the <<Design-Logic,*logic*>> component of our appl
 The `DeleteHomeworkCommandParser` implements `Parser` with the following operation:
 
 * `DeleteHomeworkCommandParser#parse()` - This operation will take in a `int` input from the
-user that will delete the homework entry at the index which has entered.
+user which will delete the homework entry at the index which has entered.
 Any invalid format of the command will be prompted by the command parser.
 
 ==== Current Implementation
 
-The delete homework feature is executed by the `DeleteHomework` Command. Currently, the
+The delete homework feature is executed by the `DeleteHomeworkCommand`. Currently, the
 deletion of any homework entry is done based on the `INDEX` of the homework entry.
-
-
 
 During the design of our delete function, we considered between two alternatives.
 
@@ -356,19 +354,18 @@ For example, two different homework entries for two different modules can be cal
 |===
 
 We have decided to opt for the first option primarily because it reduces the number of potential bugs and the
-complexities involved when we have to take into account the different cases when using deletion by homework name.
+complexities involved when taking into account the different cases upon using deletion by homework name.
 // end::deletehomework[]
 
 // start::edithomework[]
 === Edit homework feature
 
-This feature allows the user to edit any attributed of the homework entries. This is a core feature because the user
+This feature allows the user to edit any attribute of the homework entries. This is a core feature because the user
 may have to update deadline or make corrections to mistakes, such as typographical errors, when adding a homework entry.
 There are a total of three attributes for each entry, the module code, the homework name and the deadline.
 The user can edit at least one and up to three attributes.
 
 The edit homework feature is facilitated by the `EditHomeworkCommandParser` and the `EditHomeworkCommand`.
-The
 
 The edit command is part of the <<Design-Logic,*logic*>> component of our application. It interacts with the
 <<Design-Model,*model*>> component of our software architecture.
@@ -380,12 +377,14 @@ The `EditHomeworkCommandParser` implements `Parser` with the following operation
 * `EditHomeworkCommandParser#parse()` - This operation will take in an `int` input and one to three `String` input(s) from the
 user that will alter the attributes of current homework entries based on the prefixes 'mc/', 'hw/' and 'd/'.
 The `String` value after the individual prefixes will alter the respective attribute it corresponds to:
-'mc/' for `ModuleCode`,'hw/' for `HomeworkName` and 'd/' for `Date`. A validation check will be impose upon editing
+'mc/' for `ModuleCode`,'hw/' for `HomeworkName` and 'd/' for `Date`. A validation check will be imposed upon editing
 of each object. Any checks that fails the validation would prompt the user on the failed component.
 
 ==== Current Implementation
 
 Here is an example of a step-by-step process on how the edit command alters an attribute of the homework entry.
+For each step, you may follow the activity diagram at the end of this section to better understand the flow of events
+within UltiStudent when an `edit-hw` command is inputted.
 
 Step 1. The user launches the application and opens the homework manager. There is a list of existing homework entries
 in the homework manager.
@@ -394,12 +393,38 @@ Step 2. The user then wishes to alter the homework deadline of the third entry i
 He then types `edit-hw d/10/05/2019` into the Command Line Interface (CLI) and executes it.
 
 Step 3. The UltiStudentParser (refer to <<Design-Logic,*logic*>>) then reads in these attributes that have been inputted
-and proceeds to alter the attributes of the homework entry in the given index.
+and proceeds to alter the attributes of the homework entry in the given index. Each attribute will be validated.
 
 Step 4. The UltiStudentParser then creates a new EditHomeworkCommand based on the input of the user.
 When the EditHomeworkCommand is executed, it interacts with the Model architecture by calling the setHomework method.
 The setHomework method replaces the current homework entry with the a new homework entry
-containing the desired attributes.
+containing all the desired attributes. The homework entry is now updated.
+
+Step 5. If the module code for any homework entry has been edited to a module code that is not in the module code list,
+the EditHomeworkCommand will add the new module code into the module code list.
+The updated module code list will be displayed on our User Interface.
+
+image::edit hw activity diagram.png[width="800"]
+
+In designing the edit homework feature, we considered if we should use an alternative data structure to update the
+list of module codes. We considered using a hash map to map the module code to the number of homework with the modules
+to check if the module code list has to be updated for each edit.
+
+[width="80%",cols=2*,options="header"]
+|===
+|Description of Implementation |Pros and Cons
+|Update ModuleList by iteration (Current Choice) | *Pros:* Protects the abstraction layers and modularity
+by restricting the usage to the existing data structures already present in our code.
+
+*Cons:* Less efficient in terms of time and actual time taken can be long when number of entries is large.
+|Update ModuleList using help from other data structures. | *Pros:* Faster expected performance.
+
+*Cons:* Introducing a new data structure can disrupt the existing abstractions of our code.
+
+|===
+
+To sum up our justification of our choice of design, we decided to opt for the first option because we prioritised the
+existing design abstractions in our code over the efficiency of our code.
 
 //end::edithomework[]
 
@@ -410,6 +435,7 @@ This feature allows the user to only display homework belonging to one or more m
 The find module feature is exceptionally useful to shorten the displayed list of homework.
 
 The find module feature is facilitated by the `FindModuleCommandParser` and the `FindModuleCommand`.
+It interacts with the <<Design-Model,*model*>> component of our architecture to retrieve the list homework.
 
 ==== Overview
 
@@ -425,23 +451,26 @@ Any homework entry that matches with the list of keywords will be displayed on t
 The find module feature is facilitated by the `FindModuleCommand`.
 
 Here is a sequence of steps on how the find module feature works. We will use an example here to help you understand the
-flow of events.
+flow of events. In the steps below, we will make references to the diagram at the end of the section to help
+you visualise the sequence of events better.
 
 Step 1. The user first launches the application and enters the homework manager. There are already existing
 homework entries within the homework list.
 
 Step 2. Currently, there are a total of twelve homework entries belonging to four modules.
+(Do note that this is an arbitrary state of the storage in the homework manager and is meant to serve as an example.)
 Now the user inputs `find mod CS1101S`. Referring to the diagram below, UltiStudentCommandParser
 parses the command `find-mod` together with the list of keywords.
 
 Step 3. The FindModuleParser then creates a FindModuleCommand and then returns it to the LogicManager,
-which are illustrated by the blue arrows point from the command parsers back to the LogicManger.
+which are illustrated by the blue arrows pointing from the command parsers back to the LogicManger.
 
 Step 4. Now, the Logic Manager then executes this command. When the find command is executed, it called the method
 updateFilteredList, which then returns a list of homework that has the module codes which matches any of the key words
-inputted.
+inputted back to the Logic Manager as indicated by the purple arrows pointing back to the Logic Manager's blue block.
 
 image::find-mod sequence diagram.png[width="800"]
+
 
 //end::findmodule[]
 
