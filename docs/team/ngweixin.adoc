@@ -105,4 +105,3 @@ _Below are the main contributions to the User Guide, which consist of Add Homewo
 
 include::../DeveloperGuide.adoc[tag=add-hw]
 include::../DeveloperGuide.adoc[tag=edit-note]
-include::../DeveloperGuide.adoc[tag=save-note]
