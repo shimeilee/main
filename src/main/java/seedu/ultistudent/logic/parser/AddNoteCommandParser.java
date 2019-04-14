@@ -17,7 +17,7 @@ import seedu.ultistudent.model.note.NoteName;
 /**
  * Parses input arguments and creates a new AddNoteCommand object
  */
-public class AddNoteCommandParser {
+public class AddNoteCommandParser implements Parser<AddNoteCommand> {
 
     /**
      * Parses the given {@code String} of arguments in the context of the

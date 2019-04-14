@@ -316,26 +316,26 @@ public interface Model {
     //=========== Module Code ===========================================================================
 
     /**
-     * Returns true if a cap entry with the same identity as {@code capEntry} exists in the UltiStudent.
+     * Returns true if a module code with the same identity as {@code moduleCode} exists in the UltiStudent.
      */
     boolean hasModuleCode(ModuleCode moduleCode);
 
     /**
-     * Deletes the given cap entry.
-     * The cap entry must exist in the UltiStudent.
+     * Deletes the given module code.
+     * The module code must exist in the UltiStudent.
      */
     void deleteModuleCode(ModuleCode target);
 
     /**
-     * Adds the given cap entry.
-     * {@code codeEntry} must not already exist in the UltiStudent.
+     * Adds the given module code.
+     * {@code moduleCode} must not already exist in the UltiStudent.
      */
     void addModuleCode(ModuleCode moduleCode);
 
     /**
-     * Replaces the given cap entry {@code target} with {@code edited}.
+     * Replaces the given module code {@code target} with {@code editedModuleCode}.
      * {@code target} must exist in the UltiStudent.
-     * The cap entry identity of {@code editedCapEntry} must not be the same as another existing module code
+     * The module code identity of {@code editedModuleCode} must not be the same as another existing module code
      * in the UltiStudent.
      */
     void setModuleCode(ModuleCode target, ModuleCode editedModuleCode);
@@ -353,19 +353,19 @@ public interface Model {
     void updateFilteredModuleCodeList(Predicate<ModuleCode> predicate);
 
     /**
-     * Selected cap entry in the filtered module code list.
-     * null if no cap entry is selected.
+     * Selected module code in the filtered module code list.
+     * null if no module code is selected.
      */
     ReadOnlyProperty<ModuleCode> selectedModuleCodeProperty();
 
     /**
-     * Returns the selected cap entry in the filtered module code list.
-     * null if no cap entry is selected.
+     * Returns the selected module code in the filtered module code list.
+     * null if no module code is selected.
      */
     ModuleCode getSelectedModuleCode();
 
     /**
-     * Sets the selected cap entry in the filtered module code list.
+     * Sets the selected module code in the filtered module code list.
      */
     void setSelectedModuleCode(ModuleCode moduleCode);
 
