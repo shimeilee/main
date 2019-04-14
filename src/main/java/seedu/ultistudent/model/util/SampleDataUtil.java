@@ -10,7 +10,13 @@ import seedu.ultistudent.model.cap.CapEntry;
 import seedu.ultistudent.model.cap.ModuleCredits;
 import seedu.ultistudent.model.cap.ModuleGrade;
 import seedu.ultistudent.model.cap.ModuleSemester;
+import seedu.ultistudent.model.homework.Date;
+import seedu.ultistudent.model.homework.Homework;
+import seedu.ultistudent.model.homework.HomeworkName;
 import seedu.ultistudent.model.modulecode.ModuleCode;
+import seedu.ultistudent.model.note.Content;
+import seedu.ultistudent.model.note.Note;
+import seedu.ultistudent.model.note.NoteName;
 import seedu.ultistudent.model.person.Address;
 import seedu.ultistudent.model.person.Email;
 import seedu.ultistudent.model.person.Name;
@@ -60,6 +66,25 @@ public class SampleDataUtil {
         };
     }
 
+    public static Note[] getSampleNotes() {
+        return new Note[]{
+            new Note(new ModuleCode("CS2103T"), new NoteName("Personal Project Portfolio"), new Content("Things to "
+                    + "include:\n1. Overview\n2. Summary of Contribution\n"
+                    + "3. Contribution to User Guide\n4. Contribution to Developer Guide")),
+            new Note(new ModuleCode("CS2103T"), new NoteName("Feedback"), new Content("Orientate the user during the"
+                    + " introduction.\nWin their hearts within the first 30s.\nWhy do the user need UltiStudent?"
+                    + "\n\n3mins per presenter"))
+        };
+    }
+
+    public static Homework[] getSampleHomeworkList() {
+        return new Homework[]{
+            new Homework(new ModuleCode("CS1010"), new HomeworkName("Tutorial 1"), new Date("11/04/2019")),
+            new Homework(new ModuleCode("CS1020"), new HomeworkName("Tutorial 2"), new Date("18/04/2019")),
+            new Homework(new ModuleCode("ES2660"), new HomeworkName("Essay Writing"), new Date("10/05/2019"))
+        };
+    }
+
     public static ReadOnlyUltiStudent getSampleUltiStudent() {
         UltiStudent sampleAb = new UltiStudent();
         for (Person samplePerson : getSamplePersons()) {
@@ -67,6 +92,13 @@ public class SampleDataUtil {
         }
         for (CapEntry sampleCapEntry : getSampleCapEntryList()) {
             sampleAb.addCapEntry(sampleCapEntry);
+        }
+        for (Note sampleNote : getSampleNotes()) {
+            sampleAb.addNote(sampleNote);
+        }
+        for (Homework homework : getSampleHomeworkList()) {
+            sampleAb.addHomework(homework);
+            sampleAb.addModuleCode(homework.getModuleCode());
         }
         return sampleAb;
     }

@@ -187,7 +187,7 @@ There is no need to for you to save manually. It's easy to use!
 
 Have a homework but unable to attend to it immediately? No worries! Let Homework Manager help
 us keep track of them! By using `add-hw`, we can command this manager to remember our homework
-for us! Make sure we are in the Homework Manager by using `open HomeworkManager` first!
+for us! Make sure we are in the Homework Manager by using `open HomeworkManager` first.
 
 Sadly, it doesn't do our homework for us... but hey it reduces our worries on forgetting our homework!
 
@@ -195,20 +195,24 @@ To use this command we have to adhere to this format: `add-hw mc/MODULECODE hw/H
 else Homework Manager would not be able to understand what we are trying to tell it to do.
 
 [IMPORTANT]
-DEADLINE must be in dd/mm/yyyy format and DEADLINE should not be a date that is before today!
+DEADLINE must be in dd/mm/yyyy format and DEADLINE should not be a date that is before today! +
+Homework are considered duplicated only if they have the same MODULECODE, HOMEWORK and DEADLINE.
 
 Okay enough explanation and time for an example!
 
 Lets say we have to do Tutorial 1 for CS1101S by 1st May 2019. We could command this manager to
-remember it for us by using `add-hw mc/CS1101S hw/Tutorial 1 d/01/05/2019` in the red highlighted box and
-do make sure that you are in the homework manager which is indicated by the highlighted icon in the white
-highlighted box as shown below.
+remember it for us by using `add-hw mc/CS1101S hw/Tutorial 1 d/01/05/2019` in the command box (red highlighted box)
+and do make sure that you are in the homework manager by checking if the Homework icon is highlighted in the
+nagivation bar (white highlighted box) as shown below.
 
 image::Add-Hw UG.png[width="790"]
 
-When CS1101S tutorial 1 has been successfully added, the green highlighted box would indicate the success.
-We will also be able to view the CS1101S being added into the blue highlighted box since this is the first
-homework for CS1101S we have and the orange highlighted box would show us what homework we have.
+When CS1101S tutorial 1 has been successfully added, the Result Box (green highlighted box) would display
+`New homework added: CS1101S; Tutorial 1; 01/05/2019;`.
+
+We will also be able to view the CS1101S being added into the Module List (blue highlighted box) since this
+is the first homework for CS1101S we have and the Homework List (orange highlighted box) would show us the newly
+added CS1101S homework.
 
 [TIP]
 Pro tip here! The ordering of `mc/MODULECODE`, `hw/HOMEWORK` and `d/DEADLINE` can be jumbled around!
@@ -304,8 +308,8 @@ Examples:
 
 ===== Editing note: `edit-note`
 Hurray! We've successfully added a note therefore it is time for us to learn how to edit and save the edited notes!
-But first! we got to make sure we are in the Notes Manager by looking at the Notes icon in the white highlighted
-box as shown below.
+But first! we got to make sure we are in the Notes Manager by looking at the Notes icon in the Navigation Box (white
+highlighted box) as shown below.
 
 image::Edit&Save-Note UG.png[width="790"]
 
@@ -313,25 +317,32 @@ Now that we are in the Notes Manager. It is time for us to start editing our not
 `edit-note INDEX` to select the notes that we want to edit.
 
 For example, we have 2 notes currently as shown in the image above, and we would like to edit our Personal
-Project Portfolio note. We will use `edit-note 1` in the red highlighted box to open *Personal Project
-Portfolio* note for editing.
+Project Portfolio note. We will use `edit-note 1` in the Command Box (red highlighted box) to open *Personal
+Project Portfolio* note for editing.
 
-When Notes Manager has successfully open our note, it will indicate in the green highlighted box. At the same
-time, the note will be highlighted in blue in the blue highlighted box and the text field in the orange
-highlighted box will turn white and allow us to start jotting down our notes!
+When Notes Manager has successfully open our note, it will display `Opened note: 1` in the Result box (green
+highlighted box). At the same time, the note will be highlighted in blue in the Notes List (blue highlighted box)
+and the Text Field (orange highlighted box) will be activated and turn white, allowing us to start jotting down
+our notes!
 
 ===== Saving note: `save-note`
 
 Now that we are done editing our note, it is time to save them! We can do this easily by using the `save-note` in
-the red highlighted box!
+the Command Box (red highlighted box)!
 
-Once the note is saved, Notes Manager will let us know by indicating what we have saved
-in the green highlighted box. At the same time, the textfield in the orange highlighted box will be disabled. For
-`save-note` there is no parameters as it will save all edited notes in notes manager.
+Once the note is saved, Notes Manager will let us know by displaying `Saved note,  Module: CS2103T Note: Personal
+Project Portfolio Content: ...(notes that we wrote)` in the Result Box (green highlighted box). At the same time,
+the Text Field (orange highlighted box) will be disabled and turn grey.
+
+For `save-note` there is no parameters as it will save all edited notes in notes manager.
 
 [TIP]
 Pro tip here! We can edit multiple notes at the same time by using edit-note 1 then edit-note 2 to open the
 respective notes to edit. Once we are done editing, we can simply use `save-note` to save all the edited notes!
+
+[CAUTION]
+For data integrity, undo and redo commands are not supported on editing and saving notes.
+Changes must be made manually.
 
 // end::edit-note[]
 ==== Deleting a Note: `delete-note`
