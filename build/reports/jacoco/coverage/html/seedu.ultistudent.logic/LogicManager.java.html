@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>LogicManager.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">main</a> &gt; <a href="index.source.html" class="el_package">seedu.ultistudent.logic</a> &gt; <span class="el_source">LogicManager.java</span></div><h1>LogicManager.java</h1><pre class="source lang-java linenums">package seedu.ultistudent.logic;
+
+import java.io.IOException;
+import java.nio.file.Path;
+import java.util.logging.Logger;
+
+import javafx.beans.property.ReadOnlyProperty;
+import javafx.collections.ObservableList;
+import seedu.ultistudent.commons.core.GuiSettings;
+import seedu.ultistudent.commons.core.LogsCenter;
+import seedu.ultistudent.logic.commands.Command;
+import seedu.ultistudent.logic.commands.CommandResult;
+import seedu.ultistudent.logic.commands.exceptions.CommandException;
+import seedu.ultistudent.logic.parser.UltiStudentParser;
+import seedu.ultistudent.logic.parser.exceptions.ParseException;
+import seedu.ultistudent.model.Model;
+import seedu.ultistudent.model.ReadOnlyUltiStudent;
+import seedu.ultistudent.model.cap.CapEntry;
+import seedu.ultistudent.model.cap.ModuleSemester;
+import seedu.ultistudent.model.homework.Homework;
+import seedu.ultistudent.model.modulecode.ModuleCode;
+import seedu.ultistudent.model.note.Note;
+import seedu.ultistudent.model.person.Person;
+import seedu.ultistudent.storage.Storage;
+
+/**
+ * The main LogicManager of the app.
+ */
+public class LogicManager implements Logic {
+    public static final String FILE_OPS_ERROR_MESSAGE = &quot;Could not save data to file: &quot;;
+<span class="fc" id="L31">    private final Logger logger = LogsCenter.getLogger(LogicManager.class);</span>
+
+    private final Model model;
+    private final Storage storage;
+    private final CommandHistory history;
+    private final UltiStudentParser ultiStudentParser;
+    private boolean ultiStudentModified;
+
+<span class="fc" id="L39">    public LogicManager(Model model, Storage storage) {</span>
+<span class="fc" id="L40">        this.model = model;</span>
+<span class="fc" id="L41">        this.storage = storage;</span>
+<span class="fc" id="L42">        history = new CommandHistory();</span>
+<span class="fc" id="L43">        ultiStudentParser = new UltiStudentParser();</span>
+
+        // Set ultiStudentModified to true whenever the models' UltiStudent is modified.
+<span class="pc" id="L46">        model.getUltiStudent().addListener(observable -&gt; ultiStudentModified = true);</span>
+<span class="fc" id="L47">    }</span>
+
+    @Override
+    public CommandResult execute(String commandText) throws CommandException, ParseException {
+<span class="fc" id="L51">        logger.info(&quot;----------------[USER COMMAND][&quot; + commandText + &quot;]&quot;);</span>
+<span class="fc" id="L52">        ultiStudentModified = false;</span>
+
+        CommandResult commandResult;
+        try {
+<span class="fc" id="L56">            Command command = ultiStudentParser.parseCommand(commandText);</span>
+<span class="fc" id="L57">            commandResult = command.execute(model, history);</span>
+        } finally {
+<span class="fc" id="L59">            history.add(commandText);</span>
+        }
+
+<span class="pc bpc" id="L62" title="1 of 2 branches missed.">        if (ultiStudentModified) {</span>
+<span class="nc" id="L63">            logger.info(&quot;UltiStudent modified, saving to file.&quot;);</span>
+            try {
+<span class="nc" id="L65">                storage.saveUltiStudent(model.getUltiStudent());</span>
+<span class="nc" id="L66">            } catch (IOException ioe) {</span>
+<span class="nc" id="L67">                throw new CommandException(FILE_OPS_ERROR_MESSAGE + ioe, ioe);</span>
+<span class="nc" id="L68">            }</span>
+        }
+
+<span class="fc" id="L71">        return commandResult;</span>
+    }
+
+    @Override
+    public ReadOnlyUltiStudent getUltiStudent() {
+<span class="nc" id="L76">        return model.getUltiStudent();</span>
+    }
+
+    @Override
+    public ObservableList&lt;Person&gt; getFilteredPersonList() {
+<span class="fc" id="L81">        return model.getFilteredPersonList();</span>
+    }
+
+    @Override
+    public ObservableList&lt;CapEntry&gt; getFilteredCapEntryList() {
+<span class="nc" id="L86">        return model.getFilteredCapEntryList();</span>
+    }
+
+    @Override
+    public ObservableList&lt;ModuleSemester&gt; getFilteredModuleSemesterList() {
+<span class="nc" id="L91">        return model.getFilteredModuleSemesterList();</span>
+    }
+
+    @Override
+    public ObservableList&lt;ModuleCode&gt; getFilteredModuleCodeList() {
+<span class="nc" id="L96">        return model.getFilteredModuleCodeList();</span>
+    }
+
+    @Override
+    public ReadOnlyProperty&lt;ModuleCode&gt; selectedModuleCodeProperty() {
+<span class="nc" id="L101">        return model.selectedModuleCodeProperty();</span>
+    }
+
+    @Override
+    public ObservableList&lt;Homework&gt; getFilteredHomeworkList() {
+<span class="nc" id="L106">        return model.getFilteredHomeworkList();</span>
+    }
+
+    @Override
+    public ObservableList&lt;Note&gt; getFilteredNoteList() {
+<span class="nc" id="L111">        return model.getFilteredNoteList();</span>
+    }
+
+    @Override
+    public ObservableList&lt;String&gt; getHistory() {
+<span class="nc" id="L116">        return history.getHistory();</span>
+    }
+
+    @Override
+    public Path getUltiStudentFilePath() {
+<span class="nc" id="L121">        return model.getUltiStudentFilePath();</span>
+    }
+
+    @Override
+    public GuiSettings getGuiSettings() {
+<span class="fc" id="L126">        return model.getGuiSettings();</span>
+    }
+
+    @Override
+    public void setGuiSettings(GuiSettings guiSettings) {
+<span class="fc" id="L131">        model.setGuiSettings(guiSettings);</span>
+<span class="fc" id="L132">    }</span>
+
+    @Override
+    public ReadOnlyProperty&lt;Person&gt; selectedPersonProperty() {
+<span class="nc" id="L136">        return model.selectedPersonProperty();</span>
+    }
+
+    @Override
+    public ReadOnlyProperty&lt;CapEntry&gt; selectedCapEntryProperty() {
+<span class="nc" id="L141">        return model.selectedCapEntryProperty();</span>
+    }
+
+    @Override
+    public ReadOnlyProperty&lt;ModuleSemester&gt; selectedModuleSemesterProperty() {
+<span class="nc" id="L146">        return model.selectedModuleSemesterProperty();</span>
+    }
+
+    @Override
+    public ReadOnlyProperty&lt;Homework&gt; selectedHomeworkProperty() {
+<span class="nc" id="L151">        return model.selectedHomeworkProperty();</span>
+    }
+
+    @Override
+    public ReadOnlyProperty&lt;Note&gt; selectedNoteProperty() {
+<span class="nc" id="L156">        return model.selectedNoteProperty();</span>
+    }
+
+    @Override
+    public void setSelectedPerson(Person person) {
+<span class="nc" id="L161">        model.setSelectedPerson(person);</span>
+<span class="nc" id="L162">    }</span>
+
+    @Override
+    public void setSelectedCapEntry(CapEntry capEntry) {
+<span class="nc" id="L166">        model.setSelectedCapEntry(capEntry);</span>
+<span class="nc" id="L167">    }</span>
+
+    @Override
+    public void setSelectedModuleSemester(ModuleSemester moduleSemester) {
+<span class="nc" id="L171">        model.setSelectedModuleSemester(moduleSemester);</span>
+<span class="nc" id="L172">    }</span>
+
+    @Override
+    public void setSelectedHomework(Homework homework) {
+<span class="nc" id="L176">        model.setSelectedHomework(homework);</span>
+<span class="nc" id="L177">    }</span>
+
+    @Override
+    public void setSelectedNote(Note note) {
+<span class="nc" id="L181">        model.setSelectedNote(note);</span>
+<span class="nc" id="L182">    }</span>
+
+    @Override
+    public void setSelectedModuleCode(ModuleCode moduleCode) {
+<span class="nc" id="L186">        model.setSelectedModuleCode(moduleCode);</span>
+<span class="nc" id="L187">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.1.201803210924</span></div></body></html>

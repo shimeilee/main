@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<checkstyle version="8.1">
+<file name="/Users/leeshimei/IdeaProjects/main/src/test/java/guitests/GuiRobot.java">
+</file>
+<file name="/Users/leeshimei/IdeaProjects/main/src/test/java/guitests/guihandles/AlertDialogHandle.java">
+</file>
+<file name="/Users/leeshimei/IdeaProjects/main/src/test/java/guitests/guihandles/BrowserPanelHandle.java">
+</file>
+<file name="/Users/leeshimei/IdeaProjects/main/src/test/java/guitests/guihandles/CommandBoxHandle.java">
+</file>
+<file name="/Users/leeshimei/IdeaProjects/main/src/test/java/guitests/guihandles/HelpWindowHandle.java">
+</file>
+<file name="/Users/leeshimei/IdeaProjects/main/src/test/java/guitests/guihandles/MainMenuHandle.java">
+</file>
+<file name="/Users/leeshimei/IdeaProjects/main/src/test/java/guitests/guihandles/MainWindowHandle.java">
+</file>
+<file name="/Users/leeshimei/IdeaProjects/main/src/test/java/guitests/guihandles/NodeHandle.java">
+</file>
+<file name="/Users/leeshimei/IdeaProjects/main/src/test/java/guitests/guihandles/PersonCardHandle.java">
+</file>
+<file name="/Users/leeshimei/IdeaProjects/main/src/test/java/guitests/guihandles/PersonListPanelHandle.java">
+</file>
+<file name="/Users/leeshimei/IdeaProjects/main/src/test/java/guitests/guihandles/ResultDisplayHandle.java">
+</file>
+<file name="/Users/leeshimei/IdeaProjects/main/src/test/java/guitests/guihandles/StageHandle.java">
+</file>
+<file name="/Users/leeshimei/IdeaProjects/main/src/test/java/guitests/guihandles/StatusBarFooterHandle.java">
+</file>
+<file name="/Users/leeshimei/IdeaProjects/main/src/test/java/guitests/guihandles/WebViewUtil.java">
+</file>
+<file name="/Users/leeshimei/IdeaProjects/main/src/test/java/guitests/guihandles/exceptions/NodeNotFoundException.java">
+</file>
+<file name="/Users/leeshimei/IdeaProjects/main/src/test/java/guitests/guihandles/exceptions/StageNotFoundException.java">
+</file>
+<file name="/Users/leeshimei/IdeaProjects/main/src/test/java/seedu/ultistudent/AppParametersTest.java">
+</file>
+<file name="/Users/leeshimei/IdeaProjects/main/src/test/java/seedu/ultistudent/TestApp.java">
+</file>
+<file name="/Users/leeshimei/IdeaProjects/main/src/test/java/seedu/ultistudent/commons/core/ConfigTest.java">
+</file>
+<file name="/Users/leeshimei/IdeaProjects/main/src/test/java/seedu/ultistudent/commons/core/VersionTest.java">
+</file>
+<file name="/Users/leeshimei/IdeaProjects/main/src/test/java/seedu/ultistudent/commons/core/index/IndexTest.java">
+</file>
+<file name="/Users/leeshimei/IdeaProjects/main/src/test/java/seedu/ultistudent/commons/util/AppUtilTest.java">
+</file>
+<file name="/Users/leeshimei/IdeaProjects/main/src/test/java/seedu/ultistudent/commons/util/CollectionUtilTest.java">
+</file>
+<file name="/Users/leeshimei/IdeaProjects/main/src/test/java/seedu/ultistudent/commons/util/ConfigUtilTest.java">
+</file>
+<file name="/Users/leeshimei/IdeaProjects/main/src/test/java/seedu/ultistudent/commons/util/FileUtilTest.java">
+</file>
+<file name="/Users/leeshimei/IdeaProjects/main/src/test/java/seedu/ultistudent/commons/util/InvalidationListenerManagerTest.java">
+</file>
+<file name="/Users/leeshimei/IdeaProjects/main/src/test/java/seedu/ultistudent/commons/util/JsonUtilTest.java">
+</file>
+<file name="/Users/leeshimei/IdeaProjects/main/src/test/java/seedu/ultistudent/commons/util/StringUtilTest.java">
+</file>
+<file name="/Users/leeshimei/IdeaProjects/main/src/test/java/seedu/ultistudent/logic/CommandHistoryTest.java">
+</file>
+<file name="/Users/leeshimei/IdeaProjects/main/src/test/java/seedu/ultistudent/logic/LogicManagerTest.java">
+</file>
+<file name="/Users/leeshimei/IdeaProjects/main/src/test/java/seedu/ultistudent/logic/commands/AddCapEntryCommandTest.java">
+</file>
+<file name="/Users/leeshimei/IdeaProjects/main/src/test/java/seedu/ultistudent/logic/commands/AddCommandTest.java">
+</file>
+<file name="/Users/leeshimei/IdeaProjects/main/src/test/java/seedu/ultistudent/logic/commands/AddHomeworkCommandTest.java">
+</file>
+<file name="/Users/leeshimei/IdeaProjects/main/src/test/java/seedu/ultistudent/logic/commands/AddNoteCommandTest.java">
+</file>
+<file name="/Users/leeshimei/IdeaProjects/main/src/test/java/seedu/ultistudent/logic/commands/ClearCommandTest.java">
+</file>
+<file name="/Users/leeshimei/IdeaProjects/main/src/test/java/seedu/ultistudent/logic/commands/CommandResultTest.java">
+</file>
+<file name="/Users/leeshimei/IdeaProjects/main/src/test/java/seedu/ultistudent/logic/commands/CommandTestUtil.java">
+</file>
+<file name="/Users/leeshimei/IdeaProjects/main/src/test/java/seedu/ultistudent/logic/commands/DeleteCapEntryCommandTest.java">
+</file>
+<file name="/Users/leeshimei/IdeaProjects/main/src/test/java/seedu/ultistudent/logic/commands/DeleteHomeworkCommandTest.java">
+</file>
+<file name="/Users/leeshimei/IdeaProjects/main/src/test/java/seedu/ultistudent/logic/commands/EditCapEntryCommandTest.java">
+</file>
+<file name="/Users/leeshimei/IdeaProjects/main/src/test/java/seedu/ultistudent/logic/commands/EditNoteCommandTest.java">
+</file>
+<file name="/Users/leeshimei/IdeaProjects/main/src/test/java/seedu/ultistudent/logic/commands/ExitCommandTest.java">
+</file>
+<file name="/Users/leeshimei/IdeaProjects/main/src/test/java/seedu/ultistudent/logic/commands/FindCommandTest.java">
+</file>
+<file name="/Users/leeshimei/IdeaProjects/main/src/test/java/seedu/ultistudent/logic/commands/HelpCommandTest.java">
+</file>
+<file name="/Users/leeshimei/IdeaProjects/main/src/test/java/seedu/ultistudent/logic/commands/HistoryCommandTest.java">
+</file>
+<file name="/Users/leeshimei/IdeaProjects/main/src/test/java/seedu/ultistudent/logic/commands/ListCommandTest.java">
+</file>
+<file name="/Users/leeshimei/IdeaProjects/main/src/test/java/seedu/ultistudent/logic/commands/RedoCommandTest.java">
+</file>
+<file name="/Users/leeshimei/IdeaProjects/main/src/test/java/seedu/ultistudent/logic/commands/SaveNoteCommandTest.java">
+</file>
+<file name="/Users/leeshimei/IdeaProjects/main/src/test/java/seedu/ultistudent/logic/commands/SelectCommandTest.java">
+</file>
+<file name="/Users/leeshimei/IdeaProjects/main/src/test/java/seedu/ultistudent/logic/commands/UndoCommandTest.java">
+</file>
+<file name="/Users/leeshimei/IdeaProjects/main/src/test/java/seedu/ultistudent/logic/parser/AddCapEntryCommandParserTest.java">
+</file>
+<file name="/Users/leeshimei/IdeaProjects/main/src/test/java/seedu/ultistudent/logic/parser/AddHomeworkCommandParserTest.java">
+</file>
+<file name="/Users/leeshimei/IdeaProjects/main/src/test/java/seedu/ultistudent/logic/parser/AddNoteCommandParserTest.java">
+</file>
+<file name="/Users/leeshimei/IdeaProjects/main/src/test/java/seedu/ultistudent/logic/parser/ArgumentTokenizerTest.java">
+</file>
+<file name="/Users/leeshimei/IdeaProjects/main/src/test/java/seedu/ultistudent/logic/parser/CommandParserTestUtil.java">
+</file>
+<file name="/Users/leeshimei/IdeaProjects/main/src/test/java/seedu/ultistudent/logic/parser/DeleteCapEntryCommandParserTest.java">
+</file>
+<file name="/Users/leeshimei/IdeaProjects/main/src/test/java/seedu/ultistudent/logic/parser/EditCapEntryCommandParserTest.java">
+</file>
+<file name="/Users/leeshimei/IdeaProjects/main/src/test/java/seedu/ultistudent/logic/parser/EditNoteCommandParserTest.java">
+</file>
+<file name="/Users/leeshimei/IdeaProjects/main/src/test/java/seedu/ultistudent/logic/parser/FindCommandParserTest.java">
+</file>
+<file name="/Users/leeshimei/IdeaProjects/main/src/test/java/seedu/ultistudent/logic/parser/ParserUtilTest.java">
+</file>
+<file name="/Users/leeshimei/IdeaProjects/main/src/test/java/seedu/ultistudent/logic/parser/SelectCommandParserTest.java">
+</file>
+<file name="/Users/leeshimei/IdeaProjects/main/src/test/java/seedu/ultistudent/logic/parser/UltiStudentParserTest.java">
+</file>
+<file name="/Users/leeshimei/IdeaProjects/main/src/test/java/seedu/ultistudent/model/AddressBookTest.java">
+</file>
+<file name="/Users/leeshimei/IdeaProjects/main/src/test/java/seedu/ultistudent/model/ModelManagerTest.java">
+</file>
+<file name="/Users/leeshimei/IdeaProjects/main/src/test/java/seedu/ultistudent/model/UserPrefsTest.java">
+</file>
+<file name="/Users/leeshimei/IdeaProjects/main/src/test/java/seedu/ultistudent/model/VersionedAddressBookTest.java">
+</file>
+<file name="/Users/leeshimei/IdeaProjects/main/src/test/java/seedu/ultistudent/model/cap/CapEntryTest.java">
+</file>
+<file name="/Users/leeshimei/IdeaProjects/main/src/test/java/seedu/ultistudent/model/cap/ModuleCreditsTest.java">
+</file>
+<file name="/Users/leeshimei/IdeaProjects/main/src/test/java/seedu/ultistudent/model/cap/ModuleGradeTest.java">
+</file>
+<file name="/Users/leeshimei/IdeaProjects/main/src/test/java/seedu/ultistudent/model/cap/ModuleSemesterTest.java">
+</file>
+<file name="/Users/leeshimei/IdeaProjects/main/src/test/java/seedu/ultistudent/model/cap/UniqueCapEntryListTest.java">
+</file>
+<file name="/Users/leeshimei/IdeaProjects/main/src/test/java/seedu/ultistudent/model/cap/UniqueModuleSemesterListTest.java">
+</file>
+<file name="/Users/leeshimei/IdeaProjects/main/src/test/java/seedu/ultistudent/model/homework/DateTest.java">
+</file>
+<file name="/Users/leeshimei/IdeaProjects/main/src/test/java/seedu/ultistudent/model/homework/HomeworkNameTest.java">
+</file>
+<file name="/Users/leeshimei/IdeaProjects/main/src/test/java/seedu/ultistudent/model/homework/ModuleCodeTest.java">
+</file>
+<file name="/Users/leeshimei/IdeaProjects/main/src/test/java/seedu/ultistudent/model/note/ContentTest.java">
+</file>
+<file name="/Users/leeshimei/IdeaProjects/main/src/test/java/seedu/ultistudent/model/note/NoteNameContainsKeywordsPredicateTest.java">
+</file>
+<file name="/Users/leeshimei/IdeaProjects/main/src/test/java/seedu/ultistudent/model/note/NoteNameTest.java">
+</file>
+<file name="/Users/leeshimei/IdeaProjects/main/src/test/java/seedu/ultistudent/model/note/NoteTest.java">
+</file>
+<file name="/Users/leeshimei/IdeaProjects/main/src/test/java/seedu/ultistudent/model/note/UniqueNoteListTest.java">
+</file>
+<file name="/Users/leeshimei/IdeaProjects/main/src/test/java/seedu/ultistudent/model/person/AddressTest.java">
+</file>
+<file name="/Users/leeshimei/IdeaProjects/main/src/test/java/seedu/ultistudent/model/person/EmailTest.java">
+</file>
+<file name="/Users/leeshimei/IdeaProjects/main/src/test/java/seedu/ultistudent/model/person/NameContainsKeywordsPredicateTest.java">
+</file>
+<file name="/Users/leeshimei/IdeaProjects/main/src/test/java/seedu/ultistudent/model/person/NameTest.java">
+</file>
+<file name="/Users/leeshimei/IdeaProjects/main/src/test/java/seedu/ultistudent/model/person/PersonTest.java">
+</file>
+<file name="/Users/leeshimei/IdeaProjects/main/src/test/java/seedu/ultistudent/model/person/PhoneTest.java">
+</file>
+<file name="/Users/leeshimei/IdeaProjects/main/src/test/java/seedu/ultistudent/model/person/UniquePersonListTest.java">
+</file>
+<file name="/Users/leeshimei/IdeaProjects/main/src/test/java/seedu/ultistudent/model/tag/TagTest.java">
+</file>
+<file name="/Users/leeshimei/IdeaProjects/main/src/test/java/seedu/ultistudent/storage/JsonAdaptedPersonTest.java">
+</file>
+<file name="/Users/leeshimei/IdeaProjects/main/src/test/java/seedu/ultistudent/storage/JsonUltiStudentStorageTest.java">
+</file>
+<file name="/Users/leeshimei/IdeaProjects/main/src/test/java/seedu/ultistudent/storage/JsonUserPrefsStorageTest.java">
+</file>
+<file name="/Users/leeshimei/IdeaProjects/main/src/test/java/seedu/ultistudent/storage/StorageManagerTest.java">
+</file>
+<file name="/Users/leeshimei/IdeaProjects/main/src/test/java/seedu/ultistudent/testutil/AddressBookBuilder.java">
+</file>
+<file name="/Users/leeshimei/IdeaProjects/main/src/test/java/seedu/ultistudent/testutil/Assert.java">
+</file>
+<file name="/Users/leeshimei/IdeaProjects/main/src/test/java/seedu/ultistudent/testutil/CapEntryBuilder.java">
+</file>
+<file name="/Users/leeshimei/IdeaProjects/main/src/test/java/seedu/ultistudent/testutil/EditCapEntryDescriptorBuilder.java">
+</file>
+<file name="/Users/leeshimei/IdeaProjects/main/src/test/java/seedu/ultistudent/testutil/HomeworkBuilder.java">
+</file>
+<file name="/Users/leeshimei/IdeaProjects/main/src/test/java/seedu/ultistudent/testutil/ModuleSemesterBuilder.java">
+</file>
+<file name="/Users/leeshimei/IdeaProjects/main/src/test/java/seedu/ultistudent/testutil/NoteBuilder.java">
+</file>
+<file name="/Users/leeshimei/IdeaProjects/main/src/test/java/seedu/ultistudent/testutil/PersonBuilder.java">
+</file>
+<file name="/Users/leeshimei/IdeaProjects/main/src/test/java/seedu/ultistudent/testutil/PersonUtil.java">
+</file>
+<file name="/Users/leeshimei/IdeaProjects/main/src/test/java/seedu/ultistudent/testutil/SerializableTestClass.java">
+</file>
+<file name="/Users/leeshimei/IdeaProjects/main/src/test/java/seedu/ultistudent/testutil/TestUtil.java">
+</file>
+<file name="/Users/leeshimei/IdeaProjects/main/src/test/java/seedu/ultistudent/testutil/TypicalCapEntry.java">
+</file>
+<file name="/Users/leeshimei/IdeaProjects/main/src/test/java/seedu/ultistudent/testutil/TypicalHomework.java">
+</file>
+<file name="/Users/leeshimei/IdeaProjects/main/src/test/java/seedu/ultistudent/testutil/TypicalIndexes.java">
+</file>
+<file name="/Users/leeshimei/IdeaProjects/main/src/test/java/seedu/ultistudent/testutil/TypicalModuleSemester.java">
+</file>
+<file name="/Users/leeshimei/IdeaProjects/main/src/test/java/seedu/ultistudent/testutil/TypicalNote.java">
+</file>
+<file name="/Users/leeshimei/IdeaProjects/main/src/test/java/seedu/ultistudent/testutil/TypicalPersons.java">
+</file>
+<file name="/Users/leeshimei/IdeaProjects/main/src/test/java/seedu/ultistudent/ui/BrowserPanelTest.java">
+</file>
+<file name="/Users/leeshimei/IdeaProjects/main/src/test/java/seedu/ultistudent/ui/CommandBoxTest.java">
+</file>
+<file name="/Users/leeshimei/IdeaProjects/main/src/test/java/seedu/ultistudent/ui/GuiUnitTest.java">
+</file>
+<file name="/Users/leeshimei/IdeaProjects/main/src/test/java/seedu/ultistudent/ui/HelpWindowTest.java">
+</file>
+<file name="/Users/leeshimei/IdeaProjects/main/src/test/java/seedu/ultistudent/ui/ListElementPointerTest.java">
+</file>
+<file name="/Users/leeshimei/IdeaProjects/main/src/test/java/seedu/ultistudent/ui/MainWindowCloseTest.java">
+</file>
+<file name="/Users/leeshimei/IdeaProjects/main/src/test/java/seedu/ultistudent/ui/ResultDisplayTest.java">
+</file>
+<file name="/Users/leeshimei/IdeaProjects/main/src/test/java/seedu/ultistudent/ui/StatusBarFooterTest.java">
+</file>
+<file name="/Users/leeshimei/IdeaProjects/main/src/test/java/seedu/ultistudent/ui/TestFxmlObject.java">
+</file>
+<file name="/Users/leeshimei/IdeaProjects/main/src/test/java/seedu/ultistudent/ui/UiPartTest.java">
+</file>
+<file name="/Users/leeshimei/IdeaProjects/main/src/test/java/seedu/ultistudent/ui/testutil/GuiTestAssert.java">
+</file>
+<file name="/Users/leeshimei/IdeaProjects/main/src/test/java/seedu/ultistudent/ui/testutil/StageRule.java">
+</file>
+<file name="/Users/leeshimei/IdeaProjects/main/src/test/java/seedu/ultistudent/ui/testutil/UiPartRule.java">
+</file>
+<file name="/Users/leeshimei/IdeaProjects/main/src/test/java/systemtests/AddressBookSystemTest.java">
+</file>
+<file name="/Users/leeshimei/IdeaProjects/main/src/test/java/systemtests/ClockRule.java">
+</file>
+<file name="/Users/leeshimei/IdeaProjects/main/src/test/java/systemtests/HelpCommandSystemTest.java">
+</file>
+<file name="/Users/leeshimei/IdeaProjects/main/src/test/java/systemtests/ModelHelper.java">
+</file>
+<file name="/Users/leeshimei/IdeaProjects/main/src/test/java/systemtests/SampleDataTest.java">
+</file>
+<file name="/Users/leeshimei/IdeaProjects/main/src/test/java/systemtests/SystemTestSetupHelper.java">
+</file>
+</checkstyle>

@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>MainApp.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">main</a> &gt; <a href="index.source.html" class="el_package">seedu.ultistudent</a> &gt; <span class="el_source">MainApp.java</span></div><h1>MainApp.java</h1><pre class="source lang-java linenums">package seedu.ultistudent;
+
+import java.io.IOException;
+import java.nio.file.Path;
+import java.util.Optional;
+import java.util.logging.Logger;
+
+import javafx.application.Application;
+import javafx.stage.Stage;
+import seedu.ultistudent.commons.core.Config;
+import seedu.ultistudent.commons.core.LogsCenter;
+import seedu.ultistudent.commons.core.Version;
+import seedu.ultistudent.commons.exceptions.DataConversionException;
+import seedu.ultistudent.commons.util.ConfigUtil;
+import seedu.ultistudent.commons.util.StringUtil;
+import seedu.ultistudent.logic.Logic;
+import seedu.ultistudent.logic.LogicManager;
+import seedu.ultistudent.model.Model;
+import seedu.ultistudent.model.ModelManager;
+import seedu.ultistudent.model.ReadOnlyUltiStudent;
+import seedu.ultistudent.model.ReadOnlyUserPrefs;
+import seedu.ultistudent.model.UltiStudent;
+import seedu.ultistudent.model.UserPrefs;
+import seedu.ultistudent.model.util.SampleDataUtil;
+import seedu.ultistudent.storage.JsonUltiStudentStorage;
+import seedu.ultistudent.storage.JsonUserPrefsStorage;
+import seedu.ultistudent.storage.Storage;
+import seedu.ultistudent.storage.StorageManager;
+import seedu.ultistudent.storage.UltiStudentStorage;
+import seedu.ultistudent.storage.UserPrefsStorage;
+import seedu.ultistudent.ui.Ui;
+import seedu.ultistudent.ui.UiManager;
+
+/**
+ * The main entry point to the application.
+ */
+<span class="nc" id="L37">public class MainApp extends Application {</span>
+
+<span class="nc" id="L39">    public static final Version VERSION = new Version(1, 4, 0, true);</span>
+
+<span class="nc" id="L41">    private static final Logger logger = LogsCenter.getLogger(MainApp.class);</span>
+
+    protected Ui ui;
+    protected Logic logic;
+    protected Storage storage;
+    protected Model model;
+    protected Config config;
+
+    @Override
+    public void init() throws Exception {
+<span class="nc" id="L51">        logger.info(&quot;=============================[ Initializing UltiStudent ]===========================&quot;);</span>
+<span class="nc" id="L52">        super.init();</span>
+
+<span class="nc" id="L54">        AppParameters appParameters = AppParameters.parse(getParameters());</span>
+<span class="nc" id="L55">        config = initConfig(appParameters.getConfigPath());</span>
+
+<span class="nc" id="L57">        UserPrefsStorage userPrefsStorage = new JsonUserPrefsStorage(config.getUserPrefsFilePath());</span>
+<span class="nc" id="L58">        UserPrefs userPrefs = initPrefs(userPrefsStorage);</span>
+<span class="nc" id="L59">        UltiStudentStorage ultiStudentStorage = new JsonUltiStudentStorage(userPrefs.getUltiStudentFilePath());</span>
+<span class="nc" id="L60">        storage = new StorageManager(ultiStudentStorage, userPrefsStorage);</span>
+
+<span class="nc" id="L62">        initLogging(config);</span>
+
+<span class="nc" id="L64">        model = initModelManager(storage, userPrefs);</span>
+
+<span class="nc" id="L66">        logic = new LogicManager(model, storage);</span>
+
+<span class="nc" id="L68">        ui = new UiManager(logic);</span>
+<span class="nc" id="L69">    }</span>
+
+    /**
+     * Returns a {@code ModelManager} with the data from {@code storage}'s UltiStudent and {@code userPrefs}. &lt;br&gt;
+     * The data from the sample UltiStudent will be used instead if {@code storage}'s UltiStudent is not found,
+     * or an empty UltiStudent will be used instead if errors occur when reading {@code storage}'s UltiStudent.
+     */
+    private Model initModelManager(Storage storage, ReadOnlyUserPrefs userPrefs) {
+        Optional&lt;ReadOnlyUltiStudent&gt; ultiStudentOptional;
+        ReadOnlyUltiStudent initialData;
+        try {
+<span class="nc" id="L80">            ultiStudentOptional = storage.readUltiStudent();</span>
+<span class="nc bnc" id="L81" title="All 2 branches missed.">            if (!ultiStudentOptional.isPresent()) {</span>
+<span class="nc" id="L82">                logger.info(&quot;Data file not found. Will be starting with a sample UltiStudent&quot;);</span>
+            }
+<span class="nc" id="L84">            initialData = ultiStudentOptional.orElseGet(SampleDataUtil::getSampleUltiStudent);</span>
+<span class="nc" id="L85">        } catch (DataConversionException e) {</span>
+<span class="nc" id="L86">            logger.warning(&quot;Data file not in the correct format. Will be starting with an empty UltiStudent&quot;);</span>
+<span class="nc" id="L87">            initialData = new UltiStudent();</span>
+<span class="nc" id="L88">        } catch (IOException e) {</span>
+<span class="nc" id="L89">            logger.warning(&quot;Problem while reading from the file. Will be starting with an empty UltiStudent&quot;);</span>
+<span class="nc" id="L90">            initialData = new UltiStudent();</span>
+<span class="nc" id="L91">        }</span>
+
+<span class="nc" id="L93">        return new ModelManager(initialData, userPrefs);</span>
+    }
+
+    private void initLogging(Config config) {
+<span class="nc" id="L97">        LogsCenter.init(config);</span>
+<span class="nc" id="L98">    }</span>
+
+    /**
+     * Returns a {@code Config} using the file at {@code configFilePath}. &lt;br&gt;
+     * The default file path {@code Config#DEFAULT_CONFIG_FILE} will be used instead
+     * if {@code configFilePath} is null.
+     */
+    protected Config initConfig(Path configFilePath) {
+        Config initializedConfig;
+        Path configFilePathUsed;
+
+<span class="nc" id="L109">        configFilePathUsed = Config.DEFAULT_CONFIG_FILE;</span>
+
+<span class="nc bnc" id="L111" title="All 2 branches missed.">        if (configFilePath != null) {</span>
+<span class="nc" id="L112">            logger.info(&quot;Custom Config file specified &quot; + configFilePath);</span>
+<span class="nc" id="L113">            configFilePathUsed = configFilePath;</span>
+        }
+
+<span class="nc" id="L116">        logger.info(&quot;Using config file : &quot; + configFilePathUsed);</span>
+
+        try {
+<span class="nc" id="L119">            Optional&lt;Config&gt; configOptional = ConfigUtil.readConfig(configFilePathUsed);</span>
+<span class="nc" id="L120">            initializedConfig = configOptional.orElse(new Config());</span>
+<span class="nc" id="L121">        } catch (DataConversionException e) {</span>
+<span class="nc" id="L122">            logger.warning(&quot;Config file at &quot; + configFilePathUsed + &quot; is not in the correct format. &quot;</span>
+                    + &quot;Using default config properties&quot;);
+<span class="nc" id="L124">            initializedConfig = new Config();</span>
+<span class="nc" id="L125">        }</span>
+
+        //Update config file in case it was missing to begin with or there are new/unused fields
+        try {
+<span class="nc" id="L129">            ConfigUtil.saveConfig(initializedConfig, configFilePathUsed);</span>
+<span class="nc" id="L130">        } catch (IOException e) {</span>
+<span class="nc" id="L131">            logger.warning(&quot;Failed to save config file : &quot; + StringUtil.getDetails(e));</span>
+<span class="nc" id="L132">        }</span>
+<span class="nc" id="L133">        return initializedConfig;</span>
+    }
+
+    /**
+     * Returns a {@code UserPrefs} using the file at {@code storage}'s user prefs file path,
+     * or a new {@code UserPrefs} with default configuration if errors occur when
+     * reading from the file.
+     */
+    protected UserPrefs initPrefs(UserPrefsStorage storage) {
+<span class="nc" id="L142">        Path prefsFilePath = storage.getUserPrefsFilePath();</span>
+<span class="nc" id="L143">        logger.info(&quot;Using prefs file : &quot; + prefsFilePath);</span>
+
+        UserPrefs initializedPrefs;
+        try {
+<span class="nc" id="L147">            Optional&lt;UserPrefs&gt; prefsOptional = storage.readUserPrefs();</span>
+<span class="nc" id="L148">            initializedPrefs = prefsOptional.orElse(new UserPrefs());</span>
+<span class="nc" id="L149">        } catch (DataConversionException e) {</span>
+<span class="nc" id="L150">            logger.warning(&quot;UserPrefs file at &quot; + prefsFilePath + &quot; is not in the correct format. &quot;</span>
+                    + &quot;Using default user prefs&quot;);
+<span class="nc" id="L152">            initializedPrefs = new UserPrefs();</span>
+<span class="nc" id="L153">        } catch (IOException e) {</span>
+<span class="nc" id="L154">            logger.warning(&quot;Problem while reading from the file. Will be starting with an empty UltiStudent&quot;);</span>
+<span class="nc" id="L155">            initializedPrefs = new UserPrefs();</span>
+<span class="nc" id="L156">        }</span>
+
+        //Update prefs file in case it was missing to begin with or there are new/unused fields
+        try {
+<span class="nc" id="L160">            storage.saveUserPrefs(initializedPrefs);</span>
+<span class="nc" id="L161">        } catch (IOException e) {</span>
+<span class="nc" id="L162">            logger.warning(&quot;Failed to save config file : &quot; + StringUtil.getDetails(e));</span>
+<span class="nc" id="L163">        }</span>
+
+<span class="nc" id="L165">        return initializedPrefs;</span>
+    }
+
+    @Override
+    public void start(Stage primaryStage) {
+<span class="nc" id="L170">        logger.info(&quot;Starting UltiStudent &quot; + MainApp.VERSION);</span>
+<span class="nc" id="L171">        ui.start(primaryStage);</span>
+<span class="nc" id="L172">    }</span>
+
+    @Override
+    public void stop() {
+<span class="nc" id="L176">        logger.info(&quot;============================ [ Stopping UltiStudent ] =============================&quot;);</span>
+        try {
+<span class="nc" id="L178">            storage.saveUserPrefs(model.getUserPrefs());</span>
+<span class="nc" id="L179">        } catch (IOException e) {</span>
+<span class="nc" id="L180">            logger.severe(&quot;Failed to save preferences &quot; + StringUtil.getDetails(e));</span>
+<span class="nc" id="L181">        }</span>
+<span class="nc" id="L182">    }</span>
+
+    public static void main(String[] args) {
+<span class="nc" id="L185">        launch(args);</span>
+<span class="nc" id="L186">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.1.201803210924</span></div></body></html>

@@ -1,0 +1,18 @@
+{
+  "persons" : [ {
+    "name" : "Daniel Meier",
+    "phone" : "87652533",
+    "email" : "cornelia@example.com",
+    "address" : "10th street",
+    "tagged" : [ "friends" ]
+  }, {
+    "name" : "Elle Meyer",
+    "phone" : "9482224",
+    "email" : "werner@example.com",
+    "address" : "michegan ave",
+    "tagged" : [ ]
+  } ],
+  "capEntryList" : [ ],
+  "homeworkList" : [ ],
+  "noteList" : [ ]
+}

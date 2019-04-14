@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="seedu.ultistudent.model.ModelManagerTest" tests="17" skipped="0" failures="0" errors="0" timestamp="2019-04-13T20:54:01" hostname="Lees-MBP-3" time="0.012">
+  <properties/>
+  <testcase name="setUserPrefs_nullUserPrefs_throwsNullPointerException" classname="seedu.ultistudent.model.ModelManagerTest" time="0.001"/>
+  <testcase name="constructor" classname="seedu.ultistudent.model.ModelManagerTest" time="0.0"/>
+  <testcase name="hasPerson_nullPerson_throwsNullPointerException" classname="seedu.ultistudent.model.ModelManagerTest" time="0.0"/>
+  <testcase name="hasPerson_personInAddressBook_returnsTrue" classname="seedu.ultistudent.model.ModelManagerTest" time="0.0"/>
+  <testcase name="setGuiSettings_validGuiSettings_setsGuiSettings" classname="seedu.ultistudent.model.ModelManagerTest" time="0.0"/>
+  <testcase name="equals" classname="seedu.ultistudent.model.ModelManagerTest" time="0.001"/>
+  <testcase name="setAddressBookFilePath_nullPath_throwsNullPointerException" classname="seedu.ultistudent.model.ModelManagerTest" time="0.0"/>
+  <testcase name="deletePerson_personIsSelectedAndSecondPersonInFilteredPersonList_firstPersonSelected" classname="seedu.ultistudent.model.ModelManagerTest" time="0.0"/>
+  <testcase name="setSelectedPerson_personInFilteredPersonList_setsSelectedPerson" classname="seedu.ultistudent.model.ModelManagerTest" time="0.0"/>
+  <testcase name="setPerson_personIsSelected_selectedPersonUpdated" classname="seedu.ultistudent.model.ModelManagerTest" time="0.0"/>
+  <testcase name="setUserPrefs_validUserPrefs_copiesUserPrefs" classname="seedu.ultistudent.model.ModelManagerTest" time="0.001"/>
+  <testcase name="setAddressBookFilePath_validPath_setsAddressBookFilePath" classname="seedu.ultistudent.model.ModelManagerTest" time="0.0"/>
+  <testcase name="setSelectedPerson_personNotInFilteredPersonList_throwsPersonNotFoundException" classname="seedu.ultistudent.model.ModelManagerTest" time="0.001"/>
+  <testcase name="hasPerson_personNotInAddressBook_returnsFalse" classname="seedu.ultistudent.model.ModelManagerTest" time="0.0"/>
+  <testcase name="getFilteredPersonList_modifyList_throwsUnsupportedOperationException" classname="seedu.ultistudent.model.ModelManagerTest" time="0.001"/>
+  <testcase name="deletePerson_personIsSelectedAndFirstPersonInFilteredPersonList_selectionCleared" classname="seedu.ultistudent.model.ModelManagerTest" time="0.001"/>
+  <testcase name="setGuiSettings_nullGuiSettings_throwsNullPointerException" classname="seedu.ultistudent.model.ModelManagerTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

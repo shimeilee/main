@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>UniqueModuleCodeList.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">main</a> &gt; <a href="index.source.html" class="el_package">seedu.ultistudent.model.homework</a> &gt; <span class="el_source">UniqueModuleCodeList.java</span></div><h1>UniqueModuleCodeList.java</h1><pre class="source lang-java linenums">package seedu.ultistudent.model.homework;
+
+import static java.util.Objects.requireNonNull;
+import static seedu.ultistudent.commons.util.CollectionUtil.requireAllNonNull;
+
+import java.util.Iterator;
+import java.util.List;
+
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import seedu.ultistudent.model.homework.exceptions.DuplicateModuleCodeException;
+import seedu.ultistudent.model.homework.exceptions.ModuleCodeNotFoundException;
+import seedu.ultistudent.model.modulecode.ModuleCode;
+
+/**
+ * A list of module codes that enforces uniqueness between its elements and does not allow nulls.
+ * A module code is considered unique by comparing using {@code ModuleCode#equals(ModuleCode)}. As such,
+ * adding and updating of module codes uses ModuleCode#equals(ModuleCode) for equality so as to ensure that
+ * the module code being added or updated is unique in terms of identity in the UniqueModuleCodeList. Similarly,
+ * the removal of a cap entry uses ModuleCode#equals(Object) so as to ensure that the cap entry with exactly the
+ * same fields will be removed.
+ *
+ * Supports a minimal set of list operations.
+ *
+ */
+
+<span class="fc" id="L27">public class UniqueModuleCodeList implements Iterable&lt;ModuleCode&gt; {</span>
+
+<span class="fc" id="L29">    private final ObservableList&lt;ModuleCode&gt; internalList = FXCollections.observableArrayList();</span>
+<span class="fc" id="L30">    private final ObservableList&lt;ModuleCode&gt; internalUnmodifiableList =</span>
+<span class="fc" id="L31">            FXCollections.unmodifiableObservableList(internalList);</span>
+
+    /**
+     * Returns true if the list contains an equivalent ModuleCode as the given argument.
+     */
+    public boolean contains(ModuleCode toCheck) {
+<span class="nc" id="L37">        requireNonNull(toCheck);</span>
+<span class="nc" id="L38">        return internalList.stream().anyMatch(toCheck::equals);</span>
+    }
+
+    /**
+     * Adds a ModuleCode to the list.
+     * The ModuleCode must not already exist in the list.
+     */
+    public void add(ModuleCode toAdd) {
+<span class="nc" id="L46">        requireNonNull(toAdd);</span>
+<span class="nc bnc" id="L47" title="All 2 branches missed.">        if (contains(toAdd)) {</span>
+<span class="nc" id="L48">            throw new DuplicateModuleCodeException();</span>
+        }
+<span class="nc" id="L50">        internalList.add(toAdd);</span>
+<span class="nc" id="L51">    }</span>
+
+    /**
+     * Replaces the modeule code {@code target} in the list with {@code editedModuleCode}.
+     * {@code target} must exist in the list.
+     * The module code identity of {@code editedModuleCode} must not be the same as another
+     * existing module code in the list.
+     */
+    public void setModuleCode(ModuleCode target, ModuleCode editedModuleCode) {
+<span class="nc" id="L60">        requireAllNonNull(target, editedModuleCode);</span>
+
+<span class="nc" id="L62">        int index = internalList.indexOf(target);</span>
+<span class="nc bnc" id="L63" title="All 2 branches missed.">        if (index == -1) {</span>
+<span class="nc" id="L64">            throw new ModuleCodeNotFoundException();</span>
+        }
+
+<span class="nc bnc" id="L67" title="All 4 branches missed.">        if (!target.equals(editedModuleCode) &amp;&amp; contains(editedModuleCode)) {</span>
+<span class="nc" id="L68">            throw new DuplicateModuleCodeException();</span>
+        }
+
+<span class="nc" id="L71">        internalList.set(index, editedModuleCode);</span>
+<span class="nc" id="L72">    }</span>
+
+    /**
+     * Removes the equivalent module code from the list.
+     * The module code must exist in the list.
+     */
+    public void remove(ModuleCode toRemove) {
+<span class="nc" id="L79">        requireNonNull(toRemove);</span>
+<span class="nc bnc" id="L80" title="All 2 branches missed.">        if (!internalList.remove(toRemove)) {</span>
+<span class="nc" id="L81">            throw new ModuleCodeNotFoundException();</span>
+        }
+<span class="nc" id="L83">    }</span>
+
+    public void setModuleCodeList(UniqueModuleCodeList replacement) {
+<span class="nc" id="L86">        requireNonNull(replacement);</span>
+<span class="nc" id="L87">        internalList.setAll(replacement.internalList);</span>
+<span class="nc" id="L88">    }</span>
+
+    /**
+     * Replaces the contents of this list with {@code moduleCode}.
+     * {@code moduleCode} must not contain duplicate module codes.
+     */
+    public void setModuleCodeList(List&lt;ModuleCode&gt; moduleCodeList) {
+<span class="fc" id="L95">        requireAllNonNull(moduleCodeList);</span>
+<span class="pc bpc" id="L96" title="1 of 2 branches missed.">        if (!moduleCodeListIsUnique(moduleCodeList)) {</span>
+<span class="nc" id="L97">            throw new DuplicateModuleCodeException();</span>
+        }
+
+<span class="fc" id="L100">        internalList.setAll(moduleCodeList);</span>
+<span class="fc" id="L101">    }</span>
+
+    /**
+     * Returns the backing list as an unmodifiable {@code ObservableList}.
+     */
+    public ObservableList&lt;ModuleCode&gt; asUnmodifiableObservableList() {
+<span class="fc" id="L107">        return internalUnmodifiableList;</span>
+    }
+
+    @Override
+    public Iterator&lt;ModuleCode&gt; iterator() {
+<span class="nc" id="L112">        return internalList.iterator();</span>
+    }
+
+    @Override
+    public boolean equals(Object other) {
+<span class="nc bnc" id="L117" title="All 4 branches missed.">        return other == this // short circuit if same object</span>
+                || (other instanceof UniqueModuleCodeList // instanceof handles nulls
+<span class="nc bnc" id="L119" title="All 2 branches missed.">                &amp;&amp; internalList.equals(((UniqueModuleCodeList) other).internalList));</span>
+    }
+
+    @Override
+    public int hashCode() {
+<span class="nc" id="L124">        return internalList.hashCode();</span>
+    }
+
+    /**
+     * Returns true if {@code moduleCodeList} contains only unique module codes.
+     */
+    private boolean moduleCodeListIsUnique(List&lt;ModuleCode&gt; moduleCodeList) {
+<span class="pc bpc" id="L131" title="1 of 2 branches missed.">        for (int i = 0; i &lt; moduleCodeList.size() - 1; i++) {</span>
+<span class="nc bnc" id="L132" title="All 2 branches missed.">            for (int j = i + 1; j &lt; moduleCodeList.size(); j++) {</span>
+<span class="nc bnc" id="L133" title="All 2 branches missed.">                if (moduleCodeList.get(i).equals(moduleCodeList.get(j))) {</span>
+<span class="nc" id="L134">                    return false;</span>
+                }
+            }
+        }
+<span class="fc" id="L138">        return true;</span>
+    }
+
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.1.201803210924</span></div></body></html>

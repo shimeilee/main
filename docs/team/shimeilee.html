@@ -441,53 +441,123 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 <div id="content">
 <div class="sect1">
-<h2 id="_project_ultistudent_level_4">PROJECT: UltiStudent - Level 4</h2>
+<h2 id="_project_ultistudent">Project: UltiStudent</h2>
 <div class="sectionbody">
-<hr>
+
 </div>
 </div>
 <div class="sect1">
-<h2 id="_overview">Overview</h2>
+<h2 id="_introduction">Introduction</h2>
+<div class="sectionbody">
+<div class="imageblock text-left">
+<div class="content">
+<img src="../images/shimeilee.png" alt="shimeilee" width="200">
+</div>
+</div>
+<div class="paragraph">
+<p>[<a href="https://github.com/shimeilee">GitHub</a>]</p>
+</div>
+<div class="paragraph">
+<p>Hi there! I am Shi Mei, a Year 2 Undergraduate studying in National University
+ of Singapore (NUS) Computer Science.</p>
+</div>
+<div class="paragraph">
+<p>The purpose of this portfolio is to document my contributions to
+<em>UltiStudent</em>, a software engineering project under CS2103T Software
+Engineering module in NUS.</p>
+</div>
+<div class="paragraph">
+<p>This project (<em>UltiStudent</em>) would not be possible without my amazing team
+mates: Andrew, Benjamin, and Xavier</p>
+</div>
+<!-- toc disabled -->
+</div>
+</div>
+<div class="sect1">
+<h2 id="_overview_of_ultistudent">1. Overview of UltiStudent</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>UltiStudent is a student application that effectively tackles the problem of having too many applications to manage
 their school life. To improve the quality of student life in computing, UltiStudent provides a centralised platform
-for them to manage their homework, cumulative average point and notes.</p>
+for them to manage their homework, cumulative average point (CAP) and notes.</p>
 </div>
 <div class="paragraph">
-<p>UltiStudent is a desktop application used for teaching Software Engineering principles. The user interacts with it using a CLI, and it has a GUI created with JavaFX. It is written in Java, and has about 10 kLoC.</p>
+<p>Main Features of <em>UltiStudent</em>:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Keep track of your deadlines from various modules (Homework Manager)</p>
+</li>
+<li>
+<p>Easy creation of digital notes (Notes Manager)</p>
+</li>
+<li>
+<p>Projection and Prediction of CAP (CAP Manager)</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>&#8230;&#8203;without leaving the application!</p>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_summary_of_contributions">Summary of contributions</h2>
+<h2 id="_summary_of_contributions">2. Summary of contributions</h2>
 <div class="sectionbody">
+<div class="paragraph">
+<p><em>This section is to provide a summary of my contributions to the project.</em></p>
+</div>
+<div class="paragraph">
+<p>My main contribution for UltiStudent is the creation of the Notes Manager.</p>
+</div>
+<div class="paragraph">
+<p>Notes Manager allows users of UltiStudent to: <strong>Add and delete notes</strong>, <strong>save
+and edit the content of their notes</strong>, <strong>find notes easily</strong>, <strong>list all their
+notes</strong>.</p>
+</div>
+<div class="paragraph">
+<p>I was in charge of <strong>Add</strong>, <strong>Delete</strong>, <strong>Find</strong>, and <strong>List</strong> note commands.</p>
+</div>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Major enhancement</strong>: added <strong>the ability to undo/redo previous commands</strong></p>
+<p><strong>Major enhancement</strong>: created <strong>the Notes Manager infrastructure</strong> which includes
+the <strong>adding and deleting notes</strong> into the Notes Manager storage.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>What it does: allows the user to undo all previous commands one at a time. Preceding undo commands can be reversed by using the redo command.</p>
+<p>What it does: allows the user to add and delete notes from the Notes Manager.</p>
 </li>
 <li>
-<p>Justification: This feature improves the product significantly because a user can make mistakes in commands and the app should provide a convenient way to rectify them.</p>
+<p>Justification: The ability to create notes depends on the Notes Manager
+infrastructure. This improves the product significantly by allowing the
+addition of other features such as Find, List, Edit, and Save.</p>
 </li>
 <li>
-<p>Highlights: This enhancement affects existing commands and commands to be added in future. It required an in-depth analysis of design alternatives. The implementation too was challenging as it required changes to existing commands.</p>
-</li>
-<li>
-<p>Credits: <em>{mention here if you reused any code/ideas from elsewhere or if a third-party library is heavily used in the feature so that a reader can make a more accurate judgement of how much effort went into the feature}</em></p>
+<p>Highlights: This enhancement affects existing commands and commands to be
+added to the Notes Manager in the future. It required an in-depth analysis of
+design alternatives. The implementation too was challenging as it required changes to existing commands.</p>
 </li>
 </ul>
 </div>
 </li>
 <li>
-<p><strong>Minor enhancement</strong>: added a history command that allows the user to navigate to previous commands using up/down keys.</p>
+<p><strong>Minor enhancement</strong>:</p>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Find note</strong> command that lists all notes whose note name has the keywords
+indicated by the user.</p>
 </li>
 <li>
-<p><strong>Code contributed</strong>: [<a href="https://github.com">Functional code</a>] [<a href="https://github.com">Test code</a>] <em>{give links to collated code files}</em></p>
+<p><strong>List note</strong> command that lists all notes in the Notes Manager.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Code contributed</strong>: <a href="https://nus-cs2103-ay1819s2.github.io/cs2103-dashboard/#=undefined&amp;search=shimeilee">RepoSense</a></p>
 </li>
 <li>
 <p><strong>Other contributions</strong>:</p>
@@ -498,20 +568,14 @@ for them to manage their homework, cumulative average point and notes.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Managed releases <code>v1.3</code> - <code>v1.5rc</code> (3 releases) on GitHub</p>
-</li>
-</ul>
-</div>
+<p>Managed releases <code>v1.3</code> on GitHub</p>
 </li>
 <li>
-<p>Enhancements to existing features:</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Updated the GUI color scheme (Pull requests <a href="https://github.com">#33</a>, <a href="https://github.com">#34</a>)</p>
+<p>Handled submission requirements for <code>v1.3</code></p>
 </li>
 <li>
-<p>Wrote additional tests for existing features to increase coverage from 88% to 92% (Pull requests <a href="https://github.com">#36</a>, <a href="https://github.com">#38</a>)</p>
+<p>Set up project configuration:
+<a href="https://github.com/cs2103-ay1819s2-w09-1/main/pull/4">#4</a></p>
 </li>
 </ul>
 </div>
@@ -521,7 +585,8 @@ for them to manage their homework, cumulative average point and notes.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Did cosmetic tweaks to existing contents of the User Guide: <a href="https://github.com">#14</a></p>
+<p>Updated contents of About Us and Contact Us page:
+<a href="https://github.com/cs2103-ay1819s2-w09-1/main/pull/9">#9</a></p>
 </li>
 </ul>
 </div>
@@ -531,29 +596,20 @@ for them to manage their homework, cumulative average point and notes.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>PRs reviewed (with non-trivial review comments): <a href="https://github.com">#12</a>, <a href="https://github.com">#32</a>, <a href="https://github.com">#19</a>, <a href="https://github.com">#42</a></p>
+<p>PRs reviewed:
+On average, one PR was reviewed every two weeks.</p>
 </li>
 <li>
-<p>Contributed to forum discussions (examples:  <a href="https://github.com">1</a>, <a href="https://github.com">2</a>, <a href="https://github.com">3</a>, <a href="https://github.com">4</a>)</p>
+<p>Contributed to forum discussions:
+<a href="https://github.com/nus-cs2103-AY1819S2/forum/issues/46">#46</a>:
+<em>Raised checkstyle issues which is experienced by others as well.</em></p>
 </li>
 <li>
-<p>Reported bugs and suggestions for other teams in the class (examples:  <a href="https://github.com">1</a>, <a href="https://github.com">2</a>, <a href="https://github.com">3</a>)</p>
-</li>
-<li>
-<p>Some parts of the history feature I added was adopted by several other class mates (<a href="https://github.com">1</a>, <a href="https://github.com">2</a>)</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>Tools:</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Integrated a third party library (Natty) to the project (<a href="https://github.com">#42</a>)</p>
-</li>
-<li>
-<p>Integrated a new Github plugin (CircleCI) to the team repo</p>
+<p>Reported bugs and suggestions for other teams in the class
+(<a href="https://github.com/CS2103-AY1819S2-W16-3/main/issues/115">#115</a>,https://github.com/CS2103-AY1819S2-W16-3/main/issues/112[#112],
+<a href="https://github.com/CS2103-AY1819S2-W16-3/main/issues/110">#110</a>, <a href="https://github.com/CS2103-AY1819S2-W16-3/main/issues/106">#106</a>,
+<a href="https://github.com/CS2103-AY1819S2-W16-3/main/issues/98">#98</a>, <a href="https://github.com/CS2103-AY1819S2-W16-3/main/issues/94">#94</a>,
+<a href="https://github.com/CS2103-AY1819S2-W16-3/main/issues/91">#91</a>)</p>
 </li>
 </ul>
 </div>
@@ -562,117 +618,148 @@ for them to manage their homework, cumulative average point and notes.</p>
 </div>
 </li>
 </ul>
-</div>
-<div class="paragraph">
-<p><em>{you can add/remove categories in the list above}</em></p>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_contributions_to_the_user_guide">Contributions to the User Guide</h2>
+<h2 id="_contributions_to_the_user_guide">3. Contributions to the User Guide</h2>
 <div class="sectionbody">
-<table class="tableblock frame-all grid-all stretch">
-<colgroup>
-<col style="width: 100%;">
-</colgroup>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Given below are sections I contributed to the User Guide. They showcase my ability to write documentation targeting end-users.</em></p></td>
-</tr>
-</tbody>
-</table>
-<div class="sect3">
-<h4 id="_undoing_previous_command_undo">Undoing previous command : <code>undo</code></h4>
 <div class="paragraph">
-<p>Restores the UltiStudent to the state before the previous <em>undoable</em> command was executed.<br>
-Format: <code>undo</code></p>
+<p><em>This section is to showcase my contribution to the User Guide, and highlight
+ my ability to write documentation targeting end-users.</em></p>
 </div>
-<div class="admonitionblock note">
+<div class="sect3">
+<h4 id="_adding_a_note_add_note">3.1. Adding a note : <code>add-note</code></h4>
+<div class="paragraph">
+<p>Want to take down some notes during lecture? Let Notes Manager help us store
+our notes digitally! Add a new note to the Notes Manager with the <code>add-note</code>
+command!</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/UI_notes_manager.png" alt="UI notes manager" width="790">
+</div>
+</div>
+<div class="paragraph">
+<p>Ensure that you&#8217;re inside the Notes Manager by using <code>open NotesManager</code>
+first. The Notes icon on the left will be highlighted when UltiStudent is
+inside the Notes Manager, and the Result Box will indicate that NotesManager
+is open after the command is entered.<br></p>
+</div>
+<div class="paragraph">
+<p>To add a note, we will need to follow this format:
+<code>add-note mc/MODULECODE n/NOTENAME</code></p>
+</div>
+<div class="paragraph">
+<p>Time for an example!</p>
+</div>
+<div class="paragraph">
+<p>Suppose we are sitting in CS2103T Week 10&#8217;s lecture, and we want to create a
+note to take down the concepts covered in class. We can add a new note to the
+ Notes Manager by typing <code>add-note mc/CS2103T n/Week 10 Lecture</code>.</p>
+</div>
+<div class="paragraph">
+<p>Notes Manager can add notes with their note names starting with alphanumeric
+characters (A-Z, a-z, 0-9).</p>
+</div>
+<div class="imageblock text-center">
+<div class="content">
+<img src="../images/UI_add_notes.png" alt="UI add notes" width="790">
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_deleting_a_note_delete_note">3.2. Deleting a Note: <code>delete-note</code></h4>
+<div class="paragraph">
+<p>No longer need a particular note after the module is completed? Simply delete
+ it with the <code>delete-note</code>!</p>
+</div>
+<div class="paragraph">
+<p>To delete a note from Notes Manager, we will need to follow this format:
+ <code>delete-note INDEX</code><br>
+&#8230;&#8203; where the note at the specified index will be deleted.<br>
+The index refers to the index number shown in the displayed Notes
+List (light blue box), and <strong>must be a positive integer</strong> (1, 2, 3&#8230;&#8203;).</p>
+</div>
+<div class="paragraph">
+<p>Say after this semester ends and we would like to delete the Week 10 Lecture
+notes we created for CS2103T earlier. All we need to do is to type
+<code>delete-note 12</code>. In this case, the index is 12 (refer to image for add-note).</p>
+</div>
+<div class="imageblock text-center">
+<div class="content">
+<img src="../images/UI_delete_notes.png" alt="UI delete notes" width="790">
+</div>
+</div>
+<div class="paragraph">
+<p>Viola! Note is deleted.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_finding_a_note_with_a_specified_keyword_find_note">3.3. Finding a note with a specified keyword: <code>find-note</code></h4>
+<div class="paragraph">
+<p>Along the semester, there will be more notes added each week for every
+module activity. As such, there is a need to find a note with a
+specified keyword.</p>
+</div>
+<div class="paragraph">
+<p>To find a note from Note Managers, we will need to follow this format:
+<code>find-note [KEYWORDS]</code>.
+As you can see from the diagram below, after adding a name as part of a keyword,
+you will be able to see only notes with that keyword in the notes list.</p>
+</div>
+<div class="paragraph">
+<p>For example, we want to find notes taken for tutorials. Simply search for
+<code>find-note tutorial</code>.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/UI_find_notes.png" alt="UI find notes" width="790">
+</div>
+</div>
+<div class="admonitionblock tip">
 <table>
 <tr>
 <td class="icon">
-<div class="title">Note</div>
+<div class="title">Tip</div>
 </td>
 <td class="content">
-<div class="paragraph">
-<p>Undoable commands: those commands that modify the UltiStudent&#8217;s content in
-the various manager e.g. for Homework Manager
-(<code>add-homework</code>, <code>delete-homework</code>, <code>edit-homework</code>).</p>
-</div>
+You are not restricted to only one keyword for the <code>[KEYWORDS]</code> in the command.
+You can add more of them if you wish.
 </td>
 </tr>
 </table>
 </div>
 <div class="paragraph">
-<p>Examples:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>delete-homework 1</code><br>
-<code>undo</code> (reverses the <code>delete 1</code> command)<br></p>
-</li>
-<li>
-<p><code>delete-note 1</code><br>
-<code>undo</code> (reverses the <code>delete 1</code> command)<br></p>
-</li>
-<li>
-<p><code>select-homework 1</code><br>
-<code>undo</code><br>
-The <code>undo</code> command fails as there are no undoable commands executed previously.</p>
-</li>
-<li>
-<p><code>delete 1</code><br>
-<code>add mc/CS2101 mn/Effective Communication for Computing Professionals hw/Tutorial 1’<br>
-`undo</code> (reverses the <code>add</code> command)<br>
-<code>undo</code> (reverses the <code>delete 1</code> command)<br></p>
-</li>
-</ul>
+<p>In v2.0, we will be able to find our notes by its module code and keyword. This
+will make it easier to find the note we want.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_redoing_the_previously_undone_command_redo">Redoing the previously undone command : <code>redo</code></h4>
+<h4 id="_reverting_back_to_a_full_list_view_list_note">3.4. Reverting back to a full list view: <code>list-note</code></h4>
 <div class="paragraph">
-<p>Reverses the most recent <code>undo</code> command.<br>
-Format: <code>redo</code></p>
+<p>In the previous sub-section, we looked at how we can use the command <code>find-note</code>
+ to display note entries from the selected keyword. Now, how do we display
+ the full list of modules?</p>
 </div>
 <div class="paragraph">
-<p>Examples:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>delete-hw 1</code><br>
-<code>undo</code> (reverses the <code>delete 1</code> command)<br>
-<code>redo</code> (reapplies the <code>delete 1</code> command)<br></p>
-</li>
-<li>
-<p><code>delete-note 1</code><br>
-<code>redo</code><br>
-The <code>redo</code> command fails as there are no <code>undo</code> commands executed previously.</p>
-</li>
-</ul>
+<p>To display the full list, simply use this command <code>list-note</code>. This command has
+no additional inputs for you to type and that makes this simple and easy to use!</p>
 </div>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_contributions_to_the_developer_guide">Contributions to the Developer Guide</h2>
+<h2 id="_contributions_to_the_developer_guide">4. Contributions to the Developer Guide</h2>
 <div class="sectionbody">
-<table class="tableblock frame-all grid-all stretch">
-<colgroup>
-<col style="width: 100%;">
-</colgroup>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Given below are sections I contributed to the Developer Guide. They showcase my ability to write technical documentation and the technical depth of my contributions to the project.</em></p></td>
-</tr>
-</tbody>
-</table>
+<div class="paragraph">
+<p><em>This section is to showcase the technical depth of my contribution to
+UltiStudent, and highlight my ability to write technical documentation targeting developers.</em></p>
+</div>
 <div class="sect2">
-<h3 id="_undoredo_feature">Undo/Redo feature</h3>
+<h3 id="_undoredo_feature">4.1. Undo/Redo feature</h3>
 <div class="sect3">
-<h4 id="_current_implementation">Current Implementation</h4>
+<h4 id="_current_implementation">4.1.1. Current Implementation</h4>
 <div class="paragraph">
 <p>The undo/redo mechanism is facilitated by <code>VersionedUltiStudent</code>.
 It extends <code>UltiStudent</code> with an undo/redo history, stored internally as an <code>UltiStudentStateList</code> and <code>currentStatePointer</code>.
@@ -802,7 +889,7 @@ If the <code>currentStatePointer</code> is at index <code>UltiStudentStateList.s
 </div>
 </div>
 <div class="sect3">
-<h4 id="_design_considerations">Design Considerations</h4>
+<h4 id="_design_considerations">4.1.2. Design Considerations</h4>
 <div class="sect4">
 <h5 id="_aspect_how_undo_redo_executes">Aspect: How undo &amp; redo executes</h5>
 <div class="ulist">
@@ -872,26 +959,17 @@ If the <code>currentStatePointer</code> is at index <code>UltiStudentStateList.s
 </div>
 </div>
 <div class="sect2">
-<h3 id="_proposed_data_encryption">[Proposed] Data Encryption</h3>
+<h3 id="_proposed_data_encryption">4.2. [Proposed] Data Encryption</h3>
 <div class="paragraph">
 <p><em>{Explain here how the data encryption feature will be implemented}</em></p>
 </div>
 </div>
 </div>
 </div>
-<div class="sect1">
-<h2 id="_project_powerpointlabs">PROJECT: PowerPointLabs</h2>
-<div class="sectionbody">
-<hr>
-<div class="paragraph">
-<p><em>{Optionally, you may include other projects in your portfolio.}</em></p>
-</div>
-</div>
-</div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2019-04-02 19:42:56 +0800
+Last updated 2019-04-15 07:10:29 +0800
 </div>
 </div>
 </body>

@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>JsonUltiStudentStorage.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">main</a> &gt; <a href="index.source.html" class="el_package">seedu.ultistudent.storage</a> &gt; <span class="el_source">JsonUltiStudentStorage.java</span></div><h1>JsonUltiStudentStorage.java</h1><pre class="source lang-java linenums">package seedu.ultistudent.storage;
+
+import static java.util.Objects.requireNonNull;
+
+import java.io.IOException;
+import java.nio.file.Path;
+import java.util.Optional;
+import java.util.logging.Logger;
+
+import seedu.ultistudent.commons.core.LogsCenter;
+import seedu.ultistudent.commons.exceptions.DataConversionException;
+import seedu.ultistudent.commons.exceptions.IllegalValueException;
+import seedu.ultistudent.commons.util.FileUtil;
+import seedu.ultistudent.commons.util.JsonUtil;
+import seedu.ultistudent.model.ReadOnlyUltiStudent;
+
+/**
+ * A class to access UltiStudent data stored as a json file on the hard disk.
+ */
+public class JsonUltiStudentStorage implements UltiStudentStorage {
+
+<span class="fc" id="L22">    private static final Logger logger = LogsCenter.getLogger(JsonUltiStudentStorage.class);</span>
+
+    private Path filePath;
+
+<span class="fc" id="L26">    public JsonUltiStudentStorage(Path filePath) {</span>
+<span class="fc" id="L27">        this.filePath = filePath;</span>
+<span class="fc" id="L28">    }</span>
+
+    public Path getUltiStudentFilePath() {
+<span class="fc" id="L31">        return filePath;</span>
+    }
+
+    @Override
+    public Optional&lt;ReadOnlyUltiStudent&gt; readUltiStudent() throws DataConversionException {
+<span class="nc" id="L36">        return readUltiStudent(filePath);</span>
+    }
+
+    /**
+     * Similar to {@link #readUltiStudent()}.
+     *
+     * @param filePath location of the data. Cannot be null.
+     * @throws DataConversionException if the file is not in the correct format.
+     */
+    public Optional&lt;ReadOnlyUltiStudent&gt; readUltiStudent(Path filePath) throws DataConversionException {
+<span class="fc" id="L46">        requireNonNull(filePath);</span>
+
+<span class="fc" id="L48">        Optional&lt;JsonSerializableUltiStudent&gt; jsonUltiStudent = JsonUtil.readJsonFile(</span>
+                filePath, JsonSerializableUltiStudent.class);
+<span class="pc bpc" id="L50" title="1 of 2 branches missed.">        if (!jsonUltiStudent.isPresent()) {</span>
+<span class="fc" id="L51">            return Optional.empty();</span>
+        }
+
+        try {
+<span class="nc" id="L55">            return Optional.of(jsonUltiStudent.get().toModelType());</span>
+<span class="nc" id="L56">        } catch (IllegalValueException ive) {</span>
+<span class="nc" id="L57">            logger.info(&quot;Illegal values found in &quot; + filePath + &quot;: &quot; + ive.getMessage());</span>
+<span class="nc" id="L58">            throw new DataConversionException(ive);</span>
+        }
+    }
+
+    @Override
+    public void saveUltiStudent(ReadOnlyUltiStudent ultiStudent) throws IOException {
+<span class="nc" id="L64">        saveUltiStudent(ultiStudent, filePath);</span>
+<span class="nc" id="L65">    }</span>
+
+    /**
+     * Similar to {@link #saveUltiStudent(ReadOnlyUltiStudent)}.
+     *
+     * @param filePath location of the data. Cannot be null.
+     */
+    public void saveUltiStudent(ReadOnlyUltiStudent ultiStudent, Path filePath) throws IOException {
+<span class="nc" id="L73">        requireNonNull(ultiStudent);</span>
+<span class="nc" id="L74">        requireNonNull(filePath);</span>
+
+<span class="nc" id="L76">        FileUtil.createIfMissing(filePath);</span>
+<span class="nc" id="L77">        JsonUtil.saveJsonFile(new JsonSerializableUltiStudent(ultiStudent), filePath);</span>
+<span class="nc" id="L78">    }</span>
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.1.201803210924</span></div></body></html>

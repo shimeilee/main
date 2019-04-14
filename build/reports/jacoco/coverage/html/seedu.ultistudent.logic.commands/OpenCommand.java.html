@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>OpenCommand.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">main</a> &gt; <a href="index.source.html" class="el_package">seedu.ultistudent.logic.commands</a> &gt; <span class="el_source">OpenCommand.java</span></div><h1>OpenCommand.java</h1><pre class="source lang-java linenums">package seedu.ultistudent.logic.commands;
+
+import static java.util.Objects.requireNonNull;
+import static seedu.ultistudent.logic.parser.CliSyntax.CAP_MANAGER;
+import static seedu.ultistudent.logic.parser.CliSyntax.HOMEWORK_MANAGER;
+import static seedu.ultistudent.logic.parser.CliSyntax.NOTES_MANAGER;
+
+import seedu.ultistudent.logic.CommandHistory;
+import seedu.ultistudent.logic.commands.exceptions.CommandException;
+import seedu.ultistudent.model.Model;
+
+/**
+ * Opens a manager module in UltiStudent.
+ */
+public class OpenCommand extends Command {
+
+    public static final String COMMAND_WORD = &quot;open&quot;;
+
+    public static final String MESSAGE_USAGE = COMMAND_WORD + &quot;: Opens the respective managers.\n&quot;
+            + &quot;There are 3 different types of manager in UltiStudent: &quot;
+            + HOMEWORK_MANAGER + &quot;, &quot;
+            + NOTES_MANAGER + &quot;, &quot;
+            + CAP_MANAGER + &quot;.\n&quot;
+            + &quot;Example of usage: &quot; + COMMAND_WORD + &quot; &quot; + HOMEWORK_MANAGER + &quot;\n&quot;
+            + &quot;Type: 'help' for more&quot;;
+
+    private static final String MESSAGE_SUCCESS = &quot;is opened&quot;;
+    private static final String MESSAGE_FAIL = &quot;Unable to open selected manager.\n&quot;
+            + &quot;Types of manager available are: &quot;
+            + HOMEWORK_MANAGER + &quot;, &quot;
+            + NOTES_MANAGER + &quot;, &quot;
+            + CAP_MANAGER + &quot;.&quot;;
+
+    private final String manager;
+
+    /**
+     * Creates an AddCommand to add the specified {@code Person}
+     */
+<span class="nc" id="L39">    public OpenCommand(String manager) {</span>
+<span class="nc" id="L40">        requireNonNull(manager);</span>
+<span class="nc" id="L41">        this.manager = manager;</span>
+<span class="nc" id="L42">    }</span>
+
+    @Override
+    public CommandResult execute(Model model, CommandHistory history) throws CommandException {
+<span class="nc" id="L46">        requireNonNull(model);</span>
+
+<span class="nc bnc" id="L48" title="All 4 branches missed.">        switch (manager) {</span>
+        case HOMEWORK_MANAGER:
+<span class="nc" id="L50">            return new CommandResult(manager + &quot; &quot; + MESSAGE_SUCCESS);</span>
+        case NOTES_MANAGER:
+<span class="nc" id="L52">            return new CommandResult(manager + &quot; &quot; + MESSAGE_SUCCESS);</span>
+        case CAP_MANAGER:
+<span class="nc" id="L54">            return new CommandResult(manager + &quot; &quot; + MESSAGE_SUCCESS);</span>
+        default:
+<span class="nc" id="L56">            throw new CommandException(MESSAGE_FAIL);</span>
+        }
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.1.201803210924</span></div></body></html>

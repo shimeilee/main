@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>NotesManagerMainPanel.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">main</a> &gt; <a href="index.source.html" class="el_package">seedu.ultistudent.ui</a> &gt; <span class="el_source">NotesManagerMainPanel.java</span></div><h1>NotesManagerMainPanel.java</h1><pre class="source lang-java linenums">package seedu.ultistudent.ui;
+
+import java.util.logging.Logger;
+
+import javafx.beans.value.ObservableValue;
+import javafx.event.Event;
+import javafx.event.EventHandler;
+import javafx.fxml.FXML;
+import javafx.scene.control.TextArea;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.Region;
+import seedu.ultistudent.commons.core.LogsCenter;
+import seedu.ultistudent.model.note.Note;
+
+
+/**
+ * The NotesManager Main Panel of the App
+ */
+public class NotesManagerMainPanel extends UiPart&lt;Region&gt; {
+    private static final String FXML = &quot;NotesManagerMainPanel.fxml&quot;;
+<span class="nc" id="L22">    private final Logger logger = LogsCenter.getLogger(getClass());</span>
+
+    @FXML
+    private TextArea notesText;
+
+    private Note currentNote;
+    private EventHandler&lt;KeyEvent&gt; keyEvent;
+
+    public NotesManagerMainPanel(ObservableValue&lt;Note&gt; selectedNote) {
+<span class="nc" id="L31">        super(FXML);</span>
+
+        // To prevent triggering events for typing inside
+<span class="nc" id="L34">        getRoot().setOnKeyPressed(Event::consume);</span>
+<span class="nc bnc" id="L35" title="All 2 branches missed.">        if (selectedNote.getValue() == null) {</span>
+<span class="nc" id="L36">            notesText.setDisable(true);</span>
+        }
+
+<span class="nc" id="L39">        keyEvent = new EventHandler&lt;KeyEvent&gt;() {</span>
+            @Override
+            public void handle(KeyEvent event) {
+<span class="nc" id="L42">                String content = notesText.getText();</span>
+<span class="nc bnc" id="L43" title="All 2 branches missed.">                if (event.getCode().equals(KeyCode.ENTER)) {</span>
+<span class="nc" id="L44">                    content += '\n';</span>
+<span class="nc bnc" id="L45" title="All 6 branches missed.">                } else if (event.isAltDown() || event.isControlDown() || event.isShortcutDown()) {</span>
+                    //Do nothing if its these keys
+<span class="nc bnc" id="L47" title="All 2 branches missed.">                } else if (event.getCode().equals(KeyCode.BACK_SPACE)) {</span>
+<span class="nc bnc" id="L48" title="All 2 branches missed.">                    if (content.length() != 0) {</span>
+<span class="nc" id="L49">                        content = content.substring(0, content.length() - 1);</span>
+                    } else {
+<span class="nc" id="L51">                        content = &quot;&quot;;</span>
+                    }
+                } else {
+<span class="nc" id="L54">                    content += event.getText();</span>
+                }
+<span class="nc" id="L56">                currentNote.setContent(content);</span>
+<span class="nc" id="L57">            }</span>
+        };
+
+        // Load note page when selected note changes
+<span class="nc" id="L61">        selectedNote.addListener((observable, oldValue, newValue)-&gt; {</span>
+<span class="nc" id="L62">            resetNotesText();</span>
+<span class="nc bnc" id="L63" title="All 2 branches missed.">            if (newValue == null) {</span>
+<span class="nc" id="L64">                loadDefaultNotes();</span>
+<span class="nc" id="L65">                return;</span>
+            }
+<span class="nc" id="L67">            notesText.removeEventFilter(KeyEvent.KEY_PRESSED, keyEvent);</span>
+<span class="nc" id="L68">            currentNote = newValue;</span>
+<span class="nc" id="L69">            loadNotesPage(newValue);</span>
+<span class="nc" id="L70">        });</span>
+<span class="nc" id="L71">        loadDefaultNotes();</span>
+<span class="nc" id="L72">    }</span>
+
+    /**
+     * Loads the selected notes page on the main panel
+     * @param note
+     */
+    private void loadNotesPage (Note note) {
+<span class="nc" id="L79">        notesText.setDisable(false);</span>
+<span class="nc" id="L80">        notesText.setText(note.getContent().toString());</span>
+
+<span class="nc" id="L82">        notesText.addEventFilter(KeyEvent.KEY_PRESSED, keyEvent);</span>
+<span class="nc" id="L83">    }</span>
+
+    /**
+     * Clears the text field and disable it
+     */
+    private void loadDefaultNotes () {
+<span class="nc" id="L89">        notesText.removeEventFilter(KeyEvent.KEY_PRESSED, keyEvent);</span>
+<span class="nc" id="L90">        notesText.setText(&quot;&quot;);</span>
+<span class="nc" id="L91">        notesText.setPromptText(&quot;Key in something&quot;);</span>
+<span class="nc" id="L92">        notesText.setDisable(true);</span>
+<span class="nc" id="L93">    }</span>
+
+    private void resetNotesText() {
+<span class="nc" id="L96">        notesText.setText(&quot;&quot;);</span>
+<span class="nc" id="L97">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.1.201803210924</span></div></body></html>

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>DeleteNoteCommand.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">main</a> &gt; <a href="index.source.html" class="el_package">seedu.ultistudent.logic.commands</a> &gt; <span class="el_source">DeleteNoteCommand.java</span></div><h1>DeleteNoteCommand.java</h1><pre class="source lang-java linenums">package seedu.ultistudent.logic.commands;
+
+import static java.util.Objects.requireNonNull;
+
+import java.util.List;
+
+import seedu.ultistudent.commons.core.Messages;
+import seedu.ultistudent.commons.core.index.Index;
+import seedu.ultistudent.logic.CommandHistory;
+import seedu.ultistudent.logic.commands.exceptions.CommandException;
+import seedu.ultistudent.model.Model;
+import seedu.ultistudent.model.note.Note;
+
+/**
+ * Deletes a cap entry identified using it's displayed index from the Cap Manager.
+ */
+public class DeleteNoteCommand extends Command {
+
+    public static final String COMMAND_WORD = &quot;delete-note&quot;;
+
+    public static final String MESSAGE_USAGE = COMMAND_WORD
+            + &quot;: Deletes the note identified by the index number used in the &quot;
+            + &quot;displayed cap entry list.\n&quot;
+            + &quot;Parameters: INDEX (must be a positive integer)\n&quot;
+            + &quot;Example: &quot; + COMMAND_WORD + &quot; 1&quot;;
+
+    public static final String MESSAGE_DELETE_NOTE_SUCCESS = &quot;Deleted Note: %1$s&quot;;
+
+    private final Index targetIndex;
+
+<span class="nc" id="L31">    public DeleteNoteCommand(Index targetIndex) {</span>
+<span class="nc" id="L32">        this.targetIndex = targetIndex;</span>
+<span class="nc" id="L33">    }</span>
+
+    @Override
+    public CommandResult execute(Model model, CommandHistory history) throws CommandException {
+<span class="nc" id="L37">        requireNonNull(model);</span>
+<span class="nc" id="L38">        List&lt;Note&gt; lastShownList = model.getFilteredNoteList();</span>
+
+<span class="nc bnc" id="L40" title="All 2 branches missed.">        if (targetIndex.getZeroBased() &gt;= lastShownList.size()) {</span>
+<span class="nc" id="L41">            throw new CommandException(</span>
+                    Messages.MESSAGE_INVALID_NOTE_DISPLAYED_INDEX);
+        }
+
+<span class="nc" id="L45">        Note noteToDelete = lastShownList.get(targetIndex.getZeroBased());</span>
+<span class="nc" id="L46">        model.deleteNote(noteToDelete);</span>
+<span class="nc" id="L47">        model.commitUltiStudent();</span>
+
+<span class="nc" id="L49">        return new CommandResult(String.format(MESSAGE_DELETE_NOTE_SUCCESS,</span>
+                noteToDelete));
+    }
+
+    @Override
+    public boolean equals(Object other) {
+<span class="nc bnc" id="L55" title="All 4 branches missed.">        return other == this // short circuit if same object</span>
+                || (other instanceof DeleteNoteCommand // instanceof handles nulls
+<span class="nc bnc" id="L57" title="All 2 branches missed.">                &amp;&amp; targetIndex.equals(((DeleteNoteCommand) other).targetIndex)); // state check</span>
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.1.201803210924</span></div></body></html>

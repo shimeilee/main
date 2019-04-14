@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>InvalidationListenerManager.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">main</a> &gt; <a href="index.source.html" class="el_package">seedu.ultistudent.commons.util</a> &gt; <span class="el_source">InvalidationListenerManager.java</span></div><h1>InvalidationListenerManager.java</h1><pre class="source lang-java linenums">package seedu.ultistudent.commons.util;
+
+import static java.util.Objects.requireNonNull;
+
+import java.util.ArrayList;
+
+import javafx.beans.InvalidationListener;
+import javafx.beans.Observable;
+
+/**
+ * Manages a list of {@link InvalidationListener}.
+ */
+<span class="fc" id="L13">public class InvalidationListenerManager {</span>
+<span class="fc" id="L14">    private final ArrayList&lt;InvalidationListener&gt; listeners = new ArrayList&lt;&gt;();</span>
+
+    /**
+     * Calls {@link InvalidationListener#invalidated(Observable)} on all added listeners.
+     * Any modifications to the listeners list during the invocation of this method
+     * will only take effect on the next invocation of this method.
+     *
+     * @param observable The {@code Observable} that became invalid.
+     */
+    public void callListeners(Observable observable) {
+        // Make a copy of listeners such that any modifications to the listeners list during
+        // the invocation of this method will only take effect on the next invocation of this method.
+<span class="fc" id="L26">        ArrayList&lt;InvalidationListener&gt; listenersCopy = new ArrayList&lt;&gt;(listeners);</span>
+
+<span class="fc bfc" id="L28" title="All 2 branches covered.">        for (InvalidationListener listener : listenersCopy) {</span>
+<span class="fc" id="L29">            listener.invalidated(observable);</span>
+<span class="fc" id="L30">        }</span>
+<span class="fc" id="L31">    }</span>
+
+    /**
+     * Adds {@code listener} to the list of listeners.
+     * If the same listener is added more that once, then it will be notified more than once.
+     */
+    public void addListener(InvalidationListener listener) {
+<span class="fc" id="L38">        requireNonNull(listener);</span>
+<span class="fc" id="L39">        listeners.add(listener);</span>
+<span class="fc" id="L40">    }</span>
+
+    /**
+     * Removes {@code listener} from the list of listeners.
+     * If the given listener was not previously added, then this method call is a no-op.
+     * If the given listener was added more than once, then only the first occurrence in the list will be removed.
+     */
+    public void removeListener(InvalidationListener listener) {
+<span class="fc" id="L48">        requireNonNull(listener);</span>
+<span class="fc" id="L49">        listeners.remove(listener);</span>
+<span class="fc" id="L50">    }</span>
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.1.201803210924</span></div></body></html>

@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>EditHomeworkCommand.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">main</a> &gt; <a href="index.source.html" class="el_package">seedu.ultistudent.logic.commands</a> &gt; <span class="el_source">EditHomeworkCommand.java</span></div><h1>EditHomeworkCommand.java</h1><pre class="source lang-java linenums">package seedu.ultistudent.logic.commands;
+
+import static java.util.Objects.requireNonNull;
+import static seedu.ultistudent.logic.parser.CliSyntax.PREFIX_DEADLINE;
+import static seedu.ultistudent.logic.parser.CliSyntax.PREFIX_HOMEWORK;
+import static seedu.ultistudent.logic.parser.CliSyntax.PREFIX_MODULECODE;
+import static seedu.ultistudent.model.Model.PREDICATE_SHOW_ALL_HOMEWORK;
+import static seedu.ultistudent.model.Model.PREDICATE_SHOW_ALL_MODULE_CODE;
+
+import java.util.List;
+import java.util.Optional;
+
+import seedu.ultistudent.commons.core.Messages;
+import seedu.ultistudent.commons.core.index.Index;
+import seedu.ultistudent.commons.util.CollectionUtil;
+import seedu.ultistudent.logic.CommandHistory;
+import seedu.ultistudent.logic.commands.exceptions.CommandException;
+import seedu.ultistudent.model.Model;
+import seedu.ultistudent.model.homework.Date;
+import seedu.ultistudent.model.homework.Homework;
+import seedu.ultistudent.model.homework.HomeworkName;
+import seedu.ultistudent.model.modulecode.ModuleCode;
+
+/**
+ * Edits the details of a homework entry in the HomeworkManager.
+ */
+<span class="nc bnc" id="L27" title="All 2 branches missed.">public class EditHomeworkCommand extends Command {</span>
+
+    public static final String COMMAND_WORD = &quot;edit-hw&quot;;
+
+<span class="nc" id="L31">    public static final String MESSAGE_USAGE = COMMAND_WORD + &quot;: Edi&quot;</span>
+            + &quot;ts the details of the homework &quot;
+            + &quot;by the index number used in the displayed homework list. &quot;
+            + &quot;Existing values will be overwritten by the input values.\n&quot;
+            + &quot;Parameters: INDEX (must be a positive integer) &quot;
+            + &quot;[&quot; + PREFIX_MODULECODE + &quot;MODULECODE] &quot;
+            + &quot;[&quot; + PREFIX_HOMEWORK + &quot;HOMEWORK] &quot;
+            + &quot;[&quot; + PREFIX_DEADLINE + &quot;DEADLINE] &quot;
+            + &quot;Example: &quot; + COMMAND_WORD + &quot; 1 &quot;
+            + PREFIX_MODULECODE + &quot;CS2103T &quot;
+            + PREFIX_HOMEWORK + &quot;Tutorial 5&quot;;
+
+    public static final String MESSAGE_EDIT_HOMEWORK_SUCCESS = &quot;Edited homework: %1$s&quot;;
+    public static final String MESSAGE_NOT_EDITED = &quot;At least one field to edit must be provided.&quot;;
+    public static final String MESSAGE_DUPLICATE_HOMEWORK = &quot;This homework already exists in the UltiStudent.&quot;;
+
+    private final Index index;
+    private final EditHomeworkDescriptor editHomeworkDescriptor;
+
+    /**
+     * @param index of the homework in the filtered homework list to edit
+     * @param editHomeworkDescriptor details to edit the homework with
+     */
+<span class="nc" id="L54">    public EditHomeworkCommand(Index index, EditHomeworkDescriptor editHomeworkDescriptor) {</span>
+<span class="nc" id="L55">        requireNonNull(index);</span>
+<span class="nc" id="L56">        requireNonNull(editHomeworkDescriptor);</span>
+
+<span class="nc" id="L58">        this.index = index;</span>
+<span class="nc" id="L59">        this.editHomeworkDescriptor = new EditHomeworkDescriptor(editHomeworkDescriptor);</span>
+<span class="nc" id="L60">    }</span>
+
+    @Override
+    public CommandResult execute(Model model, CommandHistory history) throws CommandException {
+<span class="nc" id="L64">        requireNonNull(model);</span>
+<span class="nc" id="L65">        List&lt;Homework&gt; lastShownList = model.getFilteredHomeworkList();</span>
+
+<span class="nc bnc" id="L67" title="All 2 branches missed.">        if (index.getZeroBased() &gt;= lastShownList.size()) {</span>
+<span class="nc" id="L68">            throw new CommandException(Messages.MESSAGE_INVALID_HOMEWORK_DISPLAYED_INDEX);</span>
+        }
+
+<span class="nc" id="L71">        Homework homeworkToEdit = lastShownList.get(index.getZeroBased());</span>
+<span class="nc" id="L72">        ModuleCode moduleCodeOfHomeworkToEdit = homeworkToEdit.getModuleCode();</span>
+<span class="nc" id="L73">        Homework editedHomework = createEditedHomework(homeworkToEdit, editHomeworkDescriptor);</span>
+<span class="nc" id="L74">        ModuleCode moduleCodeOfEditedHomework = editedHomework.getModuleCode();</span>
+
+<span class="nc bnc" id="L76" title="All 4 branches missed.">        if (!homeworkToEdit.equals(editedHomework) &amp;&amp; model.hasHomework(editedHomework)) {</span>
+<span class="nc" id="L77">            throw new CommandException(MESSAGE_DUPLICATE_HOMEWORK);</span>
+        }
+
+<span class="nc" id="L80">        model.setHomework(homeworkToEdit, editedHomework);</span>
+<span class="nc" id="L81">        model.updateFilteredHomeworkList(PREDICATE_SHOW_ALL_HOMEWORK);</span>
+
+        //update module code
+<span class="nc bnc" id="L84" title="All 2 branches missed.">        if (!moduleCodeOfHomeworkToEdit.equals(moduleCodeOfEditedHomework)) {</span>
+<span class="nc" id="L85">            List&lt;Homework&gt; afterEditList = model.getFilteredHomeworkList();</span>
+<span class="nc bnc" id="L86" title="All 2 branches missed.">            if (!model.hasModuleCode(moduleCodeOfEditedHomework)) {</span>
+<span class="nc" id="L87">                model.addModuleCode(moduleCodeOfEditedHomework);</span>
+            }
+<span class="nc" id="L89">            int numHomeworkWithSameModuleCode = 0;</span>
+<span class="nc bnc" id="L90" title="All 2 branches missed.">            for (int i = 0; i &lt; afterEditList.size(); i++) {</span>
+<span class="nc bnc" id="L91" title="All 2 branches missed.">                if (afterEditList.get(i).getModuleCode().equals(moduleCodeOfHomeworkToEdit)) {</span>
+<span class="nc" id="L92">                    numHomeworkWithSameModuleCode++;</span>
+                }
+            }
+<span class="nc bnc" id="L95" title="All 2 branches missed.">            if (numHomeworkWithSameModuleCode == 0) {</span>
+<span class="nc" id="L96">                model.deleteModuleCode(moduleCodeOfHomeworkToEdit);</span>
+            }
+        }
+<span class="nc" id="L99">        model.updateFilteredModuleCodeList(PREDICATE_SHOW_ALL_MODULE_CODE);</span>
+
+<span class="nc" id="L101">        model.commitUltiStudent();</span>
+<span class="nc" id="L102">        return new CommandResult(String.format(MESSAGE_EDIT_HOMEWORK_SUCCESS, editedHomework));</span>
+    }
+
+    /**
+     * Creates and returns a {@code Homework} with the details of {@code homeworkToEdit}
+     * edited with {@code editHomeworkDescriptor}.
+     */
+    private static Homework createEditedHomework(Homework homeworkToEdit,
+                                                 EditHomeworkDescriptor editHomeworkDescriptor) {
+<span class="nc bnc" id="L111" title="All 4 branches missed.">        assert homeworkToEdit != null;</span>
+
+<span class="nc" id="L113">        ModuleCode updatedModuleCode = editHomeworkDescriptor.getModuleCode().orElse(homeworkToEdit.getModuleCode());</span>
+<span class="nc" id="L114">        HomeworkName updatedHomeworkName = editHomeworkDescriptor.getHomeworkName()</span>
+<span class="nc" id="L115">                                                                 .orElse(homeworkToEdit.getHomeworkName());</span>
+<span class="nc" id="L116">        Date updatedDeadline = editHomeworkDescriptor.getDeadline().orElse(homeworkToEdit.getDeadline());</span>
+
+<span class="nc" id="L118">        return new Homework(updatedModuleCode, updatedHomeworkName, updatedDeadline);</span>
+    }
+
+    @Override
+    public boolean equals(Object other) {
+        // short circuit if same object
+<span class="nc bnc" id="L124" title="All 2 branches missed.">        if (other == this) {</span>
+<span class="nc" id="L125">            return true;</span>
+        }
+
+        // instanceof handles nulls
+<span class="nc bnc" id="L129" title="All 2 branches missed.">        if (!(other instanceof EditCommand)) {</span>
+<span class="nc" id="L130">            return false;</span>
+        }
+
+        // state check
+<span class="nc" id="L134">        EditHomeworkCommand e = (EditHomeworkCommand) other;</span>
+<span class="nc bnc" id="L135" title="All 2 branches missed.">        return index.equals(e.index)</span>
+<span class="nc bnc" id="L136" title="All 2 branches missed.">                &amp;&amp; editHomeworkDescriptor.equals(e.editHomeworkDescriptor);</span>
+    }
+
+    /**
+     * Stores the details to edit the homework with. Each non-empty field value will replace the
+     * corresponding field value of the homework.
+     */
+    public static class EditHomeworkDescriptor {
+        private ModuleCode moduleCode;
+        private HomeworkName homeworkName;
+        private Date deadline;
+
+<span class="nc" id="L148">        public EditHomeworkDescriptor() {}</span>
+
+        /**
+         * Copy constructor.
+         * A defensive copy of {@code tags} is used internally.
+         */
+<span class="nc" id="L154">        public EditHomeworkDescriptor(EditHomeworkDescriptor toCopy) {</span>
+<span class="nc" id="L155">            setModuleCode(toCopy.moduleCode);</span>
+<span class="nc" id="L156">            setHomeworkName(toCopy.homeworkName);</span>
+<span class="nc" id="L157">            setDeadline(toCopy.deadline);</span>
+<span class="nc" id="L158">        }</span>
+
+        /**
+         * Returns true if at least one field is edited.
+         */
+        public boolean isAnyFieldEdited() {
+<span class="nc" id="L164">            return CollectionUtil.isAnyNonNull(moduleCode, homeworkName, deadline);</span>
+        }
+
+        public void setModuleCode(ModuleCode moduleCode) {
+<span class="nc" id="L168">            this.moduleCode = moduleCode;</span>
+<span class="nc" id="L169">        }</span>
+
+        public Optional&lt;ModuleCode&gt; getModuleCode() {
+<span class="nc" id="L172">            return Optional.ofNullable(moduleCode);</span>
+        }
+
+        public void setHomeworkName(HomeworkName homeworkName) {
+<span class="nc" id="L176">            this.homeworkName = homeworkName;</span>
+<span class="nc" id="L177">        }</span>
+
+        public Optional&lt;HomeworkName&gt; getHomeworkName() {
+<span class="nc" id="L180">            return Optional.ofNullable(homeworkName);</span>
+        }
+
+        public void setDeadline(Date deadline) {
+<span class="nc" id="L184">            this.deadline = deadline;</span>
+<span class="nc" id="L185">        }</span>
+
+        public Optional&lt;Date&gt; getDeadline() {
+<span class="nc" id="L188">            return Optional.ofNullable(deadline);</span>
+        }
+
+        @Override
+        public boolean equals(Object other) {
+            // short circuit if same object
+<span class="nc bnc" id="L194" title="All 2 branches missed.">            if (other == this) {</span>
+<span class="nc" id="L195">                return true;</span>
+            }
+
+            // instanceof handles nulls
+<span class="nc bnc" id="L199" title="All 2 branches missed.">            if (!(other instanceof EditHomeworkDescriptor)) {</span>
+<span class="nc" id="L200">                return false;</span>
+            }
+
+            // state check
+<span class="nc" id="L204">            EditHomeworkDescriptor e = (EditHomeworkDescriptor) other;</span>
+
+<span class="nc bnc" id="L206" title="All 2 branches missed.">            return getModuleCode().equals(e.getModuleCode())</span>
+<span class="nc bnc" id="L207" title="All 2 branches missed.">                    &amp;&amp; getHomeworkName().equals(e.getHomeworkName())</span>
+<span class="nc bnc" id="L208" title="All 2 branches missed.">                    &amp;&amp; getDeadline().equals(e.getDeadline());</span>
+        }
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.1.201803210924</span></div></body></html>

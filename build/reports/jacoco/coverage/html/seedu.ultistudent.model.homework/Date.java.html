@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Date.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">main</a> &gt; <a href="index.source.html" class="el_package">seedu.ultistudent.model.homework</a> &gt; <span class="el_source">Date.java</span></div><h1>Date.java</h1><pre class="source lang-java linenums">package seedu.ultistudent.model.homework;
+
+import static java.util.Objects.requireNonNull;
+
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Objects;
+
+/**
+ * Represents a Date for a deadline in a homework entry in UltiStudent.
+ */
+public class Date {
+
+    public static final String MESSAGE_CONSTRAINTS = &quot;The format for the date should follow DD/MM/YYYY.\n&quot;
+                            + &quot;It is possible to use single digits for the DD and MM fields.\n&quot;
+                            + &quot;Invalid dates are not accepted. For example: &quot;
+                            + &quot;29 Feb on non-leap years or &quot;
+                            + &quot;a past date from today&quot;;
+
+    //regex reference to https://stackoverflow.com/questions/15491894/regex-to-validate-date-format-dd-mm-yyyy
+    //credits to: Ofir Luzon
+    public static final String VALIDATION_REGEX = &quot;^(?:(?:31(\\/|-|\\.)(?:0?[13578]|1[02]))\\1|(?:(?:29|30)(\\/|-|\\.)&quot;
+            + &quot;(?:0?[13-9]|1[0-2])\\2))(?:(?:1[6-9]|[2-9]\\d)?\\d{2})$|^(?:29(\\/|-|\\.)0?2\\3(?:(?:(?:1[6-9]|[2-9]\\d)&quot;
+            + &quot;?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))$|^(?:0?[1-9]|1\\d|2[0-8])&quot;
+            + &quot;(\\/|-|\\.)(?:(?:0?[1-9])|(?:1[0-2]))\\4(?:(?:1[6-9]|[2-9]\\d)?\\d{2})$&quot;;
+    // Identity fields
+    private String value;
+
+    /**
+     * Every field must be present and not null.
+     */
+<span class="fc" id="L33">    public Date(String date) {</span>
+<span class="fc" id="L34">        requireNonNull(date);</span>
+<span class="fc" id="L35">        this.value = date;</span>
+<span class="fc" id="L36">    }</span>
+
+    public String getDate () {
+<span class="nc" id="L39">        return value;</span>
+    }
+
+    /**
+     * Returns true if it is a valid date.
+     */
+    public static boolean isValidDate(String test, Boolean bypass) {
+<span class="pc bpc" id="L46" title="1 of 2 branches missed.">        if (!bypass) {</span>
+<span class="fc" id="L47">            DateFormat dateFormat = new SimpleDateFormat(&quot;dd/MM/yyyy&quot;);</span>
+<span class="fc" id="L48">            java.util.Date today = new java.util.Date();</span>
+            try {
+<span class="fc" id="L50">                java.util.Date givenDate = dateFormat.parse(test);</span>
+<span class="fc bfc" id="L51" title="All 2 branches covered.">                if (today.compareTo(givenDate) &gt; 0) {</span>
+<span class="fc" id="L52">                    return false;</span>
+                }
+<span class="fc" id="L54">            } catch (ParseException pe) {</span>
+<span class="fc" id="L55">                return false;</span>
+<span class="fc" id="L56">            }</span>
+        }
+<span class="fc" id="L58">        return test.matches(VALIDATION_REGEX);</span>
+    }
+
+    /**
+     * Returns true if both homework have the same deadline.
+     */
+    @Override
+    public boolean equals(Object other) {
+<span class="pc bpc" id="L66" title="1 of 2 branches missed.">        if (other == this) {</span>
+<span class="nc" id="L67">            return true;</span>
+        }
+
+<span class="pc bpc" id="L70" title="1 of 2 branches missed.">        if (!(other instanceof Date)) {</span>
+<span class="nc" id="L71">            return false;</span>
+        }
+
+<span class="fc" id="L74">        return value.equals(((Date) other).value);</span>
+    }
+
+    @Override
+    public int hashCode() {
+        // use this method for custom fields hashing instead of implementing your own
+<span class="nc" id="L80">        return Objects.hash(value);</span>
+    }
+
+    @Override
+    public String toString() {
+<span class="fc" id="L85">        return value;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.1.201803210924</span></div></body></html>

@@ -1,0 +1,301 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>MainWindow.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">main</a> &gt; <a href="index.source.html" class="el_package">seedu.ultistudent.ui</a> &gt; <span class="el_source">MainWindow.java</span></div><h1>MainWindow.java</h1><pre class="source lang-java linenums">package seedu.ultistudent.ui;
+
+import static seedu.ultistudent.logic.parser.CliSyntax.CAP_MANAGER;
+import static seedu.ultistudent.logic.parser.CliSyntax.HOMEWORK_MANAGER;
+import static seedu.ultistudent.logic.parser.CliSyntax.NOTES_MANAGER;
+
+import java.util.logging.Logger;
+
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.scene.control.MenuItem;
+import javafx.scene.control.TextInputControl;
+import javafx.scene.input.KeyCombination;
+import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.StackPane;
+import javafx.stage.Stage;
+import seedu.ultistudent.commons.core.GuiSettings;
+import seedu.ultistudent.commons.core.LogsCenter;
+import seedu.ultistudent.logic.Logic;
+import seedu.ultistudent.logic.commands.CommandResult;
+import seedu.ultistudent.logic.commands.exceptions.CommandException;
+import seedu.ultistudent.logic.parser.exceptions.ParseException;
+
+/**
+ * The Main Window. Provides the basic application layout containing
+ * a menu bar and space where other JavaFX elements can be placed.
+ */
+public class MainWindow extends UiPart&lt;Stage&gt; {
+
+    private static final String FXML = &quot;MainWindow.fxml&quot;;
+
+<span class="fc" id="L32">    private final Logger logger = LogsCenter.getLogger(getClass());</span>
+
+    private Stage primaryStage;
+    private Logic logic;
+
+    // Independent Ui parts residing in this Ui container
+
+    private HomeworkManagerMainPanel homeworkManagerMainPanel;
+    private NotesManagerMainPanel notesManagerMainPanel;
+    private CapManagerMainPanel capManagerMainPanel;
+
+    private HomeworkManagerSubPanel homeworkManagerSubPanel;
+    private NotesManagerSubPanel notesManagerSubPanel;
+    private CapManagerSubPanel capManagerSubPanel;
+
+    private ResultDisplay resultDisplay;
+    private HelpWindow helpWindow;
+    private IconListPanel iconListPanel;
+    private StatusBarFooter statusBarFooter;
+
+    @FXML
+    private StackPane mainPanelPlaceholder;
+
+    @FXML
+    private StackPane commandBoxPlaceholder;
+
+    @FXML
+    private MenuItem helpMenuItem;
+
+    @FXML
+    private StackPane subPanelPlaceholder;
+
+    @FXML
+    private StackPane resultDisplayPlaceholder;
+
+    @FXML
+    private StackPane statusbarPlaceholder;
+
+    @FXML
+    private StackPane iconListPanelPlaceholder;
+
+    public MainWindow(Stage primaryStage, Logic logic) {
+<span class="fc" id="L74">        super(FXML, primaryStage);</span>
+
+        // Set dependencies
+<span class="fc" id="L77">        this.primaryStage = primaryStage;</span>
+<span class="fc" id="L78">        this.logic = logic;</span>
+
+        // Configure the UI
+<span class="fc" id="L81">        setWindowDefaultSize(logic.getGuiSettings());</span>
+
+<span class="fc" id="L83">        setAccelerators();</span>
+
+<span class="fc" id="L85">        helpWindow = new HelpWindow();</span>
+<span class="fc" id="L86">    }</span>
+
+    public Stage getPrimaryStage() {
+<span class="nc" id="L89">        return primaryStage;</span>
+    }
+
+    private void setAccelerators() {
+<span class="fc" id="L93">        setAccelerator(helpMenuItem, KeyCombination.valueOf(&quot;F1&quot;));</span>
+<span class="fc" id="L94">    }</span>
+
+    /**
+     * Sets the accelerator of a MenuItem.
+     * @param keyCombination the KeyCombination value of the accelerator
+     */
+    private void setAccelerator(MenuItem menuItem, KeyCombination keyCombination) {
+<span class="fc" id="L101">        menuItem.setAccelerator(keyCombination);</span>
+
+        /*
+         * TODO: the code below can be removed once the bug reported here
+         * https://bugs.openjdk.java.net/browse/JDK-8131666
+         * is fixed in later version of SDK.
+         *
+         * According to the bug report, TextInputControl (TextField, TextArea) will
+         * consume function-key events. Because CommandBox contains a TextField, and
+         * ResultDisplay contains a TextArea, thus some accelerators (e.g F1) will
+         * not work when the focus is in them because the key event is consumed by
+         * the TextInputControl(s).
+         *
+         * For now, we add following event filter to capture such key events and open
+         * help window purposely so to support accelerators even when focus is
+         * in CommandBox or ResultDisplay.
+         */
+<span class="fc" id="L118">        getRoot().addEventFilter(KeyEvent.KEY_PRESSED, event -&gt; {</span>
+<span class="nc bnc" id="L119" title="All 4 branches missed.">            if (event.getTarget() instanceof TextInputControl &amp;&amp; keyCombination.match(event)) {</span>
+<span class="nc" id="L120">                menuItem.getOnAction().handle(new ActionEvent());</span>
+<span class="nc" id="L121">                event.consume();</span>
+            }
+<span class="nc" id="L123">        });</span>
+<span class="fc" id="L124">    }</span>
+
+    /**
+     * Fills up all the placeholders of this window.
+     */
+    void fillInnerParts() {
+<span class="nc" id="L130">        iconListPanel = new IconListPanel();</span>
+<span class="nc" id="L131">        iconListPanelPlaceholder.getChildren().add(iconListPanel.getRoot());</span>
+
+<span class="nc" id="L133">        resultDisplay = new ResultDisplay();</span>
+<span class="nc" id="L134">        resultDisplayPlaceholder.getChildren().add(resultDisplay.getRoot());</span>
+
+<span class="nc" id="L136">        statusBarFooter = new StatusBarFooter(HOMEWORK_MANAGER, logic.getUltiStudent());</span>
+<span class="nc" id="L137">        statusbarPlaceholder.getChildren().add(statusBarFooter.getRoot());</span>
+
+<span class="nc" id="L139">        CommandBox commandBox = new CommandBox(this::executeCommand, logic.getHistory());</span>
+<span class="nc" id="L140">        commandBoxPlaceholder.getChildren().add(commandBox.getRoot());</span>
+
+<span class="nc" id="L142">        handleSwitchToHomeworkManager();</span>
+<span class="nc" id="L143">    }</span>
+
+    /**
+     * Sets the default size based on {@code guiSettings}.
+     */
+    private void setWindowDefaultSize(GuiSettings guiSettings) {
+<span class="fc" id="L149">        primaryStage.setHeight(guiSettings.getWindowHeight());</span>
+<span class="fc" id="L150">        primaryStage.setWidth(guiSettings.getWindowWidth());</span>
+<span class="pc bpc" id="L151" title="1 of 2 branches missed.">        if (guiSettings.getWindowCoordinates() != null) {</span>
+<span class="nc" id="L152">            primaryStage.setX(guiSettings.getWindowCoordinates().getX());</span>
+<span class="nc" id="L153">            primaryStage.setY(guiSettings.getWindowCoordinates().getY());</span>
+        }
+<span class="fc" id="L155">    }</span>
+
+    /**
+     * Opens the help window or focuses on it if it's already opened.
+     */
+    @FXML
+    public void handleHelp() {
+<span class="pc bpc" id="L162" title="1 of 2 branches missed.">        if (!helpWindow.isShowing()) {</span>
+<span class="fc" id="L163">            helpWindow.show();</span>
+        } else {
+<span class="nc" id="L165">            helpWindow.focus();</span>
+        }
+<span class="fc" id="L167">    }</span>
+
+    void show() {
+<span class="nc" id="L170">        primaryStage.show();</span>
+<span class="nc" id="L171">    }</span>
+
+    /**
+     * Closes the application.
+     */
+    @FXML
+    private void handleExit() {
+<span class="fc" id="L178">        GuiSettings guiSettings = new GuiSettings(primaryStage.getWidth(), primaryStage.getHeight(),</span>
+<span class="fc" id="L179">                (int) primaryStage.getX(), (int) primaryStage.getY());</span>
+<span class="fc" id="L180">        logic.setGuiSettings(guiSettings);</span>
+<span class="fc" id="L181">        helpWindow.hide();</span>
+<span class="fc" id="L182">        primaryStage.hide();</span>
+<span class="fc" id="L183">    }</span>
+
+    /**
+     * Executes the command and returns the result.
+     *
+     * @see seedu.ultistudent.logic.Logic#execute(String)
+     */
+    private CommandResult executeCommand(String commandText) throws CommandException, ParseException {
+        try {
+<span class="nc" id="L192">            CommandResult commandResult = logic.execute(commandText);</span>
+<span class="nc" id="L193">            logger.info(&quot;Result: &quot; + commandResult.getFeedbackToUser());</span>
+<span class="nc" id="L194">            resultDisplay.setFeedbackToUser(commandResult.getFeedbackToUser());</span>
+
+<span class="nc bnc" id="L196" title="All 2 branches missed.">            if (commandResult.isChangeManager()) {</span>
+<span class="nc" id="L197">                String [] selectedManager = commandResult.getFeedbackToUser().split(&quot; &quot;);</span>
+<span class="nc" id="L198">                logger.info(selectedManager[0]);</span>
+<span class="nc bnc" id="L199" title="All 4 branches missed.">                switch (selectedManager[0]) {</span>
+                case HOMEWORK_MANAGER:
+<span class="nc" id="L201">                    handleSwitchToHomeworkManager();</span>
+<span class="nc" id="L202">                    break;</span>
+                case NOTES_MANAGER:
+<span class="nc" id="L204">                    handleSwitchToNotesManager();</span>
+<span class="nc" id="L205">                    break;</span>
+                case CAP_MANAGER:
+<span class="nc" id="L207">                    handleSwitchToCapsManager();</span>
+<span class="nc" id="L208">                    break;</span>
+                default:
+                    break;
+                }
+            }
+
+<span class="nc bnc" id="L214" title="All 2 branches missed.">            if (commandResult.isShowHelp()) {</span>
+<span class="nc" id="L215">                handleHelp();</span>
+            }
+
+<span class="nc bnc" id="L218" title="All 2 branches missed.">            if (commandResult.isExit()) {</span>
+<span class="nc" id="L219">                handleExit();</span>
+            }
+
+<span class="nc" id="L222">            return commandResult;</span>
+<span class="nc" id="L223">        } catch (CommandException | ParseException e) {</span>
+<span class="nc" id="L224">            logger.info(&quot;Invalid command: &quot; + commandText);</span>
+<span class="nc" id="L225">            resultDisplay.setFeedbackToUser(e.getMessage());</span>
+<span class="nc" id="L226">            throw e;</span>
+        }
+    }
+
+    /**
+     * Handles the view for Homework Manager.
+     */
+    @FXML
+    public void handleSwitchToHomeworkManager() {
+<span class="nc" id="L235">        dimAllIcons();</span>
+<span class="nc" id="L236">        iconListPanel.setHomeworkManagerIconBrightness(1);</span>
+
+<span class="nc" id="L238">        statusBarFooter.setCurrentManagerText(HOMEWORK_MANAGER);</span>
+
+<span class="nc" id="L240">        clearDisplay();</span>
+<span class="nc" id="L241">        homeworkManagerMainPanel = new HomeworkManagerMainPanel(logic.getFilteredHomeworkList(),</span>
+<span class="nc" id="L242">                                                              logic.selectedHomeworkProperty(),</span>
+                                                              logic::setSelectedHomework);
+<span class="nc" id="L244">        homeworkManagerSubPanel = new HomeworkManagerSubPanel(logic.getFilteredModuleCodeList(),</span>
+<span class="nc" id="L245">                                                              logic.selectedModuleCodeProperty(),</span>
+                                                              logic::setSelectedModuleCode);
+<span class="nc" id="L247">        mainPanelPlaceholder.getChildren().add(homeworkManagerMainPanel.getRoot());</span>
+<span class="nc" id="L248">        subPanelPlaceholder.getChildren().add(homeworkManagerSubPanel.getRoot());</span>
+<span class="nc" id="L249">    }</span>
+
+    /**
+     * Handles the view for Notes Manager.
+     */
+    @FXML
+    public void handleSwitchToNotesManager() {
+<span class="nc" id="L256">        dimAllIcons();</span>
+<span class="nc" id="L257">        iconListPanel.setNotesManagerIconBrightness(1);</span>
+
+<span class="nc" id="L259">        statusBarFooter.setCurrentManagerText(NOTES_MANAGER);</span>
+
+<span class="nc" id="L261">        clearDisplay();</span>
+<span class="nc" id="L262">        notesManagerMainPanel = new NotesManagerMainPanel(logic.selectedNoteProperty());</span>
+<span class="nc" id="L263">        notesManagerSubPanel = new NotesManagerSubPanel(logic.getFilteredNoteList(),</span>
+<span class="nc" id="L264">                                                        logic.selectedNoteProperty(),</span>
+                                                        logic::setSelectedNote);
+<span class="nc" id="L266">        mainPanelPlaceholder.getChildren().add(notesManagerMainPanel.getRoot());</span>
+<span class="nc" id="L267">        subPanelPlaceholder.getChildren().add(notesManagerSubPanel.getRoot());</span>
+<span class="nc" id="L268">    }</span>
+
+    /**
+     * Handles the view for Caps Manager.
+     */
+    @FXML
+    public void handleSwitchToCapsManager() {
+<span class="nc" id="L275">        dimAllIcons();</span>
+<span class="nc" id="L276">        iconListPanel.setCapManagerIconBrightness(1);</span>
+
+<span class="nc" id="L278">        statusBarFooter.setCurrentManagerText(CAP_MANAGER);</span>
+
+<span class="nc" id="L280">        clearDisplay();</span>
+<span class="nc" id="L281">        capManagerMainPanel = new CapManagerMainPanel(logic.getFilteredCapEntryList());</span>
+<span class="nc" id="L282">        capManagerSubPanel = new CapManagerSubPanel(logic.getFilteredModuleSemesterList(),</span>
+<span class="nc" id="L283">                                                    logic.selectedModuleSemesterProperty(),</span>
+                                                    logic::setSelectedModuleSemester);
+<span class="nc" id="L285">        mainPanelPlaceholder.getChildren().add(capManagerMainPanel.getRoot());</span>
+<span class="nc" id="L286">        subPanelPlaceholder.getChildren().add(capManagerSubPanel.getRoot());</span>
+<span class="nc" id="L287">    }</span>
+
+    private void clearDisplay() {
+<span class="nc" id="L290">        mainPanelPlaceholder.getChildren().clear();</span>
+<span class="nc" id="L291">        subPanelPlaceholder.getChildren().clear();</span>
+<span class="nc" id="L292">    }</span>
+
+    private void dimAllIcons() {
+<span class="nc" id="L295">        iconListPanel.setHomeworkManagerIconBrightness(0.5);</span>
+<span class="nc" id="L296">        iconListPanel.setNotesManagerIconBrightness(0.5);</span>
+<span class="nc" id="L297">        iconListPanel.setCapManagerIconBrightness(0.5);</span>
+<span class="nc" id="L298">    }</span>
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.1.201803210924</span></div></body></html>

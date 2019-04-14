@@ -1,0 +1,721 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ModelManager.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">main</a> &gt; <a href="index.source.html" class="el_package">seedu.ultistudent.model</a> &gt; <span class="el_source">ModelManager.java</span></div><h1>ModelManager.java</h1><pre class="source lang-java linenums">package seedu.ultistudent.model;
+
+import static java.util.Objects.requireNonNull;
+import static seedu.ultistudent.commons.util.CollectionUtil.requireAllNonNull;
+
+import java.nio.file.Path;
+import java.util.function.Predicate;
+import java.util.logging.Logger;
+
+import javafx.beans.property.ReadOnlyProperty;
+import javafx.beans.property.SimpleObjectProperty;
+import javafx.collections.ListChangeListener;
+import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
+import seedu.ultistudent.commons.core.GuiSettings;
+import seedu.ultistudent.commons.core.LogsCenter;
+import seedu.ultistudent.model.cap.CapEntry;
+import seedu.ultistudent.model.cap.ModuleSemester;
+import seedu.ultistudent.model.cap.exceptions.CapEntryNotFoundException;
+import seedu.ultistudent.model.cap.exceptions.ModuleSemesterNotFoundException;
+import seedu.ultistudent.model.homework.Homework;
+import seedu.ultistudent.model.homework.exceptions.HomeworkNotFoundException;
+import seedu.ultistudent.model.homework.exceptions.ModuleCodeNotFoundException;
+import seedu.ultistudent.model.modulecode.ModuleCode;
+import seedu.ultistudent.model.note.Note;
+import seedu.ultistudent.model.note.exceptions.NoteNotFoundException;
+import seedu.ultistudent.model.person.Person;
+import seedu.ultistudent.model.person.exceptions.PersonNotFoundException;
+
+/**
+ * Represents the in-memory model of the UltiStudent data.
+ */
+public class ModelManager implements Model {
+<span class="fc" id="L34">    private static final Logger logger = LogsCenter.getLogger(ModelManager.class);</span>
+
+    private final VersionedUltiStudent versionedUltiStudent;
+    private final UserPrefs userPrefs;
+    private final FilteredList&lt;Person&gt; filteredPersons;
+<span class="fc" id="L39">    private final SimpleObjectProperty&lt;Person&gt; selectedPerson = new SimpleObjectProperty&lt;&gt;();</span>
+    private final FilteredList&lt;CapEntry&gt; filteredCapEntryList;
+<span class="fc" id="L41">    private final SimpleObjectProperty&lt;CapEntry&gt; selectedCapEntry = new SimpleObjectProperty&lt;&gt;();</span>
+    private final FilteredList&lt;Homework&gt; filteredHomeworkList;
+<span class="fc" id="L43">    private final SimpleObjectProperty&lt;Homework&gt; selectedHomework = new SimpleObjectProperty&lt;&gt;();</span>
+    private final FilteredList&lt;Note&gt; filteredNoteList;
+<span class="fc" id="L45">    private final SimpleObjectProperty&lt;Note&gt; selectedNote = new SimpleObjectProperty&lt;&gt;();</span>
+    private final FilteredList&lt;ModuleSemester&gt; filteredModuleSemesterList;
+<span class="fc" id="L47">    private final SimpleObjectProperty&lt;ModuleSemester&gt; selectedModuleSemester = new SimpleObjectProperty&lt;&gt;();</span>
+    private final FilteredList&lt;ModuleCode&gt; filteredModuleCodeList;
+<span class="fc" id="L49">    private final SimpleObjectProperty&lt;ModuleCode&gt; selectedModuleCode = new SimpleObjectProperty&lt;&gt;();</span>
+
+
+    /**
+     * Initializes a ModelManager with the given ultiStudent and userPrefs.
+     */
+    public ModelManager(ReadOnlyUltiStudent ultiStudent, ReadOnlyUserPrefs userPrefs) {
+<span class="fc" id="L56">        super();</span>
+<span class="fc" id="L57">        requireAllNonNull(ultiStudent, userPrefs);</span>
+
+<span class="fc" id="L59">        logger.fine(&quot;Initializing with UltiStudent: &quot; + ultiStudent + &quot; and user prefs &quot; + userPrefs);</span>
+
+<span class="fc" id="L61">        versionedUltiStudent = new VersionedUltiStudent(ultiStudent);</span>
+<span class="fc" id="L62">        this.userPrefs = new UserPrefs(userPrefs);</span>
+<span class="fc" id="L63">        filteredPersons = new FilteredList&lt;&gt;(versionedUltiStudent.getPersonList());</span>
+<span class="fc" id="L64">        filteredPersons.addListener(this::ensureSelectedPersonIsValid);</span>
+<span class="fc" id="L65">        filteredCapEntryList = new FilteredList&lt;&gt;(versionedUltiStudent.getCapEntryList());</span>
+<span class="fc" id="L66">        filteredCapEntryList.addListener(this::ensureSelectedCapEntryIsValid);</span>
+<span class="fc" id="L67">        filteredHomeworkList = new FilteredList&lt;&gt;(versionedUltiStudent.getHomeworkList());</span>
+<span class="fc" id="L68">        filteredHomeworkList.addListener(this::ensureSelectedHomeworkIsValid);</span>
+<span class="fc" id="L69">        filteredNoteList = new FilteredList&lt;&gt;(versionedUltiStudent.getNoteList());</span>
+<span class="fc" id="L70">        filteredNoteList.addListener(this::ensureSelectedNoteIsValid);</span>
+<span class="fc" id="L71">        filteredModuleSemesterList = new FilteredList&lt;&gt;(versionedUltiStudent.getModuleSemesterList());</span>
+<span class="fc" id="L72">        filteredModuleSemesterList.addListener(this::ensureSelectedModuleSemesterIsValid);</span>
+<span class="fc" id="L73">        filteredModuleCodeList = new FilteredList&lt;&gt;(versionedUltiStudent.getModuleCodeList());</span>
+<span class="fc" id="L74">        filteredModuleCodeList.addListener(this::ensureSelectedModuleCodeIsValid);</span>
+<span class="fc" id="L75">    }</span>
+
+    public ModelManager() {
+<span class="fc" id="L78">        this(new UltiStudent(), new UserPrefs());</span>
+<span class="fc" id="L79">    }</span>
+
+    //=========== UserPrefs ==================================================================================
+
+    @Override
+    public void setUserPrefs(ReadOnlyUserPrefs userPrefs) {
+<span class="fc" id="L85">        requireNonNull(userPrefs);</span>
+<span class="fc" id="L86">        this.userPrefs.resetData(userPrefs);</span>
+<span class="fc" id="L87">    }</span>
+
+    @Override
+    public ReadOnlyUserPrefs getUserPrefs() {
+<span class="fc" id="L91">        return userPrefs;</span>
+    }
+
+    @Override
+    public GuiSettings getGuiSettings() {
+<span class="fc" id="L96">        return userPrefs.getGuiSettings();</span>
+    }
+
+    @Override
+    public void setGuiSettings(GuiSettings guiSettings) {
+<span class="fc" id="L101">        requireNonNull(guiSettings);</span>
+<span class="fc" id="L102">        userPrefs.setGuiSettings(guiSettings);</span>
+<span class="fc" id="L103">    }</span>
+
+    @Override
+    public Path getUltiStudentFilePath() {
+<span class="fc" id="L107">        return userPrefs.getUltiStudentFilePath();</span>
+    }
+
+    @Override
+    public void setUltiStudentFilePath(Path ultiStudentFilePath) {
+<span class="fc" id="L112">        requireNonNull(ultiStudentFilePath);</span>
+<span class="fc" id="L113">        userPrefs.setUltiStudentFilePath(ultiStudentFilePath);</span>
+<span class="fc" id="L114">    }</span>
+
+    //=========== UltiStudent ================================================================================
+
+    @Override
+    public void setUltiStudent(ReadOnlyUltiStudent ultiStudent) {
+<span class="fc" id="L120">        versionedUltiStudent.resetData(ultiStudent);</span>
+<span class="fc" id="L121">    }</span>
+
+    @Override
+    public ReadOnlyUltiStudent getUltiStudent() {
+<span class="fc" id="L125">        return versionedUltiStudent;</span>
+    }
+
+    @Override
+    public boolean hasPerson(Person person) {
+<span class="fc" id="L130">        requireNonNull(person);</span>
+<span class="fc" id="L131">        return versionedUltiStudent.hasPerson(person);</span>
+    }
+
+    @Override
+    public void deletePerson(Person target) {
+<span class="fc" id="L136">        versionedUltiStudent.removePerson(target);</span>
+<span class="fc" id="L137">    }</span>
+
+    @Override
+    public void addPerson(Person person) {
+<span class="fc" id="L141">        versionedUltiStudent.addPerson(person);</span>
+<span class="fc" id="L142">        updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);</span>
+<span class="fc" id="L143">    }</span>
+
+    @Override
+    public void setPerson(Person target, Person editedPerson) {
+<span class="fc" id="L147">        requireAllNonNull(target, editedPerson);</span>
+
+<span class="fc" id="L149">        versionedUltiStudent.setPerson(target, editedPerson);</span>
+<span class="fc" id="L150">    }</span>
+
+    //=========== Filtered Person List Accessors =============================================================
+
+    /**
+     * Returns an unmodifiable view of the list of {@code Person} backed by the internal list of
+     * {@code versionedUltiStudent}
+     */
+    @Override
+    public ObservableList&lt;Person&gt; getFilteredPersonList() {
+<span class="fc" id="L160">        return filteredPersons;</span>
+    }
+
+    @Override
+    public void updateFilteredPersonList(Predicate&lt;Person&gt; predicate) {
+<span class="fc" id="L165">        requireNonNull(predicate);</span>
+<span class="fc" id="L166">        filteredPersons.setPredicate(predicate);</span>
+<span class="fc" id="L167">    }</span>
+
+    //=========== Undo/Redo =================================================================================
+
+    @Override
+    public boolean canUndoUltiStudent() {
+<span class="fc" id="L173">        return versionedUltiStudent.canUndo();</span>
+    }
+
+    @Override
+    public boolean canRedoUltiStudent() {
+<span class="fc" id="L178">        return versionedUltiStudent.canRedo();</span>
+    }
+
+    @Override
+    public void undoUltiStudent() {
+<span class="fc" id="L183">        versionedUltiStudent.undo();</span>
+<span class="fc" id="L184">    }</span>
+
+    @Override
+    public void redoUltiStudent() {
+<span class="fc" id="L188">        versionedUltiStudent.redo();</span>
+<span class="fc" id="L189">    }</span>
+
+    @Override
+    public void commitUltiStudent() {
+<span class="fc" id="L193">        versionedUltiStudent.commit();</span>
+<span class="fc" id="L194">    }</span>
+
+    //=========== Selected person ===========================================================================
+
+    @Override
+    public ReadOnlyProperty&lt;Person&gt; selectedPersonProperty() {
+<span class="nc" id="L200">        return selectedPerson;</span>
+    }
+
+    @Override
+    public Person getSelectedPerson() {
+<span class="fc" id="L205">        return selectedPerson.getValue();</span>
+    }
+
+    @Override
+    public void setSelectedPerson(Person person) {
+<span class="pc bpc" id="L210" title="1 of 4 branches missed.">        if (person != null &amp;&amp; !filteredPersons.contains(person)) {</span>
+<span class="fc" id="L211">            throw new PersonNotFoundException();</span>
+        }
+<span class="fc" id="L213">        selectedPerson.setValue(person);</span>
+<span class="fc" id="L214">    }</span>
+
+
+    /**
+     * Ensures {@code selectedPerson} is a valid person in {@code filteredPersons}.
+     */
+    private void ensureSelectedPersonIsValid(ListChangeListener.Change&lt;? extends
+            Person&gt; change) {
+<span class="fc bfc" id="L222" title="All 2 branches covered.">        while (change.next()) {</span>
+<span class="fc bfc" id="L223" title="All 2 branches covered.">            if (selectedPerson.getValue() == null) {</span>
+                // null is always a valid selected person, so we do not need to check that it is valid anymore.
+<span class="fc" id="L225">                return;</span>
+            }
+
+<span class="pc bpc" id="L228" title="1 of 4 branches missed.">            boolean wasSelectedPersonReplaced = change.wasReplaced() &amp;&amp; change.getAddedSize() == change.getRemovedSize()</span>
+<span class="pc bpc" id="L229" title="1 of 2 branches missed.">                    &amp;&amp; change.getRemoved().contains(selectedPerson.getValue());</span>
+<span class="fc bfc" id="L230" title="All 2 branches covered.">            if (wasSelectedPersonReplaced) {</span>
+                // Update selectedPerson to its new value.
+<span class="fc" id="L232">                int index = change.getRemoved().indexOf(selectedPerson.getValue());</span>
+<span class="fc" id="L233">                selectedPerson.setValue(change.getAddedSubList().get(index));</span>
+<span class="fc" id="L234">                continue;</span>
+            }
+
+<span class="fc" id="L237">            boolean wasSelectedPersonRemoved = change.getRemoved().stream()</span>
+<span class="fc" id="L238">                    .anyMatch(removedPerson -&gt; selectedPerson.getValue().isSamePerson(removedPerson));</span>
+<span class="pc bpc" id="L239" title="1 of 2 branches missed.">            if (wasSelectedPersonRemoved) {</span>
+                // Select the person that came before it in the list,
+                // or clear the selection if there is no such person.
+<span class="fc bfc" id="L242" title="All 2 branches covered.">                selectedPerson.setValue(change.getFrom() &gt; 0 ? change.getList().get(change.getFrom() - 1) : null);</span>
+            }
+<span class="fc" id="L244">        }</span>
+<span class="fc" id="L245">    }</span>
+
+    //====================== CapManager =====================================================================
+
+    @Override
+    public boolean hasCapEntry(CapEntry capEntry) {
+<span class="fc" id="L251">        requireNonNull(capEntry);</span>
+<span class="fc" id="L252">        return versionedUltiStudent.hasCapEntry(capEntry);</span>
+    }
+
+    @Override
+    public void deleteCapEntry(CapEntry target) {
+<span class="fc" id="L257">        versionedUltiStudent.removeCapEntry(target);</span>
+<span class="fc" id="L258">    }</span>
+
+    @Override
+    public void addCapEntry(CapEntry capEntry) {
+<span class="nc" id="L262">        versionedUltiStudent.addCapEntry(capEntry);</span>
+<span class="nc" id="L263">        updateFilteredCapEntryList(PREDICATE_SHOW_ALL_CAP_ENTRIES);</span>
+<span class="nc" id="L264">    }</span>
+
+    @Override
+    public void setCapEntry(CapEntry target, CapEntry editedCapEntry) {
+<span class="fc" id="L268">        requireAllNonNull(target, editedCapEntry);</span>
+
+<span class="fc" id="L270">        versionedUltiStudent.setCapEntry(target, editedCapEntry);</span>
+<span class="fc" id="L271">    }</span>
+
+    /**
+     * Returns an unmodifiable view of the list of {@code CapEntry} backed by the internal list of
+     * {@code versionedUltiStudent}
+     */
+    @Override
+    public ObservableList&lt;CapEntry&gt; getFilteredCapEntryList() {
+<span class="fc" id="L279">        return filteredCapEntryList;</span>
+    }
+
+    @Override
+    public void updateFilteredCapEntryList(Predicate&lt;CapEntry&gt; predicate) {
+<span class="fc" id="L284">        requireNonNull(predicate);</span>
+<span class="fc" id="L285">        filteredCapEntryList.setPredicate(predicate);</span>
+<span class="fc" id="L286">    }</span>
+
+    @Override
+    public ReadOnlyProperty&lt;CapEntry&gt; selectedCapEntryProperty() {
+<span class="nc" id="L290">        return selectedCapEntry;</span>
+    }
+
+    @Override
+    public CapEntry getSelectedCapEntry() {
+<span class="nc" id="L295">        return selectedCapEntry.getValue();</span>
+    }
+
+    @Override
+    public void setSelectedCapEntry(CapEntry capEntry) {
+<span class="nc bnc" id="L300" title="All 4 branches missed.">        if (capEntry != null &amp;&amp; !filteredCapEntryList.contains(capEntry)) {</span>
+<span class="nc" id="L301">            throw new CapEntryNotFoundException();</span>
+        }
+<span class="nc" id="L303">        selectedCapEntry.setValue(capEntry);</span>
+<span class="nc" id="L304">    }</span>
+
+    /**
+     * Ensures {@code selectedCapEntry} is a valid cap entry in {@code filteredCapEntryList}.
+     */
+    private void ensureSelectedCapEntryIsValid(ListChangeListener.Change&lt;? extends CapEntry&gt; change) {
+<span class="pc bpc" id="L310" title="1 of 2 branches missed.">        while (change.next()) {</span>
+<span class="pc bpc" id="L311" title="1 of 2 branches missed.">            if (selectedCapEntry.getValue() == null) {</span>
+                // null is always a valid selected cap entry, so we do not need to check that it is valid anymore.
+<span class="fc" id="L313">                return;</span>
+            }
+
+<span class="nc bnc" id="L316" title="All 2 branches missed.">            boolean wasSelectedCapEntryReplaced = change.wasReplaced() &amp;&amp; change.getAddedSize()</span>
+<span class="nc bnc" id="L317" title="All 4 branches missed.">                    == change.getRemovedSize() &amp;&amp; change.getRemoved().contains(selectedCapEntry.getValue());</span>
+<span class="nc bnc" id="L318" title="All 2 branches missed.">            if (wasSelectedCapEntryReplaced) {</span>
+                // Update selectedCapEntry to its new value.
+<span class="nc" id="L320">                int index = change.getRemoved().indexOf(selectedCapEntry.getValue());</span>
+<span class="nc" id="L321">                selectedCapEntry.setValue(change.getAddedSubList().get(index));</span>
+<span class="nc" id="L322">                continue;</span>
+            }
+
+<span class="nc" id="L325">            boolean wasSelectedCapEntryRemoved = change.getRemoved().stream()</span>
+<span class="nc" id="L326">                    .anyMatch(removedCapEntry -&gt; selectedCapEntry.getValue().isSameCapEntry(removedCapEntry));</span>
+<span class="nc bnc" id="L327" title="All 2 branches missed.">            if (wasSelectedCapEntryRemoved) {</span>
+                // Select the cap entry that came before it in the list,
+                // or clear the selection if there is no such cap entry.
+<span class="nc bnc" id="L330" title="All 2 branches missed.">                selectedCapEntry.setValue(change.getFrom() &gt; 0 ? change.getList().get(change.getFrom() - 1) : null);</span>
+            }
+<span class="nc" id="L332">        }</span>
+<span class="nc" id="L333">    }</span>
+    //====================== Module Semester List ===========================================================
+
+    @Override
+    public boolean hasModuleSemester(ModuleSemester moduleSemester) {
+<span class="fc" id="L338">        requireNonNull(moduleSemester);</span>
+<span class="fc" id="L339">        return versionedUltiStudent.hasModuleSemester(moduleSemester);</span>
+    }
+
+    @Override
+    public void deleteModuleSemester(ModuleSemester target) {
+<span class="fc" id="L344">        versionedUltiStudent.removeModuleSemester(target);</span>
+<span class="fc" id="L345">    }</span>
+
+    @Override
+    public void addModuleSemester(ModuleSemester moduleSemester) {
+<span class="nc" id="L349">        versionedUltiStudent.addModuleSemester(moduleSemester);</span>
+<span class="nc" id="L350">        updateFilteredModuleSemesterList(PREDICATE_SHOW_ALL_MODULE_SEMESTERS);</span>
+<span class="nc" id="L351">    }</span>
+
+    @Override
+    public void setModuleSemester(ModuleSemester target, ModuleSemester editedModuleSemester) {
+<span class="nc" id="L355">        requireAllNonNull(target, editedModuleSemester);</span>
+
+<span class="nc" id="L357">        versionedUltiStudent.setModuleSemester(target, editedModuleSemester);</span>
+<span class="nc" id="L358">    }</span>
+
+    /**
+     * Returns an unmodifiable view of the list of {@code ModuleSemester} backed by the internal list of
+     * {@code versionedUltiStudent}
+     */
+    @Override
+    public ObservableList&lt;ModuleSemester&gt; getFilteredModuleSemesterList() {
+<span class="nc" id="L366">        return filteredModuleSemesterList;</span>
+    }
+
+    @Override
+    public void updateFilteredModuleSemesterList(Predicate&lt;ModuleSemester&gt; predicate) {
+<span class="fc" id="L371">        requireNonNull(predicate);</span>
+<span class="fc" id="L372">        filteredModuleSemesterList.setPredicate(predicate);</span>
+<span class="fc" id="L373">    }</span>
+
+    @Override
+    public ReadOnlyProperty&lt;ModuleSemester&gt; selectedModuleSemesterProperty() {
+<span class="nc" id="L377">        return selectedModuleSemester;</span>
+    }
+
+    @Override
+    public ModuleSemester getSelectedModuleSemester() {
+<span class="nc" id="L382">        return selectedModuleSemester.getValue();</span>
+    }
+
+    @Override
+    public void setSelectedModuleSemester(ModuleSemester moduleSemester) {
+<span class="nc bnc" id="L387" title="All 4 branches missed.">        if (moduleSemester != null &amp;&amp; !filteredModuleSemesterList.contains(moduleSemester)) {</span>
+<span class="nc" id="L388">            throw new ModuleSemesterNotFoundException();</span>
+        }
+<span class="nc" id="L390">        selectedModuleSemester.setValue(moduleSemester);</span>
+<span class="nc" id="L391">    }</span>
+
+    /**
+     * Ensures {@code selectedCapEntry} is a valid cap entry in {@code filteredCapEntryList}.
+     */
+    private void ensureSelectedModuleSemesterIsValid(ListChangeListener.Change&lt;? extends ModuleSemester&gt; change) {
+<span class="pc bpc" id="L397" title="1 of 2 branches missed.">        while (change.next()) {</span>
+<span class="pc bpc" id="L398" title="1 of 2 branches missed.">            if (selectedModuleSemester.getValue() == null) {</span>
+                // null is always a valid selected module semester, so we do not need to check that it is valid anymore.
+<span class="fc" id="L400">                return;</span>
+            }
+
+<span class="nc bnc" id="L403" title="All 2 branches missed.">            boolean wasSelectedModuleSemesterReplaced = change.wasReplaced() &amp;&amp; change.getAddedSize()</span>
+<span class="nc bnc" id="L404" title="All 4 branches missed.">                    == change.getRemovedSize() &amp;&amp; change.getRemoved().contains(selectedModuleSemester.getValue());</span>
+<span class="nc bnc" id="L405" title="All 2 branches missed.">            if (wasSelectedModuleSemesterReplaced) {</span>
+                // Update selectedModuleSemester to its new value.
+<span class="nc" id="L407">                int index = change.getRemoved().indexOf(selectedModuleSemester.getValue());</span>
+<span class="nc" id="L408">                selectedModuleSemester.setValue(change.getAddedSubList().get(index));</span>
+<span class="nc" id="L409">                continue;</span>
+            }
+
+<span class="nc" id="L412">            boolean wasSelectedModuleSemsterRemoved = change.getRemoved().stream()</span>
+<span class="nc" id="L413">                    .anyMatch(removedModuleSemester -&gt; selectedModuleSemester.getValue().equals(removedModuleSemester));</span>
+<span class="nc bnc" id="L414" title="All 2 branches missed.">            if (wasSelectedModuleSemsterRemoved) {</span>
+                // Select the module semester that came before it in the list,
+                // or clear the selection if there is no such module semester.
+<span class="nc bnc" id="L417" title="All 2 branches missed.">                selectedModuleSemester.setValue(change.getFrom() &gt; 0 ? change.getList().get(change.getFrom() - 1)</span>
+<span class="nc" id="L418">                        : null);</span>
+            }
+<span class="nc" id="L420">        }</span>
+<span class="nc" id="L421">    }</span>
+
+
+    //=============================================== HomeworkManager ===============================================//
+
+    @Override
+    public boolean hasHomework(Homework homework) {
+<span class="nc" id="L428">        requireNonNull(homework);</span>
+<span class="nc" id="L429">        return versionedUltiStudent.hasHomework(homework);</span>
+    }
+
+    @Override
+    public void deleteHomework(Homework target) {
+<span class="fc" id="L434">        versionedUltiStudent.removeHomework(target);</span>
+<span class="fc" id="L435">    }</span>
+
+    @Override
+    public void addHomework(Homework homework) {
+<span class="nc" id="L439">        versionedUltiStudent.addHomework(homework);</span>
+<span class="nc" id="L440">        updateFilteredHomeworkList(PREDICATE_SHOW_ALL_HOMEWORK);</span>
+<span class="nc" id="L441">    }</span>
+
+    @Override
+    public void setHomework(Homework target, Homework editedHomework) {
+<span class="nc" id="L445">        requireAllNonNull(target, editedHomework);</span>
+
+<span class="nc" id="L447">        versionedUltiStudent.setHomework(target, editedHomework);</span>
+<span class="nc" id="L448">    }</span>
+
+    /**
+     * Returns an unmodifiable view of the list of {@code Person} backed by the internal list of
+     * {@code versionedUltiStudent}
+     */
+    @Override
+    public ObservableList&lt;Homework&gt; getFilteredHomeworkList() {
+<span class="fc" id="L456">        return filteredHomeworkList;</span>
+    }
+
+    @Override
+    public void updateFilteredHomeworkList(Predicate&lt;Homework&gt; predicate) {
+<span class="fc" id="L461">        requireNonNull(predicate);</span>
+<span class="fc" id="L462">        filteredHomeworkList.setPredicate(predicate);</span>
+<span class="fc" id="L463">    }</span>
+
+    @Override
+    public ReadOnlyProperty&lt;Homework&gt; selectedHomeworkProperty() {
+<span class="nc" id="L467">        return selectedHomework;</span>
+    }
+
+    @Override
+    public Homework getSelectedHomework() {
+<span class="nc" id="L472">        return selectedHomework.getValue();</span>
+    }
+
+    @Override
+    public void setSelectedHomework(Homework homework) {
+<span class="nc bnc" id="L477" title="All 4 branches missed.">        if (homework != null &amp;&amp; !filteredHomeworkList.contains(homework)) {</span>
+<span class="nc" id="L478">            throw new HomeworkNotFoundException();</span>
+        }
+<span class="nc" id="L480">        selectedHomework.setValue(homework);</span>
+<span class="nc" id="L481">    }</span>
+
+    /**
+     * Ensures {@code selectedPerson} is a valid person in {@code filteredPersons}.
+     */
+    private void ensureSelectedHomeworkIsValid(ListChangeListener.Change&lt;? extends Homework&gt; change) {
+<span class="pc bpc" id="L487" title="1 of 2 branches missed.">        while (change.next()) {</span>
+<span class="pc bpc" id="L488" title="1 of 2 branches missed.">            if (selectedHomework.getValue() == null) {</span>
+                // null is always a valid selected person, so we do not need to check that it is valid anymore.
+<span class="fc" id="L490">                return;</span>
+            }
+
+<span class="nc bnc" id="L493" title="All 2 branches missed.">            boolean wasSelectedHomeworkReplaced = change.wasReplaced() &amp;&amp; change.getAddedSize()</span>
+<span class="nc bnc" id="L494" title="All 4 branches missed.">                    == change.getRemovedSize() &amp;&amp; change.getRemoved().contains(selectedHomework.getValue());</span>
+<span class="nc bnc" id="L495" title="All 2 branches missed.">            if (wasSelectedHomeworkReplaced) {</span>
+                // Update selectedPerson to its new value.
+<span class="nc" id="L497">                int index = change.getRemoved().indexOf(selectedHomework.getValue());</span>
+<span class="nc" id="L498">                selectedHomework.setValue(change.getAddedSubList().get(index));</span>
+<span class="nc" id="L499">                continue;</span>
+            }
+
+<span class="nc" id="L502">            boolean wasSelectedHomeworkRemoved = change.getRemoved().stream()</span>
+<span class="nc" id="L503">                    .anyMatch(removedHomework -&gt; selectedHomework.getValue().equals(removedHomework));</span>
+<span class="nc bnc" id="L504" title="All 2 branches missed.">            if (wasSelectedHomeworkRemoved) {</span>
+                // Select the person that came before it in the list,
+                // or clear the selection if there is no such person.
+<span class="nc bnc" id="L507" title="All 2 branches missed.">                selectedHomework.setValue(change.getFrom() &gt; 0 ? change.getList().get(change.getFrom() - 1) : null);</span>
+            }
+<span class="nc" id="L509">        }</span>
+<span class="nc" id="L510">    }</span>
+
+    //====================== Module Code List ========================================
+
+    @Override
+    public boolean hasModuleCode(ModuleCode moduleCode) {
+<span class="nc" id="L516">        requireNonNull(moduleCode);</span>
+<span class="nc" id="L517">        return versionedUltiStudent.hasModuleCode(moduleCode);</span>
+    }
+
+    @Override
+    public void deleteModuleCode(ModuleCode target) {
+<span class="nc" id="L522">        requireNonNull(target);</span>
+<span class="nc" id="L523">        versionedUltiStudent.removeModuleCode(target);</span>
+<span class="nc" id="L524">    }</span>
+
+    @Override
+    public void addModuleCode(ModuleCode moduleCode) {
+<span class="nc" id="L528">        versionedUltiStudent.addModuleCode(moduleCode);</span>
+<span class="nc" id="L529">        updateFilteredModuleCodeList(PREDICATE_SHOW_ALL_MODULE_CODE);</span>
+<span class="nc" id="L530">    }</span>
+
+    @Override
+    public void setModuleCode(ModuleCode target, ModuleCode editedModuleCode) {
+<span class="nc" id="L534">        requireAllNonNull(target, editedModuleCode);</span>
+
+<span class="nc" id="L536">        versionedUltiStudent.setModuleCode(target, editedModuleCode);</span>
+<span class="nc" id="L537">    }</span>
+
+    /**
+     * Returns an unmodifiable view of the list of {@code ModuleCode} backed by the internal list of
+     * {@code versionedUltiStudent}
+     */
+    @Override
+    public ObservableList&lt;ModuleCode&gt; getFilteredModuleCodeList() {
+<span class="nc" id="L545">        return filteredModuleCodeList;</span>
+    }
+
+    @Override
+    public void updateFilteredModuleCodeList(Predicate&lt;ModuleCode&gt; predicate) {
+<span class="nc" id="L550">        requireNonNull(predicate);</span>
+<span class="nc" id="L551">        filteredModuleCodeList.setPredicate(predicate);</span>
+<span class="nc" id="L552">    }</span>
+
+    @Override
+    public ReadOnlyProperty&lt;ModuleCode&gt; selectedModuleCodeProperty() {
+<span class="nc" id="L556">        return selectedModuleCode;</span>
+    }
+
+    @Override
+    public ModuleCode getSelectedModuleCode() {
+<span class="nc" id="L561">        return selectedModuleCode.getValue();</span>
+    }
+
+    @Override
+    public void setSelectedModuleCode(ModuleCode moduleCode) {
+<span class="nc bnc" id="L566" title="All 4 branches missed.">        if (moduleCode != null &amp;&amp; !filteredModuleSemesterList.contains(moduleCode)) {</span>
+<span class="nc" id="L567">            throw new ModuleCodeNotFoundException();</span>
+        }
+<span class="nc" id="L569">        selectedModuleCode.setValue(moduleCode);</span>
+<span class="nc" id="L570">    }</span>
+
+    /**
+     * Ensures {@code selectedModuleCode} is a valid cap entry in {@code filteredModuleCodeList}.
+     */
+    private void ensureSelectedModuleCodeIsValid(ListChangeListener.Change&lt;? extends ModuleCode&gt; change) {
+<span class="nc bnc" id="L576" title="All 2 branches missed.">        while (change.next()) {</span>
+<span class="nc bnc" id="L577" title="All 2 branches missed.">            if (selectedModuleCode.getValue() == null) {</span>
+                // null is always a valid selected person, so we do not need to check that it is valid anymore.
+<span class="nc" id="L579">                return;</span>
+            }
+
+<span class="nc bnc" id="L582" title="All 2 branches missed.">            boolean wasSelectedModuleCodeReplaced = change.wasReplaced() &amp;&amp; change.getAddedSize()</span>
+<span class="nc bnc" id="L583" title="All 4 branches missed.">                    == change.getRemovedSize() &amp;&amp; change.getRemoved().contains(selectedModuleCode.getValue());</span>
+<span class="nc bnc" id="L584" title="All 2 branches missed.">            if (wasSelectedModuleCodeReplaced) {</span>
+                // Update selectedPerson to its new value.
+<span class="nc" id="L586">                int index = change.getRemoved().indexOf(selectedModuleCode.getValue());</span>
+<span class="nc" id="L587">                selectedModuleCode.setValue(change.getAddedSubList().get(index));</span>
+<span class="nc" id="L588">                continue;</span>
+            }
+
+<span class="nc" id="L591">            boolean wasSelectedModuleCodeRemoved = change.getRemoved().stream()</span>
+<span class="nc" id="L592">                    .anyMatch(removedModuleCode -&gt; selectedModuleCode.getValue().equals(removedModuleCode));</span>
+<span class="nc bnc" id="L593" title="All 2 branches missed.">            if (wasSelectedModuleCodeRemoved) {</span>
+                // Select the person that came before it in the list,
+                // or clear the selection if there is no such person.
+<span class="nc bnc" id="L596" title="All 2 branches missed.">                selectedModuleCode.setValue(change.getFrom() &gt; 0 ? change.getList().get(change.getFrom() - 1)</span>
+<span class="nc" id="L597">                        : null);</span>
+            }
+<span class="nc" id="L599">        }</span>
+<span class="nc" id="L600">    }</span>
+
+    // ======================= Notes Manager ==================================
+    @Override
+    public boolean hasNote(Note note) {
+<span class="nc" id="L605">        requireNonNull(note);</span>
+<span class="nc" id="L606">        return versionedUltiStudent.hasNote(note);</span>
+    }
+
+    @Override
+    public void deleteNote(Note target) {
+<span class="nc" id="L611">        versionedUltiStudent.removeNote(target);</span>
+<span class="nc" id="L612">    }</span>
+
+    @Override
+    public void addNote(Note note) {
+<span class="nc" id="L616">        versionedUltiStudent.addNote(note);</span>
+<span class="nc" id="L617">        updateFilteredNoteList(PREDICATE_SHOW_ALL_NOTES);</span>
+<span class="nc" id="L618">    }</span>
+
+    @Override
+    public void setNote(Note target, Note editedNote) {
+<span class="fc" id="L622">        requireAllNonNull(target, editedNote);</span>
+
+<span class="fc" id="L624">        versionedUltiStudent.setNote(target, editedNote);</span>
+<span class="fc" id="L625">    }</span>
+
+    //=========== Filtered Note List Accessors =================================
+
+    /**
+     * Returns an unmodifiable view of the list of {@code Note} backed by the
+     * internal list of
+     * {@code versionedUltiStudent}
+     */
+
+    @Override
+    public ObservableList&lt;Note&gt; getFilteredNoteList() {
+<span class="fc" id="L637">        return filteredNoteList;</span>
+    }
+
+    @Override
+    public void updateFilteredNoteList(Predicate&lt;Note&gt; predicate) {
+<span class="fc" id="L642">        requireNonNull(predicate);</span>
+<span class="fc" id="L643">        filteredNoteList.setPredicate(predicate);</span>
+<span class="fc" id="L644">    }</span>
+
+    //=========== Selected note ==============================================
+
+    @Override
+    public ReadOnlyProperty&lt;Note&gt; selectedNoteProperty() {
+<span class="nc" id="L650">        return selectedNote;</span>
+    }
+
+    @Override
+    public Note getSelectedNote() {
+<span class="fc" id="L655">        return selectedNote.getValue();</span>
+    }
+
+    @Override
+    public void setSelectedNote(Note note) {
+<span class="pc bpc" id="L660" title="1 of 4 branches missed.">        if (note != null &amp;&amp; !filteredNoteList.contains(note)) {</span>
+<span class="nc" id="L661">            throw new NoteNotFoundException();</span>
+        }
+<span class="fc" id="L663">        selectedNote.setValue(note);</span>
+<span class="fc" id="L664">    }</span>
+
+    /**
+     * Ensures {@code selectedNote} is a valid note in {@code
+     * filteredNoteList}.
+     */
+    private void ensureSelectedNoteIsValid(ListChangeListener.Change&lt;? extends Note&gt; change) {
+<span class="fc bfc" id="L671" title="All 2 branches covered.">        while (change.next()) {</span>
+<span class="fc bfc" id="L672" title="All 2 branches covered.">            if (selectedNote.getValue() == null) {</span>
+                // null is always a valid selected note, so we do not need to
+                // check that it is valid anymore.
+<span class="fc" id="L675">                return;</span>
+            }
+
+<span class="pc bpc" id="L678" title="2 of 4 branches missed.">            boolean wasSelectedNoteReplaced = change.wasReplaced() &amp;&amp; change.getAddedSize() == change.getRemovedSize()</span>
+<span class="pc bpc" id="L679" title="1 of 2 branches missed.">                    &amp;&amp; change.getRemoved().contains(selectedNote.getValue());</span>
+<span class="pc bpc" id="L680" title="1 of 2 branches missed.">            if (wasSelectedNoteReplaced) {</span>
+                // Update selectedPerson to its new value.
+<span class="fc" id="L682">                int index = change.getRemoved().indexOf(selectedNote.getValue</span>
+<span class="fc" id="L683">                        ());</span>
+<span class="fc" id="L684">                selectedNote.setValue(change.getAddedSubList().get(index));</span>
+<span class="fc" id="L685">                continue;</span>
+            }
+
+<span class="nc" id="L688">            boolean wasSelectedNoteRemoved = change.getRemoved().stream()</span>
+<span class="nc" id="L689">                    .anyMatch(removedNote -&gt; selectedNote.getValue()</span>
+<span class="nc" id="L690">                            .isSameNote(removedNote));</span>
+<span class="nc bnc" id="L691" title="All 2 branches missed.">            if (wasSelectedNoteRemoved) {</span>
+                // Select the person that came before it in the list,
+                // or clear the selection if there is no such person.
+<span class="nc bnc" id="L694" title="All 2 branches missed.">                selectedNote.setValue(change.getFrom() &gt; 0 ? change.getList()</span>
+<span class="nc" id="L695">                        .get(change.getFrom() - 1) : null);</span>
+            }
+<span class="nc" id="L697">        }</span>
+<span class="fc" id="L698">    }</span>
+
+    @Override
+    public boolean equals(Object obj) {
+        // short circuit if same object
+<span class="fc bfc" id="L703" title="All 2 branches covered.">        if (obj == this) {</span>
+<span class="fc" id="L704">            return true;</span>
+        }
+
+        // instanceof handles nulls
+<span class="fc bfc" id="L708" title="All 2 branches covered.">        if (!(obj instanceof ModelManager)) {</span>
+<span class="fc" id="L709">            return false;</span>
+        }
+
+        // state check
+<span class="fc" id="L713">        ModelManager other = (ModelManager) obj;</span>
+<span class="fc bfc" id="L714" title="All 2 branches covered.">        return versionedUltiStudent.equals(other.versionedUltiStudent)</span>
+<span class="fc bfc" id="L715" title="All 2 branches covered.">                &amp;&amp; userPrefs.equals(other.userPrefs)</span>
+<span class="fc bfc" id="L716" title="All 2 branches covered.">                &amp;&amp; filteredPersons.equals(other.filteredPersons)</span>
+<span class="pc bpc" id="L717" title="1 of 2 branches missed.">                &amp;&amp; filteredCapEntryList.equals(other.filteredCapEntryList)</span>
+<span class="pc bpc" id="L718" title="1 of 2 branches missed.">                &amp;&amp; filteredHomeworkList.equals(other.filteredHomeworkList);</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.1.201803210924</span></div></body></html>

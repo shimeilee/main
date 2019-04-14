@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>AddCapEntryCommand.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">main</a> &gt; <a href="index.source.html" class="el_package">seedu.ultistudent.logic.commands</a> &gt; <span class="el_source">AddCapEntryCommand.java</span></div><h1>AddCapEntryCommand.java</h1><pre class="source lang-java linenums">package seedu.ultistudent.logic.commands;
+
+import static java.util.Objects.requireNonNull;
+import static seedu.ultistudent.logic.parser.CliSyntax.PREFIX_MODULECODE;
+import static seedu.ultistudent.logic.parser.CliSyntax.PREFIX_MODULECREDITS;
+import static seedu.ultistudent.logic.parser.CliSyntax.PREFIX_MODULEGRADE;
+import static seedu.ultistudent.logic.parser.CliSyntax.PREFIX_SEMESTER;
+
+import seedu.ultistudent.logic.CommandHistory;
+import seedu.ultistudent.logic.commands.exceptions.CommandException;
+import seedu.ultistudent.model.Model;
+import seedu.ultistudent.model.cap.CapEntry;
+import seedu.ultistudent.model.cap.ModuleSemester;
+
+/**
+ * Adds a Cap Entry to the CapManager.
+ */
+public class AddCapEntryCommand extends Command {
+
+    public static final String COMMAND_WORD = &quot;add-cap&quot;;
+
+<span class="fc" id="L22">    public static final String MESSAGE_USAGE = COMMAND_WORD + &quot;: Adds a CAP Entry to UltiStudent's CAP Manager.\n&quot;</span>
+            + &quot;Parameters: &quot;
+            + PREFIX_MODULECODE + &quot;MODULE_CODE &quot;
+            + PREFIX_MODULEGRADE + &quot;MODULE_GRADE &quot;
+            + PREFIX_MODULECREDITS + &quot;MODULE_CREDITS &quot;
+            + PREFIX_SEMESTER + &quot;MODULE_SEMESTER\n&quot;
+            + &quot;Example: &quot; + COMMAND_WORD + &quot; &quot;
+            + PREFIX_MODULECODE + &quot;CS2103T &quot;
+            + PREFIX_MODULEGRADE + &quot;A+ &quot;
+            + PREFIX_MODULECREDITS + &quot;4 &quot;
+            + PREFIX_SEMESTER + &quot;Y2S2 &quot;;
+
+    public static final String MESSAGE_SUCCESS = &quot;New module added to CAP Manager: %1$s&quot;;
+    public static final String MESSAGE_DUPLICATE_CAP_ENTRY = &quot;This module already exists in the CAP Manager&quot;;
+
+    private final CapEntry toAdd;
+
+    /**
+     * Creates an AddCAPEntryCommand to add the specified {@code CapEntry}
+     */
+<span class="fc" id="L42">    public AddCapEntryCommand(CapEntry capEntry) {</span>
+<span class="fc" id="L43">        requireNonNull(capEntry);</span>
+<span class="fc" id="L44">        toAdd = capEntry;</span>
+<span class="fc" id="L45">    }</span>
+
+
+    @Override
+    public CommandResult execute(Model model, CommandHistory history) throws CommandException {
+<span class="fc" id="L50">        requireNonNull(model);</span>
+
+<span class="fc bfc" id="L52" title="All 2 branches covered.">        if (model.hasCapEntry(toAdd)) {</span>
+<span class="fc" id="L53">            throw new CommandException(MESSAGE_DUPLICATE_CAP_ENTRY);</span>
+        }
+
+        //updates module semester
+<span class="fc" id="L57">        ModuleSemester toAddModuleSemester = toAdd.getModuleSemester();</span>
+<span class="pc bpc" id="L58" title="1 of 2 branches missed.">        if (!model.hasModuleSemester(toAddModuleSemester)) {</span>
+<span class="fc" id="L59">            model.addModuleSemester(toAddModuleSemester);</span>
+        }
+
+<span class="fc" id="L62">        model.addCapEntry(toAdd);</span>
+
+<span class="fc" id="L64">        model.commitUltiStudent();</span>
+<span class="fc" id="L65">        return new CommandResult(String.format(MESSAGE_SUCCESS, toAdd));</span>
+    }
+
+    @Override
+    public boolean equals (Object other) {
+<span class="fc bfc" id="L70" title="All 4 branches covered.">        return other == this // short circuit if same object</span>
+            || (other instanceof AddCapEntryCommand // instanceof handles nulls
+<span class="fc bfc" id="L72" title="All 2 branches covered.">            &amp;&amp; toAdd.equals(((AddCapEntryCommand) other).toAdd));</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.1.201803210924</span></div></body></html>

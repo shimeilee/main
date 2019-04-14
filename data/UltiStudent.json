@@ -1,0 +1,80 @@
+{
+  "capEntryList" : [ {
+    "moduleGrade" : "B+",
+    "moduleCredits" : "4",
+    "moduleSemester" : "Y1S1",
+    "moduleCode" : "CS1010"
+  }, {
+    "moduleGrade" : "A-",
+    "moduleCredits" : "4",
+    "moduleSemester" : "Y1S2",
+    "moduleCode" : "CS1231"
+  }, {
+    "moduleGrade" : "A-",
+    "moduleCredits" : "4",
+    "moduleSemester" : "Y1S2",
+    "moduleCode" : "GER1000"
+  }, {
+    "moduleGrade" : "B+",
+    "moduleCredits" : "4",
+    "moduleSemester" : "Y1S2",
+    "moduleCode" : "CS2030"
+  }, {
+    "moduleGrade" : "B+",
+    "moduleCredits" : "4",
+    "moduleSemester" : "Y2S1",
+    "moduleCode" : "CS2101"
+  } ],
+  "homeworkList" : [ ],
+  "noteList" : [ {
+    "noteName" : "Week 7 Tutorial",
+    "content" : "hihihhi",
+    "moduleCode" : "CS2103"
+  }, {
+    "noteName" : "Week 8 Tutorial",
+    "content" : "potatoes are cool",
+    "moduleCode" : "CS2103"
+  }, {
+    "noteName" : "Week 9 Tutorial",
+    "content" : "",
+    "moduleCode" : "CS2103"
+  }, {
+    "noteName" : "Week 9 Tutorial",
+    "content" : "",
+    "moduleCode" : "CS2101"
+  }, {
+    "noteName" : "Week 8 Tutorial",
+    "content" : "",
+    "moduleCode" : "CS2101"
+  }, {
+    "noteName" : "Week 7 Tutorial",
+    "content" : "",
+    "moduleCode" : "CS2101"
+  }, {
+    "noteName" : "Week 7 Tutorial",
+    "content" : "",
+    "moduleCode" : "CS2102"
+  }, {
+    "noteName" : "Week 8 Tutorial",
+    "content" : "",
+    "moduleCode" : "CS2102"
+  }, {
+    "noteName" : "Week 9 Tutorial",
+    "content" : "",
+    "moduleCode" : "CS2102"
+  }, {
+    "noteName" : "Week 8 Class Activity",
+    "content" : "",
+    "moduleCode" : "CS2102"
+  }, {
+    "noteName" : "Week 2 Class Activity",
+    "content" : "",
+    "moduleCode" : "CS2102"
+  }, {
+    "noteName" : "Week 10 Lecture",
+    "content" : "",
+    "moduleCode" : "CS2103T"
+  } ],
+  "moduleSemesterList" : [ ],
+  "moduleCodeList" : [ ]
+}

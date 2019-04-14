@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>IconListPanel.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">main</a> &gt; <a href="index.source.html" class="el_package">seedu.ultistudent.ui</a> &gt; <span class="el_source">IconListPanel.java</span></div><h1>IconListPanel.java</h1><pre class="source lang-java linenums">package seedu.ultistudent.ui;
+/*
+import java.util.Objects;
+import java.util.function.Consumer;
+*/
+import java.util.logging.Logger;
+
+import javafx.fxml.FXML;
+
+import javafx.scene.effect.ColorAdjust;
+import javafx.scene.layout.Region;
+
+import seedu.ultistudent.commons.core.LogsCenter;
+
+/**
+ * Icon List view
+ */
+public class IconListPanel extends UiPart&lt;Region&gt; {
+    private static final String FXML = &quot;IconList.fxml&quot;;
+<span class="nc" id="L20">    private final Logger logger = LogsCenter.getLogger(IconListPanel.class);</span>
+
+    @FXML
+    private ColorAdjust homeworkManagerIconBrightness;
+
+    @FXML
+    private ColorAdjust notesManagerIconBrightness;
+
+    @FXML
+    private ColorAdjust capManagerIconBrightness;
+
+    public IconListPanel() {
+<span class="nc" id="L32">        super(FXML);</span>
+<span class="nc" id="L33">        setHomeworkManagerIconBrightness(0.4);</span>
+<span class="nc" id="L34">        setNotesManagerIconBrightness(0.4);</span>
+<span class="nc" id="L35">        setCapManagerIconBrightness(0.4);</span>
+<span class="nc" id="L36">    }</span>
+
+    public void setHomeworkManagerIconBrightness(double brightness) {
+<span class="nc" id="L39">        homeworkManagerIconBrightness.setBrightness(brightness);</span>
+<span class="nc" id="L40">    }</span>
+
+    public void setNotesManagerIconBrightness(double brightness) {
+<span class="nc" id="L43">        notesManagerIconBrightness.setBrightness(brightness);</span>
+<span class="nc" id="L44">    }</span>
+
+    public void setCapManagerIconBrightness(double brightness) {
+<span class="nc" id="L47">        capManagerIconBrightness.setBrightness(brightness);</span>
+<span class="nc" id="L48">    }</span>
+
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.1.201803210924</span></div></body></html>

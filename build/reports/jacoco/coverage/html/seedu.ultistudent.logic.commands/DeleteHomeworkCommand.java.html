@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>DeleteHomeworkCommand.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">main</a> &gt; <a href="index.source.html" class="el_package">seedu.ultistudent.logic.commands</a> &gt; <span class="el_source">DeleteHomeworkCommand.java</span></div><h1>DeleteHomeworkCommand.java</h1><pre class="source lang-java linenums">package seedu.ultistudent.logic.commands;
+
+import static java.util.Objects.requireNonNull;
+
+import java.util.List;
+
+import seedu.ultistudent.commons.core.Messages;
+import seedu.ultistudent.commons.core.index.Index;
+import seedu.ultistudent.logic.CommandHistory;
+import seedu.ultistudent.logic.commands.exceptions.CommandException;
+import seedu.ultistudent.model.Model;
+import seedu.ultistudent.model.homework.Homework;
+import seedu.ultistudent.model.modulecode.ModuleCode;
+
+
+/**
+ * Deletes a homework identified using it's displayed index from the UltiStudent.
+ */
+public class DeleteHomeworkCommand extends Command {
+
+    public static final String COMMAND_WORD = &quot;delete-hw&quot;;
+
+    public static final String MESSAGE_USAGE = COMMAND_WORD
+            + &quot;: Deletes the homework entry identified by the index number used in the displayed person list.\n&quot;
+            + &quot;Parameters: INDEX (must be a positive integer)\n&quot;
+            + &quot;Example: &quot; + COMMAND_WORD + &quot; 1&quot;;
+
+    public static final String MESSAGE_DELETE_HOMEWORK_SUCCESS = &quot;Deleted Homework: %1$s&quot;;
+
+    private final Index targetIndex;
+
+<span class="fc" id="L32">    public DeleteHomeworkCommand(Index targetIndex) {</span>
+<span class="fc" id="L33">        this.targetIndex = targetIndex;</span>
+<span class="fc" id="L34">    }</span>
+
+    @Override
+    public CommandResult execute(Model model, CommandHistory history) throws CommandException {
+<span class="fc" id="L38">        requireNonNull(model);</span>
+<span class="fc" id="L39">        List&lt;Homework&gt; lastShownList = model.getFilteredHomeworkList();</span>
+
+<span class="fc bfc" id="L41" title="All 2 branches covered.">        if (targetIndex.getZeroBased() &gt;= lastShownList.size()) {</span>
+<span class="fc" id="L42">            throw new CommandException(Messages.MESSAGE_INVALID_HOMEWORK_DISPLAYED_INDEX);</span>
+        }
+
+<span class="fc" id="L45">        Homework homeworkToDelete = lastShownList.get(targetIndex.getZeroBased());</span>
+
+<span class="fc" id="L47">        model.deleteHomework(homeworkToDelete);</span>
+
+        //updates module code - need to check if only 1 such entry with such module code.
+<span class="fc" id="L50">        ModuleCode moduleCodeOfDeletedHomework = homeworkToDelete.getModuleCode();</span>
+<span class="fc" id="L51">        List&lt;Homework&gt; afterDeleteList = model.getFilteredHomeworkList();</span>
+<span class="fc" id="L52">        int numHomeworkWithModuleCode = 0;</span>
+<span class="fc bfc" id="L53" title="All 2 branches covered.">        for (int i = 0; i &lt; afterDeleteList.size(); i++) {</span>
+<span class="fc bfc" id="L54" title="All 2 branches covered.">            if (afterDeleteList.get(i).getModuleCode().equals(moduleCodeOfDeletedHomework)) {</span>
+<span class="fc" id="L55">                numHomeworkWithModuleCode++;</span>
+            }
+        }
+
+<span class="pc bpc" id="L59" title="1 of 2 branches missed.">        if (numHomeworkWithModuleCode == 0) {</span>
+<span class="nc" id="L60">            model.deleteModuleCode(moduleCodeOfDeletedHomework);</span>
+        }
+
+<span class="fc" id="L63">        model.commitUltiStudent();</span>
+<span class="fc" id="L64">        return new CommandResult(String.format(MESSAGE_DELETE_HOMEWORK_SUCCESS, homeworkToDelete));</span>
+    }
+
+    @Override
+    public boolean equals(Object other) {
+<span class="fc bfc" id="L69" title="All 4 branches covered.">        return other == this // short circuit if same object</span>
+                || (other instanceof DeleteHomeworkCommand // instanceof handles nulls
+<span class="fc bfc" id="L71" title="All 2 branches covered.">                &amp;&amp; targetIndex.equals(((DeleteHomeworkCommand) other).targetIndex)); // state check</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.1.201803210924</span></div></body></html>

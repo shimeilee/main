@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>UndoCommand.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">main</a> &gt; <a href="index.source.html" class="el_package">seedu.ultistudent.logic.commands</a> &gt; <span class="el_source">UndoCommand.java</span></div><h1>UndoCommand.java</h1><pre class="source lang-java linenums">package seedu.ultistudent.logic.commands;
+
+import static java.util.Objects.requireNonNull;
+import static seedu.ultistudent.model.Model.PREDICATE_SHOW_ALL_CAP_ENTRIES;
+import static seedu.ultistudent.model.Model.PREDICATE_SHOW_ALL_PERSONS;
+
+import javafx.collections.ObservableList;
+import seedu.ultistudent.logic.CommandHistory;
+import seedu.ultistudent.logic.commands.exceptions.CommandException;
+import seedu.ultistudent.model.Model;
+import seedu.ultistudent.model.cap.CapEntry;
+
+/**
+ * Reverts the {@code model}'s UltiStudent to its previous state.
+ */
+<span class="fc" id="L16">public class UndoCommand extends Command {</span>
+
+    public static final String COMMAND_WORD = &quot;undo&quot;;
+    public static final String MESSAGE_SUCCESS = &quot;Undo success!&quot;;
+    public static final String MESSAGE_FAILURE = &quot;No more commands to undo!&quot;;
+
+    @Override
+    public CommandResult execute(Model model, CommandHistory history) throws CommandException {
+<span class="fc" id="L24">        requireNonNull(model);</span>
+
+<span class="fc bfc" id="L26" title="All 2 branches covered.">        if (!model.canUndoUltiStudent()) {</span>
+<span class="fc" id="L27">            throw new CommandException(MESSAGE_FAILURE);</span>
+        }
+
+<span class="fc" id="L30">        model.undoUltiStudent();</span>
+<span class="fc" id="L31">        model.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);</span>
+<span class="fc" id="L32">        model.updateFilteredCapEntryList(PREDICATE_SHOW_ALL_CAP_ENTRIES);</span>
+
+        //update capScore
+<span class="fc" id="L35">        ObservableList&lt;CapEntry&gt; capEntryList = model.getFilteredCapEntryList();</span>
+<span class="fc" id="L36">        double newTotalModuleCredits = 0;</span>
+<span class="fc" id="L37">        double newTotalModuleScore = 0;</span>
+<span class="fc bfc" id="L38" title="All 2 branches covered.">        for (CapEntry ce : capEntryList) {</span>
+<span class="fc" id="L39">            double currentModuleCredits = ce.getModuleCredits().getValue();</span>
+<span class="fc" id="L40">            double currentModuleScore = ce.getModuleGrade().getScore();</span>
+<span class="fc" id="L41">            newTotalModuleCredits += currentModuleCredits;</span>
+<span class="fc" id="L42">            newTotalModuleScore += currentModuleScore * currentModuleCredits;</span>
+<span class="fc" id="L43">        }</span>
+<span class="fc" id="L44">        CapEntry.setCapScore(newTotalModuleScore / newTotalModuleCredits);</span>
+
+<span class="fc" id="L46">        return new CommandResult(MESSAGE_SUCCESS);</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.1.201803210924</span></div></body></html>

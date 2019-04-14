@@ -1,0 +1,435 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>UltiStudent.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">main</a> &gt; <a href="index.source.html" class="el_package">seedu.ultistudent.model</a> &gt; <span class="el_source">UltiStudent.java</span></div><h1>UltiStudent.java</h1><pre class="source lang-java linenums">package seedu.ultistudent.model;
+
+import static java.util.Objects.requireNonNull;
+
+import java.util.List;
+
+import javafx.beans.InvalidationListener;
+import javafx.collections.ObservableList;
+import seedu.ultistudent.commons.util.InvalidationListenerManager;
+import seedu.ultistudent.model.cap.CapEntry;
+import seedu.ultistudent.model.cap.ModuleSemester;
+import seedu.ultistudent.model.cap.UniqueCapEntryList;
+import seedu.ultistudent.model.cap.UniqueModuleSemesterList;
+import seedu.ultistudent.model.homework.Homework;
+import seedu.ultistudent.model.homework.UniqueHomeworkList;
+import seedu.ultistudent.model.homework.UniqueModuleCodeList;
+import seedu.ultistudent.model.modulecode.ModuleCode;
+import seedu.ultistudent.model.note.Note;
+import seedu.ultistudent.model.note.UniqueNoteList;
+import seedu.ultistudent.model.person.Person;
+import seedu.ultistudent.model.person.UniquePersonList;
+
+/**
+ * Wraps all data at the ultistudent level
+ * Duplicates are not allowed (by .isSamePerson comparison)
+ */
+public class UltiStudent implements ReadOnlyUltiStudent {
+
+    private final UniqueCapEntryList capEntryList;
+    private final UniquePersonList persons;
+    private final UniqueHomeworkList homeworkList;
+    private final UniqueModuleCodeList moduleCodeList;
+    private final UniqueModuleSemesterList moduleSemesterList;
+    private final UniqueNoteList noteList;
+<span class="fc" id="L35">    private final InvalidationListenerManager invalidationListenerManager = new InvalidationListenerManager();</span>
+
+    /*
+     * The 'unusual' code block below is an non-static initialization block, sometimes used to avoid duplication
+     * between constructors. See https://docs.oracle.com/javase/tutorial/java/javaOO/initial.html
+     *
+     * Note that non-static init blocks are not recommended to use. There are other ways to avoid duplication
+     *   among constructors.
+     */
+    {
+<span class="fc" id="L45">        persons = new UniquePersonList();</span>
+<span class="fc" id="L46">        capEntryList = new UniqueCapEntryList();</span>
+<span class="fc" id="L47">        homeworkList = new UniqueHomeworkList();</span>
+<span class="fc" id="L48">        noteList = new UniqueNoteList();</span>
+<span class="fc" id="L49">        moduleSemesterList = new UniqueModuleSemesterList();</span>
+<span class="fc" id="L50">        moduleCodeList = new UniqueModuleCodeList();</span>
+    }
+
+<span class="fc" id="L53">    public UltiStudent() {}</span>
+
+    /**
+     * Creates an UltiStudent using the Persons in the {@code toBeCopied}
+     */
+    public UltiStudent(ReadOnlyUltiStudent toBeCopied) {
+<span class="fc" id="L59">        this();</span>
+<span class="fc" id="L60">        resetData(toBeCopied);</span>
+<span class="fc" id="L61">    }</span>
+
+    //// list overwrite operations
+
+    /**
+     * Replaces the contents of the person list with {@code persons}.
+     * {@code persons} must not contain duplicate persons.
+     */
+    public void setPersons(List&lt;Person&gt; persons) {
+<span class="fc" id="L70">        this.persons.setPersons(persons);</span>
+<span class="fc" id="L71">        indicateModified();</span>
+<span class="fc" id="L72">    }</span>
+
+    /**
+     * Replaces the contents of the cap entries list list with {@code capEntryList}.
+     * {@code capEntryList} must not contain duplicate cap entries.
+     */
+    public void setCapEntryList(List&lt;CapEntry&gt; capEntryList) {
+<span class="fc" id="L79">        this.capEntryList.setCapEntryList(capEntryList);</span>
+<span class="fc" id="L80">        indicateModified();</span>
+<span class="fc" id="L81">    }</span>
+
+    /**
+     * Replaces the contents of the cap entries list list with {@code capEntryList}.
+     * {@code capEntryList} must not contain duplicate cap entries.
+     */
+    public void setCapScore(List&lt;CapEntry&gt; capEntryList) {
+<span class="fc" id="L88">        double newTotalModuleCredits = 0;</span>
+<span class="fc" id="L89">        double newTotalModuleScore = 0;</span>
+<span class="fc bfc" id="L90" title="All 2 branches covered.">        for (CapEntry ce : capEntryList) {</span>
+<span class="fc" id="L91">            double currentModuleCredits = ce.getModuleCredits().getValue();</span>
+<span class="fc" id="L92">            double currentModuleScore = ce.getModuleGrade().getScore();</span>
+<span class="fc" id="L93">            newTotalModuleCredits += currentModuleCredits;</span>
+<span class="fc" id="L94">            newTotalModuleScore += currentModuleScore * currentModuleCredits;</span>
+<span class="fc" id="L95">        }</span>
+<span class="fc" id="L96">        CapEntry.setCapScore(newTotalModuleScore / newTotalModuleCredits);</span>
+        //indicateModified();
+<span class="fc" id="L98">    }</span>
+
+    /**
+     * Replaces the contents of the module semesters list with {@code moduleSemesterList}.
+     * {@code moduleSemesterList} must not contain duplicate module semester.
+     */
+    public void setModuleSemesterList(List&lt;ModuleSemester&gt; moduleSemesterList) {
+<span class="fc" id="L105">        this.moduleSemesterList.setModuleSemesterList(moduleSemesterList);</span>
+<span class="fc" id="L106">        indicateModified();</span>
+<span class="fc" id="L107">    }</span>
+
+    public void setModuleCodeList(List&lt;ModuleCode&gt; moduleCodeList) {
+<span class="fc" id="L110">        this.moduleCodeList.setModuleCodeList(moduleCodeList);</span>
+<span class="fc" id="L111">        indicateModified();</span>
+<span class="fc" id="L112">    }</span>
+
+    /**
+     * Resets the existing data of this {@code UltiStudent} with {@code newData}.
+     */
+    public void resetData(ReadOnlyUltiStudent newData) {
+<span class="fc" id="L118">        requireNonNull(newData);</span>
+<span class="fc" id="L119">        setCapScore(newData.getCapEntryList());</span>
+<span class="fc" id="L120">        setCapEntryList(newData.getCapEntryList());</span>
+<span class="fc" id="L121">        setPersons(newData.getPersonList());</span>
+<span class="fc" id="L122">        setHomework(newData.getHomeworkList());</span>
+<span class="fc" id="L123">        setModuleSemesterList(newData.getModuleSemesterList());</span>
+<span class="fc" id="L124">        setNote(newData.getNoteList());</span>
+<span class="fc" id="L125">        setModuleCodeList(newData.getModuleCodeList());</span>
+<span class="fc" id="L126">    }</span>
+
+    //// person-level operations
+
+    /**
+     * Returns true if a person with the same identity as {@code person} exists in the UltiStudent.
+     */
+    public boolean hasPerson(Person person) {
+<span class="fc" id="L134">        requireNonNull(person);</span>
+<span class="fc" id="L135">        return persons.contains(person);</span>
+    }
+
+    /**
+     * Returns true if a cap entry with the same identity as {@code capEntry} exists in UltiStudent.
+     */
+    public boolean hasCapEntry(CapEntry capEntry) {
+<span class="fc" id="L142">        requireNonNull(capEntry);</span>
+<span class="fc" id="L143">        return capEntryList.contains(capEntry);</span>
+    }
+
+    /**
+     * Returns true if a module semester with the same identity as {@code moduleSemester} exists in UltiStudent.
+     */
+    public boolean hasModuleSemester(ModuleSemester moduleSemester) {
+<span class="fc" id="L150">        requireNonNull(moduleSemester);</span>
+<span class="fc" id="L151">        return moduleSemesterList.contains(moduleSemester);</span>
+    }
+
+    /**
+     * Returns true if a module code with the same identity as {@code moduleCode} exists in UltiStudent.
+     */
+    public boolean hasModuleCode(ModuleCode moduleCode) {
+<span class="nc" id="L158">        requireNonNull(moduleCode);</span>
+<span class="nc" id="L159">        return moduleCodeList.contains(moduleCode);</span>
+    }
+
+    /**
+     * Adds a person to the UltiStudent.
+     * The person must not already exist in the UltiStudent.
+     */
+    public void addPerson(Person p) {
+<span class="fc" id="L167">        persons.add(p);</span>
+<span class="fc" id="L168">        indicateModified();</span>
+<span class="fc" id="L169">    }</span>
+
+    /**
+     * Adds a cap entry to UltiStudent.
+     * The cap entry must not already exist in UltiStudent.
+     */
+    public void addCapEntry(CapEntry c) {
+<span class="fc" id="L176">        capEntryList.add(c);</span>
+<span class="fc" id="L177">        indicateModified();</span>
+<span class="fc" id="L178">    }</span>
+
+    /**
+     * Adds a module semester to UltiStudent.
+     * The module semester must not already exist in UltiStudent.
+     */
+    public void addModuleSemester(ModuleSemester moduleSemester) {
+<span class="fc" id="L185">        moduleSemesterList.add(moduleSemester);</span>
+<span class="fc" id="L186">        indicateModified();</span>
+<span class="fc" id="L187">    }</span>
+
+    /**
+     * Adds a module code to UltiStudent.
+     * The module code must not already exist in UltiStudent.
+     */
+    public void addModuleCode(ModuleCode moduleCode) {
+<span class="nc" id="L194">        moduleCodeList.add(moduleCode);</span>
+<span class="nc" id="L195">        indicateModified();</span>
+<span class="nc" id="L196">    }</span>
+
+
+
+    /**
+     * Replaces the given person {@code target} in the list with {@code editedPerson}.
+     * {@code target} must exist in the UltiStudent.
+     * The person identity of {@code editedPerson} must not be the same as another existing person in the UltiStudent.
+     */
+    public void setPerson(Person target, Person editedPerson) {
+<span class="fc" id="L206">        requireNonNull(editedPerson);</span>
+
+<span class="fc" id="L208">        persons.setPerson(target, editedPerson);</span>
+<span class="fc" id="L209">        indicateModified();</span>
+<span class="fc" id="L210">    }</span>
+
+    /**
+     * Replaces the given cap entry {@code target} in the list with {@code editedCapEntry}.
+     * {@code target} must exist in the UltiStudent.
+     * The cap entry identity of {@code editedCapEntry} must not be the same as another existing cap entry in
+     * the UltiStudent.
+     */
+    public void setCapEntry(CapEntry target, CapEntry editedCapEntry) {
+<span class="fc" id="L219">        requireNonNull(editedCapEntry);</span>
+
+<span class="fc" id="L221">        capEntryList.setCapEntry(target, editedCapEntry);</span>
+<span class="fc" id="L222">        indicateModified();</span>
+<span class="fc" id="L223">    }</span>
+
+    /**
+     * Replaces the given cap entry {@code target} in the list with {@code editedModuleSemester}.
+     * {@code target} must exist in the UltiStudent.
+     * The cap entry identity of {@code editedModuleSemester} must not be the same as another existing cap entry in
+     * the UltiStudent.
+     */
+    public void setModuleSemester(ModuleSemester target, ModuleSemester editedModuleSemester) {
+<span class="nc" id="L232">        requireNonNull(editedModuleSemester);</span>
+
+<span class="nc" id="L234">        moduleSemesterList.setModuleSemester(target, editedModuleSemester);</span>
+<span class="nc" id="L235">        indicateModified();</span>
+<span class="nc" id="L236">    }</span>
+
+    /**
+     * Replaces the given cap entry {@code target} in the list with {@code editedCapEntry}.
+     * {@code target} must exist in the UltiStudent.
+     * The cap entry identity of {@code editedPerson} must not be the same as another existing cap entry in
+     * the UltiStudent.
+     */
+    public void setModuleCode(ModuleCode target, ModuleCode editedModuleCode) {
+<span class="nc" id="L245">        requireNonNull(editedModuleCode);</span>
+
+<span class="nc" id="L247">        moduleCodeList.setModuleCode(target, editedModuleCode);</span>
+<span class="nc" id="L248">        indicateModified();</span>
+<span class="nc" id="L249">    }</span>
+
+
+
+    /**
+     * Removes {@code key} from this {@code UltiStudent}.
+     * {@code key} must exist in the UltiStudent.
+     */
+    public void removePerson(Person key) {
+<span class="fc" id="L258">        persons.remove(key);</span>
+<span class="fc" id="L259">        indicateModified();</span>
+<span class="fc" id="L260">    }</span>
+
+    /**
+     * Removes the cap entry, {@code key} from this {@code UltiStudent}.
+     * {@code key} must exist in the UltiStudent.
+     */
+    public void removeCapEntry(CapEntry key) {
+<span class="fc" id="L267">        capEntryList.remove(key);</span>
+<span class="fc" id="L268">        indicateModified();</span>
+<span class="fc" id="L269">    }</span>
+
+    /**
+     * Removes the module semester. {@code key} from this {@code UltiStudent}.
+     * {@code key} must exist in the UltiStudent.
+     */
+    public void removeModuleSemester(ModuleSemester key) {
+<span class="fc" id="L276">        moduleSemesterList.remove(key);</span>
+<span class="fc" id="L277">        indicateModified();</span>
+<span class="fc" id="L278">    }</span>
+
+    /**
+     * Removes {@code key} from this {@code UltiStudent}.
+     * {@code key} must exist in the UltiStudent.
+     */
+    public void removeModuleCode(ModuleCode key) {
+<span class="nc" id="L285">        moduleCodeList.remove(key);</span>
+<span class="nc" id="L286">        indicateModified();</span>
+<span class="nc" id="L287">    }</span>
+
+    public void setHomework(Homework target, Homework editedHomework) {
+<span class="nc" id="L290">        requireNonNull(editedHomework);</span>
+
+<span class="nc" id="L292">        homeworkList.setHomework(target, editedHomework);</span>
+<span class="nc" id="L293">        indicateModified();</span>
+<span class="nc" id="L294">    }</span>
+
+    public void setHomework(List&lt;Homework&gt; homework) {
+<span class="fc" id="L297">        this.homeworkList.setHomework(homework);</span>
+<span class="fc" id="L298">        indicateModified();</span>
+<span class="fc" id="L299">    }</span>
+
+    /**
+     * Returns true if a person with the same identity as {@code person} exists in the UltiStudent.
+     */
+    public boolean hasHomework(Homework homework) {
+<span class="nc" id="L305">        requireNonNull(homework);</span>
+<span class="nc" id="L306">        return this.homeworkList.contains(homework);</span>
+    }
+
+    /**
+     * Adds a person to the UltiStudent.
+     * The person must not already exist in the UltiStudent.
+     */
+    public void addHomework(Homework homework) {
+<span class="fc" id="L314">        this.homeworkList.add(homework);</span>
+<span class="fc" id="L315">        indicateModified();</span>
+<span class="fc" id="L316">    }</span>
+
+    /**
+     * Removes {@code key} from this {@code UltiStudent}.
+     * {@code key} must exist in the UltiStudent.
+     */
+    public void removeHomework(Homework homework) {
+<span class="fc" id="L323">        this.homeworkList.remove(homework);</span>
+<span class="fc" id="L324">        indicateModified();</span>
+<span class="fc" id="L325">    }</span>
+
+    //===== Note Manager =====
+    public void setNote(Note target, Note editedNote) {
+<span class="fc" id="L329">        requireNonNull(editedNote);</span>
+
+<span class="fc" id="L331">        noteList.setNote(target, editedNote);</span>
+<span class="fc" id="L332">        indicateModified();</span>
+<span class="fc" id="L333">    }</span>
+
+    public void setNote(List&lt;Note&gt; note) {
+<span class="fc" id="L336">        this.noteList.setNotes(note);</span>
+<span class="fc" id="L337">        indicateModified();</span>
+<span class="fc" id="L338">    }</span>
+
+    /**
+     * Returns true if a note with the same identity as {@code note} exists in
+     * the UltiStudent.
+     */
+    public boolean hasNote(Note note) {
+<span class="nc" id="L345">        requireNonNull(note);</span>
+<span class="nc" id="L346">        return this.noteList.contains(note);</span>
+    }
+
+    /**
+     * Adds a note to the UltiStudent.
+     * The note must not already exist in the UltiStudent.
+     */
+    public void addNote(Note note) {
+<span class="fc" id="L354">        this.noteList.add(note);</span>
+<span class="fc" id="L355">        indicateModified();</span>
+<span class="fc" id="L356">    }</span>
+
+    /**
+     * Removes {@code key} from this {@code UltiStudent}.
+     * {@code key} must exist in the UltiStudent.
+     */
+    public void removeNote(Note note) {
+<span class="nc" id="L363">        this.noteList.remove(note);</span>
+<span class="nc" id="L364">        indicateModified();</span>
+<span class="nc" id="L365">    }</span>
+
+
+    @Override
+    public void addListener(InvalidationListener listener) {
+<span class="fc" id="L370">        invalidationListenerManager.addListener(listener);</span>
+<span class="fc" id="L371">    }</span>
+
+    @Override
+    public void removeListener(InvalidationListener listener) {
+<span class="fc" id="L375">        invalidationListenerManager.removeListener(listener);</span>
+<span class="fc" id="L376">    }</span>
+
+    /**
+     * Notifies listeners that the UltiStudent has been modified.
+     */
+    protected void indicateModified() {
+<span class="fc" id="L382">        invalidationListenerManager.callListeners(this);</span>
+<span class="fc" id="L383">    }</span>
+
+    //// util methods
+
+    @Override
+    public String toString() {
+<span class="fc" id="L389">        return persons.asUnmodifiableObservableList().size() + &quot; persons&quot;;</span>
+        // TODO: refine later
+    }
+
+    @Override
+    public ObservableList&lt;Person&gt; getPersonList() {
+<span class="fc" id="L395">        return persons.asUnmodifiableObservableList();</span>
+    }
+
+    @Override
+    public ObservableList&lt;CapEntry&gt; getCapEntryList() {
+<span class="fc" id="L400">        return capEntryList.asUnmodifiableObservableList();</span>
+    }
+
+    @Override
+    public ObservableList&lt;Homework&gt; getHomeworkList() {
+<span class="fc" id="L405">        return homeworkList.asUnmodifiableObservableList();</span>
+    }
+
+    @Override
+    public ObservableList&lt;ModuleSemester&gt; getModuleSemesterList() {
+<span class="fc" id="L410">        return moduleSemesterList.asUnmodifiableObservableList();</span>
+    }
+
+    @Override
+    public ObservableList&lt;Note&gt; getNoteList() {
+<span class="fc" id="L415">        return noteList.asUnmodifiableObservableList();</span>
+    }
+
+    @Override
+    public ObservableList&lt;ModuleCode&gt; getModuleCodeList() {
+<span class="fc" id="L420">        return moduleCodeList.asUnmodifiableObservableList();</span>
+    }
+
+    @Override
+    public boolean equals(Object other) {
+<span class="pc bpc" id="L425" title="2 of 4 branches missed.">        return other == this // short circuit if same object</span>
+                || (other instanceof UltiStudent // instanceof handles nulls
+<span class="fc bfc" id="L427" title="All 2 branches covered.">                &amp;&amp; persons.equals(((UltiStudent) other).persons));</span>
+    }
+
+    @Override
+    public int hashCode() {
+<span class="nc" id="L432">        return persons.hashCode();</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.1.201803210924</span></div></body></html>

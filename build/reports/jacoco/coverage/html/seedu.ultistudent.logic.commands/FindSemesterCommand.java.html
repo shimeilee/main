@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>FindSemesterCommand.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">main</a> &gt; <a href="index.source.html" class="el_package">seedu.ultistudent.logic.commands</a> &gt; <span class="el_source">FindSemesterCommand.java</span></div><h1>FindSemesterCommand.java</h1><pre class="source lang-java linenums">package seedu.ultistudent.logic.commands;
+
+import static java.util.Objects.requireNonNull;
+
+import seedu.ultistudent.commons.core.Messages;
+import seedu.ultistudent.logic.CommandHistory;
+import seedu.ultistudent.model.Model;
+import seedu.ultistudent.model.cap.ModuleSemesterContainsKeywordsPredicate;
+
+/**
+ * Finds and lists all cap entries in UltiStudent whose module semester contains any of the argument keywords.
+ * Keyword matching is case insensitive.
+ */
+public class FindSemesterCommand extends Command {
+
+    public static final String COMMAND_WORD = &quot;find-sem&quot;;
+
+    public static final String MESSAGE_USAGE = COMMAND_WORD + &quot;: Finds all cap entries that was taken at any of the &quot;
+            + &quot;semester entered (case-insensitive) and displays them as a list with &quot;
+            + &quot;index numbers.\n&quot;
+            + &quot;Parameters: KEYWORD [MORE_KEYWORDS]...\n&quot;
+            + &quot;Example: &quot; + COMMAND_WORD + &quot; Y1S1 Y2S2&quot;;
+
+    private final ModuleSemesterContainsKeywordsPredicate predicate;
+
+<span class="nc" id="L26">    public FindSemesterCommand(ModuleSemesterContainsKeywordsPredicate predicate) {</span>
+<span class="nc" id="L27">        this.predicate = predicate;</span>
+<span class="nc" id="L28">    }</span>
+
+    @Override
+    public CommandResult execute(Model model, CommandHistory history) {
+<span class="nc" id="L32">        requireNonNull(model);</span>
+<span class="nc" id="L33">        model.updateFilteredCapEntryList(predicate);</span>
+<span class="nc" id="L34">        return new CommandResult(</span>
+<span class="nc" id="L35">                String.format(Messages.MESSAGE_CAP_ENTRY_LISTED_OVERVIEW, model.getFilteredCapEntryList().size()));</span>
+    }
+
+    @Override
+    public boolean equals(Object other) {
+<span class="nc bnc" id="L40" title="All 4 branches missed.">        return other == this // short circuit if same object</span>
+                || (other instanceof FindSemesterCommand // instanceof handles nulls
+<span class="nc bnc" id="L42" title="All 2 branches missed.">                &amp;&amp; predicate.equals(((FindSemesterCommand) other).predicate)); // state check</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.1.201803210924</span></div></body></html>

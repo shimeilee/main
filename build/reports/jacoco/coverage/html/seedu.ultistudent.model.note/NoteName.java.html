@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>NoteName.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">main</a> &gt; <a href="index.source.html" class="el_package">seedu.ultistudent.model.note</a> &gt; <span class="el_source">NoteName.java</span></div><h1>NoteName.java</h1><pre class="source lang-java linenums">package seedu.ultistudent.model.note;
+
+import static java.util.Objects.requireNonNull;
+import static seedu.ultistudent.commons.util.AppUtil.checkArgument;
+
+/**
+ * Represents a Person's name in the UltiStudent.
+ * Guarantees: immutable; is valid as declared in {@link #isValidNoteName(String)}
+ */
+public class NoteName {
+
+    public static final String MESSAGE_CONSTRAINTS = &quot;Note names should only &quot;
+            + &quot;contain alphanumeric characters and spaces, and it should not be &quot;
+            + &quot;blank&quot;;
+
+    /*
+     * The first character of the ultistudent must not be a whitespace,
+     * otherwise &quot; &quot; (a blank string) becomes a valid input.
+     */
+    public static final String VALIDATION_REGEX = &quot;[\\p{Alnum}][\\p{Alnum} ]*&quot;;
+
+    public final String noteName;
+
+    /**
+     * Constructs a {@code Name}.
+     *
+     * @param name A valid name.
+     */
+<span class="fc" id="L29">    public NoteName(String name) {</span>
+<span class="fc" id="L30">        requireNonNull(name);</span>
+<span class="fc" id="L31">        checkArgument(isValidNoteName(name), MESSAGE_CONSTRAINTS);</span>
+<span class="fc" id="L32">        noteName = name;</span>
+<span class="fc" id="L33">    }</span>
+
+    /**
+     * Returns true if a given string is a valid note name.
+     */
+    public static boolean isValidNoteName(String test) {
+<span class="fc" id="L39">        return test.matches(VALIDATION_REGEX);</span>
+    }
+
+
+    @Override
+    public String toString() {
+<span class="fc" id="L45">        return noteName;</span>
+    }
+
+    @Override
+    public boolean equals(Object other) {
+<span class="pc bpc" id="L50" title="1 of 4 branches missed.">        return other == this // short circuit if same object</span>
+                || (other instanceof NoteName // instanceof handles nulls
+<span class="fc bfc" id="L52" title="All 2 branches covered.">                &amp;&amp; noteName.equals(((NoteName) other).noteName)); // state check</span>
+    }
+
+    @Override
+    public int hashCode() {
+<span class="nc" id="L57">        return noteName.hashCode();</span>
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.1.201803210924</span></div></body></html>

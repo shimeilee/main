@@ -294,14 +294,34 @@ To display the full list, simply use this command `list-hw`. This command has no
 and that makes this simple and easy to use!
 
 === Notes Manager
+// tag::add-note[]
 ==== Adding a note : `add-note`
-Adds a new note to the Notes Manager +
-Format: `add-note mc/MODULECODE nn/NOTENAME`
+Want to take down some notes during lecture? Let Notes Manager help us store
+our notes digitally! Add a new note to the Notes Manager with the `add-note`
+command!
 
-Examples:
+image::UI_notes_manager.png[width="790"]
 
-* `add-note mc/CS2103T n/NOTENAME`
-* `add-note mc/CS2100 n/NOTENAME`
+Ensure that you're inside the Notes Manager by using `open NotesManager`
+first. The Notes icon on the left will be highlighted when UltiStudent is
+inside the Notes Manager, and the Result Box will indicate that NotesManager
+is open after the command is entered. +
+
+To add a note, we will need to follow this format:
+`add-note mc/MODULECODE n/NOTENAME`
+
+Time for an example!
+
+Suppose we are sitting in CS2103T Week 10's lecture, and we want to create a
+note to take down the concepts covered in class. We can add a new note to the
+ Notes Manager by typing `add-note mc/CS2103T n/Week 10 Lecture`.
+
+Notes Manager can add notes with their note names starting with alphanumeric
+characters (A-Z, a-z, 0-9).
+
+image::UI_add_notes.png[width="790", align="center"]
+
+// end::add-note[]
 
 // tag::edit-note[]
 ==== Editing and Saving a note : `edit-note` `save-note`
@@ -345,26 +365,63 @@ For data integrity, undo and redo commands are not supported on editing and savi
 Changes must be made manually.
 
 // end::edit-note[]
+
+//tag::delete-note[]
 ==== Deleting a Note: `delete-note`
 
-Deletes the specified note from the Notes Manager. +
-Format: `delete-note INDEX`
+No longer need a particular note after the module is completed? Simply delete
+ it with the `delete-note`!
 
-****
-* Deletes the Note at the specified `INDEX`.
-* The index refers to the index number shown in the displayed CAP Entries list.
-* The index *must be a positive integer* 1, 2, 3, ...
+To delete a note from Notes Manager, we will need to follow this format:
+ `delete-note INDEX` +
+... where the note at the specified index will be deleted. +
+The index refers to the index number shown in the displayed Notes
+List (light blue box), and *must be a positive integer* (1, 2, 3...).
 
-****
+Say after this semester ends and we would like to delete the Week 10 Lecture
+notes we created for CS2103T earlier. All we need to do is to type
+`delete-note 12`. In this case, the index is 12 (refer to image for add-note).
 
-Examples:
+image::UI_delete_notes.png[width="790", align="center"]
 
-* `edit-note 1` +
-Opens the 1st note in the Note Manager and allows editing into the note.
+Viola! Note is deleted.
 
-* `delete-note 2` +
-Deletes the 2nd note in the Note Manager.
+//end::delete-note[]
 
+//tag::findlist-note[]
+==== Finding a note with a specified keyword: `find-note`
+
+Along the semester, there will be more notes added each week for every
+module activity. As such, there is a need to find a note with a
+specified keyword.
+
+To find a note from Note Managers, we will need to follow this format:
+`find-note [KEYWORDS]`.
+As you can see from the diagram below, after adding a name as part of a keyword,
+you will be able to see only notes with that keyword in the notes list.
+
+For example, we want to find notes taken for tutorials. Simply search for
+`find-note tutorial`.
+
+image::UI_find_notes.png[width="790"]
+
+[TIP]
+You are not restricted to only one keyword for the `[KEYWORDS]` in the command.
+You can add more of them if you wish.
+
+In v2.0, we will be able to find our notes by its module code and keyword. This
+will make it easier to find the note we want.
+
+==== Reverting back to a full list view: `list-note`
+
+In the previous sub-section, we looked at how we can use the command `find-note`
+ to display note entries from the selected keyword. Now, how do we display
+ the full list of modules?
+
+To display the full list, simply use this command `list-note`. This command has
+no additional inputs for you to type and that makes this simple and easy to use!
+
+//end::findlist-note[]
 
 === CAP Manager
 Climbing to your first class honours? Or struggling to keep within your desired class? Worry no more, let CAP Manager

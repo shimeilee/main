@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>EditCapEntryCommand.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">main</a> &gt; <a href="index.source.html" class="el_package">seedu.ultistudent.logic.commands</a> &gt; <span class="el_source">EditCapEntryCommand.java</span></div><h1>EditCapEntryCommand.java</h1><pre class="source lang-java linenums">package seedu.ultistudent.logic.commands;
+
+import static java.util.Objects.requireNonNull;
+import static seedu.ultistudent.logic.parser.CliSyntax.PREFIX_MODULECODE;
+import static seedu.ultistudent.logic.parser.CliSyntax.PREFIX_MODULECREDITS;
+import static seedu.ultistudent.logic.parser.CliSyntax.PREFIX_MODULEGRADE;
+import static seedu.ultistudent.logic.parser.CliSyntax.PREFIX_SEMESTER;
+
+import java.util.List;
+import java.util.Optional;
+
+import seedu.ultistudent.commons.core.Messages;
+import seedu.ultistudent.commons.core.index.Index;
+import seedu.ultistudent.commons.util.CollectionUtil;
+import seedu.ultistudent.logic.CommandHistory;
+import seedu.ultistudent.logic.commands.exceptions.CommandException;
+import seedu.ultistudent.model.Model;
+import seedu.ultistudent.model.cap.CapEntry;
+import seedu.ultistudent.model.cap.ModuleCredits;
+import seedu.ultistudent.model.cap.ModuleGrade;
+import seedu.ultistudent.model.cap.ModuleSemester;
+import seedu.ultistudent.model.modulecode.ModuleCode;
+
+/**
+ * Edits the details of an existing cap entry in the Cap Manager through the index.
+ */
+<span class="pc bpc" id="L27" title="1 of 2 branches missed.">public class EditCapEntryCommand extends Command {</span>
+    public static final String COMMAND_WORD = &quot;edit-cap&quot;;
+
+<span class="fc" id="L30">    public static final String MESSAGE_USAGE = COMMAND_WORD + &quot;: Edits the details of the module identified &quot;</span>
+            + &quot;by the index number used in the displayed cap entry list. &quot;
+            + &quot;Existing values will be overwritten by the input values.\n&quot;
+            + &quot;Parameters: INDEX (must be a positive integer) &quot;
+            + &quot;[&quot; + PREFIX_MODULECODE + &quot;MODULE_CODEN] &quot;
+            + &quot;[&quot; + PREFIX_MODULEGRADE + &quot;MODULE_GRADE] &quot;
+            + &quot;[&quot; + PREFIX_MODULECREDITS + &quot;MODULE_CREDITS] &quot;
+            + &quot;[&quot; + PREFIX_SEMESTER + &quot;MODULE_SEMESTER]. \n&quot;
+            + &quot;Example: &quot; + COMMAND_WORD + &quot; 1 &quot;
+            + PREFIX_MODULEGRADE + &quot;B+ &quot;
+            + PREFIX_MODULECREDITS + &quot;6&quot;;
+
+    public static final String MESSAGE_EDIT_CAP_ENTRY_SUCCESS = &quot;Edited Cap Entry: %1$s&quot;;
+    public static final String MESSAGE_NOT_EDITED = &quot;At least one field to edit must be provided.&quot;;
+    public static final String MESSAGE_DUPLICATE_CAP_ENTRY = &quot;This cap entry already exists in the Cap Manager.&quot;;
+
+    private final Index index;
+    private final EditCapEntryDescriptor editCapEntryDescriptor;
+
+    /**
+     * @param index of the person in the filtered person list to edit
+     * @param editCapEntryDescriptor details to edit the person with
+     */
+<span class="fc" id="L53">    public EditCapEntryCommand(Index index, EditCapEntryDescriptor editCapEntryDescriptor) {</span>
+<span class="fc" id="L54">        requireNonNull(index);</span>
+<span class="fc" id="L55">        requireNonNull(editCapEntryDescriptor);</span>
+
+<span class="fc" id="L57">        this.index = index;</span>
+<span class="fc" id="L58">        this.editCapEntryDescriptor = new EditCapEntryDescriptor(editCapEntryDescriptor);</span>
+<span class="fc" id="L59">    }</span>
+
+    @Override
+    public CommandResult execute(Model model, CommandHistory history) throws CommandException {
+<span class="fc" id="L63">        requireNonNull(model);</span>
+<span class="fc" id="L64">        List&lt;CapEntry&gt; lastShownList = model.getFilteredCapEntryList();</span>
+
+<span class="fc bfc" id="L66" title="All 2 branches covered.">        if (index.getZeroBased() &gt;= lastShownList.size()) {</span>
+<span class="fc" id="L67">            throw new CommandException(Messages.MESSAGE_INVALID_CAP_ENTRY_DISPLAYED_INDEX);</span>
+        }
+
+<span class="fc" id="L70">        CapEntry capEntryToEdit = lastShownList.get(index.getZeroBased());</span>
+<span class="fc" id="L71">        CapEntry editedCapEntry = createEditedCapEntry(capEntryToEdit, editCapEntryDescriptor);</span>
+<span class="fc" id="L72">        ModuleSemester moduleSemesterOfCapEntryToEdit = capEntryToEdit.getModuleSemester();</span>
+<span class="fc" id="L73">        ModuleSemester moduleSemesterOfEditedCapEntry = editedCapEntry.getModuleSemester();</span>
+
+<span class="fc bfc" id="L75" title="All 4 branches covered.">        if (!capEntryToEdit.isSameCapEntry(editedCapEntry) &amp;&amp; model.hasCapEntry(editedCapEntry)) {</span>
+<span class="fc" id="L76">            throw new CommandException(MESSAGE_DUPLICATE_CAP_ENTRY);</span>
+        }
+
+<span class="fc" id="L79">        model.setCapEntry(capEntryToEdit, editedCapEntry);</span>
+<span class="fc" id="L80">        model.updateFilteredCapEntryList(Model.PREDICATE_SHOW_ALL_CAP_ENTRIES);</span>
+
+        //update module semester
+<span class="fc" id="L83">        List&lt;CapEntry&gt; afterEditList = model.getFilteredCapEntryList();</span>
+<span class="fc bfc" id="L84" title="All 2 branches covered.">        if (!moduleSemesterOfCapEntryToEdit.equals(moduleSemesterOfEditedCapEntry)) {</span>
+<span class="pc bpc" id="L85" title="1 of 2 branches missed.">            if (!model.hasModuleSemester(moduleSemesterOfEditedCapEntry)) {</span>
+<span class="nc" id="L86">                model.addModuleSemester(moduleSemesterOfEditedCapEntry);</span>
+            }
+<span class="fc" id="L88">            int numCapEntriesWithSameSemester = 0;</span>
+<span class="fc bfc" id="L89" title="All 2 branches covered.">            for (int i = 0; i &lt; afterEditList.size(); i++) {</span>
+<span class="pc bpc" id="L90" title="1 of 2 branches missed.">                if (afterEditList.get(i).getModuleSemester().equals(moduleSemesterOfCapEntryToEdit)) {</span>
+<span class="nc" id="L91">                    numCapEntriesWithSameSemester++;</span>
+                }
+            }
+<span class="pc bpc" id="L94" title="1 of 2 branches missed.">            if (numCapEntriesWithSameSemester == 0) {</span>
+<span class="fc" id="L95">                model.deleteModuleSemester(moduleSemesterOfCapEntryToEdit);</span>
+            }
+        }
+
+<span class="fc" id="L99">        model.updateFilteredModuleSemesterList(Model.PREDICATE_SHOW_ALL_MODULE_SEMESTERS);</span>
+
+<span class="fc" id="L101">        model.commitUltiStudent();</span>
+<span class="fc" id="L102">        return new CommandResult(String.format(MESSAGE_EDIT_CAP_ENTRY_SUCCESS, editedCapEntry));</span>
+    }
+
+    /**
+     * Creates and returns a {@code Person} with the details of {@code personToEdit}
+     * edited with {@code editPersonDescriptor}.
+     */
+    private static CapEntry createEditedCapEntry(CapEntry capEntryToEdit,
+                                                 EditCapEntryDescriptor editCapEntryDescriptor) {
+<span class="pc bpc" id="L111" title="2 of 4 branches missed.">        assert capEntryToEdit != null;</span>
+
+<span class="fc" id="L113">        ModuleCode updatedModuleCode = editCapEntryDescriptor.getModuleCode().orElse(capEntryToEdit.getModuleCode());</span>
+<span class="fc" id="L114">        ModuleGrade updatedModuleGrade = editCapEntryDescriptor.getModuleGrade().orElse(capEntryToEdit</span>
+<span class="fc" id="L115">                .getModuleGrade());</span>
+<span class="fc" id="L116">        ModuleCredits updatedModuleCredits = editCapEntryDescriptor.getModuleCredits().orElse(capEntryToEdit</span>
+<span class="fc" id="L117">                .getModuleCredits());</span>
+<span class="fc" id="L118">        ModuleSemester updatedModuleSemester = editCapEntryDescriptor.getModuleSemester().orElse(capEntryToEdit</span>
+<span class="fc" id="L119">                .getModuleSemester());</span>
+
+<span class="fc" id="L121">        return new CapEntry(updatedModuleCode, updatedModuleGrade, updatedModuleCredits, updatedModuleSemester);</span>
+    }
+
+    @Override
+    public boolean equals(Object other) {
+        // short circuit if same object
+<span class="fc bfc" id="L127" title="All 2 branches covered.">        if (other == this) {</span>
+<span class="fc" id="L128">            return true;</span>
+        }
+
+        // instanceof handles nulls
+<span class="fc bfc" id="L132" title="All 2 branches covered.">        if (!(other instanceof EditCapEntryCommand)) {</span>
+<span class="fc" id="L133">            return false;</span>
+        }
+
+        // state check
+<span class="fc" id="L137">        EditCapEntryCommand e = (EditCapEntryCommand) other;</span>
+<span class="fc bfc" id="L138" title="All 2 branches covered.">        return index.equals(e.index)</span>
+<span class="fc bfc" id="L139" title="All 2 branches covered.">                &amp;&amp; editCapEntryDescriptor.equals(e.editCapEntryDescriptor);</span>
+    }
+
+    /**
+     * Stores the details to edit the person with. Each non-empty field value will replace the
+     * corresponding field value of the person.
+     */
+    public static class EditCapEntryDescriptor {
+        private ModuleCode moduleCode;
+        private ModuleGrade moduleGrade;
+        private ModuleCredits moduleCredits;
+        private ModuleSemester moduleSemester;
+
+<span class="fc" id="L152">        public EditCapEntryDescriptor() {}</span>
+
+        /**
+         * Copy constructor.
+         * A defensive copy of {@code tags} is used internally.
+         */
+<span class="fc" id="L158">        public EditCapEntryDescriptor(EditCapEntryDescriptor toCopy) {</span>
+<span class="fc" id="L159">            setModuleCode(toCopy.moduleCode);</span>
+<span class="fc" id="L160">            setModuleGrade(toCopy.moduleGrade);</span>
+<span class="fc" id="L161">            setModuleCredits(toCopy.moduleCredits);</span>
+<span class="fc" id="L162">            setModuleSemester(toCopy.moduleSemester);</span>
+<span class="fc" id="L163">        }</span>
+
+        /**
+         * Returns true if at least one field is edited.
+         */
+        public boolean isAnyFieldEdited() {
+<span class="fc" id="L169">            return CollectionUtil.isAnyNonNull(moduleCode, moduleGrade, moduleCredits, moduleSemester);</span>
+        }
+
+        public void setModuleCode(ModuleCode moduleCode) {
+<span class="fc" id="L173">            this.moduleCode = moduleCode;</span>
+<span class="fc" id="L174">        }</span>
+
+        public Optional&lt;ModuleCode&gt; getModuleCode() {
+<span class="fc" id="L177">            return Optional.ofNullable(moduleCode);</span>
+        }
+
+        public void setModuleGrade(ModuleGrade moduleGrade) {
+<span class="fc" id="L181">            this.moduleGrade = moduleGrade;</span>
+<span class="fc" id="L182">        }</span>
+
+        public Optional&lt;ModuleGrade&gt; getModuleGrade() {
+<span class="fc" id="L185">            return Optional.ofNullable(moduleGrade);</span>
+        }
+
+        public void setModuleCredits(ModuleCredits moduleCredits) {
+<span class="fc" id="L189">            this.moduleCredits = moduleCredits;</span>
+<span class="fc" id="L190">        }</span>
+
+        public Optional&lt;ModuleCredits&gt; getModuleCredits() {
+<span class="fc" id="L193">            return Optional.ofNullable(moduleCredits);</span>
+        }
+
+        public void setModuleSemester(ModuleSemester moduleSemester) {
+<span class="fc" id="L197">            this.moduleSemester = moduleSemester;</span>
+<span class="fc" id="L198">        }</span>
+
+        public Optional&lt;ModuleSemester&gt; getModuleSemester() {
+<span class="fc" id="L201">            return Optional.ofNullable(moduleSemester);</span>
+        }
+
+        @Override
+        public boolean equals(Object other) {
+            // short circuit if same object
+<span class="pc bpc" id="L207" title="1 of 2 branches missed.">            if (other == this) {</span>
+<span class="nc" id="L208">                return true;</span>
+            }
+
+            // instanceof handles nulls
+<span class="pc bpc" id="L212" title="1 of 2 branches missed.">            if (!(other instanceof EditCapEntryDescriptor)) {</span>
+<span class="nc" id="L213">                return false;</span>
+            }
+
+            // state check
+<span class="fc" id="L217">            EditCapEntryDescriptor e = (EditCapEntryDescriptor) other;</span>
+
+<span class="fc bfc" id="L219" title="All 2 branches covered.">            return getModuleCode().equals(e.getModuleCode())</span>
+<span class="pc bpc" id="L220" title="1 of 2 branches missed.">                    &amp;&amp; getModuleGrade().equals(e.getModuleGrade())</span>
+<span class="pc bpc" id="L221" title="1 of 2 branches missed.">                    &amp;&amp; getModuleCredits().equals(e.getModuleCredits())</span>
+<span class="pc bpc" id="L222" title="1 of 2 branches missed.">                    &amp;&amp; getModuleSemester().equals(e.getModuleSemester());</span>
+        }
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.1.201803210924</span></div></body></html>

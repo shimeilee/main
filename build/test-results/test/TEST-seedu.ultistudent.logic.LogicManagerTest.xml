@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="seedu.ultistudent.logic.LogicManagerTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2019-04-13T20:54:01" hostname="Lees-MBP-3" time="0.021">
+  <properties/>
+  <testcase name="execute_invalidCommandFormat_throwsParseException" classname="seedu.ultistudent.logic.LogicManagerTest" time="0.005"/>
+  <testcase name="execute_validCommand_success" classname="seedu.ultistudent.logic.LogicManagerTest" time="0.003"/>
+  <testcase name="execute_storageThrowsIoException_throwsCommandException" classname="seedu.ultistudent.logic.LogicManagerTest" time="0.007"/>
+  <testcase name="execute_commandExecutionError_throwsCommandException" classname="seedu.ultistudent.logic.LogicManagerTest" time="0.003"/>
+  <testcase name="getFilteredPersonList_modifyList_throwsUnsupportedOperationException" classname="seedu.ultistudent.logic.LogicManagerTest" time="0.002"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[Apr 14, 2019 4:54:01 AM seedu.ultistudent.logic.LogicManager execute
+INFO: ----------------[USER COMMAND][uicfhmowqewca]
+Apr 14, 2019 4:54:01 AM seedu.ultistudent.logic.LogicManager execute
+INFO: ----------------[USER COMMAND][history]
+Apr 14, 2019 4:54:01 AM seedu.ultistudent.logic.LogicManager execute
+INFO: ----------------[USER COMMAND][list]
+Apr 14, 2019 4:54:01 AM seedu.ultistudent.logic.LogicManager execute
+INFO: ----------------[USER COMMAND][history]
+Apr 14, 2019 4:54:01 AM seedu.ultistudent.logic.LogicManager execute
+INFO: ----------------[USER COMMAND][add n/Amy Bee p/11111111 e/amy@example.com a/Block 312, Amy Street 1]
+Apr 14, 2019 4:54:01 AM seedu.ultistudent.logic.LogicManager execute
+INFO: ----------------[USER COMMAND][history]
+Apr 14, 2019 4:54:01 AM seedu.ultistudent.logic.LogicManager execute
+INFO: ----------------[USER COMMAND][delete 9]
+Apr 14, 2019 4:54:01 AM seedu.ultistudent.logic.LogicManager execute
+INFO: ----------------[USER COMMAND][history]
+]]></system-err>
+</testsuite>

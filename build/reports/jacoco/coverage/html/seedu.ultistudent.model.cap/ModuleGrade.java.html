@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ModuleGrade.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">main</a> &gt; <a href="index.source.html" class="el_package">seedu.ultistudent.model.cap</a> &gt; <span class="el_source">ModuleGrade.java</span></div><h1>ModuleGrade.java</h1><pre class="source lang-java linenums">package seedu.ultistudent.model.cap;
+
+import static java.util.Objects.requireNonNull;
+
+import static seedu.ultistudent.commons.util.AppUtil.checkArgument;
+
+/**
+ * Represents a CapEntry's module grade in UltiStudent
+ */
+public class ModuleGrade {
+
+    public static final String MESSAGE_CONSTRAINTS = &quot;Module Grades should begin with one letter  and &quot;
+            + &quot;may end with an optional + or - sign at the back. \n&quot;
+            + &quot;Valid grades are: A+, A, A-, B+, B, B-, C+, C, D+, D, F&quot;;
+
+    public static final String VALIDATION_REGEX = &quot;([AB]{1}[+-]{0,1})|([CD]{1}[+]{0,1})|[F]&quot;;
+
+    public static final String A_PLUS_GRADE = &quot;A+&quot;;
+    public static final String A_GRADE = &quot;A&quot;;
+    public static final String A_MINUS_GRADE = &quot;A-&quot;;
+    public static final String B_PLUS_GRADE = &quot;B+&quot;;
+    public static final String B_GRADE = &quot;B&quot;;
+    public static final String B_MINUS_GRADE = &quot;B-&quot;;
+    public static final String C_PLUS_GRADE = &quot;C+&quot;;
+    public static final String C_GRADE = &quot;C&quot;;
+    public static final String D_PLUS_GRADE = &quot;D+&quot;;
+    public static final String D_GRADE = &quot;D&quot;;
+    public static final String F_GRADE = &quot;F&quot;;
+
+    public final String value;
+    private double score;
+
+    /**
+     * Constructs a {@code ModuleGrade}.
+     * @param moduleGrade a valid moduleGrade
+     */
+<span class="fc" id="L37">    public ModuleGrade(String moduleGrade) {</span>
+<span class="fc" id="L38">        String capitalisedModuleGrade = moduleGrade.toUpperCase();</span>
+<span class="fc" id="L39">        requireNonNull(moduleGrade);</span>
+<span class="fc" id="L40">        checkArgument(isValidModuleGrade(capitalisedModuleGrade), MESSAGE_CONSTRAINTS);</span>
+<span class="fc" id="L41">        this.value = capitalisedModuleGrade;</span>
+
+<span class="pc bpc" id="L43" title="4 of 11 branches missed.">        switch (capitalisedModuleGrade) {</span>
+        case A_PLUS_GRADE: case A_GRADE:
+<span class="fc" id="L45">            this.score = 5.0;</span>
+<span class="fc" id="L46">            break;</span>
+        case A_MINUS_GRADE:
+<span class="fc" id="L48">            this.score = 4.5;</span>
+<span class="fc" id="L49">            break;</span>
+        case B_PLUS_GRADE:
+<span class="fc" id="L51">            this.score = 4.0;</span>
+<span class="fc" id="L52">            break;</span>
+        case B_GRADE:
+<span class="fc" id="L54">            this.score = 3.5;</span>
+<span class="fc" id="L55">            break;</span>
+        case B_MINUS_GRADE:
+<span class="fc" id="L57">            this.score = 3.0;</span>
+<span class="fc" id="L58">            break;</span>
+        case C_PLUS_GRADE:
+<span class="fc" id="L60">            this.score = 2.5;</span>
+<span class="fc" id="L61">            break;</span>
+        case C_GRADE:
+<span class="fc" id="L63">            this.score = 2.0;</span>
+<span class="fc" id="L64">            break;</span>
+        case D_PLUS_GRADE:
+<span class="nc" id="L66">            this.score = 1.5;</span>
+<span class="nc" id="L67">            break;</span>
+        case D_GRADE:
+<span class="nc" id="L69">            this.score = 1.0;</span>
+<span class="nc" id="L70">            break;</span>
+        case F_GRADE:
+<span class="nc" id="L72">            this.score = 0.0;</span>
+<span class="nc" id="L73">            break;</span>
+        default:
+            break;
+        }
+<span class="fc" id="L77">    }</span>
+
+    public double getScore() {
+<span class="fc" id="L80">        return this.score;</span>
+    }
+
+    public String getGrade() {
+<span class="nc" id="L84">        return this.value;</span>
+    }
+
+    /**
+     * Returns true if it is a valid ModuleGrade
+     */
+    public static boolean isValidModuleGrade(String test) {
+<span class="fc" id="L91">        return test.toUpperCase().matches(VALIDATION_REGEX);</span>
+    }
+
+    @Override
+    public boolean equals(Object other) {
+<span class="pc bpc" id="L96" title="1 of 4 branches missed.">        return other == this // short circuit if same object</span>
+                || (other instanceof ModuleGrade // instanceof handles nulls
+<span class="fc bfc" id="L98" title="All 2 branches covered.">                &amp;&amp; value.equals(((ModuleGrade) other).value)); // state check</span>
+    }
+
+    @Override
+    public String toString() {
+<span class="fc" id="L103">        final StringBuilder builder = new StringBuilder();</span>
+<span class="fc" id="L104">        builder.append(this.value);</span>
+<span class="fc" id="L105">        return builder.toString();</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.1.201803210924</span></div></body></html>

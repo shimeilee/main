@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>JsonAdaptedModuleCode.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">main</a> &gt; <a href="index.source.html" class="el_package">seedu.ultistudent.storage</a> &gt; <span class="el_source">JsonAdaptedModuleCode.java</span></div><h1>JsonAdaptedModuleCode.java</h1><pre class="source lang-java linenums">package seedu.ultistudent.storage;
+
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+import seedu.ultistudent.commons.exceptions.IllegalValueException;
+import seedu.ultistudent.model.modulecode.ModuleCode;
+
+/**
+ * Jackson-friendly version of {@link seedu.ultistudent.model.modulecode.ModuleCode}.
+ */
+public class JsonAdaptedModuleCode {
+    public static final String MISSING_FIELD_MESSAGE_FORMAT = &quot;Module Code's %s field is missing!&quot;;
+
+    private final String moduleCode;
+
+    /**
+     * Constructs a {@code JsonAdaptedCapEntry} with the given ModuleCode details.
+     */
+    @JsonCreator
+<span class="nc" id="L21">    public JsonAdaptedModuleCode(@JsonProperty(&quot;moduleCode&quot;) String moduleCode) {</span>
+<span class="nc" id="L22">        this.moduleCode = moduleCode;</span>
+<span class="nc" id="L23">    }</span>
+
+    /**
+     * Converts a given {@code ModuleCode} into this class for Jackson use.
+     */
+<span class="nc" id="L28">    public JsonAdaptedModuleCode(ModuleCode source) {</span>
+<span class="nc" id="L29">        moduleCode = source.value;</span>
+<span class="nc" id="L30">    }</span>
+
+    /**
+     * Converts this Jackson-friendly adapted ModuleCode object into the model's {@code ModuleCode} object.
+     *
+     * @throws IllegalValueException if there were any data constraints violated in the adapted module code.
+     */
+    public ModuleCode toModelType() throws IllegalValueException {
+
+<span class="nc bnc" id="L39" title="All 2 branches missed.">        if (moduleCode == null) {</span>
+<span class="nc" id="L40">            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,</span>
+<span class="nc" id="L41">                    ModuleCode.class.getSimpleName()));</span>
+        }
+<span class="nc bnc" id="L43" title="All 2 branches missed.">        if (!ModuleCode.isValidModuleCode(moduleCode)) {</span>
+<span class="nc" id="L44">            throw new IllegalValueException(ModuleCode.MESSAGE_CONSTRAINTS);</span>
+        }
+<span class="nc" id="L46">        final ModuleCode modelModuleCode = new ModuleCode(moduleCode);</span>
+
+<span class="nc" id="L48">        return modelModuleCode;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.1.201803210924</span></div></body></html>

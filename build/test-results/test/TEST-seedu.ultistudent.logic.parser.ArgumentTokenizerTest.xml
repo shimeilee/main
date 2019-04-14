@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="seedu.ultistudent.logic.parser.ArgumentTokenizerTest" tests="7" skipped="0" failures="0" errors="0" timestamp="2019-04-13T20:54:01" hostname="Lees-MBP-3" time="0.01">
+  <properties/>
+  <testcase name="tokenize_emptyArgsString_noValues" classname="seedu.ultistudent.logic.parser.ArgumentTokenizerTest" time="0.004"/>
+  <testcase name="equalsMethod" classname="seedu.ultistudent.logic.parser.ArgumentTokenizerTest" time="0.0"/>
+  <testcase name="tokenize_multipleArgumentsWithRepeats" classname="seedu.ultistudent.logic.parser.ArgumentTokenizerTest" time="0.0"/>
+  <testcase name="tokenize_noPrefixes_allTakenAsPreamble" classname="seedu.ultistudent.logic.parser.ArgumentTokenizerTest" time="0.0"/>
+  <testcase name="tokenize_oneArgument" classname="seedu.ultistudent.logic.parser.ArgumentTokenizerTest" time="0.0"/>
+  <testcase name="tokenize_multipleArguments" classname="seedu.ultistudent.logic.parser.ArgumentTokenizerTest" time="0.001"/>
+  <testcase name="tokenize_multipleArgumentsJoined" classname="seedu.ultistudent.logic.parser.ArgumentTokenizerTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

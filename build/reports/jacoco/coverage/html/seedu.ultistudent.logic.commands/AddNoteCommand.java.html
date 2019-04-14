@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>AddNoteCommand.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">main</a> &gt; <a href="index.source.html" class="el_package">seedu.ultistudent.logic.commands</a> &gt; <span class="el_source">AddNoteCommand.java</span></div><h1>AddNoteCommand.java</h1><pre class="source lang-java linenums">package seedu.ultistudent.logic.commands;
+
+import static java.util.Objects.requireNonNull;
+import static seedu.ultistudent.logic.parser.CliSyntax.PREFIX_MODULECODE;
+import static seedu.ultistudent.logic.parser.CliSyntax.PREFIX_NOTE_NAME;
+
+import seedu.ultistudent.logic.CommandHistory;
+import seedu.ultistudent.logic.commands.exceptions.CommandException;
+import seedu.ultistudent.model.Model;
+import seedu.ultistudent.model.note.Note;
+
+/**
+ * Adds a Note to the NotesManager.
+ */
+public class AddNoteCommand extends Command {
+
+    public static final String COMMAND_WORD = &quot;add-note&quot;;
+
+<span class="fc" id="L19">    public static final String MESSAGE_USAGE = COMMAND_WORD + &quot;: Adds a note&quot;</span>
+            + &quot; to the UltiStudent Notes Manager. \n&quot;
+            + &quot;Parameters: &quot;
+            + PREFIX_MODULECODE + &quot;MODULE_CODE &quot;
+            + PREFIX_NOTE_NAME + &quot;NOTE NAME \n&quot;
+
+            + &quot;Example: &quot; + COMMAND_WORD + &quot; &quot;
+            + PREFIX_MODULECODE + &quot;CS2103T &quot;
+            + PREFIX_NOTE_NAME + &quot;Week 7 Notes&quot;;
+
+    public static final String MESSAGE_SUCCESS = &quot;New note added: %1$s&quot;;
+    public static final String MESSAGE_DUPLICATE_NOTE = &quot;This note already exists in the UltiStudent&quot;;
+
+    private final Note toAdd;
+
+    /**
+     * Creates an AddNoteCommand to add the specified {@code Note}
+     */
+<span class="fc" id="L37">    public AddNoteCommand(Note note) {</span>
+<span class="fc" id="L38">        requireNonNull(note);</span>
+<span class="fc" id="L39">        toAdd = note;</span>
+<span class="fc" id="L40">    }</span>
+
+    @Override
+    public CommandResult execute(Model model, CommandHistory history) throws CommandException {
+<span class="fc" id="L44">        requireNonNull(model);</span>
+
+<span class="fc bfc" id="L46" title="All 2 branches covered.">        if (model.hasNote(toAdd)) {</span>
+<span class="fc" id="L47">            throw new CommandException(MESSAGE_DUPLICATE_NOTE);</span>
+        }
+
+<span class="fc" id="L50">        model.addNote(toAdd);</span>
+<span class="fc" id="L51">        model.commitUltiStudent();</span>
+<span class="fc" id="L52">        return new CommandResult(String.format(MESSAGE_SUCCESS, toAdd));</span>
+    }
+
+    @Override
+    public boolean equals (Object other) {
+<span class="fc bfc" id="L57" title="All 4 branches covered.">        return other == this // short circuit if same object</span>
+                || (other instanceof AddNoteCommand // instanceof handles nulls
+<span class="fc bfc" id="L59" title="All 2 branches covered.">                &amp;&amp; toAdd.equals(((AddNoteCommand) other).toAdd));</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.1.201803210924</span></div></body></html>

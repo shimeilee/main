@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>HomeworkManagerMainPanel.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">main</a> &gt; <a href="index.source.html" class="el_package">seedu.ultistudent.ui</a> &gt; <span class="el_source">HomeworkManagerMainPanel.java</span></div><h1>HomeworkManagerMainPanel.java</h1><pre class="source lang-java linenums">package seedu.ultistudent.ui;
+
+import java.util.Objects;
+import java.util.function.Consumer;
+import java.util.logging.Logger;
+
+import javafx.beans.value.ObservableValue;
+import javafx.collections.ObservableList;
+import javafx.fxml.FXML;
+import javafx.scene.control.ListCell;
+import javafx.scene.control.ListView;
+import javafx.scene.layout.Region;
+import seedu.ultistudent.commons.core.LogsCenter;
+import seedu.ultistudent.model.homework.Homework;
+
+/**
+ * Panel containing the list of Homework.
+ */
+public class HomeworkManagerMainPanel extends UiPart&lt;Region&gt; {
+    private static final String FXML = &quot;HomeworkManagerMainPanel.fxml&quot;;
+<span class="nc" id="L21">    private final Logger logger = LogsCenter.getLogger(HomeworkManagerMainPanel.class);</span>
+
+    @FXML
+    private ListView&lt;Homework&gt; homeworkListView;
+
+    public HomeworkManagerMainPanel(ObservableList&lt;Homework&gt; homeworkList,
+                                    ObservableValue&lt;Homework&gt; selectedHomework,
+                                    Consumer&lt;Homework&gt; onSelectedHomeworkChange) {
+<span class="nc" id="L29">        super(FXML);</span>
+<span class="nc" id="L30">        homeworkListView.setItems(homeworkList);</span>
+<span class="nc" id="L31">        homeworkListView.setCellFactory(listView -&gt; new HomeworkListViewCell());</span>
+<span class="nc" id="L32">        homeworkListView.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -&gt; {</span>
+<span class="nc" id="L33">            logger.fine(&quot;Selection in homework list panel changed to : '&quot; + newValue + &quot;'&quot;);</span>
+<span class="nc" id="L34">            onSelectedHomeworkChange.accept(newValue);</span>
+<span class="nc" id="L35">        });</span>
+<span class="nc" id="L36">        selectedHomework.addListener((observable, oldValue, newValue) -&gt; {</span>
+<span class="nc" id="L37">            logger.fine(&quot;Selected homework changed to: &quot; + newValue);</span>
+
+            // Don't modify selection if we are already selecting the selected homework,
+            // otherwise we would have an infinite loop.
+<span class="nc bnc" id="L41" title="All 2 branches missed.">            if (Objects.equals(homeworkListView.getSelectionModel().getSelectedItem(), newValue)) {</span>
+<span class="nc" id="L42">                return;</span>
+            }
+
+<span class="nc bnc" id="L45" title="All 2 branches missed.">            if (newValue == null) {</span>
+<span class="nc" id="L46">                homeworkListView.getSelectionModel().clearSelection();</span>
+            } else {
+<span class="nc" id="L48">                int index = homeworkListView.getItems().indexOf(newValue);</span>
+<span class="nc" id="L49">                homeworkListView.scrollTo(index);</span>
+<span class="nc" id="L50">                homeworkListView.getSelectionModel().clearAndSelect(index);</span>
+            }
+<span class="nc" id="L52">        });</span>
+<span class="nc" id="L53">    }</span>
+
+    /**
+     * Custom {@code ListCell} that displays the graphics of a {@code Homework} using a {@code HomeworkCard}.
+     */
+<span class="nc" id="L58">    class HomeworkListViewCell extends ListCell&lt;Homework&gt; {</span>
+        @Override
+        protected void updateItem(Homework homework, boolean empty) {
+<span class="nc" id="L61">            super.updateItem(homework, empty);</span>
+
+<span class="nc bnc" id="L63" title="All 4 branches missed.">            if (empty || homework == null) {</span>
+<span class="nc" id="L64">                setGraphic(null);</span>
+<span class="nc" id="L65">                setText(null);</span>
+            } else {
+<span class="nc" id="L67">                setGraphic(new HomeworkCard(homework, getIndex() + 1).getRoot());</span>
+            }
+<span class="nc" id="L69">        }</span>
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.1.201803210924</span></div></body></html>

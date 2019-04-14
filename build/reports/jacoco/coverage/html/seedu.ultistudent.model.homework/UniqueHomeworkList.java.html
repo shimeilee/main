@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>UniqueHomeworkList.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">main</a> &gt; <a href="index.source.html" class="el_package">seedu.ultistudent.model.homework</a> &gt; <span class="el_source">UniqueHomeworkList.java</span></div><h1>UniqueHomeworkList.java</h1><pre class="source lang-java linenums">package seedu.ultistudent.model.homework;
+
+import static java.util.Objects.requireNonNull;
+import static seedu.ultistudent.commons.util.CollectionUtil.requireAllNonNull;
+
+import java.util.Iterator;
+import java.util.List;
+
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+
+import seedu.ultistudent.model.homework.exceptions.DuplicateHomeworkException;
+import seedu.ultistudent.model.homework.exceptions.HomeworkNotFoundException;
+
+/**
+ * A list of homework that enforces uniqueness between its elements and does not allow nulls.
+ * A homework is considered unique by comparing using Homework#equals(other). As such, adding and updating of
+ * homework uses Homework#equals(other) for equality so as to ensure that the homework being added or updated is
+ * unique in terms of identity in the UniqueHomeworkList. The removal of a homework uses Homework#equals(other) so
+ * as to ensure that the homework with exactly the same fields will be removed.
+ *
+ * Supports a minimal set of list operations.
+ */
+<span class="fc" id="L24">public class UniqueHomeworkList implements Iterable&lt;Homework&gt; {</span>
+
+<span class="fc" id="L26">    private final ObservableList&lt;Homework&gt; internalList = FXCollections.observableArrayList();</span>
+<span class="fc" id="L27">    private final ObservableList&lt;Homework&gt; internalUnmodifiableList =</span>
+<span class="fc" id="L28">            FXCollections.unmodifiableObservableList(internalList);</span>
+
+    /**
+     * Returns true if the list contains an equivalent homework as the given argument.
+     */
+    public boolean contains(Homework toCheck) {
+<span class="fc" id="L34">        requireNonNull(toCheck);</span>
+<span class="fc" id="L35">        return internalList.stream().anyMatch(toCheck::equals);</span>
+    }
+
+    /**
+     * Adds a homework to the list.
+     * The homework must not already exist in the list.
+     */
+    public void add(Homework toAdd) {
+<span class="fc" id="L43">        requireNonNull(toAdd);</span>
+<span class="pc bpc" id="L44" title="1 of 2 branches missed.">        if (contains(toAdd)) {</span>
+<span class="nc" id="L45">            throw new DuplicateHomeworkException();</span>
+        }
+<span class="fc" id="L47">        internalList.add(toAdd);</span>
+<span class="fc" id="L48">    }</span>
+
+    /**
+     * Removes the equivalent homework from the list.
+     * The homework must exist in the list.
+     */
+    public void remove(Homework toRemove) {
+<span class="fc" id="L55">        requireNonNull(toRemove);</span>
+<span class="pc bpc" id="L56" title="1 of 2 branches missed.">        if (!internalList.remove(toRemove)) {</span>
+<span class="nc" id="L57">            throw new HomeworkNotFoundException();</span>
+        }
+<span class="fc" id="L59">    }</span>
+
+    public void setHomework(List&lt;Homework&gt; homework) {
+<span class="fc" id="L62">        requireAllNonNull(homework);</span>
+<span class="pc bpc" id="L63" title="1 of 2 branches missed.">        if (!homeworkAreUnique(homework)) {</span>
+<span class="nc" id="L64">            throw new DuplicateHomeworkException();</span>
+        }
+
+<span class="fc" id="L67">        internalList.setAll(homework);</span>
+<span class="fc" id="L68">    }</span>
+
+    public void setHomework(UniqueHomeworkList replacement) {
+<span class="nc" id="L71">        requireNonNull(replacement);</span>
+<span class="nc" id="L72">        internalList.setAll(replacement.internalList);</span>
+<span class="nc" id="L73">    }</span>
+
+    public void setHomework(Homework target, Homework editedHomework) {
+<span class="nc" id="L76">        requireAllNonNull(target, editedHomework);</span>
+
+<span class="nc" id="L78">        int index = internalList.indexOf(target);</span>
+<span class="nc bnc" id="L79" title="All 2 branches missed.">        if (index == -1) {</span>
+<span class="nc" id="L80">            throw new HomeworkNotFoundException();</span>
+        }
+
+<span class="nc bnc" id="L83" title="All 4 branches missed.">        if (!target.equals(editedHomework) &amp;&amp; contains(editedHomework)) {</span>
+<span class="nc" id="L84">            throw new DuplicateHomeworkException();</span>
+        }
+
+<span class="nc" id="L87">        internalList.set(index, editedHomework);</span>
+<span class="nc" id="L88">    }</span>
+
+    /**
+     *Returns true if {@code homeworkList} contains only unique module codes.
+     */
+    private boolean homeworkAreUnique(List&lt;Homework&gt; homeworkList) {
+<span class="fc bfc" id="L94" title="All 2 branches covered.">        for (int i = 0; i &lt; homeworkList.size() - 1; i++) {</span>
+<span class="fc bfc" id="L95" title="All 2 branches covered.">            for (int j = i + 1; j &lt; homeworkList.size(); j++) {</span>
+<span class="pc bpc" id="L96" title="1 of 2 branches missed.">                if (homeworkList.get(i).equals(homeworkList.get(j))) {</span>
+<span class="nc" id="L97">                    return false;</span>
+                }
+            }
+        }
+<span class="fc" id="L101">        return true;</span>
+    }
+
+
+    @Override
+    public Iterator&lt;Homework&gt; iterator() {
+<span class="nc" id="L107">        return internalList.iterator();</span>
+    }
+
+    /**
+     * Returns the backing list as an unmodifiable {@code ObservableList}.
+     */
+    public ObservableList&lt;Homework&gt; asUnmodifiableObservableList() {
+<span class="fc" id="L114">        return internalUnmodifiableList;</span>
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.1.201803210924</span></div></body></html>

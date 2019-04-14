@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>UniqueCapEntryList.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">main</a> &gt; <a href="index.source.html" class="el_package">seedu.ultistudent.model.cap</a> &gt; <span class="el_source">UniqueCapEntryList.java</span></div><h1>UniqueCapEntryList.java</h1><pre class="source lang-java linenums">package seedu.ultistudent.model.cap;
+
+import static java.util.Objects.requireNonNull;
+import static seedu.ultistudent.commons.util.CollectionUtil.requireAllNonNull;
+
+import java.util.Iterator;
+import java.util.List;
+
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import seedu.ultistudent.model.cap.exceptions.CapEntryNotFoundException;
+import seedu.ultistudent.model.cap.exceptions.DuplicateCapEntryException;
+
+
+/**
+ * A list of capEntry that enforces uniqueness between its elements and does not allow nulls.
+ * A capEntry is considered unique by comparing using {@code CapEntry#isSameCapEntry(CapEntry)}. As such, adding and
+ * updating of cap entries uses CapEntry#isSameCapEntry(CapEntry) for equality so as to ensure that the cap entry being
+ * added or updated is unique in terms of identity in the UniqueCapEntryList. However, the removal of a cap entry uses
+ * CapEntry#equals(Object) so as to ensure that the cap entry with exactly the same fields will be removed.
+ *
+ * Supports a minimal set of list operations.
+ *
+ * @see CapEntry#isSameCapEntry(CapEntry)
+ */
+
+<span class="fc" id="L27">public class UniqueCapEntryList implements Iterable&lt;CapEntry&gt; {</span>
+
+<span class="fc" id="L29">    private final ObservableList&lt;CapEntry&gt; internalList = FXCollections.observableArrayList();</span>
+<span class="fc" id="L30">    private final ObservableList&lt;CapEntry&gt; internalUnmodifiableList =</span>
+<span class="fc" id="L31">            FXCollections.unmodifiableObservableList(internalList);</span>
+
+    /**
+     * Returns true if the list contains an equivalent cap entry as the given argument.
+     */
+    public boolean contains(CapEntry toCheck) {
+<span class="fc" id="L37">        requireNonNull(toCheck);</span>
+<span class="fc" id="L38">        return internalList.stream().anyMatch(toCheck::isSameCapEntry);</span>
+    }
+
+    /**
+     * Adds a capEntry to the list.
+     * Also updates the CapScore
+     * The capEntry must not already exist in the list.
+     */
+    public void add(CapEntry toAdd) {
+<span class="fc" id="L47">        requireNonNull(toAdd);</span>
+<span class="fc bfc" id="L48" title="All 2 branches covered.">        if (contains(toAdd)) {</span>
+<span class="fc" id="L49">            throw new DuplicateCapEntryException();</span>
+        }
+<span class="fc" id="L51">        CapEntry.updateCapForAdd(toAdd);</span>
+<span class="fc" id="L52">        internalList.add(toAdd);</span>
+<span class="fc" id="L53">    }</span>
+
+    /**
+     * Replaces the cap entry {@code target} in the list with {@code editedCapEntry}.
+     * {@code target} must exist in the list.
+     * The cap entry identity of {@code editedCapEntry} must not be the same as another existing entry in the list.
+     */
+    public void setCapEntry(CapEntry target, CapEntry editedCapEntry) {
+<span class="fc" id="L61">        requireAllNonNull(target, editedCapEntry);</span>
+
+<span class="fc" id="L63">        int index = internalList.indexOf(target);</span>
+<span class="fc bfc" id="L64" title="All 2 branches covered.">        if (index == -1) {</span>
+<span class="fc" id="L65">            throw new CapEntryNotFoundException();</span>
+        }
+
+<span class="fc bfc" id="L68" title="All 4 branches covered.">        if (!target.isSameCapEntry(editedCapEntry) &amp;&amp; contains(editedCapEntry)) {</span>
+<span class="fc" id="L69">            throw new DuplicateCapEntryException();</span>
+        }
+
+<span class="fc" id="L72">        CapEntry.updateCapForDelete(target);</span>
+<span class="fc" id="L73">        CapEntry.updateCapForAdd(editedCapEntry);</span>
+<span class="fc" id="L74">        internalList.set(index, editedCapEntry);</span>
+<span class="fc" id="L75">    }</span>
+
+    /**
+     * Removes the equivalent cap entry from the list.
+     * Also updates the CapScore.
+     * The cap entry must exist in the list.
+     */
+    public void remove(CapEntry toRemove) {
+<span class="fc" id="L83">        requireNonNull(toRemove);</span>
+<span class="fc" id="L84">        CapEntry.updateCapForDelete(toRemove);</span>
+<span class="fc bfc" id="L85" title="All 2 branches covered.">        if (!internalList.remove(toRemove)) {</span>
+<span class="fc" id="L86">            throw new CapEntryNotFoundException();</span>
+        }
+<span class="fc" id="L88">    }</span>
+
+    public void setCapEntryList(UniqueCapEntryList replacement) {
+<span class="fc" id="L91">        requireNonNull(replacement);</span>
+<span class="fc" id="L92">        internalList.setAll(replacement.internalList);</span>
+<span class="fc" id="L93">    }</span>
+
+    /**
+     * Replaces the contents of this list with {@code capEntries}.
+     * Also updates the CapScore
+     * {@code capEntryList} must not contain duplicate cap entries.
+     */
+    public void setCapEntryList(List&lt;CapEntry&gt; capEntryList) {
+<span class="fc" id="L101">        requireAllNonNull(capEntryList);</span>
+<span class="fc bfc" id="L102" title="All 2 branches covered.">        if (!capEntryListIsUnique(capEntryList)) {</span>
+<span class="fc" id="L103">            throw new DuplicateCapEntryException();</span>
+        }
+
+<span class="fc" id="L106">        internalList.setAll(capEntryList);</span>
+<span class="fc" id="L107">    }</span>
+
+    /**
+     * Returns the backing list as an unmodifiable {@code ObservableList}.
+     */
+    public ObservableList&lt;CapEntry&gt; asUnmodifiableObservableList() {
+<span class="fc" id="L113">        return internalUnmodifiableList;</span>
+    }
+
+    @Override
+    public Iterator&lt;CapEntry&gt; iterator() {
+<span class="nc" id="L118">        return internalList.iterator();</span>
+    }
+
+    @Override
+    public boolean equals(Object other) {
+<span class="pc bpc" id="L123" title="2 of 4 branches missed.">        return other == this // short circuit if same object</span>
+                || (other instanceof UniqueCapEntryList // instanceof handles nulls
+<span class="pc bpc" id="L125" title="1 of 2 branches missed.">                &amp;&amp; internalList.equals(((UniqueCapEntryList) other).internalList));</span>
+    }
+
+    @Override
+    public int hashCode() {
+<span class="nc" id="L130">        return internalList.hashCode();</span>
+    }
+
+    /**
+     * Returns true if {@code capEntryList} contains only unique cap entries.
+     */
+    private boolean capEntryListIsUnique(List&lt;CapEntry&gt; capEntryList) {
+<span class="fc bfc" id="L137" title="All 2 branches covered.">        for (int i = 0; i &lt; capEntryList.size() - 1; i++) {</span>
+<span class="fc bfc" id="L138" title="All 2 branches covered.">            for (int j = i + 1; j &lt; capEntryList.size(); j++) {</span>
+<span class="fc bfc" id="L139" title="All 2 branches covered.">                if (capEntryList.get(i).isSameCapEntry(capEntryList.get(j))) {</span>
+<span class="fc" id="L140">                    return false;</span>
+                }
+            }
+        }
+<span class="fc" id="L144">        return true;</span>
+    }
+}
+
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.1.201803210924</span></div></body></html>

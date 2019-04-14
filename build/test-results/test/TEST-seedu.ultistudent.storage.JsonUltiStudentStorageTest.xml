@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="seedu.ultistudent.storage.JsonUltiStudentStorageTest" tests="7" skipped="0" failures="0" errors="0" timestamp="2019-04-13T20:54:01" hostname="Lees-MBP-3" time="0.062">
+  <properties/>
+  <testcase name="read_missingFile_emptyResult" classname="seedu.ultistudent.storage.JsonUltiStudentStorageTest" time="0.009"/>
+  <testcase name="saveAddressBook_nullAddressBook_throwsNullPointerException" classname="seedu.ultistudent.storage.JsonUltiStudentStorageTest" time="0.001"/>
+  <testcase name="saveAddressBook_nullFilePath_throwsNullPointerException" classname="seedu.ultistudent.storage.JsonUltiStudentStorageTest" time="0.002"/>
+  <testcase name="readAddressBook_invalidAndValidPersonAddressBook_throwDataConversionException" classname="seedu.ultistudent.storage.JsonUltiStudentStorageTest" time="0.045"/>
+  <testcase name="readAddressBook_nullFilePath_throwsNullPointerException" classname="seedu.ultistudent.storage.JsonUltiStudentStorageTest" time="0.001"/>
+  <testcase name="read_notJsonFormat_exceptionThrown" classname="seedu.ultistudent.storage.JsonUltiStudentStorageTest" time="0.002"/>
+  <testcase name="readAddressBook_invalidPersonAddressBook_throwDataConversionException" classname="seedu.ultistudent.storage.JsonUltiStudentStorageTest" time="0.002"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[Apr 14, 2019 4:54:01 AM seedu.ultistudent.commons.util.JsonUtil readJsonFile
+INFO: Json file src/test/data/JsonUltiStudentStorageTest/NonExistentFile.json not found
+Apr 14, 2019 4:54:01 AM seedu.ultistudent.commons.util.JsonUtil readJsonFile
+WARNING: Error reading from jsonFile file src/test/data/JsonUltiStudentStorageTest/invalidAndValidPersonAddressBook.json: com.fasterxml.jackson.databind.JsonMappingException: Instantiation of [simple type, class seedu.ultistudent.storage.JsonSerializableUltiStudent] value failed (java.lang.NullPointerException): null
+ at [Source: {
+  "persons": [ {
+    "name": "Valid Person",
+    "phone": "9482424",
+    "email": "hans@example.com",
+    "address": "4th street"
+  }, {
+    "name": "Person With Invalid Phone Field",
+    "phone": "948asdf2424",
+    "email": "hans@example.com",
+    "address": "4th street"
+  } ]
+}
+; line: 13, column: 1]
+Apr 14, 2019 4:54:01 AM seedu.ultistudent.commons.util.JsonUtil readJsonFile
+WARNING: Error reading from jsonFile file src/test/data/JsonUltiStudentStorageTest/notJsonFormatAddressBook.json: com.fasterxml.jackson.core.JsonParseException: Unrecognized token 'not': was expecting 'null', 'true', 'false' or NaN
+ at [Source: not json format!
+; line: 1, column: 4]
+Apr 14, 2019 4:54:01 AM seedu.ultistudent.commons.util.JsonUtil readJsonFile
+WARNING: Error reading from jsonFile file src/test/data/JsonUltiStudentStorageTest/invalidPersonAddressBook.json: com.fasterxml.jackson.databind.JsonMappingException: Instantiation of [simple type, class seedu.ultistudent.storage.JsonSerializableUltiStudent] value failed (java.lang.NullPointerException): null
+ at [Source: {
+  "persons": [ {
+    "name": "Person with invalid name field: Ha!ns Mu@ster",
+    "phone": "9482424",
+    "email": "hans@example.com",
+    "address": "4th street"
+  } ]
+}
+; line: 8, column: 1]
+]]></system-err>
+</testsuite>

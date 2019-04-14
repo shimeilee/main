@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>AddNoteCommandParser.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">main</a> &gt; <a href="index.source.html" class="el_package">seedu.ultistudent.logic.parser</a> &gt; <span class="el_source">AddNoteCommandParser.java</span></div><h1>AddNoteCommandParser.java</h1><pre class="source lang-java linenums">package seedu.ultistudent.logic.parser;
+
+import static seedu.ultistudent.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
+import static seedu.ultistudent.logic.parser.CliSyntax.PREFIX_MODULECODE;
+import static seedu.ultistudent.logic.parser.CliSyntax.PREFIX_NOTE_NAME;
+
+import java.util.stream.Stream;
+
+import seedu.ultistudent.logic.commands.AddNoteCommand;
+import seedu.ultistudent.logic.parser.exceptions.ParseException;
+
+import seedu.ultistudent.model.modulecode.ModuleCode;
+import seedu.ultistudent.model.note.Content;
+import seedu.ultistudent.model.note.Note;
+import seedu.ultistudent.model.note.NoteName;
+
+/**
+ * Parses input arguments and creates a new AddNoteCommand object
+ */
+<span class="fc" id="L20">public class AddNoteCommandParser implements Parser&lt;AddNoteCommand&gt; {</span>
+
+    /**
+     * Parses the given {@code String} of arguments in the context of the
+     * AddNoteCommand and returns an AddNoteCommand object for execution.
+     * @throws ParseException if the user input does not conform the expected format
+     */
+    public AddNoteCommand parse (String args) throws ParseException {
+<span class="fc" id="L28">        ArgumentMultimap argMultimap =</span>
+<span class="fc" id="L29">                ArgumentTokenizer.tokenize(args, PREFIX_MODULECODE, PREFIX_NOTE_NAME);</span>
+
+<span class="fc bfc" id="L31" title="All 2 branches covered.">        if (!arePrefixesPresent(argMultimap, PREFIX_MODULECODE, PREFIX_NOTE_NAME)</span>
+<span class="pc bpc" id="L32" title="1 of 2 branches missed.">                || !argMultimap.getPreamble().isEmpty()) {</span>
+<span class="fc" id="L33">            throw new ParseException(String.format</span>
+<span class="fc" id="L34">                    (MESSAGE_INVALID_COMMAND_FORMAT, AddNoteCommand.MESSAGE_USAGE));</span>
+        }
+
+<span class="fc" id="L37">        ModuleCode moduleCode = ParserUtil.parseNoteModuleCode(argMultimap</span>
+<span class="fc" id="L38">                .getValue(PREFIX_MODULECODE).get());</span>
+<span class="fc" id="L39">        NoteName noteName = ParserUtil.parseNoteName(argMultimap.getValue</span>
+<span class="fc" id="L40">                (PREFIX_NOTE_NAME).get());</span>
+
+<span class="fc" id="L42">        Note note = new Note(moduleCode, noteName, new Content(&quot;&quot;));</span>
+
+<span class="fc" id="L44">        return new AddNoteCommand(note);</span>
+    }
+
+    /**
+     * Returns true if none of the prefixes contains empty {@code Optional} values in the given
+     * {@code ArgumentMultimap}.
+     */
+    private static boolean arePrefixesPresent(ArgumentMultimap argumentMultimap, Prefix... prefixes) {
+<span class="fc" id="L52">        return Stream.of(prefixes).allMatch(prefix -&gt; argumentMultimap.getValue(prefix).isPresent());</span>
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.1.201803210924</span></div></body></html>

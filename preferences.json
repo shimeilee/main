@@ -1,0 +1,11 @@
+{
+  "guiSettings" : {
+    "windowWidth" : 900.0,
+    "windowHeight" : 650.0,
+    "windowCoordinates" : {
+      "x" : 263,
+      "y" : 129
+    }
+  },
+  "ultiStudentFilePath" : "data/UltiStudent.json"
+}

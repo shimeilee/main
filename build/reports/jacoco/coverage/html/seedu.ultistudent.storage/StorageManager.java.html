@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>StorageManager.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">main</a> &gt; <a href="index.source.html" class="el_package">seedu.ultistudent.storage</a> &gt; <span class="el_source">StorageManager.java</span></div><h1>StorageManager.java</h1><pre class="source lang-java linenums">package seedu.ultistudent.storage;
+
+import java.io.IOException;
+import java.nio.file.Path;
+import java.util.Optional;
+import java.util.logging.Logger;
+
+import seedu.ultistudent.commons.core.LogsCenter;
+import seedu.ultistudent.commons.exceptions.DataConversionException;
+import seedu.ultistudent.model.ReadOnlyUltiStudent;
+import seedu.ultistudent.model.ReadOnlyUserPrefs;
+import seedu.ultistudent.model.UserPrefs;
+
+/**
+ * Manages storage of UltiStudent data in local storage.
+ */
+public class StorageManager implements Storage {
+
+<span class="fc" id="L19">    private static final Logger logger = LogsCenter.getLogger(StorageManager.class);</span>
+    private UltiStudentStorage ultiStudentStorage;
+    private UserPrefsStorage userPrefsStorage;
+
+
+    public StorageManager(UltiStudentStorage ultiStudentStorage, UserPrefsStorage userPrefsStorage) {
+<span class="fc" id="L25">        super();</span>
+<span class="fc" id="L26">        this.ultiStudentStorage = ultiStudentStorage;</span>
+<span class="fc" id="L27">        this.userPrefsStorage = userPrefsStorage;</span>
+<span class="fc" id="L28">    }</span>
+
+    // ================ UserPrefs methods ==============================
+
+    @Override
+    public Path getUserPrefsFilePath() {
+<span class="nc" id="L34">        return userPrefsStorage.getUserPrefsFilePath();</span>
+    }
+
+    @Override
+    public Optional&lt;UserPrefs&gt; readUserPrefs() throws DataConversionException, IOException {
+<span class="fc" id="L39">        return userPrefsStorage.readUserPrefs();</span>
+    }
+
+    @Override
+    public void saveUserPrefs(ReadOnlyUserPrefs userPrefs) throws IOException {
+<span class="fc" id="L44">        userPrefsStorage.saveUserPrefs(userPrefs);</span>
+<span class="fc" id="L45">    }</span>
+
+
+    // ================ UltiStudent methods ==============================
+
+    @Override
+    public Path getUltiStudentFilePath() {
+<span class="fc" id="L52">        return ultiStudentStorage.getUltiStudentFilePath();</span>
+    }
+
+    @Override
+    public Optional&lt;ReadOnlyUltiStudent&gt; readUltiStudent() throws DataConversionException, IOException {
+<span class="nc" id="L57">        return readUltiStudent(ultiStudentStorage.getUltiStudentFilePath());</span>
+    }
+
+    @Override
+    public Optional&lt;ReadOnlyUltiStudent&gt; readUltiStudent(Path filePath) throws DataConversionException, IOException {
+<span class="nc" id="L62">        logger.fine(&quot;Attempting to read data from file: &quot; + filePath);</span>
+<span class="nc" id="L63">        return ultiStudentStorage.readUltiStudent(filePath);</span>
+    }
+
+    @Override
+    public void saveUltiStudent(ReadOnlyUltiStudent ultiStudent) throws IOException {
+<span class="nc" id="L68">        saveUltiStudent(ultiStudent, ultiStudentStorage.getUltiStudentFilePath());</span>
+<span class="nc" id="L69">    }</span>
+
+    @Override
+    public void saveUltiStudent(ReadOnlyUltiStudent ultiStudent, Path filePath) throws IOException {
+<span class="nc" id="L73">        logger.fine(&quot;Attempting to write to data file: &quot; + filePath);</span>
+<span class="nc" id="L74">        ultiStudentStorage.saveUltiStudent(ultiStudent, filePath);</span>
+<span class="nc" id="L75">    }</span>
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.1.201803210924</span></div></body></html>

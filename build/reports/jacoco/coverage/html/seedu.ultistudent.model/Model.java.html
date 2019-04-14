@@ -1,0 +1,431 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Model.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">main</a> &gt; <a href="index.source.html" class="el_package">seedu.ultistudent.model</a> &gt; <span class="el_source">Model.java</span></div><h1>Model.java</h1><pre class="source lang-java linenums">package seedu.ultistudent.model;
+
+import java.nio.file.Path;
+import java.util.function.Predicate;
+
+import javafx.beans.property.ReadOnlyProperty;
+import javafx.collections.ObservableList;
+import seedu.ultistudent.commons.core.GuiSettings;
+import seedu.ultistudent.model.cap.CapEntry;
+import seedu.ultistudent.model.cap.ModuleSemester;
+import seedu.ultistudent.model.homework.Homework;
+import seedu.ultistudent.model.modulecode.ModuleCode;
+import seedu.ultistudent.model.note.Note;
+import seedu.ultistudent.model.person.Person;
+
+/**
+ * The API of the Model component.
+ */
+public interface Model {
+    /**
+     * {@code Predicate} that always evaluate to true
+     */
+<span class="fc" id="L23">    Predicate&lt;Person&gt; PREDICATE_SHOW_ALL_PERSONS = unused -&gt; true;</span>
+<span class="fc" id="L24">    Predicate&lt;CapEntry&gt; PREDICATE_SHOW_ALL_CAP_ENTRIES = unused -&gt; true;</span>
+<span class="pc" id="L25">    Predicate&lt;Homework&gt; PREDICATE_SHOW_ALL_HOMEWORK = unused -&gt; true;</span>
+<span class="fc" id="L26">    Predicate&lt;Note&gt; PREDICATE_SHOW_ALL_NOTES = unused -&gt; true;</span>
+<span class="fc" id="L27">    Predicate&lt;ModuleSemester&gt; PREDICATE_SHOW_ALL_MODULE_SEMESTERS = unused -&gt; true;</span>
+<span class="pc" id="L28">    Predicate&lt;ModuleCode&gt; PREDICATE_SHOW_ALL_MODULE_CODE = unused -&gt; true;</span>
+
+    /**
+     * Replaces user prefs data with the data in {@code userPrefs}.
+     */
+    void setUserPrefs(ReadOnlyUserPrefs userPrefs);
+
+    /**
+     * Returns the user prefs.
+     */
+    ReadOnlyUserPrefs getUserPrefs();
+
+    /**
+     * Returns the user prefs' GUI settings.
+     */
+    GuiSettings getGuiSettings();
+
+    /**
+     * Sets the user prefs' GUI settings.
+     */
+    void setGuiSettings(GuiSettings guiSettings);
+
+    /**
+     * Returns the user prefs' UltiStudent file path.
+     */
+    Path getUltiStudentFilePath();
+
+    /**
+     * Sets the user prefs' UltiStudent file path.
+     */
+    void setUltiStudentFilePath(Path ultiStudentFilePath);
+
+    /**
+     * Replaces UltiStudent data with the data in {@code ultiStudent}.
+     */
+    void setUltiStudent(ReadOnlyUltiStudent ultiStudent);
+
+    /**
+     * Returns the UltiStudent
+     */
+    ReadOnlyUltiStudent getUltiStudent();
+
+    /**
+     * Returns true if a person with the same identity as {@code person} exists in the UltiStudent.
+     */
+    boolean hasPerson(Person person);
+
+    /**
+     * Deletes the given person.
+     * The person must exist in the UltiStudent.
+     */
+    void deletePerson(Person target);
+
+    /**
+     * Adds the given person.
+     * {@code person} must not already exist in the UltiStudent.
+     */
+    void addPerson(Person person);
+
+    /**
+     * Replaces the given person {@code target} with {@code editedPerson}.
+     * {@code target} must exist in the UltiStudent.
+     * The person identity of {@code editedPerson} must not be the same as another existing person in the UltiStudent.
+     */
+    void setPerson(Person target, Person editedPerson);
+
+    /**
+     * Returns an unmodifiable view of the filtered person list
+     */
+    ObservableList&lt;Person&gt; getFilteredPersonList();
+
+    /**
+     * Updates the filter of the filtered person list to filter by the given {@code predicate}.
+     *
+     * @throws NullPointerException if {@code predicate} is null.
+     */
+    void updateFilteredPersonList(Predicate&lt;Person&gt; predicate);
+
+    /**
+     * Returns true if the model has previous UltiStudent states to restore.
+     */
+    boolean canUndoUltiStudent();
+
+    /**
+     * Returns true if the model has undone UltiStudent states to restore.
+     */
+    boolean canRedoUltiStudent();
+
+    /**
+     * Restores the model's UltiStudent to its previous state.
+     */
+    void undoUltiStudent();
+
+    /**
+     * Restores the model's UltiStudent to its previously undone state.
+     */
+    void redoUltiStudent();
+
+    /**
+     * Saves the current UltiStudent state for undo/redo.
+     */
+    void commitUltiStudent();
+
+    /**
+     * Selected person in the filtered person list.
+     * null if no person is selected.
+     */
+    ReadOnlyProperty&lt;Person&gt; selectedPersonProperty();
+
+    /**
+     * Returns the selected person in the filtered person list.
+     * null if no person is selected.
+     */
+    Person getSelectedPerson();
+
+    /**
+     * Sets the selected person in the filtered person list.
+     */
+    void setSelectedPerson(Person person);
+
+    //=========== Cap Entry ===========================================================================
+
+    /**
+     * Returns true if a cap entry with the same identity as {@code capEntry} exists in the UltiStudent.
+     */
+    boolean hasCapEntry(CapEntry capEntry);
+
+    /**
+     * Deletes the given cap entry.
+     * The cap entry must exist in the UltiStudent.
+     */
+    void deleteCapEntry(CapEntry target);
+
+    /**
+     * Adds the given cap entry.
+     * {@code codeEntry} must not already exist in the UltiStudent.
+     */
+    void addCapEntry(CapEntry capEntry);
+
+    /**
+     * Replaces the given cap entry {@code target} with {@code editedCapEntry}.
+     * {@code target} must exist in the UltiStudent.
+     * The cap entry identity of {@code editedCapEntry} must not be the same as another existing cap entry
+     * in the UltiStudent.
+     */
+    void setCapEntry(CapEntry target, CapEntry editedCapEntry);
+
+    /**
+     * Returns an unmodifiable view of the filtered cap entry list
+     */
+    ObservableList&lt;CapEntry&gt; getFilteredCapEntryList();
+
+    /**
+     * Updates the filter of the filtered cap entry list to filter by the given {@code predicate}.
+     *
+     * @throws NullPointerException if {@code predicate} is null.
+     */
+    void updateFilteredCapEntryList(Predicate&lt;CapEntry&gt; predicate);
+
+    /**
+     * Selected cap entry in the filtered cap entry list.
+     * null if no cap entry is selected.
+     */
+    ReadOnlyProperty&lt;CapEntry&gt; selectedCapEntryProperty();
+
+    /**
+     * Returns the selected cap entry in the filtered cap entry list.
+     * null if no cap entry is selected.
+     */
+    CapEntry getSelectedCapEntry();
+
+    /**
+     * Sets the selected cap entry in the filtered cap entry list.
+     */
+    void setSelectedCapEntry(CapEntry capEntry);
+
+    //=========== Module Semester ===========================================================================
+
+    /**
+     * Returns true if a module semester with the same identity as {@code moduleSemester} exists in the UltiStudent.
+     */
+    boolean hasModuleSemester(ModuleSemester moduleSemester);
+
+    /**
+     * Deletes the given module semester.
+     * The module semester must exist in the UltiStudent.
+     */
+    void deleteModuleSemester(ModuleSemester target);
+
+    /**
+     * Adds the given module semester.
+     * {@code moduleSemester} must not already exist in the UltiStudent.
+     */
+    void addModuleSemester(ModuleSemester moduleSemester);
+
+    /**
+     * Replaces the given module semester {@code target} with {@code editedModuleSemester}.
+     * {@code target} must exist in the UltiStudent.
+     * The module semester identity of {@code editedModuleSemester} must not be the same as another existing
+     * module semester in the UltiStudent.
+     */
+    void setModuleSemester(ModuleSemester target, ModuleSemester editedModuleSemester);
+
+    /**
+     * Returns an unmodifiable view of the filtered module semester list
+     */
+    ObservableList&lt;ModuleSemester&gt; getFilteredModuleSemesterList();
+
+    /**
+     * Updates the filter of the filtered module semester list to filter by the given {@code predicate}.
+     *
+     * @throws NullPointerException if {@code predicate} is null.
+     */
+    void updateFilteredModuleSemesterList(Predicate&lt;ModuleSemester&gt; predicate);
+
+    /**
+     * Selected module semester in the filtered module semester list.
+     * null if no module semester is selected.
+     */
+    ReadOnlyProperty&lt;ModuleSemester&gt; selectedModuleSemesterProperty();
+
+    /**
+     * Returns the selected module semester in the filtered module semester list.
+     * null if no module semester is selected.
+     */
+    ModuleSemester getSelectedModuleSemester();
+
+    /**
+     * Sets the selected module semester in the filtered module semester list.
+     */
+    void setSelectedModuleSemester(ModuleSemester moduleSemester);
+
+    //=========== Homework ===========================================================================
+
+    /**
+     * Returns true if a homework with the same identity as {@code homework} exists in the UltiStudent.
+     */
+    boolean hasHomework(Homework homework);
+
+    /**
+     * Deletes the given homework.
+     * The homework must exist in the UltiStudent.
+     */
+    void deleteHomework(Homework target);
+
+    /**
+     * Adds the given homework.
+     * {@code homework} must not already exist in the UltiStudent.
+     */
+    void addHomework(Homework homework);
+
+    /**
+     * Replaces the given cap entry {@code target} with {@code editedHomework}.
+     * {@code target} must exist in the UltiStudent.
+     * The homework identity of {@code editedHomework} must not be the same as another existing cap entry
+     * in the UltiStudent.
+     */
+    void setHomework(Homework target, Homework editedHomework);
+
+    /**
+     * Returns an unmodifiable view of the filtered homework list
+     */
+    ObservableList&lt;Homework&gt; getFilteredHomeworkList();
+
+    /**
+     * Updates the filter of the filtered homework list to filter by the given {@code predicate}.
+     *
+     * @throws NullPointerException if {@code predicate} is null.
+     */
+    void updateFilteredHomeworkList(Predicate&lt;Homework&gt; predicate);
+
+    /**
+     * Selected homework in the filtered cap entry list.
+     * null if no homework is selected.
+     */
+    ReadOnlyProperty&lt;Homework&gt; selectedHomeworkProperty();
+
+    /**
+     * Returns the selected cap entry in the filtered homework list.
+     * null if no homework is selected.
+     */
+    Homework getSelectedHomework();
+
+    /**
+     * Sets the selected homework in the filtered homework list.
+     */
+    void setSelectedHomework(Homework homework);
+
+    //=========== Module Code ===========================================================================
+
+    /**
+     * Returns true if a module code with the same identity as {@code moduleCode} exists in the UltiStudent.
+     */
+    boolean hasModuleCode(ModuleCode moduleCode);
+
+    /**
+     * Deletes the given module code.
+     * The module code must exist in the UltiStudent.
+     */
+    void deleteModuleCode(ModuleCode target);
+
+    /**
+     * Adds the given module code.
+     * {@code moduleCode} must not already exist in the UltiStudent.
+     */
+    void addModuleCode(ModuleCode moduleCode);
+
+    /**
+     * Replaces the given module code {@code target} with {@code editedModuleCode}.
+     * {@code target} must exist in the UltiStudent.
+     * The module code identity of {@code editedModuleCode} must not be the same as another existing module code
+     * in the UltiStudent.
+     */
+    void setModuleCode(ModuleCode target, ModuleCode editedModuleCode);
+
+    /**
+     * Returns an unmodifiable view of the filtered module code list
+     */
+    ObservableList&lt;ModuleCode&gt; getFilteredModuleCodeList();
+
+    /**
+     * Updates the filter of the filtered module code list to filter by the given {@code predicate}.
+     *
+     * @throws NullPointerException if {@code predicate} is null.
+     */
+    void updateFilteredModuleCodeList(Predicate&lt;ModuleCode&gt; predicate);
+
+    /**
+     * Selected module code in the filtered module code list.
+     * null if no module code is selected.
+     */
+    ReadOnlyProperty&lt;ModuleCode&gt; selectedModuleCodeProperty();
+
+    /**
+     * Returns the selected module code in the filtered module code list.
+     * null if no module code is selected.
+     */
+    ModuleCode getSelectedModuleCode();
+
+    /**
+     * Sets the selected module code in the filtered module code list.
+     */
+    void setSelectedModuleCode(ModuleCode moduleCode);
+
+    //=========== Notes ===================================================
+
+    /**
+     * Returns true if a Note with the same identity as {@code note} exists
+     * in the UltiStudent.
+     */
+    boolean hasNote(Note note);
+
+    /**
+     * Deletes the given note.
+     * The note must exist in the UltiStudent.
+     */
+    void deleteNote(Note note);
+
+    /**
+     * Adds the given note.
+     * {@code Note} must not already exist in the UltiStudent.
+     */
+    void addNote(Note note);
+
+    /**
+     * Replaces the given cap note {@code target} with {@code editedNote}.
+     * {@code target} must exist in the UltiStudent.
+     * The note identity of {@code editedNote} must not be the same as
+     * another note in the UltiStudent.
+     */
+    void setNote(Note target, Note editedNote);
+
+    /**
+     * Returns an unmodifiable view of the filtered note list
+     */
+    ObservableList&lt;Note&gt; getFilteredNoteList();
+
+    /**
+     * Updates the filter of the filtered note list to filter by the given
+     * {@code predicate}.
+     *
+     * @throws NullPointerException if {@code predicate} is null.
+     */
+    void updateFilteredNoteList(Predicate&lt;Note&gt; predicate);
+
+    /**
+     * Selected note in the filtered notes list.
+     * null if no note is selected.
+     */
+    ReadOnlyProperty&lt;Note&gt; selectedNoteProperty();
+
+    /**
+     * Returns the selected note in the filtered cap entry list.
+     * null if no note is selected.
+     */
+    Note getSelectedNote();
+
+    /**
+     * Sets the selected note in the filtered note list.
+     */
+    void setSelectedNote(Note note);
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.1.201803210924</span></div></body></html>

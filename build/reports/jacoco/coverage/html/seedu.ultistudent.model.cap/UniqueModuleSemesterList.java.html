@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>UniqueModuleSemesterList.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">main</a> &gt; <a href="index.source.html" class="el_package">seedu.ultistudent.model.cap</a> &gt; <span class="el_source">UniqueModuleSemesterList.java</span></div><h1>UniqueModuleSemesterList.java</h1><pre class="source lang-java linenums">package seedu.ultistudent.model.cap;
+
+import static java.util.Objects.requireNonNull;
+import static seedu.ultistudent.commons.util.CollectionUtil.requireAllNonNull;
+
+import java.util.Comparator;
+import java.util.Iterator;
+import java.util.List;
+
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import seedu.ultistudent.model.cap.exceptions.DuplicateModuleSemesterException;
+import seedu.ultistudent.model.cap.exceptions.ModuleSemesterNotFoundException;
+
+/**
+ * A list of moduleSemester that enforces uniqueness between its elements and does not allow nulls.
+ * A moduleSemester is considered unique by comparing using {@code ModuleSemester#equals(ModuleSemester)}. As such,
+ * adding and updating of module semesters uses ModuleSemester#equals(ModuleSemester) for equality so as to ensure that
+ * the module semester being added or updated is unique in terms of identity in the UniqueModuleSemesterList. Similarly,
+ * the removal of a cap entry uses ModuleSemester#equals(Object) so as to ensure that the cap entry with exactly the
+ * same fields will be removed.
+ *
+ * Supports a minimal set of list operations.
+ *
+ * @see CapEntry#isSameCapEntry(CapEntry)
+ */
+
+<span class="fc" id="L28">public class UniqueModuleSemesterList implements Iterable&lt;ModuleSemester&gt; {</span>
+
+<span class="fc" id="L30">    private final ObservableList&lt;ModuleSemester&gt; internalList = FXCollections.observableArrayList();</span>
+<span class="fc" id="L31">    private final ObservableList&lt;ModuleSemester&gt; internalUnmodifiableList =</span>
+<span class="fc" id="L32">            FXCollections.unmodifiableObservableList(internalList);</span>
+
+<span class="fc" id="L34">    private Comparator&lt;? super ModuleSemester&gt; comparatorSemesterAscending = new Comparator&lt;ModuleSemester&gt;() {</span>
+        public int compare(ModuleSemester o1, ModuleSemester o2) {
+<span class="fc" id="L36">            return o1.getValue().compareToIgnoreCase(o2.getValue());</span>
+        }
+    };
+
+    /**
+     * Returns true if the list contains an equivalent module semester as the given argument.
+     */
+    public boolean contains(ModuleSemester toCheck) {
+<span class="fc" id="L44">        requireNonNull(toCheck);</span>
+<span class="fc" id="L45">        return internalList.stream().anyMatch(toCheck::equals);</span>
+    }
+
+    /**
+     * Adds a moduleSemester to the list.
+     * The moduleSemester must not already exist in the list.
+     */
+    public void add(ModuleSemester toAdd) {
+<span class="fc" id="L53">        requireNonNull(toAdd);</span>
+<span class="fc bfc" id="L54" title="All 2 branches covered.">        if (contains(toAdd)) {</span>
+<span class="fc" id="L55">            throw new DuplicateModuleSemesterException();</span>
+        }
+<span class="fc" id="L57">        internalList.add(toAdd);</span>
+<span class="fc" id="L58">        internalList.sort(comparatorSemesterAscending);</span>
+
+<span class="fc" id="L60">    }</span>
+
+    /**
+     * Replaces the module semester {@code target} in the list with {@code editedModuleSemester}.
+     * {@code target} must exist in the list.
+     * The module semester identity of {@code editedModuleSemester} must not be the same as another existing
+     * module semester in the list.
+     */
+    public void setModuleSemester(ModuleSemester target, ModuleSemester editedModuleSemester) {
+<span class="fc" id="L69">        requireAllNonNull(target, editedModuleSemester);</span>
+
+<span class="fc" id="L71">        int index = internalList.indexOf(target);</span>
+<span class="fc bfc" id="L72" title="All 2 branches covered.">        if (index == -1) {</span>
+<span class="fc" id="L73">            throw new ModuleSemesterNotFoundException();</span>
+        }
+
+<span class="fc bfc" id="L76" title="All 4 branches covered.">        if (!target.equals(editedModuleSemester) &amp;&amp; contains(editedModuleSemester)) {</span>
+<span class="fc" id="L77">            throw new DuplicateModuleSemesterException();</span>
+        }
+
+<span class="fc" id="L80">        internalList.set(index, editedModuleSemester);</span>
+<span class="fc" id="L81">        internalList.sort(comparatorSemesterAscending);</span>
+<span class="fc" id="L82">    }</span>
+
+    /**
+     * Removes the equivalent module semester from the list.
+     * The module semester must exist in the list.
+     */
+    public void remove(ModuleSemester toRemove) {
+<span class="fc" id="L89">        requireNonNull(toRemove);</span>
+<span class="fc bfc" id="L90" title="All 2 branches covered.">        if (!internalList.remove(toRemove)) {</span>
+<span class="fc" id="L91">            throw new ModuleSemesterNotFoundException();</span>
+        }
+<span class="fc" id="L93">        internalList.sort(comparatorSemesterAscending);</span>
+<span class="fc" id="L94">    }</span>
+
+    public void setModuleSemesterList(UniqueModuleSemesterList replacement) {
+<span class="fc" id="L97">        requireNonNull(replacement);</span>
+<span class="fc" id="L98">        internalList.setAll(replacement.internalList);</span>
+<span class="fc" id="L99">    }</span>
+
+    /**
+     * Replaces the contents of this list with {@code moduleSemesterList}.
+     * {@code moduleSemesterList} must not contain duplicate module semesters.
+     */
+    public void setModuleSemesterList(List&lt;ModuleSemester&gt; moduleSemesterList) {
+<span class="fc" id="L106">        requireAllNonNull(moduleSemesterList);</span>
+<span class="fc bfc" id="L107" title="All 2 branches covered.">        if (!moduleSemesterListIsUnique(moduleSemesterList)) {</span>
+<span class="fc" id="L108">            throw new DuplicateModuleSemesterException();</span>
+        }
+
+<span class="fc" id="L111">        internalList.setAll(moduleSemesterList);</span>
+<span class="fc" id="L112">    }</span>
+
+    /**
+     * Returns the backing list as an unmodifiable {@code ObservableList}.
+     */
+    public ObservableList&lt;ModuleSemester&gt; asUnmodifiableObservableList() {
+<span class="fc" id="L118">        return internalUnmodifiableList;</span>
+    }
+
+    @Override
+    public Iterator&lt;ModuleSemester&gt; iterator() {
+<span class="nc" id="L123">        return internalList.iterator();</span>
+    }
+
+    @Override
+    public boolean equals(Object other) {
+<span class="pc bpc" id="L128" title="2 of 4 branches missed.">        return other == this // short circuit if same object</span>
+            || (other instanceof UniqueModuleSemesterList // instanceof handles nulls
+<span class="pc bpc" id="L130" title="1 of 2 branches missed.">            &amp;&amp; internalList.equals(((UniqueModuleSemesterList) other).internalList));</span>
+    }
+
+    @Override
+    public int hashCode() {
+<span class="nc" id="L135">        return internalList.hashCode();</span>
+    }
+
+    /**
+     * Returns true if {@code moduleSemesterList} contains only unique module semesters.
+     */
+    private boolean moduleSemesterListIsUnique(List&lt;ModuleSemester&gt; moduleSemesterList) {
+<span class="fc bfc" id="L142" title="All 2 branches covered.">        for (int i = 0; i &lt; moduleSemesterList.size() - 1; i++) {</span>
+<span class="fc bfc" id="L143" title="All 2 branches covered.">            for (int j = i + 1; j &lt; moduleSemesterList.size(); j++) {</span>
+<span class="fc bfc" id="L144" title="All 2 branches covered.">                if (moduleSemesterList.get(i).equals(moduleSemesterList.get(j))) {</span>
+<span class="fc" id="L145">                    return false;</span>
+                }
+            }
+        }
+<span class="fc" id="L149">        return true;</span>
+    }
+
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.1.201803210924</span></div></body></html>

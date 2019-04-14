@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>UltiStudentParser.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">main</a> &gt; <a href="index.source.html" class="el_package">seedu.ultistudent.logic.parser</a> &gt; <span class="el_source">UltiStudentParser.java</span></div><h1>UltiStudentParser.java</h1><pre class="source lang-java linenums">package seedu.ultistudent.logic.parser;
+
+import static seedu.ultistudent.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
+import static seedu.ultistudent.commons.core.Messages.MESSAGE_UNKNOWN_COMMAND;
+import static seedu.ultistudent.logic.parser.CliSyntax.CAP_MANAGER;
+import static seedu.ultistudent.logic.parser.CliSyntax.HOMEWORK_MANAGER;
+import static seedu.ultistudent.logic.parser.CliSyntax.NOTES_MANAGER;
+
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+import seedu.ultistudent.logic.commands.AddCapEntryCommand;
+import seedu.ultistudent.logic.commands.AddCommand;
+import seedu.ultistudent.logic.commands.AddHomeworkCommand;
+import seedu.ultistudent.logic.commands.AddNoteCommand;
+import seedu.ultistudent.logic.commands.ClearCommand;
+import seedu.ultistudent.logic.commands.Command;
+import seedu.ultistudent.logic.commands.DeleteCapEntryCommand;
+import seedu.ultistudent.logic.commands.DeleteCommand;
+import seedu.ultistudent.logic.commands.DeleteHomeworkCommand;
+import seedu.ultistudent.logic.commands.DeleteNoteCommand;
+import seedu.ultistudent.logic.commands.EditCapEntryByModuleCodeCommand;
+import seedu.ultistudent.logic.commands.EditCapEntryCommand;
+import seedu.ultistudent.logic.commands.EditCommand;
+import seedu.ultistudent.logic.commands.EditHomeworkCommand;
+import seedu.ultistudent.logic.commands.EditNoteCommand;
+import seedu.ultistudent.logic.commands.ExitCommand;
+import seedu.ultistudent.logic.commands.FindCommand;
+import seedu.ultistudent.logic.commands.FindModuleCommand;
+import seedu.ultistudent.logic.commands.FindNoteCommand;
+import seedu.ultistudent.logic.commands.FindSemesterCommand;
+import seedu.ultistudent.logic.commands.HelpCommand;
+import seedu.ultistudent.logic.commands.HistoryCommand;
+import seedu.ultistudent.logic.commands.ListCapEntryCommand;
+import seedu.ultistudent.logic.commands.ListCommand;
+import seedu.ultistudent.logic.commands.ListNoteCommand;
+import seedu.ultistudent.logic.commands.OpenCommand;
+import seedu.ultistudent.logic.commands.RedoCommand;
+import seedu.ultistudent.logic.commands.SaveNoteCommand;
+import seedu.ultistudent.logic.commands.SelectCommand;
+import seedu.ultistudent.logic.commands.UndoCommand;
+import seedu.ultistudent.logic.parser.exceptions.ParseException;
+import seedu.ultistudent.ui.StatusBarFooter;
+
+/**
+ * Parses user input.
+ */
+<span class="fc" id="L48">public class UltiStudentParser {</span>
+
+    /**
+     * Used for initial separation of command word and args.
+     */
+<span class="fc" id="L53">    private static final Pattern BASIC_COMMAND_FORMAT = Pattern.compile(&quot;(?&lt;commandWord&gt;\\S+)(?&lt;arguments&gt;.*)&quot;);</span>
+
+    /**
+     * Parses user input into command for execution.
+     *
+     * @param userInput full user input string
+     * @return the command based on the user input
+     * @throws ParseException if the user input does not conform the expected format
+     */
+    public Command parseCommand(String userInput) throws ParseException {
+<span class="fc" id="L63">        final Matcher matcher = BASIC_COMMAND_FORMAT.matcher(userInput.trim());</span>
+<span class="fc bfc" id="L64" title="All 2 branches covered.">        if (!matcher.matches()) {</span>
+<span class="fc" id="L65">            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, HelpCommand.MESSAGE_USAGE));</span>
+        }
+
+<span class="fc" id="L68">        final String commandWord = matcher.group(&quot;commandWord&quot;);</span>
+<span class="fc" id="L69">        final String arguments = matcher.group(&quot;arguments&quot;);</span>
+<span class="pc bpc" id="L70" title="18 of 30 branches missed.">        switch (commandWord) {</span>
+
+        //===== Add commands in UltiStudent =====//
+        case AddCommand.COMMAND_WORD:
+<span class="fc" id="L74">            return new AddCommand();</span>
+
+        case AddCapEntryCommand.COMMAND_WORD:
+<span class="nc" id="L77">            return new AddCapEntryCommandParser().parse(arguments);</span>
+
+        case AddHomeworkCommand.COMMAND_WORD:
+<span class="nc" id="L80">            return new AddHomeworkCommandParser().parse(arguments);</span>
+
+        case AddNoteCommand.COMMAND_WORD:
+<span class="nc" id="L83">            return new AddNoteCommandParser().parse(arguments);</span>
+
+        //===== DeleteCommand in UltiStudent =====//
+        case DeleteCommand.COMMAND_WORD:
+<span class="fc" id="L87">            return new DeleteCommand();</span>
+
+        case DeleteHomeworkCommand.COMMAND_WORD:
+<span class="nc" id="L90">            return new DeleteHomeworkCommandParser().parse(arguments);</span>
+
+        case DeleteCapEntryCommand.COMMAND_WORD:
+<span class="nc" id="L93">            return new DeleteCapEntryCommandParser().parse(arguments);</span>
+
+        case DeleteNoteCommand.COMMAND_WORD:
+<span class="nc" id="L96">            return new DeleteNoteCommandParser().parse(arguments);</span>
+
+        //===== Edit Commands in UltiStudent =====//
+        case EditCommand.COMMAND_WORD:
+<span class="nc" id="L100">            return new EditCommand();</span>
+
+        case EditHomeworkCommand.COMMAND_WORD:
+<span class="nc bnc" id="L103" title="All 2 branches missed.">            if (!StatusBarFooter.getCurrentManagerStatus().equals(HOMEWORK_MANAGER)) {</span>
+<span class="nc" id="L104">                throw new ParseException(&quot;Please open Homework Manager before using 'edit-hw' command.&quot;);</span>
+            }
+<span class="nc" id="L106">            return new EditHomeworkCommandParser().parse(arguments);</span>
+
+        case EditCapEntryByModuleCodeCommand.COMMAND_WORD:
+<span class="nc bnc" id="L109" title="All 2 branches missed.">            if (!StatusBarFooter.getCurrentManagerStatus().equals(CAP_MANAGER)) {</span>
+<span class="nc" id="L110">                throw new ParseException(&quot;Please open Cap Manager before using 'edit-cap-mc' command.&quot;);</span>
+            }
+<span class="nc" id="L112">            return new EditCapEntryByModuleCodeCommandParser().parse(arguments);</span>
+
+        case EditCapEntryCommand.COMMAND_WORD:
+<span class="nc bnc" id="L115" title="All 2 branches missed.">            if (!StatusBarFooter.getCurrentManagerStatus().equals(CAP_MANAGER)) {</span>
+<span class="nc" id="L116">                throw new ParseException(&quot;Please open Cap Manager before using 'edit-cap' command.&quot;);</span>
+            }
+<span class="nc" id="L118">            return new EditCapEntryCommandParser().parse(arguments);</span>
+
+        case EditNoteCommand.COMMAND_WORD:
+<span class="nc bnc" id="L121" title="All 2 branches missed.">            if (!StatusBarFooter.getCurrentManagerStatus().equals(NOTES_MANAGER)) {</span>
+<span class="nc" id="L122">                throw new ParseException(&quot;Please open Notes Manager before using 'edit-note' command.&quot;);</span>
+            }
+<span class="nc" id="L124">            return new EditNoteCommandParser().parse(arguments);</span>
+
+        //===== Other useful Commands in UltiStudent =====//
+        case SaveNoteCommand.COMMAND_WORD:
+<span class="nc" id="L128">            return new SaveNoteCommand();</span>
+
+        case SelectCommand.COMMAND_WORD:
+<span class="fc" id="L131">            return new SelectCommandParser().parse(arguments);</span>
+
+        case ClearCommand.COMMAND_WORD:
+<span class="fc" id="L134">            return new ClearCommand();</span>
+
+        case FindSemesterCommand.COMMAND_WORD:
+<span class="nc" id="L137">            return new FindSemesterCommandParser().parse(arguments);</span>
+
+        case FindModuleCommand.COMMAND_WORD:
+<span class="nc" id="L140">            return new FindModuleCommandParser().parse(arguments);</span>
+
+        case FindNoteCommand.COMMAND_WORD:
+<span class="nc" id="L143">            return new FindNoteCommandParser().parse(arguments);</span>
+
+        case FindCommand.COMMAND_WORD:
+<span class="fc" id="L146">            return new FindCommandParser().parse(arguments);</span>
+
+        case ListCommand.COMMAND_WORD:
+<span class="fc" id="L149">            return new ListCommand();</span>
+
+        case ListNoteCommand.COMMAND_WORD:
+<span class="nc" id="L152">            return new ListNoteCommand();</span>
+
+        case ListCapEntryCommand.COMMAND_WORD:
+<span class="nc" id="L155">            return new ListCapEntryCommand();</span>
+
+        case HistoryCommand.COMMAND_WORD:
+<span class="fc" id="L158">            return new HistoryCommand();</span>
+
+        case ExitCommand.COMMAND_WORD:
+<span class="fc" id="L161">            return new ExitCommand();</span>
+
+        case HelpCommand.COMMAND_WORD:
+<span class="fc" id="L164">            return new HelpCommand();</span>
+
+        case UndoCommand.COMMAND_WORD:
+<span class="fc" id="L167">            return new UndoCommand();</span>
+
+        case RedoCommand.COMMAND_WORD:
+<span class="fc" id="L170">            return new RedoCommand();</span>
+
+        case OpenCommand.COMMAND_WORD:
+<span class="nc" id="L173">            return new OpenCommandParser().parse(arguments);</span>
+
+
+        default:
+<span class="fc" id="L177">            throw new ParseException(MESSAGE_UNKNOWN_COMMAND);</span>
+        }
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.1.201803210924</span></div></body></html>

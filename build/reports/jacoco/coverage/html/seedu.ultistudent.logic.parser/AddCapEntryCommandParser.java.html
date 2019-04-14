@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>AddCapEntryCommandParser.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">main</a> &gt; <a href="index.source.html" class="el_package">seedu.ultistudent.logic.parser</a> &gt; <span class="el_source">AddCapEntryCommandParser.java</span></div><h1>AddCapEntryCommandParser.java</h1><pre class="source lang-java linenums">package seedu.ultistudent.logic.parser;
+
+import static seedu.ultistudent.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
+import static seedu.ultistudent.logic.parser.CliSyntax.PREFIX_MODULECODE;
+import static seedu.ultistudent.logic.parser.CliSyntax.PREFIX_MODULECREDITS;
+import static seedu.ultistudent.logic.parser.CliSyntax.PREFIX_MODULEGRADE;
+import static seedu.ultistudent.logic.parser.CliSyntax.PREFIX_SEMESTER;
+
+import java.util.stream.Stream;
+
+import seedu.ultistudent.logic.commands.AddCapEntryCommand;
+import seedu.ultistudent.logic.parser.exceptions.ParseException;
+import seedu.ultistudent.model.cap.CapEntry;
+import seedu.ultistudent.model.cap.ModuleCredits;
+import seedu.ultistudent.model.cap.ModuleGrade;
+import seedu.ultistudent.model.cap.ModuleSemester;
+import seedu.ultistudent.model.modulecode.ModuleCode;
+
+/**
+ * Parses input arguments and creates a new AddCapEntryCommand object
+ */
+<span class="fc" id="L22">public class AddCapEntryCommandParser implements Parser&lt;AddCapEntryCommand&gt; {</span>
+
+    /**
+     * Parses the given {@code String} of arguments in the context of the AddCapEntryCommand
+     * and returns an AddCapEntryCommand object for execution.
+     * @throws ParseException if the user input does not conform the expected format
+     */
+    public AddCapEntryCommand parse (String args) throws ParseException {
+<span class="fc" id="L30">        ArgumentMultimap argMultimap =</span>
+<span class="fc" id="L31">                ArgumentTokenizer.tokenize(args, PREFIX_MODULECODE, PREFIX_MODULEGRADE, PREFIX_MODULECREDITS,</span>
+                        PREFIX_SEMESTER);
+
+<span class="fc bfc" id="L34" title="All 2 branches covered.">        if (!arePrefixesPresent(argMultimap, PREFIX_MODULECODE, PREFIX_MODULEGRADE, PREFIX_MODULECREDITS,</span>
+<span class="pc bpc" id="L35" title="1 of 2 branches missed.">                PREFIX_SEMESTER) || !argMultimap.getPreamble().isEmpty()) {</span>
+<span class="fc" id="L36">            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddCapEntryCommand.MESSAGE_USAGE));</span>
+        }
+
+<span class="fc" id="L39">        ModuleCode moduleCode = ParserUtil.parseModuleCode(argMultimap.getValue(PREFIX_MODULECODE).get());</span>
+<span class="fc" id="L40">        ModuleGrade moduleGrade = ParserUtil.parseModuleGrade(argMultimap.getValue(PREFIX_MODULEGRADE).get());</span>
+<span class="fc" id="L41">        ModuleCredits moduleCredits = ParserUtil.parseModuleCredits(argMultimap.getValue(PREFIX_MODULECREDITS).get());</span>
+<span class="fc" id="L42">        ModuleSemester moduleSemester = ParserUtil.parseModuleSemester(argMultimap.getValue(PREFIX_SEMESTER).get());</span>
+
+<span class="fc" id="L44">        CapEntry capEntry = new CapEntry(moduleCode, moduleGrade, moduleCredits, moduleSemester);</span>
+
+<span class="fc" id="L46">        return new AddCapEntryCommand(capEntry);</span>
+    }
+
+    /**
+     * Returns true if none of the prefixes contains empty {@code Optional} values in the given
+     * {@code ArgumentMultimap}.
+     */
+    private static boolean arePrefixesPresent(ArgumentMultimap argumentMultimap, Prefix... prefixes) {
+<span class="fc" id="L54">        return Stream.of(prefixes).allMatch(prefix -&gt; argumentMultimap.getValue(prefix).isPresent());</span>
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.1.201803210924</span></div></body></html>

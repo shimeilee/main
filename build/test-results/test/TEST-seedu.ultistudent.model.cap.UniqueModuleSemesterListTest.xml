@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="seedu.ultistudent.model.cap.UniqueModuleSemesterListTest" tests="22" skipped="0" failures="0" errors="0" timestamp="2019-04-13T20:54:01" hostname="Lees-MBP-3" time="0.008">
+  <properties/>
+  <testcase name="add_duplicateModuleSemester_throwsDuplicateCapEntryException" classname="seedu.ultistudent.model.cap.UniqueModuleSemesterListTest" time="0.0"/>
+  <testcase name="asUnmodifiableObservableList_modifyList_throwsUnsupportedOperationException" classname="seedu.ultistudent.model.cap.UniqueModuleSemesterListTest" time="0.0"/>
+  <testcase name="setModuleSemester_targetModuleSemesterNotInList_throwsModuleSemesterNotFoundException" classname="seedu.ultistudent.model.cap.UniqueModuleSemesterListTest" time="0.001"/>
+  <testcase name="setModuleSemesterList_nullUniqueModuleSemesterList_throwsNullPointerException" classname="seedu.ultistudent.model.cap.UniqueModuleSemesterListTest" time="0.001"/>
+  <testcase name="setModuleSemesterList_listWithDuplicateModuleSemesterList_throwsDuplicateModuleSemesterException" classname="seedu.ultistudent.model.cap.UniqueModuleSemesterListTest" time="0.0"/>
+  <testcase name="setModuleSemester_editedModuleSemesterIsSameModuleSemester_success" classname="seedu.ultistudent.model.cap.UniqueModuleSemesterListTest" time="0.001"/>
+  <testcase name="remove_moduleSemesterDoesNotExist_throwsModuleSemesterNotFoundException" classname="seedu.ultistudent.model.cap.UniqueModuleSemesterListTest" time="0.0"/>
+  <testcase name="setModuleSemesterList_nullList_throwsNullPointerException" classname="seedu.ultistudent.model.cap.UniqueModuleSemesterListTest" time="0.0"/>
+  <testcase name="contains_moduleSemesterWithSameIdentityFieldsInList_returnsTrue" classname="seedu.ultistudent.model.cap.UniqueModuleSemesterListTest" time="0.0"/>
+  <testcase name="add_nullModuleSemester_throwsNullPointerException" classname="seedu.ultistudent.model.cap.UniqueModuleSemesterListTest" time="0.0"/>
+  <testcase name="setModuleSemesterList_replacesOwnListWithProvidedList" classname="seedu.ultistudent.model.cap.UniqueModuleSemesterListTest" time="0.001"/>
+  <testcase name="setModuleSemester_nullTargetModuleSemester_throwsNullPointerException" classname="seedu.ultistudent.model.cap.UniqueModuleSemesterListTest" time="0.0"/>
+  <testcase name="setModuleSemester_editedModuleSemesterHasNonUniqueIdentity_throwsDuplicateModuleSemesterException" classname="seedu.ultistudent.model.cap.UniqueModuleSemesterListTest" time="0.0"/>
+  <testcase name="contains_moduleSemesterNotInList_returnsFalse" classname="seedu.ultistudent.model.cap.UniqueModuleSemesterListTest" time="0.0"/>
+  <testcase name="remove_existingModuleSemester_removesModuleSemester" classname="seedu.ultistudent.model.cap.UniqueModuleSemesterListTest" time="0.0"/>
+  <testcase name="contains_moduleSemester_returnsTrue" classname="seedu.ultistudent.model.cap.UniqueModuleSemesterListTest" time="0.0"/>
+  <testcase name="setModuleSemester_editedModuleSemesterHasDifferentIdentity_success" classname="seedu.ultistudent.model.cap.UniqueModuleSemesterListTest" time="0.0"/>
+  <testcase name="setModuleSemester_nullEditedModuleSemester_throwsNullPointerException" classname="seedu.ultistudent.model.cap.UniqueModuleSemesterListTest" time="0.0"/>
+  <testcase name="setModuleSemesterList_uniqueModuleSemesterList_replacesOwnListWithProvidedUniqueModuleSemesterList" classname="seedu.ultistudent.model.cap.UniqueModuleSemesterListTest" time="0.001"/>
+  <testcase name="setModuleSemester_editedModuleSemesterHasSameIdentity_success" classname="seedu.ultistudent.model.cap.UniqueModuleSemesterListTest" time="0.0"/>
+  <testcase name="contains_nullCapEntry_throwsNullPointerException" classname="seedu.ultistudent.model.cap.UniqueModuleSemesterListTest" time="0.0"/>
+  <testcase name="remove_nullModuleSemester_throwsNullPointerException" classname="seedu.ultistudent.model.cap.UniqueModuleSemesterListTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

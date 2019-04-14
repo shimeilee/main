@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>JsonSerializableUltiStudent.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">main</a> &gt; <a href="index.source.html" class="el_package">seedu.ultistudent.storage</a> &gt; <span class="el_source">JsonSerializableUltiStudent.java</span></div><h1>JsonSerializableUltiStudent.java</h1><pre class="source lang-java linenums">package seedu.ultistudent.storage;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
+
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonRootName;
+
+import seedu.ultistudent.commons.exceptions.IllegalValueException;
+import seedu.ultistudent.model.ReadOnlyUltiStudent;
+import seedu.ultistudent.model.UltiStudent;
+
+import seedu.ultistudent.model.cap.CapEntry;
+import seedu.ultistudent.model.cap.ModuleSemester;
+import seedu.ultistudent.model.homework.Homework;
+import seedu.ultistudent.model.modulecode.ModuleCode;
+import seedu.ultistudent.model.note.Note;
+
+/**
+ * An Immutable UltiStudent that is serializable to JSON format.
+ */
+@JsonRootName(value = &quot;ultistudent&quot;)
+class JsonSerializableUltiStudent {
+
+    public static final String MESSAGE_DUPLICATE_PERSON = &quot;Persons list contains duplicate person(s).&quot;;
+    public static final String MESSAGE_DUPLICATE_CAP_ENTRY = &quot;Cap Entry list contains duplicate cap entry(s).&quot;;
+    public static final String MESSAGE_DUPLICATE_HOMEWORK = &quot;Homework list contains duplicate homework.&quot;;
+    public static final String MESSAGE_DUPLICATE_NOTE = &quot;Notes contains duplicate.&quot;;
+    public static final String MESSAGE_DUPLICATE_MODULE_SEMESTER = &quot;Module Semester list contains duplicate module &quot;
+            + &quot;semester(s).&quot;;
+    public static final String MESSAGE_DUPLICATE_MODULE_CODE = &quot;Module Code list contains duplicate module &quot;
+            + &quot;code(s).&quot;;
+
+<span class="pc" id="L36">    private final List&lt;JsonAdaptedCapEntry&gt; capEntryList = new ArrayList&lt;&gt;();</span>
+<span class="pc" id="L37">    private final List&lt;JsonAdaptedHomeworkList&gt; homeworkList = new ArrayList&lt;&gt;();</span>
+<span class="pc" id="L38">    private final List&lt;JsonAdaptedNote&gt; noteList = new ArrayList&lt;&gt;();</span>
+<span class="pc" id="L39">    private final List&lt;JsonAdaptedModuleSemester&gt; moduleSemesterList = new ArrayList&lt;&gt;();</span>
+<span class="pc" id="L40">    private final List&lt;JsonAdaptedModuleCode&gt; moduleCodeList = new ArrayList&lt;&gt;();</span>
+
+    /**
+     * Constructs a {@code JsonSerializableUltiStudent} with the given cap.
+     */
+    @JsonCreator
+    public JsonSerializableUltiStudent(@JsonProperty(&quot;capEntryList&quot;) List&lt;JsonAdaptedCapEntry&gt; capEntries,
+                                       @JsonProperty(&quot;homeworkList&quot;) List&lt;JsonAdaptedHomeworkList&gt; homeworkList,
+                                       @JsonProperty(&quot;noteList&quot;) List&lt;JsonAdaptedNote&gt; notes,
+                                       @JsonProperty(&quot;moduleSemesterList&quot;) List&lt;JsonAdaptedModuleSemester&gt;
+                                                   moduleSemesterList,
+<span class="fc" id="L51">                                       @JsonProperty(&quot;moduleCodeList&quot;) List&lt;JsonAdaptedModuleCode&gt; moduleCodeList) {</span>
+<span class="nc" id="L52">        this.capEntryList.addAll(capEntries);</span>
+<span class="nc" id="L53">        this.homeworkList.addAll(homeworkList);</span>
+<span class="nc" id="L54">        this.noteList.addAll(notes);</span>
+<span class="nc" id="L55">        this.moduleSemesterList.addAll(moduleSemesterList);</span>
+<span class="nc" id="L56">        this.moduleCodeList.addAll(moduleCodeList);</span>
+<span class="nc" id="L57">    }</span>
+
+    /**
+     * Converts a given {@code ReadOnlyUltiStudent} into this class for Jackson use.
+     *
+     * @param source future changes to this will not affect the created {@code JsonSerializableUltiStudent}.
+     */
+<span class="nc" id="L64">    public JsonSerializableUltiStudent(ReadOnlyUltiStudent source) {</span>
+<span class="nc" id="L65">        capEntryList.addAll(source.getCapEntryList().stream().map(JsonAdaptedCapEntry::new)</span>
+<span class="nc" id="L66">                .collect(Collectors.toList()));</span>
+<span class="nc" id="L67">        homeworkList.addAll(source.getHomeworkList().stream().map(JsonAdaptedHomeworkList::new)</span>
+<span class="nc" id="L68">                .collect(Collectors.toList()));</span>
+<span class="nc" id="L69">        noteList.addAll(source.getNoteList().stream().map(JsonAdaptedNote::new).collect(Collectors.toList()));</span>
+<span class="nc" id="L70">        moduleSemesterList.addAll(source.getModuleSemesterList().stream().map(JsonAdaptedModuleSemester::new)</span>
+<span class="nc" id="L71">                .collect(Collectors.toList()));</span>
+<span class="nc" id="L72">        moduleCodeList.addAll(source.getModuleCodeList().stream().map(JsonAdaptedModuleCode::new)</span>
+<span class="nc" id="L73">                .collect(Collectors.toList()));</span>
+<span class="nc" id="L74">    }</span>
+
+    /**
+     * Converts this UltiStudent into the model's {@code UltiStudent} object.
+     *
+     * @throws IllegalValueException if there were any data constraints violated.
+     */
+    public UltiStudent toModelType() throws IllegalValueException {
+<span class="nc" id="L82">        UltiStudent ultiStudent = new UltiStudent();</span>
+
+<span class="nc bnc" id="L84" title="All 2 branches missed.">        for (JsonAdaptedCapEntry jsonAdaptedCapEntry : capEntryList) {</span>
+<span class="nc" id="L85">            CapEntry capEntry = jsonAdaptedCapEntry.toModelType();</span>
+<span class="nc bnc" id="L86" title="All 2 branches missed.">            if (ultiStudent.hasCapEntry(capEntry)) {</span>
+<span class="nc" id="L87">                throw new IllegalValueException(MESSAGE_DUPLICATE_CAP_ENTRY);</span>
+            }
+<span class="nc" id="L89">            ultiStudent.addCapEntry(capEntry);</span>
+<span class="nc" id="L90">        }</span>
+
+<span class="nc bnc" id="L92" title="All 2 branches missed.">        for (JsonAdaptedHomeworkList jsonAdaptedHomeworkList : homeworkList) {</span>
+<span class="nc" id="L93">            Homework homework = jsonAdaptedHomeworkList.toModelType();</span>
+<span class="nc bnc" id="L94" title="All 2 branches missed.">            if (ultiStudent.hasHomework(homework)) {</span>
+<span class="nc" id="L95">                throw new IllegalValueException(MESSAGE_DUPLICATE_HOMEWORK);</span>
+            }
+<span class="nc" id="L97">            ultiStudent.addHomework(homework);</span>
+<span class="nc" id="L98">        }</span>
+
+<span class="nc bnc" id="L100" title="All 2 branches missed.">        for (JsonAdaptedNote jsonAdaptedNote : noteList) {</span>
+<span class="nc" id="L101">            Note note = jsonAdaptedNote.toModelType();</span>
+<span class="nc bnc" id="L102" title="All 2 branches missed.">            if (ultiStudent.hasNote(note)) {</span>
+<span class="nc" id="L103">                throw new IllegalValueException(MESSAGE_DUPLICATE_NOTE);</span>
+            }
+<span class="nc" id="L105">            ultiStudent.addNote(note);</span>
+<span class="nc" id="L106">        }</span>
+
+<span class="nc bnc" id="L108" title="All 2 branches missed.">        for (JsonAdaptedModuleSemester jsonAdaptedModuleSemester : moduleSemesterList) {</span>
+<span class="nc" id="L109">            ModuleSemester moduleSemester = jsonAdaptedModuleSemester.toModelType();</span>
+<span class="nc bnc" id="L110" title="All 2 branches missed.">            if (ultiStudent.hasModuleSemester(moduleSemester)) {</span>
+<span class="nc" id="L111">                throw new IllegalValueException(MESSAGE_DUPLICATE_MODULE_SEMESTER);</span>
+            }
+<span class="nc" id="L113">            ultiStudent.addModuleSemester(moduleSemester);</span>
+<span class="nc" id="L114">        }</span>
+
+<span class="nc bnc" id="L116" title="All 2 branches missed.">        for (JsonAdaptedModuleCode jsonAdaptedModuleCode : moduleCodeList) {</span>
+<span class="nc" id="L117">            ModuleCode moduleCode = jsonAdaptedModuleCode.toModelType();</span>
+<span class="nc bnc" id="L118" title="All 2 branches missed.">            if (ultiStudent.hasModuleCode(moduleCode)) {</span>
+<span class="nc" id="L119">                throw new IllegalValueException((MESSAGE_DUPLICATE_MODULE_CODE));</span>
+            }
+<span class="nc" id="L121">            ultiStudent.addModuleCode(moduleCode);</span>
+<span class="nc" id="L122">        }</span>
+
+<span class="nc" id="L124">        return ultiStudent;</span>
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.1.201803210924</span></div></body></html>

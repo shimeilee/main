@@ -1,0 +1,14 @@
+{
+  "capEntryList" : [ ],
+  "homeworkList" : [ ],
+  "noteList" : [ {
+    "noteName" : "name",
+    "content" : "ehello there",
+    "moduleCode" : "CS2345"
+  }, {
+    "noteName" : "nd",
+    "content" : "",
+    "moduleCode" : "CS2345"
+  } ],
+  "moduleSemesterList" : [ ]
+}

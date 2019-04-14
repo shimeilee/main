@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="seedu.ultistudent.logic.commands.SelectCommandTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2019-04-13T20:54:01" hostname="Lees-MBP-3" time="0.006">
+  <properties/>
+  <testcase name="execute_invalidIndexUnfilteredList_failure" classname="seedu.ultistudent.logic.commands.SelectCommandTest" time="0.001"/>
+  <testcase name="equals" classname="seedu.ultistudent.logic.commands.SelectCommandTest" time="0.001"/>
+  <testcase name="execute_invalidIndexFilteredList_failure" classname="seedu.ultistudent.logic.commands.SelectCommandTest" time="0.001"/>
+  <testcase name="execute_validIndexUnfilteredList_success" classname="seedu.ultistudent.logic.commands.SelectCommandTest" time="0.0"/>
+  <testcase name="execute_validIndexFilteredList_success" classname="seedu.ultistudent.logic.commands.SelectCommandTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

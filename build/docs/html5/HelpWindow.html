@@ -1,0 +1,931 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]--><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="Asciidoctor 1.5.6.1"><title>UltiStudent - User Guide</title><link rel="stylesheet" href="stylesheets/gh-pages.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="stylesheets/coderay-asciidoctor.css"></head><body class="article"><div id="header"><h1>UltiStudent - User Guide</h1></div><div id="content"><div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>By: <code>Team W09-1</code>      Since: <code>Feb 2019</code>      Licence: <code>MIT</code></p>
+</div>
+</div>
+<div id="toc" class="toc">
+<div id="toctitle"></div>
+<ul class="sectlevel1">
+<li><a href="#introduction">1. Introduction</a></li>
+<li><a href="#quick-start">2. Quick Start</a></li>
+<li><a href="#Features">3. Features</a>
+<ul class="sectlevel2">
+<li><a href="#homeworkmanager">3.1. HomeworkManager</a></li>
+<li><a href="#notesmanager">3.2. NotesManager</a></li>
+<li><a href="#capmanager">3.3. CAPManager</a></li>
+</ul>
+</li>
+<li><a href="#Commands">4. Commands</a>
+<ul class="sectlevel2">
+<li><a href="#general-commands">4.1. General Commands</a></li>
+<li><a href="#homework-manager">4.2. Homework Manager</a></li>
+<li><a href="#notes-manager">4.3. Notes Manager</a></li>
+<li><a href="#cap-manager">4.4. CAP Manager</a></li>
+</ul>
+</li>
+<li><a href="#faq">5. FAQ</a></li>
+<li><a href="#command-summary">6. Command Summary</a>
+<ul class="sectlevel2">
+<li><a href="#general">6.1. General</a></li>
+<li><a href="#homework-manager-2">6.2. Homework Manager</a></li>
+<li><a href="#notes-manager-2">6.3. Notes Manager</a></li>
+<li><a href="#cap-manager-2">6.4. Cap Manager</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect1">
+<h2 id="introduction"><a class="link" href="#introduction">1. Introduction</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>UltiStudent is a student application that effectively tackles the problem of having
+too many applications to manage their school life by providing a centralised platform
+for them to manage their homework, cumulative average point and notes.</p>
+</div>
+<div class="paragraph">
+<p>UltiStudent is catered for students who prefer to use a desktop app for managing their
+school activities through a Command Line Interface (CLI) while still having the benefits
+of a Graphical User Interface (GUI).</p>
+</div>
+<div class="paragraph">
+<p>Therefore if you can type fast, why not give UltiStudent a try to speed up your
+management of school activities!</p>
+</div>
+<div class="paragraph">
+<p>Interested? Jump to the <a href="#quick-start">Section 2, &#8220;Quick Start&#8221;</a> to get started. Enjoy!</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="quick-start"><a class="link" href="#quick-start">2. Quick Start</a></h2>
+<div class="sectionbody">
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Ensure you have Java version <code>9</code> or later installed in your Computer.</p>
+</li>
+<li>
+<p>Download the latest <code>UltiStudent.jar</code> <a href="https://github.com/cs2103-ay1819s2-w09-1/main/releases">here</a>.</p>
+</li>
+<li>
+<p>Copy the file to the folder you want to use as the home folder for your UltiStudent.</p>
+</li>
+<li>
+<p>Double-click the file to start the app. The GUI should appear in a few seconds.</p>
+<div class="imageblock">
+<div class="content">
+<img src="images/Ui.png" alt="Ui" width="790">
+</div>
+</div>
+</li>
+<li>
+<p>Type the command in the command box and press <kbd>Enter</kbd> to execute it.<br>
+e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> will open the help window.</p>
+</li>
+<li>
+<p>Some example commands you can try:</p>
+<div class="ulist">
+<ul>
+<li>
+<p><strong><code>open HomeworkManager</code></strong> : Opens the Homework Manager and its existing
+homework</p>
+</li>
+<li>
+<p><strong><code>add-hw mc/CS2103T hw/Tutorial 01 d/05/05/2019</code></strong> :
+Adds a CS2103T homework “Tutorial 01” with the deadline on 05 May 2019</p>
+</li>
+<li>
+<p><strong><code>delete-hw 3</code></strong> : deletes the 3rd homework shown in the homework manager</p>
+</li>
+<li>
+<p><strong><code>exit</code></strong> : exits the app</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Refer to <a href="#Features">Section 3, &#8220;Features&#8221;</a> for details of each command.</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="Features"><a class="link" href="#Features">3. Features</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>UltiStudent consists of 3 key features to help you manage your student life:
+Homework Manager, Notes Manager, CAP Manager.</p>
+</div>
+<div class="sect2">
+<h3 id="homeworkmanager"><a class="link" href="#homeworkmanager">3.1. HomeworkManager</a></h3>
+<div class="paragraph">
+<p>Let this handy manager can help you to manage your homework by adding, deleting, editing your homework
+based on your progress. You can also check on the deadlines of all your homework before
+deciding which homework to attempt!</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="notesmanager"><a class="link" href="#notesmanager">3.2. NotesManager</a></h3>
+<div class="paragraph">
+<p>In this manager, you can add, delete, edit and save your notes here. Every note saved
+here counts toward saving the environment by not using paper! Lets fight against global
+warming! Fighting!</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="capmanager"><a class="link" href="#capmanager">3.3. CAPManager</a></h3>
+<div class="paragraph">
+<p>This manager will help you to record and keep track of your Cumulative Aggregate Points (CAP)!
+Simply add, deleting and editing the grades for modules you have taken to see immediately what your updated CAP score is!
+Not only that, you can even use the CAPManager to project future CAP scores!</p>
+</div>
+<div class="paragraph">
+<p>This manager will always be your reminder to work hard and get
+more 'A&#8217;s for future modules! At the same time allows you to have an overview of your
+completed modules which provides you the assistance you need to plan for your upcoming
+semesters.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="Commands"><a class="link" href="#Commands">4. Commands</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>As UltiStudent contains many different commands and features, do refer to the command
+format below to help you better understand how to use each command to their best.</p>
+</div>
+<div class="paragraph">
+<p><strong>Command Format</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Words in <code>UPPER_CASE</code> are the parameters to be supplied by the user e.g. in
+<code>add-hw mc/MODULECODE hw/HOMEWORK d/dd/mm/yyyy</code>, <code>MODULECODE</code> is a parameter which
+can be used as <code>add-hw mc/CS2103T</code> but of course you would have to do the same for
+<code>HOMEWORK</code> and <code>dd/mm/yyyy</code>.</p>
+</li>
+<li>
+<p>All parameters must be supplied by users: <code>add-hw mc/MODULECODE hw/HOMEWORK d/DEADLINE</code>.</p>
+</li>
+</ul>
+</div>
+<div class="sect2">
+<h3 id="general-commands"><a class="link" href="#general-commands">4.1. General Commands</a></h3>
+<div class="paragraph">
+<p>The commands here are applicable in UltiStudent&#8217;s 3 Managers: HomeworkManager, NotesManager, CapManager.</p>
+</div>
+<div class="paragraph">
+<p>The commands differ by the entity placed at the end of each command. <code>add-x</code>, <code>delete-x</code>,
+<code>edit-x</code> where <code>x</code> should be replaced by either "hw" for homework, "note" for note,
+or "cap" for cumulative average point!</p>
+</div>
+<div class="sect3">
+<h4 id="opening-a-manager-code-open-code"><a class="link" href="#opening-a-manager-code-open-code">4.1.1. Opening a manager : <code>open</code></a></h4>
+<div class="paragraph">
+<p>This command will usually be your first and frequently used command in UltiStudent! But fret not, I will teach
+you on how to use this powerful command that is applicable to all Managers in UltiStudent.</p>
+</div>
+<div class="paragraph">
+<p>To use this command, we have to adhere to this format: <code>open MANAGER</code> else UltiStudent would not be able to
+understand what we are trying to tell it to do.</p>
+</div>
+<div class="paragraph">
+<p>Example time!</p>
+</div>
+<div class="paragraph">
+<p>Lets say we have a Homework to add, edit or delete, we can easily use <code>open HomeworkManager</code> to command UltiStudent
+to open Homework Manager for us! Same goes for Notes Manager <code>open NotesManager</code> and Cap Manager <code>open CapManager</code>.</p>
+</div>
+<div class="paragraph">
+<p>With this, we can begin our journey with UltiStudent to become an ultimate student!</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="viewing-help-code-help-code"><a class="link" href="#viewing-help-code-help-code">4.1.2. Viewing help : <code>help</code></a></h4>
+<div class="paragraph">
+<p>Not sure how to get started? Not to worry! Simply type 'help' for more clarity!
+Opens up the help window.<br></p>
+</div>
+<div class="paragraph">
+<p>Format: <code>help</code></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="listing-entered-commands-code-history-code"><a class="link" href="#listing-entered-commands-code-history-code">4.1.3. Listing entered commands : <code>history</code></a></h4>
+<div class="paragraph">
+<p>If you would like to review what you have done in your current session of UltiStudent, simply use our history command!
+This command will help to retrieve the previously executed commands which has been entered into the system before <code>history</code>.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="undoing-previous-command-code-undo-code"><a class="link" href="#undoing-previous-command-code-undo-code">4.1.4. Undoing previous command : <code>undo</code></a></h4>
+<div class="paragraph">
+<p>Restores the UltiStudent to the state before the previous <em>undoable</em> command was executed.<br>
+Format: <code>undo</code></p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Undoable commands: those commands that modify the UltiStudent&#8217;s content in
+the various manager e.g. for Homework Manager
+(<code>add-hw</code>, <code>delete-hw</code>, <code>edit-hw</code>).</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>delete-hw 1</code><br>
+<code>undo</code> (reverses the <code>delete-hw 1</code> command)<br></p>
+</li>
+<li>
+<p><code>delete-note 1</code><br>
+<code>undo</code> (reverses the <code>delete-note 1</code> command)<br></p>
+</li>
+<li>
+<p><code>delete-hw 1</code><br>
+<code>add mc/CS2101 hw/Tutorial 1 d/03/03/2019</code><br>
+<code>undo</code> (reverses the <code>add</code> command)<br>
+<code>undo</code> (reverses the <code>delete-hw 1</code> command)<br></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="redoing-the-previously-undone-command-code-redo-code"><a class="link" href="#redoing-the-previously-undone-command-code-redo-code">4.1.5. Redoing the previously undone command : <code>redo</code></a></h4>
+<div class="paragraph">
+<p>Reverses the most recent <code>undo</code> command.<br>
+Format: <code>redo</code></p>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>delete-hw 1</code><br>
+<code>undo</code> (reverses the <code>delete-hw 1</code> command)<br>
+<code>redo</code> (reapplies the <code>delete-hw 1</code> command)<br></p>
+</li>
+<li>
+<p><code>delete-note 1</code><br>
+<code>redo</code><br>
+The <code>redo</code> command fails as there are no <code>undo</code> commands executed previously.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="exiting-the-program-code-exit-code"><a class="link" href="#exiting-the-program-code-exit-code">4.1.6. Exiting the program : <code>exit</code></a></h4>
+<div class="paragraph">
+<p>Exits the program.<br>
+Format: <code>exit</code></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="saving-the-data"><a class="link" href="#saving-the-data">4.1.7. Saving the data</a></h4>
+<div class="paragraph">
+<p>UltiStudent data are saved in the hard disk automatically after any command that changes the data.<br>
+There is no need to save manually.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="homework-manager"><a class="link" href="#homework-manager">4.2. Homework Manager</a></h3>
+<div class="sect3">
+<h4 id="adding-a-homework-code-add-hw-code"><a class="link" href="#adding-a-homework-code-add-hw-code">4.2.1. Adding a homework: <code>add-hw</code></a></h4>
+<div class="paragraph">
+<p>Have a homework but unable to attend to it immediately? No worries! Let Homework Manager help
+us keep track of them! By using <code>add-hw</code>, we can command this manager to remember our homework
+for us! Make sure we are in the Homework Manager by using <code>open HomeworkManager</code> first!</p>
+</div>
+<div class="paragraph">
+<p>Sadly, it doesn&#8217;t do our homework for us&#8230;&#8203; but hey it reduces our worries on forgetting our homework!</p>
+</div>
+<div class="paragraph">
+<p>To use this command we have to adhere to this format: <code>add-hw mc/MODULECODE hw/HOMEWORK d/DEADLINE</code>
+else Homework Manager would not be able to understand what we are trying to tell it to do.</p>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+DEADLINE must be in dd/mm/yyyy format and DEADLINE should not be a date that is before today!
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Okay enough explanation and time for an example!</p>
+</div>
+<div class="paragraph">
+<p>Lets say we have to do Tutorial 1 for CS1101S by 1st May 2019. We could command this manager to
+remember it for us by using <code>add-hw mc/CS1101S hw/Tutorial 1 d/01/05/2019</code> in the red highlighted box and
+do make sure that you are in the homework manager which is indicated by the highlighted icon in the white
+highlighted box as shown below.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/Add-Hw%20UG.png" alt="Add Hw UG" width="790">
+</div>
+</div>
+<div class="paragraph">
+<p>When CS1101S tutorial 1 has been successfully added, the green highlighted box would indicate the success.
+We will also be able to view the CS1101S being added into the blue highlighted box since this is the first
+homework for CS1101S we have and the orange highlighted box would show us what homework we have.</p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+Pro tip here! The ordering of <code>mc/MODULECODE</code>, <code>hw/HOMEWORK</code> and <code>d/DEADLINE</code> can be jumbled around!
+so do not worry that this handy manager will not understand what you are trying to command it to do!
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock caution">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-caution" title="Caution"></i>
+</td>
+<td class="content">
+Sadly Homework Manager is english educated only&#8230;&#8203; Therefore it only accepts english characters and numbers.
+Maybe Homework Manager would be educated in other languages to accept other characters in future!
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="editing-a-homework-code-edit-hw-code"><a class="link" href="#editing-a-homework-code-edit-hw-code">4.2.2. Editing a homework: <code>edit-hw</code></a></h4>
+<div class="paragraph">
+<p>Edits an existing homework entry in the UltiStudent<br>
+Format: <code>edit-homework INDEX  [mc/MODULECODE] [hw/HOMEWORK]
+[d/DEADLINE]</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Edits the homework at the specified <code>INDEX</code>. The index refers to the index number shown in the displayed homework list. The index <strong>must be a positive integer</strong> 1, 2, 3, &#8230;&#8203;</p>
+</li>
+<li>
+<p>At least one of the optional fields must be provided.</p>
+</li>
+<li>
+<p>Existing values will be updated to the input values.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>edit-homework 1 d/10/03/2019</code><br>
+Edits the deadline of the 1st homework to be <code>10 March 2019</code></p>
+</li>
+<li>
+<p><code>edit-homework 2 hw/Tutorial 1 d/03/03/2019<br>
+Edits the deadline of the 2nd homework and set the name of the homework to be `Tutorial 1</code>.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="deleting-a-homework-code-delete-hw-code"><a class="link" href="#deleting-a-homework-code-delete-hw-code">4.2.3. Deleting a homework: <code>delete-hw</code></a></h4>
+<div class="paragraph">
+<p>Deletes the specified homework from the UltiStudent.<br>
+Format: <code>delete-hw INDEX</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Deletes the homework at the specified <code>INDEX</code>.</p>
+</li>
+<li>
+<p>The index refers to the index number shown in the displayed homework list.</p>
+</li>
+<li>
+<p>The index <strong>must be a positive integer</strong> 1, 2, 3, &#8230;&#8203;</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>delete-hw 2</code><br>
+Deletes the 2nd homework in the UltiStudent.</p>
+</li>
+<li>
+<p><code>delete-hw 1</code><br>
+Deletes the 1st homework in UltiStudent.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="notes-manager"><a class="link" href="#notes-manager">4.3. Notes Manager</a></h3>
+<div class="sect3">
+<h4 id="adding-a-note-code-add-note-code"><a class="link" href="#adding-a-note-code-add-note-code">4.3.1. Adding a note : <code>add-note</code></a></h4>
+<div class="paragraph">
+<p>Adds a new note to the Notes Manager<br>
+Format: <code>add-note mc/MODULECODE nn/NOTENAME</code></p>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>add-note mc/CS2103T n/NOTENAME</code></p>
+</li>
+<li>
+<p><code>add-note mc/CS2100 n/NOTENAME</code></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="editing-and-saving-a-note-code-edit-note-code-code-save-note-code"><a class="link" href="#editing-and-saving-a-note-code-edit-note-code-code-save-note-code">4.3.2. Editing and Saving a note : <code>edit-note</code> <code>save-note</code></a></h4>
+<div class="sect4">
+<h5 id="editing-note-code-edit-note-code"><a class="link" href="#editing-note-code-edit-note-code">Editing note: <code>edit-note</code></a></h5>
+<div class="paragraph">
+<p>Hurray! We&#8217;ve successfully added a note therefore it is time for us to learn how to edit and save the edited notes!
+But first! we got to make sure we are in the Notes Manager by looking at the Notes icon in the white highlighted
+box as shown below.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/Edit&Save-Note%20UG.png" alt="Edit&amp;Save Note UG" width="790">
+</div>
+</div>
+<div class="paragraph">
+<p>Now that we are in the Notes Manager. It is time for us to start editing our note! First off, we have to use
+<code>edit-note INDEX</code> to select the notes that we want to edit.</p>
+</div>
+<div class="paragraph">
+<p>For example, we have 2 notes currently as shown in the image above, and we would like to edit our Personal
+Project Portfolio note. We will use <code>edit-note 1</code> in the red highlighted box to open <strong>Personal Project
+Portfolio</strong> note for editing.</p>
+</div>
+<div class="paragraph">
+<p>When Notes Manager has successfully open our note, it will indicate in the green highlighted box. At the same
+time, the note will be highlighted in blue in the blue highlighted box and the text field in the orange
+highlighted box will turn white and allow us to start jotting down our notes!</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="saving-note-code-save-note-code"><a class="link" href="#saving-note-code-save-note-code">Saving note: <code>save-note</code></a></h5>
+<div class="paragraph">
+<p>Now that we are done editing our note, it is time to save them! We can do this easily by using the <code>save-note</code> in
+the red highlighted box!</p>
+</div>
+<div class="paragraph">
+<p>Once the note is saved, Notes Manager will let us know by indicating what we have saved
+in the green highlighted box. At the same time, the textfield in the orange highlighted box will be disabled. For
+<code>save-note</code> there is no parameters as it will save all edited notes in notes manager.</p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+Pro tip here! We can edit multiple notes at the same time by using edit-note 1 then edit-note 2 to open the
+respective notes to edit. Once we are done editing, we can simply use <code>save-note</code> to save all the edited notes!
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="deleting-a-note-code-delete-note-code"><a class="link" href="#deleting-a-note-code-delete-note-code">4.3.3. Deleting a Note: <code>delete-note</code></a></h4>
+<div class="paragraph">
+<p>Deletes the specified note from the Notes Manager.<br>
+Format: <code>delete-note INDEX</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Deletes the Note at the specified <code>INDEX</code>.</p>
+</li>
+<li>
+<p>The index refers to the index number shown in the displayed CAP Entries list.</p>
+</li>
+<li>
+<p>The index <strong>must be a positive integer</strong> 1, 2, 3, &#8230;&#8203;</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>edit-note 1</code><br>
+Opens the 1st note in the Note Manager and allows editing into the note.</p>
+</li>
+<li>
+<p><code>delete-note 2</code><br>
+Deletes the 2nd note in the Note Manager.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="cap-manager"><a class="link" href="#cap-manager">4.4. CAP Manager</a></h3>
+<div class="paragraph">
+<p>Climbing to your first class honours? Or struggling to keep within your desired class? Worry no more, let CAP Manager
+help you with keeping count. All you need to do is to key in your grades and TADAH your CAP will be calculated for you.
+CAP Manager&#8217;s interface is split into a few key sections. Do refer to the image below to familiarise yourself with
+Cap Manager!</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/CapManagerInterface.png" alt="CapManagerInterface" width="790">
+</div>
+</div>
+<div class="paragraph">
+<p>Now that you&#8217;re all set, let&#8217;s see how Cap Manager can help us!</p>
+</div>
+<div class="sect3">
+<h4 id="adding-a-cap-entry-code-add-cap-code"><a class="link" href="#adding-a-cap-entry-code-add-cap-code">4.4.1. Adding a CAP entry: <code>add-cap</code></a></h4>
+<div class="paragraph">
+<p>Adds a new CAP entry to the CAP Manager<br></p>
+</div>
+<div class="paragraph">
+<p>Let&#8217;s assume it&#8217;s the end of the semester and you just got your grades back.
+Simply add your modules to the Cap Manager with the <code>add-cap</code> command to view your updated CAP!</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>add-cap mc/MODULECODE g/MODULEGRADE mcs/MODULECREDITS sem/MODULESEMESTER</code></p>
+</div>
+<table class="tableblock frame-all grid-all" style="width: 80%;">
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 40%;">
+<col style="width: 40%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Parameter</th>
+<th class="tableblock halign-left valign-top">Input type</th>
+<th class="tableblock halign-left valign-top">Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">mc/MODULECODE</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Module Code of the Module</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">mc/CS2103T</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">g/MODULEGRADE</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Module Grade received</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">g/A</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">mcs/MODULECREDITS</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Number of Modular Credits the module is worth</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">mcs/4</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">sem/MODULESEMESTER</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The Semester the module was taken in</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">sem/Y1S1</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>add-cap mc/CS2101 g/B+ mcs/4 sem/Y2S2</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Adds CS2101 into the CAP Manager, with a grade of B+ and 4 Modular Credits.</p>
+</div>
+<div class="paragraph">
+<p>First open CAP Manager</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/OpenCapManager.png" alt="OpenCapManager" width="790">
+</div>
+</div>
+<div class="paragraph">
+<p>Then use the <code>add-cap</code> command.</p>
+</div>
+<div class="paragraph">
+<p>And just like that your CAP Manager will now include the module you just added.
+The semester list will also be updated if you are adding a module that is newly taken.
+Not only that, your CAP score will be updated right away!</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="editing-a-cap-entry-by-index-code-edit-cap-code"><a class="link" href="#editing-a-cap-entry-by-index-code-edit-cap-code">4.4.2. Editing a CAP Entry by index: <code>edit-cap</code></a></h4>
+<div class="paragraph">
+<p>If you made a mistake in entering the information for any particular CAP entry, do not worry!
+ <code>edit-cap</code> command can easily fix that.</p>
+</div>
+<div class="paragraph">
+<p>Edits an existing cap entry in the UltiStudent by the use of index.<br>
+Format: <code>edit-cap INDEX  [mc/MODULECODE] [g/MODULEGRADE] [mcs/MODULECREDITS] [sem/MODULESEMESTER]</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Edits the CAP entry at the specified <code>INDEX</code>. The index refers to the index number shown in the displayed CAP Entries list. The index <strong>must be a positive integer</strong> 1, 2, 3, &#8230;&#8203;</p>
+</li>
+<li>
+<p>At least one of the optional fields must be provided.</p>
+</li>
+<li>
+<p>Existing values will be updated to the input values.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>edit-cap 1 g/A</code><br>
+Edits the module grade of the 1st cap entry in cap manager to be <code>A</code></p>
+</li>
+<li>
+<p><code>edit-cap 3 mc/CS2102 g/B+</code><br>
+Edits the module code of the 3rd cap entry and the grade obtained to <code>B+</code>.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="editing-a-cap-entry-by-module-code-code-edit-cap-mc-code"><a class="link" href="#editing-a-cap-entry-by-module-code-code-edit-cap-mc-code">4.4.3. Editing a CAP Entry by module code: <code>edit-cap-mc</code></a></h4>
+<div class="paragraph">
+<p>UltiStudent understands that students have to take many modules in their University life, as such,</p>
+</div>
+<div class="paragraph">
+<p>As such the <code>edit-cap-mc</code> allows users to edit the parameters of a __ by the using the module code instead of the index
+for more convenience!</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>edit-cap-mc MODULECODE [mc/MODULECODE] [g/MODULEGRADE] [mcs/MODULECREDITS] [sem/MODULESEMESTER]</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Edits the CAP entry with the specified MODULECODE. The module code <strong>must</strong> be valid.</p>
+</li>
+<li>
+<p>At least one of the optional fields must be provided.</p>
+</li>
+<li>
+<p>Existing values will be updated to the input values.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>edit-cap-mc CS2100 g/B-</code><br>
+Edits the module grade of CS2100 in cap manager to be <code>B-</code></p>
+</li>
+<li>
+<p><code>edit-cap CS2103T mc/CS2102 g/A+</code><br>
+Edits the cap entry of CS2103T to become that of a cap entry for CS2102 and sets the grade obtained to <code>B+</code>.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="deleting-a-cap-entry-code-delete-cap-code"><a class="link" href="#deleting-a-cap-entry-code-delete-cap-code">4.4.4. Deleting a CAP entry: <code>delete-cap</code></a></h4>
+<div class="paragraph">
+<p>If you ever do need to delete a CAP entry in the CAP Manager, you may use this command to easily delete that specific CAP Entry.
+After executing the command
+Deletes the specified CAP entry from the CAP Manager.<br>
+Format: <code>delete-cap INDEX</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Deletes the CAP entry at the specified <code>INDEX</code>.</p>
+</li>
+<li>
+<p>The index refers to the index number shown in the displayed CAP Entries list.</p>
+</li>
+<li>
+<p>The index <strong>must be a positive integer</strong> 1, 2, 3, &#8230;&#8203;</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>delete-cap 2</code><br>
+Deletes the 2nd CAP Entry in the UltiStudent.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="filtering-a-cap-entry-code-find-sem-code"><a class="link" href="#filtering-a-cap-entry-code-find-sem-code">4.4.5. Filtering a CAP entry: <code>find-sem</code></a></h4>
+<div class="paragraph">
+<p>If you would like to view the modules you have taken for particular semester(s), then find-sem will be handy!</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>find-sem SEMESTER &#8230;&#8203;</code></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="filtering-a-cap-entry-code-list-cap-code"><a class="link" href="#filtering-a-cap-entry-code-list-cap-code">4.4.6. Filtering a CAP entry: <code>list-cap</code></a></h4>
+<div class="paragraph">
+<p>This command displays all the modules inside the CAP manager.
+This command is most helpful after the use of <code>find-sem</code> command.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>list-cap</code></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="faq"><a class="link" href="#faq">5. FAQ</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><strong>Q</strong>: How do I transfer my data to another Computer?<br>
+<strong>A</strong>: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous UltiStudent folder.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="command-summary"><a class="link" href="#command-summary">6. Command Summary</a></h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="general"><a class="link" href="#general">6.1. General</a></h3>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Open</strong> : <code>open MANAGER</code><br>
+e.g. <code>open HomeworkManager</code>, <code>open NotesManager</code>, <code>open CapManager</code></p>
+</li>
+<li>
+<p><strong>Find</strong> : <code>find KEYWORD [MORE_KEYWORDS]</code><br>
+e.g. <code>find Tutorial 3</code></p>
+</li>
+<li>
+<p><strong>Help</strong> : <code>help</code></p>
+</li>
+<li>
+<p><strong>Select</strong> : <code>select INDEX</code><br>
+e.g.<code>select 3</code></p>
+</li>
+<li>
+<p><strong>History</strong> : <code>history</code></p>
+</li>
+<li>
+<p><strong>Undo</strong> : <code>undo</code></p>
+</li>
+<li>
+<p><strong>Redo</strong> : <code>redo</code></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="homework-manager-2"><a class="link" href="#homework-manager-2">6.2. Homework Manager</a></h3>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Add Homework</strong> : <code>add-hw mc/MODULECODE hw/HOMEWORK d/DEADLINE</code><br>
+e.g. <code>add-hw mc/CS1101S hw/Tutorial 1 d/01/05/2019</code></p>
+</li>
+<li>
+<p><strong>Delete Homework</strong> : <code>delete INDEX</code><br>
+e.g. <code>delete 2</code></p>
+</li>
+<li>
+<p><strong>Edit Homework</strong> : <code>edit-note INDEX  [mc/MODULECODE] [hw/HOMEWORK] [d/DEADLINE] [p/PRIORITY]&#8230;&#8203;</code><br>
+e.g. <code>edit 2 d/030319 p/</code></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="notes-manager-2"><a class="link" href="#notes-manager-2">6.3. Notes Manager</a></h3>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Add Note</strong> : <code>add-note mc/MODULECODE n/NOTENAME hw/HOMEWORK [p/PRIORITY]&#8230;&#8203;</code><br>
+e.g. <code>add-note mc/CS2103T n/Lecture  3</code></p>
+</li>
+<li>
+<p><strong>Delete Note</strong> : <code>delete-note INDEX</code><br>
+e.g. <code>delete 2</code></p>
+</li>
+<li>
+<p><strong>Editing Note to Edit</strong> : <code>edit-note INDEX</code><br>
+e.g. <code>edit-note 1</code></p>
+</li>
+<li>
+<p><strong>Saving an Edited Note</strong> : <code>save-note</code><br>
+e.g. <code>save-note</code></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="cap-manager-2"><a class="link" href="#cap-manager-2">6.4. Cap Manager</a></h3>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Add Cap Entry</strong> <code>add-cap mc/MODULECODE nn/NOTENAME hw/HOMEWORK [p/PRIORITY]&#8230;&#8203;</code><br>
+e.g. `add-cap mc/CS2101 g/A- mcs/4 sem/Y2S2 `</p>
+</li>
+<li>
+<p><strong>Delete Cap Entry</strong> : <code>delete-note INDEX</code><br>
+e.g. <code>delete 1</code></p>
+</li>
+<li>
+<p><strong>Edit Cap Entry by Index</strong> : <code>edit-note INDEX  [mc/MODULECODE] [g/MODULEGRADE] [mcs/MODULECREDITS] [sem/MODULESEMESTER]</code><br>
+e.g. <code>edit-cap 2 g/B+ mcs/4</code></p>
+</li>
+<li>
+<p><strong>Edit Cap Entry by Code</strong> : <code>edit-note MODULECODE  [mc/MODULECODE] [g/MODULEGRADE] [mcs/MODULECREDITS] [semd/MODULESEMESTER]</code><br>
+e.g. <code>edit-cap-mc CS3203 g/A- mcs/8</code></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-02-07 13:30:05 SGT</div></div></div></body></html>
