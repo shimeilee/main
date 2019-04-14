@@ -79,7 +79,7 @@ public class EditCapEntryCommand extends Command {
         model.setCapEntry(capEntryToEdit, editedCapEntry);
         model.updateFilteredCapEntryList(Model.PREDICATE_SHOW_ALL_CAP_ENTRIES);
 
-        //update module semester
+        //update module semester list
         if (!moduleSemesterOfCapEntryToEdit.equals(moduleSemesterOfEditedCapEntry)) {
             if (!model.hasModuleSemester(moduleSemesterOfEditedCapEntry)) {
                 model.addModuleSemester(moduleSemesterOfEditedCapEntry);
@@ -87,8 +87,7 @@ public class EditCapEntryCommand extends Command {
 
             boolean hasCapEntriesWithSameSemester = false;
             List<CapEntry> afterEditList = model.getFilteredCapEntryList();
-            hasCapEntriesWithSameSemester = checkForModuleSemester(moduleSemesterOfCapEntryToEdit,
-                    moduleSemesterOfEditedCapEntry, afterEditList);
+            hasCapEntriesWithSameSemester = checkForModuleSemester(moduleSemesterOfCapEntryToEdit, afterEditList);
 
             if (hasCapEntriesWithSameSemester == false) {
                 model.deleteModuleSemester(moduleSemesterOfCapEntryToEdit);
@@ -138,11 +137,14 @@ public class EditCapEntryCommand extends Command {
                 && editCapEntryDescriptor.equals(e.editCapEntryDescriptor);
     }
 
-    private boolean checkForModuleSemester(ModuleSemester moduleSemesterOfCapEntryToEdit,
-                                           ModuleSemester moduleSemesterOfEditedCapEntry, List<CapEntry> afterEditList) {
+    /**
+     * Checks the contents of {@code capEntryList} if the list contains any cap entries with the module semester of
+     * {@code moduleSemester}.
+     */
+    private boolean checkForModuleSemester(ModuleSemester moduleSemester, List<CapEntry> capEntryList) {
         boolean hasCapEntriesWithSameSemester = false;
-        for (int i = 0; i < afterEditList.size(); i++) {
-            if (afterEditList.get(i).getModuleSemester().equals(moduleSemesterOfCapEntryToEdit)) {
+        for (int i = 0; i < capEntryList.size(); i++) {
+            if (capEntryList.get(i).getModuleSemester().equals(moduleSemester)) {
                 hasCapEntriesWithSameSemester = true;
             }
         }

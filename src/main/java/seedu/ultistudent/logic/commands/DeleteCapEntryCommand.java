@@ -47,14 +47,11 @@ public class DeleteCapEntryCommand extends Command {
         //updates module semester - need to check if only 1 such entry with such module semester.
         ModuleSemester moduleSemesterOfDeletedCapEntry = capEntryToDelete.getModuleSemester();
         List<CapEntry> afterDeleteList = model.getFilteredCapEntryList();
-        int numCapEntriesWithSameSemester = 0;
-        for (int i = 0; i < afterDeleteList.size(); i++) {
-            if (afterDeleteList.get(i).getModuleSemester().equals(moduleSemesterOfDeletedCapEntry)) {
-                numCapEntriesWithSameSemester++;
-            }
-        }
 
-        if (numCapEntriesWithSameSemester == 0) {
+        boolean hasCapEntriesWithSameSemester = false;
+        hasCapEntriesWithSameSemester = checkForModuleSemester(moduleSemesterOfDeletedCapEntry, afterDeleteList);
+
+        if (hasCapEntriesWithSameSemester == false) {
             model.deleteModuleSemester(moduleSemesterOfDeletedCapEntry);
         }
 
@@ -67,6 +64,20 @@ public class DeleteCapEntryCommand extends Command {
         return other == this // short circuit if same object
                 || (other instanceof DeleteCapEntryCommand // instanceof handles nulls
                 && targetIndex.equals(((DeleteCapEntryCommand) other).targetIndex)); // state check
+    }
+
+    /**
+     * Checks the contents of {@code capEntryList} if the list contains any cap entries with the module semester of
+     * {@code moduleSemester}.
+     */
+    private boolean checkForModuleSemester(ModuleSemester moduleSemester, List<CapEntry> capEntryList) {
+        boolean hasCapEntriesWithSameSemester = false;
+        for (int i = 0; i < capEntryList.size(); i++) {
+            if (capEntryList.get(i).getModuleSemester().equals(moduleSemester)) {
+                hasCapEntriesWithSameSemester = true;
+            }
+        }
+        return hasCapEntriesWithSameSemester;
     }
 
 }

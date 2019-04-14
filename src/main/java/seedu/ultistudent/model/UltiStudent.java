@@ -72,7 +72,7 @@ public class UltiStudent implements ReadOnlyUltiStudent {
     }
 
     /**
-     * Replaces the contents of the cap entries list list with {@code capEntryList}.
+     * Replaces the contents of the cap entries list with {@code capEntryList}.
      * {@code capEntryList} must not contain duplicate cap entries.
      */
     public void setCapEntryList(List<CapEntry> capEntryList) {
@@ -81,8 +81,7 @@ public class UltiStudent implements ReadOnlyUltiStudent {
     }
 
     /**
-     * Replaces the contents of the cap entries list list with {@code capEntryList}.
-     * {@code capEntryList} must not contain duplicate cap entries.
+     * Sets the cap Score of Cap Manager, given the cap entries in {@code capEntryList}.
      */
     public void setCapScore(List<CapEntry> capEntryList) {
         double newTotalModuleCredits = 0;
