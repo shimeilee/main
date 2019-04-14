@@ -17,33 +17,41 @@ endif::[]
 
 By: `Team W09-1`      Since: `Feb 2019`      Licence: `MIT`
 
+//tag::introduction[]
 == Introduction
 Welcome to UltiStudent!
-//what UltiStudent is about
+UltiStudent is a student application that effectively tackles the problem of having too many applications to manage
+their school life. To improve the quality of student life in computing, UltiStudent provides a centralised platform
+for them to manage their homework, cumulative average point and notes.
 UltiStudent is a desktop-based application intended for students.
 //What developer guide provide, and intended audience
 This developer Guide is written for anyone who wishes to contribute to our project.
+In here, you will find information to help you to set up our project and information to help you understand the
+architecture behind UltiStudent and how our key features work.
 
-This guide will provide _____ /
-D
+If you would like to help to improve this project by contributing, do contact us for more information!
 
-//how to use developer guide
-=== Symbols
-Before proceeding, do keep in mind the below call out signs.
+=== Callouts & Symbols
+Before proceeding, do refer to the below callout signs that will be used across this document. Familiarising yourself
+with them will definitely prove to be helpful.
 
-[WARNING]
-This callout indicates that there is something worth noting.
 
 [NOTE]
-Key information that you should take note of.
+This callout shares note-worthy information with you. Do read them for a better understanding of the document.
 
 [TIP]
-Helpful tips that can prove to be really handy for you!
+This callout shares helpful tips with you. Not to worry, tips can be good to know but are not vital.
+Information found here are additional and can prove to be handy for you.
 
+
+[WARNING]
+This callout indicates that there is worth being cautioned of. You are encouraged to the read information in here.
+If you are not careful, you may encounter problems.
+
+// end::introduction[]
 
 == Setting up
 Do follow the instructions in order to set up our project on your device.
-//
 
 === Prerequisites
 
@@ -494,7 +502,84 @@ image::EditCapManagerSequenceDiagram.png[width="800"]
 The sequence diagram for the "Update Module Semester" reference frame above can be seen below.
 
 image::EditCapManagerSequenceDiagram2.png[width="800"]
+
+Given below is an example usage scenario of how `edit-cap` behaves at each step.
+
+*Step 1*: The user executes `edit-cap 2 g/A sem/Y2S2` to edit the cap entry in the 2nd index with grade A and
+moduleSemester of `Y2S2`.
+
+*Step 2*: The user executes `edit-cap 2 g/A sem/Y2S2` to edit the cap entry in the 2nd index with grade A and
+moduleSemester of `Y2S2`.
+
+*Step 3*: The user executes `edit-cap 2 g/A sem/Y2S2` to edit the cap entry in the 2nd index with grade A and
+moduleSemester of `Y2S2`.
+
+
+==== Design Considerations
+===== Aspect: How to store the Cap Score.
+
+* **Alternative 1 (current choice):** Store the cap score as a static variable in CapEntry class.
+** Pros: Easy to implement.
+** Cons: Diffi
+* **Alternative 2:** Store the cap score as a separate class that is then store in UltiStudent.
+** Pros: Each versioned UltiStudent will have their own cap score.
+** Cons: Will use more memory and is harder to implement.
+
+===== Aspect: How to calculate score of module grade.
+
+* **Alternative 1 (current choice):** Use a Hash Map to get the Store the cap score as a static variable in CapEntry class.
+** Pros: Lower time complexity O(1) and cleaner code.
+** Cons: Larger memory occupation.
+* **Alternative 2:** Use switch cases to find and allocate score to grade.
+** Pros: Easier readability.
+** Cons: Slower time complexity, worst case O(N).
 // end::edit-cap[]
+
+//tag::delete-cap[]
+=== Finding a Cap Entry : `delete-cap`
+This feature allows the user to delete a cap entry from the cap entry list. Users can do so either via:
+the cap entry's index with the `edit-cap` command or the cap entry's module code with the `edit-cap-mc`
+
+==== Current Implementation
+The `delete-cap` command is facilitated by the Logic and Model components of the application, UltiStudent.
+
+The activity diagram below shows how the deleting of cap entries work when the user enters
+`delete-cap`
+
+image::DeleteCapEntryActivityDiagram.png[width="800"]
+
+The sequence diagram for the "Update Module Semester" reference frame above can be seen below.
+
+image::EditCapManagerSequenceDiagram2.png[width="800"]
+
+Given below is an example usage scenario of how `delete-cap` behaves at each step.
+
+*Step 1*: The user executes `edit-cap 2 g/A sem/Y2S2` to edit the cap entry in the 2nd index with grade A and
+moduleSemester of `Y2S2`.
+
+*Step 2*: The user executes `edit-cap 2 g/A sem/Y2S2` to edit the cap entry in the 2nd index with grade A and
+moduleSemester of `Y2S2`.
+
+
+==== Design Considerations
+===== Aspect: How to store the Cap Score.
+
+* **Alternative 1 (current choice):** Store the cap score as a static variable in CapEntry class.
+** Pros: Easy to implement.
+** Cons:
+* **Alternative 2:** Store the cap score as a separate class that is then store in UltiStudent.
+** Pros:
+** Cons: Will use more memory and is harder to implement.
+
+===== Aspect: How to calculate score of module grade.
+
+* **Alternative 1 (current choice):** Use a Hash Map to get the Store the cap score as a static variable in CapEntry class.
+** Pros: Lower time complexity O(1) and cleaner code.
+** Cons: Larger memory occupation.
+* **Alternative 2:** Use switch cases to find and allocate score to grade.
+** Pros: Easier readability.
+** Cons: Slower time complexity, worst case O(N).
+// end::delete-cap[]
 
 // tag::undoredo[]
 === Undo/Redo feature
