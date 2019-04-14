@@ -3,7 +3,7 @@
 :imagesDir: ../images
 :stylesDir: ../stylesheets
 
-== PROJECT: UltiStudent - Level 4
+== PROJECT: UltiStudent
 
 ---
 

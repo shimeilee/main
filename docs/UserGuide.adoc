@@ -374,11 +374,10 @@ Cap Manager!
 
 image::CapManagerInterface.png[width="790"]
 
-
 Now that you're all set, let's see how Cap Manager can help us!
 
 ==== Adding a CAP entry: `add-cap`
-Adds a new CAP entry to the CAP Manager +
+Adds a new Module to the CAP Manager +
 
 Let's assume it's the end of the semester and you just got your grades back.
 Simply add your modules to the Cap Manager with the `add-cap` command to view your updated CAP!
@@ -397,99 +396,120 @@ Format: `add-cap mc/MODULECODE g/MODULEGRADE mcs/MODULECREDITS sem/MODULESEMESTE
 
 Examples:
 
+Let's assume you would like to add the module, CS2101 into the CAP Manager.
+Given that you got B+, and that CS2101 is worth 4 Modular credits and you took the module in Year 2 Semester 2, the
+command to input to the Command Box would be:
+
 * `add-cap mc/CS2101 g/B+ mcs/4 sem/Y2S2`
 
-Adds CS2101 into the CAP Manager, with a grade of B+ and 4 Modular Credits.
-
-First open CAP Manager
+Before adding
 
 image::OpenCapManager.png[width="790"]
 
-Then use the `add-cap` command.
+After entering `add-cap mc/CS2101 g/B+ mcs/4 sem/Y2S2` into the command box.
 
-//image of added cap
+image::AddCapManager.png[width="790"]
 
-And just like that your CAP Manager will now include the module you just added.
-The semester list will also be updated if you are adding a module that is newly taken.
-Not only that, your CAP score will be updated right away!
+And just like that your CAP Manager will now include the module you just added!
+Your CAP score will also be updated right away!
+In addition, the semester list will also be updated if you are adding a module that is newly taken.
 
+[CAUTION]
+Unfortunately, UltiStudent's CAP Manager does not allows U or S grade as of this version.
+Do look out for our next update, where we add the SU Command!
 
 ==== Editing a CAP Entry by index: `edit-cap`
 If you made a mistake in entering the information for any particular CAP entry, do not worry!
  `edit-cap` command can easily fix that.
 
-Edits an existing cap entry in the UltiStudent by the use of index. +
 Format: `edit-cap INDEX  [mc/MODULECODE] [g/MODULEGRADE] [mcs/MODULECREDITS] [sem/MODULESEMESTER]`
-****
-* Edits the CAP entry at the specified `INDEX`. The index refers to the index number shown in the displayed CAP Entries list. The index *must be a positive integer* 1, 2, 3, ...
+
+* Index refers to the index number shown in the displayed CAP Entries list. The index *must be a positive integer* 1, 2, 3, ...
 * At least one of the optional fields must be provided.
 * Existing values will be updated to the input values.
+* Edits the CAP entry at the specified `INDEX`.
 
-****
 
 Examples:
 
-* `edit-cap 1 g/A` +
- Edits the module grade of the 1st cap entry in cap manager to be `A`
-* `edit-cap 3 mc/CS2102 g/B+` +
-Edits the module code of the 3rd cap entry and the grade obtained to `B+`.
+Let's assume you had actually gotten A+ for the module CS2101 and you took the module in Y3S1 instead.
+
+Given this scenario, the command to input to the Command Box would be:
+
+* `edit-cap 15 g/A sem/y3s1` +
+
+Let's put it to use!
+
+Before editing:
+
+image::AddCapManager.png[width="790"]
+
+
+After editing:
+
+image::EditedCapManager.png[width="790"]
+
+With that, all changes you have made will be reflected straightaway in the CAP manager.
+This of course includes the module list, semester list and your CAP score!
+
 
 ==== Editing a CAP Entry by module code: `edit-cap-mc`
-UltiStudent understands that students have to take many modules in their University life, as such,
 
-As such the `edit-cap-mc` allows users to edit the parameters of a __ by the using the module code instead of the index
+UltiStudent understands the large amount of modules students have to take as such, to bring more convenience, CAP Manager
+now allows you to edit the parameters of any modules through their module code instead of the index number
 for more convenience!
 
-Format: `edit-cap-mc MODULECODE [mc/MODULECODE] [g/MODULEGRADE] [mcs/MODULECREDITS] [sem/MODULESEMESTER]`
-****
-* Edits the CAP entry with the specified MODULECODE. The module code *must* be valid.
-* At least one of the optional fields must be provided.
-* Existing values will be updated to the input values.
+The format for the `edit-cap-mc` command is `edit-cap-mc MODULECODE [mc/MODULECODE] [g/MODULEGRADE] [mcs/MODULECREDITS] [sem/MODULESEMESTER]`
 
-****
+Just like the `edit-cap` command, `edit-cap-mc` has the same
 
-Examples:
-
-* `edit-cap-mc CS2100 g/B-` +
- Edits the module grade of CS2100 in cap manager to be `B-`
-* `edit-cap CS2103T mc/CS2102 g/A+` +
-Edits the cap entry of CS2103T to become that of a cap entry for CS2102 and sets the grade obtained to `B+`.
 
 ==== Deleting a CAP entry: `delete-cap`
 
-If you ever do need to delete a CAP entry in the CAP Manager, you may use this command to easily delete that specific CAP Entry.
-After executing the command
-Deletes the specified CAP entry from the CAP Manager. +
-Format: `delete-cap INDEX`
+If you ever do need to delete a module in the CAP Manager, you may use this command to easily delete
+that module.
+The format for this command is that of `delete-cap INDEX`.
 
-****
-* Deletes the CAP entry at the specified `INDEX`.
-* The index refers to the index number shown in the displayed CAP Entries list.
-* The index *must be a positive integer* 1, 2, 3, ...
-
-****
 
 Examples:
+For example, if you would like to delete the module ST2334 from CAP Manager, simply look for its index number. and apply it to the format!
+In this case, we would enter `delete-cap 14`.
 
-* `delete-cap 2` +
-Deletes the 2nd CAP Entry in the UltiStudent.
+image::EditedCapManager.png[width="790"]
 
-==== Filtering a CAP entry: `find-sem`
+After entering the command:
 
-If you would like to view the modules you have taken for particular semester(s), then find-sem will be handy!
+image::DeletedCapManager.png[width="790"]
 
-Format: `find-sem SEMESTER ...`
+And just like that the module is deleted! Once again, your CAP will be updated rightaway in the CAP Indicator!
 
-//warning: do note that cap score does not update such that it only calculates the CAP score for the modules displayed
-// using the find-sem method. The cap score is stil that for all the modules in the cap entry.
-// if you wish to exist, refer to list command
+==== Filtering a CAP entry: `find-cap`
+Here at UltiStudent, we understand that students have many modules and it can become difficult to find and filter
+through the many modules that they take. To help you with this, the `find-cap` will be handy!
+
+Format: `find-cap MODULESEMESTER ...`
+
+Let's say you would like to view all the modules that you took in Year 1 Semester 2.
+Simply type `find-cap Y1S2` into the Command Box and the module list will be updated rightaway to show the modules ou took in the
+semester you entered!
+
+image::FindCapManager.png[width="790"]
+
+[TIP]
+Psst.. You can use the find-cap command to view more than 1 semester of modules if you wish!
+
+[CAUTION]
+Do be careful and know that your CAP reflected in CAP indicator is still for that of all your modules.
+CAP indicator does not calculate your CAP score for only the displayed modules!
+
 
 ==== Filtering a CAP entry: `list-cap`
 
-This command displays all the modules inside the CAP manager.
-This command is most helpful after the use of `find-sem` command.
+In the previous sub-section, we saw how using the `find-cap` can help us to filter through the entire CAP Manager and only
+see the modules of the semesters we are interested in. Now let's see how we can view all of our modules again!
 
-Format: `list-cap`
+The `list-cap` command will help you to view your full list of modules in the CAP Manager.
+All you have to do is enter `list-cap` into the command box and TADAH.
 
 == FAQ
 

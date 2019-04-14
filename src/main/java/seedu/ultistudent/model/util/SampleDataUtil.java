@@ -92,6 +92,10 @@ public class SampleDataUtil {
         }
         for (CapEntry sampleCapEntry : getSampleCapEntryList()) {
             sampleAb.addCapEntry(sampleCapEntry);
+            ModuleSemester sampleCapEntryModuleSemester = sampleCapEntry.getModuleSemester();
+            if (!sampleAb.getModuleSemesterList().contains(sampleCapEntryModuleSemester)) {
+                sampleAb.addModuleSemester(sampleCapEntryModuleSemester);
+            }
         }
         for (Note sampleNote : getSampleNotes()) {
             sampleAb.addNote(sampleNote);
