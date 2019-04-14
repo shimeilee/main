@@ -44,7 +44,7 @@ and `save-note` command.
 *** *Credits*: AddressBook-Level4's select functionality was being used as a reference.
 
 * *Minor enhancement*:
-** Open command that opens the respective managers `open MANAGER`
+** Open command that opens the respective managers `open`
 ** Most of the UI in UltiStudent
 (Pull requests https://github.com/cs2103-ay1819s2-w09-1/main/pull/23/files?file-filters%5B%5D=[#23],
                https://github.com/cs2103-ay1819s2-w09-1/main/pull/41/files?file-filters%5B%5D=[#41],
