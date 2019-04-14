@@ -1,7 +1,6 @@
 package seedu.ultistudent.logic.commands;
 
 import static java.util.Objects.requireNonNull;
-import static seedu.ultistudent.model.Model.PREDICATE_SHOW_ALL_CAP_ENTRIES;
 import static seedu.ultistudent.model.Model.PREDICATE_SHOW_ALL_HOMEWORK;
 
 import seedu.ultistudent.logic.CommandHistory;
