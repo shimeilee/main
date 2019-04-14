@@ -258,8 +258,36 @@ Using the same example in the edit command. Let's say we are done with the CS110
 and wish to remove it from the Homework Manager. All you have to do is to type `delete-hw 2` and you are done!
 
 Our delete command is the shortest command in UltiStudent and the easiest to use.
-If you happen to forget what we mean by the word `index`,
+If you happen to forget what we mean by the word `INDEX`,
 simply refer to the diagram in the edit-hw section (Section 4.2.2) to understand what it means!
+
+==== Finding homework from a specified module: `find-mod`
+
+As we get later into the semester, there will be more work for us to do.
+Every single module has some form of submissions and you have so many entries in your homework semester
+that it makes it difficult to read and find a particular entry.
+We have a special command for you to use to find all the homework entries belonging to a specific module(s).
+
+The format of this command is simple. `find-mod [KEYWORDS]`.
+As you can see from the diagram below, after adding a module code as part of a keyword,
+you will be able to see only homework from the module in the homework list.
+
+image::find-mod UG.png[width="790"]
+
+As you can see from the diagram above, even though there are a total of four modules with homework in the module list,
+only homework from the modules CS1101S is shown after the common `find-mod CS1101S` is used.
+
+[TIP]
+You are not restricted to only one module code for the `[KEYWORDS]` in the command.
+You can add more of them if you wish.
+
+==== Reverting back to a full list view: `list-hw`
+
+In the previous sub-section, we looked at how we can us the command `find-mod` to display
+homework entries from selected module codes. You are probably wondering now how to display a full list of modules now.
+
+To display the full list, simply use this command `list-hw`. This command has no additional inputs for you to type
+and that makes this simple and easy to use!
 
 === Notes Manager
 ==== Adding a note : `add-note`

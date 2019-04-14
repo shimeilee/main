@@ -33,6 +33,7 @@ import seedu.ultistudent.logic.commands.HelpCommand;
 import seedu.ultistudent.logic.commands.HistoryCommand;
 import seedu.ultistudent.logic.commands.ListCapEntryCommand;
 import seedu.ultistudent.logic.commands.ListCommand;
+import seedu.ultistudent.logic.commands.ListHomeworkCommand;
 import seedu.ultistudent.logic.commands.ListNoteCommand;
 import seedu.ultistudent.logic.commands.OpenCommand;
 import seedu.ultistudent.logic.commands.RedoCommand;
@@ -153,6 +154,9 @@ public class UltiStudentParser {
 
         case ListCapEntryCommand.COMMAND_WORD:
             return new ListCapEntryCommand();
+
+        case ListHomeworkCommand.COMMAND_WORD:
+            return new ListHomeworkCommand();
 
         case HistoryCommand.COMMAND_WORD:
             return new HistoryCommand();
