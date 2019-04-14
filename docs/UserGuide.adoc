@@ -130,7 +130,8 @@ This command will help to retrieve the previously executed commands which has be
 // tag::undoredo[]
 ==== Undoing previous command : `undo`
 
-Restores the UltiStudent to the state before the previous _undoable_ command was executed. +
+Accidentally made any mistake by entering a command with unintended effects? Don't worry!
+Simply type undo and you will undo your latest changes in any of our managers. +
 Format: `undo`
 
 [NOTE]
@@ -155,7 +156,7 @@ Examples:
 
 ==== Redoing the previously undone command : `redo`
 
-Reverses the most recent `undo` command. +
+Made an extra undo by mistake? Fear not! You can simply revert any of your undos by using our redo command. +
 Format: `redo`
 
 Examples:
@@ -171,13 +172,14 @@ The `redo` command fails as there are no `undo` commands executed previously.
 
 ==== Exiting the program : `exit`
 
-Exits the program. +
+When you are done with using UltiStudent, simply close it by using exit!
+All of your entries will be safely stored on our application. +
 Format: `exit`
 
 ==== Saving the data
 
 UltiStudent data are saved in the hard disk automatically after any command that changes the data. +
-There is no need to save manually.
+There is no need to for you to save manually. It's easy to use!
 
 === Homework Manager
 // tag::add-hw[]
@@ -220,41 +222,44 @@ Maybe Homework Manager would be educated in other languages to accept other char
 
 ==== Editing a homework: `edit-hw`
 
-Edits an existing homework entry in the UltiStudent +
-Format: `edit-homework INDEX  [mc/MODULECODE] [hw/HOMEWORK]
-[d/DEADLINE]`
-****
-* Edits the homework at the specified `INDEX`. The index refers to the index number shown in the displayed homework list. The index *must be a positive integer* 1, 2, 3, ...
-* At least one of the optional fields must be provided.
-* Existing values will be updated to the input values.
+Realised that you made a mistake in an entry after you added it? Introducing our edit command!
+You can make any changes to any of the attributes of the homework entry using this command! +
 
-****
+To use this command, we must follow this format: `edit-homework INDEX  [mc/MODULECODE] [hw/HOMEWORK]
+[d/DEADLINE]` You can refer to the diagram below to understand what we mean by the word `index`!
+You may have noticed that it looks rather similar to the add-hw command. Good observation!
+However, you should take note of the slight difference that you do not have to include all the attributes.
+Instead, only include those you wish to change. Any other attribute(s) is optional.
 
-Examples:
+Now let's take a look at an example so that you can understand what I mean more clearly.
+If you already have a homework entry in the homework manager that which has these
+`mc/CS1101S hw/Tutorial 1 d/01/05/2019` as its attributes.
+So let's say our professor has decided to extend the deadline by a week upon requests by students.
+Simply type `edit-hw 1 d/08/05/2019` and the update will be reflected in your homework entry.
 
-* `edit-homework 1 d/10/03/2019` +
- Edits the deadline of the 1st homework to be `10 March 2019`
-* `edit-homework 2 hw/Tutorial 1 d/03/03/2019 +
-Edits the deadline of the 2nd homework and set the name of the homework to be `Tutorial 1`.
+image::edit-hw UG.png[width="790"]
+
+After entering your `edit-hw` command, the message you see in the green highlighted box
+in the diagram above that you have successfully done it.
+You can also see how the deadline of the attribute has been updated according to the deadline you wish to edit it to.
+
+[TIP]
+You can edit any amount of attributes at for one homework entry at one time!
+Include all the attributes you want to alter based on the format
+and exclude any other attributes you do not want to change.
 
 ==== Deleting a homework: `delete-hw`
 
-Deletes the specified homework from the UltiStudent. +
-Format: `delete-hw INDEX`
+Now let's say you are done with your homework and you wish to remove that entry from the homework manager.
+You can easily delete it by using the `delete-hw` command!
+All you have to do is to follow this short and simple format `delete-hw INDEX`.
 
-****
-* Deletes the homework at the specified `INDEX`.
-* The index refers to the index number shown in the displayed homework list.
-* The index *must be a positive integer* 1, 2, 3, ...
+Using the same example in the edit command. Let's say we are done with the CS1101S homework
+and wish to remove it from the Homework Manager. All you have to do is to type `delete-hw 2` and you are done!
 
-****
-
-Examples:
-
-* `delete-hw 2` +
-Deletes the 2nd homework in the UltiStudent.
-* `delete-hw 1` +
-Deletes the 1st homework in UltiStudent.
+Our delete command is the shortest command in UltiStudent and the easiest to use.
+If you happen to forget what we mean by the word `index`,
+simply refer to the diagram in the edit-hw section (Section 4.2.2) to understand what it means!
 
 === Notes Manager
 ==== Adding a note : `add-note`
