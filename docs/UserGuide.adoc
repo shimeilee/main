@@ -258,7 +258,7 @@ Using the same example in the edit command. Let's say we are done with the CS110
 and wish to remove it from the Homework Manager. All you have to do is to type `delete-hw 2` and you are done!
 
 Our delete command is the shortest command in UltiStudent and the easiest to use.
-If you happen to forget what we mean by the word `index`,
+If you happen to forget what we mean by the word `INDEX`,
 simply refer to the diagram in the edit-hw section (Section 4.2.2) to understand what it means!
 
 ==== Finding homework from a specified module: `find-mod`
