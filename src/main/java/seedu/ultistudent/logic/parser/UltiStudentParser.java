@@ -144,7 +144,7 @@ public class UltiStudentParser {
             return new FindNoteCommandParser().parse(arguments);
 
         case FindCommand.COMMAND_WORD:
-            return new FindCommandParser().parse(arguments);
+            return new FindCommand();
 
         case ListCommand.COMMAND_WORD:
             return new ListCommand();
