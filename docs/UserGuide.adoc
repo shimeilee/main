@@ -292,7 +292,7 @@ only homework from the modules CS1101S is shown after the common `find-mod CS110
 You are not restricted to only one module code for the `[KEYWORDS]` in the command.
 You can add more of them if you wish.
 
-//tag::find-mod[]
+//end::find-mod[]
 
 //tag::list-hw[]
 ==== Reverting back to a full list view: `list-hw`
@@ -303,7 +303,7 @@ homework entries from selected module codes. Now, you are probably wondering now
 To display the full list, simply use this command `list-hw`. This command has no additional inputs for you to type
 and that makes this simple and easy to use!
 
-//tag::list-hw[]
+//end::list-hw[]
 
 === Notes Manager
 // tag::add-note[]
