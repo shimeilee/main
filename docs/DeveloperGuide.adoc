@@ -366,7 +366,7 @@ complexities involved when taking into account the different cases upon using de
 
 //end::deletehomework[]
 
-//start::edithomework[]
+//tag::edithomework[]
 === Edit homework feature
 
 This feature allows the user to edit any attribute of the homework entries. This is a core feature because the user
@@ -437,7 +437,7 @@ existing design abstractions in our code over the efficiency of our code.
 
 //end::edithomework[]
 
-//start::findmodule[]
+//tag::findmodule[]
 === Find module feature
 
 This feature allows the user to only display homework belonging to one or more module codes which is user has specified.
