@@ -112,7 +112,10 @@ public class SampleDataUtil {
         }
         for (Homework homework : getSampleHomeworkList()) {
             sampleAb.addHomework(homework);
-            sampleAb.addModuleCode(homework.getModuleCode());
+            ModuleCode sampleModuleCode = homework.getModuleCode();
+            if (!sampleAb.getModuleCodeList().contains(sampleModuleCode)) {
+                sampleAb.addModuleCode(homework.getModuleCode());
+            }
         }
         return sampleAb;
     }
