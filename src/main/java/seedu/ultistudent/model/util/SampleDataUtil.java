@@ -50,7 +50,7 @@ public class SampleDataUtil {
                         getTagSet("colleagues"))
         };
     }
-    
+
     public static CapEntry[] getSampleCapEntryList() {
         return new CapEntry[]{
                 new CapEntry(new ModuleCode("CS1010"), new ModuleGrade("B+"), new ModuleCredits("4"),
@@ -110,7 +110,7 @@ public class SampleDataUtil {
                         new ModuleSemester("Y2S2"))
         };
     }
-    
+
     public static Note[] getSampleNotes() {
         return new Note[]{
                 new Note(new ModuleCode("CS2103T"), new NoteName("Personal Project Portfolio"), new Content("Things to "
@@ -176,7 +176,7 @@ public class SampleDataUtil {
                                 + "include:\n1. Overview\n2. Summary of Class\n"))
         };
     }
-    
+
     public static Homework[] getSampleHomeworkList() {
         return new Homework[]{
                 new Homework(new ModuleCode("CS1010"), new HomeworkName("Tutorial 1"), new Date("11/04/2019")),
@@ -212,7 +212,7 @@ public class SampleDataUtil {
                         " 3"), new Date("25/05/2019"))
         };
     }
-    
+
     public static ReadOnlyUltiStudent getSampleUltiStudent() {
         UltiStudent sampleAb = new UltiStudent();
         for (Person samplePerson : getSamplePersons()) {
@@ -237,7 +237,7 @@ public class SampleDataUtil {
         }
         return sampleAb;
     }
-    
+
     /**
      * Returns a tag set containing the list of strings given.
      */
