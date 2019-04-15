@@ -319,7 +319,7 @@ image::AddHomeworkSequentialDiagram.png[width="800"]
 
 // end::add-hw[]
 
-//tag::deletehomework[]
+// tag::deletehomework[]
 === Delete homework feature
 
 This feature allows the user to delete a homework entry from the homework manager through its index.
@@ -364,9 +364,9 @@ For example, two different homework entries for two different modules can be cal
 We have decided to opt for the first option primarily because it reduces the number of potential bugs and the
 complexities involved when taking into account the different cases upon using deletion by homework name.
 
-//end::deletehomework[]
+// end::deletehomework[]
 
-//tag::edithomework[]
+// tag::edithomework[]
 === Edit homework feature
 
 This feature allows the user to edit any attribute of the homework entries. This is a core feature because the user
@@ -435,9 +435,9 @@ by restricting the usage to the existing data structures already present in our 
 To sum up our justification of our choice of design, we decided to opt for the first option because we prioritised the
 existing design abstractions in our code over the efficiency of our code.
 
-//end::edithomework[]
+// end::edithomework[]
 
-//tag::findmodule[]
+// tag::findmodule[]
 === Find module feature
 
 This feature allows the user to only display homework belonging to one or more module codes which is user has specified.
@@ -480,7 +480,7 @@ inputted back to the Logic Manager as indicated by the purple arrows pointing ba
 
 image::find-mod sequence diagram.png[width="800"]
 
-//end::findmodule[]
+// end::findmodule[]
 
 //tag::edit-note[]
 === Editing and Saving a note : `edit-note` `save-note`

@@ -224,7 +224,7 @@ Maybe Homework Manager would be educated in other languages to accept other char
 
 // end::add-hw[]
 
-//tag::edit-hw[]
+// tag::edit-hw[]
 ==== Editing a homework: `edit-hw`
 
 Realised that you made a mistake in an entry after you added it? Introducing our edit command!
@@ -253,9 +253,9 @@ You can edit any amount of attributes at for one homework entry at one time!
 Include all the attributes you want to alter based on the format
 and exclude any other attributes you do not want to change.
 
-//end::edit-hw[]
+// end::edit-hw[]
 
-//tag::delete-hw[]
+// tag::delete-hw[]
 ==== Deleting a homework: `delete-hw`
 
 Now let's say you are done with your homework and you wish to remove that entry from the homework manager.
@@ -269,9 +269,9 @@ Our delete command is the shortest command in UltiStudent and the easiest to use
 If you happen to forget what we mean by the word `INDEX`,
 simply refer to the diagram in the edit-hw section (Section 4.2.2) to understand what it means!
 
-//end::delete-hw[]
+// end::delete-hw[]
 
-//tag::find-mod[]
+// tag::find-mod[]
 ==== Finding homework from a specified module: `find-mod`
 
 As we get later into the semester, there will be more work for us to do.
@@ -292,9 +292,9 @@ only homework from the modules CS1101S is shown after the common `find-mod CS110
 You are not restricted to only one module code for the `[KEYWORDS]` in the command.
 You can add more of them if you wish.
 
-//end::find-mod[]
+// end::find-mod[]
 
-//tag::list-hw[]
+// tag::list-hw[]
 ==== Reverting back to a full list view: `list-hw`
 
 In the previous sub-section, we looked at how we can use the command `find-mod` to display
@@ -303,7 +303,7 @@ homework entries from selected module codes. Now, you are probably wondering now
 To display the full list, simply use this command `list-hw`. This command has no additional inputs for you to type
 and that makes this simple and easy to use!
 
-//end::list-hw[]
+// end::list-hw[]
 
 === Notes Manager
 // tag::add-note[]
