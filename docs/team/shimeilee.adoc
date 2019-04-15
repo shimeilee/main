@@ -62,9 +62,10 @@ notes*.
 
 I was in charge of *Add*, *Delete*, *Find*, and *List* note commands.
 
-* *Major enhancement*: created *the Notes Manager infrastructure* which includes
- the *adding and deleting notes* into the Notes Manager storage.
-** What it does: allows the user to add and delete notes from the Notes Manager.
+* *Major enhancement*: Developed the logic, storage, and model components of
+*the Notes Manager infrastructure*.
+** What it does: allows the user to create and delete notes from the Notes
+Manager.
 ** Justification: The ability to create notes depends on the Notes Manager
 infrastructure. This improves the product significantly by allowing the
 addition of other features such as Find, List, Edit, and Save.
@@ -112,6 +113,9 @@ https://github.com/CS2103-AY1819S2-W16-3/main/issues/106[#106],
 https://github.com/CS2103-AY1819S2-W16-3/main/issues/98[#98],
 https://github.com/CS2103-AY1819S2-W16-3/main/issues/94[#94],
 https://github.com/CS2103-AY1819S2-W16-3/main/issues/91[#91])
+
+** Tools
+*** Integrated Coveralls for the team repo
 
 
 == Contributions to the User Guide
