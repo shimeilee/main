@@ -299,7 +299,7 @@ the parameter
 Take a look at the code snippet of AddHomeworkCommandParser below for an illustration:
 
 .Code snippet for AddHomeworkCommandParser
-image::AddHomeworkCommandParser snippet.png[width="800", align="center"]
+image::AddHomeworkCommandParser snippet.png[width="800"]
 
 ==== Example
 Given below is an example usage scenario of how `add-hw` mechanism behaves at each step.
@@ -327,7 +327,7 @@ The image below illustrates the scenario of when the user executes `add-hw mc/CS
 d/01/05/2019`:
 
 .Sequential Diagram for `add-hw`
-image::AddHomeworkSequentialDiagram.png[width="800", align="center"]
+image::AddHomeworkSequentialDiagram.png[width="800"]
 
 // end::add-hw[]
 
@@ -631,6 +631,8 @@ by displaying all the content on the `NotesManagerMainPanel` which is a text fie
 Below is an activity diagram of how the users use `edit-note` and `save-note` to facilitate adding contents to
 their existing notes:
 
+.(image description)
+.Activity Diagram for `edit-note` and `save-note`
 image::Edit&SaveNoteActivityDiagram.png[width=800]
 
 *Step 1*: User will key in `edit-note INDEX` on the command line
@@ -1266,3 +1268,71 @@ Saving a note with the command : `save-note`
 .. Prerequisites: NotesManager has to be opened and no note is being selected.
 .. Test case: `save-note` +
    Expected: Error details will be shown in the status message.
+
+
+=== Adding a cap entry
+
+Adding a cap entry while all cap entries are listed with the command: `add-cap`
+
+.. Prerequisites: Use the sample data that using SampleDataUtil. SampleDataUtil automatically generates sample Data when the
+UltiStudent.json file is corrupted or unavailable.
+.. Test case: `add-cap mc/CS3203 g/B mcs/8 sem/Y1S1` +
+   Expected: Cap entry with module code CS1010, grade of B, 4MCs, Y1S1 is added. Details of the first cap entry shown in the status message.
+   Timestamp in the status bar is updated. CAP score displayed is updated.
+.. Test case: `add-cap mc/CS3203 g/B mcs/100 sem/Y1S1`
+   Expected: No cap entry is added. Error details shown in the status message. Status bar remains the same.
+   Current CAP score stays the same.
+.. Test case: `add-cap mc/CS55555 g/B mcs/100 sem/Y1S1`
+   Expected: No cap entry is added. Error details shown in the status message. Status bar remains the same.
+   Current CAP score stays the same.
+.. Test case: `add-cap mc/CS55555 g/B mcs/100 sem/Y1S3`
+   Expected: No cap entry is added. Error details shown in the status message. Status bar remains the same.
+   Current CAP score stays the same.
+
+.. Other incorrect edit commands to try: `add-cap mc/1234 g/A+ mcs/4 sem/Y2S2` {give more} +
+   Expected: Similar to previous.
+
+=== Deleting a cap entry
+
+Deleting a cap entry while all cap entries are listed with the command: `delete-cap`
+
+.. Prerequisites: Use the sample data that using SampleDataUtil. SampleDataUtil automatically generates sample Data when the
+UltiStudent.json file is corrupted or unavailable.
+.. Test case: `delete-cap 1` +
+   Expected: First cap entry is deleted. Details of the deleted cap entry shown in the status message.
+   Timestamp in the status bar is updated. CAP score displayed is updated.
+.. Test case: `delete-cap 0` +
+   Expected: No cap entry is deleted. Error details shown in the status message. Status bar remains the same.
+   Current CAP score stays the same.
+.. Test case: `delete-cap x` where x is larger than the list size +
+   Expected: No cap entry is deleted. Error details shown in the status message. Status bar remains the same.
+   Current CAP score stays the same.
+.. Test case: `delete-cap x` where x is negative number +
+   Expected: No cap entry is deleted. Error details shown in the status message. Status bar remains the same.
+   Current CAP score stays the same.
+
+.. Other incorrect delete commands to try: `delete`, `delete x` (where x is larger than the list size) {give more} +
+   Expected: Similar to previous.
+
+
+=== Editing a cap entry
+
+Editing a cap entry while all cap entries are listed with the command: `edit-cap`
+
+.. Prerequisites: Use the sample data that using SampleDataUtil. SampleDataUtil automatically generates sample Data when the
+UltiStudent.json file is corrupted or unavailable.
+.. Test case: `edit-cap 1 g/A mcs/4` +
+   Expected: First cap entry is edited. Details of the first cap entry shown in the status message.
+   Timestamp in the status bar is updated. CAP score displayed is updated.
+.. Test case: `edit-cap 0 g/A mcs/4` +
+   Expected: No cap entry is edit. Error details shown in the status message. Status bar remains the same.
+   Current CAP score stays the same.
+.. Test case: `edit-cap x g/B mcs/4` where x is larger than the list size +
+   Expected: No cap entry is deleted. Error details shown in the status message. Status bar remains the same.
+   Current CAP score stays the same.
+.. Test case: `edit-cap x g/B mcs/4` where x is negative number +
+   Expected: No cap entry is deleted. Error details shown in the status message. Status bar remains the same.
+   Current CAP score stays the same.
+
+.. Other incorrect edit commands to try: `edit`, `edit x` (where x is larger than the list size) {give more} +
+   Expected: Similar to previous.
