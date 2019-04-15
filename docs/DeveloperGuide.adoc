@@ -25,7 +25,9 @@ their school life. To improve the quality of student life in computing, UltiStud
 for them to manage their homework, cumulative average point and notes.
 UltiStudent is a desktop-based application intended for students.
 //What developer guide provide, and intended audience
-This developer Guide is written for anyone who wishes to contribute to our project.
+
+This Developer Guide is written for anyone who wishes to contribute to our
+project.
 In here, you will find information to help you to set up our project and information to help you understand the
 architecture behind UltiStudent and how our key features work.
 
@@ -81,10 +83,10 @@ Do not disable them. If you have disabled them, go to `File` > `Settings` > `Plu
 . Click `OK` to accept the default settings
 . Open a console and run the command `gradlew processResources` (Mac/Linux: `./gradlew processResources`). It should finish with the `BUILD SUCCESSFUL` message. +
 This will generate all resources required by the application and tests.
-. Open link:{repoURL}/src/main/java/seedu/address/ui/MainWindow.java[`MainWindow.java`] and check for any code errors
+. Open link:{repoURL}/blob/master/src/main/java/seedu/ultistudent/ui/MainWindow.java[`MainWindow.java`] and check for any code errors
 .. Due to an ongoing https://youtrack.jetbrains.com/issue/IDEA-189060[issue] with some of the newer versions of IntelliJ, code errors may be detected even if the project can be built and run successfully
 .. To resolve this, place your cursor over any of the code section highlighted in red. Press kbd:[ALT + ENTER], and select `Add '--add-modules=...' to module compiler options` for each error
-. Repeat this for the test folder as well (e.g. check link:{repoURL}/src/test/java/seedu/address/ui/HelpWindowTest.java[`HelpWindowTest.java`] for code errors, and if so, resolve it the same way)
+. Repeat this for the test folder as well (e.g. check link:{repoURL}/blob/master/src/test/java/seedu/ultistudent/ui/HelpWindowTest.java[`HelpWindowTest.java`] for code errors, and if so, resolve it the same way)
 
 === Verifying the setup
 
@@ -133,12 +135,12 @@ When you are ready to start coding,
 === Architecture
 
 .Architecture Diagram
-image::Architecture.png[width="600", , align="center"]
+image::Architecture.png[width="600", align="center"]
 
 The *_Architecture Diagram_* given above explains the high-level design of the App. Given below is a quick overview of each component.
 
 [TIP]
-The `.pptx` files used to create diagrams in this document can be found in the link:{repoURL}/docs/diagrams/[diagrams] folder. To update a diagram, modify the diagram in the pptx file, select the objects of the diagram, and choose `Save as picture`.
+The `.pptx` files used to create diagrams in this document can be found in the link:{repoURL}tree/master/docs/diagrams[diagrams] folder. To update a diagram, modify the diagram in the pptx file, select the objects of the diagram, and choose `Save as picture`.
 
 `Main` has only one class called link:{repoURL}/src/main/java/seedu/address/MainApp.java[`MainApp`]. It is responsible for,
 
@@ -165,7 +167,7 @@ Each of the four components
 For example, the `Logic` component (see the class diagram given below) defines it's API in the `Logic.java` interface and exposes its functionality using the `LogicManager.java` class.
 
 .Class Diagram of the Logic Component
-image::LogicClassDiagram.png[width="800", align="center"]
+image::LogicClassDiagram_UltiStudent.png[width="800", align="center"]
 
 [discrete]
 ==== How the architecture components interact with each other
@@ -181,13 +183,17 @@ The sections below give more details of each component.
 === UI component
 
 .Structure of the UI Component
-image::UltiStudentUiClassDiagram.png[width="800"]
+image::UltiStudentUiClassDiagram_updated.png[width="800", align="center"]
 
-*API* : link:{repoURL}/src/main/java/seedu/address/ui/Ui.java[`Ui.java`]
+*API* : link:{repoURL}/blob/master/src/main/java/seedu/ultistudent/ui/Ui.java[`Ui.java`]
 
 The UI consists of a `MainWindow` that is made up of parts e.g.`CommandBox`, `ResultDisplay`, `PersonListPanel`, `StatusBarFooter`, `BrowserPanel` etc. All these, including the `MainWindow`, inherit from the abstract `UiPart` class.
 
-The `UI` component uses JavaFx UI framework. The layout of these UI parts are defined in matching `.fxml` files that are in the `src/main/resources/view` folder. For example, the layout of the link:{repoURL}/src/main/java/seedu/address/ui/MainWindow.java[`MainWindow`] is specified in link:{repoURL}/src/main/resources/view/MainWindow.fxml[`MainWindow.fxml`]
+The `UI` component uses JavaFx UI framework. The layout of these UI parts are
+ defined in matching `.fxml` files that are in the `src/main/resources/view`
+ folder. For example, the layout of the
+ link:{repoURL}/blob/master/src/main/java/seedu/ultistudent/ui/MainWindow.java[`MainWindow`]
+ is specified in link:{repoURL}/blob/master/src/main/resources/view/MainWindow.fxml[`MainWindow.fxml`]
 
 The `UI` component,
 
@@ -202,7 +208,7 @@ The `UI` component,
 image::UltiStudentLogicClassDiagram.png[width="800", align="center"]
 
 *API* :
-link:{repoURL}/src/main/java/seedu/address/logic/Logic.java[`Logic.java`]
+link:{repoURL}/blob/master/src/main/java/seedu/ultistudent/logic/Logic.java[`Logic.java`]
 
 .  `Logic` uses the `UltiStudentParser` class to parse the user command.
 .  This results in a `Command` object which is executed by the `LogicManager`.
@@ -213,7 +219,7 @@ link:{repoURL}/src/main/java/seedu/address/logic/Logic.java[`Logic.java`]
 Given below is the Sequence Diagram for interactions within the `Logic` component for the `execute("delete 1")` API call.
 
 .Interactions Inside the Logic Component for the `delete 1` Command
-image::DeletePersonSdForLogic.png[width="800", align="center"]
+image::DeleteHomeworkSdForLogic_updated.png[width="800", align="center"]
 
 [[Design-Model]]
 === Model component
@@ -221,7 +227,7 @@ image::DeletePersonSdForLogic.png[width="800", align="center"]
 .Structure of the Model Component
 image::ModelComponentClass.png[width="800", align="center"]
 
-*API* : link:{repoURL}/src/main/java/seedu/address/model/Model.java[`Model.java`]
+*API* : link:{repoURL}/blob/master/src/main/java/seedu/ultistudent/model/Model.java[`Model.java`]
 
 The `Model`,
 
@@ -236,7 +242,7 @@ The `Model`,
 .Structure of the Storage Component
 image::UltiStudentStorageClassDiagram.png[width="800", align="center"]
 
-*API* : link:{repoURL}/src/main/java/seedu/address/storage/Storage.java[`Storage.java`]
+*API* : link:{repoURL}/blob/master/src/main/java/seedu/ultistudent/storage/Storage.java[`Storage.java`]
 
 The `Storage` component,
 
@@ -292,7 +298,7 @@ the parameter
 
 Take a look at the code snippet of AddHomeworkCommandParser below for an illustration:
 
-.(Figure description)
+.Code snippet for AddHomeworkCommandParser
 image::AddHomeworkCommandParser snippet.png[width="800", align="center"]
 
 ==== Example
@@ -320,7 +326,7 @@ be return back to the user.
 The image below illustrates the scenario of when the user executes `add-hw mc/CS1101S hw/Tutorial 1
 d/01/05/2019`:
 
-.(Figure description)
+.Sequential Diagram for `add-hw`
 image::AddHomeworkSequentialDiagram.png[width="800", align="center"]
 
 // end::add-hw[]
@@ -350,7 +356,7 @@ deletion of any homework entry is done based on the `INDEX` of the homework entr
 
 During the design of our delete function, we considered between two alternatives.
 
-[width="80%",cols=2*,options="header"]
+[width="800%",cols=2*,options="header"]
 |===
 |Design Consideration |Pros and Cons
 |Deletion by Index (Current Choice) | *Pros:* Since each homework has a unique index,
@@ -419,15 +425,15 @@ Step 5. If the module code for any homework entry has been edited to a module co
 the EditHomeworkCommand will add the new module code into the module code list.
 The updated module code list will be displayed on our User Interface.
 
-
-image::edit hw activity diagram.png[width="800", align="center"]
+.Activity diagram for `edit-hw`
+image::edit-hw activity diagram.png[width="800", align="center"]
 
 In designing the edit homework feature, we considered if we should use an alternative data structure to update the
 list of module codes. We considered using a hash map to map the module code to the number of homework with the modules
 to check if the module code list has to be updated for each edit.
 
-[width="80%",cols=2*,options="header"]
 
+[width="80%",cols=2*,options="header"]
 |===
 |Design Consideration |Pros and Cons
 |Update ModuleList by iteration (Current Choice) | *Pros:* Protects the abstraction layers and modularity
@@ -486,7 +492,7 @@ Step 4. Now, the Logic Manager then executes this command. When the find command
 updateFilteredList, which then returns a list of homework that has the module codes which matches any of the key words
 inputted back to the Logic Manager as indicated by the purple arrows pointing back to the Logic Manager's blue block.
 
-.(Figure description)
+.Sequence diagram for `find-mod`
 image::find-mod sequence diagram.png[width="800", align="center"]
 
 // end::findmodule[]
@@ -555,7 +561,7 @@ which would then be return back to the user.
 The image below illustrates the scenario of when the user executes `add-hw mc/CS1101S hw/Tutorial 1
 d/01/05/2019`:
 
-.(Figure description)
+.Sequential Diagram for `add-note`
 image::AddNoteSequentialDiagram.png[width="800", align="center"]
 
 === Deleting a note : `delete-note`
@@ -678,12 +684,12 @@ The `edit-cap` command is facilitated by the Logic and Model components of the a
 The sequence diagram below shows how the editing of cap entries work when the user enters
 `edit-cap`
 
-.(figure description)
+.Sequence Diagram for `edit-cap`
 image::EditCapManagerSequenceDiagram.png[width="800", align="center"]
 
 The sequence diagram for the "Update Module Semester" reference frame above can be seen below.
 
-.(figure description)
+.Reference Frame for Update Module Semester
 image::EditCapManagerSequenceDiagram2.png[width="800", align="center"]
 
 Given below is an example usage scenario of how `edit-cap` behaves at each step.
@@ -743,7 +749,10 @@ The `delete-cap` command is facilitated by the Logic and Model components of the
 The activity diagram below shows how the deleting of cap entries work when the user enters
 `delete-cap`.
 
+
 .(image description)
+.Activity Diagram for `delete-cap`
+
 image::DeleteCapManagerActivityDiagram.png[width="800", align="center"]
 
 Given below is an example usage scenario of how `delete-cap` behaves at each step.
