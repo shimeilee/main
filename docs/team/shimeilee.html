@@ -124,9 +124,10 @@ Engineering module in NUS.</p>
 </div>
 <div class="paragraph">
 <p>This project (<em>UltiStudent</em>) would not be possible without my amazing team
-mates:[underline]<mark><a href="https://cs2103-ay1819s2-t09-1.github.io/main/team/andrewscw.html">Andrew</a></mark>,
-<span class="underline"><a href="https://cs2103-ay1819s2-t09-1.github.io/main/team/limzhengjiebenjamin.html">Benjamin</a></span>, and
-<span class="underline"><a href="https://cs2103-ay1819s2-t09-1.github.io/main/team/ngweixin.html">Xavier</a></span>.</p>
+mates:
+<span class="underline"><a href="https://cs2103-ay1819s2-w09-1.github.io/main/team/andrewscw.html">Andrew</a></span>,
+<span class="underline"><a href="https://cs2103-ay1819s2-w09-1.github.io/main/team/limzhengjiebenjamin.html">Benjamin</a></span>, and
+<span class="underline"><a href="https://cs2103-ay1819s2-w09-1.github.io/main/team/ngweixin.html">Xavier</a></span>.</p>
 </div>
 <div id="toc" class="toc">
 <div id="toctitle" class="title">Table of Contents</div>
@@ -139,13 +140,12 @@ mates:[underline]<mark><a href="https://cs2103-ay1819s2-t09-1.github.io/main/tea
 <ul class="sectlevel3">
 <li><a href="#_adding_a_note_add_note">3.1. Adding a note : <code>add-note</code></a></li>
 <li><a href="#_deleting_a_note_delete_note">3.2. Deleting a Note: <code>delete-note</code></a></li>
-<li><a href="#_finding_note_from_a_specified_word_find_note">3.3. Finding note from a specified word: <code>find-note</code></a></li>
-<li><a href="#_reverting_back_to_a_full_list_view_list_note">3.4. Reverting back to a full list view: <code>list-note</code></a></li>
 </ul>
 </li>
 <li><a href="#_contributions_to_the_developer_guide">4. Contributions to the Developer Guide</a>
 <ul class="sectlevel2">
-<li><a href="#_undoredo_feature">4.1. Undo/Redo feature</a></li>
+<li><a href="#_adding_a_note_add_note_2">4.1. Adding a note : <code>add-note</code></a></li>
+<li><a href="#_deleting_a_note_delete_note_2">4.2. Deleting a note : <code>delete-note</code></a></li>
 </ul>
 </li>
 </ul>
@@ -209,12 +209,13 @@ notes</strong>.</p>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Major enhancement</strong>: created <strong>the Notes Manager infrastructure</strong> which includes
-the <strong>adding and deleting notes</strong> into the Notes Manager storage.</p>
+<p><strong>Major enhancement</strong>: Developed the logic, storage, and model components of
+<strong>the Notes Manager infrastructure</strong>.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>What it does: allows the user to add and delete notes from the Notes Manager.</p>
+<p>What it does: allows the user to create and delete notes from the Notes
+Manager.</p>
 </li>
 <li>
 <p>Justification: The ability to create notes depends on the Notes Manager
@@ -275,6 +276,9 @@ indicated by the user.</p>
 <p>Updated contents of About Us and Contact Us page:
 <a href="https://github.com/cs2103-ay1819s2-w09-1/main/pull/9">#9</a></p>
 </li>
+<li>
+<p>Updated the User Guide and Developer Guide</p>
+</li>
 </ul>
 </div>
 </li>
@@ -309,6 +313,16 @@ On average, one PR was reviewed every two weeks.
 </ul>
 </div>
 </li>
+<li>
+<p>Tools</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Integrated Coveralls for the team repo</p>
+</li>
+</ul>
+</div>
+</li>
 </ul>
 </div>
 </li>
@@ -321,8 +335,7 @@ On average, one PR was reviewed every two weeks.
 <div class="sectionbody">
 <div class="paragraph">
 <p><em>This section is to showcase my main contribution to the User Guide, and
-highlight
- my ability to write documentation targeting end-users.</em></p>
+highlight my ability to write documentation targeting end-users.</em></p>
 </div>
 <div class="sect3">
 <h4 id="_adding_a_note_add_note">3.1. Adding a note : <code>add-note</code></h4>
@@ -400,56 +413,6 @@ It has an index of <code>12</code> in the list.</p>
 <p>Viola! The note is deleted.</p>
 </div>
 </div>
-<div class="sect3">
-<h4 id="_finding_note_from_a_specified_word_find_note">3.3. Finding note from a specified word: <code>find-note</code></h4>
-<div class="paragraph">
-<p>As the semester progresses, there will be more notes taken for various module
- activities (lectures, tutorials, labs). Wouldn&#8217;t it be easier if we can
- search for our notes based on a keyword? With <code>find-note</code>, we will be able to
-  find our notes easily with the usage of keywords!</p>
-</div>
-<div class="paragraph">
-<p>The format of this command: <code>find-note [KEYWORDS]</code>.</p>
-</div>
-<div class="paragraph">
-<p>Let&#8217;s say you are looking for a tutorial note. We will enter <code>find-note
-tutorial</code> in the Command Box (red). The resulting list will be displayed in
-the Notes List (light blue box).</p>
-</div>
-<div class="imageblock text-center">
-<div class="content">
-<img src="../images/UI_find_notes.png" alt="UI find notes" width="790">
-</div>
-</div>
-<div class="admonitionblock tip">
-<table>
-<tr>
-<td class="icon">
-<div class="title">Tip</div>
-</td>
-<td class="content">
-You are not restricted to only one keyword for the <code>[KEYWORDS]</code> in the command.
-You can add more of them if you wish.
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>In v2.0, we will be able to search for notes by its module code and note name.</p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_reverting_back_to_a_full_list_view_list_note">3.4. Reverting back to a full list view: <code>list-note</code></h4>
-<div class="paragraph">
-<p>In the previous sub-section, we looked at how we can use the command <code>find-note</code>
- to display notes from selected keywords. Now, you are
- probably wondering now how to display a full list of modules.</p>
-</div>
-<div class="paragraph">
-<p>To display the full list, simply use this command <code>list-note</code>. This command has
-no additional inputs for you to type and that makes this simple and easy to use!</p>
-</div>
-</div>
 </div>
 </div>
 <div class="sect1">
@@ -460,204 +423,186 @@ no additional inputs for you to type and that makes this simple and easy to use!
 UltiStudent, and highlight my ability to write technical documentation targeting developers.</em></p>
 </div>
 <div class="sect2">
-<h3 id="_undoredo_feature">4.1. Undo/Redo feature</h3>
+<h3 id="_adding_a_note_add_note_2">4.1. Adding a note : <code>add-note</code></h3>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>The add homework feature is a core feature to the Homework Manager of
+ UltiStudent. Which allows the users to create a homework object in UltiStudent.</em></p></td>
+</tr>
+</tbody>
+</table>
 <div class="sect3">
-<h4 id="_current_implementation">4.1.1. Current Implementation</h4>
+<h4 id="_overview">4.1.1. Overview</h4>
 <div class="paragraph">
-<p>The undo/redo mechanism is facilitated by <code>VersionedUltiStudent</code>.
-It extends <code>UltiStudent</code> with an undo/redo history, stored internally as an <code>UltiStudentStateList</code> and <code>currentStatePointer</code>.
-Additionally, it implements the following operations:</p>
+<p>The add note <code>add-note</code> mechanism is facilitated by <code>AddNoteCommand</code> and
+<code>AddNoteCommandParser</code>.
+It takes in the following input from the user: <code>ModuleCode</code> and <code>NoteName</code>
+which will construct individual objects that construct a <code>Note</code> object.</p>
+</div>
+<div class="paragraph">
+<p>The <code>AddNoteCommandParser</code> implements <code>Parser</code> with the following operation:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><code>VersionedUltiStudent#commit()</code>&#8201;&#8212;&#8201;Saves the current UltiStudent state in its history.</p>
-</li>
-<li>
-<p><code>VersionedUltiStudent#undo()</code>&#8201;&#8212;&#8201;Restores the previous UltiStudent state from its history.</p>
-</li>
-<li>
-<p><code>VersionedUltiStudent#redo()</code>&#8201;&#8212;&#8201;Restores a previously undone UltiStudent state from its history.</p>
+<p><code>AddNoteCommandParser#parse()</code> - This operation will take in a <code>String</code> input
+from the user that will create individual objects based on the prefixes
+'mc/' and 'n/'. The <code>String</code> value after the individual prefixes will create
+the respective object: 'mc/' for <code>ModuleCode</code> and 'n/' for <code>NoteName</code>. A
+validation check will be imposed upon the creation of each object. Any checks
+ that fails the validation would prompt the user on the failed component.</p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
-<p>These operations are exposed in the <code>Model</code> interface as <code>Model#commitUltiStudent()</code>, <code>Model#undoUltiStudent()</code> and <code>Model#redoUltiStudent()</code> respectively.</p>
+<p>For example:</p>
 </div>
-<div class="paragraph">
-<p>Given below is an example usage scenario and how the undo/redo mechanism behaves at each step.</p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>ModuleCode</code> would use <code>ParserUtil#parseNoteModuleCode</code> to ensure that user
+has input 2 letters followed by 4 digits with an option to include a optional
+ letter after the 4 digits.</p>
+</li>
+<li>
+<p><code>NoteName</code> would use <code>ParserUtil#parseNoteName</code> to ensure that note name is not a null.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>After validation checks are completed with no errors, a <code>Note</code> object is then
+constructed with <code>ModuleCode</code> and <code>NoteName</code>.</p>
+</li>
+<li>
+<p><code>AddNoteCommandParser</code> would then return a <code>AddNoteCommand</code> object with
+the <code>Note</code> as the parameter</p>
+</li>
+</ul>
 </div>
-<div class="paragraph">
-<p>Step 1. The user launches the application for the first time. The <code>VersionedUltiStudent</code> will be initialized with the initial UltiStudent state, and the <code>currentStatePointer</code> pointing to that single UltiStudent state.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/UndoRedoStartingStateListDiagram.png" alt="UndoRedoStartingStateListDiagram" width="800">
-</div>
-</div>
-<div class="paragraph">
-<p>Step 2. The user executes <code>delete 5</code> command to delete the 5th homework in the UltiStudent. The <code>delete</code> command calls <code>Model#commitUltiStudent()</code>, causing the modified state of the UltiStudent after the <code>delete 5</code> command executes to be saved in the <code>UltiStudentStateList</code>, and the <code>currentStatePointer</code> is shifted to the newly inserted UltiStudent state.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/UndoRedoNewCommand1StateListDiagram.png" alt="UndoRedoNewCommand1StateListDiagram" width="800">
-</div>
-</div>
-<div class="paragraph">
-<p>Step 3. The user executes <code>add mc/CS2103T &#8230;&#8203;</code> to add a new homework. The <code>add</code> command also calls <code>Model#commitUltiStudent()</code>, causing another modified UltiStudent state to be saved into the <code>UltiStudentStateList</code>.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/UndoRedoNewCommand2StateListDiagram.png" alt="UndoRedoNewCommand2StateListDiagram" width="800">
-</div>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<div class="title">Note</div>
-</td>
-<td class="content">
-If a command fails its execution, it will not call <code>Model#commitUltiStudent()</code>, so the UltiStudent state will not be saved into the <code>ultiStudentStateList</code>.
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>Step 4. The user now decides that adding the homework was a mistake, and decides to undo that action by executing the <code>undo</code> command. The <code>undo</code> command will call <code>Model#undoUltiStudent()</code>, which will shift the <code>currentStatePointer</code> once to the left, pointing it to the previous UltiStudent state, and restores the UltiStudent to that state.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/UndoRedoExecuteUndoStateListDiagram.png" alt="UndoRedoExecuteUndoStateListDiagram" width="800">
-</div>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<div class="title">Note</div>
-</td>
-<td class="content">
-If the <code>currentStatePointer</code> is at index 0, pointing to the initial UltiStudent state, then there are no previous UltiStudent states to restore. The <code>undo</code> command uses <code>Model#canUndoUltiStudent()</code> to check if this is the case. If so, it will return an error to the user rather than attempting to perform the undo.
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>The following sequence diagram shows how the undo operation works:</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/UndoRedoSequenceDiagram.png" alt="UndoRedoSequenceDiagram" width="800">
-</div>
-</div>
-<div class="paragraph">
-<p>The <code>redo</code> command does the opposite&#8201;&#8212;&#8201;it calls <code>Model#redoUltiStudent()</code>, which shifts the <code>currentStatePointer</code> once to the right, pointing to the previously undone state, and restores the UltiStudent to that state.</p>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<div class="title">Note</div>
-</td>
-<td class="content">
-If the <code>currentStatePointer</code> is at index <code>UltiStudentStateList.size() - 1</code>, pointing to the latest UltiStudent state, then there are no undone UltiStudent states to restore. The <code>redo</code> command uses <code>Model#canRedoUltiStudent()</code> to check if this is the case. If so, it will return an error to the user rather than attempting to perform the redo.
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>Step 5. The user then decides to execute the command <code>list</code>. Commands that do not modify the UltiStudent, such as <code>list</code>, will usually not call <code>Model#commitUltiStudent()</code>, <code>Model#undoUltiStudent()</code> or <code>Model#redoUltiStudent()</code>. Thus, the <code>UltiStudentStateList</code> remains unchanged.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/UndoRedoNewCommand3StateListDiagram.png" alt="UndoRedoNewCommand3StateListDiagram" width="800">
-</div>
-</div>
-<div class="paragraph">
-<p>Step 6. The user executes <code>clear</code>, which calls <code>Model#commitUltiStudent()</code>. Since the <code>currentStatePointer</code> is not pointing at the end of the <code>UltiStudentStateList</code>, all UltiStudent states after the <code>currentStatePointer</code> will be purged. We designed it this way because it no longer makes sense to redo the <code>add mc/CS2101 &#8230;&#8203;</code> command. This is the behavior that most modern desktop applications follow.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/UndoRedoNewCommand4StateListDiagram.png" alt="UndoRedoNewCommand4StateListDiagram" width="800">
-</div>
-</div>
-<div class="paragraph">
-<p>The following activity diagram summarizes what happens when a user executes a new command:</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/UndoRedoActivityDiagram.png" alt="UndoRedoActivityDiagram" width="650">
-</div>
+</li>
+</ul>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_design_considerations">4.1.2. Design Considerations</h4>
-<div class="sect4">
-<h5 id="_aspect_how_undo_redo_executes">Aspect: How undo &amp; redo executes</h5>
+<h4 id="_example">4.1.2. Example</h4>
+<div class="paragraph">
+<p>Given below is an example usage scenario of how <code>add-note</code> mechanism behaves at
+each step.</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 1</strong>: The user executes `add-note mc/CS2103T n/Week 1 Lecture to
+add a note for CS2103T Week 1 Lecture.</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 2</strong>: <code>LogicManager</code> would use <code>UltiStudentParser#parse()</code> to parse the input from the user.</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 3</strong>: <code>UltiStudentParser</code> would determine which command is being used and creates the respective
+parser. In this case, AddNoteCommandParser is being created and the user&#8217;s
+input would be pass in as a parameter.</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 4</strong>: <code>AddNoteCommandParser</code> would do a validation check on the user&#8217;s input
+ before creating and returning a <code>AddNoteCommand</code> object with <code>Note</code>
+ as the parameter.</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 5</strong>: <code>LogicManager</code> would use <code>AddNoteCommand#execute()</code> to add the
+<code>ModuleCode</code> and <code>Note</code>
+into the <code>Model</code> which is handled by <code>ModelManager</code></p>
+</div>
+<div class="paragraph">
+<p><strong>Step 6</strong>: <code>AddNoteCommand</code> would return a <code>CommandResult</code> to the <code>LogicManager</code>
+which would then be return back to the user.</p>
+</div>
+<div class="paragraph">
+<p>The image below illustrates the scenario of when the user executes <code>add-hw mc/CS1101S hw/Tutorial 1
+d/01/05/2019</code>:</p>
+</div>
+<div class="imageblock text-center">
+<div class="content">
+<img src="../images/AddNoteSequentialDiagram.png" alt="AddNoteSequentialDiagram" width="800">
+</div>
+<div class="title">Figure 1. (Figure description)</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_deleting_a_note_delete_note_2">4.2. Deleting a note : <code>delete-note</code></h3>
+<div class="paragraph">
+<p>This feature allows the user to delete a note from the homework manager through
+its index.</p>
+</div>
+<div class="paragraph">
+<p>The delete note feature is facilitated by the <code>DeleteNoteCommandParser</code> and
+the <code>DeleteNoteCommand</code>.</p>
+</div>
+<div class="paragraph">
+<p>The delete command is part of the <a href="#Design-Logic"><strong>logic</strong></a> component of our application. It interacts with the
+<a href="#Design-Model"><strong>model</strong></a> and the <a href="#Design-Storage"><strong>storage</strong></a> components of our application.</p>
+</div>
+<div class="sect3">
+<h4 id="_overview_2">4.2.1. Overview</h4>
+<div class="paragraph">
+<p>The <code>DeleteNoteCommandParser</code> implements <code>Parser</code> with the following operation:</p>
+</div>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Alternative 1 (current choice):</strong> Saves the entire UltiStudent.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: Easy to implement.</p>
-</li>
-<li>
-<p>Cons: May have performance issues in terms of memory usage.</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p><strong>Alternative 2:</strong> Individual command knows how to undo/redo by itself.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: Will use less memory (e.g. for <code>delete</code>, just save the person being deleted).</p>
-</li>
-<li>
-<p>Cons: We must ensure that the implementation of each individual command are correct.</p>
-</li>
-</ul>
-</div>
+<p><code>DeleteNoteCommandParser#parse()</code> - This operation will take in a <code>int</code> input from the
+user which will delete the note entry at the index which has entered.
+Any invalid format of the command will be prompted by the command parser.</p>
 </li>
 </ul>
 </div>
 </div>
-<div class="sect4">
-<h5 id="_aspect_data_structure_to_support_the_undoredo_commands">Aspect: Data structure to support the undo/redo commands</h5>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>Alternative 1 (current choice):</strong> Use a list to store the history of UltiStudent states.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: Easy for new Computer Science student undergraduates to understand, who are likely to be the new incoming developers of our project.</p>
-</li>
-<li>
-<p>Cons: Logic is duplicated twice. For example, when a new command is executed, we must remember to update both <code>HistoryManager</code> and <code>VersionedAddressBook</code>.</p>
-</li>
-</ul>
+<div class="sect3">
+<h4 id="_current_implementation">4.2.2. Current Implementation</h4>
+<div class="paragraph">
+<p>The delete note feature is executed by the <code>DeleteNoteCommand</code>. Currently,
+ the deletion of any note entry is done based on the <code>INDEX</code> of the
+ note entry.</p>
 </div>
-</li>
-<li>
-<p><strong>Alternative 2:</strong> Use <code>HistoryManager</code> for undo/redo</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: We do not need to maintain a separate list, and just reuse what is already in the codebase.</p>
-</li>
-<li>
-<p>Cons: Requires dealing with commands that have already been undone: We must remember to skip these commands. Violates Single Responsibility Principle and Separation of Concerns as <code>HistoryManager</code> now needs to do two different things.</p>
-</li>
-</ul>
+<div class="paragraph">
+<p>During the design of our delete function, we considered between two alternatives.</p>
 </div>
-</li>
-</ul>
-</div>
+<table class="tableblock frame-all grid-all" style="width: 80%;">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Description of Implementation</th>
+<th class="tableblock halign-left valign-top">Pros and Cons</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Deletion by Index (Current Choice)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Pros:</strong> Since each note has a unique
+index within each list, deleting a note by its index is less prone to bugs
+and will be easier to implement.</p>
+<p class="tableblock"><strong>Cons:</strong> User will need to scroll for the entry and look for its index which
+can be inconvenient.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Deletion by Homework Name</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Pros:</strong> It may be more intuitive for users to delete a
+note through its note name.</p>
+<p class="tableblock"><strong>Cons:</strong> Notes for different modules can have similar names.
+For example, two different note entries for two different modules can be called
+'Week 7 Lecture'. This may cause it to be more error-prone.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>We have decided to opt for the first option primarily because it reduces the number of potential bugs and the
+complexities involved when taking into account the different cases upon using
+ deletion by note name.</p>
 </div>
 </div>
 </div>
@@ -666,7 +611,7 @@ If the <code>currentStatePointer</code> is at index <code>UltiStudentStateList.s
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2019-04-15 11:47:34 +0800
+Last updated 2019-04-15 18:02:50 +0800
 </div>
 </div>
 </body>
