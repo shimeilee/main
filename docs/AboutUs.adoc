@@ -23,9 +23,8 @@ Role: Project Advisor
 image::limzhengjiebenjamin.png[width="150", align="left"]
 {empty}[http://github.com/LimZhengJieBenjamin[github]] [<<limzhengjiebenjamin#, portfolio>>]
 
-Role: Team Lead
-
-Responsibilities: UI
+*Role*: Team Lead +
+*Main Responsibility*: Homework Manager Functionality
 
 '''
 
@@ -33,9 +32,8 @@ Responsibilities: UI
 image::andrewscw.png[width="150", align="left"]
 {empty}[http://github.com/andrewscw[github]] [<<andrewscw#, portfolio>>]
 
-Role: Developer
-
-Responsibilities: Data
+*Role*: Developer +
+*Main Responsibility*: Cap Manager Functionality
 
 '''
 
@@ -43,9 +41,9 @@ Responsibilities: Data
 image::ngweixin.png[width="150", align="left"]
 {empty}[http://github.com/NgWeiXin[github]] [<<ngweixin#, portfolio>>]
 
-Role: Developer
-
-Responsibilities: Dev Ops + Threading
+*Role*: Developer +
+*Main Responsibility*: UI +
+*Sub Responsibility*: Notes Manager and Homework Manager Functionality
 
 '''
 
@@ -53,8 +51,8 @@ Responsibilities: Dev Ops + Threading
 image::shimeilee.png[width="150", align="left"]
 {empty}[http://github.com/shimeilee[github]] [<<shimeilee#, portfolio>>]
 
-Role: Developer
-
-Responsibilities: UI
+*Role*: Developer +
+*Main Responsibility*: Notes Manager Functionality +
+*Sub Responsibility*: Maintain team documentations
 
 '''
