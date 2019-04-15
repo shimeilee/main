@@ -2,15 +2,30 @@
 :site-section: AboutUs
 :imagesDir: ../images
 :stylesDir: ../stylesheets
+:stylesheet: xavier.css
+:sourceDir: https://cs2103-ay1819s2-w09-1.github.io/main/
 :toc:
 :toc-title: Table of Contents
-:sectnums:
 
 == PROJECT: UltiStudent
 
----
+== Self-Introduction
+image::ngweixin.png[width="200", align="left"]
+{empty}[https://github.com/shimeilee[GitHub]]
 
-=== Overview
+Hi there! I am Ng Wei Xin (Xavier), a Year 2 Undergraduate of NUS majoring in Computer Science.
+
+The purpose of this portfolio is to document my contributions to _UltiStudent_, a software
+engineering project under CS2103T Software Engineering module in NUS.
+
+UltiStudent would not be possible without my amazing teammates:
+[underline]#{sourceDir}team/andrewscw.html[Andrew]#,
+[underline]#{sourceDir}team/limzhengjiebenjamin.html[Benjamin]#, and
+[underline]#{sourceDir}team/shimeilee.html[Shi Mei]#.
+
+:sectnums:
+
+== Overview
 UltiStudent is a student application that effectively tackles the problem of having
 too many applications to manage their school life by providing a centralised platform
 for them to manage their homework, cumulative average point and notes.
