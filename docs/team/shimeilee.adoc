@@ -2,74 +2,126 @@
 :site-section: AboutUs
 :imagesDir: ../images
 :stylesDir: ../stylesheets
+:sourceDir: https://cs2103-ay1819s2-t09-1.github.io/main/
+:xrefstyle: short
 
-== PROJECT: UltiStudent - Level 4
+== Project: UltiStudent
 
----
+== Introduction
 
-== Overview
+image::shimeilee.png[width="200", align="left"]
+{empty}[https://github.com/shimeilee[GitHub]]
+
+Hi there! I am Shi Mei, a Year 2 Undergraduate studying in National University
+ of Singapore (NUS) Computer Science.
+
+The purpose of this portfolio is to document my contributions to
+_UltiStudent_, a software engineering project under CS2103T Software
+Engineering module in NUS.
+
+This project (_UltiStudent_) would not be possible without my amazing team
+mates: Andrew, Benjamin, and Xavier.
+//[underline]#{sourceDir}team/andrewscw.html[Andrew]#,
+//[underline]#{sourceDir}team/limzhengjiebenjamin.html[Benjamin]#, and
+//[underline]#{sourceDir}team/ngweixin.html[Xavier]#.
+
+:sectnums:
+
+toc::[]
+
+== Overview of UltiStudent
 
 
 UltiStudent is a student application that effectively tackles the problem of having too many applications to manage
 their school life. To improve the quality of student life in computing, UltiStudent provides a centralised platform
-for them to manage their homework, cumulative average point and notes.
+for them to manage their homework, cumulative average point (CAP) and notes.
 
-UltiStudent is a desktop application used for teaching Software Engineering principles. The user interacts with it using a CLI, and it has a GUI created with JavaFX. It is written in Java, and has about 10 kLoC.
+Main Features of _UltiStudent_:
+
+* Keep track of your deadlines from various modules (Homework Manager)
+* Easy creation of digital notes (Notes Manager)
+* Projection and Prediction of CAP (CAP Manager)
+
+...without leaving the application!
 
 == Summary of contributions
 
-* *Major enhancement*: added *the ability to undo/redo previous commands*
-** What it does: allows the user to undo all previous commands one at a time. Preceding undo commands can be reversed by using the redo command.
-** Justification: This feature improves the product significantly because a user can make mistakes in commands and the app should provide a convenient way to rectify them.
-** Highlights: This enhancement affects existing commands and commands to be added in future. It required an in-depth analysis of design alternatives. The implementation too was challenging as it required changes to existing commands.
-** Credits: _{mention here if you reused any code/ideas from elsewhere or if a third-party library is heavily used in the feature so that a reader can make a more accurate judgement of how much effort went into the feature}_
+_This section is to provide a summary of my contributions to the project._
 
-* *Minor enhancement*: added a history command that allows the user to navigate to previous commands using up/down keys.
+My main contribution for UltiStudent is the creation of the Notes Manager.
 
-* *Code contributed*: [https://github.com[Functional code]] [https://github.com[Test code]] _{give links to collated code files}_
+//The photo below shows the homepage of the Notes Manager.
+
+//image::UI_notes_manager.png[width="600", align="center"]
+
+Notes Manager allows users of UltiStudent to: *Add and delete notes*, *save
+and edit the content of their notes*, *find notes easily*, *list all their
+notes*.
+
+I was in charge of *Add*, *Delete*, *Find*, and *List* note commands.
+
+* *Major enhancement*: created *the Notes Manager infrastructure* which includes
+ the *adding and deleting notes* into the Notes Manager storage.
+** What it does: allows the user to add and delete notes from the Notes Manager.
+** Justification: The ability to create notes depends on the Notes Manager
+infrastructure. This improves the product significantly by allowing the
+addition of other features such as Find, List, Edit, and Save.
+** Highlights: This enhancement affects existing commands and commands to be
+added to the Notes Manager in the future. It required an in-depth analysis of
+design alternatives. The implementation too was challenging as it required changes to existing commands.
+
+* *Minor enhancement*:
+
+** *Find note* command that lists all notes whose note name has the keywords
+indicated by the user.
+
+** *List note* command that lists all notes in the Notes Manager.
+
+* *Code contributed*: https://nus-cs2103-ay1819s2.github.io/cs2103-dashboard/#=undefined&search=shimeilee[RepoSense]
 
 * *Other contributions*:
 
 ** Project management:
-*** Managed releases `v1.3` - `v1.5rc` (3 releases) on GitHub
-** Enhancements to existing features:
-*** Updated the GUI color scheme (Pull requests https://github.com[#33], https://github.com[#34])
-*** Wrote additional tests for existing features to increase coverage from 88% to 92% (Pull requests https://github.com[#36], https://github.com[#38])
+*** Managed releases `v1.3` on GitHub
+*** Handled submission requirements for `v1.3`
+*** Set up project configuration:
+https://github.com/cs2103-ay1819s2-w09-1/main/pull/4[#4]
 ** Documentation:
-*** Did cosmetic tweaks to existing contents of the User Guide: https://github.com[#14]
+*** Updated contents of About Us and Contact Us page:
+https://github.com/cs2103-ay1819s2-w09-1/main/pull/9[#9]
 ** Community:
-*** PRs reviewed (with non-trivial review comments): https://github.com[#12], https://github.com[#32], https://github.com[#19], https://github.com[#42]
-*** Contributed to forum discussions (examples:  https://github.com[1], https://github.com[2], https://github.com[3], https://github.com[4])
-*** Reported bugs and suggestions for other teams in the class (examples:  https://github.com[1], https://github.com[2], https://github.com[3])
-*** Some parts of the history feature I added was adopted by several other class mates (https://github.com[1], https://github.com[2])
-** Tools:
-*** Integrated a third party library (Natty) to the project (https://github.com[#42])
-*** Integrated a new Github plugin (CircleCI) to the team repo
+*** PRs reviewed:
+On average, one PR was reviewed every two weeks.
+//https://github.com/cs2103-ay1819s2-w09-1/main/pull/175[#175],
+//https://github.com/cs2103-ay1819s2-w09-1/main/pull/164[#164],
+//https://github.com/cs2103-ay1819s2-w09-1/main/pull/163[#163],
+//https://github.com/cs2103-ay1819s2-w09-1/main/pull/96[#96],
+//https://github.com/cs2103-ay1819s2-w09-1/main/pull/61[#61]
 
-_{you can add/remove categories in the list above}_
+*** Contributed to forum discussions:
+https://github.com/nus-cs2103-AY1819S2/forum/issues/46[#46]:
+_Raised checkstyle issues which is experienced by others as well._
+
+*** Reported bugs and suggestions for other teams in the class
+(https://github.com/CS2103-AY1819S2-W16-3/main/issues/115[#115],https://github.com/CS2103-AY1819S2-W16-3/main/issues/112[#112],
+https://github.com/CS2103-AY1819S2-W16-3/main/issues/110[#110], https://github.com/CS2103-AY1819S2-W16-3/main/issues/106[#106],
+https://github.com/CS2103-AY1819S2-W16-3/main/issues/98[#98], https://github.com/CS2103-AY1819S2-W16-3/main/issues/94[#94],
+https://github.com/CS2103-AY1819S2-W16-3/main/issues/91[#91])
+
 
 == Contributions to the User Guide
 
+_This section is to showcase my contribution to the User Guide, and highlight
+ my ability to write documentation targeting end-users._
 
-|===
-|_Given below are sections I contributed to the User Guide. They showcase my ability to write documentation targeting end-users._
-|===
 
-include::../UserGuide.adoc[tag=undoredo]
+include::../UserGuide.adoc[tag=add-note]
+include::../UserGuide.adoc[tag=delete-note]
+include::../UserGuide.adoc[tag=findlist-note]
 
 == Contributions to the Developer Guide
 
-|===
-|_Given below are sections I contributed to the Developer Guide. They showcase my ability to write technical documentation and the technical depth of my contributions to the project._
-|===
+_This section is to showcase the technical depth of my contribution to
+UltiStudent, and highlight my ability to write technical documentation targeting developers._
 
 include::../DeveloperGuide.adoc[tag=undoredo]
-
-include::../DeveloperGuide.adoc[tag=dataencryption]
-
-
-== PROJECT: PowerPointLabs
-
----
-
-_{Optionally, you may include other projects in your portfolio.}_
