@@ -64,10 +64,9 @@ to view my code on the CS2103T Project Code Dashboard.
 *** Helped to manage issue tracker for our project repository.
 *** Planned the project milestones for the Homework Manager feature of UltiStudent.
 ** Enhancements to existing features:
-*** Updated the GUI color scheme. (Pull requests https://github.com[#33], https://github.com[#34])
 *** Wrote test cases for Homework Manager. (Pull requests https://github.com/cs2103-ay1819s2-w09-1/main/pull/91[#91],
 https://github.com/cs2103-ay1819s2-w09-1/main/pull/87[#87])
-*** Constructed sample data for the product demo of our application. https://github.com/cs2103-ay1819s2-w09-1/main/pull/184[#184]
+*** Constructed sample data for the product demo of our application. (Pull request https://github.com/cs2103-ay1819s2-w09-1/main/pull/184[#184])
 ** Documentation:
 *** User Guide
 **** Revamped the tone of the User Guide to make it sound more friendly.
