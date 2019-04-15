@@ -1152,18 +1152,55 @@ Adding a homework with the command: `add-hw`
 
 === Deleting a homework entry
 
-Deleting a homework while all homework are listed with the command: ``delete-hw`.
+. Deleting a homework while all homework are listed with the command: `delete-hw`
 
 .. Prerequisites: Use the sample data that using SampleDataUtil. SampleDataUtil autonmatically generates sample data
 when the json file is empty.
 
 .. Test case: `delete-hw 1` +
-  Expected: First homework is deleted from the list. Details of the deleted homework shown in the status message.
-  Timestamp in the status bar is updated.
+   Expected: First homework is deleted from the list. Details of the deleted homework shown in the status message.
+   Timestamp in the status bar is updated.
 .. Test case: `delete-hw 0` +
-  Expected: No homework is deleted. Error details shown in the status message. Status bar remains the same.
+   Expected: No homework is deleted. Error details shown in the status message. Status bar remains the same.
 .. Other incorrect delete commands to try: `delete-hw`, `delete-hw x` (where x is larger than the list size) +
-  Expected: Similar to previous.
+   Expected: Similar to previous.
+
+=== Editing a homework entry
+
+Edit a homework while all homework are listed with the command: `edit-hw`
+
+.. Prerequisites: Use the sample data that using SampleDataUtil. SampleDataUtil automatically generates sample data
+when the json file is empty.
+
+.. Test case: `edit-hw 1 d/30/05/2019` +
+   Expected: The deadline of the first homework is changed to 30/05/2019. Details of the edited homework shown in the status message.
+   Timestamp in the status bar is updated.
+.. Test case: `edit-hw 0` +
+   Expected: No homework is edited. Error details shown in the status message. Status bar remains the same.
+.. Other incorrect edit commands to try: `edit-hw`, `edit-hw x` (where x is larger than the list size), `edit-hw 30/05/2019` +
+   Expected: Similar to previous.
+
+=== Finding homework entries of which contains this module
+
+Finds homework that has a homework module and displays these modules in a list with the command: `find-mod`
+
+.. Prerequisites: Use the sample data that using SampleDataUtil. SampleDataUtil automatically generates sample data
+when the json file is empty.
+
+.. Test case: `find-mod CS2030` +
+   Expected: The homework list displays homeworks that has CS2030 as part of its homework module.
+.. Test case: `find-mod x` where x is any module code that is not present in the module code list. +
+   Expected: No homework is displayed in the homework list. Status bar shows that "0 homework listed!"
+
+=== List all homework entries
+
+Lists all existing homework entries with the command: `list-hw`
+
+.. Prerequisites: Use the sample data that using SampleDataUtil. SampleDataUtil automatically generates sample data
+when the json file is empty.
+
+.. Test case: `find-mod CS2030` followed by `list-hw` +
+   Expected: The homework list displays all existing homework entry.
 
 === Adding a note
 
@@ -1175,6 +1212,21 @@ Adding a note with the command: `add-note`
 .. Test case: `add-note mc/CSXXXXT n/Tutorial 1`
    Expected: No note is added. Error details will be shown in the status message.
 .. Other incorrect add-note commands to try : `add-note`, `add-note mc/CS2103T n/`(where note name is a whitespace)
+   Expected: Similar to previous.
+
+=== Deleting a note
+
+. Deleting a note while all note are listed with the command: `delete-note`
+
+.. Prerequisites: Use the sample data that using SampleDataUtil. SampleDataUtil autonmatically generates sample data
+when the json file is empty.
+
+.. Test case: `delete-note 1` +
+   Expected: First note is deleted from the list. Details of the deleted note shown in the status message.
+   Timestamp in the status bar is updated.
+.. Test case: `delete-note 0` +
+   Expected: No note is deleted. Error details shown in the status message. Status bar remains the same.
+.. Other incorrect delete commands to try: `delete-note`, `delete-note x` (where x is larger than the list size) +
    Expected: Similar to previous.
 
 === Editing a Note
