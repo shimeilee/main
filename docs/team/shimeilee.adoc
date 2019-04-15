@@ -4,7 +4,7 @@
 :imagesDir: ../images
 :stylesDir: ../stylesheets
 :stylesheet: shimeilee.css
-:sourceDir: https://cs2103-ay1819s2-t09-1.github.io/main/
+:sourceDir: https://cs2103-ay1819s2-w09-1.github.io/main/
 :xrefstyle: short
 
 == Project: UltiStudent
@@ -22,7 +22,8 @@ _UltiStudent_, a software engineering project under CS2103T Software
 Engineering module in NUS.
 
 This project (_UltiStudent_) would not be possible without my amazing team
-mates:[underline]#{sourceDir}team/andrewscw.html[Andrew]#,
+mates:
+[underline]#{sourceDir}team/andrewscw.html[Andrew]#,
 [underline]#{sourceDir}team/limzhengjiebenjamin.html[Benjamin]#, and
 [underline]#{sourceDir}team/ngweixin.html[Xavier]#.
 
@@ -116,17 +117,15 @@ https://github.com/CS2103-AY1819S2-W16-3/main/issues/91[#91])
 == Contributions to the User Guide
 
 _This section is to showcase my main contribution to the User Guide, and
-highlight
- my ability to write documentation targeting end-users._
+highlight my ability to write documentation targeting end-users._
 
 
 include::../UserGuide.adoc[tag=add-note]
 include::../UserGuide.adoc[tag=delete-note]
-include::../UserGuide.adoc[tag=findlist-note]
 
 == Contributions to the Developer Guide
 
 _This section is to showcase the technical depth of my contribution to
 UltiStudent, and highlight my ability to write technical documentation targeting developers._
 
-include::../DeveloperGuide.adoc[tag=undoredo]
+include::../DeveloperGuide.adoc[tag=add_delete-note]
