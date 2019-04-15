@@ -62,11 +62,13 @@ and `save-note` command.
 * *Minor enhancement*:
 ** 'open' command that opens the respective managers
 ** Most of the UI in UltiStudent
-(Pull requests https://github.com/cs2103-ay1819s2-w09-1/main/pull/23/files?file-filters%5B%5D=[#23],
-               https://github.com/cs2103-ay1819s2-w09-1/main/pull/41/files?file-filters%5B%5D=[#41],
-               https://github.com/cs2103-ay1819s2-w09-1/main/pull/55/files?file-filters%5B%5D=[#55])
+(Pull Requests https://github.com/cs2103-ay1819s2-w09-1/main/pull/23[#23],
+               https://github.com/cs2103-ay1819s2-w09-1/main/pull/41[#41],
+               https://github.com/cs2103-ay1819s2-w09-1/main/pull/55[#55])
 ** Wrote test cases to improve coverage
-(Pull request https://github.com/cs2103-ay1819s2-w09-1/main/pull/151/files?file-filters%5B%5D=[#151])
+(Pull Request https://github.com/cs2103-ay1819s2-w09-1/main/pull/151[#151])
+** Added sample data to UltiStudent
+(Pull Request: https://github.com/cs2103-ay1819s2-w09-1/main/pull/175[175])
 
 * *Code contributed*: Click
 https://nus-cs2103-ay1819s2.github.io/cs2103-dashboard/#=undefined&search=NgWeiXin[here]
@@ -78,17 +80,19 @@ to view my code on the CS2103T Project Code Dashboard.
 *** Managed https://github.com/cs2103-ay1819s2-w09-1/main/issues?utf8=✓&q=is%3Aissue+is%3Aclosed[issue tracker],
     closing issues upon fixes and implementations.
 *** Refracted addressbook to ultistudent
-    (Pull request https://github.com/cs2103-ay1819s2-w09-1/main/pull/167/files?file-filters%5B%5D=[#167])
+    (Pull Request: https://github.com/cs2103-ay1819s2-w09-1/main/pull/167[#167])
 
 ** Enhancements to existing features:
 *** Modified AddressBook's `add`, `delete`, `edit`, `list` and `find` command to guide users on what `add`,
-    `delete`, `edit`, `list` and `find` command UltiStudent has to offer. (Pull request
-    https://github.com/cs2103-ay1819s2-w09-1/main/pull/99/files?file-filters%5B%5D=[#99],
-    https://github.com/cs2103-ay1819s2-w09-1/main/pull/185/files?file-filters%5B%5D=[#185])
+    `delete`, `edit`, `list` and `find` command UltiStudent has to offer. (Pull Requests:
+    https://github.com/cs2103-ay1819s2-w09-1/main/pull/99[#99],
+    https://github.com/cs2103-ay1819s2-w09-1/main/pull/185[#185])
 
 ** Documentation:
-*** Updated existing contents of the User and Developer Guide:
-*** Update and Maintain README. (Pull Request:
+*** Updated existing contents of the User and Developer Guide: (Pull Requests:
+    https://github.com/cs2103-ay1819s2-w09-1/main/pull/168[#168],
+    https://github.com/cs2103-ay1819s2-w09-1/main/pull/177[#177])
+*** Update and Maintain README. (Pull Requests:
     https://github.com/cs2103-ay1819s2-w09-1/main/pull/6[#6],
     https://github.com/cs2103-ay1819s2-w09-1/main/pull/23[#23],
     https://github.com/cs2103-ay1819s2-w09-1/main/pull/99[#99])
