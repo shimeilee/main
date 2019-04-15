@@ -17,7 +17,7 @@ UltiStudent is a student application that effectively tackles the problem of hav
 their school life. To improve the quality of student life in computing, UltiStudent provides a centralised platform
 for them to manage their homework, cumulative average point and notes.
 
-My role was to design and write the codes for the features in CAP manager. THe following sections of this document
+My role was to design and write the codes for the features in the Cumulative Average Point (CAP) manager. THe following sections of this document
 illustrate the enhancement i made and also
 
 Do note the following callouts and formatting used in this document.
@@ -63,6 +63,14 @@ which are initiated and executed the logic component of CAP Manager which then i
 ** Highlights: This enhancement affects existing commands and commands to be added in future.
 This requires a thorough understanding of the starting infrastructure of the application in other to make changes to it.
 The implementation was challenging because I had to work within the restrictions of the of the existing application, this was especially so for the CAP calculation feature.
+
+* *Minor enhancement*:
+
+** *Add Cap entry* command that adds cap entries into the CAP Manager, which in turns updates the Module Semester list and CAP score.
+** *Edit Cap entry* command that edits the parameters of a cap entry, which in turns updates the Module Semester list and CAP score.
+** *Delete Cap entry* command that deletes the cap entry from the cap manager, which in turns updates the Module Semester list and CAP score..
+** *Find Cap entry* command that looks for and displays  all notes in the Notes Manager.
+** *List Cap entry* command that lists all notes in the Notes Manager.
 
 * *Other contributions*:
 
