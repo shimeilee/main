@@ -635,46 +635,60 @@ image::EditCapManagerSequenceDiagram2.png[width="800", align="center"]
 
 Given below is an example usage scenario of how `edit-cap` behaves at each step.
 
-*Step 1*: The user executes `edit-cap 2 g/A sem/Y2S2` to edit the cap entry in the 2nd index with grade A and
+*Step 1*: The user launches the application and opens the CAP Manager.
+
+*Step 2*: There are already existing CAP entries. The user now executes `edit-cap 2 g/A sem/Y2S2` to edit the cap entry in the 2nd index with grade A and
 moduleSemester of `Y2S2`.
 
-*Step 2*: The user executes `edit-cap 2 g/A sem/Y2S2` to edit the cap entry in the 2nd index with grade A and
-moduleSemester of `Y2S2`.
+*Step 3*: Upon executing this command, the `EditCapCommandParser` will take in all the arguments inputted and create a
+`EditCapCommand` object. This object is then returned to the `Logic Manager` which will then execute the `EditCommand`
 
-*Step 3*: The user executes `edit-cap 2 g/A sem/Y2S2` to edit the cap entry in the 2nd index with grade A and
-moduleSemester of `Y2S2`.
+*Step 4*: When executing the `EditCapCommand` this alters the attributes of the CAP Entry in the UniqueCapEntryList object of
+UltiStudent by setCapEntry(a,b) method, where `a` is the cap entry to edit, and `b` is the edited cap entry.
+In doing so, this will call the method of `updateCapForDelete(a)` and `updateCapForAdd(b)`, which will update the CAP score.
 
+*Step 5*: Next, the `UniqueModuleSemesterList` will be updated. This is done by the `updateModuleSemesterList(x,y)` where `x` is
+the `moduleSemesterOfCapEntry` to edit, while `y` is the `moduleSemesterOfEditedCapEntry`.
+
+*Step 6*: If `moduleSemesterOfCapEntry` is different from `moduleSemesterOfEditedCapEntry`, the `model` will check if it
+contains `moduleSemesterOfEditedCapEntry`. If it does not, `moduleSemesterOfEditedCapEntry` will be added to
+the `UniqueModuleSemesterList`.
+
+*Step 7*: On the other hand, if the `model` does not have any cap entries with the same semesters as
+`moduleSemesterOfCapEntry` after editing the cap entries, which is reflected if `hasCapEntriesWithSameSemester` is false.
+The `moduleSemesterOfCapEntryToEdit` will be deleted to the `UniqueModuleSemesterList`.
 
 ==== Design Considerations
 ===== Aspect: How to store the Cap Score.
 
 * **Alternative 1 (current choice):** Store the cap score as a static variable in CapEntry class.
 ** Pros: Easy to implement.
-** Cons: Diffi
+** Cons: Since a static variable belongs to the CapEntry class, there may be unintended side effects when we use commands
+to modify the `UniqueCapEntryList`.
 * **Alternative 2:** Store the cap score as a separate class that is then store in UltiStudent.
 ** Pros: Each versioned UltiStudent will have their own cap score.
 ** Cons: Will use more memory and is harder to implement.
 
-===== Aspect: How to calculate score of module grade.
+===== Aspect: How to assign score for module grade.
 
 * **Alternative 1 (current choice):** Use a Hash Map to get the Store the cap score as a static variable in CapEntry class.
 ** Pros: Lower time complexity O(1) and cleaner code.
 ** Cons: Larger memory occupation.
 * **Alternative 2:** Use switch cases to find and allocate score to grade.
 ** Pros: Easier readability.
-** Cons: Slower time complexity, worst case O(N).
+** Cons: Slower time complexity, worst case of O(N).
 // end::edit-cap[]
 
 //tag::delete-cap[]
-=== Finding a Cap Entry : `delete-cap`
+=== Deleting a Cap Entry : `delete-cap`
 This feature allows the user to delete a cap entry from the cap entry list. Users can do so either via:
-the cap entry's index with the `edit-cap` command or the cap entry's module code with the `edit-cap-mc`
+the cap entry's index with the `delete-cap` command or the cap entry's module code with the `delete-cap INDEX`
 
 ==== Current Implementation
 The `delete-cap` command is facilitated by the Logic and Model components of the application, UltiStudent.
 
 The activity diagram below shows how the deleting of cap entries work when the user enters
-`delete-cap`
+`delete-cap`.
 
 =======
 .(image description)
@@ -682,12 +696,16 @@ image::DeleteCapManagerActivityDiagram.png[width="800", align="center"]
 
 Given below is an example usage scenario of how `delete-cap` behaves at each step.
 
-*Step 1*: The user executes `edit-cap 2 g/A sem/Y2S2` to edit the cap entry in the 2nd index with grade A and
-moduleSemester of `Y2S2`.
+*Step 1*: The user executes `delete-cap 2` to delete the cap entry in the 2nd index.
 
-*Step 2*: The user executes `edit-cap 2 g/A sem/Y2S2` to edit the cap entry in the 2nd index with grade A and
-moduleSemester of `Y2S2`.
+*Step 2*: Upon executing this command, the `DeleteCapCommandParser` parses the arguments and checks if the arguments are valid.
+If not valid, the command throws an exception and terminates.
 
+*Step 3*: If the argument is valid, the command checks if the `CapEntry` exists in the CAP Manager. If it does, the entry is deleted.
+The `UniqueCapEntryList` is then updated and the CAP score is updated as well.
+
+*Step 4*: Check if after deleting the target `CapEntry` the `UniqueCapEntryList` still has a `CapEntry` of the same semester. If there is,
+the module semester will be deleted from the `UniqueModuleSemesterList`. Then the `UniqueModuleSemesterList` will be updated.
 
 ==== Design Considerations
 ===== Aspect: How to store the Cap Score.
