@@ -257,7 +257,7 @@ This section describes some noteworthy details on how certain features are imple
 
 |===
 |_The add homework feature is a core feature to the Homework Manager of UltiStudent. Which allows the users to create
-|a homework object in UltiStudent._
+ a homework object in UltiStudent._
 |===
 
 ==== Overview
@@ -486,6 +486,32 @@ image::find-mod sequence diagram.png[width="800"]
 
 //tag::edit-note[]
 === Editing and Saving a note : `edit-note` `save-note`
+|====
+|These two feature allows the user to edit existing note and save them after editing.
+|====
+
+==== Overview
+The `edit-note` command helps the user to open the selected notes to allow the user to start editing its content
+by displaying all the content on the `NotesManagerMainPanel` which is a text field. It requires the need of the
+`save-note` command to help save the user's edits
+
+Below is an activity diagram of how the users use `edit-note` and `save-note` to facilitate adding contents to
+their existing notes:
+
+image::Edit&SaveNoteActivityDiagram.png[width=800]
+
+
+==== Design Considerations
+
+|===
+|*Options*|*Pro*|*Cons*
+|*1.* Users to type their content on the command line||
+|*2.* Users to type their content in a TextField box||
+|===
+
+Option 2 is being selected and implemented as we focus on the users convenience and the ability to edit their
+notes easily.
+
 // end::edit-note[]
 
 //tag::edit-cap[]
