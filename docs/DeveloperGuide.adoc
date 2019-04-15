@@ -1113,26 +1113,95 @@ These instructions only provide a starting point for testers to work on; testers
 .. Re-launch the app by double-clicking the jar file. +
    Expected: The most recent window size and location is retained.
 
-_{ more test cases ... }_
+=== Opening a manager
+. Opening respective manager with the command: `open`
 
-=== Deleting a person
+.. Prerequisites: Currently in Homework Manager with Homework icon being highlighted. +
+.. Test case: `open HomeworkManager` +
+   Expected: UI does not change changes
+.. Prerequisites: Currently in other Manager with Homework icon not being highlighted. +
+.. Test case: `open HomeworkManager` +
+   Expected: HomeworkManager is opened and GUI of HomeworkManager is shown
+.. Prerequisites: Currently in Notes Manager with Notes icon being highlighted. +
+.. Test case: `open NotesManager` +
+   Expected: UI does not change changes
+.. Prerequisites: Currently in other Manager with Homework icon not being highlighted. +
+.. Test case: `open NotesManager` +
+   Expected: NotesManager is opened and GUI of NotesManager is shown
+.. Prerequisites: Currently in Cap Manager with Notes icon being highlighted. +
+.. Test case: `open CapManager` +
+   Expected: UI does not change changes
+.. Prerequisites: Currently in other Manager with Homework icon not being highlighted. +
+.. Test case: `open CapManager` +
+   Expected: CapManager is opened and GUI of CapManager is shown
 
-. Deleting a person while all persons are listed
+=== Adding a homework
 
-.. Prerequisites: List all persons using the `list` command. Multiple persons in the list.
-.. Test case: `delete 1` +
-   Expected: First contact is deleted from the list. Details of the deleted contact shown in the status message. Timestamp in the status bar is updated.
-.. Test case: `delete 0` +
-   Expected: No person is deleted. Error details shown in the status message. Status bar remains the same.
-.. Other incorrect delete commands to try: `delete`, `delete x` (where x is larger than the list size) _{give more}_ +
+Adding a homework with the command: `add-hw`
+
+.. Prerequisites: HomeworkManager has to be opened to see changes on GUI.
+   (i.e. "open HomeworkManager" command has to be ran first)
+.. Test case: `add-hw mc/CS2103T hw/Tutorial 1 d/22/05/2019` +
+   Expected: A homework will be added into the list of homework in the Homework Main Panel.
+   The module code in which homework belongs to is also added in the Homework SubPanel list if not present before.
+.. Test case: `add-hw mc/CSXXXXT hw/Tutorial 1 d/22/05/2019` +
+   Expected: No homework is added. Error details will be shown in the status message.
+.. Other incorrect add-hw commands to try : `add-hw`, `add-hw mc/CS2103T hw/Tutorial 1 d/dd/MM/YYYY`
+   (where dd/MM/YYYY is a past date) +
    Expected: Similar to previous.
 
-_{ more test cases ... }_
+=== Deleting a homework entry
 
-=== Saving data
+Deleting a homework while all homework are listed with the command: ``delete-hw`.
 
-. Dealing with missing/corrupted data files
+.. Prerequisites: Use the sample data that using SampleDataUtil. SampleDataUtil autonmatically generates sample data
+when the json file is empty.
 
-.. _{explain how to simulate a missing/corrupted file and the expected behavior}_
+.. Test case: `delete-hw 1` +
+  Expected: First homework is deleted from the list. Details of the deleted homework shown in the status message.
+  Timestamp in the status bar is updated.
+.. Test case: `delete-hw 0` +
+  Expected: No homework is deleted. Error details shown in the status message. Status bar remains the same.
+.. Other incorrect delete commands to try: `delete-hw`, `delete-hw x` (where x is larger than the list size) +
+  Expected: Similar to previous.
 
-_{ more test cases ... }_
+=== Adding a note
+
+Adding a note with the command: `add-note`
+
+.. Prerequisites: NotesManager has to be opened. (i.e. "open NotesManager" command has to be ran first)
+.. Test case: `add-note mc/CS2103T n/Week 7 Tutorial`
+   Expected: A note will be added into the list of note in the Notes Main Panel.
+.. Test case: `add-note mc/CSXXXXT n/Tutorial 1`
+   Expected: No note is added. Error details will be shown in the status message.
+.. Other incorrect add-note commands to try : `add-note`, `add-note mc/CS2103T n/`(where note name is a whitespace)
+   Expected: Similar to previous.
+
+=== Editing a Note
+
+Editing a note with the command : `edit-note`
+
+.. Prerequisites: NotesManager has to be opened (i.e. `open NotesManager` command has to be ran first).
+Multiple notes in the notes list.
+.. Test case: `edit-note 1` +
+   Expected: First note will be selected and the contents of the selected note will be populated in the
+   text area in the NotesMainPanel.
+.. Test case: `edit-note 0` +
+   Expected: No note will be selected. Error details will be shown in the status message.
+.. Other incorrect edit note commands to try: `edit-note` +
+   Expected: Similar to previous.
+
+
+=== Saving a Note
+
+Saving a note with the command : `save-note`
+
+.. Prerequisites: NotesManager has to be opened
+   (i.e. `open NotesManager` command has to be ran first).
+   Multiple notes in the notes list.
+   A note has to be selected (i.e `edit-note INDEX` command has to ran to select a note at `INDEX`)
+.. Test case: `save-note` +
+   Expected: Contents of selected note will be saved. Details of note will be shown in the status message.
+.. Prerequisites: NotesManager has to be opened and no note is being selected.
+.. Test case: `save-note` +
+   Expected: Error details will be shown in the status message.
