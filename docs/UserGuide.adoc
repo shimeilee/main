@@ -224,6 +224,7 @@ Maybe Homework Manager would be educated in other languages to accept other char
 
 // end::add-hw[]
 
+//tag::edit-hw[]
 ==== Editing a homework: `edit-hw`
 
 Realised that you made a mistake in an entry after you added it? Introducing our edit command!
@@ -252,6 +253,9 @@ You can edit any amount of attributes at for one homework entry at one time!
 Include all the attributes you want to alter based on the format
 and exclude any other attributes you do not want to change.
 
+//end::edit-hw[]
+
+//tag::delete-hw[]
 ==== Deleting a homework: `delete-hw`
 
 Now let's say you are done with your homework and you wish to remove that entry from the homework manager.
@@ -265,6 +269,9 @@ Our delete command is the shortest command in UltiStudent and the easiest to use
 If you happen to forget what we mean by the word `INDEX`,
 simply refer to the diagram in the edit-hw section (Section 4.2.2) to understand what it means!
 
+//end::delete-hw[]
+
+//tag::find-mod[]
 ==== Finding homework from a specified module: `find-mod`
 
 As we get later into the semester, there will be more work for us to do.
@@ -285,6 +292,9 @@ only homework from the modules CS1101S is shown after the common `find-mod CS110
 You are not restricted to only one module code for the `[KEYWORDS]` in the command.
 You can add more of them if you wish.
 
+//tag::find-mod[]
+
+//tag::list-hw[]
 ==== Reverting back to a full list view: `list-hw`
 
 In the previous sub-section, we looked at how we can use the command `find-mod` to display
@@ -293,15 +303,36 @@ homework entries from selected module codes. Now, you are probably wondering now
 To display the full list, simply use this command `list-hw`. This command has no additional inputs for you to type
 and that makes this simple and easy to use!
 
+//tag::list-hw[]
+
 === Notes Manager
+// tag::add-note[]
 ==== Adding a note : `add-note`
-Adds a new note to the Notes Manager +
-Format: `add-note mc/MODULECODE nn/NOTENAME`
+Imagine yourself sitting in CS2103T Week 7 lecture, and the Professor have just
+covered an important concept which you would like to take some notes on. Let
+Notes Manager handle that for you by storing your notes digitally for you!
 
-Examples:
+To use this command we have to follow this format: `add-note mc/MODULECODE
+n/NOTENAME`
 
-* `add-note mc/CS2103T n/NOTENAME`
-* `add-note mc/CS2100 n/NOTENAME`
+First, we will need to be in the Note Manager. To open Notes Manager,
+enter `open Notes Manager` into the Command Box (red). You will see the
+Result Box (green) prompting that the Notes Mananger is opened.
+
+image::UI_notes_manager.png[width="790", align="center"]
+
+In this case, we need to add a new note. We will need to enter the following
+command into the Command Box: `add-note mc/CS2103T n/Week 7 Lecture`.
+
+image::UI_add_notes.png[width="790", align="center"]
+
+The new note will be added to the bottom of the list.
+
+[CAUTION]
+Notes Manager can only accept alphanumeric characters (A-Z, a-z, 0-9), and
+note names cannot begin with a whitespace.
+
+// end::add-note[]
 
 // tag::edit-note[]
 ==== Editing and Saving a note : `edit-note` `save-note`
@@ -345,26 +376,65 @@ For data integrity, undo and redo commands are not supported on editing and savi
 Changes must be made manually.
 
 // end::edit-note[]
+
+// tag::delete-note[]
 ==== Deleting a Note: `delete-note`
 
-Deletes the specified note from the Notes Manager. +
-Format: `delete-note INDEX`
+As the semester comes to an end, we would like to clean up the notes by
+removing some of the notes which we no longer need. Here's where
+`delete-note` comes in handy!
 
-****
-* Deletes the Note at the specified `INDEX`.
-* The index refers to the index number shown in the displayed CAP Entries list.
-* The index *must be a positive integer* 1, 2, 3, ...
+To use this command we have to follow this format: `delete-note INDEX`. This
+will delete the note at the specified index. The index *must be a positive
+integer* (1, 2, 3,...) and it must refer to an existing index number shown in
+ the displayed Notes List.
 
-****
+Say, we would like to delete the note we added from CS2103T Week 7 Lecture.
+It has an index of `12` in the list.
 
-Examples:
+As such, we will need to enter the following command: `delete-note 12`.
 
-* `edit-note 1` +
-Opens the 1st note in the Note Manager and allows editing into the note.
+image::UI_delete_notes.png[width="790", align="center"]
 
-* `delete-note 2` +
-Deletes the 2nd note in the Note Manager.
+Viola! The note is deleted.
 
+// end::delete-note[]
+
+// tag::findlist-note[]
+
+==== Finding note from a specified word: `find-note`
+
+As the semester progresses, there will be more notes taken for various module
+ activities (lectures, tutorials, labs). Wouldn't it be easier if we can
+ search for our notes based on a keyword? With `find-note`, we will be able to
+  find our notes easily with the usage of keywords!
+
+The format of this command: `find-note [KEYWORDS]`.
+
+Let's say you are looking for a tutorial note. We will enter `find-note
+tutorial` in the Command Box (red). The resulting list will be displayed in
+the Notes List (light blue box).
+
+image::UI_find_notes.png[width="790", align="center"]
+
+[TIP]
+You are not restricted to only one keyword for the `[KEYWORDS]` in the command.
+You can add more of them if you wish.
+
+In v2.0, we will be able to search for notes by its module code and note name.
+
+==== Reverting back to a full list view: `list-note`
+
+In the previous sub-section, we looked at how we can use the command `find-note`
+ to display notes from selected keywords. Now, you are
+ probably wondering now how to display a full list of modules.
+
+To display the full list, simply use this command `list-note`. This command has
+no additional inputs for you to type and that makes this simple and easy to use!
+
+// end::findlist-note[]
+
+// tag::capmanager[]
 
 === CAP Manager
 Climbing to your first class honours? Or struggling to keep within your desired class? Worry no more, let CAP Manager
@@ -374,11 +444,14 @@ Cap Manager!
 
 image::CapManagerInterface.png[width="790"]
 
-
 Now that you're all set, let's see how Cap Manager can help us!
 
+// end::capmanager[]
+
+// tag::add-cap[]
+
 ==== Adding a CAP entry: `add-cap`
-Adds a new CAP entry to the CAP Manager +
+Adds a new Module to the CAP Manager +
 
 Let's assume it's the end of the semester and you just got your grades back.
 Simply add your modules to the Cap Manager with the `add-cap` command to view your updated CAP!
@@ -397,99 +470,142 @@ Format: `add-cap mc/MODULECODE g/MODULEGRADE mcs/MODULECREDITS sem/MODULESEMESTE
 
 Examples:
 
+Let's assume you would like to add the module, CS2101 into the CAP Manager.
+Given that you got B+, and that CS2101 is worth 4 Modular credits and you took the module in Year 2 Semester 2, the
+command to input to the Command Box would be:
+
 * `add-cap mc/CS2101 g/B+ mcs/4 sem/Y2S2`
 
-Adds CS2101 into the CAP Manager, with a grade of B+ and 4 Modular Credits.
-
-First open CAP Manager
+Before adding
 
 image::OpenCapManager.png[width="790"]
 
-Then use the `add-cap` command.
+After entering `add-cap mc/CS2101 g/B+ mcs/4 sem/Y2S2` into the command box.
 
-//image of added cap
+image::AddCapManager.png[width="790"]
 
-And just like that your CAP Manager will now include the module you just added.
-The semester list will also be updated if you are adding a module that is newly taken.
-Not only that, your CAP score will be updated right away!
+And just like that your CAP Manager will now include the module you just added!
+Your CAP score will also be updated right away!
+In addition, the semester list will also be updated if you are adding a module that is newly taken.
 
+[CAUTION]
+Unfortunately, UltiStudent's CAP Manager does not allows U or S grade as of this version.
+Do look out for our next update, where we add the SU Command!
+
+// end::add-cap[]
+
+// tag::edit-cap[]
 
 ==== Editing a CAP Entry by index: `edit-cap`
 If you made a mistake in entering the information for any particular CAP entry, do not worry!
  `edit-cap` command can easily fix that.
 
-Edits an existing cap entry in the UltiStudent by the use of index. +
 Format: `edit-cap INDEX  [mc/MODULECODE] [g/MODULEGRADE] [mcs/MODULECREDITS] [sem/MODULESEMESTER]`
-****
-* Edits the CAP entry at the specified `INDEX`. The index refers to the index number shown in the displayed CAP Entries list. The index *must be a positive integer* 1, 2, 3, ...
+
+* Index refers to the index number shown in the displayed CAP Entries list. The index *must be a positive integer* 1, 2, 3, ...
 * At least one of the optional fields must be provided.
 * Existing values will be updated to the input values.
+* Edits the CAP entry at the specified `INDEX`.
 
-****
 
 Examples:
 
-* `edit-cap 1 g/A` +
- Edits the module grade of the 1st cap entry in cap manager to be `A`
-* `edit-cap 3 mc/CS2102 g/B+` +
-Edits the module code of the 3rd cap entry and the grade obtained to `B+`.
+Let's assume you had actually gotten A+ for the module CS2101 and you took the module in Y3S1 instead.
+
+Given this scenario, the command to input to the Command Box would be:
+
+* `edit-cap 15 g/A sem/y3s1` +
+
+Let's put it to use!
+
+Before editing:
+
+image::AddCapManager.png[width="790"]
+
+
+After editing:
+
+image::EditedCapManager.png[width="790"]
+
+With that, all changes you have made will be reflected straightaway in the CAP manager.
+This of course includes the module list, semester list and your CAP score!
+
+// end::edit-cap[]
+
+// tag::edit-cap-mc[]
 
 ==== Editing a CAP Entry by module code: `edit-cap-mc`
-UltiStudent understands that students have to take many modules in their University life, as such,
 
-As such the `edit-cap-mc` allows users to edit the parameters of a __ by the using the module code instead of the index
+UltiStudent understands the large amount of modules students have to take as such, to bring more convenience, CAP Manager
+now allows you to edit the parameters of any modules through their module code instead of the index number
 for more convenience!
 
-Format: `edit-cap-mc MODULECODE [mc/MODULECODE] [g/MODULEGRADE] [mcs/MODULECREDITS] [sem/MODULESEMESTER]`
-****
-* Edits the CAP entry with the specified MODULECODE. The module code *must* be valid.
-* At least one of the optional fields must be provided.
-* Existing values will be updated to the input values.
+The format for the `edit-cap-mc` command is `edit-cap-mc MODULECODE [mc/MODULECODE] [g/MODULEGRADE] [mcs/MODULECREDITS] [sem/MODULESEMESTER]`
 
-****
+Just like the `edit-cap` command, `edit-cap-mc` has the same
 
-Examples:
+// end::edit-cap-mc[]
 
-* `edit-cap-mc CS2100 g/B-` +
- Edits the module grade of CS2100 in cap manager to be `B-`
-* `edit-cap CS2103T mc/CS2102 g/A+` +
-Edits the cap entry of CS2103T to become that of a cap entry for CS2102 and sets the grade obtained to `B+`.
+// tag::delete-cap[]
 
 ==== Deleting a CAP entry: `delete-cap`
 
-If you ever do need to delete a CAP entry in the CAP Manager, you may use this command to easily delete that specific CAP Entry.
-After executing the command
-Deletes the specified CAP entry from the CAP Manager. +
-Format: `delete-cap INDEX`
+If you ever do need to delete a module in the CAP Manager, you may use this command to easily delete
+that module.
+The format for this command is that of `delete-cap INDEX`.
 
-****
-* Deletes the CAP entry at the specified `INDEX`.
-* The index refers to the index number shown in the displayed CAP Entries list.
-* The index *must be a positive integer* 1, 2, 3, ...
-
-****
 
 Examples:
+For example, if you would like to delete the module ST2334 from CAP Manager, simply look for its index number. and apply it to the format!
+In this case, we would enter:
 
-* `delete-cap 2` +
-Deletes the 2nd CAP Entry in the UltiStudent.
+* `delete-cap 14`
+
+Before deleting:
+image::EditedCapManager.png[width="790"]
+
+After entering the delete command:
+
+image::DeletedCapManager.png[width="790"]
+
+And just like that the module is deleted! Once again, your CAP will be updated rightaway in the CAP Indicator!
+
+// end::delete-cap[]
+
+// tag::find-sem[]
 
 ==== Filtering a CAP entry: `find-sem`
+Here at UltiStudent, we understand that students have many modules and it can become difficult to find and filter
+through the many modules that they take. To help you with this, the `find-sem` will be handy!
 
-If you would like to view the modules you have taken for particular semester(s), then find-sem will be handy!
+Format: `find-sem MODULESEMESTER ...`
 
-Format: `find-sem SEMESTER ...`
+Let's say you would like to view all the modules that you took in Year 1 Semester 2.
+Simply type `find-sem Y1S2` into the Command Box and the module list will be updated rightaway to show the modules ou took in the
+semester you entered!
 
-//warning: do note that cap score does not update such that it only calculates the CAP score for the modules displayed
-// using the find-sem method. The cap score is stil that for all the modules in the cap entry.
-// if you wish to exist, refer to list command
+image::FindCapManager.png[width="790"]
+
+[TIP]
+Psst..! You can use the find-sem command to view more than 1 semester of modules if you wish!
+
+[CAUTION]
+Do be careful and know that your CAP reflected in CAP indicator is still for that of all your modules.
+CAP indicator does not calculate your CAP score for only the displayed modules!
+
+// end::find-sem[]
+
+// tag::list-cap[]
 
 ==== Filtering a CAP entry: `list-cap`
 
-This command displays all the modules inside the CAP manager.
-This command is most helpful after the use of `find-sem` command.
+In the previous sub-section, we saw how using the `find-sem` can help us to filter through the entire CAP Manager and only
+see the modules of the semesters we are interested in. Now let's see how we can view all of our modules again!
 
-Format: `list-cap`
+The `list-cap` command will help you to view your full list of modules in the CAP Manager.
+All you have to do is enter `list-cap` into the command box and TADAH! You will see all the modules you have taken.
+
+// end::list-cap[]
 
 == FAQ
 
@@ -528,11 +644,15 @@ e.g. `edit-note 1`
 e.g. `save-note`
 
 === Cap Manager
-* *Add Cap Entry* `add-cap mc/MODULECODE nn/NOTENAME hw/HOMEWORK [p/PRIORITY]...` +
+* *Add Cap Entry* `add-cap mc/MODULECODE g/MODULEGRADE mcs/MODULECREDITS sem/MODULESEMESTER` +
 e.g. `add-cap mc/CS2101 g/A- mcs/4 sem/Y2S2 `
-* *Delete Cap Entry* : `delete-note INDEX` +
-e.g. `delete 1`
-* *Edit Cap Entry by Index* : `edit-note INDEX  [mc/MODULECODE] [g/MODULEGRADE] [mcs/MODULECREDITS] [sem/MODULESEMESTER]` +
+* *Delete Cap Entry* : `delete-cap INDEX` +
+e.g. `delete-cap 1`
+* *Edit Cap Entry by Index* : `edit-cap INDEX  [mc/MODULECODE] [g/MODULEGRADE] [mcs/MODULECREDITS] [sem/MODULESEMESTER]` +
 e.g. `edit-cap 2 g/B+ mcs/4`
-* *Edit Cap Entry by Code* : `edit-note MODULECODE  [mc/MODULECODE] [g/MODULEGRADE] [mcs/MODULECREDITS] [semd/MODULESEMESTER]` +
+* *Edit Cap Entry by Code* : `edit-cap MODULECODE  [mc/MODULECODE] [g/MODULEGRADE] [mcs/MODULECREDITS] [sem/MODULESEMESTER]` +
 e.g. `edit-cap-mc CS3203 g/A- mcs/8`
+* *Find Cap Entry by Semester* : `find-sem MODULESEMESTER` +
+e.g. `find-sem Y2S2 Y3S1`
+* *List all Modules in the CAP Manager* : `list-cap` +
+e.g. `list-cap`
