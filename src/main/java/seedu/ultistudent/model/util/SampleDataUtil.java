@@ -80,8 +80,18 @@ public class SampleDataUtil {
     public static Homework[] getSampleHomeworkList() {
         return new Homework[]{
             new Homework(new ModuleCode("CS1010"), new HomeworkName("Tutorial 1"), new Date("11/04/2019")),
-            new Homework(new ModuleCode("CS1020"), new HomeworkName("Tutorial 2"), new Date("18/04/2019")),
-            new Homework(new ModuleCode("ES2660"), new HomeworkName("Essay Writing"), new Date("10/05/2019"))
+            new Homework(new ModuleCode("CS1010"), new HomeworkName("Tutorial 2"), new Date("18/04/2019")),
+            new Homework(new ModuleCode("CS1010"), new HomeworkName("Tutorial 3"), new Date("18/04/2019")),
+            new Homework(new ModuleCode("ES2660"), new HomeworkName("Essay Writing 1"), new Date("10/05/2019")),
+            new Homework(new ModuleCode("ES2660"), new HomeworkName("Essay Writing 2"), new Date("17/05/2019")),
+            new Homework(new ModuleCode("ES2660"), new HomeworkName("Essay Writing 3"), new Date("24/05/2019")),
+            new Homework(new ModuleCode("CS2103T"), new HomeworkName("Tutorial 1"), new Date("11/05/2019")),
+            new Homework(new ModuleCode("CS2103T"), new HomeworkName("Tutorial 2"), new Date("18/05/2019")),
+            new Homework(new ModuleCode("CS2103T"), new HomeworkName("Tutorial 3"), new Date("25/05/2019")),
+            new Homework(new ModuleCode("CS2101"), new HomeworkName("Oral Presentation 1"), new Date("12/05/2019")),
+            new Homework(new ModuleCode("CS2101"), new HomeworkName("Oral Presentation 2"), new Date("19/05/2019")),
+            new Homework(new ModuleCode("CS2101"), new HomeworkName("Oral Presentation 3"), new Date("26/05/2019"))
+
         };
     }
 
@@ -102,7 +112,10 @@ public class SampleDataUtil {
         }
         for (Homework homework : getSampleHomeworkList()) {
             sampleAb.addHomework(homework);
-            sampleAb.addModuleCode(homework.getModuleCode());
+            ModuleCode sampleModuleCode = homework.getModuleCode();
+            if (!sampleAb.getModuleCodeList().contains(sampleModuleCode)) {
+                sampleAb.addModuleCode(homework.getModuleCode());
+            }
         }
         return sampleAb;
     }

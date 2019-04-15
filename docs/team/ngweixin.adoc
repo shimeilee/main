@@ -87,6 +87,7 @@ to view my code on the CS2103T Project Code Dashboard.
     https://github.com/cs2103-ay1819S2-w11-2/main/issues/180[180])
 
 == Contributions to the User Guide
+
 |===
 |_Below are the main contributions to the User Guide, which consist of Add
 |Homework, Edit and Save commands.

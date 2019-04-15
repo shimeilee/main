@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="generator" content="Asciidoctor 2.0.5">
+<meta name="generator" content="Asciidoctor 2.0.6">
 <title>Lim Zheng Jie Benjamin - Project Portfolio</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
 <style>
@@ -438,56 +438,132 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <body class="article">
 <div id="header">
 <h1>Lim Zheng Jie Benjamin - Project Portfolio</h1>
+<div id="toc" class="toc">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_overview">1. Overview</a></li>
+<li><a href="#_project_ultistudent">2. PROJECT: UltiStudent</a></li>
+<li><a href="#_summary_of_contributions">3. Summary of contributions</a></li>
+<li><a href="#_contributions_to_the_user_guide">4. Contributions to the User Guide</a>
+<ul class="sectlevel3">
+<li><a href="#_editing_a_homework_edit_hw">4.1. Editing a homework: <code>edit-hw</code></a></li>
+<li><a href="#_deleting_a_homework_delete_hw">4.2. Deleting a homework: <code>delete-hw</code></a></li>
+<li><a href="#_finding_homework_from_a_specified_module_find_mod">4.3. Finding homework from a specified module: <code>find-mod</code></a></li>
+<li><a href="#_reverting_back_to_a_full_list_view_list_hw">4.4. Reverting back to a full list view: <code>list-hw</code></a></li>
+</ul>
+</li>
+<li><a href="#_contributions_to_the_developer_guide">5. Contributions to the Developer Guide</a>
+<ul class="sectlevel2">
+<li><a href="#_delete_homework_feature">5.1. Delete homework feature</a></li>
+<li><a href="#_edit_homework_feature">5.2. Edit homework feature</a></li>
+<li><a href="#_find_module_feature">5.3. Find module feature</a></li>
+</ul>
+</li>
+</ul>
+</div>
 </div>
 <div id="content">
 <div class="sect1">
-<h2 id="_project_ultistudent_level_4">PROJECT: UltiStudent - Level 4</h2>
-<div class="sectionbody">
-<hr>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_overview">Overview</h2>
+<h2 id="_overview">1. Overview</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>UltiStudent is a student application that effectively tackles the problem of having too many applications to manage
-their school life. To improve the quality of student life in computing, UltiStudent provides a centralised platform
-for them to manage their homework, cumulative average point and notes.</p>
+<p>This portfolio documents my contributions towards the UltiStudent project
+which is part of an introductory software engineering module known as <strong>CS2103T - Software Engineering</strong>.
+During this module, we have been provided with a working software application
+and could enhance and morph our application to suit our target audience.</p>
 </div>
 <div class="paragraph">
-<p>UltiStudent is a desktop application used for teaching Software Engineering principles. The user interacts with it using a CLI, and it has a GUI created with JavaFX. It is written in Java, and has about 10 kLoC.</p>
+<p>The purpose of this document is present the principles and practical skills
+I have learnt throughout the course of this module.</p>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_summary_of_contributions">Summary of contributions</h2>
+<h2 id="_project_ultistudent">2. PROJECT: UltiStudent</h2>
 <div class="sectionbody">
+<div class="paragraph">
+<p><strong>UltiStudent</strong> is a student application that effectively tackles the problem of having too many applications to manage
+their school life. Having a large number of different platforms can lead to inconvenience, incompatibilities
+and inorganisation. <strong>UltiStudent</strong> tackles this problem by providing a centralised platform
+for them to manage their homework, cumulative average point and notes to improve the quality of their school life.</p>
+</div>
+<div class="paragraph">
+<p><strong>UltiStudent</strong> provides a Command Line Interface (CLI) for students to interact with and is complemented by a
+Graphical User Interface (GUI). We have designed the application with user-friendliness in mind.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_summary_of_contributions">3. Summary of contributions</h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">This section contains the key contributions I have made towards this project. They highlight my ability to<br>
+1) model and design the application to cater to our target users.<br>
+2) create a working software application that is user-friendly and error-free.<br>
+3) design and create test cases which ensured that the HomeworkManager is error free.</p></td>
+</tr>
+</tbody>
+</table>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Major enhancement</strong>: added <strong>the ability to undo/redo previous commands</strong></p>
+<p><strong>Major Enhancement</strong>:</p>
 <div class="ulist">
 <ul>
 <li>
-<p>What it does: allows the user to undo all previous commands one at a time. Preceding undo commands can be reversed by using the redo command.</p>
+<p>Developed the <code>Model</code>, <code>Logic</code> and <code>Storage</code> infrastructure for the Homework Manager.</p>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Functionality</strong>: Allows the user to <code>add</code>, <code>delete</code>, <code>edit</code>, <code>find</code> and <code>list</code> in the homework entries. Provides the
+foundations on which these features are built.</p>
 </li>
 <li>
-<p>Justification: This feature improves the product significantly because a user can make mistakes in commands and the app should provide a convenient way to rectify them.</p>
+<p><strong>Justification:</strong> The ability to create homework entries and other features such as edit depends on the Homework Manager
+infrastructure. This enhances the features of the UltiStudent by allowing students
+to manage their homework on our application.</p>
 </li>
 <li>
-<p>Highlights: This enhancement affects existing commands and commands to be added in future. It required an in-depth analysis of design alternatives. The implementation too was challenging as it required changes to existing commands.</p>
+<p><strong>Highlights:</strong> This enhancement is a core component of our application. It affects the current functionalities of our
+application and the future extensions of our application. To do this well requires an in-depth understanding of the
+initial infrastructure of the software in order to alter it. The implementation was also difficult because various abstraction
+layers had to be understood.</p>
 </li>
-<li>
-<p>Credits: <em>{mention here if you reused any code/ideas from elsewhere or if a third-party library is heavily used in the feature so that a reader can make a more accurate judgement of how much effort went into the feature}</em></p>
+</ul>
+</div>
 </li>
 </ul>
 </div>
 </li>
 <li>
-<p><strong>Minor enhancement</strong>: added a history command that allows the user to navigate to previous commands using up/down keys.</p>
+<p><strong>Minor enhancement</strong>:</p>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Edit Homework command</strong> that edits the attributes of current existing homework entries based on user input</p>
 </li>
 <li>
-<p><strong>Code contributed</strong>: [<a href="https://github.com">Functional code</a>] [<a href="https://github.com">Test code</a>] <em>{give links to collated code files}</em></p>
+<p><strong>Delete Homework command</strong> that deletes the attributes  whose note name has the keywords
+indicated by the user.</p>
+</li>
+<li>
+<p><strong>Find Module command</strong> that filters all the homework entries based on a list of modules.</p>
+</li>
+<li>
+<p><strong>List Homework command</strong> that shows the entire list of homework entries in the Homework Manager.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Code contributed</strong>: Click
+<a href="https://nus-cs2103-ay1819s2.github.io/cs2103-dashboard/#=undefined&amp;search=LimZhengJieBenjamin">here</a>
+to view my code on the CS2103T Project Code Dashboard.</p>
 </li>
 <li>
 <p><strong>Other contributions</strong>:</p>
@@ -498,7 +574,10 @@ for them to manage their homework, cumulative average point and notes.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Managed releases <code>v1.3</code> - <code>v1.5rc</code> (3 releases) on GitHub</p>
+<p>Helped to managed issue tracker for our project repository.</p>
+</li>
+<li>
+<p>Planned the project milestones for the Homework Manager feature of UltiStudent.</p>
 </li>
 </ul>
 </div>
@@ -511,7 +590,11 @@ for them to manage their homework, cumulative average point and notes.</p>
 <p>Updated the GUI color scheme (Pull requests <a href="https://github.com">#33</a>, <a href="https://github.com">#34</a>)</p>
 </li>
 <li>
-<p>Wrote additional tests for existing features to increase coverage from 88% to 92% (Pull requests <a href="https://github.com">#36</a>, <a href="https://github.com">#38</a>)</p>
+<p>Wrote test cases for homework manager. (Pull requests <a href="https://github.com/cs2103-ay1819s2-w09-1/main/pull/91">#91</a>,
+<a href="https://github.com/cs2103-ay1819s2-w09-1/main/pull/87">#87</a>)</p>
+</li>
+<li>
+<p>Constructed sample data for the product demo of our application. <a href="https://github.com/cs2103-ay1819s2-w09-1/main/pull/184">#184</a></p>
 </li>
 </ul>
 </div>
@@ -521,7 +604,27 @@ for them to manage their homework, cumulative average point and notes.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Did cosmetic tweaks to existing contents of the User Guide: <a href="https://github.com">#14</a></p>
+<p>User Guide</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Revamp of the tone of the User Guide to make it sound more friendly.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Developer Guide</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Created UML diagrams to better explain the <code>edit-hw</code> and <code>find-mod</code> commands in the Developer Guide.</p>
+</li>
+<li>
+<p>Discussed the pros and cons of different implementations considered during the design stage.</p>
+</li>
+</ul>
+</div>
 </li>
 </ul>
 </div>
@@ -531,16 +634,7 @@ for them to manage their homework, cumulative average point and notes.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>PRs reviewed (with non-trivial review comments): <a href="https://github.com">#12</a>, <a href="https://github.com">#32</a>, <a href="https://github.com">#19</a>, <a href="https://github.com">#42</a></p>
-</li>
-<li>
-<p>Contributed to forum discussions (examples:  <a href="https://github.com">1</a>, <a href="https://github.com">2</a>, <a href="https://github.com">3</a>, <a href="https://github.com">4</a>)</p>
-</li>
-<li>
-<p>Reported bugs and suggestions for other teams in the class (examples:  <a href="https://github.com">1</a>, <a href="https://github.com">2</a>, <a href="https://github.com">3</a>)</p>
-</li>
-<li>
-<p>Some parts of the history feature I added was adopted by several other class mates (<a href="https://github.com">1</a>, <a href="https://github.com">2</a>)</p>
+<p>Contributed to forum discussions.  <a href="https://github.com/nus-cs2103-AY1819S2/forum/issues/25">#25</a></p>
 </li>
 </ul>
 </div>
@@ -550,10 +644,7 @@ for them to manage their homework, cumulative average point and notes.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Integrated a third party library (Natty) to the project (<a href="https://github.com">#42</a>)</p>
-</li>
-<li>
-<p>Integrated a new Github plugin (CircleCI) to the team repo</p>
+<p>Assisted teammate in the integration of the Travis CI into our repository.</p>
 </li>
 </ul>
 </div>
@@ -569,7 +660,7 @@ for them to manage their homework, cumulative average point and notes.</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_contributions_to_the_user_guide">Contributions to the User Guide</h2>
+<h2 id="_contributions_to_the_user_guide">4. Contributions to the User Guide</h2>
 <div class="sectionbody">
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
@@ -577,87 +668,125 @@ for them to manage their homework, cumulative average point and notes.</p>
 </colgroup>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Given below are sections I contributed to the User Guide. They showcase my ability to write documentation targeting end-users.</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The following are the contributions I have made to the User Guide. They demonstrate my ability to write
+clear and concise documentation
+in friendly and inviting manner targeted at non-technical users.</p></td>
 </tr>
 </tbody>
 </table>
 <div class="sect3">
-<h4 id="_undoing_previous_command_undo">Undoing previous command : <code>undo</code></h4>
+<h4 id="_editing_a_homework_edit_hw">4.1. Editing a homework: <code>edit-hw</code></h4>
 <div class="paragraph">
-<p>Restores the UltiStudent to the state before the previous <em>undoable</em> command was executed.<br>
-Format: <code>undo</code></p>
+<p>Realised that you made a mistake in an entry after you added it? Introducing our edit command!
+You can make any changes to any of the attributes of the homework entry using this command!<br></p>
 </div>
-<div class="admonitionblock note">
+<div class="paragraph">
+<p>To use this command, we must follow this format: <code>edit-homework INDEX  [mc/MODULECODE] [hw/HOMEWORK]
+[d/DEADLINE]</code> You can refer to the diagram below to understand what we mean by the word <code>index</code>!
+You may have noticed that it looks rather similar to the add-hw command. Good observation!
+However, you should take note of the slight difference that you do not have to include all the attributes.
+Instead, only include those you wish to change. Any other attribute(s) is optional.</p>
+</div>
+<div class="paragraph">
+<p>Now let&#8217;s take a look at an example so that you can understand what I mean more clearly.
+So you already have a homework entry in the homework manager which has these
+<code>mc/CS1101S hw/Tutorial 1 d/01/05/2019</code> as its attributes.
+Now let&#8217;s say our professor has decided to extend the deadline by a week upon requests by students.
+Simply type <code>edit-hw 1 d/08/05/2019</code> and the update will be reflected in your homework entry.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/edit-hw%20UG.png" alt="edit hw UG" width="790">
+</div>
+</div>
+<div class="paragraph">
+<p>After entering your <code>edit-hw</code> command, the message you see in the green highlighted box
+in the diagram above indicates that you have successfully done it.
+You can also see how the deadline of the attribute has been updated according to the deadline you wish to edit it to.</p>
+</div>
+<div class="admonitionblock tip">
 <table>
 <tr>
 <td class="icon">
-<div class="title">Note</div>
+<div class="title">Tip</div>
 </td>
 <td class="content">
-<div class="paragraph">
-<p>Undoable commands: those commands that modify the UltiStudent&#8217;s content in
-the various manager e.g. for Homework Manager
-(<code>add-homework</code>, <code>delete-homework</code>, <code>edit-homework</code>).</p>
-</div>
+You can edit any amount of attributes at for one homework entry at one time!
+Include all the attributes you want to alter based on the format
+and exclude any other attributes you do not want to change.
 </td>
 </tr>
 </table>
 </div>
-<div class="paragraph">
-<p>Examples:</p>
 </div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>delete-homework 1</code><br>
-<code>undo</code> (reverses the <code>delete 1</code> command)<br></p>
-</li>
-<li>
-<p><code>delete-note 1</code><br>
-<code>undo</code> (reverses the <code>delete 1</code> command)<br></p>
-</li>
-<li>
-<p><code>select-homework 1</code><br>
-<code>undo</code><br>
-The <code>undo</code> command fails as there are no undoable commands executed previously.</p>
-</li>
-<li>
-<p><code>delete 1</code><br>
-<code>add mc/CS2101 mn/Effective Communication for Computing Professionals hw/Tutorial 1’<br>
-`undo</code> (reverses the <code>add</code> command)<br>
-<code>undo</code> (reverses the <code>delete 1</code> command)<br></p>
-</li>
-</ul>
+<div class="sect3">
+<h4 id="_deleting_a_homework_delete_hw">4.2. Deleting a homework: <code>delete-hw</code></h4>
+<div class="paragraph">
+<p>Now let&#8217;s say you are done with your homework and you wish to remove that entry from the homework manager.
+You can easily delete it by using the <code>delete-hw</code> command!
+All you have to do is to follow this short and simple format <code>delete-hw INDEX</code>.</p>
+</div>
+<div class="paragraph">
+<p>Using the same example in the edit command. Let&#8217;s say we are done with the CS1101S homework
+and wish to remove it from the Homework Manager. All you have to do is to type <code>delete-hw 2</code> and you are done!</p>
+</div>
+<div class="paragraph">
+<p>Our delete command is the shortest command in UltiStudent and the easiest to use.
+If you happen to forget what we mean by the word <code>INDEX</code>,
+simply refer to the diagram in the edit-hw section (Section 4.2.2) to understand what it means!</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_redoing_the_previously_undone_command_redo">Redoing the previously undone command : <code>redo</code></h4>
+<h4 id="_finding_homework_from_a_specified_module_find_mod">4.3. Finding homework from a specified module: <code>find-mod</code></h4>
 <div class="paragraph">
-<p>Reverses the most recent <code>undo</code> command.<br>
-Format: <code>redo</code></p>
+<p>As we get later into the semester, there will be more work for us to do.
+Every single module has some form of submission and you will soon have so many entries in your homework list
+that it makes it difficult to read and find a particular entry.
+We have a special command for you to use and find all the homework entries belonging to a specific module(s).</p>
 </div>
 <div class="paragraph">
-<p>Examples:</p>
+<p>The format of this command is simple. <code>find-mod [KEYWORDS]</code>.
+As you can see from the diagram below, after adding a module code as part of a keyword,
+you will be able to see only homework from the module in the homework list.</p>
 </div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>delete-hw 1</code><br>
-<code>undo</code> (reverses the <code>delete 1</code> command)<br>
-<code>redo</code> (reapplies the <code>delete 1</code> command)<br></p>
-</li>
-<li>
-<p><code>delete-note 1</code><br>
-<code>redo</code><br>
-The <code>redo</code> command fails as there are no <code>undo</code> commands executed previously.</p>
-</li>
-</ul>
+<div class="imageblock">
+<div class="content">
+<img src="../images/find-mod%20UG.png" alt="find mod UG" width="790">
+</div>
+</div>
+<div class="paragraph">
+<p>As you can see from the diagram above, even though there are a total of four modules with homework in the module list,
+only homework from the modules CS1101S is shown after the common <code>find-mod CS1101S</code> is used.</p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Tip</div>
+</td>
+<td class="content">
+You are not restricted to only one module code for the <code>[KEYWORDS]</code> in the command.
+You can add more of them if you wish.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_reverting_back_to_a_full_list_view_list_hw">4.4. Reverting back to a full list view: <code>list-hw</code></h4>
+<div class="paragraph">
+<p>In the previous sub-section, we looked at how we can use the command <code>find-mod</code> to display
+homework entries from selected module codes. Now, you are probably wondering now how to display a full list of modules.</p>
+</div>
+<div class="paragraph">
+<p>To display the full list, simply use this command <code>list-hw</code>. This command has no additional inputs for you to type
+and that makes this simple and easy to use!</p>
 </div>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_contributions_to_the_developer_guide">Contributions to the Developer Guide</h2>
+<h2 id="_contributions_to_the_developer_guide">5. Contributions to the Developer Guide</h2>
 <div class="sectionbody">
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
@@ -665,233 +794,255 @@ The <code>redo</code> command fails as there are no <code>undo</code> commands e
 </colgroup>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Given below are sections I contributed to the Developer Guide. They showcase my ability to write technical documentation and the technical depth of my contributions to the project.</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The following are the contributions I have made to the Developer Guide.
+They demonstrate my ability to present and explain
+complicated technical information in a comprehensible manner. It also showcases my technical skills and abilities.</p></td>
 </tr>
 </tbody>
 </table>
 <div class="sect2">
-<h3 id="_undoredo_feature">Undo/Redo feature</h3>
-<div class="sect3">
-<h4 id="_current_implementation">Current Implementation</h4>
+<h3 id="_delete_homework_feature">5.1. Delete homework feature</h3>
 <div class="paragraph">
-<p>The undo/redo mechanism is facilitated by <code>VersionedUltiStudent</code>.
-It extends <code>UltiStudent</code> with an undo/redo history, stored internally as an <code>UltiStudentStateList</code> and <code>currentStatePointer</code>.
-Additionally, it implements the following operations:</p>
+<p>This feature allows the user to delete a homework entry from the homework manager through its index.</p>
+</div>
+<div class="paragraph">
+<p>The delete homework feature is facilitated by the <code>DeleteHomeworkCommandParser</code> and the <code>DeleteHomeworkCommand</code>.</p>
+</div>
+<div class="paragraph">
+<p>The delete command is part of the <a href="#Design-Logic"><strong>logic</strong></a> component of our application. It interacts with the
+<a href="#Design-Model"><strong>model</strong></a> and the <a href="#Design-Storage"><strong>storage</strong></a> components of our application.</p>
+</div>
+<div class="sect3">
+<h4 id="_overview_2">5.1.1. Overview</h4>
+<div class="paragraph">
+<p>The <code>DeleteHomeworkCommandParser</code> implements <code>Parser</code> with the following operation:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><code>VersionedUltiStudent#commit()</code>&#8201;&#8212;&#8201;Saves the current UltiStudent state in its history.</p>
-</li>
-<li>
-<p><code>VersionedUltiStudent#undo()</code>&#8201;&#8212;&#8201;Restores the previous UltiStudent state from its history.</p>
-</li>
-<li>
-<p><code>VersionedUltiStudent#redo()</code>&#8201;&#8212;&#8201;Restores a previously undone UltiStudent state from its history.</p>
+<p><code>DeleteHomeworkCommandParser#parse()</code> - This operation will take in a <code>int</code> input from the
+user which will delete the homework entry at the index which has entered.
+Any invalid format of the command will be prompted by the command parser.</p>
 </li>
 </ul>
-</div>
-<div class="paragraph">
-<p>These operations are exposed in the <code>Model</code> interface as <code>Model#commitUltiStudent()</code>, <code>Model#undoUltiStudent()</code> and <code>Model#redoUltiStudent()</code> respectively.</p>
-</div>
-<div class="paragraph">
-<p>Given below is an example usage scenario and how the undo/redo mechanism behaves at each step.</p>
-</div>
-<div class="paragraph">
-<p>Step 1. The user launches the application for the first time. The <code>VersionedUltiStudent</code> will be initialized with the initial UltiStudent state, and the <code>currentStatePointer</code> pointing to that single UltiStudent state.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/UndoRedoStartingStateListDiagram.png" alt="UndoRedoStartingStateListDiagram" width="800">
-</div>
-</div>
-<div class="paragraph">
-<p>Step 2. The user executes <code>delete 5</code> command to delete the 5th homework in the UltiStudent. The <code>delete</code> command calls <code>Model#commitUltiStudent()</code>, causing the modified state of the UltiStudent after the <code>delete 5</code> command executes to be saved in the <code>UltiStudentStateList</code>, and the <code>currentStatePointer</code> is shifted to the newly inserted UltiStudent state.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/UndoRedoNewCommand1StateListDiagram.png" alt="UndoRedoNewCommand1StateListDiagram" width="800">
-</div>
-</div>
-<div class="paragraph">
-<p>Step 3. The user executes <code>add mc/CS2103T &#8230;&#8203;</code> to add a new homework. The <code>add</code> command also calls <code>Model#commitUltiStudent()</code>, causing another modified UltiStudent state to be saved into the <code>UltiStudentStateList</code>.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/UndoRedoNewCommand2StateListDiagram.png" alt="UndoRedoNewCommand2StateListDiagram" width="800">
-</div>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<div class="title">Note</div>
-</td>
-<td class="content">
-If a command fails its execution, it will not call <code>Model#commitUltiStudent()</code>, so the UltiStudent state will not be saved into the <code>ultiStudentStateList</code>.
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>Step 4. The user now decides that adding the homework was a mistake, and decides to undo that action by executing the <code>undo</code> command. The <code>undo</code> command will call <code>Model#undoUltiStudent()</code>, which will shift the <code>currentStatePointer</code> once to the left, pointing it to the previous UltiStudent state, and restores the UltiStudent to that state.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/UndoRedoExecuteUndoStateListDiagram.png" alt="UndoRedoExecuteUndoStateListDiagram" width="800">
-</div>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<div class="title">Note</div>
-</td>
-<td class="content">
-If the <code>currentStatePointer</code> is at index 0, pointing to the initial UltiStudent state, then there are no previous UltiStudent states to restore. The <code>undo</code> command uses <code>Model#canUndoUltiStudent()</code> to check if this is the case. If so, it will return an error to the user rather than attempting to perform the undo.
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>The following sequence diagram shows how the undo operation works:</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/UndoRedoSequenceDiagram.png" alt="UndoRedoSequenceDiagram" width="800">
-</div>
-</div>
-<div class="paragraph">
-<p>The <code>redo</code> command does the opposite&#8201;&#8212;&#8201;it calls <code>Model#redoUltiStudent()</code>, which shifts the <code>currentStatePointer</code> once to the right, pointing to the previously undone state, and restores the UltiStudent to that state.</p>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<div class="title">Note</div>
-</td>
-<td class="content">
-If the <code>currentStatePointer</code> is at index <code>UltiStudentStateList.size() - 1</code>, pointing to the latest UltiStudent state, then there are no undone UltiStudent states to restore. The <code>redo</code> command uses <code>Model#canRedoUltiStudent()</code> to check if this is the case. If so, it will return an error to the user rather than attempting to perform the redo.
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>Step 5. The user then decides to execute the command <code>list</code>. Commands that do not modify the UltiStudent, such as <code>list</code>, will usually not call <code>Model#commitUltiStudent()</code>, <code>Model#undoUltiStudent()</code> or <code>Model#redoUltiStudent()</code>. Thus, the <code>UltiStudentStateList</code> remains unchanged.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/UndoRedoNewCommand3StateListDiagram.png" alt="UndoRedoNewCommand3StateListDiagram" width="800">
-</div>
-</div>
-<div class="paragraph">
-<p>Step 6. The user executes <code>clear</code>, which calls <code>Model#commitUltiStudent()</code>. Since the <code>currentStatePointer</code> is not pointing at the end of the <code>UltiStudentStateList</code>, all UltiStudent states after the <code>currentStatePointer</code> will be purged. We designed it this way because it no longer makes sense to redo the <code>add mc/CS2101 &#8230;&#8203;</code> command. This is the behavior that most modern desktop applications follow.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/UndoRedoNewCommand4StateListDiagram.png" alt="UndoRedoNewCommand4StateListDiagram" width="800">
-</div>
-</div>
-<div class="paragraph">
-<p>The following activity diagram summarizes what happens when a user executes a new command:</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/UndoRedoActivityDiagram.png" alt="UndoRedoActivityDiagram" width="650">
-</div>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_design_considerations">Design Considerations</h4>
-<div class="sect4">
-<h5 id="_aspect_how_undo_redo_executes">Aspect: How undo &amp; redo executes</h5>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>Alternative 1 (current choice):</strong> Saves the entire UltiStudent.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: Easy to implement.</p>
-</li>
-<li>
-<p>Cons: May have performance issues in terms of memory usage.</p>
-</li>
-</ul>
+<h4 id="_current_implementation">5.1.2. Current Implementation</h4>
+<div class="paragraph">
+<p>The delete homework feature is executed by the <code>DeleteHomeworkCommand</code>. Currently, the
+deletion of any homework entry is done based on the <code>INDEX</code> of the homework entry.</p>
 </div>
-</li>
-<li>
-<p><strong>Alternative 2:</strong> Individual command knows how to undo/redo by itself.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: Will use less memory (e.g. for <code>delete</code>, just save the person being deleted).</p>
-</li>
-<li>
-<p>Cons: We must ensure that the implementation of each individual command are correct.</p>
-</li>
-</ul>
+<div class="paragraph">
+<p>During the design of our delete function, we considered between two alternatives.</p>
 </div>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect4">
-<h5 id="_aspect_data_structure_to_support_the_undoredo_commands">Aspect: Data structure to support the undo/redo commands</h5>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>Alternative 1 (current choice):</strong> Use a list to store the history of UltiStudent states.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: Easy for new Computer Science student undergraduates to understand, who are likely to be the new incoming developers of our project.</p>
-</li>
-<li>
-<p>Cons: Logic is duplicated twice. For example, when a new command is executed, we must remember to update both <code>HistoryManager</code> and <code>VersionedAddressBook</code>.</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p><strong>Alternative 2:</strong> Use <code>HistoryManager</code> for undo/redo</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: We do not need to maintain a separate list, and just reuse what is already in the codebase.</p>
-</li>
-<li>
-<p>Cons: Requires dealing with commands that have already been undone: We must remember to skip these commands. Violates Single Responsibility Principle and Separation of Concerns as <code>HistoryManager</code> now needs to do two different things.</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
+<table class="tableblock frame-all grid-all" style="width: 80%;">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Design Consideration</th>
+<th class="tableblock halign-left valign-top">Pros and Cons</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Deletion by Index (Current Choice)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Pros:</strong> Since each homework has a unique index,
+any deletion by the index is less prone to bugs
+and easier to implement.</p>
+<p class="tableblock"><strong>Cons:</strong> User will have to scroll for the homework entry and look for its index which can be
+inconvenient</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Deletion by Homework Name</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Pros:</strong> It may be more intuitive for users to delete a
+homework through the name of the homework.</p>
+<p class="tableblock"><strong>Cons:</strong> Homework for different modules can have different names.
+For example, two different homework entries for two different modules can be called 'Tutorial 1'.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>We have decided to opt for the first option primarily because it reduces the number of potential bugs and the
+complexities involved when taking into account the different cases upon using deletion by homework name.</p>
 </div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_proposed_data_encryption">[Proposed] Data Encryption</h3>
+<h3 id="_edit_homework_feature">5.2. Edit homework feature</h3>
 <div class="paragraph">
-<p><em>{Explain here how the data encryption feature will be implemented}</em></p>
+<p>This feature allows the user to edit any attribute of the homework entries. This is a core feature because the user
+may have to update deadline or make corrections to mistakes, such as typographical errors, when adding a homework entry.
+There are a total of three attributes for each entry, the module code, the homework name and the deadline.
+The user can edit at least one and up to three attributes.</p>
+</div>
+<div class="paragraph">
+<p>The edit homework feature is facilitated by the <code>EditHomeworkCommandParser</code> and the <code>EditHomeworkCommand</code>.</p>
+</div>
+<div class="paragraph">
+<p>The edit command is part of the <a href="#Design-Logic"><strong>logic</strong></a> component of our application. It interacts with the
+<a href="#Design-Model"><strong>model</strong></a> component of our software architecture.</p>
+</div>
+<div class="sect3">
+<h4 id="_overview_3">5.2.1. Overview</h4>
+<div class="paragraph">
+<p>The <code>EditHomeworkCommandParser</code> implements <code>Parser</code> with the following operation:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>EditHomeworkCommandParser#parse()</code> - This operation will take in an <code>int</code> input and one to three <code>String</code> input(s) from the
+user that will alter the attributes of current homework entries based on the prefixes 'mc/', 'hw/' and 'd/'.
+The <code>String</code> value after the individual prefixes will alter the respective attribute it corresponds to:
+'mc/' for <code>ModuleCode</code>,'hw/' for <code>HomeworkName</code> and 'd/' for <code>Date</code>. A validation check will be imposed upon editing
+of each object. Any checks that fails the validation would prompt the user on the failed component.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_current_implementation_2">5.2.2. Current Implementation</h4>
+<div class="paragraph">
+<p>Here is an example of a step-by-step process on how the edit command alters an attribute of the homework entry.
+For each step, you may follow the activity diagram at the end of this section to better understand the flow of events
+within UltiStudent when an <code>edit-hw</code> command is inputted.</p>
+</div>
+<div class="paragraph">
+<p>Step 1. The user launches the application and opens the homework manager. There is a list of existing homework entries
+in the homework manager.</p>
+</div>
+<div class="paragraph">
+<p>Step 2. The user then wishes to alter the homework deadline of the third entry in the homework list to 10 May 2019.
+He then types <code>edit-hw d/10/05/2019</code> into the Command Line Interface (CLI) and executes it.</p>
+</div>
+<div class="paragraph">
+<p>Step 3. The UltiStudentParser (refer to <a href="#Design-Logic"><strong>logic</strong></a>) then reads in these attributes that have been inputted
+and proceeds to alter the attributes of the homework entry in the given index. Each attribute will be validated.</p>
+</div>
+<div class="paragraph">
+<p>Step 4. The UltiStudentParser then creates a new EditHomeworkCommand based on the input of the user.
+When the EditHomeworkCommand is executed, it interacts with the Model architecture by calling the setHomework method.
+The setHomework method replaces the current homework entry with the a new homework entry
+containing all the desired attributes. The homework entry is now updated.</p>
+</div>
+<div class="paragraph">
+<p>Step 5. If the module code for any homework entry has been edited to a module code that is not in the module code list,
+the EditHomeworkCommand will add the new module code into the module code list.
+The updated module code list will be displayed on our User Interface.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/edit%20hw%20activity%20diagram.png" alt="edit hw activity diagram" width="800">
+</div>
+</div>
+<div class="paragraph">
+<p>In designing the edit homework feature, we considered if we should use an alternative data structure to update the
+list of module codes. We considered using a hash map to map the module code to the number of homework with the modules
+to check if the module code list has to be updated for each edit.</p>
+</div>
+<table class="tableblock frame-all grid-all" style="width: 80%;">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Design Consideration</th>
+<th class="tableblock halign-left valign-top">Pros and Cons</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Update ModuleList by iteration (Current Choice)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Pros:</strong> Protects the abstraction layers and modularity
+by restricting the usage to the existing data structures already present in our code.</p>
+<p class="tableblock"><strong>Cons:</strong> Less efficient in terms of time and actual time taken can be long when number of entries is large.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Update ModuleList using help from other data structures.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Pros:</strong> Faster expected performance.</p>
+<p class="tableblock"><strong>Cons:</strong> Introducing a new data structure can disrupt the existing abstractions of our code.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>To sum up our justification of our choice of design, we decided to opt for the first option because we prioritised the
+existing design abstractions in our code over the efficiency of our code.</p>
 </div>
 </div>
 </div>
+<div class="sect2">
+<h3 id="_find_module_feature">5.3. Find module feature</h3>
+<div class="paragraph">
+<p>This feature allows the user to only display homework belonging to one or more module codes which is user has specified.
+The find module feature is exceptionally useful to shorten the displayed list of homework.</p>
 </div>
-<div class="sect1">
-<h2 id="_project_powerpointlabs">PROJECT: PowerPointLabs</h2>
-<div class="sectionbody">
+<div class="paragraph">
+<p>The find module feature is facilitated by the <code>FindModuleCommandParser</code> and the <code>FindModuleCommand</code>.
+It interacts with the <a href="#Design-Model"><strong>model</strong></a> component of our architecture to retrieve the list homework.</p>
+</div>
+<div class="sect3">
+<h4 id="_overview_4">5.3.1. Overview</h4>
+<div class="paragraph">
+<p>The <code>FindModuleCommandParser</code> implements <code>Parser</code> with the following operation:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>FindModuleCommandParser#parse()</code> - This operation will take in at least one <code>String</code> input from the
+user and display any of the homework entries with matches any of list of <code>[KEYWORDS]</code> that the user has inputted.
+Each keyword is separated by a white space.
+Any homework entry that matches with the list of keywords will be displayed on the homework list.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_current_implementation_3">5.3.2. Current Implementation</h4>
+<div class="paragraph">
+<p>The find module feature is facilitated by the <code>FindModuleCommand</code>.</p>
+</div>
+<div class="paragraph">
+<p>Here is a sequence of steps on how the find module feature works. We will use an example here to help you understand the
+flow of events. In the steps below, we will make references to the diagram at the end of the section to help
+you visualise the sequence of events better.</p>
+</div>
+<div class="paragraph">
+<p>Step 1. The user first launches the application and enters the homework manager. There are already existing
+homework entries within the homework list.</p>
+</div>
+<div class="paragraph">
+<p>Step 2. Currently, there are a total of twelve homework entries belonging to four modules.
+(Do note that this is an arbitrary state of the storage in the homework manager and is meant to serve as an example.)
+Now the user inputs <code>find mod CS1101S</code>. Referring to the diagram below, UltiStudentCommandParser
+parses the command <code>find-mod</code> together with the list of keywords.</p>
+</div>
+<div class="paragraph">
+<p>Step 3. The FindModuleParser then creates a FindModuleCommand and then returns it to the LogicManager,
+which are illustrated by the blue arrows pointing from the command parsers back to the LogicManger.</p>
+</div>
+<div class="paragraph">
+<p>Step 4. Now, the Logic Manager then executes this command. When the find command is executed, it called the method
+updateFilteredList, which then returns a list of homework that has the module codes which matches any of the key words
+inputted back to the Logic Manager as indicated by the purple arrows pointing back to the Logic Manager&#8217;s blue block.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/find-mod%20sequence%20diagram.png" alt="find mod sequence diagram" width="800">
+</div>
+</div>
 <hr>
-<div class="paragraph">
-<p><em>{Optionally, you may include other projects in your portfolio.}</em></p>
+</div>
 </div>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2019-04-02 19:52:40 +0800
+Last updated 2019-04-15 19:29:26 +0800
 </div>
 </div>
 </body>

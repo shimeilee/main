@@ -2,6 +2,9 @@
 :site-section: AboutUs
 :imagesDir: ../images
 :stylesDir: ../stylesheets
+:tip-caption: :bulb:
+:note-caption: :information_source:
+:warning-caption: :warning:
 
 == PROJECT: UltiStudent
 
@@ -20,7 +23,17 @@ illustrate the enhancement i made and also
 Do note the following callouts and formatting used in this document.
 
 === Callouts and Format
+[NOTE]
+This callout shares note-worthy information with you. Do read them for a better understanding of the document.
 
+[TIP]
+This callout shares helpful tips with you. Not to worry, tips can be good to know but are not vital.
+Information found here are additional and can prove to be handy for you.
+
+
+[WARNING]
+This callout indicates that there is worth being cautioned of. You are encouraged to the read information in here.
+If you are not careful, you may encounter problems.
 
 === Definitions of Terms
 Across our project and documents, the term `cap entry` is used a lot, especially so for the CAP Manager.
@@ -40,31 +53,44 @@ Which allow users to record the modules they have taken and the grades they rece
 the user's CAP score whenever a change is made in the CAP manager. CAP Manager also allows users to filter through the
 cap entries they have taken by the semester by the `find-sem` command.
 
-** Justification: The features in CAP manager helps.
-Allows users to forecast their cap score in advance, this lets users be able toquantify the importance of each grade,
-such that if they wish to pull up their CAP, they would know how many 'A's they require.
-s feature improves the product significantly because a user can make mistakes in commands and the app should provide a convenient way to rectify them.
+** Justification: The ability to create cap entry depends on the CAP manager infrastructure. The infrastructure is
+a core component that of CAP manager, without which the CAP manager will fail to function. The infrastructure of the
+CAP manager also important to allow for future developments and extensions of the application.
+The commands (add-cap, edit-cap, edit-cap-mc, delete-cap, find-sem, list-cap) of CAP manager act on the model of CAP manager
+which are initiated and executed the logic component of CAP Manager which then interacts with the logic component of UltiStudent.
 
-** Highlights: This enhancement affects existing commands and commands to be added in future. It required an in-depth analysis of design alternatives. The implementation too was challenging as it required changes to existing commands.
+
+** Highlights: This enhancement affects existing commands and commands to be added in future.
+This requires a thorough understanding of the starting infrastructure of the application in other to make changes to it.
+The implementation was challenging because I had to work within the restrictions of the of the existing application, this was especially so for the CAP calculation feature.
 
 * *Other contributions*:
 
 ** Project management:
-*** Managed releases `v1.3` - `v1.5rc` (3 releases) on GitHub
 *** Ensured loose coupling between each manager and seamless integration of CAP manager into UltiStudent.
+*** Helped to manage the issue tracker of our group repository.
+*** Helped to review and merge pull requests.
 
 ** Enhancements to existing features:
-*** Wrote unit and integration tests for CAP manager's commands and model.  (Pull requests https://github.com[#36], https://github.com[#38])
+*** Wrote unit and integration tests for CAP manager's commands and model.  (Pull requests https://github.com/cs2103-ay1819s2-w09-1/main/pull/95[#95],
+https://github.com/cs2103-ay1819s2-w09-1/main/pull/98[#98], https://github.com/cs2103-ay1819s2-w09-1/main/pull/158[#158], https://github.com/cs2103-ay1819s2-w09-1/main/pull/162[#162])
 
 ** Documentation:
-*** Did cosmetic tweaks to existing contents of the User Guide: https://github.com[#14]
-*** Wrote the introduction for the Developer Guide.
+*** User Guide
+**** Wrote the features for all of CAP Manager Commands in the User Guide.
+*** Developer Guide
+**** Wrote the Introduction for Developer Guide.
+**** Explained on how the edit-cap command works with Sequence Diagram.
+**** Explained on how the delete-cap command works with Activity Diagram.
 
 ** Community:
-*** PRs reviewed (with non-trivial review comments): https://github.com[#12], https://github.com[#32], https://github.com[#19], https://github.com[#42]
-*** Contributed to forum discussions (examples:  https://github.com[1], https://github.com[2], https://github.com[3], https://github.com[4])
-*** Reported bugs and suggestions for other teams in the class (examples:  https://github.com[1], https://github.com[2], https://github.com[3])
+*** Reported bugs and suggestions for other teams in the class (examples:  https://github.com/CS2103-AY1819S2-W15-1/main/issues/111[111],
+https://github.com/CS2103-AY1819S2-W15-1/main/issues/115[115], https://github.com/CS2103-AY1819S2-W15-1/main/issues/118[118],
+https://github.com/CS2103-AY1819S2-W15-1/main/issues/131[131])
 
+** Tools:
+*** Integrated Travis CI into our repository.
+*** Managed the initial set up of group repository on github.
 
 == Contributions to the User Guide
 
@@ -76,10 +102,8 @@ s feature improves the product significantly because a user can make mistakes in
 include::../UserGuide.adoc[tag=capmanager]
 include::../UserGuide.adoc[tag=add-cap]
 include::../UserGuide.adoc[tag=edit-cap]
-include::../UserGuide.adoc[tag=edit-cap-mc]
-include::../UserGuide.adoc[tag=delete-cap]
-include::../UserGuide.adoc[tag=find-cap]
-include::../UserGuide.adoc[tag=list-cap]
+include::../UserGuide.adoc[tag=find-sem]
+
 
 == Contributions to the Developer Guide
 
