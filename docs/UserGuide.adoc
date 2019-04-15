@@ -464,8 +464,10 @@ Your CAP score will also be updated right away!
 In addition, the semester list will also be updated if you are adding a module that is newly taken.
 
 [CAUTION]
-Unfortunately, UltiStudent's CAP Manager does not allows U or S grade as of this version.
+* Unfortunately, UltiStudent's CAP Manager does not allows U or S grade as of this version.
 Do look out for our next update, where we add the SU Command!
+* Currently, CAP Manager does not allow duplicate modules. Do use our `edit-cap` command to make changes to your grades
+for the case of retaking a module.
 
 // end::add-cap[]
 
@@ -476,12 +478,6 @@ Format: `edit-cap INDEX  [mc/MODULECODE] [g/MODULEGRADE] [mcs/MODULECREDITS] [se
 
 If you made a mistake in entering the information for any particular CAP entry, do not worry!
  `edit-cap` command can easily fix that.
-
-* Index refers to the index number shown in the displayed CAP Entries list. The index *must be a positive integer* 1, 2, 3, ...
-* At least one of the optional fields must be provided.
-* Existing values will be updated to the input values.
-* Edits the CAP entry at the specified `INDEX`.
-
 
 Examples:
 
@@ -502,9 +498,12 @@ After editing:
 
 image::EditedCapManager.png[width="790"]
 
-With that, all changes you have made will be reflected straightaway in the CAP manager.
+Just like that, all changes you have made will be reflected straightaway in the CAP manager.
 This of course includes the module list, semester list and your CAP score!
 
+[CAUTION]
+* Do note that the index entered into the command *must be a positive integer* 1, 2, 3, ... up to the number of modules in the CAP Manager.
+In addition, do take note that at least one of the optional fields has to be provided.
 // end::edit-cap[]
 
 // tag::edit-cap-mc[]
@@ -516,9 +515,8 @@ UltiStudent understands the large amount of modules students have to take as suc
 now allows you to edit the parameters of any modules through their module code instead of the index number
 for more convenience!
 
-The format for the `edit-cap-mc` command is `edit-cap-mc MODULECODE [mc/MODULECODE] [g/MODULEGRADE] [mcs/MODULECREDITS] [sem/MODULESEMESTER]`
-
-Just like the `edit-cap` command, `edit-cap-mc` has the same
+Just like the `edit-cap` command, `edit-cap-mc` edits the parameters of the modules in CAP Manager!
+For the sake of brevity, you can refer to the functionality and the effects by referring to the `edit-cap` command.
 
 // end::edit-cap-mc[]
 
@@ -545,7 +543,7 @@ After entering the delete command:
 
 image::DeletedCapManager.png[width="790"]
 
-And just like that the module is deleted! Once again, your CAP will be updated rightaway in the CAP Indicator!
+With that the module has been deleted. Once again, your CAP will be updated rightaway in the CAP Indicator!
 
 // end::delete-cap[]
 
@@ -576,11 +574,11 @@ CAP indicator does not calculate your CAP score for only the displayed modules!
 
 ==== Filtering a CAP entry: `list-cap`
 Format: `list-cap`
-In the previous sub-section, we saw how using the `find-sem` can help us to filter through the entire CAP Manager and only
-see the modules of the semesters we are interested in. Now let's see how we can view all of our modules again!
+In the previous sub-section, we saw how using the `find-sem` command can help us to filter through the entire CAP
+Manager and only see the modules of the semesters we are interested in. Now let's see how we can view all of our modules again!
 
 The `list-cap` command will help you to view your full list of modules in the CAP Manager.
-All you have to do is enter `list-cap` into the command box and TADAH! You will see all the modules you have taken.
+All you have to do is enter `list-cap` into the command box and you will see all the modules you have taken.
 
 // end::list-cap[]
 
