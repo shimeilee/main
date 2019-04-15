@@ -133,7 +133,7 @@ When you are ready to start coding,
 === Architecture
 
 .Architecture Diagram
-image::Architecture.png[width="600"]
+image::Architecture.png[width="600", , align="center"]
 
 The *_Architecture Diagram_* given above explains the high-level design of the App. Given below is a quick overview of each component.
 
@@ -165,7 +165,7 @@ Each of the four components
 For example, the `Logic` component (see the class diagram given below) defines it's API in the `Logic.java` interface and exposes its functionality using the `LogicManager.java` class.
 
 .Class Diagram of the Logic Component
-image::LogicClassDiagram.png[width="800"]
+image::LogicClassDiagram.png[width="800", align="center"]
 
 [discrete]
 ==== How the architecture components interact with each other
@@ -173,7 +173,7 @@ image::LogicClassDiagram.png[width="800"]
 The _Sequence Diagram_ below shows how the components interact with each other for the scenario where the user issues the command `delete 1`.
 
 .Component interactions for `delete 1` command
-image::SDforDeleteHomework.png[width="800"]
+image::SDforDeleteHomework.png[width="800", align="center"]
 
 The sections below give more details of each component.
 
@@ -199,7 +199,7 @@ The `UI` component,
 
 [[fig-LogicClassDiagram]]
 .Structure of the Logic Component
-image::UltiStudentLogicClassDiagram.png[width="800"]
+image::UltiStudentLogicClassDiagram.png[width="800", align="center"]
 
 *API* :
 link:{repoURL}/src/main/java/seedu/address/logic/Logic.java[`Logic.java`]
@@ -213,13 +213,13 @@ link:{repoURL}/src/main/java/seedu/address/logic/Logic.java[`Logic.java`]
 Given below is the Sequence Diagram for interactions within the `Logic` component for the `execute("delete 1")` API call.
 
 .Interactions Inside the Logic Component for the `delete 1` Command
-image::DeletePersonSdForLogic.png[width="800"]
+image::DeletePersonSdForLogic.png[width="800", align="center"]
 
 [[Design-Model]]
 === Model component
 
 .Structure of the Model Component
-image::ModelComponentClass.png[width="800"]
+image::ModelComponentClass.png[width="800", align="center"]
 
 *API* : link:{repoURL}/src/main/java/seedu/address/model/Model.java[`Model.java`]
 
@@ -234,7 +234,7 @@ The `Model`,
 === Storage component
 
 .Structure of the Storage Component
-image::UltiStudentStorageClassDiagram.png[width="800"]
+image::UltiStudentStorageClassDiagram.png[width="800", align="center"]
 
 *API* : link:{repoURL}/src/main/java/seedu/address/storage/Storage.java[`Storage.java`]
 
@@ -255,8 +255,9 @@ This section describes some noteworthy details on how certain features are imple
 // tag::add-hw[]
 === Adding a homework: `add-hw`
 |===
-|_The add homework feature is a core feature to the Homework Manager of UltiStudent. Which allows the users to create
-| a homework object in UltiStudent._
+ _The add homework feature is a core feature to the Homework Manager of
+ UltiStudent. Which allows the users to create
+ a homework object in UltiStudent._
 |===
 ==== Overview
 
@@ -269,7 +270,8 @@ The `AddHomeworkCommandParser` implements `Parser` with the following operation:
 * `AddHomeworkCommandParser#parse()` - This operation will take in a `String` input from the
 user that will create individual objects based on the prefixes 'mc/', 'hw/' and 'd/'. The `String`
 value after the individual prefixes will create the respective object: 'mc/' for `ModuleCode`,
-'hw/' for `HomeworkName` and 'd/' for `Date`. A validation check will be impose upon the creation
+'hw/' for `HomeworkName` and 'd/' for `Date`. A validation check will be
+imposed upon the creation
 of each object. Any checks that fails the validation would prompt the user on the failed component.
 For example:
 
@@ -289,7 +291,8 @@ the parameter
 
 Take a look at the code snippet of AddHomeworkCommandParser below for an illustration:
 
-image::AddHomeworkCommandParser snippet.png[width="800"]
+.(Figure description)
+image::AddHomeworkCommandParser snippet.png[width="800", align="center"]
 
 ==== Example
 Given below is an example usage scenario of how `add-hw` mechanism behaves at each step.
@@ -306,7 +309,8 @@ as a parameter.
 *Step 4*: `AddHomeworkCommandParser` would do a validation check on the user's input before creating
 and returning a `AddHomeworkCommand` object with `Homework` as the parameter.
 
-*Step 5*: `LogicManager` would use `AddHomeCommand#execute()` to add the `ModuleCode` and `Homework`
+*Step 5*: `LogicManager` would use `AddHomeWorkCommand#execute()` to add the
+`ModuleCode` and `Homework`
 into the `Model` which is handled by `ModelManager`
 
 *Step 6*: `AddHomeworkCommand` would return a `CommandResult` to the `LogicManager` which would then
@@ -315,7 +319,8 @@ be return back to the user.
 The image below illustrates the scenario of when the user executes `add-hw mc/CS1101S hw/Tutorial 1
 d/01/05/2019`:
 
-image::AddHomeworkSequentialDiagram.png[width="800"]
+.(Figure description)
+image::AddHomeworkSequentialDiagram.png[width="800", align="center"]
 
 // end::add-hw[]
 
@@ -412,7 +417,8 @@ Step 5. If the module code for any homework entry has been edited to a module co
 the EditHomeworkCommand will add the new module code into the module code list.
 The updated module code list will be displayed on our User Interface.
 
-image::edit hw activity diagram.png[width="800"]
+
+image::edit hw activity diagram.png[width="800", align="center"]
 
 In designing the edit homework feature, we considered if we should use an alternative data structure to update the
 list of module codes. We considered using a hash map to map the module code to the number of homework with the modules
@@ -477,16 +483,137 @@ Step 4. Now, the Logic Manager then executes this command. When the find command
 updateFilteredList, which then returns a list of homework that has the module codes which matches any of the key words
 inputted back to the Logic Manager as indicated by the purple arrows pointing back to the Logic Manager's blue block.
 
-image::find-mod sequence diagram.png[width="800"]
+.(Figure description)
+image::find-mod sequence diagram.png[width="800", align="center"]
 
 
 //end::findmodule[]
 
-//tag::edit-note[]
+// tag::add_delete-note[]
+=== Adding a note : `add-note`
+
+|===
+ _The add homework feature is a core feature to the Homework Manager of
+ UltiStudent. Which allows the users to create a homework object in UltiStudent._
+|===
+==== Overview
+
+The add note `add-note` mechanism is facilitated by `AddNoteCommand` and
+`AddNoteCommandParser`.
+It takes in the following input from the user: `ModuleCode` and `NoteName`
+which will construct individual objects that construct a `Note` object.
+
+The `AddNoteCommandParser` implements `Parser` with the following operation:
+
+* `AddNoteCommandParser#parse()` - This operation will take in a `String` input
+from the user that will create individual objects based on the prefixes
+'mc/' and 'n/'. The `String` value after the individual prefixes will create
+the respective object: 'mc/' for `ModuleCode` and 'n/' for `NoteName`. A
+validation check will be imposed upon the creation of each object. Any checks
+ that fails the validation would prompt the user on the failed component.
+
+For example:
+
+** `ModuleCode` would use `ParserUtil#parseNoteModuleCode` to ensure that user
+has input 2 letters followed by 4 digits with an option to include a optional
+ letter after the 4 digits.
+
+** `NoteName` would use `ParserUtil#parseNoteName` to ensure that note name is not a null.
+
+* After validation checks are completed with no errors, a `Note` object is then
+constructed with `ModuleCode` and `NoteName`.
+
+* `AddNoteCommandParser` would then return a `AddNoteCommand` object with
+the `Note` as the parameter
+
+==== Example
+Given below is an example usage scenario of how `add-note` mechanism behaves at
+each step.
+
+*Step 1*: The user executes `add-note mc/CS2103T n/Week 1 Lecture to
+add a note for CS2103T Week 1 Lecture.
+
+*Step 2*: `LogicManager` would use `UltiStudentParser#parse()` to parse the input from the user.
+
+*Step 3*: `UltiStudentParser` would determine which command is being used and creates the respective
+parser. In this case, AddNoteCommandParser is being created and the user's
+input would be pass in as a parameter.
+
+*Step 4*: `AddNoteCommandParser` would do a validation check on the user's input
+ before creating and returning a `AddNoteCommand` object with `Note`
+ as the parameter.
+
+*Step 5*: `LogicManager` would use `AddNoteCommand#execute()` to add the
+`ModuleCode` and `Note`
+into the `Model` which is handled by `ModelManager`
+
+*Step 6*: `AddNoteCommand` would return a `CommandResult` to the `LogicManager`
+which would then be return back to the user.
+
+The image below illustrates the scenario of when the user executes `add-hw mc/CS1101S hw/Tutorial 1
+d/01/05/2019`:
+
+.(Figure description)
+image::AddNoteSequentialDiagram.png[width="800", align="center"]
+
+=== Deleting a note : `delete-note`
+
+This feature allows the user to delete a note from the homework manager through
+its index.
+
+The delete note feature is facilitated by the `DeleteNoteCommandParser` and
+the `DeleteNoteCommand`.
+
+The delete command is part of the <<Design-Logic,*logic*>> component of our application. It interacts with the
+<<Design-Model,*model*>> and the <<Design-Storage,*storage*>> components of our application.
+
+==== Overview
+
+The `DeleteNoteCommandParser` implements `Parser` with the following operation:
+
+* `DeleteNoteCommandParser#parse()` - This operation will take in a `int` input from the
+user which will delete the note entry at the index which has entered.
+Any invalid format of the command will be prompted by the command parser.
+
+==== Current Implementation
+
+The delete note feature is executed by the `DeleteNoteCommand`. Currently,
+ the deletion of any note entry is done based on the `INDEX` of the
+ note entry.
+
+During the design of our delete function, we considered between two alternatives.
+
+[width="80%",cols=2*,options="header"]
+|===
+|Description of Implementation |Pros and Cons
+|Deletion by Index (Current Choice) | *Pros:* Since each note has a unique
+index within each list, deleting a note by its index is less prone to bugs
+and will be easier to implement.
+
+*Cons:* User will need to scroll for the entry and look for its index which
+can be inconvenient.
+
+|Deletion by Homework Name | *Pros:* It may be more intuitive for users to delete a
+note through its note name.
+
+*Cons:* Notes for different modules can have similar names.
+For example, two different note entries for two different modules can be called
+'Week 7 Lecture'. This may cause it to be more error-prone.
+
+|===
+
+We have decided to opt for the first option primarily because it reduces the number of potential bugs and the
+complexities involved when taking into account the different cases upon using
+ deletion by note name.
+
+
+// end::add_delete-note[]
+
+// tag::edit-note[]
 === Editing and Saving a note : `edit-note` `save-note`
 // end::edit-note[]
 
-//tag::edit-cap[]
+// tag::edit-cap[]
 === Editing a Cap Entry : `edit-cap`
 This feature allows the user to edit a cap entry from the cap entry list. Users can do so either via:
 the cap entry's index with the `edit-cap` command or the cap entry's module code with the `edit-cap-mc`
@@ -497,11 +624,13 @@ The `edit-cap` command is facilitated by the Logic and Model components of the a
 The sequence diagram below shows how the editing of cap entries work when the user enters
 `edit-cap`
 
-image::EditCapManagerSequenceDiagram.png[width="800"]
+.(figure description)
+image::EditCapManagerSequenceDiagram.png[width="800", align="center"]
 
 The sequence diagram for the "Update Module Semester" reference frame above can be seen below.
 
-image::EditCapManagerSequenceDiagram2.png[width="800"]
+.(figure description)
+image::EditCapManagerSequenceDiagram2.png[width="800", align="center"]
 
 Given below is an example usage scenario of how `edit-cap` behaves at each step.
 
@@ -546,11 +675,13 @@ The `delete-cap` command is facilitated by the Logic and Model components of the
 The activity diagram below shows how the deleting of cap entries work when the user enters
 `delete-cap`
 
-image::DeleteCapEntryActivityDiagram.png[width="800"]
+.(image description)
+image::DeleteCapEntryActivityDiagram.png[width="800", align="center"]
 
 The sequence diagram for the "Update Module Semester" reference frame above can be seen below.
 
-image::EditCapManagerSequenceDiagram2.png[width="800"]
+.(image description)
+image::EditCapManagerSequenceDiagram2.png[width="800", align="center"]
 
 Given below is an example usage scenario of how `delete-cap` behaves at each step.
 
@@ -599,7 +730,7 @@ Given below is an example usage scenario and how the undo/redo mechanism behaves
 
 Step 1. The user launches the application for the first time. The `VersionedUltiStudent` will be initialized with the initial UltiStudent state, and the `currentStatePointer` pointing to that single UltiStudent state.
 
-image::UndoRedoStartingStateListDiagram.png[width="800"]
+image::UndoRedoStartingStateListDiagram.png[width="800", align="center"]
 
 Step 2. The user executes `delete 5` command to delete the 5th homework in the UltiStudent. The `delete` command calls `Model#commitUltiStudent()`, causing the modified state of the UltiStudent after the `delete 5` command executes to be saved in the `UltiStudentStateList`, and the `currentStatePointer` is shifted to the newly inserted UltiStudent state.
 
