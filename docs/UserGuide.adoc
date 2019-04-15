@@ -69,7 +69,7 @@ In this manager, you can add, delete, edit and save your notes here. Every note 
 here counts toward saving the environment by not using paper! Lets fight against global
 warming! Fighting!
 
-=== CAPManager
+=== CAP Manager
 This manager will help you to record and keep track of your Cumulative Aggregate Points (CAP)!
 Simply add, deleting and editing the grades for modules you have taken to see immediately what your updated CAP score is!
 Not only that, you can even use the CAPManager to project future CAP scores!
@@ -598,7 +598,7 @@ e.g. `delete 2`
 e.g. `edit 2 d/030319 p/`
 
 === Notes Manager
-* *Add Note* : `add-note mc/MODULECODE n/NOTENAME hw/HOMEWORK [p/PRIORITY]...` +
+* *Add Note* : `add-note mc/MODULECODE n/NOTENAME` +
 e.g. `add-note mc/CS2103T n/Lecture  3`
 * *Delete Note* : `delete-note INDEX` +
 e.g. `delete 2`
@@ -606,8 +606,12 @@ e.g. `delete 2`
 e.g. `edit-note 1`
 * *Saving an Edited Note* : `save-note` +
 e.g. `save-note`
+* *Finding a Note* : `find-note [KEYWORDS]` +
+e.g. `find-note tutorial`
+* *List all notes* : `list-note` +
+e.g. `list-note`
 
-=== Cap Manager
+=== CAP Manager
 * *Add Cap Entry* `add-cap mc/MODULECODE nn/NOTENAME hw/HOMEWORK [p/PRIORITY]...` +
 e.g. `add-cap mc/CS2101 g/A- mcs/4 sem/Y2S2 `
 * *Delete Cap Entry* : `delete-cap INDEX` +

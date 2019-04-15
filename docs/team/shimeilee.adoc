@@ -20,7 +20,7 @@ _UltiStudent_, a software engineering project under CS2103T Software
 Engineering module in NUS.
 
 This project (_UltiStudent_) would not be possible without my amazing team
-mates: Andrew, Benjamin, and Xavier
+mates: Andrew, Benjamin, and Xavier.
 //[underline]#{sourceDir}team/andrewscw.html[Andrew]#,
 //[underline]#{sourceDir}team/limzhengjiebenjamin.html[Benjamin]#, and
 //[underline]#{sourceDir}team/ngweixin.html[Xavier]#.
@@ -125,5 +125,3 @@ _This section is to showcase the technical depth of my contribution to
 UltiStudent, and highlight my ability to write technical documentation targeting developers._
 
 include::../DeveloperGuide.adoc[tag=undoredo]
-
-include::../DeveloperGuide.adoc[tag=dataencryption]

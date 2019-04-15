@@ -589,3 +589,39 @@ Apr 15, 2019 6:50:04 AM seedu.ultistudent.ui.MainWindow executeCommand
 INFO: Result: Exiting UltiStudent as requested ...
 Apr 15, 2019 6:50:04 AM seedu.ultistudent.MainApp stop
 INFO: ============================ [ Stopping UltiStudent ] =============================
+Apr 15, 2019 7:16:49 AM seedu.ultistudent.MainApp init
+INFO: =============================[ Initializing UltiStudent ]===========================
+Apr 15, 2019 7:16:49 AM seedu.ultistudent.MainApp initConfig
+INFO: Using config file : config.json
+Apr 15, 2019 7:16:50 AM seedu.ultistudent.MainApp initPrefs
+INFO: Using prefs file : preferences.json
+Apr 15, 2019 7:16:50 AM seedu.ultistudent.commons.core.LogsCenter init
+INFO: currentLogLevel: INFO
+Apr 15, 2019 7:16:50 AM seedu.ultistudent.MainApp start
+INFO: Starting UltiStudent V1.4.0ea
+Apr 15, 2019 7:16:50 AM seedu.ultistudent.ui.UiManager start
+INFO: Starting UI...
+Apr 15, 2019 7:17:03 AM seedu.ultistudent.logic.LogicManager execute
+INFO: ----------------[USER COMMAND][open NotesManager]
+Apr 15, 2019 7:17:03 AM seedu.ultistudent.ui.MainWindow executeCommand
+INFO: Result: NotesManager is opened
+Apr 15, 2019 7:17:03 AM seedu.ultistudent.ui.MainWindow executeCommand
+INFO: NotesManager
+Apr 15, 2019 7:17:04 AM seedu.ultistudent.logic.LogicManager execute
+INFO: ----------------[USER COMMAND][list]
+Apr 15, 2019 7:17:04 AM seedu.ultistudent.ui.MainWindow executeCommand
+INFO: Result: Listed all persons
+Apr 15, 2019 7:17:07 AM seedu.ultistudent.logic.LogicManager execute
+INFO: ----------------[USER COMMAND][list-note]
+Apr 15, 2019 7:17:07 AM seedu.ultistudent.ui.MainWindow executeCommand
+INFO: Result: Listed all notes
+Apr 15, 2019 7:17:12 AM seedu.ultistudent.logic.LogicManager execute
+INFO: ----------------[USER COMMAND][find-note tut]
+Apr 15, 2019 7:17:12 AM seedu.ultistudent.ui.MainWindow executeCommand
+INFO: Result: 0 notes listed!
+Apr 15, 2019 7:17:15 AM seedu.ultistudent.logic.LogicManager execute
+INFO: ----------------[USER COMMAND][find-note tutorial]
+Apr 15, 2019 7:17:15 AM seedu.ultistudent.ui.MainWindow executeCommand
+INFO: Result: 9 notes listed!
+Apr 15, 2019 7:17:18 AM seedu.ultistudent.MainApp stop
+INFO: ============================ [ Stopping UltiStudent ] =============================
