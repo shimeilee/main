@@ -299,7 +299,7 @@ the parameter
 Take a look at the code snippet of AddHomeworkCommandParser below for an illustration:
 
 .Code snippet for AddHomeworkCommandParser
-image::AddHomeworkCommandParser snippet.png[width="800", align="center"]
+image::AddHomeworkCommandParser snippet.png[width="800"]
 
 ==== Example
 Given below is an example usage scenario of how `add-hw` mechanism behaves at each step.
@@ -327,7 +327,7 @@ The image below illustrates the scenario of when the user executes `add-hw mc/CS
 d/01/05/2019`:
 
 .Sequential Diagram for `add-hw`
-image::AddHomeworkSequentialDiagram.png[width="800", align="center"]
+image::AddHomeworkSequentialDiagram.png[width="800"]
 
 // end::add-hw[]
 
@@ -432,7 +432,8 @@ In designing the edit homework feature, we considered if we should use an altern
 list of module codes. We considered using a hash map to map the module code to the number of homework with the modules
 to check if the module code list has to be updated for each edit.
 
-[width="800%",cols=2*,options="header"]
+
+[width="80%",cols=2*,options="header"]
 |===
 |Design Consideration |Pros and Cons
 |Update ModuleList by iteration (Current Choice) | *Pros:* Protects the abstraction layers and modularity
@@ -590,7 +591,7 @@ The delete note feature is executed by the `DeleteNoteCommand`. Currently,
 
 During the design of our delete function, we considered between two alternatives.
 
-[width="800%",cols=2*,options="header"]
+[width="80%",cols=2*,options="header"]
 |===
 |Description of Implementation |Pros and Cons
 |Deletion by Index (Current Choice) | *Pros:* Since each note has a unique
@@ -618,6 +619,60 @@ complexities involved when taking into account the different cases upon using
 
 // tag::edit-note[]
 === Editing and Saving a note : `edit-note` `save-note`
+|====
+|These two feature allows the user to edit existing note and save them after editing.
+|====
+
+==== Overview
+The `edit-note` command helps the user to open the selected notes to allow the user to start editing its content
+by displaying all the content on the `NotesManagerMainPanel` which is a text field. It requires the need of the
+`save-note` command to help save the user's edits
+
+Below is an activity diagram of how the users use `edit-note` and `save-note` to facilitate adding contents to
+their existing notes:
+
+.(image description)
+.Activity Diagram for `edit-note` and `save-note`
+image::Edit&SaveNoteActivityDiagram.png[width=800]
+
+*Step 1*: User will key in `edit-note INDEX` on the command line
+
+*Step 2*: System will do a validation check to see if `INDEX` of note exist in the list of notes in the `Model`.
+If note does not exist, it will throw a `ParserException` to the user. Else note will be opened and proceed to
+step 3.
+
+*Step 3*: Once it is opened, `NotesManagerMainPanel` will be enabled, allowing the user to start typing their
+notes in the text field.
+
+*Step 4*: When the user is done editing, he/she can use `save-note` in the command line to save the edited
+content to the opened note.
+
+*Step 5*: Upon successful save, `NotesManagerMainPanel` will be disabled and user will not be able to type
+anything on `NotesManagerMainPanel`
+
+==== Design Considerations
+
+|===
+|*Options*|*Pro*|*Cons*
+|*1.* Users to type their content on the command line
+|- Easy implementation +
+ - Single source of input +
+ - No need to handle special key press
+|- Not user friendly +
+ - Non-editable visual (textfield) +
+ - Special commands for `NotesManager` to take in input from Command Line as note's content +
+ - A need to convert from Command Line mode to Text Input mode
+|*2.* Users to type their content on the `NotesManagerMainPanel`
+|- User friendly +
+ - A separate source of input +
+|- Two sources of input, Command Line and TextField +
+ - Harder implementation, requires handling of special key press
+|===
+
+Option 2 is being selected and implemented as we focus on the users convenience and the ability to edit their
+notes easily. Separation of command line and notes text field would reduce the number of commands the user
+has to remember and there will be lesser confusion of command line mode or text input mode.
+
 // end::edit-note[]
 
 // tag::edit-cap[]
@@ -696,8 +751,10 @@ The `delete-cap` command is facilitated by the Logic and Model components of the
 The activity diagram below shows how the deleting of cap entries work when the user enters
 `delete-cap`.
 
-=======
+
+.(image description)
 .Activity Diagram for `delete-cap`
+
 image::DeleteCapManagerActivityDiagram.png[width="800", align="center"]
 
 Given below is an example usage scenario of how `delete-cap` behaves at each step.
@@ -1067,26 +1124,215 @@ These instructions only provide a starting point for testers to work on; testers
 .. Re-launch the app by double-clicking the jar file. +
    Expected: The most recent window size and location is retained.
 
-_{ more test cases ... }_
+=== Opening a manager
+. Opening respective manager with the command: `open`
 
-=== Deleting a person
+.. Prerequisites: Currently in Homework Manager with Homework icon being highlighted. +
+.. Test case: `open HomeworkManager` +
+   Expected: UI does not change changes
+.. Prerequisites: Currently in other Manager with Homework icon not being highlighted. +
+.. Test case: `open HomeworkManager` +
+   Expected: HomeworkManager is opened and GUI of HomeworkManager is shown
+.. Prerequisites: Currently in Notes Manager with Notes icon being highlighted. +
+.. Test case: `open NotesManager` +
+   Expected: UI does not change changes
+.. Prerequisites: Currently in other Manager with Homework icon not being highlighted. +
+.. Test case: `open NotesManager` +
+   Expected: NotesManager is opened and GUI of NotesManager is shown
+.. Prerequisites: Currently in Cap Manager with Notes icon being highlighted. +
+.. Test case: `open CapManager` +
+   Expected: UI does not change changes
+.. Prerequisites: Currently in other Manager with Homework icon not being highlighted. +
+.. Test case: `open CapManager` +
+   Expected: CapManager is opened and GUI of CapManager is shown
 
-. Deleting a person while all persons are listed
+=== Adding a homework
 
-.. Prerequisites: List all persons using the `list` command. Multiple persons in the list.
-.. Test case: `delete 1` +
-   Expected: First contact is deleted from the list. Details of the deleted contact shown in the status message. Timestamp in the status bar is updated.
-.. Test case: `delete 0` +
-   Expected: No person is deleted. Error details shown in the status message. Status bar remains the same.
-.. Other incorrect delete commands to try: `delete`, `delete x` (where x is larger than the list size) _{give more}_ +
+Adding a homework with the command: `add-hw`
+
+.. Prerequisites: HomeworkManager has to be opened to see changes on GUI.
+   (i.e. "open HomeworkManager" command has to be ran first)
+.. Test case: `add-hw mc/CS2103T hw/Tutorial 1 d/22/05/2019` +
+   Expected: A homework will be added into the list of homework in the Homework Main Panel.
+   The module code in which homework belongs to is also added in the Homework SubPanel list if not present before.
+.. Test case: `add-hw mc/CSXXXXT hw/Tutorial 1 d/22/05/2019` +
+   Expected: No homework is added. Error details will be shown in the status message.
+.. Other incorrect add-hw commands to try : `add-hw`, `add-hw mc/CS2103T hw/Tutorial 1 d/dd/MM/YYYY`
+   (where dd/MM/YYYY is a past date) +
    Expected: Similar to previous.
 
-_{ more test cases ... }_
+=== Deleting a homework entry
 
-=== Saving data
+. Deleting a homework while all homework are listed with the command: `delete-hw`
 
-. Dealing with missing/corrupted data files
+.. Prerequisites: Use the sample data that using SampleDataUtil. SampleDataUtil autonmatically generates sample data
+when the json file is empty.
 
-.. _{explain how to simulate a missing/corrupted file and the expected behavior}_
+.. Test case: `delete-hw 1` +
+   Expected: First homework is deleted from the list. Details of the deleted homework shown in the status message.
+   Timestamp in the status bar is updated.
+.. Test case: `delete-hw 0` +
+   Expected: No homework is deleted. Error details shown in the status message. Status bar remains the same.
+.. Other incorrect delete commands to try: `delete-hw`, `delete-hw x` (where x is larger than the list size) +
+   Expected: Similar to previous.
 
-_{ more test cases ... }_
+=== Editing a homework entry
+
+Edit a homework while all homework are listed with the command: `edit-hw`
+
+.. Prerequisites: Use the sample data that using SampleDataUtil. SampleDataUtil automatically generates sample data
+when the json file is empty.
+
+.. Test case: `edit-hw 1 d/30/05/2019` +
+   Expected: The deadline of the first homework is changed to 30/05/2019. Details of the edited homework shown in the status message.
+   Timestamp in the status bar is updated.
+.. Test case: `edit-hw 0` +
+   Expected: No homework is edited. Error details shown in the status message. Status bar remains the same.
+.. Other incorrect edit commands to try: `edit-hw`, `edit-hw x` (where x is larger than the list size), `edit-hw 30/05/2019` +
+   Expected: Similar to previous.
+
+=== Finding homework entries of which contains this module
+
+Finds homework that has a homework module and displays these modules in a list with the command: `find-mod`
+
+.. Prerequisites: Use the sample data that using SampleDataUtil. SampleDataUtil automatically generates sample data
+when the json file is empty.
+
+.. Test case: `find-mod CS2030` +
+   Expected: The homework list displays homeworks that has CS2030 as part of its homework module.
+.. Test case: `find-mod x` where x is any module code that is not present in the module code list. +
+   Expected: No homework is displayed in the homework list. Status bar shows that "0 homework listed!"
+
+=== List all homework entries
+
+Lists all existing homework entries with the command: `list-hw`
+
+.. Prerequisites: Use the sample data that using SampleDataUtil. SampleDataUtil automatically generates sample data
+when the json file is empty.
+
+.. Test case: `find-mod CS2030` followed by `list-hw` +
+   Expected: The homework list displays all existing homework entry.
+
+=== Adding a note
+
+Adding a note with the command: `add-note`
+
+.. Prerequisites: NotesManager has to be opened. (i.e. "open NotesManager" command has to be ran first)
+.. Test case: `add-note mc/CS2103T n/Week 7 Tutorial`
+   Expected: A note will be added into the list of note in the Notes Main Panel.
+.. Test case: `add-note mc/CSXXXXT n/Tutorial 1`
+   Expected: No note is added. Error details will be shown in the status message.
+.. Other incorrect add-note commands to try : `add-note`, `add-note mc/CS2103T n/`(where note name is a whitespace)
+   Expected: Similar to previous.
+
+=== Deleting a note
+
+. Deleting a note while all note are listed with the command: `delete-note`
+
+.. Prerequisites: Use the sample data that using SampleDataUtil. SampleDataUtil autonmatically generates sample data
+when the json file is empty.
+
+.. Test case: `delete-note 1` +
+   Expected: First note is deleted from the list. Details of the deleted note shown in the status message.
+   Timestamp in the status bar is updated.
+.. Test case: `delete-note 0` +
+   Expected: No note is deleted. Error details shown in the status message. Status bar remains the same.
+.. Other incorrect delete commands to try: `delete-note`, `delete-note x` (where x is larger than the list size) +
+   Expected: Similar to previous.
+
+=== Editing a Note
+
+Editing a note with the command : `edit-note`
+
+.. Prerequisites: NotesManager has to be opened (i.e. `open NotesManager` command has to be ran first).
+Multiple notes in the notes list.
+.. Test case: `edit-note 1` +
+   Expected: First note will be selected and the contents of the selected note will be populated in the
+   text area in the NotesMainPanel.
+.. Test case: `edit-note 0` +
+   Expected: No note will be selected. Error details will be shown in the status message.
+.. Other incorrect edit note commands to try: `edit-note` +
+   Expected: Similar to previous.
+
+
+=== Saving a Note
+
+Saving a note with the command : `save-note`
+
+.. Prerequisites: NotesManager has to be opened
+   (i.e. `open NotesManager` command has to be ran first).
+   Multiple notes in the notes list.
+   A note has to be selected (i.e `edit-note INDEX` command has to ran to select a note at `INDEX`)
+.. Test case: `save-note` +
+   Expected: Contents of selected note will be saved. Details of note will be shown in the status message.
+.. Prerequisites: NotesManager has to be opened and no note is being selected.
+.. Test case: `save-note` +
+   Expected: Error details will be shown in the status message.
+
+
+=== Adding a cap entry
+
+Adding a cap entry while all cap entries are listed with the command: `add-cap`
+
+.. Prerequisites: Use the sample data that using SampleDataUtil. SampleDataUtil automatically generates sample Data when the
+UltiStudent.json file is corrupted or unavailable.
+.. Test case: `add-cap mc/CS3203 g/B mcs/8 sem/Y1S1` +
+   Expected: Cap entry with module code CS1010, grade of B, 4MCs, Y1S1 is added. Details of the first cap entry shown in the status message.
+   Timestamp in the status bar is updated. CAP score displayed is updated.
+.. Test case: `add-cap mc/CS3203 g/B mcs/100 sem/Y1S1`
+   Expected: No cap entry is added. Error details shown in the status message. Status bar remains the same.
+   Current CAP score stays the same.
+.. Test case: `add-cap mc/CS55555 g/B mcs/100 sem/Y1S1`
+   Expected: No cap entry is added. Error details shown in the status message. Status bar remains the same.
+   Current CAP score stays the same.
+.. Test case: `add-cap mc/CS55555 g/B mcs/100 sem/Y1S3`
+   Expected: No cap entry is added. Error details shown in the status message. Status bar remains the same.
+   Current CAP score stays the same.
+
+.. Other incorrect edit commands to try: `add-cap mc/1234 g/A+ mcs/4 sem/Y2S2` {give more} +
+   Expected: Similar to previous.
+
+=== Deleting a cap entry
+
+Deleting a cap entry while all cap entries are listed with the command: `delete-cap`
+
+.. Prerequisites: Use the sample data that using SampleDataUtil. SampleDataUtil automatically generates sample Data when the
+UltiStudent.json file is corrupted or unavailable.
+.. Test case: `delete-cap 1` +
+   Expected: First cap entry is deleted. Details of the deleted cap entry shown in the status message.
+   Timestamp in the status bar is updated. CAP score displayed is updated.
+.. Test case: `delete-cap 0` +
+   Expected: No cap entry is deleted. Error details shown in the status message. Status bar remains the same.
+   Current CAP score stays the same.
+.. Test case: `delete-cap x` where x is larger than the list size +
+   Expected: No cap entry is deleted. Error details shown in the status message. Status bar remains the same.
+   Current CAP score stays the same.
+.. Test case: `delete-cap x` where x is negative number +
+   Expected: No cap entry is deleted. Error details shown in the status message. Status bar remains the same.
+   Current CAP score stays the same.
+
+.. Other incorrect delete commands to try: `delete`, `delete x` (where x is larger than the list size) {give more} +
+   Expected: Similar to previous.
+
+
+=== Editing a cap entry
+
+Editing a cap entry while all cap entries are listed with the command: `edit-cap`
+
+.. Prerequisites: Use the sample data that using SampleDataUtil. SampleDataUtil automatically generates sample Data when the
+UltiStudent.json file is corrupted or unavailable.
+.. Test case: `edit-cap 1 g/A mcs/4` +
+   Expected: First cap entry is edited. Details of the first cap entry shown in the status message.
+   Timestamp in the status bar is updated. CAP score displayed is updated.
+.. Test case: `edit-cap 0 g/A mcs/4` +
+   Expected: No cap entry is edit. Error details shown in the status message. Status bar remains the same.
+   Current CAP score stays the same.
+.. Test case: `edit-cap x g/B mcs/4` where x is larger than the list size +
+   Expected: No cap entry is deleted. Error details shown in the status message. Status bar remains the same.
+   Current CAP score stays the same.
+.. Test case: `edit-cap x g/B mcs/4` where x is negative number +
+   Expected: No cap entry is deleted. Error details shown in the status message. Status bar remains the same.
+   Current CAP score stays the same.
+
+.. Other incorrect edit commands to try: `edit`, `edit x` (where x is larger than the list size) {give more} +
+   Expected: Similar to previous.
