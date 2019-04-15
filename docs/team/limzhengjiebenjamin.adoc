@@ -11,9 +11,9 @@
 This portfolio documents my contributions towards the UltiStudent project
 which is part of an introductory software engineering module known as **CS2103T - Software Engineering**.
 During this module, we have been provided with a working software application
-and could enhance and morph our application to suit our target audience.
+that could enhance and morph our application to suit our target audience.
 
-The purpose of this document is present the principles and practical skills
+The purpose of this document is to present the principles and practical skills
 I have learnt throughout the course of this module.
 
 == PROJECT: UltiStudent
@@ -21,10 +21,10 @@ I have learnt throughout the course of this module.
 *UltiStudent* is a student application that effectively tackles the problem of having too many applications to manage
 their school life. Having a large number of different platforms can lead to inconvenience, incompatibilities
 and inorganisation. *UltiStudent* tackles this problem by providing a centralised platform
-for them to manage their homework, cumulative average point and notes to improve the quality of their school life.
+for them to manage their homework, Cumulative Average Point (CAP) and notes to improve the quality of their school life.
 
 *UltiStudent* provides a Command Line Interface (CLI) for students to interact with and is complemented by a
-Graphical User Interface (GUI). We have designed the application with user-friendliness in mind.
+Graphical User Interface (GUI). We have designed the application with the user in mind.
 
 == Summary of contributions
 
@@ -32,7 +32,7 @@ Graphical User Interface (GUI). We have designed the application with user-frien
 |This section contains the key contributions I have made towards this project. They highlight my ability to +
 1) model and design the application to cater to our target users. +
 2) create a working software application that is user-friendly and error-free. +
-3) design and create test cases which ensured that the HomeworkManager is error free.
+3) design and create test cases to ensure that the Homework Manager is bug free.
 |===
 
 * *Major Enhancement*:
@@ -43,13 +43,13 @@ foundations on which these features are built.
                    infrastructure. This enhances the features of the UltiStudent by allowing students
                    to manage their homework on our application.
 *** *Highlights:* This enhancement is a core component of our application. It affects the current functionalities of our
-application and the future extensions of our application. To do this well requires an in-depth understanding of the
-initial infrastructure of the software in order to alter it. The implementation was also difficult because various abstraction
-layers had to be understood.
+application and the future extensions of our application. To do this well, it requires an in-depth understanding of the
+initial infrastructure of the software in order to alter it. The implementation was also difficult because of the various abstraction
+layers that had to be understood.
 
 * *Minor enhancement*:
-** *Edit Homework command* that edits the attributes of current existing homework entries based on user input
-** *Delete Homework command* that deletes the attributes  whose note name has the keywords
+** *Edit Homework command* that edits the attributes of current existing homework entries based on user input.
+** *Delete Homework command* that deletes the attributes whose note name has the keywords
 indicated by the user.
 ** *Find Module command* that filters all the homework entries based on a list of modules.
 ** *List Homework command* that shows the entire list of homework entries in the Homework Manager.
@@ -61,16 +61,16 @@ to view my code on the CS2103T Project Code Dashboard.
 * *Other contributions*:
 
 ** Project management:
-*** Helped to managed issue tracker for our project repository.
+*** Helped to manage issue tracker for our project repository.
 *** Planned the project milestones for the Homework Manager feature of UltiStudent.
 ** Enhancements to existing features:
-*** Updated the GUI color scheme (Pull requests https://github.com[#33], https://github.com[#34])
-*** Wrote test cases for homework manager. (Pull requests https://github.com/cs2103-ay1819s2-w09-1/main/pull/91[#91],
+*** Updated the GUI color scheme. (Pull requests https://github.com[#33], https://github.com[#34])
+*** Wrote test cases for Homework Manager. (Pull requests https://github.com/cs2103-ay1819s2-w09-1/main/pull/91[#91],
 https://github.com/cs2103-ay1819s2-w09-1/main/pull/87[#87])
 *** Constructed sample data for the product demo of our application. https://github.com/cs2103-ay1819s2-w09-1/main/pull/184[#184]
 ** Documentation:
 *** User Guide
-**** Revamp of the tone of the User Guide to make it sound more friendly.
+**** Revamped the tone of the User Guide to make it sound more friendly.
 *** Developer Guide
 **** Created UML diagrams to better explain the `edit-hw` and `find-mod` commands in the Developer Guide.
 **** Discussed the pros and cons of different implementations considered during the design stage.
