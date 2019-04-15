@@ -55,14 +55,60 @@ public class SampleDataUtil {
         return new CapEntry[]{
             new CapEntry(new ModuleCode("CS1010"), new ModuleGrade("B+"), new ModuleCredits("4"),
                 new ModuleSemester("Y1S1")),
+            new CapEntry(new ModuleCode("MA1521"), new ModuleGrade("B+"), new
+                    ModuleCredits("4"),
+                    new ModuleSemester("Y1S1")),
+            new CapEntry(new ModuleCode("MA1101R"), new ModuleGrade("A"), new
+                    ModuleCredits("4"),
+                    new ModuleSemester("Y1S1")),
+            new CapEntry(new ModuleCode("ES2660"), new ModuleGrade("B+"), new
+                    ModuleCredits("4"),
+                    new ModuleSemester("Y1S1")),
+            new CapEntry(new ModuleCode("PC1221"), new ModuleGrade("B-"), new
+                    ModuleCredits("4"),
+                    new ModuleSemester("Y1S1")),
             new CapEntry(new ModuleCode("CS1231"), new ModuleGrade("A-"), new ModuleCredits("4"),
                     new ModuleSemester("Y1S2")),
             new CapEntry(new ModuleCode("GER1000"), new ModuleGrade("A-"), new ModuleCredits("4"),
                     new ModuleSemester("Y1S2")),
             new CapEntry(new ModuleCode("CS2030"), new ModuleGrade("B+"), new ModuleCredits("4"),
                 new ModuleSemester("Y1S2")),
-            new CapEntry(new ModuleCode("CS2101"), new ModuleGrade("B+"), new ModuleCredits("4"),
-                new ModuleSemester("Y2S1"))
+            new CapEntry(new ModuleCode("CS2040"), new ModuleGrade("B"), new
+                    ModuleCredits("4"),
+                    new ModuleSemester("Y1S2")),
+            new CapEntry(new ModuleCode("PC1222"), new ModuleGrade("C"), new
+                    ModuleCredits("4"),
+                    new ModuleSemester("Y1S2")),
+            new CapEntry(new ModuleCode("CS2101"), new ModuleGrade("D"), new
+                    ModuleCredits("4"),
+                new ModuleSemester("Y2S1")),
+            new CapEntry(new ModuleCode("CS2103T"), new ModuleGrade("B+"), new
+                    ModuleCredits("4"),
+                    new ModuleSemester("Y2S1")),
+            new CapEntry(new ModuleCode("CS2108"), new ModuleGrade("A"), new
+                    ModuleCredits("4"),
+                    new ModuleSemester("Y2S1")),
+            new CapEntry(new ModuleCode("CS2107"), new ModuleGrade("B-"), new
+                    ModuleCredits("4"),
+                    new ModuleSemester("Y2S1")),
+            new CapEntry(new ModuleCode("CS2107"), new ModuleGrade("A"), new
+                    ModuleCredits("4"),
+                    new ModuleSemester("Y2S1")),
+            new CapEntry(new ModuleCode("CS2100"), new ModuleGrade("B"), new
+                    ModuleCredits("4"),
+                    new ModuleSemester("Y2S1")),
+            new CapEntry(new ModuleCode("CS2106"), new ModuleGrade("B+"), new
+                    ModuleCredits("4"),
+                    new ModuleSemester("Y2S2")),
+            new CapEntry(new ModuleCode("CS2105"), new ModuleGrade("B+"), new
+                    ModuleCredits("4"),
+                    new ModuleSemester("Y2S2")),
+            new CapEntry(new ModuleCode("ST2334"), new ModuleGrade("B+"), new
+                    ModuleCredits("4"),
+                    new ModuleSemester("Y2S2")),
+            new CapEntry(new ModuleCode("ST2131"), new ModuleGrade("B+"), new
+                    ModuleCredits("4"),
+                    new ModuleSemester("Y2S2"))
         };
     }
 
@@ -73,7 +119,62 @@ public class SampleDataUtil {
                     + "3. Contribution to User Guide\n4. Contribution to Developer Guide")),
             new Note(new ModuleCode("CS2103T"), new NoteName("Feedback"), new Content("Orientate the user during the"
                     + " introduction.\nWin their hearts within the first 30s.\nWhy do the user need UltiStudent?"
-                    + "\n\n3mins per presenter"))
+                    + "\n\n3mins per presenter")),
+            new Note(new ModuleCode("CS2101"), new NoteName("Week 1 Notes"), new Content("Things to "
+                    + "include:\n1. Overview\n2. Summary of Class\n")),
+            new Note(new ModuleCode("CS2101"), new NoteName("Feedback for " +
+                    "Pitch"),
+                    new Content("Orientate the user during the"
+                    + " introduction.\nWin their hearts within the first 30s.\nWhy do the user need UltiStudent?"
+                    + "\n\n3mins per presenter")),
+            new Note(new ModuleCode("CS1101S"), new NoteName("Week 1 Notes"),
+                    new Content("Things to "
+                    + "include:\n1. Overview\n2. Summary of Class\n")),
+            new Note(new ModuleCode("CS1101S"), new NoteName("Week 2 Notes"),
+                    new Content("Things to "
+                            + "include:\n1. Overview\n2. Summary of Class\n")),
+            new Note(new ModuleCode("CS1101S"), new NoteName("Week 3 Notes"),
+                    new Content("Things to "
+                            + "include:\n1. Overview\n2. Summary of Class\n")),
+            new Note(new ModuleCode("CS1101S"), new NoteName("Week 4 Notes"),
+                    new Content("Things to "
+                            + "include:\n1. Overview\n2. Summary of Class\n")),
+            new Note(new ModuleCode("CS2030"), new NoteName("Week 1 Notes"),
+                    new Content("Things to "
+                            + "include:\n1. Overview\n2. Summary of Class\n")),
+            new Note(new ModuleCode("CS2030"), new NoteName("Week 2 Notes"),
+                    new Content("Things to "
+                            + "include:\n1. Overview\n2. Summary of Class\n")),
+            new Note(new ModuleCode("CS2030"), new NoteName("Week 3 Notes"),
+                    new Content("Things to "
+                            + "include:\n1. Overview\n2. Summary of Class\n")),
+            new Note(new ModuleCode("CS2030"), new NoteName("Week 4 Notes"),
+                    new Content("Things to "
+                            + "include:\n1. Overview\n2. Summary of Class\n")),
+            new Note(new ModuleCode("CS2040"), new NoteName("Week 1 Notes"),
+                    new Content("Things to "
+                            + "include:\n1. Overview\n2. Summary of Class\n")),
+            new Note(new ModuleCode("CS2040"), new NoteName("Week 2 Notes"),
+                    new Content("Things to "
+                            + "include:\n1. Overview\n2. Summary of Class\n")),
+            new Note(new ModuleCode("CS2040"), new NoteName("Week 3 Notes"),
+                    new Content("Things to "
+                            + "include:\n1. Overview\n2. Summary of Class\n")),
+            new Note(new ModuleCode("CS2040"), new NoteName("Week 4 Notes"),
+                    new Content("Things to "
+                            + "include:\n1. Overview\n2. Summary of Class\n")),
+            new Note(new ModuleCode("CS2102"), new NoteName("Week 1 Notes"),
+                    new Content("Things to "
+                            + "include:\n1. Overview\n2. Summary of Class\n")),
+            new Note(new ModuleCode("CS2102"), new NoteName("Week 2 Notes"),
+                    new Content("Things to "
+                            + "include:\n1. Overview\n2. Summary of Class\n")),
+            new Note(new ModuleCode("CS2102"), new NoteName("Week 3 Notes"),
+                    new Content("Things to "
+                            + "include:\n1. Overview\n2. Summary of Class\n")),
+            new Note(new ModuleCode("CS2102"), new NoteName("Week 4 Notes"),
+                    new Content("Things to "
+                            + "include:\n1. Overview\n2. Summary of Class\n"))
         };
     }
 
@@ -90,8 +191,26 @@ public class SampleDataUtil {
             new Homework(new ModuleCode("CS2103T"), new HomeworkName("Tutorial 3"), new Date("25/05/2019")),
             new Homework(new ModuleCode("CS2101"), new HomeworkName("Oral Presentation 1"), new Date("12/05/2019")),
             new Homework(new ModuleCode("CS2101"), new HomeworkName("Oral Presentation 2"), new Date("19/05/2019")),
-            new Homework(new ModuleCode("CS2101"), new HomeworkName("Oral Presentation 3"), new Date("26/05/2019"))
-
+            new Homework(new ModuleCode("CS2101"), new HomeworkName("Oral " +
+                    "Presentation 3"), new Date("26/05/2019")),
+            new Homework(new ModuleCode("CS2102"), new HomeworkName("Tutorial" +
+                    " 1"), new Date("11/05/2019")),
+            new Homework(new ModuleCode("CS2102"), new HomeworkName("Tutorial" +
+                    " 2"), new Date("18/05/2019")),
+            new Homework(new ModuleCode("CS2102"), new HomeworkName("Tutorial" +
+                    " 3"), new Date("25/05/2019")),
+            new Homework(new ModuleCode("CS2105"), new HomeworkName("Tutorial" +
+                    " 1"), new Date("11/05/2019")),
+            new Homework(new ModuleCode("CS2105"), new HomeworkName("Tutorial" +
+                    " 2"), new Date("18/05/2019")),
+            new Homework(new ModuleCode("CS2105"), new HomeworkName("Tutorial" +
+                    " 3"), new Date("25/05/2019")),
+            new Homework(new ModuleCode("CS2106"), new HomeworkName("Tutorial" +
+                    " 1"), new Date("11/05/2019")),
+            new Homework(new ModuleCode("CS2106"), new HomeworkName("Tutorial" +
+                    " 2"), new Date("18/05/2019")),
+            new Homework(new ModuleCode("CS2106"), new HomeworkName("Tutorial" +
+                    " 3"), new Date("25/05/2019"))
         };
     }
 
