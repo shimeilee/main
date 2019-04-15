@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="generator" content="Asciidoctor 2.0.5">
+<meta name="generator" content="Asciidoctor 2.0.6">
 <title>Andrew Sim - Project Portfolio</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
 <style>
@@ -441,7 +441,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 <div id="content">
 <div class="sect1">
-<h2 id="_project_ultistudent_level_4">PROJECT: UltiStudent - Level 4</h2>
+<h2 id="_project_ultistudent">PROJECT: UltiStudent</h2>
 <div class="sectionbody">
 <hr>
 </div>
@@ -455,7 +455,63 @@ their school life. To improve the quality of student life in computing, UltiStud
 for them to manage their homework, cumulative average point and notes.</p>
 </div>
 <div class="paragraph">
-<p>UltiStudent is a desktop application used for teaching Software Engineering principles. The user interacts with it using a CLI, and it has a GUI created with JavaFX. It is written in Java, and has about 10 kLoC.</p>
+<p>My role was to design and write the codes for the features in CAP manager. THe following sections of this document
+illustrate the enhancement i made and also</p>
+</div>
+<div class="paragraph">
+<p>Do note the following callouts and formatting used in this document.</p>
+</div>
+<div class="sect2">
+<h3 id="_callouts_and_format">Callouts and Format</h3>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">:information_source:</div>
+</td>
+<td class="content">
+This callout shares note-worthy information with you. Do read them for a better understanding of the document.
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<div class="title">:bulb:</div>
+</td>
+<td class="content">
+This callout shares helpful tips with you. Not to worry, tips can be good to know but are not vital.
+Information found here are additional and can prove to be handy for you.
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<div class="title">:warning:</div>
+</td>
+<td class="content">
+This callout indicates that there is worth being cautioned of. You are encouraged to the read information in here.
+If you are not careful, you may encounter problems.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_definitions_of_terms">Definitions of Terms</h3>
+<div class="paragraph">
+<p>Across our project and documents, the term <code>cap entry</code> is used a lot, especially so for the CAP Manager.
+In our Developer Guide and Code, we use this term <code>cap entry</code> to refer to what the CAP Manager stores and keeps track
+of. This was done intentionally to avoid confusion for developers as the NotesManager and HomeworkManager of UltiStudent
+both store and organise documents by the module the document is for.
+However, we are aware that to the users, it is more intuitive to consider that the CAP manager stores modules and keep
+tracks of the grades of the said modules, hence in our User Guide, we describe module as what the CAP manager stores.</p>
+</div>
 </div>
 </div>
 </div>
@@ -465,29 +521,32 @@ for them to manage their homework, cumulative average point and notes.</p>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Major enhancement</strong>: added <strong>the ability to undo/redo previous commands</strong></p>
+<p><strong>Code contributed</strong>: <a href="https://nus-cs2103-ay1819s2.github.io/cs2103-dashboard/#search=andrewscw&amp;sort=displayName&amp;since=2019-02-10&amp;until=2019-04-14&amp;timeframe=day&amp;reverse=false&amp;repoSort=true">RepoSense</a></p>
+</li>
+<li>
+<p><strong>Major enhancement</strong>: Developed the logic, model and storage components of the CAP manager feature of UltiStudent.
+Which allow users to record the modules they have taken and the grades they received. This lets users keep track and forecast their CAP score.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>What it does: allows the user to undo all previous commands one at a time. Preceding undo commands can be reversed by using the redo command.</p>
+<p>What it does: CAP Manager allows users to add, delete and edit cap entries. The CAP Manager also automatically calculates
+the user&#8217;s CAP score whenever a change is made in the CAP manager. CAP Manager also allows users to filter through the
+cap entries they have taken by the semester by the <code>find-sem</code> command.</p>
 </li>
 <li>
-<p>Justification: This feature improves the product significantly because a user can make mistakes in commands and the app should provide a convenient way to rectify them.</p>
+<p>Justification: The ability to create cap entry depends on the CAP manager infrastructure. The infrastructure is
+a core component that of CAP manager, without which the CAP manager will fail to function. The infrastructure of the
+CAP manager also important to allow for future developments and extensions of the application.
+The commands (add-cap, edit-cap, edit-cap-mc, delete-cap, find-sem, list-cap) of CAP manager act on the model of CAP manager
+which are initiated and executed the logic component of CAP Manager which then interacts with the logic component of UltiStudent.</p>
 </li>
 <li>
-<p>Highlights: This enhancement affects existing commands and commands to be added in future. It required an in-depth analysis of design alternatives. The implementation too was challenging as it required changes to existing commands.</p>
-</li>
-<li>
-<p>Credits: <em>{mention here if you reused any code/ideas from elsewhere or if a third-party library is heavily used in the feature so that a reader can make a more accurate judgement of how much effort went into the feature}</em></p>
+<p>Highlights: This enhancement affects existing commands and commands to be added in future.
+This requires a thorough understanding of the starting infrastructure of the application in other to make changes to it.
+The implementation was challenging because I had to work within the restrictions of the of the existing application, this was especially so for the CAP calculation feature.</p>
 </li>
 </ul>
 </div>
-</li>
-<li>
-<p><strong>Minor enhancement</strong>: added a history command that allows the user to navigate to previous commands using up/down keys.</p>
-</li>
-<li>
-<p><strong>Code contributed</strong>: [<a href="https://github.com">Functional code</a>] [<a href="https://github.com">Test code</a>] <em>{give links to collated code files}</em></p>
 </li>
 <li>
 <p><strong>Other contributions</strong>:</p>
@@ -498,7 +557,13 @@ for them to manage their homework, cumulative average point and notes.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Managed releases <code>v1.3</code> - <code>v1.5rc</code> (3 releases) on GitHub</p>
+<p>Ensured loose coupling between each manager and seamless integration of CAP manager into UltiStudent.</p>
+</li>
+<li>
+<p>Helped to manage the issue tracker of our group repository.</p>
+</li>
+<li>
+<p>Helped to review and merge pull requests.</p>
 </li>
 </ul>
 </div>
@@ -508,10 +573,8 @@ for them to manage their homework, cumulative average point and notes.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Updated the GUI color scheme (Pull requests <a href="https://github.com">#33</a>, <a href="https://github.com">#34</a>)</p>
-</li>
-<li>
-<p>Wrote additional tests for existing features to increase coverage from 88% to 92% (Pull requests <a href="https://github.com">#36</a>, <a href="https://github.com">#38</a>)</p>
+<p>Wrote unit and integration tests for CAP manager&#8217;s commands and model.  (Pull requests <a href="https://github.com/cs2103-ay1819s2-w09-1/main/pull/95">#95</a>,
+<a href="https://github.com/cs2103-ay1819s2-w09-1/main/pull/98">#98</a>, <a href="https://github.com/cs2103-ay1819s2-w09-1/main/pull/158">#158</a>, <a href="https://github.com/cs2103-ay1819s2-w09-1/main/pull/162">#162</a>)</p>
 </li>
 </ul>
 </div>
@@ -521,7 +584,30 @@ for them to manage their homework, cumulative average point and notes.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Did cosmetic tweaks to existing contents of the User Guide: <a href="https://github.com">#14</a></p>
+<p>User Guide</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Wrote the features for all of CAP Manager Commands in the User Guide.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Developer Guide</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Wrote the Introduction for Developer Guide.</p>
+</li>
+<li>
+<p>Explained on how the edit-cap command works with Sequence Diagram.</p>
+</li>
+<li>
+<p>Explained on how the delete-cap command works with Activity Diagram.</p>
+</li>
+</ul>
+</div>
 </li>
 </ul>
 </div>
@@ -531,16 +617,9 @@ for them to manage their homework, cumulative average point and notes.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>PRs reviewed (with non-trivial review comments): <a href="https://github.com">#12</a>, <a href="https://github.com">#32</a>, <a href="https://github.com">#19</a>, <a href="https://github.com">#42</a></p>
-</li>
-<li>
-<p>Contributed to forum discussions (examples:  <a href="https://github.com">1</a>, <a href="https://github.com">2</a>, <a href="https://github.com">3</a>, <a href="https://github.com">4</a>)</p>
-</li>
-<li>
-<p>Reported bugs and suggestions for other teams in the class (examples:  <a href="https://github.com">1</a>, <a href="https://github.com">2</a>, <a href="https://github.com">3</a>)</p>
-</li>
-<li>
-<p>Some parts of the history feature I added was adopted by several other class mates (<a href="https://github.com">1</a>, <a href="https://github.com">2</a>)</p>
+<p>Reported bugs and suggestions for other teams in the class (examples:  <a href="https://github.com/CS2103-AY1819S2-W15-1/main/issues/111">111</a>,
+<a href="https://github.com/CS2103-AY1819S2-W15-1/main/issues/115">115</a>, <a href="https://github.com/CS2103-AY1819S2-W15-1/main/issues/118">118</a>,
+<a href="https://github.com/CS2103-AY1819S2-W15-1/main/issues/131">131</a>)</p>
 </li>
 </ul>
 </div>
@@ -550,10 +629,10 @@ for them to manage their homework, cumulative average point and notes.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Integrated a third party library (Natty) to the project (<a href="https://github.com">#42</a>)</p>
+<p>Integrated Travis CI into our repository.</p>
 </li>
 <li>
-<p>Integrated a new Github plugin (CircleCI) to the team repo</p>
+<p>Managed the initial set up of group repository on github.</p>
 </li>
 </ul>
 </div>
@@ -562,9 +641,6 @@ for them to manage their homework, cumulative average point and notes.</p>
 </div>
 </li>
 </ul>
-</div>
-<div class="paragraph">
-<p><em>{you can add/remove categories in the list above}</em></p>
 </div>
 </div>
 </div>
@@ -581,77 +657,243 @@ for them to manage their homework, cumulative average point and notes.</p>
 </tr>
 </tbody>
 </table>
-<div class="sect3">
-<h4 id="_undoing_previous_command_undo">Undoing previous command : <code>undo</code></h4>
+<div class="sect2">
+<h3 id="_cap_manager">CAP Manager</h3>
 <div class="paragraph">
-<p>Restores the UltiStudent to the state before the previous <em>undoable</em> command was executed.<br>
-Format: <code>undo</code></p>
+<p>Climbing to your first class honours? Or struggling to keep within your desired class? Worry no more, let CAP Manager
+help you with keeping count. All you need to do is to key in your grades and TADAH your CAP will be calculated for you.
+CAP Manager&#8217;s interface is split into a few key sections. Do refer to the image below to familiarise yourself with
+Cap Manager!</p>
 </div>
-<div class="admonitionblock note">
+<div class="imageblock">
+<div class="content">
+<img src="../images/CapManagerInterface.png" alt="CapManagerInterface" width="790">
+</div>
+</div>
+<div class="paragraph">
+<p>Now that you&#8217;re all set, let&#8217;s see how Cap Manager can help us!</p>
+</div>
+<div class="sect3">
+<h4 id="_adding_a_cap_entry_add_cap">Adding a CAP entry: <code>add-cap</code></h4>
+<div class="paragraph">
+<p>Format: <code>add-cap mc/MODULECODE g/MODULEGRADE mcs/MODULECREDITS sem/MODULESEMESTER</code></p>
+</div>
+<div class="paragraph">
+<p>Let&#8217;s assume it&#8217;s the end of the semester and you just got your grades back.
+Simply add your modules to the Cap Manager with the <code>add-cap</code> command to view your updated CAP!</p>
+</div>
+<table class="tableblock frame-all grid-all" style="width: 80%;">
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 40%;">
+<col style="width: 40%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Parameter</th>
+<th class="tableblock halign-left valign-top">Input type</th>
+<th class="tableblock halign-left valign-top">Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">mc/MODULECODE</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Module Code of the Module</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">mc/CS2103T</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">g/MODULEGRADE</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Module Grade received</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">g/A</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">mcs/MODULECREDITS</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Number of Modular Credits the module is worth</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">mcs/4</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">sem/MODULESEMESTER</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The Semester the module was taken in</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">sem/Y1S1</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="paragraph">
+<p>Let&#8217;s assume you would like to add the module, CS2101 into the CAP Manager.
+Given that you got B+, and that CS2101 is worth 4 Modular credits and you took the module in Year 2 Semester 2, the
+command to input to the Command Box would be:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>add-cap mc/CS2101 g/B+ mcs/4 sem/Y2S2</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Before adding</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/OpenCapManager.png" alt="OpenCapManager" width="790">
+</div>
+</div>
+<div class="paragraph">
+<p>After entering <code>add-cap mc/CS2101 g/B+ mcs/4 sem/Y2S2</code> into the command box.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/AddCapManager.png" alt="AddCapManager" width="790">
+</div>
+</div>
+<div class="paragraph">
+<p>And just like that your CAP Manager will now include the module you just added!
+Your CAP score will also be updated right away!
+In addition, the semester list will also be updated if you are adding a module that is newly taken.</p>
+</div>
+<div class="admonitionblock caution">
 <table>
 <tr>
 <td class="icon">
-<div class="title">Note</div>
+<div class="title">Caution</div>
 </td>
 <td class="content">
-<div class="paragraph">
-<p>Undoable commands: those commands that modify the UltiStudent&#8217;s content in
-the various manager e.g. for Homework Manager
-(<code>add-homework</code>, <code>delete-homework</code>, <code>edit-homework</code>).</p>
-</div>
+Unfortunately, UltiStudent&#8217;s CAP Manager does not allows U or S grade as of this version.
+Do look out for our next update, where we add the SU Command!
 </td>
 </tr>
 </table>
 </div>
+</div>
+<div class="sect3">
+<h4 id="_editing_a_cap_entry_by_index_edit_cap">Editing a CAP Entry by index: <code>edit-cap</code></h4>
 <div class="paragraph">
-<p>Examples:</p>
+<p>Format: <code>edit-cap INDEX  [mc/MODULECODE] [g/MODULEGRADE] [mcs/MODULECREDITS] [sem/MODULESEMESTER]</code></p>
+</div>
+<div class="paragraph">
+<p>If you made a mistake in entering the information for any particular CAP entry, do not worry!
+ <code>edit-cap</code> command can easily fix that.</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><code>delete-homework 1</code><br>
-<code>undo</code> (reverses the <code>delete 1</code> command)<br></p>
+<p>Index refers to the index number shown in the displayed CAP Entries list. The index <strong>must be a positive integer</strong> 1, 2, 3, &#8230;&#8203;</p>
 </li>
 <li>
-<p><code>delete-note 1</code><br>
-<code>undo</code> (reverses the <code>delete 1</code> command)<br></p>
+<p>At least one of the optional fields must be provided.</p>
 </li>
 <li>
-<p><code>select-homework 1</code><br>
-<code>undo</code><br>
-The <code>undo</code> command fails as there are no undoable commands executed previously.</p>
+<p>Existing values will be updated to the input values.</p>
 </li>
 <li>
-<p><code>delete 1</code><br>
-<code>add mc/CS2101 mn/Effective Communication for Computing Professionals hw/Tutorial 1’<br>
-`undo</code> (reverses the <code>add</code> command)<br>
-<code>undo</code> (reverses the <code>delete 1</code> command)<br></p>
+<p>Edits the CAP entry at the specified <code>INDEX</code>.</p>
 </li>
 </ul>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="paragraph">
+<p>Let&#8217;s assume you had actually gotten A+ for the module CS2101 and you took the module in Y3S1 instead.</p>
+</div>
+<div class="paragraph">
+<p>Given this scenario, the command to input to the Command Box would be:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>edit-cap 15 g/A sem/y3s1</code><br></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Let&#8217;s put it to use!</p>
+</div>
+<div class="paragraph">
+<p>Before editing:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/AddCapManager.png" alt="AddCapManager" width="790">
+</div>
+</div>
+<div class="paragraph">
+<p>After editing:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/EditedCapManager.png" alt="EditedCapManager" width="790">
+</div>
+</div>
+<div class="paragraph">
+<p>With that, all changes you have made will be reflected straightaway in the CAP manager.
+This of course includes the module list, semester list and your CAP score!</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_redoing_the_previously_undone_command_redo">Redoing the previously undone command : <code>redo</code></h4>
+<h4 id="_editing_a_cap_entry_by_module_code_edit_cap_mc">Editing a CAP Entry by module code: <code>edit-cap-mc</code></h4>
 <div class="paragraph">
-<p>Reverses the most recent <code>undo</code> command.<br>
-Format: <code>redo</code></p>
+<p>Format: <code>edit-cap-mc MODULECODE [mc/MODULECODE] [g/MODULEGRADE] [mcs/MODULECREDITS] [sem/MODULESEMESTER]</code></p>
 </div>
 <div class="paragraph">
-<p>Examples:</p>
+<p>UltiStudent understands the large amount of modules students have to take as such, to bring more convenience, CAP Manager
+now allows you to edit the parameters of any modules through their module code instead of the index number
+for more convenience!</p>
 </div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>delete-hw 1</code><br>
-<code>undo</code> (reverses the <code>delete 1</code> command)<br>
-<code>redo</code> (reapplies the <code>delete 1</code> command)<br></p>
-</li>
-<li>
-<p><code>delete-note 1</code><br>
-<code>redo</code><br>
-The <code>redo</code> command fails as there are no <code>undo</code> commands executed previously.</p>
-</li>
-</ul>
+<div class="paragraph">
+<p>The format for the <code>edit-cap-mc</code> command is <code>edit-cap-mc MODULECODE [mc/MODULECODE] [g/MODULEGRADE] [mcs/MODULECREDITS] [sem/MODULESEMESTER]</code></p>
+</div>
+<div class="paragraph">
+<p>Just like the <code>edit-cap</code> command, <code>edit-cap-mc</code> has the same</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_filtering_a_cap_entry_find_sem">Filtering a CAP entry: <code>find-sem</code></h4>
+<div class="paragraph">
+<p>Format: <code>find-sem MODULESEMESTER &#8230;&#8203;</code></p>
+</div>
+<div class="paragraph">
+<p>Here at UltiStudent, we understand that students have many modules and it can become difficult to find and filter
+through the many modules that they take. To help you with this, the <code>find-sem</code> will be handy!</p>
+</div>
+<div class="paragraph">
+<p>Let&#8217;s say you would like to view all the modules that you took in Year 1 Semester 2.
+Simply type <code>find-sem Y1S2</code> into the Command Box and the module list will be updated rightaway to show the modules ou took in the
+semester you entered!</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/FindCapManager.png" alt="FindCapManager" width="790">
+</div>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<div class="title">:bulb:</div>
+</td>
+<td class="content">
+Psst..! You can use the find-sem command to view more than 1 semester of modules if you wish!
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock caution">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Caution</div>
+</td>
+<td class="content">
+Do be careful and know that your CAP reflected in CAP indicator is still for that of all your modules.
+CAP indicator does not calculate your CAP score for only the displayed modules!
+</td>
+</tr>
+</table>
+</div>
 </div>
 </div>
 </div>
@@ -670,165 +912,77 @@ The <code>redo</code> command fails as there are no <code>undo</code> commands e
 </tbody>
 </table>
 <div class="sect2">
-<h3 id="_undoredo_feature">Undo/Redo feature</h3>
+<h3 id="_editing_a_cap_entry_edit_cap">Editing a Cap Entry : <code>edit-cap</code></h3>
+<div class="paragraph">
+<p>This feature allows the user to edit a cap entry from the cap entry list. Users can do so either via:
+the cap entry&#8217;s index with the <code>edit-cap</code> command or the cap entry&#8217;s module code with the <code>edit-cap-mc</code></p>
+</div>
 <div class="sect3">
 <h4 id="_current_implementation">Current Implementation</h4>
 <div class="paragraph">
-<p>The undo/redo mechanism is facilitated by <code>VersionedUltiStudent</code>.
-It extends <code>UltiStudent</code> with an undo/redo history, stored internally as an <code>UltiStudentStateList</code> and <code>currentStatePointer</code>.
-Additionally, it implements the following operations:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>VersionedUltiStudent#commit()</code>&#8201;&#8212;&#8201;Saves the current UltiStudent state in its history.</p>
-</li>
-<li>
-<p><code>VersionedUltiStudent#undo()</code>&#8201;&#8212;&#8201;Restores the previous UltiStudent state from its history.</p>
-</li>
-<li>
-<p><code>VersionedUltiStudent#redo()</code>&#8201;&#8212;&#8201;Restores a previously undone UltiStudent state from its history.</p>
-</li>
-</ul>
+<p>The <code>edit-cap</code> command is facilitated by the Logic and Model components of the application, UltiStudent.</p>
 </div>
 <div class="paragraph">
-<p>These operations are exposed in the <code>Model</code> interface as <code>Model#commitUltiStudent()</code>, <code>Model#undoUltiStudent()</code> and <code>Model#redoUltiStudent()</code> respectively.</p>
-</div>
-<div class="paragraph">
-<p>Given below is an example usage scenario and how the undo/redo mechanism behaves at each step.</p>
-</div>
-<div class="paragraph">
-<p>Step 1. The user launches the application for the first time. The <code>VersionedUltiStudent</code> will be initialized with the initial UltiStudent state, and the <code>currentStatePointer</code> pointing to that single UltiStudent state.</p>
+<p>The sequence diagram below shows how the editing of cap entries work when the user enters
+<code>edit-cap</code></p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="../images/UndoRedoStartingStateListDiagram.png" alt="UndoRedoStartingStateListDiagram" width="800">
+<img src="../images/EditCapManagerSequenceDiagram.png" alt="EditCapManagerSequenceDiagram" width="800">
 </div>
 </div>
 <div class="paragraph">
-<p>Step 2. The user executes <code>delete 5</code> command to delete the 5th homework in the UltiStudent. The <code>delete</code> command calls <code>Model#commitUltiStudent()</code>, causing the modified state of the UltiStudent after the <code>delete 5</code> command executes to be saved in the <code>UltiStudentStateList</code>, and the <code>currentStatePointer</code> is shifted to the newly inserted UltiStudent state.</p>
+<p>The sequence diagram for the "Update Module Semester" reference frame above can be seen below.</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="../images/UndoRedoNewCommand1StateListDiagram.png" alt="UndoRedoNewCommand1StateListDiagram" width="800">
+<img src="../images/EditCapManagerSequenceDiagram2.png" alt="EditCapManagerSequenceDiagram2" width="800">
 </div>
 </div>
 <div class="paragraph">
-<p>Step 3. The user executes <code>add mc/CS2103T &#8230;&#8203;</code> to add a new homework. The <code>add</code> command also calls <code>Model#commitUltiStudent()</code>, causing another modified UltiStudent state to be saved into the <code>UltiStudentStateList</code>.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/UndoRedoNewCommand2StateListDiagram.png" alt="UndoRedoNewCommand2StateListDiagram" width="800">
-</div>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<div class="title">Note</div>
-</td>
-<td class="content">
-If a command fails its execution, it will not call <code>Model#commitUltiStudent()</code>, so the UltiStudent state will not be saved into the <code>ultiStudentStateList</code>.
-</td>
-</tr>
-</table>
+<p>Given below is an example usage scenario of how <code>edit-cap</code> behaves at each step.</p>
 </div>
 <div class="paragraph">
-<p>Step 4. The user now decides that adding the homework was a mistake, and decides to undo that action by executing the <code>undo</code> command. The <code>undo</code> command will call <code>Model#undoUltiStudent()</code>, which will shift the <code>currentStatePointer</code> once to the left, pointing it to the previous UltiStudent state, and restores the UltiStudent to that state.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/UndoRedoExecuteUndoStateListDiagram.png" alt="UndoRedoExecuteUndoStateListDiagram" width="800">
-</div>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<div class="title">Note</div>
-</td>
-<td class="content">
-If the <code>currentStatePointer</code> is at index 0, pointing to the initial UltiStudent state, then there are no previous UltiStudent states to restore. The <code>undo</code> command uses <code>Model#canUndoUltiStudent()</code> to check if this is the case. If so, it will return an error to the user rather than attempting to perform the undo.
-</td>
-</tr>
-</table>
+<p><strong>Step 1</strong>: The user executes <code>edit-cap 2 g/A sem/Y2S2</code> to edit the cap entry in the 2nd index with grade A and
+moduleSemester of <code>Y2S2</code>.</p>
 </div>
 <div class="paragraph">
-<p>The following sequence diagram shows how the undo operation works:</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/UndoRedoSequenceDiagram.png" alt="UndoRedoSequenceDiagram" width="800">
-</div>
+<p><strong>Step 2</strong>: The user executes <code>edit-cap 2 g/A sem/Y2S2</code> to edit the cap entry in the 2nd index with grade A and
+moduleSemester of <code>Y2S2</code>.</p>
 </div>
 <div class="paragraph">
-<p>The <code>redo</code> command does the opposite&#8201;&#8212;&#8201;it calls <code>Model#redoUltiStudent()</code>, which shifts the <code>currentStatePointer</code> once to the right, pointing to the previously undone state, and restores the UltiStudent to that state.</p>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<div class="title">Note</div>
-</td>
-<td class="content">
-If the <code>currentStatePointer</code> is at index <code>UltiStudentStateList.size() - 1</code>, pointing to the latest UltiStudent state, then there are no undone UltiStudent states to restore. The <code>redo</code> command uses <code>Model#canRedoUltiStudent()</code> to check if this is the case. If so, it will return an error to the user rather than attempting to perform the redo.
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>Step 5. The user then decides to execute the command <code>list</code>. Commands that do not modify the UltiStudent, such as <code>list</code>, will usually not call <code>Model#commitUltiStudent()</code>, <code>Model#undoUltiStudent()</code> or <code>Model#redoUltiStudent()</code>. Thus, the <code>UltiStudentStateList</code> remains unchanged.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/UndoRedoNewCommand3StateListDiagram.png" alt="UndoRedoNewCommand3StateListDiagram" width="800">
-</div>
-</div>
-<div class="paragraph">
-<p>Step 6. The user executes <code>clear</code>, which calls <code>Model#commitUltiStudent()</code>. Since the <code>currentStatePointer</code> is not pointing at the end of the <code>UltiStudentStateList</code>, all UltiStudent states after the <code>currentStatePointer</code> will be purged. We designed it this way because it no longer makes sense to redo the <code>add mc/CS2101 &#8230;&#8203;</code> command. This is the behavior that most modern desktop applications follow.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/UndoRedoNewCommand4StateListDiagram.png" alt="UndoRedoNewCommand4StateListDiagram" width="800">
-</div>
-</div>
-<div class="paragraph">
-<p>The following activity diagram summarizes what happens when a user executes a new command:</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/UndoRedoActivityDiagram.png" alt="UndoRedoActivityDiagram" width="650">
-</div>
+<p><strong>Step 3</strong>: The user executes <code>edit-cap 2 g/A sem/Y2S2</code> to edit the cap entry in the 2nd index with grade A and
+moduleSemester of <code>Y2S2</code>.</p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="_design_considerations">Design Considerations</h4>
 <div class="sect4">
-<h5 id="_aspect_how_undo_redo_executes">Aspect: How undo &amp; redo executes</h5>
+<h5 id="_aspect_how_to_store_the_cap_score">Aspect: How to store the Cap Score.</h5>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Alternative 1 (current choice):</strong> Saves the entire UltiStudent.</p>
+<p><strong>Alternative 1 (current choice):</strong> Store the cap score as a static variable in CapEntry class.</p>
 <div class="ulist">
 <ul>
 <li>
 <p>Pros: Easy to implement.</p>
 </li>
 <li>
-<p>Cons: May have performance issues in terms of memory usage.</p>
+<p>Cons: Diffi</p>
 </li>
 </ul>
 </div>
 </li>
 <li>
-<p><strong>Alternative 2:</strong> Individual command knows how to undo/redo by itself.</p>
+<p><strong>Alternative 2:</strong> Store the cap score as a separate class that is then store in UltiStudent.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Pros: Will use less memory (e.g. for <code>delete</code>, just save the person being deleted).</p>
+<p>Pros: Each versioned UltiStudent will have their own cap score.</p>
 </li>
 <li>
-<p>Cons: We must ensure that the implementation of each individual command are correct.</p>
+<p>Cons: Will use more memory and is harder to implement.</p>
 </li>
 </ul>
 </div>
@@ -837,31 +991,31 @@ If the <code>currentStatePointer</code> is at index <code>UltiStudentStateList.s
 </div>
 </div>
 <div class="sect4">
-<h5 id="_aspect_data_structure_to_support_the_undoredo_commands">Aspect: Data structure to support the undo/redo commands</h5>
+<h5 id="_aspect_how_to_calculate_score_of_module_grade">Aspect: How to calculate score of module grade.</h5>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Alternative 1 (current choice):</strong> Use a list to store the history of UltiStudent states.</p>
+<p><strong>Alternative 1 (current choice):</strong> Use a Hash Map to get the Store the cap score as a static variable in CapEntry class.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Pros: Easy for new Computer Science student undergraduates to understand, who are likely to be the new incoming developers of our project.</p>
+<p>Pros: Lower time complexity O(1) and cleaner code.</p>
 </li>
 <li>
-<p>Cons: Logic is duplicated twice. For example, when a new command is executed, we must remember to update both <code>HistoryManager</code> and <code>VersionedAddressBook</code>.</p>
+<p>Cons: Larger memory occupation.</p>
 </li>
 </ul>
 </div>
 </li>
 <li>
-<p><strong>Alternative 2:</strong> Use <code>HistoryManager</code> for undo/redo</p>
+<p><strong>Alternative 2:</strong> Use switch cases to find and allocate score to grade.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Pros: We do not need to maintain a separate list, and just reuse what is already in the codebase.</p>
+<p>Pros: Easier readability.</p>
 </li>
 <li>
-<p>Cons: Requires dealing with commands that have already been undone: We must remember to skip these commands. Violates Single Responsibility Principle and Separation of Concerns as <code>HistoryManager</code> now needs to do two different things.</p>
+<p>Cons: Slower time complexity, worst case O(N).</p>
 </li>
 </ul>
 </div>
@@ -872,26 +1026,119 @@ If the <code>currentStatePointer</code> is at index <code>UltiStudentStateList.s
 </div>
 </div>
 <div class="sect2">
-<h3 id="_proposed_data_encryption">[Proposed] Data Encryption</h3>
+<h3 id="_finding_a_cap_entry_delete_cap">Finding a Cap Entry : <code>delete-cap</code></h3>
 <div class="paragraph">
-<p><em>{Explain here how the data encryption feature will be implemented}</em></p>
+<p>This feature allows the user to delete a cap entry from the cap entry list. Users can do so either via:
+the cap entry&#8217;s index with the <code>edit-cap</code> command or the cap entry&#8217;s module code with the <code>edit-cap-mc</code></p>
+</div>
+<div class="sect3">
+<h4 id="_current_implementation_2">Current Implementation</h4>
+<div class="paragraph">
+<p>The <code>delete-cap</code> command is facilitated by the Logic and Model components of the application, UltiStudent.</p>
+</div>
+<div class="paragraph">
+<p>The activity diagram below shows how the deleting of cap entries work when the user enters
+<code>delete-cap</code></p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/DeleteCapManagerActivityDiagram.png" alt="DeleteCapManagerActivityDiagram" width="800">
+</div>
+</div>
+<div class="paragraph">
+<p>Given below is an example usage scenario of how <code>delete-cap</code> behaves at each step.</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 1</strong>: The user executes <code>edit-cap 2 g/A sem/Y2S2</code> to edit the cap entry in the 2nd index with grade A and
+moduleSemester of <code>Y2S2</code>.</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 2</strong>: The user executes <code>edit-cap 2 g/A sem/Y2S2</code> to edit the cap entry in the 2nd index with grade A and
+moduleSemester of <code>Y2S2</code>.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_design_considerations_2">Design Considerations</h4>
+<div class="sect4">
+<h5 id="_aspect_how_to_store_the_cap_score_2">Aspect: How to store the Cap Score.</h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> Store the cap score as a static variable in CapEntry class.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Easy to implement.</p>
+</li>
+<li>
+<p>Cons:</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Store the cap score as a separate class that is then store in UltiStudent.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros:</p>
+</li>
+<li>
+<p>Cons: Will use more memory and is harder to implement.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_aspect_how_to_calculate_score_of_module_grade_2">Aspect: How to calculate score of module grade.</h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> Use a Hash Map to get the Store the cap score as a static variable in CapEntry class.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Lower time complexity O(1) and cleaner code.</p>
+</li>
+<li>
+<p>Cons: Larger memory occupation.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Use switch cases to find and allocate score to grade.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Easier readability.</p>
+</li>
+<li>
+<p>Cons: Slower time complexity, worst case O(N).</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
 </div>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_project_powerpointlabs">PROJECT: PowerPointLabs</h2>
+<h2 id="_project_ultistudent_2">PROJECT: UltiStudent</h2>
 <div class="sectionbody">
 <hr>
-<div class="paragraph">
-<p><em>{Optionally, you may include other projects in your portfolio.}</em></p>
-</div>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2019-04-02 19:42:56 +0800
+Last updated 2019-04-15 18:48:02 +0800
 </div>
 </div>
 </body>

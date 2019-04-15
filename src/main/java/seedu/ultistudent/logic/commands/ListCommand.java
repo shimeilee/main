@@ -1,8 +1,5 @@
 package seedu.ultistudent.logic.commands;
 
-import static java.util.Objects.requireNonNull;
-import static seedu.ultistudent.model.Model.PREDICATE_SHOW_ALL_PERSONS;
-
 import seedu.ultistudent.logic.CommandHistory;
 import seedu.ultistudent.model.Model;
 
@@ -13,13 +10,12 @@ public class ListCommand extends Command {
 
     public static final String COMMAND_WORD = "list";
 
-    public static final String MESSAGE_SUCCESS = "Listed all persons";
-
+    public static final String MESSAGE_USAGE = COMMAND_WORD + ": There are 3 different list commands in UltiStudent.\n"
+            + "They are: list-hw, list-note, list-cap.\n"
+            + "Type: 'help' for more";
 
     @Override
     public CommandResult execute(Model model, CommandHistory history) {
-        requireNonNull(model);
-        model.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
-        return new CommandResult(MESSAGE_SUCCESS);
+        return new CommandResult(MESSAGE_USAGE);
     }
 }
