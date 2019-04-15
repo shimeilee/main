@@ -413,7 +413,7 @@ Step 5. If the module code for any homework entry has been edited to a module co
 the EditHomeworkCommand will add the new module code into the module code list.
 The updated module code list will be displayed on our User Interface.
 
-image::edit hw activity diagram.png[width="800"]
+image::edit-hw activity diagram.png[width="800"]
 
 In designing the edit homework feature, we considered if we should use an alternative data structure to update the
 list of module codes. We considered using a hash map to map the module code to the number of homework with the modules
