@@ -173,7 +173,7 @@ public class SampleDataUtil {
             new Homework(new ModuleCode("CS2103T"), new HomeworkName("Tutorial 3"), new Date("25/05/2019")),
             new Homework(new ModuleCode("CS2101"), new HomeworkName("Oral Presentation 1"), new Date("12/05/2019")),
             new Homework(new ModuleCode("CS2101"), new HomeworkName("Oral Presentation 2"), new Date("19/05/2019")),
-            new Homework(new ModuleCode("CS2101"), new HomeworkName("Oral " + "Presentation 3"), new Date("26/05/2019")),
+            new Homework(new ModuleCode("CS2101"), new HomeworkName("Oral Presentation 3"), new Date("26/05/2019")),
             new Homework(new ModuleCode("CS2102"), new HomeworkName("Tutorial" + " 1"), new Date("11/05/2019")),
             new Homework(new ModuleCode("CS2102"), new HomeworkName("Tutorial" + " 2"), new Date("18/05/2019")),
             new Homework(new ModuleCode("CS2102"), new HomeworkName("Tutorial" + " 3"), new Date("25/05/2019")),
