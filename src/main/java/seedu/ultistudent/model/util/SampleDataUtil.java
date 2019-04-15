@@ -156,8 +156,7 @@ public class SampleDataUtil {
                 new Note(new ModuleCode("CS2102"), new NoteName("Week 3 Notes"),
                     new Content("Things to " + "include:\n1. Overview\n2. Summary of Class\n")),
                 new Note(new ModuleCode("CS2102"), new NoteName("Week 4 Notes"),
-                    new Content("Things to " + "include:\n1. Overview\n2. " +
-                        "Summary of Class\n"))
+                    new Content("Things to " + "include:\n1. Overview\n2. " + "Summary of Class\n"))
         };
     }
 
@@ -174,26 +173,16 @@ public class SampleDataUtil {
                 new Homework(new ModuleCode("CS2103T"), new HomeworkName("Tutorial 3"), new Date("25/05/2019")),
                 new Homework(new ModuleCode("CS2101"), new HomeworkName("Oral Presentation 1"), new Date("12/05/2019")),
                 new Homework(new ModuleCode("CS2101"), new HomeworkName("Oral Presentation 2"), new Date("19/05/2019")),
-                new Homework(new ModuleCode("CS2101"), new HomeworkName("Oral " +
-                        "Presentation 3"), new Date("26/05/2019")),
-                new Homework(new ModuleCode("CS2102"), new HomeworkName("Tutorial" +
-                        " 1"), new Date("11/05/2019")),
-                new Homework(new ModuleCode("CS2102"), new HomeworkName("Tutorial" +
-                        " 2"), new Date("18/05/2019")),
-                new Homework(new ModuleCode("CS2102"), new HomeworkName("Tutorial" +
-                        " 3"), new Date("25/05/2019")),
-                new Homework(new ModuleCode("CS2105"), new HomeworkName("Tutorial" +
-                        " 1"), new Date("11/05/2019")),
-                new Homework(new ModuleCode("CS2105"), new HomeworkName("Tutorial" +
-                        " 2"), new Date("18/05/2019")),
-                new Homework(new ModuleCode("CS2105"), new HomeworkName("Tutorial" +
-                        " 3"), new Date("25/05/2019")),
-                new Homework(new ModuleCode("CS2106"), new HomeworkName("Tutorial" +
-                        " 1"), new Date("11/05/2019")),
-                new Homework(new ModuleCode("CS2106"), new HomeworkName("Tutorial" +
-                        " 2"), new Date("18/05/2019")),
-                new Homework(new ModuleCode("CS2106"), new HomeworkName("Tutorial" +
-                        " 3"), new Date("25/05/2019"))
+                new Homework(new ModuleCode("CS2101"), new HomeworkName("Oral " + "Presentation 3"), new Date("26/05/2019")),
+                new Homework(new ModuleCode("CS2102"), new HomeworkName("Tutorial" + " 1"), new Date("11/05/2019")),
+                new Homework(new ModuleCode("CS2102"), new HomeworkName("Tutorial" + " 2"), new Date("18/05/2019")),
+                new Homework(new ModuleCode("CS2102"), new HomeworkName("Tutorial" + " 3"), new Date("25/05/2019")),
+                new Homework(new ModuleCode("CS2105"), new HomeworkName("Tutorial" + " 1"), new Date("11/05/2019")),
+                new Homework(new ModuleCode("CS2105"), new HomeworkName("Tutorial" + " 2"), new Date("18/05/2019")),
+                new Homework(new ModuleCode("CS2105"), new HomeworkName("Tutorial" + " 3"), new Date("25/05/2019")),
+                new Homework(new ModuleCode("CS2106"), new HomeworkName("Tutorial" + " 1"), new Date("11/05/2019")),
+                new Homework(new ModuleCode("CS2106"), new HomeworkName("Tutorial" + " 2"), new Date("18/05/2019")),
+                new Homework(new ModuleCode("CS2106"), new HomeworkName("Tutorial" + " 3"), new Date("25/05/2019"))
         };
     }
 
