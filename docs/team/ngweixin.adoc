@@ -1,5 +1,6 @@
 = Ng Wei Xin - Project Portfolio
 :site-section: AboutUs
+:toc: macro
 :imagesDir: ../images
 :stylesDir: ../stylesheets
 :stylesheet: xavier.css
@@ -19,11 +20,11 @@ UltiStudent would not be possible without my peers:
 [underline]#{sourceDir}team/limzhengjiebenjamin.html[Benjamin Lim]# and
 [underline]#{sourceDir}team/shimeilee.html[Lee Shi Mei]#.
 
-:sectnums:
-toc::[]
-
-
+---
 == PROJECT: UltiStudent
+---
+toc::[]
+:sectnums:
 
 == Overview
 UltiStudent is a student application that effectively tackles the problem of having
@@ -59,7 +60,7 @@ and `save-note` command.
 *** *Credits*: AddressBook-Level4's select functionality was being used as a reference.
 
 * *Minor enhancement*:
-** Open command that opens the respective managers `open`
+** 'open' command that opens the respective managers
 ** Most of the UI in UltiStudent
 (Pull requests https://github.com/cs2103-ay1819s2-w09-1/main/pull/23/files?file-filters%5B%5D=[#23],
                https://github.com/cs2103-ay1819s2-w09-1/main/pull/41/files?file-filters%5B%5D=[#41],
@@ -80,23 +81,24 @@ to view my code on the CS2103T Project Code Dashboard.
     (Pull request https://github.com/cs2103-ay1819s2-w09-1/main/pull/167/files?file-filters%5B%5D=[#167])
 
 ** Enhancements to existing features:
-*** Modified AddressBook's `add`, `delete` and `edit` command to guide users on what `add`,
-    `delete` and `edit` command UltiStudent has to offer. (Pull request
-    https://github.com/cs2103-ay1819s2-w09-1/main/pull/99/files?file-filters%5B%5D=[#99])
+*** Modified AddressBook's `add`, `delete`, `edit`, `list` and `find` command to guide users on what `add`,
+    `delete`, `edit`, `list` and `find` command UltiStudent has to offer. (Pull request
+    https://github.com/cs2103-ay1819s2-w09-1/main/pull/99/files?file-filters%5B%5D=[#99],
+    https://github.com/cs2103-ay1819s2-w09-1/main/pull/185/files?file-filters%5B%5D=[#185])
 
 ** Documentation:
 *** Updated existing contents of the User and Developer Guide:
-*** Update and Maintain README:
+*** Update and Maintain README. (Pull Request:
     https://github.com/cs2103-ay1819s2-w09-1/main/pull/6[#6],
     https://github.com/cs2103-ay1819s2-w09-1/main/pull/23[#23],
-    https://github.com/cs2103-ay1819s2-w09-1/main/pull/99[#99]
+    https://github.com/cs2103-ay1819s2-w09-1/main/pull/99[#99])
 
 ** Community:
-*** Open issues and assigned respective team-mates (examples:
+*** Open issues and assigned respective team-mates (Examples:
     https://github.com/cs2103-ay1819s2-w09-1/main/issues/33[33],
     https://github.com/cs2103-ay1819s2-w09-1/main/issues/101[101],
     https://github.com/cs2103-ay1819s2-w09-1/main/issues/109[109])
-*** Reported bugs and suggestions for other teams in the class (examples:
+*** Reported bugs and suggestions for other teams in the class (Examples:
     https://github.com/cs2103-ay1819S2-w11-2/main/issues/167[167]
     https://github.com/cs2103-ay1819S2-w11-2/main/issues/174[174]
     https://github.com/cs2103-ay1819S2-w11-2/main/issues/180[180])
