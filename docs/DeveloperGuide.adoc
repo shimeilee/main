@@ -255,10 +255,11 @@ This section describes some noteworthy details on how certain features are imple
 // tag::add-hw[]
 === Adding a homework: `add-hw`
 |===
- _The add homework feature is a core feature to the Homework Manager of
+| _The add homework feature is a core feature to the Homework Manager of
  UltiStudent. Which allows the users to create
  a homework object in UltiStudent._
 |===
+
 ==== Overview
 
 The add homework `add-hw` mechanism is facilitated by `AddHomeworkCommand` and `AddHomeworkCommandParser`.
@@ -493,7 +494,7 @@ image::find-mod sequence diagram.png[width="800", align="center"]
 === Adding a note : `add-note`
 
 |===
- _The add homework feature is a core feature to the Homework Manager of
+| _The add homework feature is a core feature to the Homework Manager of
  UltiStudent. Which allows the users to create a homework object in UltiStudent._
 |===
 ==== Overview
