@@ -59,50 +59,32 @@ import seedu.ultistudent.model.modulecode.ModuleCode;
     public CommandResult execute(Model model, CommandHistory history) throws CommandException {
 <span class="nc" id="L60">        requireNonNull(model);</span>
 <span class="nc" id="L61">        List&lt;CapEntry&gt; lastShownList = model.getFilteredCapEntryList();</span>
-<span class="nc" id="L62">        CapEntry capEntryToEdit = null;</span>
+        CapEntry capEntryToEdit;
         CapEntry editedCapEntry;
 
-<span class="nc bnc" id="L65" title="All 2 branches missed.">        for (int i = 0; i &lt; lastShownList.size(); i++) {</span>
-<span class="nc bnc" id="L66" title="All 2 branches missed.">            if (moduleCode.equals(lastShownList.get(i).getModuleCode())) {</span>
-<span class="nc" id="L67">                capEntryToEdit = lastShownList.get(i);</span>
-            }
-        }
-<span class="nc bnc" id="L70" title="All 2 branches missed.">        if (capEntryToEdit == null) {</span>
-<span class="nc" id="L71">            throw new CommandException((&quot;MODULE NOT FOUND IN CAP MANAGER&quot;));</span>
+<span class="nc" id="L65">        capEntryToEdit = checkForModuleCode(lastShownList, moduleCode);</span>
+<span class="nc bnc" id="L66" title="All 2 branches missed.">        if (capEntryToEdit == null) {</span>
+<span class="nc" id="L67">            throw new CommandException((&quot;MODULE NOT FOUND IN CAP MANAGER&quot;));</span>
         }
 
-<span class="nc" id="L74">        editedCapEntry = createEditedCapEntry(capEntryToEdit, editCapEntryDescriptor);</span>
-<span class="nc" id="L75">        ModuleSemester moduleSemesterOfCapEntryToEdit = capEntryToEdit.getModuleSemester();</span>
-<span class="nc" id="L76">        ModuleSemester moduleSemesterOfEditedCapEntry = editedCapEntry.getModuleSemester();</span>
+<span class="nc" id="L70">        editedCapEntry = createEditedCapEntry(capEntryToEdit, editCapEntryDescriptor);</span>
+<span class="nc" id="L71">        ModuleSemester moduleSemesterOfCapEntryToEdit = capEntryToEdit.getModuleSemester();</span>
+<span class="nc" id="L72">        ModuleSemester moduleSemesterOfEditedCapEntry = editedCapEntry.getModuleSemester();</span>
 
-<span class="nc bnc" id="L78" title="All 4 branches missed.">        if (!capEntryToEdit.isSameCapEntry(editedCapEntry) &amp;&amp; model.hasCapEntry(editedCapEntry)) {</span>
-<span class="nc" id="L79">            throw new CommandException(MESSAGE_DUPLICATE_CAP_ENTRY);</span>
+<span class="nc bnc" id="L74" title="All 4 branches missed.">        if (!capEntryToEdit.isSameCapEntry(editedCapEntry) &amp;&amp; model.hasCapEntry(editedCapEntry)) {</span>
+<span class="nc" id="L75">            throw new CommandException(MESSAGE_DUPLICATE_CAP_ENTRY);</span>
         }
 
-<span class="nc" id="L82">        model.setCapEntry(capEntryToEdit, editedCapEntry);</span>
-<span class="nc" id="L83">        model.updateFilteredCapEntryList(Model.PREDICATE_SHOW_ALL_CAP_ENTRIES);</span>
+<span class="nc" id="L78">        model.setCapEntry(capEntryToEdit, editedCapEntry);</span>
+<span class="nc" id="L79">        model.updateFilteredCapEntryList(Model.PREDICATE_SHOW_ALL_CAP_ENTRIES);</span>
 
-        //update module semester
-<span class="nc bnc" id="L86" title="All 2 branches missed.">        if (!moduleSemesterOfCapEntryToEdit.equals(moduleSemesterOfEditedCapEntry)) {</span>
-<span class="nc" id="L87">            List&lt;CapEntry&gt; afterEditList = model.getFilteredCapEntryList();</span>
-<span class="nc bnc" id="L88" title="All 2 branches missed.">            if (!model.hasModuleSemester(moduleSemesterOfEditedCapEntry)) {</span>
-<span class="nc" id="L89">                model.addModuleSemester(moduleSemesterOfEditedCapEntry);</span>
-            }
-<span class="nc" id="L91">            int numCapEntriesWithSameSemester = 0;</span>
-<span class="nc bnc" id="L92" title="All 2 branches missed.">            for (int i = 0; i &lt; afterEditList.size(); i++) {</span>
-<span class="nc bnc" id="L93" title="All 2 branches missed.">                if (afterEditList.get(i).getModuleSemester().equals(moduleSemesterOfCapEntryToEdit)) {</span>
-<span class="nc" id="L94">                    numCapEntriesWithSameSemester++;</span>
-                }
-            }
-<span class="nc bnc" id="L97" title="All 2 branches missed.">            if (numCapEntriesWithSameSemester == 0) {</span>
-<span class="nc" id="L98">                model.deleteModuleSemester(moduleSemesterOfCapEntryToEdit);</span>
-            }
-        }
+        //update module semester list
+<span class="nc" id="L82">        updateModuleSemester(model, moduleSemesterOfCapEntryToEdit, moduleSemesterOfEditedCapEntry);</span>
 
-<span class="nc" id="L102">        model.updateFilteredModuleSemesterList(Model.PREDICATE_SHOW_ALL_MODULE_SEMESTERS);</span>
+<span class="nc" id="L84">        model.updateFilteredModuleSemesterList(Model.PREDICATE_SHOW_ALL_MODULE_SEMESTERS);</span>
 
-<span class="nc" id="L104">        model.commitUltiStudent();</span>
-<span class="nc" id="L105">        return new CommandResult(String.format(MESSAGE_EDIT_CAP_ENTRY_SUCCESS, editedCapEntry));</span>
+<span class="nc" id="L86">        model.commitUltiStudent();</span>
+<span class="nc" id="L87">        return new CommandResult(String.format(MESSAGE_EDIT_CAP_ENTRY_SUCCESS, editedCapEntry));</span>
     }
 
     /**
@@ -111,35 +93,83 @@ import seedu.ultistudent.model.modulecode.ModuleCode;
      */
     private static CapEntry createEditedCapEntry(CapEntry capEntryToEdit,
                                                  EditCapEntryDescriptor editCapEntryDescriptor) {
-<span class="nc bnc" id="L114" title="All 4 branches missed.">        assert capEntryToEdit != null;</span>
+<span class="nc bnc" id="L96" title="All 4 branches missed.">        assert capEntryToEdit != null;</span>
 
-<span class="nc" id="L116">        ModuleCode updatedModuleCode = editCapEntryDescriptor.getModuleCode().orElse(capEntryToEdit.getModuleCode());</span>
-<span class="nc" id="L117">        ModuleGrade updatedModuleGrade = editCapEntryDescriptor.getModuleGrade().orElse(capEntryToEdit</span>
-<span class="nc" id="L118">                .getModuleGrade());</span>
-<span class="nc" id="L119">        ModuleCredits updatedModuleCredits = editCapEntryDescriptor.getModuleCredits().orElse(capEntryToEdit</span>
-<span class="nc" id="L120">                .getModuleCredits());</span>
-<span class="nc" id="L121">        ModuleSemester updatedModuleSemester = editCapEntryDescriptor.getModuleSemester().orElse(capEntryToEdit</span>
-<span class="nc" id="L122">                .getModuleSemester());</span>
+<span class="nc" id="L98">        ModuleCode updatedModuleCode = editCapEntryDescriptor.getModuleCode().orElse(capEntryToEdit.getModuleCode());</span>
+<span class="nc" id="L99">        ModuleGrade updatedModuleGrade = editCapEntryDescriptor.getModuleGrade().orElse(capEntryToEdit</span>
+<span class="nc" id="L100">                .getModuleGrade());</span>
+<span class="nc" id="L101">        ModuleCredits updatedModuleCredits = editCapEntryDescriptor.getModuleCredits().orElse(capEntryToEdit</span>
+<span class="nc" id="L102">                .getModuleCredits());</span>
+<span class="nc" id="L103">        ModuleSemester updatedModuleSemester = editCapEntryDescriptor.getModuleSemester().orElse(capEntryToEdit</span>
+<span class="nc" id="L104">                .getModuleSemester());</span>
 
-<span class="nc" id="L124">        return new CapEntry(updatedModuleCode, updatedModuleGrade, updatedModuleCredits, updatedModuleSemester);</span>
+<span class="nc" id="L106">        return new CapEntry(updatedModuleCode, updatedModuleGrade, updatedModuleCredits, updatedModuleSemester);</span>
+    }
+
+    /**
+     * Updates the module semester list in the {@code model}.
+     */
+    private void updateModuleSemester(Model model, ModuleSemester moduleSemesterOfCapEntryToEdit,
+                         ModuleSemester moduleSemesterOfEditedCapEntry) {
+<span class="nc bnc" id="L114" title="All 2 branches missed.">        if (!moduleSemesterOfCapEntryToEdit.equals(moduleSemesterOfEditedCapEntry)) {</span>
+<span class="nc bnc" id="L115" title="All 2 branches missed.">            if (!model.hasModuleSemester(moduleSemesterOfEditedCapEntry)) {</span>
+<span class="nc" id="L116">                model.addModuleSemester(moduleSemesterOfEditedCapEntry);</span>
+            }
+
+<span class="nc" id="L119">            boolean hasCapEntriesWithSameSemester = false;</span>
+<span class="nc" id="L120">            List&lt;CapEntry&gt; afterEditList = model.getFilteredCapEntryList();</span>
+<span class="nc" id="L121">            hasCapEntriesWithSameSemester = checkForModuleSemester(moduleSemesterOfCapEntryToEdit, afterEditList);</span>
+
+<span class="nc bnc" id="L123" title="All 2 branches missed.">            if (hasCapEntriesWithSameSemester == false) {</span>
+<span class="nc" id="L124">                model.deleteModuleSemester(moduleSemesterOfCapEntryToEdit);</span>
+            }
+        }
+<span class="nc" id="L127">    }</span>
+
+    /**
+     * Checks the contents of {@code capEntryList} if the list contains a cap with entry the module code of
+     * {@code moduleCode}.
+     */
+    private CapEntry checkForModuleCode (List&lt;CapEntry&gt; capEntryList, ModuleCode moduleCode) {
+<span class="nc" id="L134">        CapEntry capEntryWithSameModuleCode = null;</span>
+<span class="nc bnc" id="L135" title="All 2 branches missed.">        for (int i = 0; i &lt; capEntryList.size(); i++) {</span>
+<span class="nc bnc" id="L136" title="All 2 branches missed.">            if (moduleCode.equals(capEntryList.get(i).getModuleCode())) {</span>
+<span class="nc" id="L137">                capEntryWithSameModuleCode = capEntryList.get(i);</span>
+            }
+        }
+<span class="nc" id="L140">        return capEntryWithSameModuleCode;</span>
+    }
+
+    /**
+     * Checks the contents of {@code capEntryList} if the list contains any cap entries with the module semester of
+     * {@code moduleSemester}.
+     */
+    private boolean checkForModuleSemester(ModuleSemester moduleSemester, List&lt;CapEntry&gt; capEntryList) {
+<span class="nc" id="L148">        boolean hasCapEntriesWithSameSemester = false;</span>
+<span class="nc bnc" id="L149" title="All 2 branches missed.">        for (int i = 0; i &lt; capEntryList.size(); i++) {</span>
+<span class="nc bnc" id="L150" title="All 2 branches missed.">            if (capEntryList.get(i).getModuleSemester().equals(moduleSemester)) {</span>
+<span class="nc" id="L151">                hasCapEntriesWithSameSemester = true;</span>
+            }
+        }
+<span class="nc" id="L154">        return hasCapEntriesWithSameSemester;</span>
     }
 
     @Override
     public boolean equals(Object other) {
         // short circuit if same object
-<span class="nc bnc" id="L130" title="All 2 branches missed.">        if (other == this) {</span>
-<span class="nc" id="L131">            return true;</span>
+<span class="nc bnc" id="L160" title="All 2 branches missed.">        if (other == this) {</span>
+<span class="nc" id="L161">            return true;</span>
         }
 
         // instanceof handles nulls
-<span class="nc bnc" id="L135" title="All 2 branches missed.">        if (!(other instanceof EditCommand)) {</span>
-<span class="nc" id="L136">            return false;</span>
+<span class="nc bnc" id="L165" title="All 2 branches missed.">        if (!(other instanceof EditCapEntryByModuleCodeCommand)) {</span>
+<span class="nc" id="L166">            return false;</span>
         }
 
         // state check
-<span class="nc" id="L140">        EditCapEntryByModuleCodeCommand e = (EditCapEntryByModuleCodeCommand) other;</span>
-<span class="nc bnc" id="L141" title="All 2 branches missed.">        return moduleCode.equals(e.moduleCode)</span>
-<span class="nc bnc" id="L142" title="All 2 branches missed.">                &amp;&amp; editCapEntryDescriptor.equals(e.editCapEntryDescriptor);</span>
+<span class="nc" id="L170">        EditCapEntryByModuleCodeCommand e = (EditCapEntryByModuleCodeCommand) other;</span>
+<span class="nc bnc" id="L171" title="All 2 branches missed.">        return moduleCode.equals(e.moduleCode)</span>
+<span class="nc bnc" id="L172" title="All 2 branches missed.">                &amp;&amp; editCapEntryDescriptor.equals(e.editCapEntryDescriptor);</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.1.201803210924</span></div></body></html>

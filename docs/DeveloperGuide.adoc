@@ -247,7 +247,8 @@ This section describes some noteworthy details on how certain features are imple
 // tag::add-hw[]
 === Adding a homework: `add-hw`
 |===
-_The add homework feature is a core feature to the Homework Manager of UltiStudent. Which allows the users to create
+ _The add homework feature is a core feature to the Homework Manager of
+ UltiStudent. Which allows the users to create
  a homework object in UltiStudent._
 |===
 ==== Overview

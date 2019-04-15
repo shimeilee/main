@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="seedu.ultistudent.AppParametersTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2019-04-13T20:54:01" hostname="Lees-MBP-3" time="0.002">
+<testsuite name="seedu.ultistudent.AppParametersTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2019-04-15T02:56:21" hostname="r-131-100-25-172.comp.nus.edu.sg" time="0.006">
   <properties/>
-  <testcase name="parse_validConfigPath_success" classname="seedu.ultistudent.AppParametersTest" time="0.0"/>
+  <testcase name="parse_validConfigPath_success" classname="seedu.ultistudent.AppParametersTest" time="0.002"/>
   <testcase name="parse_nullConfigPath_success" classname="seedu.ultistudent.AppParametersTest" time="0.0"/>
-  <testcase name="parse_invalidConfigPath_success" classname="seedu.ultistudent.AppParametersTest" time="0.002"/>
+  <testcase name="parse_invalidConfigPath_success" classname="seedu.ultistudent.AppParametersTest" time="0.003"/>
   <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[Apr 14, 2019 4:54:01 AM seedu.ultistudent.AppParameters parse
+  <system-err><![CDATA[Apr 15, 2019 10:56:21 AM seedu.ultistudent.AppParameters parse
 WARNING: Invalid config path a?. Using default config path.
 ]]></system-err>
 </testsuite>

@@ -1,28 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="seedu.ultistudent.model.cap.UniqueCapEntryListTest" tests="22" skipped="0" failures="0" errors="0" timestamp="2019-04-13T20:54:01" hostname="Lees-MBP-3" time="0.011">
+<testsuite name="seedu.ultistudent.model.cap.UniqueCapEntryListTest" tests="22" skipped="0" failures="0" errors="0" timestamp="2019-04-15T02:56:22" hostname="r-131-100-25-172.comp.nus.edu.sg" time="0.013">
   <properties/>
-  <testcase name="add_duplicateCapEntry_throwsDuplicateCapEntryException" classname="seedu.ultistudent.model.cap.UniqueCapEntryListTest" time="0.0"/>
-  <testcase name="asUnmodifiableObservableList_modifyList_throwsUnsupportedOperationException" classname="seedu.ultistudent.model.cap.UniqueCapEntryListTest" time="0.0"/>
+  <testcase name="add_duplicateCapEntry_throwsDuplicateCapEntryException" classname="seedu.ultistudent.model.cap.UniqueCapEntryListTest" time="0.001"/>
+  <testcase name="asUnmodifiableObservableList_modifyList_throwsUnsupportedOperationException" classname="seedu.ultistudent.model.cap.UniqueCapEntryListTest" time="0.001"/>
   <testcase name="setCapEntryList_nullList_throwsNullPointerException" classname="seedu.ultistudent.model.cap.UniqueCapEntryListTest" time="0.0"/>
   <testcase name="setCapEntry_editedCapEntryHasDifferentIdentity_success" classname="seedu.ultistudent.model.cap.UniqueCapEntryListTest" time="0.0"/>
   <testcase name="setCapEntry_nullTargetCapEntry_throwsNullPointerException" classname="seedu.ultistudent.model.cap.UniqueCapEntryListTest" time="0.0"/>
   <testcase name="remove_capEntryDoesNotExist_throwsCapEntryNotFoundException" classname="seedu.ultistudent.model.cap.UniqueCapEntryListTest" time="0.0"/>
-  <testcase name="setCapEntry_editedCapEntryIsSameCapEntry_success" classname="seedu.ultistudent.model.cap.UniqueCapEntryListTest" time="0.001"/>
+  <testcase name="setCapEntry_editedCapEntryIsSameCapEntry_success" classname="seedu.ultistudent.model.cap.UniqueCapEntryListTest" time="0.0"/>
   <testcase name="add_nullCapEntry_throwsNullPointerException" classname="seedu.ultistudent.model.cap.UniqueCapEntryListTest" time="0.0"/>
   <testcase name="remove_existingCapEntry_removesCapEntry" classname="seedu.ultistudent.model.cap.UniqueCapEntryListTest" time="0.001"/>
   <testcase name="contains_capEntryInList_returnsTrue" classname="seedu.ultistudent.model.cap.UniqueCapEntryListTest" time="0.0"/>
   <testcase name="setCapEntryList_uniqueCapEntryList_replacesOwnListWithProvidedUniqueCapEntryList" classname="seedu.ultistudent.model.cap.UniqueCapEntryListTest" time="0.0"/>
-  <testcase name="contains_capEntryWithSameIdentityFieldsInList_returnsTrue" classname="seedu.ultistudent.model.cap.UniqueCapEntryListTest" time="0.0"/>
-  <testcase name="remove_nullCapEntry_throwsNullPointerException" classname="seedu.ultistudent.model.cap.UniqueCapEntryListTest" time="0.002"/>
-  <testcase name="setCapEntry_editedCapEntryHasNonUniqueIdentity_throwsDuplicateCapEntryException" classname="seedu.ultistudent.model.cap.UniqueCapEntryListTest" time="0.0"/>
+  <testcase name="contains_capEntryWithSameIdentityFieldsInList_returnsTrue" classname="seedu.ultistudent.model.cap.UniqueCapEntryListTest" time="0.001"/>
+  <testcase name="remove_nullCapEntry_throwsNullPointerException" classname="seedu.ultistudent.model.cap.UniqueCapEntryListTest" time="0.0"/>
+  <testcase name="setCapEntry_editedCapEntryHasNonUniqueIdentity_throwsDuplicateCapEntryException" classname="seedu.ultistudent.model.cap.UniqueCapEntryListTest" time="0.002"/>
   <testcase name="setCapEntry_nullEditedCapEntry_throwsNullPointerException" classname="seedu.ultistudent.model.cap.UniqueCapEntryListTest" time="0.0"/>
-  <testcase name="setCapEntryList_listWithDuplicateCapEntryList_throwsDuplicateCapEntryException" classname="seedu.ultistudent.model.cap.UniqueCapEntryListTest" time="0.001"/>
+  <testcase name="setCapEntryList_listWithDuplicateCapEntryList_throwsDuplicateCapEntryException" classname="seedu.ultistudent.model.cap.UniqueCapEntryListTest" time="0.0"/>
   <testcase name="setCapEntryList_nullUniqueCapEntryList_throwsNullPointerException" classname="seedu.ultistudent.model.cap.UniqueCapEntryListTest" time="0.0"/>
-  <testcase name="setCapEntry_targetCapEntryNotInList_throwsCapEntryNotFoundException" classname="seedu.ultistudent.model.cap.UniqueCapEntryListTest" time="0.0"/>
-  <testcase name="setCapEntry_editedCapEntryHasSameIdentity_success" classname="seedu.ultistudent.model.cap.UniqueCapEntryListTest" time="0.0"/>
+  <testcase name="setCapEntry_targetCapEntryNotInList_throwsCapEntryNotFoundException" classname="seedu.ultistudent.model.cap.UniqueCapEntryListTest" time="0.001"/>
+  <testcase name="setCapEntry_editedCapEntryHasSameIdentity_success" classname="seedu.ultistudent.model.cap.UniqueCapEntryListTest" time="0.001"/>
   <testcase name="contains_capEntryNotInList_returnsFalse" classname="seedu.ultistudent.model.cap.UniqueCapEntryListTest" time="0.0"/>
   <testcase name="setCapEntryList_replacesOwnListWithProvidedList" classname="seedu.ultistudent.model.cap.UniqueCapEntryListTest" time="0.0"/>
-  <testcase name="contains_nullCapEntry_throwsNullPointerException" classname="seedu.ultistudent.model.cap.UniqueCapEntryListTest" time="0.001"/>
+  <testcase name="contains_nullCapEntry_throwsNullPointerException" classname="seedu.ultistudent.model.cap.UniqueCapEntryListTest" time="0.0"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

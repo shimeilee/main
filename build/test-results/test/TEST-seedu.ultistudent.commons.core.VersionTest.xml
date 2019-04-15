@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="seedu.ultistudent.commons.core.VersionTest" tests="7" skipped="0" failures="0" errors="0" timestamp="2019-04-13T20:54:00" hostname="Lees-MBP-3" time="0.013">
+<testsuite name="seedu.ultistudent.commons.core.VersionTest" tests="7" skipped="0" failures="0" errors="0" timestamp="2019-04-15T02:56:20" hostname="r-131-100-25-172.comp.nus.edu.sg" time="0.016">
   <properties/>
   <testcase name="versionComparable_validVersion_hashCodeIsCorrect" classname="seedu.ultistudent.commons.core.VersionTest" time="0.003"/>
   <testcase name="versionToString_validVersion_correctStringRepresentation" classname="seedu.ultistudent.commons.core.VersionTest" time="0.0"/>
-  <testcase name="versionConstructor_correctParameter_valueAsExpected" classname="seedu.ultistudent.commons.core.VersionTest" time="0.0"/>
+  <testcase name="versionConstructor_correctParameter_valueAsExpected" classname="seedu.ultistudent.commons.core.VersionTest" time="0.001"/>
   <testcase name="versionParsing_acceptableVersionString_parsedVersionCorrectly" classname="seedu.ultistudent.commons.core.VersionTest" time="0.0"/>
-  <testcase name="versionParsing_wrongVersionString_throwIllegalArgumentException" classname="seedu.ultistudent.commons.core.VersionTest" time="0.008"/>
+  <testcase name="versionParsing_wrongVersionString_throwIllegalArgumentException" classname="seedu.ultistudent.commons.core.VersionTest" time="0.011"/>
   <testcase name="versionComparable_validVersion_equalIsCorrect" classname="seedu.ultistudent.commons.core.VersionTest" time="0.0"/>
   <testcase name="versionComparable_validVersion_compareToIsCorrect" classname="seedu.ultistudent.commons.core.VersionTest" time="0.0"/>
   <system-out><![CDATA[]]></system-out>

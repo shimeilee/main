@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="seedu.ultistudent.ui.MainWindowCloseTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2019-04-13T20:53:57" hostname="Lees-MBP-3" time="2.624">
+<testsuite name="seedu.ultistudent.ui.MainWindowCloseTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2019-04-15T02:56:17" hostname="r-131-100-25-172.comp.nus.edu.sg" time="3.419">
   <properties/>
-  <testcase name="close_menuBarExitButton_allWindowsClosed" classname="seedu.ultistudent.ui.MainWindowCloseTest" time="1.422"/>
-  <testcase name="close_externalRequest_exitAppRequestEventPosted" classname="seedu.ultistudent.ui.MainWindowCloseTest" time="1.202"/>
+  <testcase name="close_menuBarExitButton_allWindowsClosed" classname="seedu.ultistudent.ui.MainWindowCloseTest" time="2.158"/>
+  <testcase name="close_externalRequest_exitAppRequestEventPosted" classname="seedu.ultistudent.ui.MainWindowCloseTest" time="1.261"/>
   <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[Apr 14, 2019 4:53:57 AM guitests.guihandles.StageHandle focus
+  <system-err><![CDATA[Apr 15, 2019 10:56:17 AM guitests.guihandles.StageHandle focus
 INFO: Focusing onUltiStudent
-Apr 14, 2019 4:53:57 AM guitests.guihandles.StageHandle focus
+Apr 15, 2019 10:56:17 AM guitests.guihandles.StageHandle focus
 INFO: Finishing focus onUltiStudent
-Apr 14, 2019 4:53:59 AM guitests.guihandles.StageHandle focus
+Apr 15, 2019 10:56:19 AM guitests.guihandles.StageHandle focus
 INFO: Focusing onUltiStudent
-Apr 14, 2019 4:53:59 AM guitests.guihandles.StageHandle focus
+Apr 15, 2019 10:56:19 AM guitests.guihandles.StageHandle focus
 INFO: Finishing focus onUltiStudent
 ]]></system-err>
 </testsuite>

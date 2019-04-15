@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="seedu.ultistudent.model.note.NoteTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2019-04-13T20:54:01" hostname="Lees-MBP-3" time="0.0">
+<testsuite name="seedu.ultistudent.model.note.NoteTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2019-04-15T02:56:22" hostname="r-131-100-25-172.comp.nus.edu.sg" time="0.001">
   <properties/>
-  <testcase name="equals" classname="seedu.ultistudent.model.note.NoteTest" time="0.0"/>
+  <testcase name="equals" classname="seedu.ultistudent.model.note.NoteTest" time="0.001"/>
   <testcase name="isSameNote" classname="seedu.ultistudent.model.note.NoteTest" time="0.0"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>

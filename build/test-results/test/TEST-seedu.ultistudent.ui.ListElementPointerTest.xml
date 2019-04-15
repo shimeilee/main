@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="seedu.ultistudent.ui.ListElementPointerTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2019-04-13T20:53:57" hostname="Lees-MBP-3" time="0.002">
+<testsuite name="seedu.ultistudent.ui.ListElementPointerTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2019-04-15T02:56:16" hostname="r-131-100-25-172.comp.nus.edu.sg" time="0.003">
   <properties/>
   <testcase name="emptyList" classname="seedu.ultistudent.ui.ListElementPointerTest" time="0.0"/>
   <testcase name="equals" classname="seedu.ultistudent.ui.ListElementPointerTest" time="0.0"/>

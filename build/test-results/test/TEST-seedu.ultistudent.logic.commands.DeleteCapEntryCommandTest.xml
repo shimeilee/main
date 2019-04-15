@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="seedu.ultistudent.logic.commands.DeleteCapEntryCommandTest" tests="8" skipped="0" failures="0" errors="0" timestamp="2019-04-13T20:54:01" hostname="Lees-MBP-3" time="0.024">
+<testsuite name="seedu.ultistudent.logic.commands.DeleteCapEntryCommandTest" tests="8" skipped="0" failures="0" errors="0" timestamp="2019-04-15T02:56:21" hostname="r-131-100-25-172.comp.nus.edu.sg" time="0.019">
   <properties/>
-  <testcase name="equals" classname="seedu.ultistudent.logic.commands.DeleteCapEntryCommandTest" time="0.0"/>
-  <testcase name="executeUndoRedo_validIndexFilteredList_sameCapEntryDeleted" classname="seedu.ultistudent.logic.commands.DeleteCapEntryCommandTest" time="0.008"/>
+  <testcase name="equals" classname="seedu.ultistudent.logic.commands.DeleteCapEntryCommandTest" time="0.001"/>
+  <testcase name="executeUndoRedo_validIndexFilteredList_sameCapEntryDeleted" classname="seedu.ultistudent.logic.commands.DeleteCapEntryCommandTest" time="0.007"/>
   <testcase name="execute_invalidIndexUnfilteredList_throwsCommandException" classname="seedu.ultistudent.logic.commands.DeleteCapEntryCommandTest" time="0.0"/>
-  <testcase name="executeUndoRedo_validIndexUnfilteredList_success" classname="seedu.ultistudent.logic.commands.DeleteCapEntryCommandTest" time="0.002"/>
+  <testcase name="executeUndoRedo_validIndexUnfilteredList_success" classname="seedu.ultistudent.logic.commands.DeleteCapEntryCommandTest" time="0.001"/>
   <testcase name="execute_validIndexUnfilteredList_success" classname="seedu.ultistudent.logic.commands.DeleteCapEntryCommandTest" time="0.001"/>
   <testcase name="execute_validIndexFilteredList_success" classname="seedu.ultistudent.logic.commands.DeleteCapEntryCommandTest" time="0.001"/>
-  <testcase name="executeUndoRedo_invalidIndexUnfilteredList_failure" classname="seedu.ultistudent.logic.commands.DeleteCapEntryCommandTest" time="0.001"/>
-  <testcase name="execute_invalidIndexFilteredList_throwsCommandException" classname="seedu.ultistudent.logic.commands.DeleteCapEntryCommandTest" time="0.001"/>
+  <testcase name="executeUndoRedo_invalidIndexUnfilteredList_failure" classname="seedu.ultistudent.logic.commands.DeleteCapEntryCommandTest" time="0.0"/>
+  <testcase name="execute_invalidIndexFilteredList_throwsCommandException" classname="seedu.ultistudent.logic.commands.DeleteCapEntryCommandTest" time="0.0"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

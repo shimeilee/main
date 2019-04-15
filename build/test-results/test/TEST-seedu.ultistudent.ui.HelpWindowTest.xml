@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="seedu.ultistudent.ui.HelpWindowTest" tests="3" skipped="1" failures="0" errors="0" timestamp="2019-04-13T20:53:47" hostname="Lees-MBP-3" time="2.251">
+<testsuite name="seedu.ultistudent.ui.HelpWindowTest" tests="3" skipped="1" failures="0" errors="0" timestamp="2019-04-15T02:56:03" hostname="r-131-100-25-172.comp.nus.edu.sg" time="5.035">
   <properties/>
-  <testcase name="focus_helpWindowNotFocused_focused" classname="seedu.ultistudent.ui.HelpWindowTest" time="1.26">
+  <testcase name="focus_helpWindowNotFocused_focused" classname="seedu.ultistudent.ui.HelpWindowTest" time="4.015">
     <skipped/>
   </testcase>
-  <testcase name="isShowing_helpWindowIsHiding_returnsFalse" classname="seedu.ultistudent.ui.HelpWindowTest" time="0.197"/>
-  <testcase name="display" classname="seedu.ultistudent.ui.HelpWindowTest" time="0.793"/>
+  <testcase name="isShowing_helpWindowIsHiding_returnsFalse" classname="seedu.ultistudent.ui.HelpWindowTest" time="0.318"/>
+  <testcase name="display" classname="seedu.ultistudent.ui.HelpWindowTest" time="0.702"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

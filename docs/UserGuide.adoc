@@ -126,7 +126,6 @@ If you would like to review what you have done in your current session of UltiSt
 This command will help to retrieve the previously executed commands which has been entered into the system before `history`.
 
 
-
 // tag::undoredo[]
 ==== Undoing previous command : `undo`
 

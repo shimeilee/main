@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="seedu.ultistudent.ui.ResultDisplayTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2019-04-13T20:53:44" hostname="Lees-MBP-3" time="2.293">
+<testsuite name="seedu.ultistudent.ui.ResultDisplayTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2019-04-15T02:56:00" hostname="r-131-100-25-172.comp.nus.edu.sg" time="2.448">
   <properties/>
-  <testcase name="display" classname="seedu.ultistudent.ui.ResultDisplayTest" time="2.293"/>
+  <testcase name="display" classname="seedu.ultistudent.ui.ResultDisplayTest" time="2.448"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

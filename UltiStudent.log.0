@@ -625,3 +625,74 @@ Apr 15, 2019 7:17:15 AM seedu.ultistudent.ui.MainWindow executeCommand
 INFO: Result: 9 notes listed!
 Apr 15, 2019 7:17:18 AM seedu.ultistudent.MainApp stop
 INFO: ============================ [ Stopping UltiStudent ] =============================
+Apr 15, 2019 10:56:17 AM guitests.guihandles.StageHandle focus
+INFO: Focusing onUltiStudent
+Apr 15, 2019 10:56:17 AM guitests.guihandles.StageHandle focus
+INFO: Finishing focus onUltiStudent
+Apr 15, 2019 10:56:19 AM guitests.guihandles.StageHandle focus
+INFO: Focusing onUltiStudent
+Apr 15, 2019 10:56:19 AM guitests.guihandles.StageHandle focus
+INFO: Finishing focus onUltiStudent
+Apr 15, 2019 10:56:21 AM seedu.ultistudent.commons.util.JsonUtil readJsonFile
+INFO: Json file src/test/data/ConfigUtilTest/NonExistentFile.json not found
+Apr 15, 2019 10:56:21 AM seedu.ultistudent.commons.util.JsonUtil readJsonFile
+WARNING: Error reading from jsonFile file src/test/data/ConfigUtilTest/NotJsonFormatConfig.json: com.fasterxml.jackson.core.JsonParseException: Unrecognized token 'this': was expecting 'null', 'true', 'false' or NaN
+ at [Source: this file is not in json format!
+; line: 1, column: 5]
+Apr 15, 2019 10:56:21 AM seedu.ultistudent.AppParameters parse
+WARNING: Invalid config path a . Using default config path.
+Apr 15, 2019 10:56:22 AM seedu.ultistudent.logic.LogicManager execute
+INFO: ----------------[USER COMMAND][uicfhmowqewca]
+Apr 15, 2019 10:56:22 AM seedu.ultistudent.logic.LogicManager execute
+INFO: ----------------[USER COMMAND][history]
+Apr 15, 2019 10:56:22 AM seedu.ultistudent.logic.LogicManager execute
+INFO: ----------------[USER COMMAND][list]
+Apr 15, 2019 10:56:22 AM seedu.ultistudent.logic.LogicManager execute
+INFO: ----------------[USER COMMAND][history]
+Apr 15, 2019 10:56:22 AM seedu.ultistudent.logic.LogicManager execute
+INFO: ----------------[USER COMMAND][add n/Amy Bee p/11111111 e/amy@example.com a/Block 312, Amy Street 1]
+Apr 15, 2019 10:56:22 AM seedu.ultistudent.logic.LogicManager execute
+INFO: ----------------[USER COMMAND][history]
+Apr 15, 2019 10:56:22 AM seedu.ultistudent.logic.LogicManager execute
+INFO: ----------------[USER COMMAND][delete 9]
+Apr 15, 2019 10:56:22 AM seedu.ultistudent.logic.LogicManager execute
+INFO: ----------------[USER COMMAND][history]
+Apr 15, 2019 10:56:22 AM seedu.ultistudent.commons.util.JsonUtil readJsonFile
+WARNING: Error reading from jsonFile file src/test/data/JsonUserPrefsStorageTest/NotJsonFormatUserPrefs.json: com.fasterxml.jackson.core.JsonParseException: Unrecognized token 'Not': was expecting 'null', 'true', 'false' or NaN
+ at [Source: Not a json file!
+; line: 1, column: 4]
+Apr 15, 2019 10:56:22 AM seedu.ultistudent.commons.util.JsonUtil readJsonFile
+INFO: Json file src/test/data/JsonUserPrefsStorageTest/NonExistentFile.json not found
+Apr 15, 2019 10:56:22 AM seedu.ultistudent.commons.util.JsonUtil readJsonFile
+INFO: Json file src/test/data/JsonUltiStudentStorageTest/NonExistentFile.json not found
+Apr 15, 2019 10:56:22 AM seedu.ultistudent.commons.util.JsonUtil readJsonFile
+WARNING: Error reading from jsonFile file src/test/data/JsonUltiStudentStorageTest/invalidAndValidPersonAddressBook.json: com.fasterxml.jackson.databind.JsonMappingException: Instantiation of [simple type, class seedu.ultistudent.storage.JsonSerializableUltiStudent] value failed (java.lang.NullPointerException): null
+ at [Source: {
+  "persons": [ {
+    "name": "Valid Person",
+    "phone": "9482424",
+    "email": "hans@example.com",
+    "address": "4th street"
+  }, {
+    "name": "Person With Invalid Phone Field",
+    "phone": "948asdf2424",
+    "email": "hans@example.com",
+    "address": "4th street"
+  } ]
+}
+; line: 13, column: 1]
+Apr 15, 2019 10:56:22 AM seedu.ultistudent.commons.util.JsonUtil readJsonFile
+WARNING: Error reading from jsonFile file src/test/data/JsonUltiStudentStorageTest/notJsonFormatAddressBook.json: com.fasterxml.jackson.core.JsonParseException: Unrecognized token 'not': was expecting 'null', 'true', 'false' or NaN
+ at [Source: not json format!
+; line: 1, column: 4]
+Apr 15, 2019 10:56:22 AM seedu.ultistudent.commons.util.JsonUtil readJsonFile
+WARNING: Error reading from jsonFile file src/test/data/JsonUltiStudentStorageTest/invalidPersonAddressBook.json: com.fasterxml.jackson.databind.JsonMappingException: Instantiation of [simple type, class seedu.ultistudent.storage.JsonSerializableUltiStudent] value failed (java.lang.NullPointerException): null
+ at [Source: {
+  "persons": [ {
+    "name": "Person with invalid name field: Ha!ns Mu@ster",
+    "phone": "9482424",
+    "email": "hans@example.com",
+    "address": "4th street"
+  } ]
+}
+; line: 8, column: 1]

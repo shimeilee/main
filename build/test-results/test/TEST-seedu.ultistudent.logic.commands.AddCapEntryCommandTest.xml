@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="seedu.ultistudent.logic.commands.AddCapEntryCommandTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2019-04-13T20:54:01" hostname="Lees-MBP-3" time="0.004">
+<testsuite name="seedu.ultistudent.logic.commands.AddCapEntryCommandTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2019-04-15T02:56:21" hostname="r-131-100-25-172.comp.nus.edu.sg" time="0.003">
   <properties/>
   <testcase name="execute_duplicateCapEntry_throwsCommandException" classname="seedu.ultistudent.logic.commands.AddCapEntryCommandTest" time="0.001"/>
-  <testcase name="execute_capEntryAcceptedByModel_addSuccessful" classname="seedu.ultistudent.logic.commands.AddCapEntryCommandTest" time="0.002"/>
-  <testcase name="equals" classname="seedu.ultistudent.logic.commands.AddCapEntryCommandTest" time="0.0"/>
+  <testcase name="execute_capEntryAcceptedByModel_addSuccessful" classname="seedu.ultistudent.logic.commands.AddCapEntryCommandTest" time="0.001"/>
+  <testcase name="equals" classname="seedu.ultistudent.logic.commands.AddCapEntryCommandTest" time="0.001"/>
   <testcase name="constructor_nullCapEntry_throwsNullPointerException" classname="seedu.ultistudent.logic.commands.AddCapEntryCommandTest" time="0.0"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>

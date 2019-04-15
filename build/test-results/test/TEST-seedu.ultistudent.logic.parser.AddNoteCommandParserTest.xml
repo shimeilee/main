@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="seedu.ultistudent.logic.parser.AddNoteCommandParserTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2019-04-13T20:54:01" hostname="Lees-MBP-3" time="0.012">
+<testsuite name="seedu.ultistudent.logic.parser.AddNoteCommandParserTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2019-04-15T02:56:21" hostname="r-131-100-25-172.comp.nus.edu.sg" time="0.027">
   <properties/>
-  <testcase name="parse_emptyArgs_throwsParseException" classname="seedu.ultistudent.logic.parser.AddNoteCommandParserTest" time="0.008"/>
+  <testcase name="parse_emptyArgs_throwsParseException" classname="seedu.ultistudent.logic.parser.AddNoteCommandParserTest" time="0.014"/>
   <testcase name="parse_invalidMcFormatArgs_throwsParseException" classname="seedu.ultistudent.logic.parser.AddNoteCommandParserTest" time="0.0"/>
-  <testcase name="parse_validArgs_returnsAddNoteCommand" classname="seedu.ultistudent.logic.parser.AddNoteCommandParserTest" time="0.003"/>
-  <testcase name="parse_invalidNoteNameFormatArgs_throwsParseException" classname="seedu.ultistudent.logic.parser.AddNoteCommandParserTest" time="0.0"/>
+  <testcase name="parse_validArgs_returnsAddNoteCommand" classname="seedu.ultistudent.logic.parser.AddNoteCommandParserTest" time="0.004"/>
+  <testcase name="parse_invalidNoteNameFormatArgs_throwsParseException" classname="seedu.ultistudent.logic.parser.AddNoteCommandParserTest" time="0.008"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

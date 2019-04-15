@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="seedu.ultistudent.logic.parser.SelectCommandParserTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2019-04-13T20:54:01" hostname="Lees-MBP-3" time="0.001">
+<testsuite name="seedu.ultistudent.logic.parser.SelectCommandParserTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2019-04-15T02:56:21" hostname="r-131-100-25-172.comp.nus.edu.sg" time="0.001">
   <properties/>
   <testcase name="parse_invalidArgs_throwsParseException" classname="seedu.ultistudent.logic.parser.SelectCommandParserTest" time="0.001"/>
   <testcase name="parse_validArgs_returnsSelectCommand" classname="seedu.ultistudent.logic.parser.SelectCommandParserTest" time="0.0"/>

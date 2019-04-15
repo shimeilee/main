@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="seedu.ultistudent.logic.commands.EditCapEntryCommandTest" tests="12" skipped="0" failures="0" errors="0" timestamp="2019-04-13T20:54:01" hostname="Lees-MBP-3" time="0.024">
+<testsuite name="seedu.ultistudent.logic.commands.EditCapEntryCommandTest" tests="12" skipped="0" failures="0" errors="0" timestamp="2019-04-15T02:56:21" hostname="r-131-100-25-172.comp.nus.edu.sg" time="0.016">
   <properties/>
-  <testcase name="execute_invalidCapEntryIndexFilteredList_failure" classname="seedu.ultistudent.logic.commands.EditCapEntryCommandTest" time="0.0"/>
-  <testcase name="equals" classname="seedu.ultistudent.logic.commands.EditCapEntryCommandTest" time="0.0"/>
-  <testcase name="execute_allFieldsSpecifiedUnfilteredList_success" classname="seedu.ultistudent.logic.commands.EditCapEntryCommandTest" time="0.006"/>
+  <testcase name="execute_invalidCapEntryIndexFilteredList_failure" classname="seedu.ultistudent.logic.commands.EditCapEntryCommandTest" time="0.001"/>
+  <testcase name="equals" classname="seedu.ultistudent.logic.commands.EditCapEntryCommandTest" time="0.001"/>
+  <testcase name="execute_allFieldsSpecifiedUnfilteredList_success" classname="seedu.ultistudent.logic.commands.EditCapEntryCommandTest" time="0.001"/>
   <testcase name="execute_invalidCapEntryIndexUnfilteredList_failure" classname="seedu.ultistudent.logic.commands.EditCapEntryCommandTest" time="0.0"/>
-  <testcase name="executeUndoRedo_validIndexFilteredList_sameCapEntryEdited" classname="seedu.ultistudent.logic.commands.EditCapEntryCommandTest" time="0.002"/>
+  <testcase name="executeUndoRedo_validIndexFilteredList_sameCapEntryEdited" classname="seedu.ultistudent.logic.commands.EditCapEntryCommandTest" time="0.001"/>
   <testcase name="executeUndoRedo_validIndexUnfilteredList_success" classname="seedu.ultistudent.logic.commands.EditCapEntryCommandTest" time="0.002"/>
   <testcase name="execute_filteredList_success" classname="seedu.ultistudent.logic.commands.EditCapEntryCommandTest" time="0.001"/>
-  <testcase name="execute_someFieldsSpecifiedUnfilteredList_success" classname="seedu.ultistudent.logic.commands.EditCapEntryCommandTest" time="0.002"/>
-  <testcase name="execute_duplicateCapEntryFilteredList_failure" classname="seedu.ultistudent.logic.commands.EditCapEntryCommandTest" time="0.0"/>
+  <testcase name="execute_someFieldsSpecifiedUnfilteredList_success" classname="seedu.ultistudent.logic.commands.EditCapEntryCommandTest" time="0.001"/>
+  <testcase name="execute_duplicateCapEntryFilteredList_failure" classname="seedu.ultistudent.logic.commands.EditCapEntryCommandTest" time="0.001"/>
   <testcase name="execute_noFieldSpecifiedUnfilteredList_success" classname="seedu.ultistudent.logic.commands.EditCapEntryCommandTest" time="0.001"/>
-  <testcase name="executeUndoRedo_invalidIndexUnfilteredList_failure" classname="seedu.ultistudent.logic.commands.EditCapEntryCommandTest" time="0.002"/>
-  <testcase name="execute_duplicateCapEntryUnfilteredList_failure" classname="seedu.ultistudent.logic.commands.EditCapEntryCommandTest" time="0.0"/>
+  <testcase name="executeUndoRedo_invalidIndexUnfilteredList_failure" classname="seedu.ultistudent.logic.commands.EditCapEntryCommandTest" time="0.001"/>
+  <testcase name="execute_duplicateCapEntryUnfilteredList_failure" classname="seedu.ultistudent.logic.commands.EditCapEntryCommandTest" time="0.001"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

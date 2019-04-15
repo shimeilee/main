@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="seedu.ultistudent.commons.core.ConfigTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2019-04-13T20:54:00" hostname="Lees-MBP-3" time="0.001">
+<testsuite name="seedu.ultistudent.commons.core.ConfigTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2019-04-15T02:56:20" hostname="r-131-100-25-172.comp.nus.edu.sg" time="0.002">
   <properties/>
-  <testcase name="equalsMethod" classname="seedu.ultistudent.commons.core.ConfigTest" time="0.0"/>
+  <testcase name="equalsMethod" classname="seedu.ultistudent.commons.core.ConfigTest" time="0.001"/>
   <testcase name="toString_defaultObject_stringReturned" classname="seedu.ultistudent.commons.core.ConfigTest" time="0.001"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>

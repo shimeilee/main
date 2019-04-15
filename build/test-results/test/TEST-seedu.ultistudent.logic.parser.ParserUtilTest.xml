@@ -1,33 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="seedu.ultistudent.logic.parser.ParserUtilTest" tests="27" skipped="0" failures="0" errors="0" timestamp="2019-04-13T20:54:01" hostname="Lees-MBP-3" time="0.026">
+<testsuite name="seedu.ultistudent.logic.parser.ParserUtilTest" tests="27" skipped="0" failures="0" errors="0" timestamp="2019-04-15T02:56:21" hostname="r-131-100-25-172.comp.nus.edu.sg" time="0.035">
   <properties/>
-  <testcase name="parseIndex_outOfRangeInput_throwsParseException" classname="seedu.ultistudent.logic.parser.ParserUtilTest" time="0.003"/>
+  <testcase name="parseIndex_outOfRangeInput_throwsParseException" classname="seedu.ultistudent.logic.parser.ParserUtilTest" time="0.004"/>
   <testcase name="parseTag_invalidValue_throwsParseException" classname="seedu.ultistudent.logic.parser.ParserUtilTest" time="0.0"/>
   <testcase name="parseAddress_validValueWithoutWhitespace_returnsAddress" classname="seedu.ultistudent.logic.parser.ParserUtilTest" time="0.001"/>
-  <testcase name="parseTags_collectionWithInvalidTags_throwsParseException" classname="seedu.ultistudent.logic.parser.ParserUtilTest" time="0.0"/>
-  <testcase name="parseName_null_throwsNullPointerException" classname="seedu.ultistudent.logic.parser.ParserUtilTest" time="0.001"/>
+  <testcase name="parseTags_collectionWithInvalidTags_throwsParseException" classname="seedu.ultistudent.logic.parser.ParserUtilTest" time="0.003"/>
+  <testcase name="parseName_null_throwsNullPointerException" classname="seedu.ultistudent.logic.parser.ParserUtilTest" time="0.002"/>
   <testcase name="parseTags_collectionWithValidTags_returnsTagSet" classname="seedu.ultistudent.logic.parser.ParserUtilTest" time="0.0"/>
-  <testcase name="parseEmail_invalidValue_throwsParseException" classname="seedu.ultistudent.logic.parser.ParserUtilTest" time="0.0"/>
+  <testcase name="parseEmail_invalidValue_throwsParseException" classname="seedu.ultistudent.logic.parser.ParserUtilTest" time="0.001"/>
   <testcase name="parseTag_validValueWithWhitespace_returnsTrimmedTag" classname="seedu.ultistudent.logic.parser.ParserUtilTest" time="0.001"/>
-  <testcase name="parseIndex_validInput_success" classname="seedu.ultistudent.logic.parser.ParserUtilTest" time="0.0"/>
+  <testcase name="parseIndex_validInput_success" classname="seedu.ultistudent.logic.parser.ParserUtilTest" time="0.001"/>
   <testcase name="parseName_validValueWithoutWhitespace_returnsName" classname="seedu.ultistudent.logic.parser.ParserUtilTest" time="0.001"/>
-  <testcase name="parseAddress_invalidValue_throwsParseException" classname="seedu.ultistudent.logic.parser.ParserUtilTest" time="0.001"/>
+  <testcase name="parseAddress_invalidValue_throwsParseException" classname="seedu.ultistudent.logic.parser.ParserUtilTest" time="0.0"/>
   <testcase name="parseTags_null_throwsNullPointerException" classname="seedu.ultistudent.logic.parser.ParserUtilTest" time="0.0"/>
-  <testcase name="parseIndex_invalidInput_throwsParseException" classname="seedu.ultistudent.logic.parser.ParserUtilTest" time="0.0"/>
+  <testcase name="parseIndex_invalidInput_throwsParseException" classname="seedu.ultistudent.logic.parser.ParserUtilTest" time="0.001"/>
   <testcase name="parseName_invalidValue_throwsParseException" classname="seedu.ultistudent.logic.parser.ParserUtilTest" time="0.0"/>
-  <testcase name="parseTag_null_throwsNullPointerException" classname="seedu.ultistudent.logic.parser.ParserUtilTest" time="0.0"/>
+  <testcase name="parseTag_null_throwsNullPointerException" classname="seedu.ultistudent.logic.parser.ParserUtilTest" time="0.001"/>
   <testcase name="parsePhone_null_throwsNullPointerException" classname="seedu.ultistudent.logic.parser.ParserUtilTest" time="0.001"/>
   <testcase name="parsePhone_invalidValue_throwsParseException" classname="seedu.ultistudent.logic.parser.ParserUtilTest" time="0.001"/>
   <testcase name="parseEmail_null_throwsNullPointerException" classname="seedu.ultistudent.logic.parser.ParserUtilTest" time="0.001"/>
-  <testcase name="parsePhone_validValueWithWhitespace_returnsTrimmedPhone" classname="seedu.ultistudent.logic.parser.ParserUtilTest" time="0.001"/>
-  <testcase name="parseAddress_validValueWithWhitespace_returnsTrimmedAddress" classname="seedu.ultistudent.logic.parser.ParserUtilTest" time="0.0"/>
+  <testcase name="parsePhone_validValueWithWhitespace_returnsTrimmedPhone" classname="seedu.ultistudent.logic.parser.ParserUtilTest" time="0.0"/>
+  <testcase name="parseAddress_validValueWithWhitespace_returnsTrimmedAddress" classname="seedu.ultistudent.logic.parser.ParserUtilTest" time="0.001"/>
   <testcase name="parsePhone_validValueWithoutWhitespace_returnsPhone" classname="seedu.ultistudent.logic.parser.ParserUtilTest" time="0.001"/>
   <testcase name="parseAddress_null_throwsNullPointerException" classname="seedu.ultistudent.logic.parser.ParserUtilTest" time="0.001"/>
   <testcase name="parseTags_emptyCollection_returnsEmptySet" classname="seedu.ultistudent.logic.parser.ParserUtilTest" time="0.0"/>
   <testcase name="parseTag_validValueWithoutWhitespace_returnsTag" classname="seedu.ultistudent.logic.parser.ParserUtilTest" time="0.0"/>
-  <testcase name="parseEmail_validValueWithoutWhitespace_returnsEmail" classname="seedu.ultistudent.logic.parser.ParserUtilTest" time="0.0"/>
-  <testcase name="parseEmail_validValueWithWhitespace_returnsTrimmedEmail" classname="seedu.ultistudent.logic.parser.ParserUtilTest" time="0.001"/>
-  <testcase name="parseName_validValueWithWhitespace_returnsTrimmedName" classname="seedu.ultistudent.logic.parser.ParserUtilTest" time="0.0"/>
+  <testcase name="parseEmail_validValueWithoutWhitespace_returnsEmail" classname="seedu.ultistudent.logic.parser.ParserUtilTest" time="0.001"/>
+  <testcase name="parseEmail_validValueWithWhitespace_returnsTrimmedEmail" classname="seedu.ultistudent.logic.parser.ParserUtilTest" time="0.0"/>
+  <testcase name="parseName_validValueWithWhitespace_returnsTrimmedName" classname="seedu.ultistudent.logic.parser.ParserUtilTest" time="0.001"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

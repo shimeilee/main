@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="seedu.ultistudent.model.note.UniqueNoteListTest" tests="21" skipped="0" failures="0" errors="0" timestamp="2019-04-13T20:54:01" hostname="Lees-MBP-3" time="0.006">
+<testsuite name="seedu.ultistudent.model.note.UniqueNoteListTest" tests="21" skipped="0" failures="0" errors="0" timestamp="2019-04-15T02:56:22" hostname="r-131-100-25-172.comp.nus.edu.sg" time="0.007">
   <properties/>
-  <testcase name="asUnmodifiableObservableList_modifyList_throwsUnsupportedOperationException" classname="seedu.ultistudent.model.note.UniqueNoteListTest" time="0.001"/>
+  <testcase name="asUnmodifiableObservableList_modifyList_throwsUnsupportedOperationException" classname="seedu.ultistudent.model.note.UniqueNoteListTest" time="0.0"/>
   <testcase name="setNotes_nullList_throwsNullPointerException" classname="seedu.ultistudent.model.note.UniqueNoteListTest" time="0.0"/>
   <testcase name="contains_noteNotInList_returnsFalse" classname="seedu.ultistudent.model.note.UniqueNoteListTest" time="0.0"/>
   <testcase name="setNote_editedNoteHasNonUniqueIdentity_throwsDuplicateNoteException" classname="seedu.ultistudent.model.note.UniqueNoteListTest" time="0.001"/>
@@ -17,7 +17,7 @@
   <testcase name="setNote_nullEditedNote_throwsNullPointerException" classname="seedu.ultistudent.model.note.UniqueNoteListTest" time="0.0"/>
   <testcase name="remove_nullNote_throwsNullPointerException" classname="seedu.ultistudent.model.note.UniqueNoteListTest" time="0.0"/>
   <testcase name="contains_noteInList_returnsTrue" classname="seedu.ultistudent.model.note.UniqueNoteListTest" time="0.0"/>
-  <testcase name="setNotes_listWithDuplicateNotess_throwsDuplicateNoteException" classname="seedu.ultistudent.model.note.UniqueNoteListTest" time="0.0"/>
+  <testcase name="setNotes_listWithDuplicateNotess_throwsDuplicateNoteException" classname="seedu.ultistudent.model.note.UniqueNoteListTest" time="0.001"/>
   <testcase name="setNote_targetNoteNotInList_throwsNoteNotFoundException" classname="seedu.ultistudent.model.note.UniqueNoteListTest" time="0.0"/>
   <testcase name="contains_nullNote_throwsNullPointerException" classname="seedu.ultistudent.model.note.UniqueNoteListTest" time="0.0"/>
   <testcase name="setNotes_uniqueNoteList_replacesOwnListWithProvidedUniqueNoteList" classname="seedu.ultistudent.model.note.UniqueNoteListTest" time="0.0"/>

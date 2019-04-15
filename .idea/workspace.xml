@@ -10,10 +10,266 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6a1fc457-8f69-42bd-b1d8-53dd4597ed36" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.gradle/4.8.1/fileContent/fileContent.lock" afterPath="$PROJECT_DIR$/.gradle/4.8.1/fileContent/fileContent.lock" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.8.1/fileHashes/fileHashes.bin" afterPath="$PROJECT_DIR$/.gradle/4.8.1/fileHashes/fileHashes.bin" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.8.1/fileHashes/fileHashes.lock" afterPath="$PROJECT_DIR$/.gradle/4.8.1/fileHashes/fileHashes.lock" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.8.1/fileHashes/resourceHashesCache.bin" afterPath="$PROJECT_DIR$/.gradle/4.8.1/fileHashes/resourceHashesCache.bin" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.8.1/taskHistory/taskHistory.bin" afterPath="$PROJECT_DIR$/.gradle/4.8.1/taskHistory/taskHistory.bin" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.8.1/taskHistory/taskHistory.lock" afterPath="$PROJECT_DIR$/.gradle/4.8.1/taskHistory/taskHistory.lock" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/UltiStudent.log.0" afterPath="$PROJECT_DIR$/UltiStudent.log.0" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/seedu/ultistudent/logic/commands/DeleteCapEntryCommand.class" afterPath="$PROJECT_DIR$/build/classes/java/main/seedu/ultistudent/logic/commands/DeleteCapEntryCommand.class" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/seedu/ultistudent/logic/commands/EditCapEntryByModuleCodeCommand.class" afterPath="$PROJECT_DIR$/build/classes/java/main/seedu/ultistudent/logic/commands/EditCapEntryByModuleCodeCommand.class" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/seedu/ultistudent/logic/commands/EditCapEntryCommand$EditCapEntryDescriptor.class" afterPath="$PROJECT_DIR$/build/classes/java/main/seedu/ultistudent/logic/commands/EditCapEntryCommand$EditCapEntryDescriptor.class" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/seedu/ultistudent/logic/commands/EditCapEntryCommand.class" afterPath="$PROJECT_DIR$/build/classes/java/main/seedu/ultistudent/logic/commands/EditCapEntryCommand.class" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/seedu/ultistudent/logic/commands/FindSemesterCommand.class" afterPath="$PROJECT_DIR$/build/classes/java/main/seedu/ultistudent/logic/commands/FindSemesterCommand.class" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/seedu/ultistudent/logic/commands/RedoCommand.class" afterPath="$PROJECT_DIR$/build/classes/java/main/seedu/ultistudent/logic/commands/RedoCommand.class" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/seedu/ultistudent/logic/commands/UndoCommand.class" afterPath="$PROJECT_DIR$/build/classes/java/main/seedu/ultistudent/logic/commands/UndoCommand.class" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/seedu/ultistudent/logic/parser/FindSemesterCommandParser.class" afterPath="$PROJECT_DIR$/build/classes/java/main/seedu/ultistudent/logic/parser/FindSemesterCommandParser.class" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/seedu/ultistudent/logic/parser/UltiStudentParser.class" afterPath="$PROJECT_DIR$/build/classes/java/main/seedu/ultistudent/logic/parser/UltiStudentParser.class" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/seedu/ultistudent/model/UltiStudent.class" afterPath="$PROJECT_DIR$/build/classes/java/main/seedu/ultistudent/model/UltiStudent.class" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/seedu/ultistudent/model/util/SampleDataUtil.class" afterPath="$PROJECT_DIR$/build/classes/java/main/seedu/ultistudent/model/util/SampleDataUtil.class" />
+      <change beforePath="$PROJECT_DIR$/build/docs/html5/AboutUs.html" afterPath="$PROJECT_DIR$/build/docs/html5/AboutUs.html" />
+      <change beforePath="$PROJECT_DIR$/build/docs/html5/DeveloperGuide.html" afterPath="$PROJECT_DIR$/build/docs/html5/DeveloperGuide.html" />
+      <change beforePath="$PROJECT_DIR$/build/docs/html5/HelpWindow.html" afterPath="$PROJECT_DIR$/build/docs/html5/HelpWindow.html" />
+      <change beforePath="$PROJECT_DIR$/build/docs/html5/UserGuide.html" afterPath="$PROJECT_DIR$/build/docs/html5/UserGuide.html" />
+      <change beforePath="$PROJECT_DIR$/build/docs/html5/images/Add-Hw UG.png" afterPath="$PROJECT_DIR$/build/docs/html5/images/Add-Hw UG.png" />
+      <change beforePath="$PROJECT_DIR$/build/docs/html5/images/CapManagerInterface.png" afterPath="$PROJECT_DIR$/build/docs/html5/images/CapManagerInterface.png" />
+      <change beforePath="$PROJECT_DIR$/build/docs/html5/images/Edit&amp;Save-Note UG.png" afterPath="$PROJECT_DIR$/build/docs/html5/images/Edit&amp;Save-Note UG.png" />
+      <change beforePath="$PROJECT_DIR$/build/docs/html5/images/OpenCapManager.png" afterPath="$PROJECT_DIR$/build/docs/html5/images/OpenCapManager.png" />
+      <change beforePath="$PROJECT_DIR$/build/docs/html5/images/Ui.png" afterPath="$PROJECT_DIR$/build/docs/html5/images/Ui.png" />
+      <change beforePath="$PROJECT_DIR$/build/docs/html5/team/andrewscw.html" afterPath="$PROJECT_DIR$/build/docs/html5/team/andrewscw.html" />
+      <change beforePath="$PROJECT_DIR$/build/docs/html5/team/johndoe.html" afterPath="$PROJECT_DIR$/build/docs/html5/team/johndoe.html" />
+      <change beforePath="$PROJECT_DIR$/build/docs/html5/team/limzhengjiebenjamin.html" afterPath="$PROJECT_DIR$/build/docs/html5/team/limzhengjiebenjamin.html" />
+      <change beforePath="$PROJECT_DIR$/build/docs/html5/team/ngweixin.html" afterPath="$PROJECT_DIR$/build/docs/html5/team/ngweixin.html" />
+      <change beforePath="$PROJECT_DIR$/build/docs/html5/team/shimeilee.html" afterPath="$PROJECT_DIR$/build/docs/html5/team/shimeilee.html" />
+      <change beforePath="$PROJECT_DIR$/build/jacoco/test.exec" afterPath="$PROJECT_DIR$/build/jacoco/test.exec" />
+      <change beforePath="$PROJECT_DIR$/build/reports/checkstyle/main.html" afterPath="$PROJECT_DIR$/build/reports/checkstyle/main.html" />
+      <change beforePath="$PROJECT_DIR$/build/reports/checkstyle/main.xml" afterPath="$PROJECT_DIR$/build/reports/checkstyle/main.xml" />
+      <change beforePath="$PROJECT_DIR$/build/reports/jacoco/coverage/coverage.xml" afterPath="$PROJECT_DIR$/build/reports/jacoco/coverage/coverage.xml" />
+      <change beforePath="$PROJECT_DIR$/build/reports/jacoco/coverage/html/index.html" afterPath="$PROJECT_DIR$/build/reports/jacoco/coverage/html/index.html" />
+      <change beforePath="$PROJECT_DIR$/build/reports/jacoco/coverage/html/jacoco-sessions.html" afterPath="$PROJECT_DIR$/build/reports/jacoco/coverage/html/jacoco-sessions.html" />
+      <change beforePath="$PROJECT_DIR$/build/reports/jacoco/coverage/html/seedu.ultistudent.logic.commands/DeleteCapEntryCommand.html" afterPath="$PROJECT_DIR$/build/reports/jacoco/coverage/html/seedu.ultistudent.logic.commands/DeleteCapEntryCommand.html" />
+      <change beforePath="$PROJECT_DIR$/build/reports/jacoco/coverage/html/seedu.ultistudent.logic.commands/DeleteCapEntryCommand.java.html" afterPath="$PROJECT_DIR$/build/reports/jacoco/coverage/html/seedu.ultistudent.logic.commands/DeleteCapEntryCommand.java.html" />
+      <change beforePath="$PROJECT_DIR$/build/reports/jacoco/coverage/html/seedu.ultistudent.logic.commands/EditCapEntryByModuleCodeCommand.html" afterPath="$PROJECT_DIR$/build/reports/jacoco/coverage/html/seedu.ultistudent.logic.commands/EditCapEntryByModuleCodeCommand.html" />
+      <change beforePath="$PROJECT_DIR$/build/reports/jacoco/coverage/html/seedu.ultistudent.logic.commands/EditCapEntryByModuleCodeCommand.java.html" afterPath="$PROJECT_DIR$/build/reports/jacoco/coverage/html/seedu.ultistudent.logic.commands/EditCapEntryByModuleCodeCommand.java.html" />
+      <change beforePath="$PROJECT_DIR$/build/reports/jacoco/coverage/html/seedu.ultistudent.logic.commands/EditCapEntryCommand$EditCapEntryDescriptor.html" afterPath="$PROJECT_DIR$/build/reports/jacoco/coverage/html/seedu.ultistudent.logic.commands/EditCapEntryCommand$EditCapEntryDescriptor.html" />
+      <change beforePath="$PROJECT_DIR$/build/reports/jacoco/coverage/html/seedu.ultistudent.logic.commands/EditCapEntryCommand.html" afterPath="$PROJECT_DIR$/build/reports/jacoco/coverage/html/seedu.ultistudent.logic.commands/EditCapEntryCommand.html" />
+      <change beforePath="$PROJECT_DIR$/build/reports/jacoco/coverage/html/seedu.ultistudent.logic.commands/EditCapEntryCommand.java.html" afterPath="$PROJECT_DIR$/build/reports/jacoco/coverage/html/seedu.ultistudent.logic.commands/EditCapEntryCommand.java.html" />
+      <change beforePath="$PROJECT_DIR$/build/reports/jacoco/coverage/html/seedu.ultistudent.logic.commands/FindSemesterCommand.java.html" afterPath="$PROJECT_DIR$/build/reports/jacoco/coverage/html/seedu.ultistudent.logic.commands/FindSemesterCommand.java.html" />
+      <change beforePath="$PROJECT_DIR$/build/reports/jacoco/coverage/html/seedu.ultistudent.logic.commands/RedoCommand.html" afterPath="$PROJECT_DIR$/build/reports/jacoco/coverage/html/seedu.ultistudent.logic.commands/RedoCommand.html" />
+      <change beforePath="$PROJECT_DIR$/build/reports/jacoco/coverage/html/seedu.ultistudent.logic.commands/RedoCommand.java.html" afterPath="$PROJECT_DIR$/build/reports/jacoco/coverage/html/seedu.ultistudent.logic.commands/RedoCommand.java.html" />
+      <change beforePath="$PROJECT_DIR$/build/reports/jacoco/coverage/html/seedu.ultistudent.logic.commands/UndoCommand.html" afterPath="$PROJECT_DIR$/build/reports/jacoco/coverage/html/seedu.ultistudent.logic.commands/UndoCommand.html" />
+      <change beforePath="$PROJECT_DIR$/build/reports/jacoco/coverage/html/seedu.ultistudent.logic.commands/UndoCommand.java.html" afterPath="$PROJECT_DIR$/build/reports/jacoco/coverage/html/seedu.ultistudent.logic.commands/UndoCommand.java.html" />
+      <change beforePath="$PROJECT_DIR$/build/reports/jacoco/coverage/html/seedu.ultistudent.logic.commands/index.html" afterPath="$PROJECT_DIR$/build/reports/jacoco/coverage/html/seedu.ultistudent.logic.commands/index.html" />
+      <change beforePath="$PROJECT_DIR$/build/reports/jacoco/coverage/html/seedu.ultistudent.logic.commands/index.source.html" afterPath="$PROJECT_DIR$/build/reports/jacoco/coverage/html/seedu.ultistudent.logic.commands/index.source.html" />
+      <change beforePath="$PROJECT_DIR$/build/reports/jacoco/coverage/html/seedu.ultistudent.logic.parser/UltiStudentParser.html" afterPath="$PROJECT_DIR$/build/reports/jacoco/coverage/html/seedu.ultistudent.logic.parser/UltiStudentParser.html" />
+      <change beforePath="$PROJECT_DIR$/build/reports/jacoco/coverage/html/seedu.ultistudent.logic.parser/UltiStudentParser.java.html" afterPath="$PROJECT_DIR$/build/reports/jacoco/coverage/html/seedu.ultistudent.logic.parser/UltiStudentParser.java.html" />
+      <change beforePath="$PROJECT_DIR$/build/reports/jacoco/coverage/html/seedu.ultistudent.logic.parser/index.html" afterPath="$PROJECT_DIR$/build/reports/jacoco/coverage/html/seedu.ultistudent.logic.parser/index.html" />
+      <change beforePath="$PROJECT_DIR$/build/reports/jacoco/coverage/html/seedu.ultistudent.logic.parser/index.source.html" afterPath="$PROJECT_DIR$/build/reports/jacoco/coverage/html/seedu.ultistudent.logic.parser/index.source.html" />
+      <change beforePath="$PROJECT_DIR$/build/reports/jacoco/coverage/html/seedu.ultistudent.model.util/SampleDataUtil.html" afterPath="$PROJECT_DIR$/build/reports/jacoco/coverage/html/seedu.ultistudent.model.util/SampleDataUtil.html" />
+      <change beforePath="$PROJECT_DIR$/build/reports/jacoco/coverage/html/seedu.ultistudent.model.util/SampleDataUtil.java.html" afterPath="$PROJECT_DIR$/build/reports/jacoco/coverage/html/seedu.ultistudent.model.util/SampleDataUtil.java.html" />
+      <change beforePath="$PROJECT_DIR$/build/reports/jacoco/coverage/html/seedu.ultistudent.model.util/index.html" afterPath="$PROJECT_DIR$/build/reports/jacoco/coverage/html/seedu.ultistudent.model.util/index.html" />
+      <change beforePath="$PROJECT_DIR$/build/reports/jacoco/coverage/html/seedu.ultistudent.model.util/index.source.html" afterPath="$PROJECT_DIR$/build/reports/jacoco/coverage/html/seedu.ultistudent.model.util/index.source.html" />
+      <change beforePath="$PROJECT_DIR$/build/reports/jacoco/coverage/html/seedu.ultistudent.model/UltiStudent.html" afterPath="$PROJECT_DIR$/build/reports/jacoco/coverage/html/seedu.ultistudent.model/UltiStudent.html" />
+      <change beforePath="$PROJECT_DIR$/build/reports/jacoco/coverage/html/seedu.ultistudent.model/UltiStudent.java.html" afterPath="$PROJECT_DIR$/build/reports/jacoco/coverage/html/seedu.ultistudent.model/UltiStudent.java.html" />
+      <change beforePath="$PROJECT_DIR$/build/reports/jacoco/coverage/html/seedu.ultistudent.model/index.html" afterPath="$PROJECT_DIR$/build/reports/jacoco/coverage/html/seedu.ultistudent.model/index.html" />
+      <change beforePath="$PROJECT_DIR$/build/reports/jacoco/coverage/html/seedu.ultistudent.model/index.source.html" afterPath="$PROJECT_DIR$/build/reports/jacoco/coverage/html/seedu.ultistudent.model/index.source.html" />
+      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/classes/seedu.ultistudent.AppParametersTest.html" afterPath="$PROJECT_DIR$/build/reports/tests/test/classes/seedu.ultistudent.AppParametersTest.html" />
+      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/classes/seedu.ultistudent.commons.core.ConfigTest.html" afterPath="$PROJECT_DIR$/build/reports/tests/test/classes/seedu.ultistudent.commons.core.ConfigTest.html" />
+      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/classes/seedu.ultistudent.commons.core.VersionTest.html" afterPath="$PROJECT_DIR$/build/reports/tests/test/classes/seedu.ultistudent.commons.core.VersionTest.html" />
+      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/classes/seedu.ultistudent.commons.core.index.IndexTest.html" afterPath="$PROJECT_DIR$/build/reports/tests/test/classes/seedu.ultistudent.commons.core.index.IndexTest.html" />
+      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/classes/seedu.ultistudent.commons.util.AppUtilTest.html" afterPath="$PROJECT_DIR$/build/reports/tests/test/classes/seedu.ultistudent.commons.util.AppUtilTest.html" />
+      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/classes/seedu.ultistudent.commons.util.CollectionUtilTest.html" afterPath="$PROJECT_DIR$/build/reports/tests/test/classes/seedu.ultistudent.commons.util.CollectionUtilTest.html" />
+      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/classes/seedu.ultistudent.commons.util.ConfigUtilTest.html" afterPath="$PROJECT_DIR$/build/reports/tests/test/classes/seedu.ultistudent.commons.util.ConfigUtilTest.html" />
+      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/classes/seedu.ultistudent.commons.util.FileUtilTest.html" afterPath="$PROJECT_DIR$/build/reports/tests/test/classes/seedu.ultistudent.commons.util.FileUtilTest.html" />
+      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/classes/seedu.ultistudent.commons.util.InvalidationListenerManagerTest.html" afterPath="$PROJECT_DIR$/build/reports/tests/test/classes/seedu.ultistudent.commons.util.InvalidationListenerManagerTest.html" />
+      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/classes/seedu.ultistudent.commons.util.JsonUtilTest.html" afterPath="$PROJECT_DIR$/build/reports/tests/test/classes/seedu.ultistudent.commons.util.JsonUtilTest.html" />
+      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/classes/seedu.ultistudent.commons.util.StringUtilTest.html" afterPath="$PROJECT_DIR$/build/reports/tests/test/classes/seedu.ultistudent.commons.util.StringUtilTest.html" />
+      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/classes/seedu.ultistudent.logic.CommandHistoryTest.html" afterPath="$PROJECT_DIR$/build/reports/tests/test/classes/seedu.ultistudent.logic.CommandHistoryTest.html" />
+      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/classes/seedu.ultistudent.logic.LogicManagerTest.html" afterPath="$PROJECT_DIR$/build/reports/tests/test/classes/seedu.ultistudent.logic.LogicManagerTest.html" />
+      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/classes/seedu.ultistudent.logic.commands.AddCapEntryCommandTest.html" afterPath="$PROJECT_DIR$/build/reports/tests/test/classes/seedu.ultistudent.logic.commands.AddCapEntryCommandTest.html" />
+      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/classes/seedu.ultistudent.logic.commands.AddHomeworkCommandTest.html" afterPath="$PROJECT_DIR$/build/reports/tests/test/classes/seedu.ultistudent.logic.commands.AddHomeworkCommandTest.html" />
+      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/classes/seedu.ultistudent.logic.commands.AddNoteCommandTest.html" afterPath="$PROJECT_DIR$/build/reports/tests/test/classes/seedu.ultistudent.logic.commands.AddNoteCommandTest.html" />
+      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/classes/seedu.ultistudent.logic.commands.ClearCommandTest.html" afterPath="$PROJECT_DIR$/build/reports/tests/test/classes/seedu.ultistudent.logic.commands.ClearCommandTest.html" />
+      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/classes/seedu.ultistudent.logic.commands.CommandResultTest.html" afterPath="$PROJECT_DIR$/build/reports/tests/test/classes/seedu.ultistudent.logic.commands.CommandResultTest.html" />
+      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/classes/seedu.ultistudent.logic.commands.DeleteCapEntryCommandTest.html" afterPath="$PROJECT_DIR$/build/reports/tests/test/classes/seedu.ultistudent.logic.commands.DeleteCapEntryCommandTest.html" />
+      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/classes/seedu.ultistudent.logic.commands.DeleteHomeworkCommandTest.html" afterPath="$PROJECT_DIR$/build/reports/tests/test/classes/seedu.ultistudent.logic.commands.DeleteHomeworkCommandTest.html" />
+      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/classes/seedu.ultistudent.logic.commands.EditCapEntryCommandTest.html" afterPath="$PROJECT_DIR$/build/reports/tests/test/classes/seedu.ultistudent.logic.commands.EditCapEntryCommandTest.html" />
+      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/classes/seedu.ultistudent.logic.commands.EditNoteCommandTest.html" afterPath="$PROJECT_DIR$/build/reports/tests/test/classes/seedu.ultistudent.logic.commands.EditNoteCommandTest.html" />
+      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/classes/seedu.ultistudent.logic.commands.ExitCommandTest.html" afterPath="$PROJECT_DIR$/build/reports/tests/test/classes/seedu.ultistudent.logic.commands.ExitCommandTest.html" />
+      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/classes/seedu.ultistudent.logic.commands.FindCommandTest.html" afterPath="$PROJECT_DIR$/build/reports/tests/test/classes/seedu.ultistudent.logic.commands.FindCommandTest.html" />
+      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/classes/seedu.ultistudent.logic.commands.HelpCommandTest.html" afterPath="$PROJECT_DIR$/build/reports/tests/test/classes/seedu.ultistudent.logic.commands.HelpCommandTest.html" />
+      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/classes/seedu.ultistudent.logic.commands.HistoryCommandTest.html" afterPath="$PROJECT_DIR$/build/reports/tests/test/classes/seedu.ultistudent.logic.commands.HistoryCommandTest.html" />
+      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/classes/seedu.ultistudent.logic.commands.ListCommandTest.html" afterPath="$PROJECT_DIR$/build/reports/tests/test/classes/seedu.ultistudent.logic.commands.ListCommandTest.html" />
+      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/classes/seedu.ultistudent.logic.commands.RedoCommandTest.html" afterPath="$PROJECT_DIR$/build/reports/tests/test/classes/seedu.ultistudent.logic.commands.RedoCommandTest.html" />
+      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/classes/seedu.ultistudent.logic.commands.SaveNoteCommandTest.html" afterPath="$PROJECT_DIR$/build/reports/tests/test/classes/seedu.ultistudent.logic.commands.SaveNoteCommandTest.html" />
+      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/classes/seedu.ultistudent.logic.commands.SelectCommandTest.html" afterPath="$PROJECT_DIR$/build/reports/tests/test/classes/seedu.ultistudent.logic.commands.SelectCommandTest.html" />
+      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/classes/seedu.ultistudent.logic.commands.UndoCommandTest.html" afterPath="$PROJECT_DIR$/build/reports/tests/test/classes/seedu.ultistudent.logic.commands.UndoCommandTest.html" />
+      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/classes/seedu.ultistudent.logic.parser.AddCapEntryCommandParserTest.html" afterPath="$PROJECT_DIR$/build/reports/tests/test/classes/seedu.ultistudent.logic.parser.AddCapEntryCommandParserTest.html" />
+      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/classes/seedu.ultistudent.logic.parser.AddHomeworkCommandParserTest.html" afterPath="$PROJECT_DIR$/build/reports/tests/test/classes/seedu.ultistudent.logic.parser.AddHomeworkCommandParserTest.html" />
+      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/classes/seedu.ultistudent.logic.parser.AddNoteCommandParserTest.html" afterPath="$PROJECT_DIR$/build/reports/tests/test/classes/seedu.ultistudent.logic.parser.AddNoteCommandParserTest.html" />
+      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/classes/seedu.ultistudent.logic.parser.ArgumentTokenizerTest.html" afterPath="$PROJECT_DIR$/build/reports/tests/test/classes/seedu.ultistudent.logic.parser.ArgumentTokenizerTest.html" />
+      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/classes/seedu.ultistudent.logic.parser.DeleteCapEntryCommandParserTest.html" afterPath="$PROJECT_DIR$/build/reports/tests/test/classes/seedu.ultistudent.logic.parser.DeleteCapEntryCommandParserTest.html" />
+      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/classes/seedu.ultistudent.logic.parser.EditCapEntryCommandParserTest.html" afterPath="$PROJECT_DIR$/build/reports/tests/test/classes/seedu.ultistudent.logic.parser.EditCapEntryCommandParserTest.html" />
+      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/classes/seedu.ultistudent.logic.parser.EditNoteCommandParserTest.html" afterPath="$PROJECT_DIR$/build/reports/tests/test/classes/seedu.ultistudent.logic.parser.EditNoteCommandParserTest.html" />
+      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/classes/seedu.ultistudent.logic.parser.FindCommandParserTest.html" afterPath="$PROJECT_DIR$/build/reports/tests/test/classes/seedu.ultistudent.logic.parser.FindCommandParserTest.html" />
+      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/classes/seedu.ultistudent.logic.parser.ParserUtilTest.html" afterPath="$PROJECT_DIR$/build/reports/tests/test/classes/seedu.ultistudent.logic.parser.ParserUtilTest.html" />
+      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/classes/seedu.ultistudent.logic.parser.SelectCommandParserTest.html" afterPath="$PROJECT_DIR$/build/reports/tests/test/classes/seedu.ultistudent.logic.parser.SelectCommandParserTest.html" />
+      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/classes/seedu.ultistudent.logic.parser.UltiStudentParserTest.html" afterPath="$PROJECT_DIR$/build/reports/tests/test/classes/seedu.ultistudent.logic.parser.UltiStudentParserTest.html" />
+      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/classes/seedu.ultistudent.model.AddressBookTest.html" afterPath="$PROJECT_DIR$/build/reports/tests/test/classes/seedu.ultistudent.model.AddressBookTest.html" />
+      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/classes/seedu.ultistudent.model.ModelManagerTest.html" afterPath="$PROJECT_DIR$/build/reports/tests/test/classes/seedu.ultistudent.model.ModelManagerTest.html" />
+      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/classes/seedu.ultistudent.model.UserPrefsTest.html" afterPath="$PROJECT_DIR$/build/reports/tests/test/classes/seedu.ultistudent.model.UserPrefsTest.html" />
+      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/classes/seedu.ultistudent.model.VersionedAddressBookTest.html" afterPath="$PROJECT_DIR$/build/reports/tests/test/classes/seedu.ultistudent.model.VersionedAddressBookTest.html" />
+      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/classes/seedu.ultistudent.model.cap.CapEntryTest.html" afterPath="$PROJECT_DIR$/build/reports/tests/test/classes/seedu.ultistudent.model.cap.CapEntryTest.html" />
+      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/classes/seedu.ultistudent.model.cap.ModuleCreditsTest.html" afterPath="$PROJECT_DIR$/build/reports/tests/test/classes/seedu.ultistudent.model.cap.ModuleCreditsTest.html" />
+      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/classes/seedu.ultistudent.model.cap.ModuleGradeTest.html" afterPath="$PROJECT_DIR$/build/reports/tests/test/classes/seedu.ultistudent.model.cap.ModuleGradeTest.html" />
+      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/classes/seedu.ultistudent.model.cap.ModuleSemesterTest.html" afterPath="$PROJECT_DIR$/build/reports/tests/test/classes/seedu.ultistudent.model.cap.ModuleSemesterTest.html" />
+      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/classes/seedu.ultistudent.model.cap.UniqueCapEntryListTest.html" afterPath="$PROJECT_DIR$/build/reports/tests/test/classes/seedu.ultistudent.model.cap.UniqueCapEntryListTest.html" />
+      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/classes/seedu.ultistudent.model.cap.UniqueModuleSemesterListTest.html" afterPath="$PROJECT_DIR$/build/reports/tests/test/classes/seedu.ultistudent.model.cap.UniqueModuleSemesterListTest.html" />
+      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/classes/seedu.ultistudent.model.homework.DateTest.html" afterPath="$PROJECT_DIR$/build/reports/tests/test/classes/seedu.ultistudent.model.homework.DateTest.html" />
+      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/classes/seedu.ultistudent.model.homework.HomeworkNameTest.html" afterPath="$PROJECT_DIR$/build/reports/tests/test/classes/seedu.ultistudent.model.homework.HomeworkNameTest.html" />
+      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/classes/seedu.ultistudent.model.homework.ModuleCodeTest.html" afterPath="$PROJECT_DIR$/build/reports/tests/test/classes/seedu.ultistudent.model.homework.ModuleCodeTest.html" />
+      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/classes/seedu.ultistudent.model.note.ContentTest.html" afterPath="$PROJECT_DIR$/build/reports/tests/test/classes/seedu.ultistudent.model.note.ContentTest.html" />
+      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/classes/seedu.ultistudent.model.note.NoteNameContainsKeywordsPredicateTest.html" afterPath="$PROJECT_DIR$/build/reports/tests/test/classes/seedu.ultistudent.model.note.NoteNameContainsKeywordsPredicateTest.html" />
+      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/classes/seedu.ultistudent.model.note.NoteNameTest.html" afterPath="$PROJECT_DIR$/build/reports/tests/test/classes/seedu.ultistudent.model.note.NoteNameTest.html" />
+      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/classes/seedu.ultistudent.model.note.NoteTest.html" afterPath="$PROJECT_DIR$/build/reports/tests/test/classes/seedu.ultistudent.model.note.NoteTest.html" />
+      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/classes/seedu.ultistudent.model.note.UniqueNoteListTest.html" afterPath="$PROJECT_DIR$/build/reports/tests/test/classes/seedu.ultistudent.model.note.UniqueNoteListTest.html" />
+      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/classes/seedu.ultistudent.model.person.AddressTest.html" afterPath="$PROJECT_DIR$/build/reports/tests/test/classes/seedu.ultistudent.model.person.AddressTest.html" />
+      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/classes/seedu.ultistudent.model.person.EmailTest.html" afterPath="$PROJECT_DIR$/build/reports/tests/test/classes/seedu.ultistudent.model.person.EmailTest.html" />
+      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/classes/seedu.ultistudent.model.person.NameContainsKeywordsPredicateTest.html" afterPath="$PROJECT_DIR$/build/reports/tests/test/classes/seedu.ultistudent.model.person.NameContainsKeywordsPredicateTest.html" />
+      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/classes/seedu.ultistudent.model.person.NameTest.html" afterPath="$PROJECT_DIR$/build/reports/tests/test/classes/seedu.ultistudent.model.person.NameTest.html" />
+      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/classes/seedu.ultistudent.model.person.PersonTest.html" afterPath="$PROJECT_DIR$/build/reports/tests/test/classes/seedu.ultistudent.model.person.PersonTest.html" />
+      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/classes/seedu.ultistudent.model.person.PhoneTest.html" afterPath="$PROJECT_DIR$/build/reports/tests/test/classes/seedu.ultistudent.model.person.PhoneTest.html" />
+      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/classes/seedu.ultistudent.model.person.UniquePersonListTest.html" afterPath="$PROJECT_DIR$/build/reports/tests/test/classes/seedu.ultistudent.model.person.UniquePersonListTest.html" />
+      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/classes/seedu.ultistudent.model.tag.TagTest.html" afterPath="$PROJECT_DIR$/build/reports/tests/test/classes/seedu.ultistudent.model.tag.TagTest.html" />
+      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/classes/seedu.ultistudent.storage.JsonAdaptedPersonTest.html" afterPath="$PROJECT_DIR$/build/reports/tests/test/classes/seedu.ultistudent.storage.JsonAdaptedPersonTest.html" />
+      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/classes/seedu.ultistudent.storage.JsonUltiStudentStorageTest.html" afterPath="$PROJECT_DIR$/build/reports/tests/test/classes/seedu.ultistudent.storage.JsonUltiStudentStorageTest.html" />
+      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/classes/seedu.ultistudent.storage.JsonUserPrefsStorageTest.html" afterPath="$PROJECT_DIR$/build/reports/tests/test/classes/seedu.ultistudent.storage.JsonUserPrefsStorageTest.html" />
+      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/classes/seedu.ultistudent.storage.StorageManagerTest.html" afterPath="$PROJECT_DIR$/build/reports/tests/test/classes/seedu.ultistudent.storage.StorageManagerTest.html" />
+      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/classes/seedu.ultistudent.ui.BrowserPanelTest.html" afterPath="$PROJECT_DIR$/build/reports/tests/test/classes/seedu.ultistudent.ui.BrowserPanelTest.html" />
+      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/classes/seedu.ultistudent.ui.CommandBoxTest.html" afterPath="$PROJECT_DIR$/build/reports/tests/test/classes/seedu.ultistudent.ui.CommandBoxTest.html" />
+      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/classes/seedu.ultistudent.ui.HelpWindowTest.html" afterPath="$PROJECT_DIR$/build/reports/tests/test/classes/seedu.ultistudent.ui.HelpWindowTest.html" />
+      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/classes/seedu.ultistudent.ui.ListElementPointerTest.html" afterPath="$PROJECT_DIR$/build/reports/tests/test/classes/seedu.ultistudent.ui.ListElementPointerTest.html" />
+      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/classes/seedu.ultistudent.ui.MainWindowCloseTest.html" afterPath="$PROJECT_DIR$/build/reports/tests/test/classes/seedu.ultistudent.ui.MainWindowCloseTest.html" />
+      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/classes/seedu.ultistudent.ui.ResultDisplayTest.html" afterPath="$PROJECT_DIR$/build/reports/tests/test/classes/seedu.ultistudent.ui.ResultDisplayTest.html" />
+      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/classes/seedu.ultistudent.ui.StatusBarFooterTest.html" afterPath="$PROJECT_DIR$/build/reports/tests/test/classes/seedu.ultistudent.ui.StatusBarFooterTest.html" />
+      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/classes/seedu.ultistudent.ui.UiPartTest.html" afterPath="$PROJECT_DIR$/build/reports/tests/test/classes/seedu.ultistudent.ui.UiPartTest.html" />
+      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/index.html" afterPath="$PROJECT_DIR$/build/reports/tests/test/index.html" />
+      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/packages/seedu.ultistudent.commons.core.html" afterPath="$PROJECT_DIR$/build/reports/tests/test/packages/seedu.ultistudent.commons.core.html" />
+      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/packages/seedu.ultistudent.commons.core.index.html" afterPath="$PROJECT_DIR$/build/reports/tests/test/packages/seedu.ultistudent.commons.core.index.html" />
+      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/packages/seedu.ultistudent.commons.util.html" afterPath="$PROJECT_DIR$/build/reports/tests/test/packages/seedu.ultistudent.commons.util.html" />
+      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/packages/seedu.ultistudent.html" afterPath="$PROJECT_DIR$/build/reports/tests/test/packages/seedu.ultistudent.html" />
+      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/packages/seedu.ultistudent.logic.commands.html" afterPath="$PROJECT_DIR$/build/reports/tests/test/packages/seedu.ultistudent.logic.commands.html" />
+      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/packages/seedu.ultistudent.logic.html" afterPath="$PROJECT_DIR$/build/reports/tests/test/packages/seedu.ultistudent.logic.html" />
+      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/packages/seedu.ultistudent.logic.parser.html" afterPath="$PROJECT_DIR$/build/reports/tests/test/packages/seedu.ultistudent.logic.parser.html" />
+      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/packages/seedu.ultistudent.model.cap.html" afterPath="$PROJECT_DIR$/build/reports/tests/test/packages/seedu.ultistudent.model.cap.html" />
+      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/packages/seedu.ultistudent.model.homework.html" afterPath="$PROJECT_DIR$/build/reports/tests/test/packages/seedu.ultistudent.model.homework.html" />
+      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/packages/seedu.ultistudent.model.html" afterPath="$PROJECT_DIR$/build/reports/tests/test/packages/seedu.ultistudent.model.html" />
+      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/packages/seedu.ultistudent.model.note.html" afterPath="$PROJECT_DIR$/build/reports/tests/test/packages/seedu.ultistudent.model.note.html" />
+      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/packages/seedu.ultistudent.model.person.html" afterPath="$PROJECT_DIR$/build/reports/tests/test/packages/seedu.ultistudent.model.person.html" />
+      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/packages/seedu.ultistudent.model.tag.html" afterPath="$PROJECT_DIR$/build/reports/tests/test/packages/seedu.ultistudent.model.tag.html" />
+      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/packages/seedu.ultistudent.storage.html" afterPath="$PROJECT_DIR$/build/reports/tests/test/packages/seedu.ultistudent.storage.html" />
+      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/packages/seedu.ultistudent.ui.html" afterPath="$PROJECT_DIR$/build/reports/tests/test/packages/seedu.ultistudent.ui.html" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/docs/HelpWindow.html" afterPath="$PROJECT_DIR$/build/resources/main/docs/HelpWindow.html" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/docs/images/Add-Hw UG.png" afterPath="$PROJECT_DIR$/build/resources/main/docs/images/Add-Hw UG.png" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/docs/images/CapManagerInterface.png" afterPath="$PROJECT_DIR$/build/resources/main/docs/images/CapManagerInterface.png" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/docs/images/Edit&amp;Save-Note UG.png" afterPath="$PROJECT_DIR$/build/resources/main/docs/images/Edit&amp;Save-Note UG.png" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/docs/images/OpenCapManager.png" afterPath="$PROJECT_DIR$/build/resources/main/docs/images/OpenCapManager.png" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/docs/images/Ui.png" afterPath="$PROJECT_DIR$/build/resources/main/docs/images/Ui.png" />
+      <change beforePath="$PROJECT_DIR$/build/test-results/test/TEST-seedu.ultistudent.AppParametersTest.xml" afterPath="$PROJECT_DIR$/build/test-results/test/TEST-seedu.ultistudent.AppParametersTest.xml" />
+      <change beforePath="$PROJECT_DIR$/build/test-results/test/TEST-seedu.ultistudent.commons.core.ConfigTest.xml" afterPath="$PROJECT_DIR$/build/test-results/test/TEST-seedu.ultistudent.commons.core.ConfigTest.xml" />
+      <change beforePath="$PROJECT_DIR$/build/test-results/test/TEST-seedu.ultistudent.commons.core.VersionTest.xml" afterPath="$PROJECT_DIR$/build/test-results/test/TEST-seedu.ultistudent.commons.core.VersionTest.xml" />
+      <change beforePath="$PROJECT_DIR$/build/test-results/test/TEST-seedu.ultistudent.commons.core.index.IndexTest.xml" afterPath="$PROJECT_DIR$/build/test-results/test/TEST-seedu.ultistudent.commons.core.index.IndexTest.xml" />
+      <change beforePath="$PROJECT_DIR$/build/test-results/test/TEST-seedu.ultistudent.commons.util.AppUtilTest.xml" afterPath="$PROJECT_DIR$/build/test-results/test/TEST-seedu.ultistudent.commons.util.AppUtilTest.xml" />
+      <change beforePath="$PROJECT_DIR$/build/test-results/test/TEST-seedu.ultistudent.commons.util.CollectionUtilTest.xml" afterPath="$PROJECT_DIR$/build/test-results/test/TEST-seedu.ultistudent.commons.util.CollectionUtilTest.xml" />
+      <change beforePath="$PROJECT_DIR$/build/test-results/test/TEST-seedu.ultistudent.commons.util.ConfigUtilTest.xml" afterPath="$PROJECT_DIR$/build/test-results/test/TEST-seedu.ultistudent.commons.util.ConfigUtilTest.xml" />
+      <change beforePath="$PROJECT_DIR$/build/test-results/test/TEST-seedu.ultistudent.commons.util.FileUtilTest.xml" afterPath="$PROJECT_DIR$/build/test-results/test/TEST-seedu.ultistudent.commons.util.FileUtilTest.xml" />
+      <change beforePath="$PROJECT_DIR$/build/test-results/test/TEST-seedu.ultistudent.commons.util.InvalidationListenerManagerTest.xml" afterPath="$PROJECT_DIR$/build/test-results/test/TEST-seedu.ultistudent.commons.util.InvalidationListenerManagerTest.xml" />
+      <change beforePath="$PROJECT_DIR$/build/test-results/test/TEST-seedu.ultistudent.commons.util.JsonUtilTest.xml" afterPath="$PROJECT_DIR$/build/test-results/test/TEST-seedu.ultistudent.commons.util.JsonUtilTest.xml" />
+      <change beforePath="$PROJECT_DIR$/build/test-results/test/TEST-seedu.ultistudent.commons.util.StringUtilTest.xml" afterPath="$PROJECT_DIR$/build/test-results/test/TEST-seedu.ultistudent.commons.util.StringUtilTest.xml" />
+      <change beforePath="$PROJECT_DIR$/build/test-results/test/TEST-seedu.ultistudent.logic.CommandHistoryTest.xml" afterPath="$PROJECT_DIR$/build/test-results/test/TEST-seedu.ultistudent.logic.CommandHistoryTest.xml" />
+      <change beforePath="$PROJECT_DIR$/build/test-results/test/TEST-seedu.ultistudent.logic.LogicManagerTest.xml" afterPath="$PROJECT_DIR$/build/test-results/test/TEST-seedu.ultistudent.logic.LogicManagerTest.xml" />
+      <change beforePath="$PROJECT_DIR$/build/test-results/test/TEST-seedu.ultistudent.logic.commands.AddCapEntryCommandTest.xml" afterPath="$PROJECT_DIR$/build/test-results/test/TEST-seedu.ultistudent.logic.commands.AddCapEntryCommandTest.xml" />
+      <change beforePath="$PROJECT_DIR$/build/test-results/test/TEST-seedu.ultistudent.logic.commands.AddHomeworkCommandTest.xml" afterPath="$PROJECT_DIR$/build/test-results/test/TEST-seedu.ultistudent.logic.commands.AddHomeworkCommandTest.xml" />
+      <change beforePath="$PROJECT_DIR$/build/test-results/test/TEST-seedu.ultistudent.logic.commands.AddNoteCommandTest.xml" afterPath="$PROJECT_DIR$/build/test-results/test/TEST-seedu.ultistudent.logic.commands.AddNoteCommandTest.xml" />
+      <change beforePath="$PROJECT_DIR$/build/test-results/test/TEST-seedu.ultistudent.logic.commands.ClearCommandTest.xml" afterPath="$PROJECT_DIR$/build/test-results/test/TEST-seedu.ultistudent.logic.commands.ClearCommandTest.xml" />
+      <change beforePath="$PROJECT_DIR$/build/test-results/test/TEST-seedu.ultistudent.logic.commands.CommandResultTest.xml" afterPath="$PROJECT_DIR$/build/test-results/test/TEST-seedu.ultistudent.logic.commands.CommandResultTest.xml" />
+      <change beforePath="$PROJECT_DIR$/build/test-results/test/TEST-seedu.ultistudent.logic.commands.DeleteCapEntryCommandTest.xml" afterPath="$PROJECT_DIR$/build/test-results/test/TEST-seedu.ultistudent.logic.commands.DeleteCapEntryCommandTest.xml" />
+      <change beforePath="$PROJECT_DIR$/build/test-results/test/TEST-seedu.ultistudent.logic.commands.DeleteHomeworkCommandTest.xml" afterPath="$PROJECT_DIR$/build/test-results/test/TEST-seedu.ultistudent.logic.commands.DeleteHomeworkCommandTest.xml" />
+      <change beforePath="$PROJECT_DIR$/build/test-results/test/TEST-seedu.ultistudent.logic.commands.EditCapEntryCommandTest.xml" afterPath="$PROJECT_DIR$/build/test-results/test/TEST-seedu.ultistudent.logic.commands.EditCapEntryCommandTest.xml" />
+      <change beforePath="$PROJECT_DIR$/build/test-results/test/TEST-seedu.ultistudent.logic.commands.EditNoteCommandTest.xml" afterPath="$PROJECT_DIR$/build/test-results/test/TEST-seedu.ultistudent.logic.commands.EditNoteCommandTest.xml" />
+      <change beforePath="$PROJECT_DIR$/build/test-results/test/TEST-seedu.ultistudent.logic.commands.ExitCommandTest.xml" afterPath="$PROJECT_DIR$/build/test-results/test/TEST-seedu.ultistudent.logic.commands.ExitCommandTest.xml" />
+      <change beforePath="$PROJECT_DIR$/build/test-results/test/TEST-seedu.ultistudent.logic.commands.FindCommandTest.xml" afterPath="$PROJECT_DIR$/build/test-results/test/TEST-seedu.ultistudent.logic.commands.FindCommandTest.xml" />
+      <change beforePath="$PROJECT_DIR$/build/test-results/test/TEST-seedu.ultistudent.logic.commands.HelpCommandTest.xml" afterPath="$PROJECT_DIR$/build/test-results/test/TEST-seedu.ultistudent.logic.commands.HelpCommandTest.xml" />
+      <change beforePath="$PROJECT_DIR$/build/test-results/test/TEST-seedu.ultistudent.logic.commands.HistoryCommandTest.xml" afterPath="$PROJECT_DIR$/build/test-results/test/TEST-seedu.ultistudent.logic.commands.HistoryCommandTest.xml" />
+      <change beforePath="$PROJECT_DIR$/build/test-results/test/TEST-seedu.ultistudent.logic.commands.ListCommandTest.xml" afterPath="$PROJECT_DIR$/build/test-results/test/TEST-seedu.ultistudent.logic.commands.ListCommandTest.xml" />
+      <change beforePath="$PROJECT_DIR$/build/test-results/test/TEST-seedu.ultistudent.logic.commands.RedoCommandTest.xml" afterPath="$PROJECT_DIR$/build/test-results/test/TEST-seedu.ultistudent.logic.commands.RedoCommandTest.xml" />
+      <change beforePath="$PROJECT_DIR$/build/test-results/test/TEST-seedu.ultistudent.logic.commands.SaveNoteCommandTest.xml" afterPath="$PROJECT_DIR$/build/test-results/test/TEST-seedu.ultistudent.logic.commands.SaveNoteCommandTest.xml" />
+      <change beforePath="$PROJECT_DIR$/build/test-results/test/TEST-seedu.ultistudent.logic.commands.SelectCommandTest.xml" afterPath="$PROJECT_DIR$/build/test-results/test/TEST-seedu.ultistudent.logic.commands.SelectCommandTest.xml" />
+      <change beforePath="$PROJECT_DIR$/build/test-results/test/TEST-seedu.ultistudent.logic.commands.UndoCommandTest.xml" afterPath="$PROJECT_DIR$/build/test-results/test/TEST-seedu.ultistudent.logic.commands.UndoCommandTest.xml" />
+      <change beforePath="$PROJECT_DIR$/build/test-results/test/TEST-seedu.ultistudent.logic.parser.AddCapEntryCommandParserTest.xml" afterPath="$PROJECT_DIR$/build/test-results/test/TEST-seedu.ultistudent.logic.parser.AddCapEntryCommandParserTest.xml" />
+      <change beforePath="$PROJECT_DIR$/build/test-results/test/TEST-seedu.ultistudent.logic.parser.AddHomeworkCommandParserTest.xml" afterPath="$PROJECT_DIR$/build/test-results/test/TEST-seedu.ultistudent.logic.parser.AddHomeworkCommandParserTest.xml" />
+      <change beforePath="$PROJECT_DIR$/build/test-results/test/TEST-seedu.ultistudent.logic.parser.AddNoteCommandParserTest.xml" afterPath="$PROJECT_DIR$/build/test-results/test/TEST-seedu.ultistudent.logic.parser.AddNoteCommandParserTest.xml" />
+      <change beforePath="$PROJECT_DIR$/build/test-results/test/TEST-seedu.ultistudent.logic.parser.ArgumentTokenizerTest.xml" afterPath="$PROJECT_DIR$/build/test-results/test/TEST-seedu.ultistudent.logic.parser.ArgumentTokenizerTest.xml" />
+      <change beforePath="$PROJECT_DIR$/build/test-results/test/TEST-seedu.ultistudent.logic.parser.DeleteCapEntryCommandParserTest.xml" afterPath="$PROJECT_DIR$/build/test-results/test/TEST-seedu.ultistudent.logic.parser.DeleteCapEntryCommandParserTest.xml" />
+      <change beforePath="$PROJECT_DIR$/build/test-results/test/TEST-seedu.ultistudent.logic.parser.EditCapEntryCommandParserTest.xml" afterPath="$PROJECT_DIR$/build/test-results/test/TEST-seedu.ultistudent.logic.parser.EditCapEntryCommandParserTest.xml" />
+      <change beforePath="$PROJECT_DIR$/build/test-results/test/TEST-seedu.ultistudent.logic.parser.EditNoteCommandParserTest.xml" afterPath="$PROJECT_DIR$/build/test-results/test/TEST-seedu.ultistudent.logic.parser.EditNoteCommandParserTest.xml" />
+      <change beforePath="$PROJECT_DIR$/build/test-results/test/TEST-seedu.ultistudent.logic.parser.FindCommandParserTest.xml" afterPath="$PROJECT_DIR$/build/test-results/test/TEST-seedu.ultistudent.logic.parser.FindCommandParserTest.xml" />
+      <change beforePath="$PROJECT_DIR$/build/test-results/test/TEST-seedu.ultistudent.logic.parser.ParserUtilTest.xml" afterPath="$PROJECT_DIR$/build/test-results/test/TEST-seedu.ultistudent.logic.parser.ParserUtilTest.xml" />
+      <change beforePath="$PROJECT_DIR$/build/test-results/test/TEST-seedu.ultistudent.logic.parser.SelectCommandParserTest.xml" afterPath="$PROJECT_DIR$/build/test-results/test/TEST-seedu.ultistudent.logic.parser.SelectCommandParserTest.xml" />
+      <change beforePath="$PROJECT_DIR$/build/test-results/test/TEST-seedu.ultistudent.logic.parser.UltiStudentParserTest.xml" afterPath="$PROJECT_DIR$/build/test-results/test/TEST-seedu.ultistudent.logic.parser.UltiStudentParserTest.xml" />
+      <change beforePath="$PROJECT_DIR$/build/test-results/test/TEST-seedu.ultistudent.model.AddressBookTest.xml" afterPath="$PROJECT_DIR$/build/test-results/test/TEST-seedu.ultistudent.model.AddressBookTest.xml" />
+      <change beforePath="$PROJECT_DIR$/build/test-results/test/TEST-seedu.ultistudent.model.ModelManagerTest.xml" afterPath="$PROJECT_DIR$/build/test-results/test/TEST-seedu.ultistudent.model.ModelManagerTest.xml" />
+      <change beforePath="$PROJECT_DIR$/build/test-results/test/TEST-seedu.ultistudent.model.UserPrefsTest.xml" afterPath="$PROJECT_DIR$/build/test-results/test/TEST-seedu.ultistudent.model.UserPrefsTest.xml" />
+      <change beforePath="$PROJECT_DIR$/build/test-results/test/TEST-seedu.ultistudent.model.VersionedAddressBookTest.xml" afterPath="$PROJECT_DIR$/build/test-results/test/TEST-seedu.ultistudent.model.VersionedAddressBookTest.xml" />
+      <change beforePath="$PROJECT_DIR$/build/test-results/test/TEST-seedu.ultistudent.model.cap.CapEntryTest.xml" afterPath="$PROJECT_DIR$/build/test-results/test/TEST-seedu.ultistudent.model.cap.CapEntryTest.xml" />
+      <change beforePath="$PROJECT_DIR$/build/test-results/test/TEST-seedu.ultistudent.model.cap.ModuleCreditsTest.xml" afterPath="$PROJECT_DIR$/build/test-results/test/TEST-seedu.ultistudent.model.cap.ModuleCreditsTest.xml" />
+      <change beforePath="$PROJECT_DIR$/build/test-results/test/TEST-seedu.ultistudent.model.cap.ModuleGradeTest.xml" afterPath="$PROJECT_DIR$/build/test-results/test/TEST-seedu.ultistudent.model.cap.ModuleGradeTest.xml" />
+      <change beforePath="$PROJECT_DIR$/build/test-results/test/TEST-seedu.ultistudent.model.cap.ModuleSemesterTest.xml" afterPath="$PROJECT_DIR$/build/test-results/test/TEST-seedu.ultistudent.model.cap.ModuleSemesterTest.xml" />
+      <change beforePath="$PROJECT_DIR$/build/test-results/test/TEST-seedu.ultistudent.model.cap.UniqueCapEntryListTest.xml" afterPath="$PROJECT_DIR$/build/test-results/test/TEST-seedu.ultistudent.model.cap.UniqueCapEntryListTest.xml" />
+      <change beforePath="$PROJECT_DIR$/build/test-results/test/TEST-seedu.ultistudent.model.cap.UniqueModuleSemesterListTest.xml" afterPath="$PROJECT_DIR$/build/test-results/test/TEST-seedu.ultistudent.model.cap.UniqueModuleSemesterListTest.xml" />
+      <change beforePath="$PROJECT_DIR$/build/test-results/test/TEST-seedu.ultistudent.model.homework.DateTest.xml" afterPath="$PROJECT_DIR$/build/test-results/test/TEST-seedu.ultistudent.model.homework.DateTest.xml" />
+      <change beforePath="$PROJECT_DIR$/build/test-results/test/TEST-seedu.ultistudent.model.homework.HomeworkNameTest.xml" afterPath="$PROJECT_DIR$/build/test-results/test/TEST-seedu.ultistudent.model.homework.HomeworkNameTest.xml" />
+      <change beforePath="$PROJECT_DIR$/build/test-results/test/TEST-seedu.ultistudent.model.homework.ModuleCodeTest.xml" afterPath="$PROJECT_DIR$/build/test-results/test/TEST-seedu.ultistudent.model.homework.ModuleCodeTest.xml" />
+      <change beforePath="$PROJECT_DIR$/build/test-results/test/TEST-seedu.ultistudent.model.note.ContentTest.xml" afterPath="$PROJECT_DIR$/build/test-results/test/TEST-seedu.ultistudent.model.note.ContentTest.xml" />
+      <change beforePath="$PROJECT_DIR$/build/test-results/test/TEST-seedu.ultistudent.model.note.NoteNameContainsKeywordsPredicateTest.xml" afterPath="$PROJECT_DIR$/build/test-results/test/TEST-seedu.ultistudent.model.note.NoteNameContainsKeywordsPredicateTest.xml" />
+      <change beforePath="$PROJECT_DIR$/build/test-results/test/TEST-seedu.ultistudent.model.note.NoteNameTest.xml" afterPath="$PROJECT_DIR$/build/test-results/test/TEST-seedu.ultistudent.model.note.NoteNameTest.xml" />
+      <change beforePath="$PROJECT_DIR$/build/test-results/test/TEST-seedu.ultistudent.model.note.NoteTest.xml" afterPath="$PROJECT_DIR$/build/test-results/test/TEST-seedu.ultistudent.model.note.NoteTest.xml" />
+      <change beforePath="$PROJECT_DIR$/build/test-results/test/TEST-seedu.ultistudent.model.note.UniqueNoteListTest.xml" afterPath="$PROJECT_DIR$/build/test-results/test/TEST-seedu.ultistudent.model.note.UniqueNoteListTest.xml" />
+      <change beforePath="$PROJECT_DIR$/build/test-results/test/TEST-seedu.ultistudent.model.person.AddressTest.xml" afterPath="$PROJECT_DIR$/build/test-results/test/TEST-seedu.ultistudent.model.person.AddressTest.xml" />
+      <change beforePath="$PROJECT_DIR$/build/test-results/test/TEST-seedu.ultistudent.model.person.EmailTest.xml" afterPath="$PROJECT_DIR$/build/test-results/test/TEST-seedu.ultistudent.model.person.EmailTest.xml" />
+      <change beforePath="$PROJECT_DIR$/build/test-results/test/TEST-seedu.ultistudent.model.person.NameContainsKeywordsPredicateTest.xml" afterPath="$PROJECT_DIR$/build/test-results/test/TEST-seedu.ultistudent.model.person.NameContainsKeywordsPredicateTest.xml" />
+      <change beforePath="$PROJECT_DIR$/build/test-results/test/TEST-seedu.ultistudent.model.person.NameTest.xml" afterPath="$PROJECT_DIR$/build/test-results/test/TEST-seedu.ultistudent.model.person.NameTest.xml" />
+      <change beforePath="$PROJECT_DIR$/build/test-results/test/TEST-seedu.ultistudent.model.person.PersonTest.xml" afterPath="$PROJECT_DIR$/build/test-results/test/TEST-seedu.ultistudent.model.person.PersonTest.xml" />
+      <change beforePath="$PROJECT_DIR$/build/test-results/test/TEST-seedu.ultistudent.model.person.PhoneTest.xml" afterPath="$PROJECT_DIR$/build/test-results/test/TEST-seedu.ultistudent.model.person.PhoneTest.xml" />
+      <change beforePath="$PROJECT_DIR$/build/test-results/test/TEST-seedu.ultistudent.model.person.UniquePersonListTest.xml" afterPath="$PROJECT_DIR$/build/test-results/test/TEST-seedu.ultistudent.model.person.UniquePersonListTest.xml" />
+      <change beforePath="$PROJECT_DIR$/build/test-results/test/TEST-seedu.ultistudent.model.tag.TagTest.xml" afterPath="$PROJECT_DIR$/build/test-results/test/TEST-seedu.ultistudent.model.tag.TagTest.xml" />
+      <change beforePath="$PROJECT_DIR$/build/test-results/test/TEST-seedu.ultistudent.storage.JsonAdaptedPersonTest.xml" afterPath="$PROJECT_DIR$/build/test-results/test/TEST-seedu.ultistudent.storage.JsonAdaptedPersonTest.xml" />
+      <change beforePath="$PROJECT_DIR$/build/test-results/test/TEST-seedu.ultistudent.storage.JsonUltiStudentStorageTest.xml" afterPath="$PROJECT_DIR$/build/test-results/test/TEST-seedu.ultistudent.storage.JsonUltiStudentStorageTest.xml" />
+      <change beforePath="$PROJECT_DIR$/build/test-results/test/TEST-seedu.ultistudent.storage.JsonUserPrefsStorageTest.xml" afterPath="$PROJECT_DIR$/build/test-results/test/TEST-seedu.ultistudent.storage.JsonUserPrefsStorageTest.xml" />
+      <change beforePath="$PROJECT_DIR$/build/test-results/test/TEST-seedu.ultistudent.storage.StorageManagerTest.xml" afterPath="$PROJECT_DIR$/build/test-results/test/TEST-seedu.ultistudent.storage.StorageManagerTest.xml" />
+      <change beforePath="$PROJECT_DIR$/build/test-results/test/TEST-seedu.ultistudent.ui.BrowserPanelTest.xml" afterPath="$PROJECT_DIR$/build/test-results/test/TEST-seedu.ultistudent.ui.BrowserPanelTest.xml" />
+      <change beforePath="$PROJECT_DIR$/build/test-results/test/TEST-seedu.ultistudent.ui.CommandBoxTest.xml" afterPath="$PROJECT_DIR$/build/test-results/test/TEST-seedu.ultistudent.ui.CommandBoxTest.xml" />
+      <change beforePath="$PROJECT_DIR$/build/test-results/test/TEST-seedu.ultistudent.ui.HelpWindowTest.xml" afterPath="$PROJECT_DIR$/build/test-results/test/TEST-seedu.ultistudent.ui.HelpWindowTest.xml" />
+      <change beforePath="$PROJECT_DIR$/build/test-results/test/TEST-seedu.ultistudent.ui.ListElementPointerTest.xml" afterPath="$PROJECT_DIR$/build/test-results/test/TEST-seedu.ultistudent.ui.ListElementPointerTest.xml" />
+      <change beforePath="$PROJECT_DIR$/build/test-results/test/TEST-seedu.ultistudent.ui.MainWindowCloseTest.xml" afterPath="$PROJECT_DIR$/build/test-results/test/TEST-seedu.ultistudent.ui.MainWindowCloseTest.xml" />
+      <change beforePath="$PROJECT_DIR$/build/test-results/test/TEST-seedu.ultistudent.ui.ResultDisplayTest.xml" afterPath="$PROJECT_DIR$/build/test-results/test/TEST-seedu.ultistudent.ui.ResultDisplayTest.xml" />
+      <change beforePath="$PROJECT_DIR$/build/test-results/test/TEST-seedu.ultistudent.ui.StatusBarFooterTest.xml" afterPath="$PROJECT_DIR$/build/test-results/test/TEST-seedu.ultistudent.ui.StatusBarFooterTest.xml" />
+      <change beforePath="$PROJECT_DIR$/build/test-results/test/TEST-seedu.ultistudent.ui.UiPartTest.xml" afterPath="$PROJECT_DIR$/build/test-results/test/TEST-seedu.ultistudent.ui.UiPartTest.xml" />
+      <change beforePath="$PROJECT_DIR$/build/test-results/test/binary/output.bin" afterPath="$PROJECT_DIR$/build/test-results/test/binary/output.bin" />
+      <change beforePath="$PROJECT_DIR$/build/test-results/test/binary/output.bin.idx" afterPath="$PROJECT_DIR$/build/test-results/test/binary/output.bin.idx" />
+      <change beforePath="$PROJECT_DIR$/build/test-results/test/binary/results.bin" afterPath="$PROJECT_DIR$/build/test-results/test/binary/results.bin" />
+      <change beforePath="$PROJECT_DIR$/docs/DeveloperGuide.adoc" afterPath="$PROJECT_DIR$/docs/DeveloperGuide.adoc" />
       <change beforePath="$PROJECT_DIR$/docs/UserGuide.adoc" afterPath="$PROJECT_DIR$/docs/UserGuide.adoc" />
-      <change beforePath="$PROJECT_DIR$/docs/team/shimeilee.adoc" afterPath="$PROJECT_DIR$/docs/team/shimeilee.adoc" />
+      <change beforePath="$PROJECT_DIR$/docs/team/ngweixin.adoc" afterPath="$PROJECT_DIR$/docs/team/ngweixin.adoc" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/docs/HelpWindow.html" afterPath="$PROJECT_DIR$/src/main/resources/docs/HelpWindow.html" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/docs/images/Add-Hw UG.png" afterPath="$PROJECT_DIR$/src/main/resources/docs/images/Add-Hw UG.png" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/docs/images/CapManagerInterface.png" afterPath="$PROJECT_DIR$/src/main/resources/docs/images/CapManagerInterface.png" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/docs/images/Edit&amp;Save-Note UG.png" afterPath="$PROJECT_DIR$/src/main/resources/docs/images/Edit&amp;Save-Note UG.png" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/docs/images/OpenCapManager.png" afterPath="$PROJECT_DIR$/src/main/resources/docs/images/OpenCapManager.png" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/docs/images/Ui.png" afterPath="$PROJECT_DIR$/src/main/resources/docs/images/Ui.png" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/.gradle/" />
@@ -57,8 +313,34 @@
         <entry file="file://$PROJECT_DIR$/docs/DeveloperGuide.adoc">
           <provider selected="true" editor-type-id="split-provider[text-editor;AsciiDocPreviewEditor]">
             <state split_layout="SPLIT">
-              <first_editor relative-caret-position="47">
-                <caret line="5" column="10" lean-forward="false" selection-start-line="5" selection-start-column="10" selection-end-line="5" selection-end-column="10" />
+              <first_editor relative-caret-position="106">
+                <caret line="249" column="2" lean-forward="false" selection-start-line="249" selection-start-column="2" selection-end-line="249" selection-end-column="2" />
+                <folding />
+              </first_editor>
+              <second_editor />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="UserGuide.adoc" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/docs/UserGuide.adoc">
+          <provider selected="true" editor-type-id="split-provider[text-editor;AsciiDocPreviewEditor]">
+            <state split_layout="SPLIT">
+              <first_editor relative-caret-position="191">
+                <caret line="129" column="4" lean-forward="false" selection-start-line="129" selection-start-column="4" selection-end-line="129" selection-end-column="4" />
+                <folding />
+              </first_editor>
+              <second_editor />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ngweixin.adoc" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/docs/team/ngweixin.adoc">
+          <provider selected="true" editor-type-id="split-provider[text-editor;AsciiDocPreviewEditor]">
+            <state split_layout="SPLIT">
+              <first_editor relative-caret-position="276">
+                <caret line="101" column="1" lean-forward="false" selection-start-line="101" selection-start-column="1" selection-end-line="101" selection-end-column="1" />
                 <folding />
               </first_editor>
               <second_editor />
@@ -70,8 +352,8 @@
         <entry file="file://$PROJECT_DIR$/docs/team/shimeilee.adoc">
           <provider selected="true" editor-type-id="split-provider[text-editor;AsciiDocPreviewEditor]">
             <state split_layout="SPLIT">
-              <first_editor relative-caret-position="-1275">
-                <caret line="22" column="36" lean-forward="false" selection-start-line="22" selection-start-column="36" selection-end-line="22" selection-end-column="36" />
+              <first_editor relative-caret-position="-18">
+                <caret line="11" column="19" lean-forward="false" selection-start-line="11" selection-start-column="19" selection-end-line="11" selection-end-column="47" />
                 <folding />
               </first_editor>
               <second_editor />
@@ -589,7 +871,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/seedu/address/model/ModelManager.java" />
         <option value="$PROJECT_DIR$/src/test/java/seedu/address/model/AddressBookTest.java" />
         <option value="$PROJECT_DIR$/src/test/java/seedu/address/logic/commands/AddCommandTest.java" />
         <option value="$PROJECT_DIR$/build/reports/checkstyle/main.html" />
@@ -625,7 +906,6 @@
         <option value="$PROJECT_DIR$/src/test/java/seedu/ultistudent/model/note/UniqueNoteListTest.java" />
         <option value="$PROJECT_DIR$/docs/team/andrewscw.adoc" />
         <option value="$PROJECT_DIR$/build.gradle" />
-        <option value="$PROJECT_DIR$/docs/team/ngweixin.adoc" />
         <option value="$PROJECT_DIR$/src/main/java/seedu/ultistudent/commons/core/Messages.java" />
         <option value="$PROJECT_DIR$/src/main/java/seedu/ultistudent/logic/parser/FindNoteParser.java" />
         <option value="$PROJECT_DIR$/src/main/java/seedu/ultistudent/logic/commands/FindNoteCommand.java" />
@@ -638,8 +918,10 @@
         <option value="$PROJECT_DIR$/src/main/java/seedu/ultistudent/logic/parser/UltiStudentParser.java" />
         <option value="$PROJECT_DIR$/src/main/java/seedu/ultistudent/logic/parser/AddNoteCommandParser.java" />
         <option value="$PROJECT_DIR$/src/test/java/seedu/ultistudent/logic/parser/AddNoteCommandParserTest.java" />
-        <option value="$PROJECT_DIR$/docs/UserGuide.adoc" />
         <option value="$PROJECT_DIR$/docs/team/shimeilee.adoc" />
+        <option value="$PROJECT_DIR$/docs/UserGuide.adoc" />
+        <option value="$PROJECT_DIR$/docs/team/ngweixin.adoc" />
+        <option value="$PROJECT_DIR$/docs/DeveloperGuide.adoc" />
       </list>
     </option>
   </component>
@@ -1004,7 +1286,7 @@
       <workItem from="1554360161066" duration="1588000" />
       <workItem from="1554695773958" duration="155000" />
       <workItem from="1554858650721" duration="623000" />
-      <workItem from="1555165163568" duration="27530000" />
+      <workItem from="1555165163568" duration="27987000" />
     </task>
     <servers />
   </component>
@@ -1041,7 +1323,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="132311000" />
+    <option name="totallyTimeSpent" value="132768000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
@@ -1057,8 +1339,8 @@
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.41112214" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="CheckStyle" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32921812" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18016928" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="CheckStyle" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32889965" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3688029" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2353362" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -1465,33 +1747,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/docs/team/ngweixin.adoc">
-      <provider selected="true" editor-type-id="split-provider[text-editor;AsciiDocPreviewEditor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="231">
-            <caret line="17" column="0" lean-forward="false" selection-start-line="17" selection-start-column="0" selection-end-line="19" selection-end-column="36" />
-            <folding />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/docs/UserGuide.adoc">
-      <provider selected="true" editor-type-id="split-provider[text-editor;AsciiDocPreviewEditor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="-1273">
-            <caret line="71" column="8" lean-forward="false" selection-start-line="71" selection-start-column="8" selection-end-line="71" selection-end-column="8" />
-            <folding />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="4002">
-          <caret line="386" column="17" lean-forward="false" selection-start-line="386" selection-start-column="17" selection-end-line="386" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/docs/team/shimeilee.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-2124">
@@ -1519,8 +1774,35 @@
     <entry file="file://$PROJECT_DIR$/docs/team/shimeilee.adoc">
       <provider selected="true" editor-type-id="split-provider[text-editor;AsciiDocPreviewEditor]">
         <state split_layout="SPLIT">
-          <first_editor relative-caret-position="-1275">
-            <caret line="22" column="36" lean-forward="false" selection-start-line="22" selection-start-column="36" selection-end-line="22" selection-end-column="36" />
+          <first_editor relative-caret-position="-18">
+            <caret line="11" column="19" lean-forward="false" selection-start-line="11" selection-start-column="19" selection-end-line="11" selection-end-column="47" />
+            <folding />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/docs/UserGuide.adoc">
+      <provider selected="true" editor-type-id="split-provider[text-editor;AsciiDocPreviewEditor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="191">
+            <caret line="129" column="4" lean-forward="false" selection-start-line="129" selection-start-column="4" selection-end-line="129" selection-end-column="4" />
+            <folding />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="4002">
+          <caret line="386" column="17" lean-forward="false" selection-start-line="386" selection-start-column="17" selection-end-line="386" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/docs/team/ngweixin.adoc">
+      <provider selected="true" editor-type-id="split-provider[text-editor;AsciiDocPreviewEditor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="276">
+            <caret line="101" column="1" lean-forward="false" selection-start-line="101" selection-start-column="1" selection-end-line="101" selection-end-column="1" />
             <folding />
           </first_editor>
           <second_editor />
@@ -1530,8 +1812,8 @@
     <entry file="file://$PROJECT_DIR$/docs/DeveloperGuide.adoc">
       <provider selected="true" editor-type-id="split-provider[text-editor;AsciiDocPreviewEditor]">
         <state split_layout="SPLIT">
-          <first_editor relative-caret-position="47">
-            <caret line="5" column="10" lean-forward="false" selection-start-line="5" selection-start-column="10" selection-end-line="5" selection-end-column="10" />
+          <first_editor relative-caret-position="106">
+            <caret line="249" column="2" lean-forward="false" selection-start-line="249" selection-start-column="2" selection-end-line="249" selection-end-column="2" />
             <folding />
           </first_editor>
           <second_editor />

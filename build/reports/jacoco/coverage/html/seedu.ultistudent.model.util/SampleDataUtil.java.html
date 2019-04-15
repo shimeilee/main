@@ -10,7 +10,13 @@ import seedu.ultistudent.model.cap.CapEntry;
 import seedu.ultistudent.model.cap.ModuleCredits;
 import seedu.ultistudent.model.cap.ModuleGrade;
 import seedu.ultistudent.model.cap.ModuleSemester;
+import seedu.ultistudent.model.homework.Date;
+import seedu.ultistudent.model.homework.Homework;
+import seedu.ultistudent.model.homework.HomeworkName;
 import seedu.ultistudent.model.modulecode.ModuleCode;
+import seedu.ultistudent.model.note.Content;
+import seedu.ultistudent.model.note.Note;
+import seedu.ultistudent.model.note.NoteName;
 import seedu.ultistudent.model.person.Address;
 import seedu.ultistudent.model.person.Email;
 import seedu.ultistudent.model.person.Name;
@@ -21,32 +27,32 @@ import seedu.ultistudent.model.tag.Tag;
 /**
  * Contains utility methods for populating {@code UltiStudent} with sample data.
  */
-<span class="nc" id="L24">public class SampleDataUtil {</span>
+<span class="nc" id="L30">public class SampleDataUtil {</span>
     public static Person[] getSamplePersons() {
-<span class="nc" id="L26">        return new Person[] {</span>
+<span class="nc" id="L32">        return new Person[] {</span>
             new Person(new Name(&quot;Alex Yeoh&quot;), new Phone(&quot;87438807&quot;), new Email(&quot;alexyeoh@example.com&quot;),
                 new Address(&quot;Blk 30 Geylang Street 29, #06-40&quot;),
-<span class="nc" id="L29">                getTagSet(&quot;friends&quot;)),</span>
+<span class="nc" id="L35">                getTagSet(&quot;friends&quot;)),</span>
             new Person(new Name(&quot;Bernice Yu&quot;), new Phone(&quot;99272758&quot;), new Email(&quot;berniceyu@example.com&quot;),
                 new Address(&quot;Blk 30 Lorong 3 Serangoon Gardens, #07-18&quot;),
-<span class="nc" id="L32">                getTagSet(&quot;colleagues&quot;, &quot;friends&quot;)),</span>
+<span class="nc" id="L38">                getTagSet(&quot;colleagues&quot;, &quot;friends&quot;)),</span>
             new Person(new Name(&quot;Charlotte Oliveiro&quot;), new Phone(&quot;93210283&quot;), new Email(&quot;charlotte@example.com&quot;),
                 new Address(&quot;Blk 11 Ang Mo Kio Street 74, #11-04&quot;),
-<span class="nc" id="L35">                getTagSet(&quot;neighbours&quot;)),</span>
+<span class="nc" id="L41">                getTagSet(&quot;neighbours&quot;)),</span>
             new Person(new Name(&quot;David Li&quot;), new Phone(&quot;91031282&quot;), new Email(&quot;lidavid@example.com&quot;),
                 new Address(&quot;Blk 436 Serangoon Gardens Street 26, #16-43&quot;),
-<span class="nc" id="L38">                getTagSet(&quot;family&quot;)),</span>
+<span class="nc" id="L44">                getTagSet(&quot;family&quot;)),</span>
             new Person(new Name(&quot;Irfan Ibrahim&quot;), new Phone(&quot;92492021&quot;), new Email(&quot;irfan@example.com&quot;),
                 new Address(&quot;Blk 47 Tampines Street 20, #17-35&quot;),
-<span class="nc" id="L41">                getTagSet(&quot;classmates&quot;)),</span>
+<span class="nc" id="L47">                getTagSet(&quot;classmates&quot;)),</span>
             new Person(new Name(&quot;Roy Balakrishnan&quot;), new Phone(&quot;92624417&quot;), new Email(&quot;royb@example.com&quot;),
                 new Address(&quot;Blk 45 Aljunied Street 85, #11-31&quot;),
-<span class="nc" id="L44">                getTagSet(&quot;colleagues&quot;))</span>
+<span class="nc" id="L50">                getTagSet(&quot;colleagues&quot;))</span>
         };
     }
 
     public static CapEntry[] getSampleCapEntryList() {
-<span class="nc" id="L49">        return new CapEntry[]{</span>
+<span class="nc" id="L55">        return new CapEntry[]{</span>
             new CapEntry(new ModuleCode(&quot;CS1010&quot;), new ModuleGrade(&quot;B+&quot;), new ModuleCredits(&quot;4&quot;),
                 new ModuleSemester(&quot;Y1S1&quot;)),
             new CapEntry(new ModuleCode(&quot;CS1231&quot;), new ModuleGrade(&quot;A-&quot;), new ModuleCredits(&quot;4&quot;),
@@ -60,24 +66,54 @@ import seedu.ultistudent.model.tag.Tag;
         };
     }
 
+    public static Note[] getSampleNotes() {
+<span class="nc" id="L70">        return new Note[]{</span>
+            new Note(new ModuleCode(&quot;CS2103T&quot;), new NoteName(&quot;Personal Project Portfolio&quot;), new Content(&quot;Things to &quot;
+                    + &quot;include:\n1. Overview\n2. Summary of Contribution\n&quot;
+                    + &quot;3. Contribution to User Guide\n4. Contribution to Developer Guide&quot;)),
+            new Note(new ModuleCode(&quot;CS2103T&quot;), new NoteName(&quot;Feedback&quot;), new Content(&quot;Orientate the user during the&quot;
+                    + &quot; introduction.\nWin their hearts within the first 30s.\nWhy do the user need UltiStudent?&quot;
+                    + &quot;\n\n3mins per presenter&quot;))
+        };
+    }
+
+    public static Homework[] getSampleHomeworkList() {
+<span class="nc" id="L81">        return new Homework[]{</span>
+            new Homework(new ModuleCode(&quot;CS1010&quot;), new HomeworkName(&quot;Tutorial 1&quot;), new Date(&quot;11/04/2019&quot;)),
+            new Homework(new ModuleCode(&quot;CS1020&quot;), new HomeworkName(&quot;Tutorial 2&quot;), new Date(&quot;18/04/2019&quot;)),
+            new Homework(new ModuleCode(&quot;ES2660&quot;), new HomeworkName(&quot;Essay Writing&quot;), new Date(&quot;10/05/2019&quot;))
+        };
+    }
+
     public static ReadOnlyUltiStudent getSampleUltiStudent() {
-<span class="nc" id="L64">        UltiStudent sampleAb = new UltiStudent();</span>
-<span class="nc bnc" id="L65" title="All 2 branches missed.">        for (Person samplePerson : getSamplePersons()) {</span>
-<span class="nc" id="L66">            sampleAb.addPerson(samplePerson);</span>
+<span class="nc" id="L89">        UltiStudent sampleAb = new UltiStudent();</span>
+<span class="nc bnc" id="L90" title="All 2 branches missed.">        for (Person samplePerson : getSamplePersons()) {</span>
+<span class="nc" id="L91">            sampleAb.addPerson(samplePerson);</span>
         }
-<span class="nc bnc" id="L68" title="All 2 branches missed.">        for (CapEntry sampleCapEntry : getSampleCapEntryList()) {</span>
-<span class="nc" id="L69">            sampleAb.addCapEntry(sampleCapEntry);</span>
+<span class="nc bnc" id="L93" title="All 2 branches missed.">        for (CapEntry sampleCapEntry : getSampleCapEntryList()) {</span>
+<span class="nc" id="L94">            sampleAb.addCapEntry(sampleCapEntry);</span>
+<span class="nc" id="L95">            ModuleSemester sampleCapEntryModuleSemester = sampleCapEntry.getModuleSemester();</span>
+<span class="nc bnc" id="L96" title="All 2 branches missed.">            if (!sampleAb.getModuleSemesterList().contains(sampleCapEntryModuleSemester)) {</span>
+<span class="nc" id="L97">                sampleAb.addModuleSemester(sampleCapEntryModuleSemester);</span>
+            }
         }
-<span class="nc" id="L71">        return sampleAb;</span>
+<span class="nc bnc" id="L100" title="All 2 branches missed.">        for (Note sampleNote : getSampleNotes()) {</span>
+<span class="nc" id="L101">            sampleAb.addNote(sampleNote);</span>
+        }
+<span class="nc bnc" id="L103" title="All 2 branches missed.">        for (Homework homework : getSampleHomeworkList()) {</span>
+<span class="nc" id="L104">            sampleAb.addHomework(homework);</span>
+<span class="nc" id="L105">            sampleAb.addModuleCode(homework.getModuleCode());</span>
+        }
+<span class="nc" id="L107">        return sampleAb;</span>
     }
 
     /**
      * Returns a tag set containing the list of strings given.
      */
     public static Set&lt;Tag&gt; getTagSet(String... strings) {
-<span class="fc" id="L78">        return Arrays.stream(strings)</span>
-<span class="fc" id="L79">                .map(Tag::new)</span>
-<span class="fc" id="L80">                .collect(Collectors.toSet());</span>
+<span class="fc" id="L114">        return Arrays.stream(strings)</span>
+<span class="fc" id="L115">                .map(Tag::new)</span>
+<span class="fc" id="L116">                .collect(Collectors.toSet());</span>
     }
 
 }
