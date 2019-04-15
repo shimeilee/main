@@ -6,17 +6,12 @@ import static seedu.ultistudent.commons.core.Messages.MESSAGE_INVALID_COMMAND_FO
 import static seedu.ultistudent.commons.core.Messages.MESSAGE_UNKNOWN_COMMAND;
 import static seedu.ultistudent.testutil.TypicalIndexes.INDEX_FIRST_PERSON;
 
-import java.util.Arrays;
-import java.util.List;
-import java.util.stream.Collectors;
-
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
 import seedu.ultistudent.logic.commands.ClearCommand;
 import seedu.ultistudent.logic.commands.ExitCommand;
-import seedu.ultistudent.logic.commands.FindCommand;
 import seedu.ultistudent.logic.commands.HelpCommand;
 import seedu.ultistudent.logic.commands.HistoryCommand;
 import seedu.ultistudent.logic.commands.ListCommand;
@@ -24,7 +19,7 @@ import seedu.ultistudent.logic.commands.RedoCommand;
 import seedu.ultistudent.logic.commands.SelectCommand;
 import seedu.ultistudent.logic.commands.UndoCommand;
 import seedu.ultistudent.logic.parser.exceptions.ParseException;
-import seedu.ultistudent.model.person.NameContainsKeywordsPredicate;
+
 
 public class UltiStudentParserTest {
     @Rule
@@ -42,14 +37,6 @@ public class UltiStudentParserTest {
     public void parseCommand_exit() throws Exception {
         assertTrue(parser.parseCommand(ExitCommand.COMMAND_WORD) instanceof ExitCommand);
         assertTrue(parser.parseCommand(ExitCommand.COMMAND_WORD + " 3") instanceof ExitCommand);
-    }
-
-    @Test
-    public void parseCommand_find() throws Exception {
-        List<String> keywords = Arrays.asList("foo", "bar", "baz");
-        FindCommand command = (FindCommand) parser.parseCommand(
-                FindCommand.COMMAND_WORD + " " + keywords.stream().collect(Collectors.joining(" ")));
-        assertEquals(new FindCommand(new NameContainsKeywordsPredicate(keywords)), command);
     }
 
     @Test

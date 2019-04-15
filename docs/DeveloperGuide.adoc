@@ -254,10 +254,12 @@ This section describes some noteworthy details on how certain features are imple
 
 // tag::add-hw[]
 === Adding a homework: `add-hw`
+
 |===
 |_The add homework feature is a core feature to the Homework Manager of UltiStudent. Which allows the users to create
-| a homework object in UltiStudent._
+|a homework object in UltiStudent._
 |===
+
 ==== Overview
 
 The add homework `add-hw` mechanism is facilitated by `AddHomeworkCommand` and `AddHomeworkCommandParser`.
@@ -273,12 +275,12 @@ value after the individual prefixes will create the respective object: 'mc/' for
 of each object. Any checks that fails the validation would prompt the user on the failed component.
 For example:
 
-** `ModuleCode` would use `ParserUtil#parseHomeworkModuleCode` to ensure that user has input 2
+** `ModuleCode` would use `ParserUtil#parseHomeworkModuleCode()` to ensure that user has input 2
 letters followed by 4 digits with an option to include a optional letter after the 4 digits.
 
-** `HomeworkName` would use `ParserUtil#parseHomeworkName` to ensure that homework name is not a null.
+** `HomeworkName` would use `ParserUtil#parseHomeworkName()` to ensure that homework name is not a null.
 
-** `Date` would use `ParserUtil#parseDate` to ensure that user has entered a date that is either a
+** `Date` would use `ParserUtil#parseDate()` to ensure that user has entered a date that is either a
 present or future date.
 
 * After validation checks are completed with no errors, a `Homework` object is then constructed with
