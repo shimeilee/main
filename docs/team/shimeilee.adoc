@@ -1,7 +1,9 @@
 = Lee Shi Mei - Project Portfolio
 :site-section: AboutUs
+:toc: macro
 :imagesDir: ../images
 :stylesDir: ../stylesheets
+:stylesheet: shimeilee.css
 :sourceDir: https://cs2103-ay1819s2-t09-1.github.io/main/
 :xrefstyle: short
 
@@ -20,10 +22,9 @@ _UltiStudent_, a software engineering project under CS2103T Software
 Engineering module in NUS.
 
 This project (_UltiStudent_) would not be possible without my amazing team
-mates: Andrew, Benjamin, and Xavier.
-//[underline]#{sourceDir}team/andrewscw.html[Andrew]#,
-//[underline]#{sourceDir}team/limzhengjiebenjamin.html[Benjamin]#, and
-//[underline]#{sourceDir}team/ngweixin.html[Xavier]#.
+mates:[underline]#{sourceDir}team/andrewscw.html[Andrew]#,
+[underline]#{sourceDir}team/limzhengjiebenjamin.html[Benjamin]#, and
+[underline]#{sourceDir}team/ngweixin.html[Xavier]#.
 
 :sectnums:
 
@@ -50,9 +51,9 @@ _This section is to provide a summary of my contributions to the project._
 
 My main contribution for UltiStudent is the creation of the Notes Manager.
 
-//The photo below shows the homepage of the Notes Manager.
+The photo below shows the homepage of the Notes Manager.
 
-//image::UI_notes_manager.png[width="600", align="center"]
+image::UI_notes_manager.png[width="600", align="center"]
 
 Notes Manager allows users of UltiStudent to: *Add and delete notes*, *save
 and edit the content of their notes*, *find notes easily*, *list all their
@@ -92,26 +93,30 @@ https://github.com/cs2103-ay1819s2-w09-1/main/pull/9[#9]
 ** Community:
 *** PRs reviewed:
 On average, one PR was reviewed every two weeks.
-//https://github.com/cs2103-ay1819s2-w09-1/main/pull/175[#175],
-//https://github.com/cs2103-ay1819s2-w09-1/main/pull/164[#164],
-//https://github.com/cs2103-ay1819s2-w09-1/main/pull/163[#163],
-//https://github.com/cs2103-ay1819s2-w09-1/main/pull/96[#96],
-//https://github.com/cs2103-ay1819s2-w09-1/main/pull/61[#61]
+https://github.com/cs2103-ay1819s2-w09-1/main/pull/175[#175],
+https://github.com/cs2103-ay1819s2-w09-1/main/pull/164[#164],
+https://github.com/cs2103-ay1819s2-w09-1/main/pull/163[#163],
+https://github.com/cs2103-ay1819s2-w09-1/main/pull/96[#96],
+https://github.com/cs2103-ay1819s2-w09-1/main/pull/61[#61]
 
 *** Contributed to forum discussions:
 https://github.com/nus-cs2103-AY1819S2/forum/issues/46[#46]:
 _Raised checkstyle issues which is experienced by others as well._
 
 *** Reported bugs and suggestions for other teams in the class
-(https://github.com/CS2103-AY1819S2-W16-3/main/issues/115[#115],https://github.com/CS2103-AY1819S2-W16-3/main/issues/112[#112],
-https://github.com/CS2103-AY1819S2-W16-3/main/issues/110[#110], https://github.com/CS2103-AY1819S2-W16-3/main/issues/106[#106],
-https://github.com/CS2103-AY1819S2-W16-3/main/issues/98[#98], https://github.com/CS2103-AY1819S2-W16-3/main/issues/94[#94],
+(https://github.com/CS2103-AY1819S2-W16-3/main/issues/115[#115],
+https://github.com/CS2103-AY1819S2-W16-3/main/issues/112[#112],
+https://github.com/CS2103-AY1819S2-W16-3/main/issues/110[#110],
+https://github.com/CS2103-AY1819S2-W16-3/main/issues/106[#106],
+https://github.com/CS2103-AY1819S2-W16-3/main/issues/98[#98],
+https://github.com/CS2103-AY1819S2-W16-3/main/issues/94[#94],
 https://github.com/CS2103-AY1819S2-W16-3/main/issues/91[#91])
 
 
 == Contributions to the User Guide
 
-_This section is to showcase my contribution to the User Guide, and highlight
+_This section is to showcase my main contribution to the User Guide, and
+highlight
  my ability to write documentation targeting end-users._
 
 
